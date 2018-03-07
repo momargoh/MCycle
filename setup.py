@@ -8,7 +8,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='mcycle',
-    version='0.1.0',
+    version='0.1.1',
     description='Power cycle sizing analysis package',
     long_description=long_description,
     url='https://github.com/momargoh/MCycle',
