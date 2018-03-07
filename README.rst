@@ -62,7 +62,7 @@ Contributions towards the project source code will be gratefully received. Feel 
 Quick start
 ===========
 
-Have a look through ``mcycle/examples`` to get a feel for how to use the module (`link to documentaion <https://mcycle.readthedocs.io/en/latest/examples/contents.html>`_). These examples can be easily copied to your local directory and modified to get you started.
+Have a look through ``mcycle/examples`` to get a feel for how to use the module (`link to documentaion <https://mcycle.readthedocs.io/examples/contents.html>`_). These examples can be easily copied to your local directory and modified to get you started.
 
 
 Notes on installing CoolProp from source for Python3
