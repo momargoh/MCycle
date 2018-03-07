@@ -23,18 +23,6 @@ def timeThis(func):
     return func_wrapper
 
 
-def timeitDecorator(func):
-    def func_wrapper(*args, **kwargs):
-        start = timeit.default_timer()
-        ret = func(*args, **kwargs)
-        stop = timeit.default_timer()
-        print(
-            "{}() took {} seconds to run.".format(func.__name__, stop - start))
-        return ret
-
-    return func_wrapper
-
-
 TOLABS = 1e-7  #: float : Generic absolute tolerance (usually called for FlowState properties).
 TOLREL = 1e-7  #: float : Generic relative tolerance (usually called for FlowState properties).
 TOLABS_X = 1e-10  #: float : absolute tolerance for FlowState qualities.
@@ -78,17 +66,16 @@ dimensionsEquiv = {
 }  #: dict of str : Equivalents for composite dimensions.
 
 
-def _formatUnits(dimension, separator):
-    dimension = dimension.split("-")
+def _formatUnits(dimensions, separator):
+    dimensions = dimensions.split("-")
     units = []
-    for i in dimension:
+    for i in dimensions:
         i = i.split("^")
         if len(i) == 1:
-            units.append(_unitsDict[i[0]])
+            units.append(dimensionUnits[i[0]])
         else:
-            units.append(_unitsDict[i[0]] + "^" + i[1])
+            units.append(dimensionUnits[i[0]] + "^" + i[1])
     return separator.join(units)
-
 
 def getUnits(dimension):
     """str: Returns formatted units for desired unit type which may either be a single unit (eg. "length") or a combined unit (eg. density)."""
