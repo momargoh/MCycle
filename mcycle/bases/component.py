@@ -219,18 +219,18 @@ Notes: {}
             flowKeys = []
             for i in range(len(self.flowsIn)):
                 if i == 0:
-                    flows.append("flowInWf")
+                    flowKeys.append("flowInWf")
                 elif i == 1:
-                    flows.append("flowInSf")
+                    flowKeys.append("flowInSf")
                 else:
-                    flows.append("flowsIn[{}]".format(i))
+                    flowKeys.append("flowsIn[{}]".format(i))
             for i in range(len(self.flowsOut)):
                 if i == 0:
-                    flows.append("flowOutWf")
+                    flowKeys.append("flowOutWf")
                 elif i == 1:
-                    flows.append("flowOutSf")
+                    flowKeys.append("flowOutSf")
                 else:
-                    flows.append("flowsOut[{}]".format(i))
+                    flowKeys.append("flowsOut[{}]".format(i))
         if flowKeys == "none":
             flowKeys = []
         if len(flowKeys) > 0:
