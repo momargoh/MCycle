@@ -45,7 +45,7 @@ config : Config, optional
         css = []
         for key in self._cyclestateKeys:
             if not key.startswith("state"):
-                key = "state" + cs
+                key = "state" + key
             css.append(getattr(self, key))
         return css
 
