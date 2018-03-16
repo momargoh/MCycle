@@ -54,8 +54,6 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 For the latest stable release, MCycle is available from pip by running:: 
 
   pip3 install mcycle
-
-MCycle is available under the MIT licence, hence free for everybody to use and edit. 
   
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email or GitHub with any queries.
 
