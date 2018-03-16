@@ -9,12 +9,12 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='mcycle',
     version='0.1.1',
-    description='Power cycle sizing analysis package',
+    description='Power cycle sizing and analysis package',
     long_description=long_description,
     url='https://github.com/momargoh/MCycle',
     author='Momar Hughes',
     author_email='momar.hughes@unsw.edu.au',
-    license='MIT',
+    license='cc-by-4.0',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -29,8 +29,7 @@ setup(
         'Topic :: Scientific/Engineering :: Chemistry',
         'Topic :: Scientific/Engineering :: Physics',
     ],
-    keywords=
-    'thermodynamics organic Rankine cycle power cycle evaporator expander condenser compressor heat exchanger heater cooler',
+    keywords='thermodynamics organic Rankine cycle power cycle evaporator expander condenser compressor heat exchanger heater cooler',
     packages=find_packages(),
     install_requires=['numpy', 'scipy', 'matplotlib', 'CoolProp'],
     dependency_links=['https://github.com/CoolProp/CoolProp.git'],

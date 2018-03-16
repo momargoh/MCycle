@@ -16,7 +16,7 @@ About
 :Topic:
    Thermodynamic power cycle sizing and analysis
 :Licence:
-   MIT
+   Creative Commons Attribution 4.0 International Public License
 :Requires:
    numpy, scipy, matplotlib, CoolProp
 	
@@ -27,7 +27,7 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 * *run* : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or can be built using Sphinx (using Python3).
 
 
 Installation
