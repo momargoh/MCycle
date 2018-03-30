@@ -29,9 +29,9 @@ def run_example():
     # Set up default cycle parameters
     # ************************************************
     #
-    comp = mc.CompBasic(None, 0.9, solveAttr="pRatio")
+    comp = mc.CompBasic(None, 0.9, sizeAttr="pRatio")
     #
-    exp = mc.ExpBasic(None, 0.85, solveAttr="pRatio")
+    exp = mc.ExpBasic(None, 0.85, sizeAttr="pRatio")
     #
     sourceFluid = "Air"
     sourceIn_m = 5.5
@@ -68,7 +68,7 @@ def run_example():
     sinkDead = sinkIn.copy()
     sourceDead = mc.FlowState(sourceFluid, "HEOS", None, None, CP.PT_INPUTS,
                               sinkIn_p, sinkIn_T)
-    cond = mc.ClrBasicConstP(None, 1, solveAttr="Q")
+    cond = mc.ClrBasicConstP(None, 1, sizeAttr="Q")
     #
     config = mc.Config(
         dpEvap=False,
@@ -105,7 +105,7 @@ def run_example():
     plot_y2 = []
     for m in mWf_vals:
         cycle.update(mWf=m)
-        cycle.solveSetup(True, False)
+        cycle.sizeSetup(True, False)
         try:
             cycle.evap.run()
             print("---------")
@@ -132,7 +132,7 @@ def run_example():
     print(cycle.evap.dpSf)
     print(cycle.evap.dpSf / cycle.evap.flowInSf.p)
     print("There are # units :", len(cycle.evap._units))
-    cycle.evap.solve("L", [0.1, 1])
+    cycle.evap.size("L", [0.1, 1])
     print("---------")
     print(cycle.evap.L)
     print(cycle.evap.dpSf)

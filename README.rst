@@ -23,7 +23,7 @@ About
 
 MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynamic heat cycles, particularly the organic Rankine cycle. Sizing methods are based on empirical and theoretical correlations. Users may analyse cycles consisting of components including heaters, coolers, compressors, expanders and heat exchangers. The two main modes for analysing cycles or components are:
   
-* *solve* : calculates a component characteristic/dimension required to satisfy a desired component outlet flow state/cycle flow states. This mode is used for sizing components.
+* *size* : calculates a component characteristic/dimension required to satisfy a desired component outlet flow state/cycle flow states. This mode is used for sizing components.
 
 * *run* : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 

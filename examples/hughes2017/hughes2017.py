@@ -77,19 +77,19 @@ Evaporator and condenser
 
 For the evaporator, we used a AlfaLaval AC30EQ model corrugated plate heat exchanger.::
 
-    >>> evap = mc.library.alfaLaval_AC30EQ(solveAttr="NPlate")
+    >>> evap = mc.library.alfaLaval_AC30EQ(sizeAttr="NPlate")
 
 As sizing the condenser is not central to this analysis, it is treated simply as a heat sink.::
 
-    >>> cond = mc.ClrBasicConstP(None, 1, solveAttr="Q")
+    >>> cond = mc.ClrBasicConstP(None, 1, sizeAttr="Q")
 
 Compressor and expander
 **********************************************
 
 Equally, sizing of the compressor and expander is beyond the scope of this analysis. Here, it is simply assumed that they both have an isentropic efficiency of 70%.::
 
-    >>> comp = mc.CompBasic(None, 0.7, solveAttr="pRatio")
-    >>> exp = mc.ExpBasic(None, 0.7, solveAttr="pRatio")
+    >>> comp = mc.CompBasic(None, 0.7, sizeAttr="pRatio")
+    >>> exp = mc.ExpBasic(None, 0.7, sizeAttr="pRatio")
 
 Design parameters
 **********************************************
@@ -126,9 +126,9 @@ For the purpose of producing an example plot, we temporarily change the condense
     >>> cycle.sinkIn.m = 100.
     >>> cycle.update(cond=mc.library.alfaLaval_CBXP27(), pptdEvap=300.)
 
-Next, we must set up the cycle to the design conditions. Although this can be done with `cycle.solve`, this function calls `solve` for each component, which can be very time-consuming. A faster method is to call `cycle.solveSetup` which sets up the working fluid design FlowStates without calling `solve` for any of the components and is sufficient for producing a temperature-entropy or pressure-enthalpy plot.::
+Next, we must set up the cycle to the design conditions. Although this can be done with `cycle.size`, this function calls `size` for each component, which can be very time-consuming. A faster method is to call `cycle.sizeSetup` which sets up the working fluid design FlowStates without calling `size` for any of the components and is sufficient for producing a temperature-entropy or pressure-enthalpy plot.::
 
-    >>> cycle.solveSetup(False, False)
+    >>> cycle.sizeSetup(False, False)
 
 After calling `cycle.plot`, the following plot is produced.
 
@@ -151,7 +151,7 @@ To study the effects of superheating on the cycle efficiency, we vary the degree
             cycle.update(pEvap=p_vals[i] * 10**5)
             for superheat in superheat_vals[i]:
                 cycle.update(superheat=superheat, pptdEvap=pptdEvap)
-                cycle.solveSetup(False, False)
+                cycle.sizeSetup(False, False)
                 plot_eff[i].append(cycle.effExergy)
                 plot_Pnet[i].append(cycle.PNet / 1000)  # kW
 
@@ -183,9 +183,9 @@ Next, we study the effects of the evaporator pinch-point temperature difference 
             cycle.pEvap = p_vals[i] * 10**5
             for pptd in pptd_vals[i]:
                 cycle.pptdEvap = pptd
-                cycle.solveSetup(False, False)
+                cycle.sizeSetup(False, False)
                 cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-                cycle.evap.solve("NPlate")
+                cycle.evap.size("NPlate")
                 plot_eff[i].append(cycle.effExergy)
                 plot_NPlate[i].append(cycle.evap.NPlate)
                 plot_weight[i].append(cycle.evap.weight)
@@ -215,9 +215,9 @@ We now move on to studying the effects of the working fluid evaporating pressure
     >>> plot_NPlate, plot_dpWf, plot_dpSf = [], [], []
     >>> for i in range(len(p_vals)):
             cycle.update(pEvap=p_vals[i] * 10**5, pptdEvap=10.)
-            cycle.solveSetup(True, False)
+            cycle.sizeSetup(True, False)
             cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-            cycle.evap.solve_NPlate()
+            cycle.evap.size_NPlate()
             plot_NPlate.append(cycle.evap.NPlate)
             plot_dpWf.append(cycle.evap.dpWf / (10**5))
             plot_dpSf.append(cycle.evap.dpSf / (10**5))
@@ -247,9 +247,9 @@ Finally, we study the effect of the mass flow rate of the exhaust gasses on thei
     >>> for frac in fraction_vals:
             cycle.evap.mSf = mSource * frac
             cycle.update(pptdEvap=pptdEvap)
-            cycle.solveSetup(True, False)
+            cycle.sizeSetup(True, False)
             cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-            cycle.evap.solve_NPlate()
+            cycle.evap.size_NPlate()
             plot_dpSf.append(cycle.evap.dpSf / (10**5))
 
 This produces the following plot.
@@ -265,7 +265,7 @@ Slight differences between the results presented above and the results in [Hughe
 
 - This analysis approximates the exhaust gas properties using a quadratic line of best fit based on the properties evaluated at 300, 500, 700, 900 & 1170 K, whereas the original paper used a linear line of best fit based of the properties evaluated at 900 & 1170 K.
 - This analysis takes into account the port, acceleration and static head pressure drops whereas the original paper neglected these.
-- The `solve_NPlate` algorithm of HxPlateCorrugated in this analysis solves for `NPlate` that gives `L` closest to the desired heat transfer length, whereas the algorithm in the original paper solved for `L` closest to but less than the desired heat transfer length.
+- The `size_NPlate` algorithm of HxPlateCorrugated in this analysis sizes for `NPlate` that gives `L` closest to the desired heat transfer length, whereas the algorithm in the original paper sized for `L` closest to but less than the desired heat transfer length.
 
 References
 ----------------
@@ -325,7 +325,7 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
     superheat = None
     TCond = 300.
     subcool = None
-    comp = mc.CompBasic(None, 0.7, solveAttr="pRatio")
+    comp = mc.CompBasic(None, 0.7, sizeAttr="pRatio")
     sourceIn_m = 0.09
     sourceIn_T = 1170.
     sourceIn_p = 1.116e5
@@ -345,12 +345,12 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
     sourceDead = mc.FlowState(sourceFluid, "HEOS", CP.iphase_gas, None,
                               CP.PT_INPUTS, 0.88260e5, 281.65)
 
-    evap = mc.library.alfaLaval_AC30EQ(solveAttr="NPlate")
-    exp = mc.ExpBasic(None, 0.7, solveAttr="pRatio")
+    evap = mc.library.alfaLaval_AC30EQ(sizeAttr="NPlate")
+    exp = mc.ExpBasic(None, 0.7, sizeAttr="pRatio")
     sinkIn = mc.FlowState("Air", "HEOS", None, None, CP.PT_INPUTS, 0.88260e5,
                           281.65)
     sinkDead = sinkIn.copy()
-    cond = mc.ClrBasicConstP(None, 1, solveAttr="Q")
+    cond = mc.ClrBasicConstP(None, 1, sizeAttr="Q")
     config = mc.Config(
         dpEvap=False,
         dpCond=False,
@@ -381,7 +381,7 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
         print("Begin demonstration of RankineBasic.plot() ...")
         cycle.sinkIn.m = 100.
         cycle.update(cond=mc.library.alfaLaval_CBXP27(), pptdEvap=300.)
-        cycle.solveSetup(False, False)
+        cycle.sizeSetup(False, False)
         print("Create plots in ./{} folder...".format(plots_folder))
         cycle.plot(
             graph='Ts',
@@ -399,7 +399,7 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
         print("Plot saved in {}/plot_RankineBasic.{}".format(plots_folder,
                                                              plots_format))
         cycle.sinkIn.m = None
-        cycle.cond = mc.ClrBasicConstP(None, 0.7, solveAttr="pRatio")
+        cycle.cond = mc.ClrBasicConstP(None, 0.7, sizeAttr="pRatio")
         print("End demonstration of RankineBasic.plot.")
 
     @mc.timeThis
@@ -416,7 +416,7 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
             cycle.update(pEvap=p_vals[i] * 10**5)
             for superheat in superheat_vals[i]:
                 cycle.update(superheat=superheat, pptdEvap=pptdEvap)
-                cycle.solveSetup(False, False)
+                cycle.sizeSetup(False, False)
                 plot_eff[i].append(cycle.effExergy)
                 plot_Pnet[i].append(cycle.PNet / 1000)  # kW
         print("Create plots in ./{} folder...".format(plots_folder))
@@ -471,9 +471,9 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
             cycle.pEvap = p_vals[i] * 10**5
             for pptd in pptd_vals[i]:
                 cycle.pptdEvap = pptd
-                cycle.solveSetup(False, False)
+                cycle.sizeSetup(False, False)
                 cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-                cycle.evap.solve("NPlate")
+                cycle.evap.size("NPlate")
                 plot_eff[i].append(cycle.effExergy)
                 plot_NPlate[i].append(cycle.evap.NPlate)
                 plot_weight[i].append(cycle.evap.weight)
@@ -552,9 +552,9 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
         plot_NPlate, plot_dpWf, plot_dpSf = [], [], []
         for i in range(len(p_vals)):
             cycle.update(pEvap=p_vals[i] * 10**5, pptdEvap=10.)
-            cycle.solveSetup(True, False)
+            cycle.sizeSetup(True, False)
             cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-            cycle.evap.solve_NPlate()
+            cycle.evap.size_NPlate()
             plot_NPlate.append(cycle.evap.NPlate)
             plot_dpWf.append(cycle.evap.dpWf / (10**5))
             plot_dpSf.append(cycle.evap.dpSf / (10**5))
@@ -607,9 +607,9 @@ def run_example(analyses=["plot", "superheat", "pptd", "pressure", "mass"]):
         for frac in fraction_vals:
             cycle.evap.mSf = mSource * frac
             cycle.update(pptdEvap=pptdEvap)
-            cycle.solveSetup(True, False)
+            cycle.sizeSetup(True, False)
             cycle.evap.L = mc.library.alfaLaval_AC30EQ().L
-            cycle.evap.solve_NPlate()
+            cycle.evap.size_NPlate()
             plot_dpSf.append(cycle.evap.dpSf / (10**5))
 
         print("Create plots in ./{} folder...".format(plots_folder))

@@ -57,16 +57,16 @@ flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 flowDeadSf : FlowState, optional
     Secondary fluid in its local dead state. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to "N".
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to [1, 100].
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to "N".
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to [1, 100].
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
-solveBracketUnits : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of solve() for the unit. Typically this bracket is used to solve for the length of the HxUnit. Defaults to [1e-5, 1.].
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+sizeBracketUnits : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxBasicPlanar instance".
 notes : string, optional
@@ -101,9 +101,9 @@ kwargs : optional
                  flowOutWf=None,
                  flowOutSf=None,
                  flowDeadSf=None,
-                 solveAttr="N",
-                 solveBracket=[1, 100],
-                 solveBracketUnits=[1e-5, 1.],
+                 sizeAttr="N",
+                 sizeBracket=[1, 100],
+                 sizeBracketUnits=[1e-5, 1.],
                  name="HxBasicPlanar instance",
                  notes="No notes/model info.",
                  config=Config(),
@@ -117,8 +117,8 @@ kwargs : optional
         super().__init__(flowSense, NWf, NSf, NWall, hWf_liq, hWf_tp, hWf_vap,
                          hSf, RfWf, RfSf, wall, tWall, L * W, ARatioWf,
                          ARatioSf, ARatioWall, effThermal, flowInWf, flowInSf,
-                         flowOutWf, flowOutSf, flowDeadSf, solveAttr,
-                         solveBracket, solveBracketUnits, name, notes, config)
+                         flowOutWf, flowOutSf, flowDeadSf, sizeAttr,
+                         sizeBracket, sizeBracketUnits, name, notes, config)
         for key, value in kwargs.items():
             setattr(self, key, value)
         self._units = []
@@ -137,8 +137,8 @@ kwargs : optional
                 ("ARatioSf", "none"), ("ARatioWall", "none"),
                 ("effThermal", "none"), ("flowInWf", "none"),
                 ("flowInSf", "none"), ("flowOutWf", "none"),
-                ("flowOutSf", "none"), ("solveAttr", "none"),
-                ("solveBracket", "none"), ("solveBracketUnits", "none"),
+                ("flowOutSf", "none"), ("sizeAttr", "none"),
+                ("sizeBracket", "none"), ("sizeBracketUnits", "none"),
                 ("name", "none"), ("notes", "none"), ("config", "none"))
 
     @property
@@ -187,75 +187,75 @@ kwargs : optional
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioWall,
                 self.effThermal)
 
-    def solve_L(self, solveBracketUnits=None):
+    def size_L(self, sizeBracketUnits=None):
         """float: Solve for the required length of the Hx to satisfy the heat transfer equations [m]."""
-        if solveBracketUnits is None:
-            solveBracketUnits = self.solveBracketUnits
+        if sizeBracketUnits is None:
+            sizeBracketUnits = self.sizeBracketUnits
         L = 0.
         for unit in self._units:
             if abs(unit.Q) > TOLABS:
-                L += unit.solve("L", solveBracketUnits)
+                L += unit.size("L", sizeBracketUnits)
         self.L = L
         return L
 
-    def solve(self, solveAttr=None, solveBracket=None, solveBracketUnits=None):
+    def size(self, sizeAttr=None, sizeBracket=None, sizeBracketUnits=None):
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
-solveAttr : string, optional
-    Attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 
-solveBracketUnits : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of solve() for the unit. If None, self.solveBracketUnits is used. Defaults to None.
+sizeBracketUnits : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeBracketUnits is used. Defaults to None.
         """
-        if solveAttr is None:
-            solveAttr = self.solveAttr
-        if solveBracket is None:
-            solveBracket = self.solveBracket
-        if solveBracketUnits is None:
-            solveBracketUnits = self.solveBracketUnits
+        if sizeAttr is None:
+            sizeAttr = self.sizeAttr
+        if sizeBracket is None:
+            sizeBracket = self.sizeBracket
+        if sizeBracketUnits is None:
+            sizeBracketUnits = self.sizeBracketUnits
         try:
-            if solveAttr == "L":
+            if sizeAttr == "L":
                 self.unitise()
                 L = 0.
                 for unit in self._units:
-                    L += unit.solve("L", solveBracketUnits)
+                    L += unit.size("L", sizeBracketUnits)
                 self.L = L
                 return L
-            elif solveAttr == "flowOutSf":
-                super().solve(solveAttr, solveBracket, solveBracketUnits)
+            elif sizeAttr == "flowOutSf":
+                super().size(sizeAttr, sizeBracket, sizeBracketUnits)
             else:
                 self.unitise()
                 L = self.L
 
                 def f(value):
-                    self.update(**{solveAttr: value})
-                    return self.solve_L(solveBracketUnits) - L
+                    self.update(**{sizeAttr: value})
+                    return self.size_L(sizeBracketUnits) - L
 
                 tol = self.config.tolAbs + self.config.tolRel * abs(self.Q)
-                if len(solveBracket) == 2:
-                    solvedValue = opt.brentq(
+                if len(sizeBracket) == 2:
+                    sizedValue = opt.brentq(
                         f,
-                        solveBracket[0],
-                        solveBracket[1],
+                        sizeBracket[0],
+                        sizeBracket[1],
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(solveBracket) == 1:
-                    solvedValue = opt.newton(f, solveBracket[0], tol=tol)
+                elif len(sizeBracket) == 1:
+                    sizedValue = opt.newton(f, sizeBracket[0], tol=tol)
                 else:
-                    solvedValue = opt.newton(f, solveBracket, tol=tol)
-                setattr(self, solveAttr, solvedValue)
-                return solvedValue
+                    sizedValue = opt.newton(f, sizeBracket, tol=tol)
+                setattr(self, sizeAttr, sizedValue)
+                return sizedValue
         except AssertionError as err:
             raise (err)
         except:
             raise StopIteration(
-                "Warning: {}.solve({},{}) failed to converge".format(
-                    self.__class__.__name__, solveAttr, solveBracket))
+                "Warning: {}.size({},{}) failed to converge".format(
+                    self.__class__.__name__, sizeAttr, sizeBracket))

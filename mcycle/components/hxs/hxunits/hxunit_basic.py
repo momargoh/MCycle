@@ -50,14 +50,14 @@ flowOutWf : FlowState, optional
     Outgoing FlowState of the working fluid. Defaults to None.
 flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to "N".
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to [3, 100].
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to "N".
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to [3, 100].
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "HxBasic instance".
 notes : string, optional
@@ -88,8 +88,8 @@ kwargs : optional
                  flowInSf=None,
                  flowOutWf=None,
                  flowOutSf=None,
-                 solveAttr="A",
-                 solveBracket=[0.01, 10.0],
+                 sizeAttr="A",
+                 sizeBracket=[0.01, 10.0],
                  name="HxUnitBasic instance",
                  notes="No notes/model info.",
                  config=Config(),
@@ -97,8 +97,8 @@ kwargs : optional
         assert "counter" in flowSense.lower() or "parallel" in flowSense.lower(
         ), "{} is not a valid value for flowSense; must be 'counterflow' or 'parallel'.".format(
             flowSense)
-        super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, solveAttr,
-                         solveBracket, name, notes, config)
+        super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, sizeAttr,
+                         sizeBracket, name, notes, config)
         self.flowSense = flowSense
         self.NWf = NWf
         self.NSf = NSf
@@ -128,7 +128,7 @@ kwargs : optional
                 ("ARatioWall", "none"), ("effThermal", "none"),
                 ("flowInWf", "none"), ("flowInSf", "none"),
                 ("flowOutWf", "none"), ("flowOutSf", "none"),
-                ("solveAttr", "none"), ("solveBracket", "none"),
+                ("sizeAttr", "none"), ("sizeBracket", "none"),
                 ("name", "none"), ("notes", "none"), ("config", "none"))
 
     @property
@@ -375,52 +375,52 @@ kwargs : optional
                            self.config._tolRel_h))
         return self.flowOutWf
 
-    def solve(self, solveAttr=None, solveBracket=None):
+    def size(self, sizeAttr=None, sizeBracket=None):
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
 ------------
-solveAttr : string, optional
-    Component attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
         """
-        if solveAttr is None:
-            solveAttr = self.solveAttr
-        if solveBracket is None:
-            solveBracket = self.solveBracket
+        if sizeAttr is None:
+            sizeAttr = self.sizeAttr
+        if sizeBracket is None:
+            sizeBracket = self.sizeBracket
         try:
-            if solveAttr == "A":
+            if sizeAttr == "A":
                 self.A = 1.
                 self.A = self.Q / self.Q_LMTD
                 return self.A
             else:
 
                 def f(value):
-                    self.update(**{solveAttr: value})
+                    self.update(**{sizeAttr: value})
                     return self.Q - self.Q_LMTD
 
                 tol = self.config.tolAbs + self.config.tolRel * self.Q
-                if len(solveBracket) == 2:
-                    solvedValue = opt.brentq(
+                if len(sizeBracket) == 2:
+                    sizedValue = opt.brentq(
                         f,
-                        solveBracket[0],
-                        solveBracket[1],
+                        sizeBracket[0],
+                        sizeBracket[1],
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(solveBracket) == 1:
-                    solvedValue = opt.newton(f, solveBracket[0], tol=tol)
+                elif len(sizeBracket) == 1:
+                    sizedValue = opt.newton(f, sizeBracket[0], tol=tol)
                 else:
-                    solvedValue = opt.newton(f, solveBracket, tol=tol)
-                self.update(**{solveAttr: solvedValue})
-                return solvedValue
+                    sizedValue = opt.newton(f, sizeBracket, tol=tol)
+                self.update(**{sizeAttr: sizedValue})
+                return sizedValue
         except AssertionError as err:
             raise (err)
         except:
             raise Exception(
-                "Warning: {}.solve({},{}) failed to converge".format(
-                    self.__class__.__name__, solveAttr, solveBracket))
+                "Warning: {}.size({},{}) failed to converge".format(
+                    self.__class__.__name__, sizeAttr, sizeBracket))

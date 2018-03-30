@@ -421,7 +421,7 @@ kwargs : optional
                                self.source1.T - self.state1.T)
 
                 else:
-                    print("run() or solve() has not been executed")
+                    print("run() or size() has not been executed")
             else:
                 print("pptdEvap is not a valid for flowSense = {0}".format(
                     type(self.evap.flowSense)))
@@ -484,7 +484,7 @@ kwargs : optional
                                self.state4.T - self.sink4.T)
 
                 else:
-                    print("run() or solve() has not been executed")
+                    print("run() or size() has not been executed")
             else:
                 print("pptdEvap is not a valid for flowSense = {0}".format(
                     type(self.evap.flowSense)))
@@ -523,7 +523,7 @@ component: str, optional
             self.evap.unitise()
             if self.config.dpEvap is True:
                 try:
-                    self.evap.solve()
+                    self.evap.size()
                     dp = self.evap.dpCold()
                     if dp < self.state3.p:
                         self.state3.update(CP.HmassP_INPUTS, self.state3.h,
@@ -545,7 +545,7 @@ component: str, optional
             self.cond._unitise()
             if self.config.dpCond is True:
                 try:
-                    self.cond.solve()
+                    self.cond.size()
                     dp = self.cond.dpHot()
                     if dp < state6new.p:
                         state6new.update(CP.HmassP_INPUTS, state6new.h,
@@ -570,8 +570,8 @@ component: str, optional
                     format(self.config.maxIterationsCycle, self.config.tolAttr,
                            diff, self.config.tolAbs))
 
-    def solveSetup(self, unitiseEvap=True, unitiseCond=True):
-        """Impose the design parameters on the cycle (without executing .solve() for each component).
+    def sizeSetup(self, unitiseEvap=True, unitiseCond=True):
+        """Impose the design parameters on the cycle (without executing .size() for each component).
 
 Parameters
 -----------
@@ -620,8 +620,8 @@ unitiseCond : bool, optional
             if unitiseCond:
                 self.cond.unitise()
 
-    def solve(self):
-        """Impose the design parameters on the cycle and execute .solve() for each component."""
+    def size(self):
+        """Impose the design parameters on the cycle and execute .size() for each component."""
         if self.subcool == 0 or self.subcool is None:
             self.state6 = self.wf.copy(CP.PQ_INPUTS, self.pCond, 0)
         else:
@@ -641,7 +641,7 @@ unitiseCond : bool, optional
             state1_old = self.wf.copy(CP.HmassP_INPUTS, hOut, self.pEvap)
             while diff > self.config.tolAbs:
                 self.comp.flowOutWf = state1_old
-                self.comp.solve()
+                self.comp.size()
                 """
                 hOut = self.state6.h + (
                     state1_s.h - self.state6.h) / self.comp.effIsentropic
@@ -659,7 +659,7 @@ unitiseCond : bool, optional
                         """{0} iterations without {1} compressor converging: diff={2}>tol={3}""".
                         format(MAXITERATIONSCYCLE, self.config.tolAttr, diff,
                                self.config.tolAbs))
-            self.comp.solve()
+            self.comp.size()
             self.state1 = self.comp.flowOutWf
             #
             if self.superheat == 0 or self.superheat is None:
@@ -674,10 +674,10 @@ unitiseCond : bool, optional
                     CP.HmassP_INPUTS, self.evap.flowInSf.h - deltaHEvap /
                     self.evap.mSf / self.evap._effFactorSf,
                     self.evap.flowInSf.p)
-            self.evap.solve()
+            self.evap.size()
             if self.config.dpEvap is True:
                 try:
-                    # self.evap.solve()
+                    # self.evap.size()
                     dp = self.evap.dpWf
                     if dp < self.state3.p:
                         self.state3.update(CP.HmassP_INPUTS, self.state3.h,
@@ -702,7 +702,7 @@ unitiseCond : bool, optional
             state4_old = self.wf.copy(CP.HmassP_INPUTS, hOut, self.pCond)
             while diff > self.config.tolAbs:
                 self.exp.flowOutWf = state4_old
-                self.exp.solve()
+                self.exp.size()
                 """
                 hOut = self.state3.h + (
                     state4_s.h - self.state3.h) / self.exp.effIsentropic
@@ -719,7 +719,7 @@ unitiseCond : bool, optional
                         """{0} iterations without {1} expander converging: diff={2}>tol={3}""".
                         format(MAXITERATIONSCYCLE, self.config.tolAttr, diff,
                                self.config.tolAbs))
-            self.exp.solve()
+            self.exp.size()
             self.state4 = self.exp.flowOutWf
             #
             if issubclass(type(self.cond), HxBasic):
@@ -729,7 +729,7 @@ unitiseCond : bool, optional
                     CP.HmassP_INPUTS, self.cond.flowInSf.h + deltaHCond /
                     self.cond.mSf / self.cond._effFactorSf,
                     self.cond.flowInSf.p)
-            self.cond.solve()
+            self.cond.size()
             if self.config.dpCond is True:
                 try:
                     dp = self.cond.dpWf

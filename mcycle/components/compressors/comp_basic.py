@@ -15,14 +15,14 @@ flowIn : FlowState, optional
     Incoming FlowState. Defaults to None.
 flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to "pRatio".
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to [1, 50].
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to "pRatio".
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to [1, 50].
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "CompBasic instance".
 notes : string, optional
@@ -38,13 +38,13 @@ kwargs : optional
                  effIsentropic=1,
                  flowIn=None,
                  flowOut=None,
-                 solveAttr="pRatio",
-                 solveBracket=[1, 50],
+                 sizeAttr="pRatio",
+                 sizeBracket=[1, 50],
                  name="CompBasic instance",
                  notes="No notes/model info.",
                  config=Config(),
                  **kwargs):
-        super().__init__(flowIn, flowOut, solveAttr, solveBracket, name, notes,
+        super().__init__(flowIn, flowOut, sizeAttr, sizeBracket, name, notes,
                          config)
         self.pRatio = pRatio
         self.effIsentropic = effIsentropic
@@ -55,8 +55,8 @@ kwargs : optional
     def _inputs(self):
         """Tuple of input parameters in order taken by constructor, along with their units as ("parameter", "units")."""
         return (("pRatio", "none"), ("effIsentropic", "none"),
-                ("flowIn", "none"), ("flowOut", "none"), ("solveAttr", "none"),
-                ("solveBracket", "none"), ("name", "none"), ("notes", "none"),
+                ("flowIn", "none"), ("flowOut", "none"), ("sizeAttr", "none"),
+                ("sizeBracket", "none"), ("name", "none"), ("notes", "none"),
                 ("config", "none"))
 
     @property
@@ -108,28 +108,28 @@ kwargs : optional
                                         self.flowIn.p * self.pRatio)
         return self.flowOut
 
-    def solve(self, solveAttr=None, solveBracket=None):
+    def size(self, sizeAttr=None, sizeBracket=None):
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
 ------------
-solveAttr : string, optional
-    Component attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
         """
-        if solveAttr is None:
-            solveAttr = self.solveAttr
-        if solveBracket is None:
-            solveBracket = self.solveBracket
+        if sizeAttr is None:
+            sizeAttr = self.sizeAttr
+        if sizeBracket is None:
+            sizeBracket = self.sizeBracket
         try:
-            if solveAttr == "pRatio":
+            if sizeAttr == "pRatio":
                 self.pRatio = self.flowOut.p / self.flowIn.p
-            elif solveAttr == "effIsentropic":
+            elif sizeAttr == "effIsentropic":
                 assert (self.flowOut.p / self.flowIn.p - self.pRatio
                         ) / self.pRatio < self.config._tolRel_p
                 flowOut_s = self.flowIn.copy(CP.PSmass_INPUTS, self.flowOut.p,
@@ -137,9 +137,9 @@ solveBracket : float or list of float, optional
                 self.effIsentropic = (flowOut_s.h - self.flowIn.h) / (
                     self.flowOut.h - self.flowIn.h)
             else:
-                super().solve(solveAttr, solveBracket)
+                super().size(sizeAttr, sizeBracket)
         except AssertionError as err:
             raise (err)
         except:
-            raise StopIteration("{}.solve({},{}) failed to converge".format(
-                self.__class__.__name__, solveAttr, solveBracket))
+            raise StopIteration("{}.size({},{}) failed to converge".format(
+                self.__class__.__name__, sizeAttr, sizeBracket))

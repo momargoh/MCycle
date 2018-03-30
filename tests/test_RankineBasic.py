@@ -10,18 +10,18 @@ class TestRankineBasic(unittest.TestCase):
     superheat = 30.
     TCond = 300.
     subcool = None
-    comp = mc.CompBasic(None, 0.7, solveAttr="pRatio")
+    comp = mc.CompBasic(None, 0.7, sizeAttr="pRatio")
     sourceIn = mc.FlowState("Air", "HEOS", None, 0.09, CP.PT_INPUTS, 1.116e5,
                             1170.)
     evap = mc.library.alfaLaval_AC30EQ()
-    evap.update(solveAttr="NPlate")
-    exp = mc.ExpBasic(None, 0.7, solveAttr="pRatio")
+    evap.update(sizeAttr="NPlate")
+    exp = mc.ExpBasic(None, 0.7, sizeAttr="pRatio")
     sinkIn = mc.FlowState("Air", "HEOS", None, 0.20, CP.PT_INPUTS, 0.88260e5,
                           281.65)
     sinkDead = sinkIn.copy()
     sourceDead = sinkIn.copy()
-    #cond = mc.library.alfaLaval_CBXP27, solveAttr="NPlate")
-    cond = mc.ClrBasicConstP(None, 1, solveAttr="Q")
+    #cond = mc.library.alfaLaval_CBXP27, sizeAttr="NPlate")
+    cond = mc.ClrBasicConstP(None, 1, sizeAttr="Q")
     config = mc.Config(
         dpEvap=False, dpCond=False, dpAcc=False, dpPort=False, dpHead=False)
     cycle = mc.RankineBasic(
@@ -47,18 +47,18 @@ class TestRankineBasic(unittest.TestCase):
         self.assertIs(self.cycle.exp.config, self.config)
         self.assertAlmostEqual(self.cycle.mWf, 0.34307814292524513, 10)
 
-    def test_1_solve(self):
+    def test_1_size(self):
         self.cycle.config.dpEvap = False
-        self.cycle.solve()
+        self.cycle.size()
         self.assertAlmostEqual(
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(self.cycle.comp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.exp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.evap.Q, 83891.17350428084, 6)
 
-    def test_1_solve_dpEvap_True(self):
+    def test_1_size_dpEvap_True(self):
         self.cycle.config.dpEvap = True
-        self.cycle.solve()
+        self.cycle.size()
         self.assertAlmostEqual(
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(
@@ -70,7 +70,7 @@ class TestRankineBasic(unittest.TestCase):
 
     def test_cycle_plot(self):
         import os
-        self.cycle.solveSetup()
+        self.cycle.sizeSetup()
         self.cycle.plot(
             title="test_cycle_plot",
             show=False,

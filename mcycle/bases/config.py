@@ -39,7 +39,7 @@ divT : float, optional
     Temperature difference for unitising single-phase flows. Defaults to 5 [K].
 divX : float, optional
     Quality difference for unitising two-phase flows. Defaults to 0.1.
-solveBracket_L : list of float len==2, optional
+sizeBracket_L : list of float len==2, optional
     Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].
 maxIterCycle : int, optional
     Max number of iterations for convergence of cycle. Defaults to 50.
@@ -81,7 +81,7 @@ _tolAbs_x : float, optional
                  tolRel=DEFS.TOLREL,
                  divT=5.,
                  divX=0.1,
-                 solveBracket_L=[1e-5, 1e2],
+                 sizeBracket_L=[1e-5, 1e2],
                  methods=Methods(),
                  evenPlatesWf=False,
                  **kwargs):
@@ -102,7 +102,7 @@ _tolAbs_x : float, optional
         self.divT = divT
         assert divX <= 1
         self.divX = divX
-        self.solveBracket_L = solveBracket_L
+        self.sizeBracket_L = sizeBracket_L
         #
         self.methods = methods
         #
@@ -210,7 +210,7 @@ name : str, optional
     tolRel = {},
     divT = {},
     divX = {},
-    solveBracket_L = {},
+    sizeBracket_L = {},
     #
     evenPlatesWf = {},
     #
@@ -224,7 +224,7 @@ name : str, optional
                self.dpFSf, self.dpAccWf, self.dpAccSf, self.dpHeadWf,
                self.dpHeadSf, self.dpPortWf, self.dpPortSf, self.g,
                self.tolAttr, self.tolAbs, self.tolRel, self.divT, self.divX,
-               self.solveBracket_L, self.evenPlatesWf, self._tolRel_p,
+               self.sizeBracket_L, self.evenPlatesWf, self._tolRel_p,
                self._tolRel_T, self._tolRel_h, self._tolRel_rho,
                self._tolAbs_x)
         if printOutput:

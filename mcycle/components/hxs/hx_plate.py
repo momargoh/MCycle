@@ -64,16 +64,16 @@ flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 flowDeadSf : FlowState, optional
     Secondary fluid in its local dead state. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to "NPlate".
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to [3, 100].
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to "NPlate".
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to [3, 100].
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
-solveBracketUnits : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of solve() for the unit. Typically this bracket is used to solve for the length of the HxUnit. Defaults to [1e-5, 1.].
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+sizeBracketUnits : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxPlate instance".
 notes : string, optional
@@ -111,9 +111,9 @@ kwargs : optional
                  flowOutWf=None,
                  flowOutSf=None,
                  flowDeadSf=None,
-                 solveAttr="NPlate",
-                 solveBracket=[3, 100],
-                 solveBracketUnits=[1e-5, 10.],
+                 sizeAttr="NPlate",
+                 sizeBracket=[3, 100],
+                 sizeBracketUnits=[1e-5, 10.],
                  name="HxPlate instance",
                  notes="No notes/model info.",
                  config=Config(),
@@ -133,8 +133,8 @@ kwargs : optional
         super().__init__(flowSense, None, None, NPlate, None, None, None, None,
                          RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
                          ARatioPlate, effThermal, flowInWf, flowInSf,
-                         flowOutWf, flowOutSf, flowDeadSf, solveAttr,
-                         solveBracket, solveBracketUnits, name, notes, config)
+                         flowOutWf, flowOutSf, flowDeadSf, sizeAttr,
+                         sizeBracket, sizeBracketUnits, name, notes, config)
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -154,8 +154,8 @@ kwargs : optional
             ("coeffs_WPlate", "none"), ("coeffs_weight", "none"),
             ("effThermal", "none"), ("flowInWf", "none"), ("flowInSf", "none"),
             ("flowOutWf", "none"), ("flowOutSf", "none"),
-            ("solveAttr", "none"), ("solveBracket", "none"),
-            ("solveBracketUnits", "none"), ("name", "none"), ("notes", "none"),
+            ("sizeAttr", "none"), ("sizeBracket", "none"),
+            ("sizeBracketUnits", "none"), ("name", "none"), ("notes", "none"),
             ("config", "none"))
 
     @property
@@ -380,16 +380,16 @@ kwargs : optional
                 weightPerVol += self.coeffs_weight[i] * self.NPlate**i
             return weightPerVol * self.LPlate * self.WPlate * self.tPlate
 
-    def solve_NPlate(self, solveBracket=None, solveBracketUnits=None):
-        """int: solve for NPlate that requires L to be closest to self.L"""
-        if solveBracket is None:
-            solveBracket = [3, MAXWALLS]
-        NPlate = solveBracket[0]
+    def size_NPlate(self, sizeBracket=None, sizeBracketUnits=None):
+        """int: size for NPlate that requires L to be closest to self.L"""
+        if sizeBracket is None:
+            sizeBracket = [3, MAXWALLS]
+        NPlate = sizeBracket[0]
         L = self.L
         diff_vals = [float("nan"), float("nan")]
-        while NPlate < solveBracket[1]:
+        while NPlate < sizeBracket[1]:
             self.update(NPlate=NPlate)
-            diff = self.solve_L(solveBracketUnits) - L
+            diff = self.size_L(sizeBracketUnits) - L
             diff_vals = [diff_vals[1], diff]
             if diff > 0:
                 NPlate += 1
@@ -397,45 +397,45 @@ kwargs : optional
                 break
         if abs(diff_vals[0]) < abs(diff_vals[1]):
             self.update(NPlate=NPlate - 1)
-            self.solve_L(solveBracketUnits)
+            self.size_L(sizeBracketUnits)
             return NPlate - 1
         else:
             return NPlate
 
-    def solve(self, solveAttr=None, solveBracket=None, solveBracketUnits=None):
+    def size(self, sizeAttr=None, sizeBracket=None, sizeBracketUnits=None):
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
-solveAttr : string, optional
-    Attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 
-solveBracketUnits : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of solve() for the unit. If None, self.solveBracketUnits is used. Defaults to None.
+sizeBracketUnits : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeBracketUnits is used. Defaults to None.
         """
-        if solveAttr is None:
-            solveAttr = self.solveAttr
-        if solveBracket is None:
-            solveBracket = self.solveBracket
-        if solveBracketUnits is None:
-            solveBracketUnits = self.solveBracketUnits
+        if sizeAttr is None:
+            sizeAttr = self.sizeAttr
+        if sizeBracket is None:
+            sizeBracket = self.sizeBracket
+        if sizeBracketUnits is None:
+            sizeBracketUnits = self.sizeBracketUnits
         try:
-            if solveAttr in ["N", "NPlate"]:
+            if sizeAttr in ["N", "NPlate"]:
                 self.unitise()
-                return self.solve_NPlate(solveBracket, solveBracketUnits)
+                return self.size_NPlate(sizeBracket, sizeBracketUnits)
             else:
-                super().solve(solveAttr, solveBracket, solveBracketUnits)
+                super().size(sizeAttr, sizeBracket, sizeBracketUnits)
         except AssertionError as err:
             raise (err)
         except:
-            raise StopIteration("{}.solve({},{}) failed to converge".format(
-                self.__class__.__name__, solveAttr, solveBracket))
+            raise StopIteration("{}.size({},{}) failed to converge".format(
+                self.__class__.__name__, sizeAttr, sizeBracket))
 
     @property
     def plate(self):

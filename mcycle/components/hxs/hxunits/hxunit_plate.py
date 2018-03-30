@@ -50,14 +50,14 @@ flowOutWf : FlowState, optional
     Outgoing FlowState of the working fluid. Defaults to None.
 flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to "L".
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to [1e-5, 10.0].
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to "L".
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to [1e-5, 10.0].
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of object. Defaults to "HxUnitPlateCorrugated instance".
 notes : string, optional
@@ -87,8 +87,8 @@ kwargs : optional
                  flowInSf=None,
                  flowOutWf=None,
                  flowOutSf=None,
-                 solveAttr="L",
-                 solveBracket=[1e-5, 10.0],
+                 sizeAttr="L",
+                 sizeBracket=[1e-5, 10.0],
                  name="HxUnitPlateCorrugated instance",
                  notes="No notes/model info.",
                  config=Config(),
@@ -96,7 +96,7 @@ kwargs : optional
         super().__init__(flowSense, None, None, NPlate, None, None, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
-                         solveAttr, solveBracket, name, notes, config)
+                         sizeAttr, sizeBracket, name, notes, config)
         self.geomPlateWf = geomPlateWf
         self.geomPlateSf = geomPlateSf
         for key, value in kwargs.items():
@@ -112,8 +112,8 @@ kwargs : optional
                 ("ARatioSf", "none"), ("ARatioPlate", "none"),
                 ("effThermal", "none"), ("flowInWf", "none"),
                 ("flowInSf", "none"), ("flowOutWf", "none"),
-                ("flowOutSf", "none"), ("solveAttr", "none"),
-                ("solveBracket", "none"), ("name", "none"), ("notes", "none"),
+                ("flowOutSf", "none"), ("sizeAttr", "none"),
+                ("sizeBracket", "none"), ("name", "none"), ("notes", "none"),
                 ("config", "none"))
 
     @property
@@ -278,50 +278,50 @@ kwargs : optional
             self.NPlate - 2) / self.plate.k / self.ARatioPlate
         return (RWf + RSf + RPlate)**-1
 
-    def solve(self, solveAttr=None, solveBracket=None):
+    def size(self, sizeAttr=None, sizeBracket=None):
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
-solveAttr : string, optional
-    Attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
         """
-        if solveAttr is None:
-            solveAttr = self.solveAttr
-        if solveBracket is None:
-            solveBracket = self.solveBracket
+        if sizeAttr is None:
+            sizeAttr = self.sizeAttr
+        if sizeBracket is None:
+            sizeBracket = self.sizeBracket
         try:
 
             def f(value):
-                self.update(**{solveAttr: value})
+                self.update(**{sizeAttr: value})
                 return self.Q - self.Q_LMTD
 
             tol = self.config.tolAbs + self.config.tolRel * self.Q
-            if len(solveBracket) == 2:
-                solvedValue = opt.brentq(
+            if len(sizeBracket) == 2:
+                sizedValue = opt.brentq(
                     f,
-                    solveBracket[0],
-                    solveBracket[1],
+                    sizeBracket[0],
+                    sizeBracket[1],
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs)
-            elif len(solveBracket) == 1:
-                solvedValue = opt.newton(f, solveBracket[0], tol=tol)
+            elif len(sizeBracket) == 1:
+                sizedValue = opt.newton(f, sizeBracket[0], tol=tol)
             else:
-                solvedValue = opt.newton(f, solveBracket, tol=tol)
-            self.update(**{solveAttr: solvedValue})
-            return solvedValue
+                sizedValue = opt.newton(f, sizeBracket, tol=tol)
+            self.update(**{sizeAttr: sizedValue})
+            return sizedValue
         except AssertionError as err:
             raise (err)
         except:
             raise Exception(
-                "Warning: {}.solve({},{}) failed to converge".format(
-                    self.__class__.__name__, solveAttr, solveBracket))
+                "Warning: {}.size({},{}) failed to converge".format(
+                    self.__class__.__name__, sizeAttr, sizeBracket))
 
     @property
     def plate(self):

@@ -14,14 +14,14 @@ flowsIn : list of FlowState
     Incoming FlowStates. Defaults to None.
 flowsOut : list of FlowState, optional
     Outgoing FlowStates. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to None.
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -36,16 +36,16 @@ kwargs : optional
     def __init__(self,
                  flowsIn,
                  flowsOut=[None],
-                 solveAttr=None,
-                 solveBracket=None,
+                 sizeAttr=None,
+                 sizeBracket=None,
                  name="Component instance",
                  notes="no notes",
                  config=Config(),
                  **kwargs):
         self.flowsIn = flowsIn
         self.flowsOut = flowsOut
-        self.solveAttr = solveAttr
-        self.solveBracket = solveBracket
+        self.sizeAttr = sizeAttr
+        self.sizeBracket = sizeBracket
         self.name = name
         self.notes = notes
         self.config = config
@@ -57,7 +57,7 @@ kwargs : optional
     def _inputs(self):
         """Tuple of input parameters in order taken by constructor, along with their units as ("parameter", "units")."""
         return (("flowsIn", "none"), ("flowsOut", "none"),
-                ("solveAttr", "none"), ("solveBracket", "none"),
+                ("sizeAttr", "none"), ("sizeBracket", "none"),
                 ("name", "none"), ("notes", "none"), ("config", "none"))
 
     @property
@@ -87,59 +87,59 @@ kwargs : optional
         """Compute the outgoing working fluid FlowState from component attributes."""
         pass
 
-    def solve(self, solveAttr=None, solveBracket=None):
+    def size(self, sizeAttr=None, sizeBracket=None):
         """Solve for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
-solveAttr : string, optional
-    Attribute to be solved. If None, self.solveAttr is used. Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). If None, self.solveBracket is used. Defaults to None.
+sizeAttr : string, optional
+    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
         """
 
         try:
             import scipy.optimize as opt
-            if solveAttr is None:
-                solveAttr = self.solveAttr
-            if solveBracket is None:
-                solveBracket = self.solveBracket
+            if sizeAttr is None:
+                sizeAttr = self.sizeAttr
+            if sizeBracket is None:
+                sizeBracket = self.sizeBracket
             flowOutTarget = self.flowOut.copy()
 
             def f(value):
-                self.update(**{solveAttr: value})
+                self.update(**{sizeAttr: value})
                 self.run()
                 return getattr(self.flowOut, self.config.tolAttr) - getattr(
                     flowOutTarget, self.config.tolAttr)
 
             tol = self.config.tolAbs + self.config.tolRel * getattr(
                 flowOutTarget, self.config.tolAttr)
-            if len(solveBracket) == 2:
-                solvedValue = opt.brentq(
+            if len(sizeBracket) == 2:
+                sizedValue = opt.brentq(
                     f,
-                    solveBracket[0],
-                    solveBracket[1],
+                    sizeBracket[0],
+                    sizeBracket[1],
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs,
                     maxiter=MAXITERATIONSCOMPONENT)
-            elif len(solveBracket) == 1:
-                solvedValue = opt.newton(
+            elif len(sizeBracket) == 1:
+                sizedValue = opt.newton(
                     f,
-                    solveBracket[0],
+                    sizeBracket[0],
                     tol=tol,
                     maxiter=MAXITERATIONSCOMPONENT)
             else:
-                solvedValue = opt.newton(
-                    f, solveBracket, tol=tol, maxiter=MAXITERATIONSCOMPONENT)
-            setattr(self, solveAttr, solvedValue)
+                sizedValue = opt.newton(
+                    f, sizeBracket, tol=tol, maxiter=MAXITERATIONSCOMPONENT)
+            setattr(self, sizeAttr, sizedValue)
             self.update(flowOut=flowOutTarget)
         except:
-            raise StopIteration("{}.solve({},{}) failed to converge".format(
-                self.__class__.__name__, solveAttr, solveBracket))
+            raise StopIteration("{}.size({},{}) failed to converge".format(
+                self.__class__.__name__, sizeAttr, sizeBracket))
 
     def summary(self,
                 printSummary=True,
@@ -187,7 +187,7 @@ Notes: {}
                     "flowOutWf", "flowInSf", "flowOutSf"
             ]:
                 pass
-            elif i[0] in ["solveAttr", "solveBracket", "solveBracketUnits"]:
+            elif i[0] in ["sizeAttr", "sizeBracket", "sizeBracketUnits"]:
                 pass
             elif i[0] in ["name", "notes", "config"]:
                 pass
@@ -298,14 +298,14 @@ flowIn : FlowState
     Incoming FlowState.
 flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to None.
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -320,15 +320,15 @@ kwargs : optional
     def __init__(self,
                  flowIn,
                  flowOut=None,
-                 solveAttr=None,
-                 solveBracket=None,
+                 sizeAttr=None,
+                 sizeBracket=None,
                  name="Component11 instance",
                  notes="no notes",
                  config=Config(),
                  **kwargs):
         if flowOut is not None and flowIn is not None:
             assert flowOut.m == flowIn.m, "mass flow rate of flowIn and flowOut must be equal"
-        super().__init__([flowIn], [flowOut], solveAttr, solveBracket, name,
+        super().__init__([flowIn], [flowOut], sizeAttr, sizeBracket, name,
                          notes, config)
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -337,8 +337,8 @@ kwargs : optional
     @abstractmethod
     def _inputs(self):
         """Tuple of input parameters in order taken by constructor."""
-        return (("flowIn", "none"), ("flowOut", "none"), ("solveAttr", "none"),
-                ("solveBracket", "none"), ("name", "none"), ("notes", "none"),
+        return (("flowIn", "none"), ("flowOut", "none"), ("sizeAttr", "none"),
+                ("sizeBracket", "none"), ("name", "none"), ("notes", "none"),
                 ("config", "none"))
 
     @property
@@ -397,14 +397,14 @@ flowOutWf : FlowState, optional
     Outgoing FlowState of the working fluid. Defaults to None.
 flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
-solveAttr : string, optional
-    Default attribute used by solve(). Defaults to None.
-solveBracket : float or list of float, optional
-    Bracket containing solution of solve(). Defaults to None.
+sizeAttr : string, optional
+    Default attribute used by size(). Defaults to None.
+sizeBracket : float or list of float, optional
+    Bracket containing solution of size(). Defaults to None.
 
-    - if solveBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
 
-    - if solveBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -421,8 +421,8 @@ kwargs : optional
                  flowInSf,
                  flowOutWf=None,
                  flowOutSf=None,
-                 solveAttr=None,
-                 solveBracket=None,
+                 sizeAttr=None,
+                 sizeBracket=None,
                  name="Component22 instance",
                  notes="no notes",
                  config=Config(),
@@ -434,7 +434,7 @@ kwargs : optional
                     1].m, "mass flow rate of flowIn{0} and flowOut{0} must be equal".format(
                         i)
         super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf],
-                         solveAttr, solveBracket, name, notes, config)
+                         sizeAttr, sizeBracket, name, notes, config)
 
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -444,8 +444,8 @@ kwargs : optional
     def _inputs(self):
         """Tuple of input parameters in order taken by constructor"""
         return (("flowInWf", "none"), ("flowInSf", "none"), (
-            "flowOutWf", "none"), ("flowOutSf", "none"), ("solveAttr", "none"),
-                ("solveBracket", "none"), ("name", "none"), ("notes", "none"),
+            "flowOutWf", "none"), ("flowOutSf", "none"), ("sizeAttr", "none"),
+                ("sizeBracket", "none"), ("name", "none"), ("notes", "none"),
                 ("config", "none"))
 
     @property

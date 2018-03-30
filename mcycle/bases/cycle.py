@@ -84,8 +84,8 @@ component : string
         pass
 
     @abstractmethod
-    def solve(self):
-        """Sets all cycle states from design parameters and executes solve() for each component.
+    def size(self):
+        """Sets all cycle states from design parameters and executes size() for each component.
 
 .. note: If dpEvap or dpCond is True in self.config, pressure drops will be applied, modifying the original design states.
 

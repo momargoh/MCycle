@@ -22,7 +22,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         coeffs_WPlate=[0, 1],
         effThermal=1.0)
 
-    def test_solve_liq(self):
+    def test_size_liq(self):
         flowInWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
                                 CP.PT_INPUTS, 1000000., 300.57890653991495)
         flowOutWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
@@ -37,12 +37,12 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             flowOutWf=flowOutWf,
             flowOutSf=flowOutSf)
         #
-        self.hxUnit.solve("L", [0.005, 0.5])
+        self.hxUnit.size("L", [0.005, 0.5])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.0636564105282744) / 0.0636564105282744, 0, 4)
-        self.hxUnit.solve("W", [50e-3, 500e-3])
+        self.hxUnit.size("W", [50e-3, 500e-3])
         self.assertAlmostEqual(self.hxUnit.W, 95e-3, 7)
-        self.hxUnit.solve("geomPlateWf__b", [0.1e-3, 10e-3])
+        self.hxUnit.size("geomPlateWf__b", [0.1e-3, 10e-3])
         self.assertAlmostEqual(
             abs(self.hxUnit.geomPlateWf.b - 1.096e-3) / 1.096e-3, 0, 2)
         #
@@ -50,7 +50,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             abs(self.hxUnit.dpFWf - 7200.2135758720115) / 7200.2135758720115,
             0, 2)
 
-    def test_solve_tp(self):
+    def test_size_tp(self):
         flowInWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
                                 CP.PQ_INPUTS, 1000000., 0.4)
         flowOutWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
@@ -65,7 +65,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             flowOutWf=flowOutWf,
             flowOutSf=flowOutSf)
         #
-        self.hxUnit.solve("L", [0.001, 0.5])
+        self.hxUnit.size("L", [0.001, 0.5])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.003778819723856917) / 0.003778819723856917,
             0, 4)
@@ -74,7 +74,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             abs(self.hxUnit.dpFWf - 722.9638885277705) / 722.9638885277705, 0,
             2)
 
-    def test_solve_vap(self):
+    def test_size_vap(self):
         flowInWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
                                 CP.PT_INPUTS, 1000000., 409.2350351214396)
         flowOutWf = mc.FlowState("R123", "HEOS", None, 0.34307814292524513,
@@ -89,7 +89,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             flowOutWf=flowOutWf,
             flowOutSf=flowOutSf)
         #
-        self.hxUnit.solve("L", [0.0001, 0.5])
+        self.hxUnit.size("L", [0.0001, 0.5])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.0009979724829425561) / 0.0009979724829425561,
             0, 4)

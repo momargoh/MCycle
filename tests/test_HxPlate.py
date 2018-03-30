@@ -43,34 +43,34 @@ class TestHxPlateCorrChevron(unittest.TestCase):
 
         self.hx.unitise()
 
-    def test_1_solve_L(self):
+    def test_1_size_L(self):
         self.hx.update(L=269e-3, NPlate=23, geomPlateWf__b=1.096e-3, W=95e-3)
-        self.hx.solve("L", [0.005, 0.5])
+        self.hx.size("L", [0.005, 0.5])
         self.assertAlmostEqual(abs(self.hx.L - 269e-3) / 269e-3, 0, 2)
         #
         self.assertAlmostEqual(
             abs(self.hx.dpWf - 39607.4552153897) / 39607.4552153897, 0, 2)
 
-    def test_1_solve_W(self):
+    def test_1_size_W(self):
         self.hx.update(
             L=0.268278920236407, NPlate=23, geomPlateWf__b=1.096e-3, W=95e-3)
-        self.hx.solve("W", [50e-3, 500e-3])
+        self.hx.size("W", [50e-3, 500e-3])
         self.assertAlmostEqual(abs(self.hx.W - 95e-3) / 95e-3, 0, 4)
 
-    def test_1_solve_geomPlateWf_b(self):
+    def test_1_size_geomPlateWf_b(self):
         self.hx.update(
             L=0.268278920236407, NPlate=23, geomPlateWf__b=1.096e-3, W=95e-3)
-        self.hx.solve("geomPlateWf__b", [0.1e-3, 10e-3])
+        self.hx.size("geomPlateWf__b", [0.1e-3, 10e-3])
         self.assertAlmostEqual(abs(self.hx.geomPlateWf.b - 1.096e-3), 0, 4)
 
-    def test_1_solve_NPlate(self):
+    def test_1_size_NPlate(self):
         self.hx.update(
             L=0.268278920236407, NPlate=23, geomPlateWf__b=1.096e-3, W=95e-3)
-        self.hx.solve("NPlate", [10, 50])
+        self.hx.size("NPlate", [10, 50])
         self.assertEqual(self.hx.NPlate, 23)
 
-    def test_1_solve_L_solution_not_in_bracket_Exception(self):
-        self.hx.solve("L", [0.5, 5.])
+    def test_1_size_L_solution_not_in_bracket_Exception(self):
+        self.hx.size("L", [0.5, 5.])
         self.assertRaises(Exception)
 
 

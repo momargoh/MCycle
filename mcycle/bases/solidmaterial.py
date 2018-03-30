@@ -84,7 +84,7 @@ Notes: {}
                     "flowOutWf", "flowInSf", "flowOutSf"
             ]:
                 pass
-            elif i[0] in ["solveAttr", "solveBracket", "solveBracketUnits"]:
+            elif i[0] in ["sizeAttr", "sizeBracket", "sizeBracketUnits"]:
                 pass
             elif i[0] in ["name", "notes", "config"]:
                 pass

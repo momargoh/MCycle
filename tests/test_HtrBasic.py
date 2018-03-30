@@ -4,17 +4,17 @@ import CoolProp as CP
 
 
 class TestHtrBasic(unittest.TestCase):
-    def test_HtrBasicConstP_solve_Q(self):
+    def test_HtrBasicConstP_size_Q(self):
         flowIn = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.7e6,
                               424)
         flowOut = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.7e6,
                                1190)
 
         htr = mc.HtrBasicConstP(None, 1.0, flowIn, flowOut, m=1.0)
-        htr.solve("Q")
+        htr.size("Q")
         self.assertAlmostEqual(htr.Q / 1e6, 3.975, 3)
 
-    def test_HtrBasicConstP_solve_Q_assert_error(self):
+    def test_HtrBasicConstP_size_Q_assert_error(self):
         flowIn = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.7e6,
                               424)
         flowOut = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.8e6,
@@ -22,16 +22,16 @@ class TestHtrBasic(unittest.TestCase):
 
         htr = mc.HtrBasicConstP(None, 1.0, flowIn, flowOut, m=1.0)
         with self.assertRaises(AssertionError):
-            htr.solve("Q")
+            htr.size("Q")
 
-    def test_HtrBasicConstP_solve_m(self):
+    def test_HtrBasicConstP_size_m(self):
         flowIn = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.7e6,
                               424)
         flowOut = mc.FlowState("He", "HEOS", None, None, CP.PT_INPUTS, 6.7e6,
                                1190)
 
         htr = mc.HtrBasicConstP(3.975e6, 1.0, flowIn, flowOut)
-        htr.solve("m", [0.8, 1.1])
+        htr.size("m", [0.8, 1.1])
         self.assertAlmostEqual(htr.m, 1.000, 3)
 
 
