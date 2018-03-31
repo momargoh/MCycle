@@ -8,19 +8,19 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='mcycle',
-    version='0.1.2',
+    version='0.1.3',
     description='Power cycle sizing and analysis package',
     long_description=long_description,
     url='https://github.com/momargoh/MCycle',
     author='Momar Hughes',
     author_email='momar.hughes@unsw.edu.au',
-    license='cc-by-4.0',
+    license='Apache License 2.0',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache License 2.0',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3 :: Only',

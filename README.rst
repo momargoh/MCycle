@@ -16,7 +16,7 @@ About
 :Topic:
    Thermodynamic power cycle sizing and analysis
 :Licence:
-   Creative Commons Attribution 4.0 International Public License
+   Apache License 2.0
 :Requires:
    numpy, scipy, matplotlib, CoolProp
 	
