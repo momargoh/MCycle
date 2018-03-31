@@ -14,7 +14,7 @@ setup(
     url='https://github.com/momargoh/MCycle',
     author='Momar Hughes',
     author_email='momar.hughes@unsw.edu.au',
-    license='Apache License 2.0',
+    license='Apache-2.0',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
