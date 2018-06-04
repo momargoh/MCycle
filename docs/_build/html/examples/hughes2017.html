@@ -1,0 +1,1076 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Basic organic Rankine cycle with a corrugated-plate evaporator &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Base Classes" href="../bases/contents.html" />
+    <link rel="prev" title="Examples" href="contents.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../bases/contents.html" title="Base Classes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Examples</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-examples.hughes2017.hughes2017"></span><div class="section" id="basic-organic-rankine-cycle-with-a-corrugated-plate-evaporator">
+<h1><a class="toc-backref" href="#id3">Basic organic Rankine cycle with a corrugated-plate evaporator</a><a class="headerlink" href="#basic-organic-rankine-cycle-with-a-corrugated-plate-evaporator" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#basic-organic-rankine-cycle-with-a-corrugated-plate-evaporator" id="id3">Basic organic Rankine cycle with a corrugated-plate evaporator</a><ul>
+<li><a class="reference internal" href="#setting-up-the-default-characteristics-of-the-cycle" id="id4">Setting up the default characteristics of the cycle</a><ul>
+<li><a class="reference internal" href="#working-fluid" id="id5">Working fluid</a></li>
+<li><a class="reference internal" href="#heat-source" id="id6">Heat source</a></li>
+<li><a class="reference internal" href="#ambient-air-heat-sink" id="id7">Ambient air/ heat sink</a></li>
+<li><a class="reference internal" href="#evaporator-and-condenser" id="id8">Evaporator and condenser</a></li>
+<li><a class="reference internal" href="#compressor-and-expander" id="id9">Compressor and expander</a></li>
+<li><a class="reference internal" href="#design-parameters" id="id10">Design parameters</a></li>
+<li><a class="reference internal" href="#example-temperature-entropy-plot" id="id11">Example temperature-entropy plot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#superheating-analysis" id="id12">Superheating analysis</a></li>
+<li><a class="reference internal" href="#pinch-point-temperature-difference-analysis" id="id13">Pinch-point temperature difference analysis</a></li>
+<li><a class="reference internal" href="#evaporating-pressure-analysis" id="id14">Evaporating pressure analysis</a></li>
+<li><a class="reference internal" href="#exhaust-gas-mass-flow-rate-analysis" id="id15">Exhaust gas mass flow rate analysis</a></li>
+<li><a class="reference internal" href="#differences-from-hughes-and-olsen-2017-paper" id="id16">Differences from Hughes and Olsen (2017) paper</a></li>
+<li><a class="reference internal" href="#references" id="id17">References</a></li>
+<li><a class="reference internal" href="#source-code" id="id18">Source code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This example is found in examples/hughes2017 and is an update to the analysis found in the paper <em>On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine</em> by Hughes and Olsen, presented at Asia-Pacific Symposium on Aerospace Technology 2017, Seoul, Korea (<a class="reference external" href="https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US">hyperlink</a>) <a class="reference internal" href="#hughes20170" id="id1">[Hughes20170]</a>.</p>
+<p>The first section of the script imports the required modules and sets up formatting for the plots, including a folder to store the plots, the desired file extension (.png or .jpg) and some custom formatting for matplotlib.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mcycle</span> <span class="k">as</span> <span class="nn">mc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">CoolProp</span> <span class="k">as</span> <span class="nn">CP</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plots_folder</span> <span class="o">=</span> <span class="s2">&quot;plots&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plots_format</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>  <span class="c1"># change to &quot;jpg&quot; if preferred</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plots_dpi</span> <span class="o">=</span> <span class="mi">1200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">plots_folder</span><span class="p">):</span>
+<span class="go">        os.makedirs(plots_folder)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linestyles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">markerstyles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="setting-up-the-default-characteristics-of-the-cycle">
+<h2><a class="toc-backref" href="#id4">Setting up the default characteristics of the cycle</a><a class="headerlink" href="#setting-up-the-default-characteristics-of-the-cycle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="working-fluid">
+<h3><a class="toc-backref" href="#id5">Working fluid</a><a class="headerlink" href="#working-fluid" title="Permalink to this headline">¶</a></h3>
+<p>R123 (using CoolProp&#8217;s HEOS library).:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wf</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="s2">&quot;R123&quot;</span><span class="p">,</span> <span class="s2">&quot;HEOS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="heat-source">
+<h3><a class="toc-backref" href="#id6">Heat source</a><a class="headerlink" href="#heat-source" title="Permalink to this headline">¶</a></h3>
+<p>The exhaust flow from the engine is approximated using the following characteristics.</p>
+<ul class="simple">
+<li><span class="math">\(N_2\)</span> (75%), <span class="math">\(C0_2\)</span> (25%) (by molar fraction)</li>
+<li><span class="math">\(p_{static} = 1.116\)</span> bar</li>
+<li><span class="math">\(T_{static} = 1170\)</span> K</li>
+<li><span class="math">\(\dot{m} = 0.09\)</span> Kg/s</li>
+</ul>
+<p>As CoolProp can have difficulties with mixtures, we instead use FlowStatePoly for the exhaust gasses; fitting a 2nd degree polynomial to the properties of the exhaust mixture evaluated at 300, 500, 700, 900 and 1170 K:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mf">1170.</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sourceRefData</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">RefData</span><span class="p">(</span><span class="s2">&quot;N2[0.75]&amp;CO2[0.25], 2, 1.116e5, TData, phase=CP.iphase_gas)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sourceIn</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowStatePoly</span><span class="p">(</span><span class="n">sourceRefData</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="mf">1.116e5</span><span class="p">,</span> <span class="mf">1170.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ambient-air-heat-sink">
+<h3><a class="toc-backref" href="#id7">Ambient air/ heat sink</a><a class="headerlink" href="#ambient-air-heat-sink" title="Permalink to this headline">¶</a></h3>
+<p>Assuming the engine is travelling at 100knots at an altitude of 3000ft, the ambient air is approximated using the following characteristics.</p>
+<ul class="simple">
+<li>Air (100%)</li>
+<li><span class="math">\(p_{static} = 0.8826\)</span> bar</li>
+<li><span class="math">\(T_{static} = 281.65\)</span> K</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sinkIn</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="s2">&quot;Air&quot;</span><span class="p">,</span> <span class="s2">&quot;HEOS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="mf">0.8826e5</span><span class="p">,</span> <span class="mf">281.65</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The dead state properties of the source and sink are at this same pressure and temperature.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sinkDead</span> <span class="o">=</span> <span class="n">sinkIn</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sourceDead</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="n">sourceFluid</span><span class="p">,</span> <span class="s2">&quot;HEOS&quot;</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">iphase_gas</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="mf">0.8826e5</span><span class="p">,</span> <span class="mf">281.65</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="evaporator-and-condenser">
+<h3><a class="toc-backref" href="#id8">Evaporator and condenser</a><a class="headerlink" href="#evaporator-and-condenser" title="Permalink to this headline">¶</a></h3>
+<p>For the evaporator, we used a AlfaLaval AC30EQ model corrugated plate heat exchanger.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evap</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">(</span><span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;NPlate&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As sizing the condenser is not central to this analysis, it is treated simply as a heat sink.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cond</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">ClrBasicConstP</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compressor-and-expander">
+<h3><a class="toc-backref" href="#id9">Compressor and expander</a><a class="headerlink" href="#compressor-and-expander" title="Permalink to this headline">¶</a></h3>
+<p>Equally, sizing of the compressor and expander is beyond the scope of this analysis. Here, it is simply assumed that they both have an isentropic efficiency of 70%.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comp</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">CompBasic</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;pRatio&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">ExpBasic</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;pRatio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="design-parameters">
+<h3><a class="toc-backref" href="#id10">Design parameters</a><a class="headerlink" href="#design-parameters" title="Permalink to this headline">¶</a></h3>
+<p>As default design parameters, we use:</p>
+<ul class="simple">
+<li><span class="math">\(p_{evap} = 10\)</span> bar</li>
+<li><span class="math">\(T_{cond} = 300\)</span> K</li>
+<li>No superheating</li>
+<li>No subcooling</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pEvap</span> <span class="o">=</span> <span class="mf">10e5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TCond</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">superheat</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">subcool</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>For this analysis, we calculate the pressure drops in he evaporator but will not update the flows to reflect these. Additionally, we only consider frictional pressure drops, acceleration, port and head pressure drops are relatively small and hence we neglect them. The cycle configuration parameters are hence created::</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">dpEvap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dpCond</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dpF</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpAcc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpPort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpHead</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can create the RankineBasic object, parsing each of the above components.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">RankineBasic</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">evap</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">pEvap</span><span class="p">,</span> <span class="n">superheat</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">subcool</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">TCond</span><span class="o">=</span><span class="n">TCond</span><span class="p">,</span> <span class="n">sourceIn</span><span class="o">=</span><span class="n">sourceIn</span><span class="p">,</span> <span class="n">sinkIn</span><span class="o">=</span><span class="n">sinkIn</span><span class="p">,</span> <span class="n">sourceDead</span><span class="o">=</span><span class="n">sourceDead</span><span class="p">,</span> <span class="n">sinkDead</span><span class="o">=</span><span class="n">sinkDead</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keyword arguments are used for <cite>sourceIn</cite>, <cite>sinkIn</cite>, <cite>sourceDead</cite>, <cite>sinkDead</cite> as these are all properties of the <cite>RankineBasic</cite> class, thus parsing them as keyword arguments calls their setter which ensures all relelvant component flows are updated. Similarly, the <cite>TCond</cite> setter calculates and sets the condenser pressure <cite>pCond</cite>.</p>
+</div>
+</div>
+<div class="section" id="example-temperature-entropy-plot">
+<h3><a class="toc-backref" href="#id11">Example temperature-entropy plot</a><a class="headerlink" href="#example-temperature-entropy-plot" title="Permalink to this headline">¶</a></h3>
+<p>For the purpose of producing an example plot, we temporarily change the condenser to a heat exchanger so that a sink flow appears on the plot (<cite>ClrBasic</cite> objects do not show up in plot as they do not have a defined temperature0. We replace the condenser with a heat exchanger and set the sink flow mass flow rate high to approximate a constant temperature sink.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">sinkIn</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="mf">100.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cond</span><span class="o">=</span><span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_CBXP27</span><span class="p">(),</span> <span class="n">pptdEvap</span><span class="o">=</span><span class="mf">300.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we must set up the cycle to the design conditions. Although this can be done with <cite>cycle.size</cite>, this function calls <cite>size</cite> for each component, which can be very time-consuming. A faster method is to call <cite>cycle.sizeSetup</cite> which sets up the working fluid design FlowStates without calling <cite>size</cite> for any of the components and is sufficient for producing a temperature-entropy or pressure-enthalpy plot.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After calling <cite>cycle.plot</cite>, the following plot is produced.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/plot_RankineBasic.png"><img alt="Example RankineBasic plot" src="../_images/plot_RankineBasic.png" style="height: 200px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="superheating-analysis">
+<h2><a class="toc-backref" href="#id12">Superheating analysis</a><a class="headerlink" href="#superheating-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To study the effects of superheating on the cycle efficiency, we vary the degree of superheating from 0 to 200 K for various evaporating pressures. Here we keep the condensing temperature constant at 300 K, as well as the pinch-point temperature difference in the evaporator constant at 20 K.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pptdEvap</span> <span class="o">=</span> <span class="mf">20.</span>  <span class="c1"># K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>  <span class="c1"># bar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">superheat_vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>  <span class="c1"># K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_eff</span><span class="p">,</span> <span class="n">plot_Pnet</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span> <span class="c1"># lists to store results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+<span class="go">        plot_eff.append([])</span>
+<span class="go">        plot_Pnet.append([])</span>
+<span class="go">        cycle.update(pEvap=p_vals[i] * 10**5)</span>
+<span class="go">        for superheat in superheat_vals[i]:</span>
+<span class="go">            cycle.update(superheat=superheat, pptdEvap=pptdEvap)</span>
+<span class="go">            cycle.sizeSetup(False, False)</span>
+<span class="go">            plot_eff[i].append(cycle.effExergy)</span>
+<span class="go">            plot_Pnet[i].append(cycle.PNet / 1000)  # kW</span>
+</pre></div>
+</div>
+<p>This produces the following plots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/superheat_eff.png"><img alt="Effect of superheating on exergy efficiency." src="../_images/superheat_eff.png" style="height: 200px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/superheat_Pnet.png"><img alt="Effect of superheating on net power output." src="../_images/superheat_Pnet.png" style="height: 200px;" /></a>
+</div>
+</div>
+<div class="section" id="pinch-point-temperature-difference-analysis">
+<h2><a class="toc-backref" href="#id13">Pinch-point temperature difference analysis</a><a class="headerlink" href="#pinch-point-temperature-difference-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Next, we study the effects of the evaporator pinch-point temperature difference on the exergy efficiency, required number of plates and pressure drop of the working fluid. Superheating is set to 0 K and evaporating pressure is varied from 5 to 25 bar.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dpAccWf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpHeadWf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpPortWf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>  <span class="c1"># bar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pptd_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>  <span class="c1"># K</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_eff</span><span class="p">,</span> <span class="n">plot_NPlate</span><span class="p">,</span> <span class="n">plot_weight</span><span class="p">,</span> <span class="n">plot_dpWf</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+<span class="go">        plot_eff.append([])</span>
+<span class="go">        plot_NPlate.append([])</span>
+<span class="go">        plot_weight.append([])</span>
+<span class="go">        plot_dpWf.append([])</span>
+<span class="go">        cycle.pEvap = p_vals[i] * 10**5</span>
+<span class="go">        for pptd in pptd_vals[i]:</span>
+<span class="go">            cycle.pptdEvap = pptd</span>
+<span class="go">            cycle.sizeSetup(False, False)</span>
+<span class="go">            cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="go">            cycle.evap.size(&quot;NPlate&quot;)</span>
+<span class="go">            plot_eff[i].append(cycle.effExergy)</span>
+<span class="go">            plot_NPlate[i].append(cycle.evap.NPlate)</span>
+<span class="go">            plot_weight[i].append(cycle.evap.weight)</span>
+<span class="go">            plot_dpWf[i].append(cycle.evap.dpWf / (10**5))</span>
+</pre></div>
+</div>
+<p>This produces the following plots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/pptd_eff.png"><img alt="Effect of PPTD on exergy efficiency." src="../_images/pptd_eff.png" style="height: 200px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/pptd_NPlate.png"><img alt="Effect of PPTD on required no. of plates and exchanger weight." src="../_images/pptd_NPlate.png" style="height: 200px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/pptd_dpWf.png"><img alt="Effect of PPTD on working fluid evaporator pressure drop." src="../_images/pptd_dpWf.png" style="height: 200px;" /></a>
+</div>
+</div>
+<div class="section" id="evaporating-pressure-analysis">
+<h2><a class="toc-backref" href="#id14">Evaporating pressure analysis</a><a class="headerlink" href="#evaporating-pressure-analysis" title="Permalink to this headline">¶</a></h2>
+<p>We now move on to studying the effects of the working fluid evaporating pressure on the pressure drops in the working fluid and exhaust gasses. Pinch-point temperature difference is kept constant at 10 K and superheating at 0 K.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_NPlate</span><span class="p">,</span> <span class="n">plot_dpWf</span><span class="p">,</span> <span class="n">plot_dpSf</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+<span class="go">        cycle.update(pEvap=p_vals[i] * 10**5, pptdEvap=10.)</span>
+<span class="go">        cycle.sizeSetup(True, False)</span>
+<span class="go">        cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="go">        cycle.evap.size_NPlate()</span>
+<span class="go">        plot_NPlate.append(cycle.evap.NPlate)</span>
+<span class="go">        plot_dpWf.append(cycle.evap.dpWf / (10**5))</span>
+<span class="go">        plot_dpSf.append(cycle.evap.dpSf / (10**5))</span>
+</pre></div>
+</div>
+<p>This produces the following plots.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/pressure_dpWf.png"><img alt="Effect of evaporating pressure on working fluid evaporator pressure drop." src="../_images/pressure_dpWf.png" style="height: 200px;" /></a>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/pressure_dpSf.png"><img alt="Effect of evaporating pressure on exhaust gas pressure drop." src="../_images/pressure_dpSf.png" style="height: 200px;" /></a>
+</div>
+</div>
+<div class="section" id="exhaust-gas-mass-flow-rate-analysis">
+<h2><a class="toc-backref" href="#id15">Exhaust gas mass flow rate analysis</a><a class="headerlink" href="#exhaust-gas-mass-flow-rate-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we study the effect of the mass flow rate of the exhaust gasses on their pressure drop in the evaporator. Here we keep the evaporator pinch-point temperature difference constant at 10 K and the evaporating pressure of the working fluid constant at 25 bar:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pEvap</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pptdEvap</span> <span class="o">=</span> <span class="mf">10.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fraction_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_dpSf</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">superheat</span><span class="o">=</span><span class="n">superheat</span><span class="p">,</span> <span class="n">pEvap</span><span class="o">=</span><span class="n">pEvap</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mSource</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">mSf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">frac</span> <span class="ow">in</span> <span class="n">fraction_vals</span><span class="p">:</span>
+<span class="go">        cycle.evap.mSf = mSource * frac</span>
+<span class="go">        cycle.update(pptdEvap=pptdEvap)</span>
+<span class="go">        cycle.sizeSetup(True, False)</span>
+<span class="go">        cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="go">        cycle.evap.size_NPlate()</span>
+<span class="go">        plot_dpSf.append(cycle.evap.dpSf / (10**5))</span>
+</pre></div>
+</div>
+<p>This produces the following plot.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/mSf_dpSf.png"><img alt="Effect of exhaust gas mass flow rate on their pressure drop." src="../_images/mSf_dpSf.png" style="height: 200px;" /></a>
+</div>
+</div>
+<div class="section" id="differences-from-hughes-and-olsen-2017-paper">
+<h2><a class="toc-backref" href="#id16">Differences from Hughes and Olsen (2017) paper</a><a class="headerlink" href="#differences-from-hughes-and-olsen-2017-paper" title="Permalink to this headline">¶</a></h2>
+<p>Slight differences between the results presented above and the results in <a class="reference internal" href="#hughes20170" id="id2">[Hughes20170]</a> arise for the following reasons.</p>
+<ul class="simple">
+<li>This analysis approximates the exhaust gas properties using a quadratic line of best fit based on the properties evaluated at 300, 500, 700, 900 &amp; 1170 K, whereas the original paper used a linear line of best fit based of the properties evaluated at 900 &amp; 1170 K.</li>
+<li>This analysis takes into account the port, acceleration and static head pressure drops whereas the original paper neglected these.</li>
+<li>The <cite>size_NPlate</cite> algorithm of HxPlateCorrugated in this analysis sizes for <cite>NPlate</cite> that gives <cite>L</cite> closest to the desired heat transfer length, whereas the algorithm in the original paper sized for <cite>L</cite> closest to but less than the desired heat transfer length.</li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id17">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils citation" frame="void" id="hughes20170" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Hughes20170]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Hughes, M., Olsen, J., <em>On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine</em>, Asia-Pacific International Symposium on Aerospace Technology, Seoul, Korea, 2017.</td></tr>
+</tbody>
+</table>
+<p>This paper can be found at <a class="reference external" href="https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US">this link</a> and can be cited using the following reference.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>@InProceedings{hughes2017potential,
+    author    = {Hughes, Momar Graham-Orr and Olsen, John},
+    title     = {On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine},
+    booktitle = {Proceedings of the 2017 Asia-Pacific International Symposium on Aerospace Technology; October 16-18; Seoul; Korea},
+    year      = {2017},
+    pages     = {1876--1883},
+    keywords  = {Aircraft engine, Organic Rankine cycle, Waste heat recovery, Plate heat exchanger},
+    url = {\\url{https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US}}
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="source-code">
+<h2><a class="toc-backref" href="#id18">Source code</a><a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Basic organic Rankine cycle with a corrugated-plate evaporator</span>
+<span class="sd">======================================================================</span>
+
+<span class="sd">.. contents::</span>
+
+<span class="sd">This example is found in examples/hughes2017 and is an update to the analysis found in the paper *On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine* by Hughes and Olsen, presented at Asia-Pacific Symposium on Aerospace Technology 2017, Seoul, Korea (`hyperlink &lt;https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US&gt;`_) [Hughes2017]_.</span>
+
+<span class="sd">The first section of the script imports the required modules and sets up formatting for the plots, including a folder to store the plots, the desired file extension (.png or .jpg) and some custom formatting for matplotlib.::</span>
+
+<span class="sd">    &gt;&gt;&gt; import mcycle as mc</span>
+<span class="sd">    &gt;&gt;&gt; import os</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; import CoolProp as CP</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib as mpl</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+
+<span class="sd">    &gt;&gt;&gt; plots_folder = &quot;plots&quot;</span>
+<span class="sd">    &gt;&gt;&gt; plots_format = &quot;png&quot;  # change to &quot;jpg&quot; if preferred</span>
+<span class="sd">    &gt;&gt;&gt; plots_dpi = 1200</span>
+<span class="sd">    &gt;&gt;&gt; if not os.path.exists(plots_folder):</span>
+<span class="sd">            os.makedirs(plots_folder)</span>
+
+<span class="sd">    &gt;&gt;&gt; mpl.rc(&quot;lines&quot;, lw=2.0)</span>
+<span class="sd">    &gt;&gt;&gt; mpl.rc(&quot;lines&quot;, markersize=2)</span>
+<span class="sd">    &gt;&gt;&gt; colours = [&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;, &quot;black&quot;]</span>
+<span class="sd">    &gt;&gt;&gt; linestyles = [&quot;-&quot;, &quot;--&quot;, &quot;-.&quot;, &quot;:&quot;]</span>
+<span class="sd">    &gt;&gt;&gt; markerstyles = [&quot;o&quot;, &quot;v&quot;, &quot;s&quot;, &quot;^&quot;]</span>
+
+<span class="sd">Setting up the default characteristics of the cycle</span>
+<span class="sd">-------------------------------------------------------------</span>
+
+
+<span class="sd">Working fluid</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">R123 (using CoolProp&#39;s HEOS library).::</span>
+
+<span class="sd">    &gt;&gt;&gt; wf = mc.FlowState(&quot;R123&quot;, &quot;HEOS&quot;, None)</span>
+
+<span class="sd">Heat source</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">The exhaust flow from the engine is approximated using the following characteristics.</span>
+
+<span class="sd">- :math:`N_2` (75%), :math:`C0_2` (25%) (by molar fraction)</span>
+<span class="sd">- :math:`p_{static} = 1.116` bar</span>
+<span class="sd">- :math:`T_{static} = 1170` K</span>
+<span class="sd">- :math:`\dot{m} = 0.09` Kg/s</span>
+
+<span class="sd">As CoolProp can have difficulties with mixtures, we instead use FlowStatePoly for the exhaust gasses; fitting a 2nd degree polynomial to the properties of the exhaust mixture evaluated at 300, 500, 700, 900 and 1170 K::</span>
+
+<span class="sd">    &gt;&gt;&gt; TData = [300, 500, 700, 900, 1170.]</span>
+<span class="sd">    &gt;&gt;&gt; sourceRefData = mc.RefData(&quot;N2[0.75]&amp;CO2[0.25], 2, 1.116e5, TData, phase=CP.iphase_gas)</span>
+<span class="sd">    &gt;&gt;&gt; sourceIn = mc.FlowStatePoly(sourceRefData, 0.09, CP.PT_INPUTS, 1.116e5, 1170.)</span>
+
+<span class="sd">Ambient air/ heat sink</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">Assuming the engine is travelling at 100knots at an altitude of 3000ft, the ambient air is approximated using the following characteristics.</span>
+
+<span class="sd">- Air (100%)</span>
+<span class="sd">- :math:`p_{static} = 0.8826` bar</span>
+<span class="sd">- :math:`T_{static} = 281.65` K</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    &gt;&gt;&gt; sinkIn = mc.FlowState(&quot;Air&quot;, &quot;HEOS&quot;, None, None, CP.PT_INPUTS, 0.8826e5, 281.65)</span>
+
+<span class="sd">The dead state properties of the source and sink are at this same pressure and temperature.::</span>
+
+<span class="sd">    &gt;&gt;&gt; sinkDead = sinkIn.copy()</span>
+<span class="sd">    &gt;&gt;&gt; sourceDead = mc.FlowState(sourceFluid, &quot;HEOS&quot;, CP.iphase_gas, None, CP.PT_INPUTS, 0.8826e5, 281.65)</span>
+
+
+<span class="sd">Evaporator and condenser</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">For the evaporator, we used a AlfaLaval AC30EQ model corrugated plate heat exchanger.::</span>
+
+<span class="sd">    &gt;&gt;&gt; evap = mc.library.alfaLaval_AC30EQ(sizeAttr=&quot;NPlate&quot;)</span>
+
+<span class="sd">As sizing the condenser is not central to this analysis, it is treated simply as a heat sink.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cond = mc.ClrBasicConstP(None, 1, sizeAttr=&quot;Q&quot;)</span>
+
+<span class="sd">Compressor and expander</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">Equally, sizing of the compressor and expander is beyond the scope of this analysis. Here, it is simply assumed that they both have an isentropic efficiency of 70%.::</span>
+
+<span class="sd">    &gt;&gt;&gt; comp = mc.CompBasic(None, 0.7, sizeAttr=&quot;pRatio&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; exp = mc.ExpBasic(None, 0.7, sizeAttr=&quot;pRatio&quot;)</span>
+
+<span class="sd">Design parameters</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">As default design parameters, we use:</span>
+
+<span class="sd">- :math:`p_{evap} = 10` bar</span>
+<span class="sd">- :math:`T_{cond} = 300` K</span>
+<span class="sd">- No superheating</span>
+<span class="sd">- No subcooling</span>
+
+<span class="sd">::</span>
+
+<span class="sd">    &gt;&gt;&gt; pEvap = 10e5</span>
+<span class="sd">    &gt;&gt;&gt; TCond = 300</span>
+<span class="sd">    &gt;&gt;&gt; superheat = None</span>
+<span class="sd">    &gt;&gt;&gt; subcool = None</span>
+
+<span class="sd">For this analysis, we calculate the pressure drops in he evaporator but will not update the flows to reflect these. Additionally, we only consider frictional pressure drops, acceleration, port and head pressure drops are relatively small and hence we neglect them. The cycle configuration parameters are hence created:::</span>
+
+<span class="sd">    &gt;&gt;&gt; config = mc.Config(dpEvap=False, dpCond=False, dpF=True, dpAcc=True, dpPort=True, dpHead=True)</span>
+
+<span class="sd">Finally, we can create the RankineBasic object, parsing each of the above components.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, None, subcool, config, TCond=TCond, sourceIn=sourceIn, sinkIn=sinkIn, sourceDead=sourceDead, sinkDead=sinkDead)</span>
+
+<span class="sd">.. note:: Keyword arguments are used for `sourceIn`, `sinkIn`, `sourceDead`, `sinkDead` as these are all properties of the `RankineBasic` class, thus parsing them as keyword arguments calls their setter which ensures all relelvant component flows are updated. Similarly, the `TCond` setter calculates and sets the condenser pressure `pCond`.</span>
+
+<span class="sd">Example temperature-entropy plot</span>
+<span class="sd">**********************************************</span>
+
+<span class="sd">For the purpose of producing an example plot, we temporarily change the condenser to a heat exchanger so that a sink flow appears on the plot (`ClrBasic` objects do not show up in plot as they do not have a defined temperature0. We replace the condenser with a heat exchanger and set the sink flow mass flow rate high to approximate a constant temperature sink.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cycle.sinkIn.m = 100.</span>
+<span class="sd">    &gt;&gt;&gt; cycle.update(cond=mc.library.alfaLaval_CBXP27(), pptdEvap=300.)</span>
+
+<span class="sd">Next, we must set up the cycle to the design conditions. Although this can be done with `cycle.size`, this function calls `size` for each component, which can be very time-consuming. A faster method is to call `cycle.sizeSetup` which sets up the working fluid design FlowStates without calling `size` for any of the components and is sufficient for producing a temperature-entropy or pressure-enthalpy plot.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cycle.sizeSetup(False, False)</span>
+
+<span class="sd">After calling `cycle.plot`, the following plot is produced.</span>
+
+<span class="sd">.. figure:: plots/plot_RankineBasic.png</span>
+<span class="sd">   :alt: Example RankineBasic plot</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">Superheating analysis</span>
+<span class="sd">----------------------</span>
+
+<span class="sd">To study the effects of superheating on the cycle efficiency, we vary the degree of superheating from 0 to 200 K for various evaporating pressures. Here we keep the condensing temperature constant at 300 K, as well as the pinch-point temperature difference in the evaporator constant at 20 K.::</span>
+
+<span class="sd">    &gt;&gt;&gt; pptdEvap = 20.  # K</span>
+<span class="sd">    &gt;&gt;&gt; p_vals = [5, 10, 20, 25]  # bar</span>
+<span class="sd">    &gt;&gt;&gt; superheat_vals = [range(0, 200)] * len(p_vals)  # K</span>
+<span class="sd">    &gt;&gt;&gt; plot_eff, plot_Pnet = [], [] # lists to store results</span>
+<span class="sd">    &gt;&gt;&gt; for i in range(len(p_vals)):</span>
+<span class="sd">            plot_eff.append([])</span>
+<span class="sd">            plot_Pnet.append([])</span>
+<span class="sd">            cycle.update(pEvap=p_vals[i] * 10**5)</span>
+<span class="sd">            for superheat in superheat_vals[i]:</span>
+<span class="sd">                cycle.update(superheat=superheat, pptdEvap=pptdEvap)</span>
+<span class="sd">                cycle.sizeSetup(False, False)</span>
+<span class="sd">                plot_eff[i].append(cycle.effExergy)</span>
+<span class="sd">                plot_Pnet[i].append(cycle.PNet / 1000)  # kW</span>
+
+<span class="sd">This produces the following plots.</span>
+
+<span class="sd">.. figure:: plots/superheat_eff.png</span>
+<span class="sd">   :alt: Effect of superheating on exergy efficiency.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">.. figure:: plots/superheat_Pnet.png</span>
+<span class="sd">   :alt: Effect of superheating on net power output.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">Pinch-point temperature difference analysis</span>
+<span class="sd">----------------------------------------------</span>
+
+<span class="sd">Next, we study the effects of the evaporator pinch-point temperature difference on the exergy efficiency, required number of plates and pressure drop of the working fluid. Superheating is set to 0 K and evaporating pressure is varied from 5 to 25 bar.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cycle.config.update(dpAccWf=True, dpHeadWf=True, dpPortWf=True)</span>
+<span class="sd">    &gt;&gt;&gt; cycle.superheat = 0.  # K</span>
+<span class="sd">    &gt;&gt;&gt; p_vals = [5, 10, 20, 25]  # bar</span>
+<span class="sd">    &gt;&gt;&gt; pptd_vals = [np.logspace(1, np.log10(200), 40)] * len(p_vals)  # K</span>
+<span class="sd">    &gt;&gt;&gt; plot_eff, plot_NPlate, plot_weight, plot_dpWf = [], [], [], []</span>
+<span class="sd">    &gt;&gt;&gt; for i in range(len(p_vals)):</span>
+<span class="sd">            plot_eff.append([])</span>
+<span class="sd">            plot_NPlate.append([])</span>
+<span class="sd">            plot_weight.append([])</span>
+<span class="sd">            plot_dpWf.append([])</span>
+<span class="sd">            cycle.pEvap = p_vals[i] * 10**5</span>
+<span class="sd">            for pptd in pptd_vals[i]:</span>
+<span class="sd">                cycle.pptdEvap = pptd</span>
+<span class="sd">                cycle.sizeSetup(False, False)</span>
+<span class="sd">                cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="sd">                cycle.evap.size(&quot;NPlate&quot;)</span>
+<span class="sd">                plot_eff[i].append(cycle.effExergy)</span>
+<span class="sd">                plot_NPlate[i].append(cycle.evap.NPlate)</span>
+<span class="sd">                plot_weight[i].append(cycle.evap.weight)</span>
+<span class="sd">                plot_dpWf[i].append(cycle.evap.dpWf / (10**5))</span>
+
+<span class="sd">This produces the following plots.</span>
+
+<span class="sd">.. figure:: plots/pptd_eff.png</span>
+<span class="sd">   :alt: Effect of PPTD on exergy efficiency.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">.. figure:: plots/pptd_NPlate.png</span>
+<span class="sd">   :alt: Effect of PPTD on required no. of plates and exchanger weight.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">.. figure:: plots/pptd_dpWf.png</span>
+<span class="sd">   :alt: Effect of PPTD on working fluid evaporator pressure drop.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">Evaporating pressure analysis</span>
+<span class="sd">----------------------------------------------</span>
+
+<span class="sd">We now move on to studying the effects of the working fluid evaporating pressure on the pressure drops in the working fluid and exhaust gasses. Pinch-point temperature difference is kept constant at 10 K and superheating at 0 K.::</span>
+
+<span class="sd">    &gt;&gt;&gt; cycle.superheat = 0.</span>
+<span class="sd">    &gt;&gt;&gt; p_vals = np.linspace(5, 25, 50, True)</span>
+<span class="sd">    &gt;&gt;&gt; plot_NPlate, plot_dpWf, plot_dpSf = [], [], []</span>
+<span class="sd">    &gt;&gt;&gt; for i in range(len(p_vals)):</span>
+<span class="sd">            cycle.update(pEvap=p_vals[i] * 10**5, pptdEvap=10.)</span>
+<span class="sd">            cycle.sizeSetup(True, False)</span>
+<span class="sd">            cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="sd">            cycle.evap.size_NPlate()</span>
+<span class="sd">            plot_NPlate.append(cycle.evap.NPlate)</span>
+<span class="sd">            plot_dpWf.append(cycle.evap.dpWf / (10**5))</span>
+<span class="sd">            plot_dpSf.append(cycle.evap.dpSf / (10**5))</span>
+
+<span class="sd">This produces the following plots.</span>
+
+<span class="sd">.. figure:: plots/pressure_dpWf.png</span>
+<span class="sd">   :alt: Effect of evaporating pressure on working fluid evaporator pressure drop.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">.. figure:: plots/pressure_dpSf.png</span>
+<span class="sd">   :alt: Effect of evaporating pressure on exhaust gas pressure drop.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">Exhaust gas mass flow rate analysis</span>
+<span class="sd">----------------------------------------------</span>
+
+<span class="sd">Finally, we study the effect of the mass flow rate of the exhaust gasses on their pressure drop in the evaporator. Here we keep the evaporator pinch-point temperature difference constant at 10 K and the evaporating pressure of the working fluid constant at 25 bar::</span>
+
+<span class="sd">    &gt;&gt;&gt; superheat = 0.</span>
+<span class="sd">    &gt;&gt;&gt; pEvap = 25</span>
+<span class="sd">    &gt;&gt;&gt; pptdEvap = 10.</span>
+<span class="sd">    &gt;&gt;&gt; fraction_vals = np.linspace(0.001, 0.2)</span>
+<span class="sd">    &gt;&gt;&gt; plot_dpSf = []</span>
+<span class="sd">    &gt;&gt;&gt; cycle.update(superheat=superheat, pEvap=pEvap * 1e5)</span>
+<span class="sd">    &gt;&gt;&gt; mSource = cycle.evap.mSf</span>
+<span class="sd">    &gt;&gt;&gt; for frac in fraction_vals:</span>
+<span class="sd">            cycle.evap.mSf = mSource * frac</span>
+<span class="sd">            cycle.update(pptdEvap=pptdEvap)</span>
+<span class="sd">            cycle.sizeSetup(True, False)</span>
+<span class="sd">            cycle.evap.L = mc.library.alfaLaval_AC30EQ().L</span>
+<span class="sd">            cycle.evap.size_NPlate()</span>
+<span class="sd">            plot_dpSf.append(cycle.evap.dpSf / (10**5))</span>
+
+<span class="sd">This produces the following plot.</span>
+
+<span class="sd">.. figure:: plots/mSf_dpSf.png</span>
+<span class="sd">   :alt: Effect of exhaust gas mass flow rate on their pressure drop.</span>
+<span class="sd">   :height: 200px</span>
+
+<span class="sd">Differences from Hughes and Olsen (2017) paper</span>
+<span class="sd">-----------------------------------------------</span>
+
+<span class="sd">Slight differences between the results presented above and the results in [Hughes2017]_ arise for the following reasons.</span>
+
+<span class="sd">- This analysis approximates the exhaust gas properties using a quadratic line of best fit based on the properties evaluated at 300, 500, 700, 900 &amp; 1170 K, whereas the original paper used a linear line of best fit based of the properties evaluated at 900 &amp; 1170 K.</span>
+<span class="sd">- This analysis takes into account the port, acceleration and static head pressure drops whereas the original paper neglected these.</span>
+<span class="sd">- The `size_NPlate` algorithm of HxPlateCorrugated in this analysis sizes for `NPlate` that gives `L` closest to the desired heat transfer length, whereas the algorithm in the original paper sized for `L` closest to but less than the desired heat transfer length.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------------</span>
+
+<span class="sd">.. [Hughes2017] Hughes, M., Olsen, J., *On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine*, Asia-Pacific International Symposium on Aerospace Technology, Seoul, Korea, 2017.</span>
+
+
+<span class="sd">This paper can be found at `this link &lt;https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US&gt;`_ and can be cited using the following reference.::</span>
+
+<span class="sd">    @InProceedings{hughes2017potential,</span>
+<span class="sd">        author    = {Hughes, Momar Graham-Orr and Olsen, John},</span>
+<span class="sd">        title     = {On the potential of organic Rankine cycles for recovering waste heat from the exhaust gases of a piston aero-engine},</span>
+<span class="sd">        booktitle = {Proceedings of the 2017 Asia-Pacific International Symposium on Aerospace Technology; October 16-18; Seoul; Korea},</span>
+<span class="sd">        year      = {2017},</span>
+<span class="sd">        pages     = {1876--1883},</span>
+<span class="sd">        keywords  = {Aircraft engine, Organic Rankine cycle, Waste heat recovery, Plate heat exchanger},</span>
+<span class="sd">        url = {\\url{https://www.unsworks.unsw.edu.au/primo-explore/fulldisplay?docid=unsworks_modsunsworks_47631&amp;context=L&amp;vid=UNSWORKS&amp;search_scope=unsworks_search_scope&amp;tab=default_tab&amp;lang=en_US}}</span>
+<span class="sd">    }</span>
+
+<span class="sd">Source code</span>
+<span class="sd">----------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">mcycle</span> <span class="k">as</span> <span class="nn">mc</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">nan</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">CoolProp</span> <span class="k">as</span> <span class="nn">CP</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">timeit</span>
+
+
+<span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+<span class="k">def</span> <span class="nf">run_example</span><span class="p">(</span><span class="n">analyses</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;plot&quot;</span><span class="p">,</span> <span class="s2">&quot;superheat&quot;</span><span class="p">,</span> <span class="s2">&quot;pptd&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;mass&quot;</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;run example: hughes_olsen_apisat2017.py&quot;&quot;&quot;</span>
+    <span class="c1"># ************************************************</span>
+    <span class="c1"># Set up formatting</span>
+    <span class="c1"># ************************************************</span>
+    <span class="c1"># cycle.plot parameters</span>
+    <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span> <span class="o">=</span> <span class="s1">&#39;plots&#39;</span>
+    <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span>  <span class="c1"># change to &quot;jpg&quot; if preferred</span>
+    <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DPI</span> <span class="o">=</span> <span class="mi">1200</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">)</span>
+    <span class="c1"># custom format for matplotlib</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
+    <span class="n">linestyles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">]</span>
+    <span class="n">markerstyles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">]</span>
+
+    <span class="c1"># ************************************************</span>
+    <span class="c1"># Set up default cycle parameters</span>
+    <span class="c1"># ************************************************</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="s2">&quot;R123&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pEvap</span> <span class="o">=</span> <span class="mf">10.e5</span>
+    <span class="n">superheat</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">TCond</span> <span class="o">=</span> <span class="mf">300.</span>
+    <span class="n">subcool</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">comp</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">CompBasic</span><span class="p">(</span><span class="n">nan</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;pRatio&quot;</span><span class="p">)</span>
+    <span class="n">sourceIn_m</span> <span class="o">=</span> <span class="mf">0.09</span>
+    <span class="n">sourceIn_T</span> <span class="o">=</span> <span class="mf">1170.</span>
+    <span class="n">sourceIn_p</span> <span class="o">=</span> <span class="mf">1.116e5</span>
+    <span class="n">sourceFluid</span> <span class="o">=</span> <span class="s2">&quot;N2[</span><span class="si">{0}</span><span class="s2">]&amp;CO2[</span><span class="si">{1}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    TData = [900, sourceIn_T]</span>
+<span class="sd">    sourceRefData = mc.RefData(</span>
+<span class="sd">        sourceFluid, 1, sourceIn_p, TData, phaseCP=CP.iphase_gas)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">TData</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">sourceIn_T</span><span class="p">]</span>
+    <span class="n">sourceRefData</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">RefData</span><span class="p">(</span>
+        <span class="n">sourceFluid</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sourceIn_p</span><span class="p">,</span> <span class="n">TData</span><span class="p">,</span> <span class="n">phaseCP</span><span class="o">=</span><span class="n">CP</span><span class="o">.</span><span class="n">iphase_gas</span><span class="p">)</span>
+    <span class="c1"># &#39;&#39;&#39;</span>
+    <span class="n">sourceIn</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowStatePoly</span><span class="p">(</span><span class="n">sourceRefData</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">sourceIn_p</span><span class="p">,</span>
+                                <span class="n">sourceIn_T</span><span class="p">)</span>
+    <span class="n">sourceDead</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="n">sourceFluid</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">iphase_gas</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span>
+                              <span class="mf">0.88260e5</span><span class="p">,</span> <span class="mf">281.65</span><span class="p">)</span>
+
+    <span class="n">evap</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">(</span><span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;NPlate&quot;</span><span class="p">)</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">ExpBasic</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;pRatio&quot;</span><span class="p">)</span>
+    <span class="n">sinkIn</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">FlowState</span><span class="p">(</span><span class="s2">&quot;Air&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="mf">0.88260e5</span><span class="p">,</span> <span class="mf">281.65</span><span class="p">)</span>
+    <span class="n">sinkDead</span> <span class="o">=</span> <span class="n">sinkIn</span><span class="o">.</span><span class="n">_copy</span><span class="p">({})</span>
+    <span class="n">cond</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">ClrBasicConstP</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s1">&#39;dpEvap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;dpCond&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;dpF&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;dpAcc&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;dpPort&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;dpHead&#39;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">})</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">RankineBasic</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">evap</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> <span class="n">comp</span><span class="p">,</span> <span class="n">pEvap</span><span class="p">,</span> <span class="n">superheat</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span>
+                            <span class="n">subcool</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+    <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s1">&#39;TCond&#39;</span><span class="p">:</span> <span class="n">TCond</span><span class="p">,</span>
+        <span class="s1">&#39;sourceIn&#39;</span><span class="p">:</span> <span class="n">sourceIn</span><span class="p">,</span>
+        <span class="c1">#&#39;sinkIn&#39;: sinkIn,</span>
+        <span class="s1">&#39;sourceDead&#39;</span><span class="p">:</span> <span class="n">sourceDead</span><span class="p">,</span>
+        <span class="c1">#&#39;sinkDead&#39;: sinkDead</span>
+    <span class="p">})</span>
+
+    <span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Example of RankineBasic.plot().&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin demonstration of RankineBasic.plot() ...&quot;</span><span class="p">)</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">sinkIn</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="mf">100.</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;cond&#39;</span><span class="p">:</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_CBXP27</span><span class="p">(),</span> <span class="s1">&#39;pptdEvap&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">})</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">graph</span><span class="o">=</span><span class="s1">&#39;Ts&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;RankineBasic plot&#39;</span><span class="p">,</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+            <span class="n">satCurve</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">newFig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">savefig_name</span><span class="o">=</span><span class="s1">&#39;plot_RankineBasic&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plot saved in </span><span class="si">{}</span><span class="s2">/plot_RankineBasic.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">))</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">sinkIn</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">nan</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">cond</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">ClrBasicConstP</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;pRatio&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End demonstration of RankineBasic.plot.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+    <span class="k">def</span> <span class="nf">superheat</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Superheating analysis.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin superheating analysis...&quot;</span><span class="p">)</span>
+        <span class="n">pptdEvap</span> <span class="o">=</span> <span class="mf">20.</span>  <span class="c1"># K</span>
+        <span class="n">p_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>  <span class="c1"># bar</span>
+        <span class="n">superheat_vals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>  <span class="c1"># K</span>
+        <span class="n">plot_eff</span><span class="p">,</span> <span class="n">plot_Pnet</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>  <span class="c1"># lists to store results</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plot_eff</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">plot_Pnet</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pEvap&#39;</span><span class="p">:</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">})</span>
+            <span class="k">for</span> <span class="n">superheat</span> <span class="ow">in</span> <span class="n">superheat_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;superheat&#39;</span><span class="p">:</span> <span class="n">superheat</span><span class="p">,</span> <span class="s1">&#39;pptdEvap&#39;</span><span class="p">:</span> <span class="n">pptdEvap</span><span class="p">})</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                <span class="n">plot_eff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">effExergy</span><span class="p">())</span>
+                <span class="n">plot_Pnet</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">PNet</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># kW</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">superheat_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">plot_eff</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exergy efficiency [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;degree of superheating [K]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/superheat_eff.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                           <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1">#</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>  <span class="c1"># power v superheating</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">superheat_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">plot_Pnet</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;net Power output [kW]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;degree of superheating [K]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/superheat_Pnet.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                            <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Superheating analysis done.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+    <span class="k">def</span> <span class="nf">pptd</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Pinch-point temperature difference analysis.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin pinch-point temperature difference analysis...&quot;</span><span class="p">)</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># K</span>
+        <span class="n">p_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>  <span class="c1"># bar</span>
+        <span class="n">pptd_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>  <span class="c1"># K</span>
+        <span class="n">plot_eff</span><span class="p">,</span> <span class="n">plot_NPlate</span><span class="p">,</span> <span class="n">plot_weight</span><span class="p">,</span> <span class="n">plot_dpWf</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="c1">#</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plot_eff</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">plot_NPlate</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">plot_weight</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">plot_dpWf</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">pEvap</span> <span class="o">=</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span>
+            <span class="k">for</span> <span class="n">pptd</span> <span class="ow">in</span> <span class="n">pptd_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">pptdEvap</span> <span class="o">=</span> <span class="n">pptd</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">L</span>
+                <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">_size</span><span class="p">(</span><span class="s2">&quot;NPlate&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[])</span>
+                <span class="n">plot_eff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">effExergy</span><span class="p">())</span>
+                <span class="n">plot_NPlate</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">NPlate</span><span class="p">)</span>
+                <span class="n">plot_weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">weight</span><span class="p">())</span>
+                <span class="n">plot_dpWf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">dpWf</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
+        <span class="c1">#</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">pptd_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">plot_eff</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exergy efficieny [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PPTD [K]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/pptd_eff.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                      <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+        <span class="c1">#</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">pptd_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">plot_dpWf</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">marker</span><span class="o">=</span><span class="n">markerstyles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Working fluid pressure drop [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PPTD [K]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/pptd_dpWf.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                       <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+        <span class="c1">#</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">pptd_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">plot_NPlate</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">marker</span><span class="o">=</span><span class="n">markerstyles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;PPTD [K]&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of plates [-]&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+        <span class="n">mn</span><span class="p">,</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+        <span class="n">vol</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">LPlate</span><span class="p">(</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">WPlate</span><span class="p">(</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">tPlate</span>
+        <span class="n">c0</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">coeffs_weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">vol</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">coeffs_weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">vol</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">mn</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c0</span><span class="p">,</span> <span class="n">mx</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c0</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;empty weight [Kg]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/pptd_NPlate.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                         <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pinch-point temperature difference analysis done.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+    <span class="k">def</span> <span class="nf">pressure</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Evaporating pressure analysis&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin evaporating pressure analysis...&quot;</span><span class="p">)</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">plot_NPlate</span><span class="p">,</span> <span class="n">plot_dpWf</span><span class="p">,</span> <span class="n">plot_dpSf</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pEvap&#39;</span><span class="p">:</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;pptdEvap&#39;</span><span class="p">:</span> <span class="mf">10.</span><span class="p">})</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">L</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">size_NPlate</span><span class="p">()</span>
+            <span class="n">plot_NPlate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">NPlate</span><span class="p">)</span>
+            <span class="n">plot_dpWf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">dpWf</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
+            <span class="n">plot_dpSf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">dpSf</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">p_vals</span><span class="p">,</span>
+            <span class="n">plot_dpWf</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">marker</span><span class="o">=</span><span class="n">markerstyles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;working fluid pressure drop [bar]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;evaporation pressure [bar]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/pressure_dpWf.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                           <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">p_vals</span><span class="p">,</span>
+            <span class="n">plot_dpSf</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">marker</span><span class="o">=</span><span class="n">markerstyles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exhaust gas pressure drop [bar]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;evaporation pressure [bar]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/pressure_dpSf.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                           <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pressure analysis done.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@mc</span><span class="o">.</span><span class="n">timeThis</span>
+    <span class="k">def</span> <span class="nf">mass</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Mass flow rate analysis.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Begin mass flow rate analysis...&quot;</span><span class="p">)</span>
+        <span class="n">superheat</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">pEvap</span> <span class="o">=</span> <span class="mi">25</span>
+        <span class="n">pptdEvap</span> <span class="o">=</span> <span class="mf">10.</span>
+        <span class="n">fraction_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">plot_dpSf</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;superheat&#39;</span><span class="p">:</span> <span class="n">superheat</span><span class="p">,</span> <span class="s1">&#39;pEvap&#39;</span><span class="p">:</span> <span class="n">pEvap</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">})</span>
+        <span class="n">mSource</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">mSf</span>
+        <span class="k">for</span> <span class="n">frac</span> <span class="ow">in</span> <span class="n">fraction_vals</span><span class="p">:</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">mSf</span> <span class="o">=</span> <span class="n">mSource</span> <span class="o">*</span> <span class="n">frac</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pptdEvap&#39;</span><span class="p">:</span> <span class="n">ptdEvap</span><span class="p">})</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">L</span>
+            <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">size_NPlate</span><span class="p">()</span>
+            <span class="n">plot_dpSf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">dpSf</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">fraction_vals</span><span class="p">,</span>
+            <span class="n">plot_dpSf</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{}</span><span class="s2">$=</span><span class="si">{}</span><span class="s2">bar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{evap}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pEvap</span><span class="p">),</span> <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;exhaust gas pressure drop [bar]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;proportion of total exhaust gases [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+            <span class="s2">&quot;./</span><span class="si">{}</span><span class="s2">/mSf_dpSf.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">,</span>
+                                      <span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_FORMAT</span><span class="p">),</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="n">plots_dpi</span><span class="p">,</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="c1"># plt.show()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mass flow rate analysis done.&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">fcn</span> <span class="ow">in</span> <span class="n">analyses</span><span class="p">:</span>
+        <span class="nb">locals</span><span class="p">()[</span><span class="n">fcn</span><span class="p">]()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">run_example</span><span class="p">([</span><span class="s2">&quot;superheat&quot;</span><span class="p">,</span> <span class="s2">&quot;pptd&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;mass&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Basic organic Rankine cycle with a corrugated-plate evaporator</a><ul>
+<li><a class="reference internal" href="#setting-up-the-default-characteristics-of-the-cycle">Setting up the default characteristics of the cycle</a><ul>
+<li><a class="reference internal" href="#working-fluid">Working fluid</a></li>
+<li><a class="reference internal" href="#heat-source">Heat source</a></li>
+<li><a class="reference internal" href="#ambient-air-heat-sink">Ambient air/ heat sink</a></li>
+<li><a class="reference internal" href="#evaporator-and-condenser">Evaporator and condenser</a></li>
+<li><a class="reference internal" href="#compressor-and-expander">Compressor and expander</a></li>
+<li><a class="reference internal" href="#design-parameters">Design parameters</a></li>
+<li><a class="reference internal" href="#example-temperature-entropy-plot">Example temperature-entropy plot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#superheating-analysis">Superheating analysis</a></li>
+<li><a class="reference internal" href="#pinch-point-temperature-difference-analysis">Pinch-point temperature difference analysis</a></li>
+<li><a class="reference internal" href="#evaporating-pressure-analysis">Evaporating pressure analysis</a></li>
+<li><a class="reference internal" href="#exhaust-gas-mass-flow-rate-analysis">Exhaust gas mass flow rate analysis</a></li>
+<li><a class="reference internal" href="#differences-from-hughes-and-olsen-2017-paper">Differences from Hughes and Olsen (2017) paper</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#source-code">Source code</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contents.html"
+                        title="previous chapter">Examples</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../bases/contents.html"
+                        title="next chapter">Base Classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/hughes2017.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../bases/contents.html" title="Base Classes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" >Examples</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

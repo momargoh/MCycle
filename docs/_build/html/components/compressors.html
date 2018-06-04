@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Compressor Classes &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Component Classes" href="contents.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Component Classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Component Classes</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="compressor-classes">
+<h1>Compressor Classes<a class="headerlink" href="#compressor-classes" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic" title="mcycle.components.compressors.comp_basic.CompBasic"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.compressors.comp_basic.CompBasic</span></code></a></td>
+<td>Basic expansion defined by a pressure ratio and isentropic efficiency.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="module-mcycle.components.compressors.comp_basic">
+<span id="compbasic-class"></span><h2>CompBasic Class<a class="headerlink" href="#module-mcycle.components.compressors.comp_basic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic">
+<em class="property">class </em><code class="descclassname">mcycle.components.compressors.comp_basic.</code><code class="descname">CompBasic</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component11" title="mcycle.bases.component.Component11"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component11</span></code></a></p>
+<p>Basic expansion defined by a pressure ratio and isentropic efficiency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pRatio</strong> : float</p>
+<blockquote>
+<div><p>Pressure increase ratio [-].</p>
+</div></blockquote>
+<p><strong>effIsentropic</strong> : float, optional</p>
+<blockquote>
+<div><p>Isentropic efficiency [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>flowIn</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOut</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState. Defaults to None.</p>
+</div></blockquote>
+<p><strong>sizeAttr</strong> : string, optional</p>
+<blockquote>
+<div><p>Default attribute used by size(). Defaults to &#8220;pRatio&#8221;.</p>
+</div></blockquote>
+<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket containing solution of size(). Defaults to [1, 50].</p>
+<ul class="simple">
+<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : string, optional</p>
+<blockquote>
+<div><p>Description of Component object. Defaults to &#8220;ExpBasic instance&#8221;.</p>
+</div></blockquote>
+<p><strong>notes</strong> : string, optional</p>
+<blockquote>
+<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+</div></blockquote>
+<p><strong>config</strong> : Config, optional</p>
+<blockquote>
+<div><p>Configuration parameters. Defaults to the default Config object.</p>
+</div></blockquote>
+<p><strong>kwargs</strong> : optional</p>
+<blockquote class="last">
+<div><p>Arbitrary keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">effIsentropic</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowIn" title="mcycle.components.compressors.comp_basic.CompBasic.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
+<td>Alias for self.flowsIn[0]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInWf" title="mcycle.components.compressors.comp_basic.CompBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<td>Alias for self.flowsIn[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOut" title="mcycle.components.compressors.comp_basic.CompBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOutWf" title="mcycle.components.compressors.comp_basic.CompBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.m" title="mcycle.components.compressors.comp_basic.CompBasic.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<td>Alias for self.flowsIn[0].m</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.mWf" title="mcycle.components.compressors.comp_basic.CompBasic.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<td>Alias for self.flowsIn[0].m</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.pIn" title="mcycle.components.compressors.comp_basic.CompBasic.pIn"><code class="xref py py-obj docutils literal"><span class="pre">pIn</span></code></a></td>
+<td>float: Alias of flowIn.p [Pa]. Setter sets pRatio if flowOut is defined.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.pOut" title="mcycle.components.compressors.comp_basic.CompBasic.pOut"><code class="xref py py-obj docutils literal"><span class="pre">pOut</span></code></a></td>
+<td>float: Alias of flowOut.p [Pa]. Setter sets pRatio if flowIn is defined.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pRatio</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.PIn" title="mcycle.components.compressors.comp_basic.CompBasic.PIn"><code class="xref py py-obj docutils literal"><span class="pre">PIn</span></code></a></td>
+<td>float: Power input [W].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.copy" title="mcycle.components.compressors.comp_basic.CompBasic.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.run" title="mcycle.components.compressors.comp_basic.CompBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a></td>
+<td>Compute for the outgoing working fluid FlowState from component attributes.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.summary" title="mcycle.components.compressors.comp_basic.CompBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.update" title="mcycle.components.compressors.comp_basic.CompBasic.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.PIn">
+<code class="descname">PIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.PIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Power input [W].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowIn">
+<code class="descname">flowIn</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowInWf">
+<code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowOut">
+<code class="descname">flowOut</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowOutWf">
+<code class="descname">flowOutWf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOutWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.m">
+<code class="descname">m</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.mWf">
+<code class="descname">mWf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.mWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.pIn">
+<code class="descname">pIn</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.pIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Alias of flowIn.p [Pa]. Setter sets pRatio if flowOut is defined.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.pOut">
+<code class="descname">pOut</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.pOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Alias of flowOut.p [Pa]. Setter sets pRatio if flowIn is defined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute for the outgoing working fluid FlowState from component attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>flowKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
+<p>Defaults to &#8216;none&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Compressor Classes</a><ul>
+<li><a class="reference internal" href="#module-mcycle.components.compressors.comp_basic">CompBasic Class</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contents.html"
+                        title="previous chapter">Component Classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/components/compressors.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Component Classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" >Component Classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

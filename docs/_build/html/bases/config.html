@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Config Base Class &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Base Classes</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-mcycle.bases.config">
+<span id="config-base-class"></span><h1>Config Base Class<a class="headerlink" href="#module-mcycle.bases.config" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mcycle.bases.config.Config">
+<em class="property">class </em><code class="descclassname">mcycle.bases.config.</code><code class="descname">Config</code><a class="headerlink" href="#mcycle.bases.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mcabstractbase.html#mcycle.bases.mcabstractbase.MCAB" title="mcycle.bases.mcabstractbase.MCAB"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.mcabstractbase.MCAB</span></code></a></p>
+<p>General configuration parameters containing parameters pertaining to Cycles and Components. It is recommended to pass the same Config object to all Components in a Cycle.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>dpEvap</strong></td>
+<td>(bool, optional) Evaluate pressure drop of working fluid in evaporator. Defaults to False.</td>
+</tr>
+<tr class="row-even"><td><strong>dpCond</strong></td>
+<td>(bool, optional) Evaluate pressure drop of working fluid in condenser. Defaults to False.</td>
+</tr>
+<tr class="row-odd"><td><strong>dpFWf</strong></td>
+<td>(bool, optional) Evaluate frictional pressure drops of working fluid. Defaults to True.</td>
+</tr>
+<tr class="row-even"><td><strong>dpFSf</strong></td>
+<td>(bool, optional) Evaluate frictional pressure drops of secondary fluid. Defaults to True.</td>
+</tr>
+<tr class="row-odd"><td><strong>dpAccWf</strong></td>
+<td>(bool, optional) Evaluate acceleration pressure drops of working fluid. Defaults to True.</td>
+</tr>
+<tr class="row-even"><td><strong>dpAccSf</strong></td>
+<td>(bool, optional) Evaluate acceleration pressure drops of secondary fluid. Defaults to True.</td>
+</tr>
+<tr class="row-odd"><td><strong>dpHeadWf</strong></td>
+<td>(bool, optional) Evaluate static head drops of working fluid. Defaults to True.</td>
+</tr>
+<tr class="row-even"><td><strong>dpHeadSf</strong></td>
+<td>(bool, optional) Evaluate static head drops of secondary fluid. Defaults to True.</td>
+</tr>
+<tr class="row-odd"><td><strong>dpPortWf</strong></td>
+<td>(bool, optional) Evaluate port pressure loss of working fluid. Defaults to True.</td>
+</tr>
+<tr class="row-even"><td><strong>dpPortSf</strong></td>
+<td>(bool, optional) Evaluate port pressure loss of secondary fluid. Defaults to True.</td>
+</tr>
+<tr class="row-odd"><td><strong>g</strong></td>
+<td>(float, optional) Acceleration due to gravity [m/s^2]. Defaults to 9.81.</td>
+</tr>
+<tr class="row-even"><td><strong>tolAttr</strong></td>
+<td>(string, optional) FlowState attribute for cycle convergence. Defaults to &#8220;h&#8221;.</td>
+</tr>
+<tr class="row-odd"><td><strong>tolAbs</strong></td>
+<td>(float, optional) Absolute tolerance for determining cycle convergence. Defaults to 1e-9.</td>
+</tr>
+<tr class="row-even"><td><strong>tolRel</strong></td>
+<td>(float, optional) Relative tolerance for determining cycle convergence. Defaults to 1e-7.</td>
+</tr>
+<tr class="row-odd"><td><strong>divT</strong></td>
+<td>(float, optional) Temperature difference for unitising single-phase flows. Defaults to 5 [K].</td>
+</tr>
+<tr class="row-even"><td><strong>divX</strong></td>
+<td>(float, optional) Quality difference for unitising two-phase flows. Defaults to 0.1.</td>
+</tr>
+<tr class="row-odd"><td><strong>sizeBracket_L</strong></td>
+<td>(list of float len==2, optional) Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].</td>
+</tr>
+<tr class="row-even"><td><strong>maxIterCycle</strong></td>
+<td>(int, optional) Max number of iterations for convergence of cycle. Defaults to 50.</td>
+</tr>
+<tr class="row-odd"><td><strong>maxWalls</strong></td>
+<td>(int, optional) Max number of walls a solution may have. Defaults to 200.</td>
+</tr>
+<tr class="row-even"><td><strong>methods</strong></td>
+<td>(Methods, optional) Methods object, describing any methods to be used. Defaults to default Methds object.</td>
+</tr>
+<tr class="row-odd"><td><strong>evenPlatesWf</strong></td>
+<td>(bool, optional) If there are an even number of plates in a plate heat exchanger, an extra working fluid channel is created rather than an extra secondary fluid channel. Defaults to False.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.config.Config.copy" title="mcycle.bases.config.Config.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.config.Config.summary" title="mcycle.bases.config.Config.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of FlowState properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.config.Config.update" title="mcycle.bases.config.Config.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mcycle.bases.config.Config.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.config.Config.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.config.Config.dpAcc">
+<code class="descname">dpAcc</code><a class="headerlink" href="#mcycle.bases.config.Config.dpAcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if dpAccWf and dpAccSf are True, else prints their values. Setter sets both to True or False.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.config.Config.dpF">
+<code class="descname">dpF</code><a class="headerlink" href="#mcycle.bases.config.Config.dpF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if dpFWf and dpFSf are True, else prints their values. Setter sets both to True or False.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.config.Config.dpHead">
+<code class="descname">dpHead</code><a class="headerlink" href="#mcycle.bases.config.Config.dpHead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if dpHeadWf and dpHeadSf are True, else prints their values. Setter sets both to True or False.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.config.Config.dpPort">
+<code class="descname">dpPort</code><a class="headerlink" href="#mcycle.bases.config.Config.dpPort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if dpPortWf and dpPortSf are True, else prints their values. Setter sets both to True or False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.config.Config.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.config.Config.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of FlowState properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Name of the object, prepended to the summary heading. If None, the class name is used. Defaults to None.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.config.Config.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.config.Config.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/bases/config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" >Base Classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

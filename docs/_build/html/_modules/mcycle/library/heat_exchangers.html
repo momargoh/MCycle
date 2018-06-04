@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mcycle.library.heat_exchangers &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for mcycle.library.heat_exchangers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;A brief library of commercial component designs.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">..bases</span> <span class="k">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">components</span> <span class="k">as</span> <span class="n">cps</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">geometries</span> <span class="k">as</span> <span class="n">gms</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">materials</span> <span class="k">as</span> <span class="n">mats</span>
+
+
+<div class="viewcode-block" id="alfaLaval_AC30EQ"><a class="viewcode-back" href="../../../library/heat_exchangers.html#mcycle.library.heat_exchangers.alfaLaval_AC30EQ">[docs]</a><span class="k">def</span> <span class="nf">alfaLaval_AC30EQ</span><span class="p">(</span><span class="n">flowSense</span><span class="o">=</span><span class="s2">&quot;counterflow&quot;</span><span class="p">,</span>
+                     <span class="n">flowInWf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowInSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowOutWf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowOutSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowDeadSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;NPlate&quot;</span><span class="p">,</span>
+                     <span class="n">sizeBracket</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                     <span class="n">sizeUnitsBracket</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">10.</span><span class="p">],</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;HxPlate instance&quot;</span><span class="p">,</span>
+                     <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(),</span>
+                     <span class="n">kwargs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="sd">&quot;&quot;&quot;Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf&quot;&quot;&quot;</span>
+    <span class="n">hx</span> <span class="o">=</span> <span class="n">cps</span><span class="o">.</span><span class="n">HxPlate</span><span class="p">(</span>
+        <span class="n">flowSense</span><span class="o">=</span><span class="n">flowSense</span><span class="p">,</span>
+        <span class="n">NPlate</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">RfWf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">RfSf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">plate</span><span class="o">=</span><span class="n">mats</span><span class="o">.</span><span class="n">stainlessSteel_316</span><span class="p">(),</span>
+        <span class="n">tPlate</span><span class="o">=</span><span class="mf">0.424e-3</span><span class="p">,</span>
+        <span class="n">geomPlateWf</span><span class="o">=</span><span class="n">gms</span><span class="o">.</span><span class="n">GeomHxPlateCorrChevron</span><span class="p">(</span><span class="mf">1.096e-3</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mf">1.117</span><span class="p">),</span>
+        <span class="n">geomPlateSf</span><span class="o">=</span><span class="n">gms</span><span class="o">.</span><span class="n">GeomHxPlateCorrChevron</span><span class="p">(</span><span class="mf">1.096e-3</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mf">1.117</span><span class="p">),</span>
+        <span class="n">L</span><span class="o">=</span><span class="mf">269e-3</span><span class="p">,</span>
+        <span class="n">W</span><span class="o">=</span><span class="mf">95e-3</span><span class="p">,</span>
+        <span class="n">ARatioWf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ARatioSf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ARatioPlate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">DPortWf</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span>
+        <span class="n">DPortSf</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span>
+        <span class="n">coeffs_LPlate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.056</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">coeffs_WPlate</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">coeffs_weight</span><span class="o">=</span><span class="p">[</span>
+            <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.325</span> <span class="o">*</span> <span class="mf">0.095</span> <span class="o">*</span> <span class="mf">0.424e-3</span><span class="p">),</span> <span class="mf">0.09</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.325</span> <span class="o">*</span> <span class="mf">0.095</span> <span class="o">*</span> <span class="mf">0.424e-3</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">effThermal</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">flowInWf</span><span class="o">=</span><span class="n">flowInWf</span><span class="p">,</span>
+        <span class="n">flowInSf</span><span class="o">=</span><span class="n">flowInSf</span><span class="p">,</span>
+        <span class="n">flowOutWf</span><span class="o">=</span><span class="n">flowOutWf</span><span class="p">,</span>
+        <span class="n">flowOutSf</span><span class="o">=</span><span class="n">flowOutSf</span><span class="p">,</span>
+        <span class="n">flowDeadSf</span><span class="o">=</span><span class="n">flowDeadSf</span><span class="p">,</span>
+        <span class="n">sizeAttr</span><span class="o">=</span><span class="n">sizeAttr</span><span class="p">,</span>
+        <span class="n">sizeBracket</span><span class="o">=</span><span class="n">sizeBracket</span><span class="p">,</span>
+        <span class="n">sizeUnitsBracket</span><span class="o">=</span><span class="n">sizeUnitsBracket</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf&quot;</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">hx</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hx</span></div>
+
+
+<div class="viewcode-block" id="alfaLaval_CBXP27"><a class="viewcode-back" href="../../../library/heat_exchangers.html#mcycle.library.heat_exchangers.alfaLaval_CBXP27">[docs]</a><span class="k">def</span> <span class="nf">alfaLaval_CBXP27</span><span class="p">(</span><span class="n">flowSense</span><span class="o">=</span><span class="s2">&quot;counterflow&quot;</span><span class="p">,</span>
+                     <span class="n">flowInWf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowInSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowOutWf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowOutSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">flowDeadSf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">sizeAttr</span><span class="o">=</span><span class="s2">&quot;NPlate&quot;</span><span class="p">,</span>
+                     <span class="n">sizeBracket</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                     <span class="n">sizeUnitsBracket</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">10.</span><span class="p">],</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;HxPlate instance&quot;</span><span class="p">,</span>
+                     <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(),</span>
+                     <span class="n">kwargs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="sd">&quot;&quot;&quot;Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf&quot;&quot;&quot;</span>
+    <span class="n">hx</span> <span class="o">=</span> <span class="n">cps</span><span class="o">.</span><span class="n">HxPlate</span><span class="p">(</span>
+        <span class="n">flowSense</span><span class="o">=</span><span class="n">flowSense</span><span class="p">,</span>
+        <span class="n">NPlate</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">RfWf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">RfSf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">plate</span><span class="o">=</span><span class="n">mats</span><span class="o">.</span><span class="n">stainlessSteel_316</span><span class="p">(),</span>
+        <span class="n">tPlate</span><span class="o">=</span><span class="mf">0.95e-3</span><span class="p">,</span>
+        <span class="n">geomPlateWf</span><span class="o">=</span><span class="n">gms</span><span class="o">.</span><span class="n">GeomHxPlateCorrChevron</span><span class="p">(</span><span class="mf">1.45e-3</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mf">1.117</span><span class="p">),</span>
+        <span class="n">geomPlateSf</span><span class="o">=</span><span class="n">gms</span><span class="o">.</span><span class="n">GeomHxPlateCorrChevron</span><span class="p">(</span><span class="mf">1.45e-3</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mf">10e-3</span><span class="p">,</span> <span class="mf">1.117</span><span class="p">),</span>
+        <span class="n">L</span><span class="o">=</span><span class="mf">250e-3</span><span class="p">,</span>
+        <span class="n">W</span><span class="o">=</span><span class="mf">111e-3</span><span class="p">,</span>
+        <span class="n">ARatioWf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ARatioSf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ARatioPlate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">DPortWf</span><span class="o">=</span><span class="mf">0.0315</span><span class="p">,</span>
+        <span class="n">DPortSf</span><span class="o">=</span><span class="mf">0.0315</span><span class="p">,</span>
+        <span class="n">coeffs_LPlate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.060</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">coeffs_WPlate</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">coeffs_weight</span><span class="o">=</span><span class="p">[</span>
+            <span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.310</span> <span class="o">*</span> <span class="mf">0.111</span> <span class="o">*</span> <span class="mf">0.95e-3</span><span class="p">),</span> <span class="mf">0.13</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.310</span> <span class="o">*</span> <span class="mf">0.111</span> <span class="o">*</span> <span class="mf">0.95e-3</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">effThermal</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">flowInWf</span><span class="o">=</span><span class="n">flowInWf</span><span class="p">,</span>
+        <span class="n">flowInSf</span><span class="o">=</span><span class="n">flowInSf</span><span class="p">,</span>
+        <span class="n">flowOutWf</span><span class="o">=</span><span class="n">flowOutWf</span><span class="p">,</span>
+        <span class="n">flowOutSf</span><span class="o">=</span><span class="n">flowOutSf</span><span class="p">,</span>
+        <span class="n">flowDeadSf</span><span class="o">=</span><span class="n">flowDeadSf</span><span class="p">,</span>
+        <span class="n">sizeAttr</span><span class="o">=</span><span class="n">sizeAttr</span><span class="p">,</span>
+        <span class="n">sizeBracket</span><span class="o">=</span><span class="n">sizeBracket</span><span class="p">,</span>
+        <span class="n">sizeUnitsBracket</span><span class="o">=</span><span class="n">sizeUnitsBracket</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf&quot;</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">hx</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hx</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

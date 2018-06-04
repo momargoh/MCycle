@@ -1,0 +1,889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RankineBasic Class &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Cycle Classes" href="contents.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Cycle Classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Cycle Classes</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-mcycle.cycles.rankinebasic">
+<span id="rankinebasic-class"></span><h1>RankineBasic Class<a class="headerlink" href="#module-mcycle.cycles.rankinebasic" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic">
+<em class="property">class </em><code class="descclassname">mcycle.cycles.rankinebasic.</code><code class="descname">RankineBasic</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../bases/cycle.html#mcycle.bases.cycle.Cycle" title="mcycle.bases.cycle.Cycle"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.cycle.Cycle</span></code></a></p>
+<p>Defines all cycle components and design parameters for a basic four-stage (steam/organic) Rankine cycle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>wf</strong> : FlowState</p>
+<blockquote>
+<div><p>Working fluid.</p>
+</div></blockquote>
+<p><strong>evap</strong> : Component</p>
+<blockquote>
+<div><p>Evaporator object. Must be subclass of HxBasic or HtrBasic. Any incoming flows of secondary fluids should be pre-defined.</p>
+</div></blockquote>
+<p><strong>exp</strong> : Component</p>
+<blockquote>
+<div><p>Expander object. Must be subclass of ExpBasic.</p>
+</div></blockquote>
+<p><strong>cond</strong> : Component</p>
+<blockquote>
+<div><p>Condenser object. Must be subclass of HxBasic or ClrBasic. Any incoming flows of secondary fluids should be pre-defined.</p>
+</div></blockquote>
+<p><strong>comp</strong> : Component</p>
+<blockquote>
+<div><p>Compressor object. Must be subclass of CompBasic.</p>
+</div></blockquote>
+<p><strong>pEvap</strong> : float, optional</p>
+<blockquote>
+<div><p>Evaporator vapourisation pressure [Pa].</p>
+</div></blockquote>
+<p><strong>superheat</strong> : float, optional</p>
+<blockquote>
+<div><p>Evaporator superheating [K].</p>
+</div></blockquote>
+<p><strong>pCond</strong> : float, optional</p>
+<blockquote>
+<div><p>Condenser vaporisation pressure [Pa].</p>
+</div></blockquote>
+<p><strong>subcool</strong> : float, optional</p>
+<blockquote>
+<div><p>Condenser subcooling [K].</p>
+</div></blockquote>
+<p><strong>config</strong> : Config, optional</p>
+<blockquote>
+<div><p>Cycle configuration parameters.</p>
+</div></blockquote>
+<p><strong>kwargs</strong> : optional</p>
+<blockquote class="last">
+<div><p>Arbitrary keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.TCond" title="mcycle.cycles.rankinebasic.RankineBasic.TCond"><code class="xref py py-obj docutils literal"><span class="pre">TCond</span></code></a></td>
+<td>float: Evaporation temperature of the working fluid in the compressor [K].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.TEvap" title="mcycle.cycles.rankinebasic.RankineBasic.TEvap"><code class="xref py py-obj docutils literal"><span class="pre">TEvap</span></code></a></td>
+<td>float: Evaporation temperature of the working fluid in the evaporator [K].</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">comp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">cond</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.config" title="mcycle.cycles.rankinebasic.RankineBasic.config"><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></a></td>
+<td>Config: Cycle configuration parameters.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.dpComp" title="mcycle.cycles.rankinebasic.RankineBasic.dpComp"><code class="xref py py-obj docutils literal"><span class="pre">dpComp</span></code></a></td>
+<td>float: Pressure increase across the compressor [Pa].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.dpExp" title="mcycle.cycles.rankinebasic.RankineBasic.dpExp"><code class="xref py py-obj docutils literal"><span class="pre">dpExp</span></code></a></td>
+<td>float: Pressure drop across the expander [Pa].</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">evap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">exp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.mWf" title="mcycle.cycles.rankinebasic.RankineBasic.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<td>float: Alias of wf.m; mass flow rate of the working fluid [Kg/s].</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pCond</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pEvap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.pRatioComp" title="mcycle.cycles.rankinebasic.RankineBasic.pRatioComp"><code class="xref py py-obj docutils literal"><span class="pre">pRatioComp</span></code></a></td>
+<td>float: Pressure ratio of the compressor.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.pRatioExp" title="mcycle.cycles.rankinebasic.RankineBasic.pRatioExp"><code class="xref py py-obj docutils literal"><span class="pre">pRatioExp</span></code></a></td>
+<td>float: Pressure ratio of the expander.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.pptdCond" title="mcycle.cycles.rankinebasic.RankineBasic.pptdCond"><code class="xref py py-obj docutils literal"><span class="pre">pptdCond</span></code></a></td>
+<td>float: Pinch-point temperature difference of condenser</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pptdEvap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sink4" title="mcycle.cycles.rankinebasic.RankineBasic.sink4"><code class="xref py py-obj docutils literal"><span class="pre">sink4</span></code></a></td>
+<td>FlowState: Heat sink when working fluid is at state4.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sink50" title="mcycle.cycles.rankinebasic.RankineBasic.sink50"><code class="xref py py-obj docutils literal"><span class="pre">sink50</span></code></a></td>
+<td>FlowState: Heat sink when working fluid is at state50.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sink51" title="mcycle.cycles.rankinebasic.RankineBasic.sink51"><code class="xref py py-obj docutils literal"><span class="pre">sink51</span></code></a></td>
+<td>FlowState: Heat sink when working fluid is at state51.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sink6" title="mcycle.cycles.rankinebasic.RankineBasic.sink6"><code class="xref py py-obj docutils literal"><span class="pre">sink6</span></code></a></td>
+<td>FlowState: Heat sink when working fluid is at state6.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkDead" title="mcycle.cycles.rankinebasic.RankineBasic.sinkDead"><code class="xref py py-obj docutils literal"><span class="pre">sinkDead</span></code></a></td>
+<td>FlowState: Alias of cond.flowDeadSf.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkIn" title="mcycle.cycles.rankinebasic.RankineBasic.sinkIn"><code class="xref py py-obj docutils literal"><span class="pre">sinkIn</span></code></a></td>
+<td>FlowState: Alias of cond.flowInSf.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkOut" title="mcycle.cycles.rankinebasic.RankineBasic.sinkOut"><code class="xref py py-obj docutils literal"><span class="pre">sinkOut</span></code></a></td>
+<td>FlowState: Alias of cond.flowOutSf.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.source1" title="mcycle.cycles.rankinebasic.RankineBasic.source1"><code class="xref py py-obj docutils literal"><span class="pre">source1</span></code></a></td>
+<td>FlowState: Heat source when working fluid is at state1.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.source20" title="mcycle.cycles.rankinebasic.RankineBasic.source20"><code class="xref py py-obj docutils literal"><span class="pre">source20</span></code></a></td>
+<td>FlowState: Heat source when working fluid is at state20.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.source21" title="mcycle.cycles.rankinebasic.RankineBasic.source21"><code class="xref py py-obj docutils literal"><span class="pre">source21</span></code></a></td>
+<td>FlowState: Heat source when working fluid is at state21.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.source3" title="mcycle.cycles.rankinebasic.RankineBasic.source3"><code class="xref py py-obj docutils literal"><span class="pre">source3</span></code></a></td>
+<td>FlowState: Heat source when working fluid is at state3.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceDead" title="mcycle.cycles.rankinebasic.RankineBasic.sourceDead"><code class="xref py py-obj docutils literal"><span class="pre">sourceDead</span></code></a></td>
+<td>FlowState: Alias of evap.flowDeadSf.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceIn" title="mcycle.cycles.rankinebasic.RankineBasic.sourceIn"><code class="xref py py-obj docutils literal"><span class="pre">sourceIn</span></code></a></td>
+<td>FlowState: Alias of evap.flowInSf.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceOut" title="mcycle.cycles.rankinebasic.RankineBasic.sourceOut"><code class="xref py py-obj docutils literal"><span class="pre">sourceOut</span></code></a></td>
+<td>FlowState: Alias of evap.flowOutSf.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state1" title="mcycle.cycles.rankinebasic.RankineBasic.state1"><code class="xref py py-obj docutils literal"><span class="pre">state1</span></code></a></td>
+<td>FlowState: Working fluid flow at compressor outlet/ evaporator inlet.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state20" title="mcycle.cycles.rankinebasic.RankineBasic.state20"><code class="xref py py-obj docutils literal"><span class="pre">state20</span></code></a></td>
+<td>FlowState: Working fluid saturated liquid FlowState in evaporator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state21" title="mcycle.cycles.rankinebasic.RankineBasic.state21"><code class="xref py py-obj docutils literal"><span class="pre">state21</span></code></a></td>
+<td>FlowState: Working fluid saturated vapour FlowState in evaporator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state3" title="mcycle.cycles.rankinebasic.RankineBasic.state3"><code class="xref py py-obj docutils literal"><span class="pre">state3</span></code></a></td>
+<td>FlowState: Working fluid FlowState at evaporator outlet/expander inlet.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state4" title="mcycle.cycles.rankinebasic.RankineBasic.state4"><code class="xref py py-obj docutils literal"><span class="pre">state4</span></code></a></td>
+<td>FlowState: Working fluid FlowState at expander outlet/condenser inlet.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state50" title="mcycle.cycles.rankinebasic.RankineBasic.state50"><code class="xref py py-obj docutils literal"><span class="pre">state50</span></code></a></td>
+<td>FlowState: Working fluid saturated liquid FlowState in condenser.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state51" title="mcycle.cycles.rankinebasic.RankineBasic.state51"><code class="xref py py-obj docutils literal"><span class="pre">state51</span></code></a></td>
+<td>FlowState: Working fluid saturated vapour FlowState in condenser.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.state6" title="mcycle.cycles.rankinebasic.RankineBasic.state6"><code class="xref py py-obj docutils literal"><span class="pre">state6</span></code></a></td>
+<td>FlowState: Working fluid FlowState at condenser outlet/ compressor inlet.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">subcool</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">superheat</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wf</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.IComp" title="mcycle.cycles.rankinebasic.RankineBasic.IComp"><code class="xref py py-obj docutils literal"><span class="pre">IComp</span></code></a></td>
+<td>float: Exergy destruction of compressor [W]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.ICond" title="mcycle.cycles.rankinebasic.RankineBasic.ICond"><code class="xref py py-obj docutils literal"><span class="pre">ICond</span></code></a></td>
+<td>float: Exergy destruction of condenser [W]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.IEvap" title="mcycle.cycles.rankinebasic.RankineBasic.IEvap"><code class="xref py py-obj docutils literal"><span class="pre">IEvap</span></code></a></td>
+<td>float: Exergy destruction of evaporator [W]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.IExp" title="mcycle.cycles.rankinebasic.RankineBasic.IExp"><code class="xref py py-obj docutils literal"><span class="pre">IExp</span></code></a></td>
+<td>float: Exergy destruction of expander [W]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.ITotal" title="mcycle.cycles.rankinebasic.RankineBasic.ITotal"><code class="xref py py-obj docutils literal"><span class="pre">ITotal</span></code></a></td>
+<td>float: Total exergy destruction of cycle [W]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.PIn" title="mcycle.cycles.rankinebasic.RankineBasic.PIn"><code class="xref py py-obj docutils literal"><span class="pre">PIn</span></code></a></td>
+<td>float: Power input (from compressor) [W].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.PNet" title="mcycle.cycles.rankinebasic.RankineBasic.PNet"><code class="xref py py-obj docutils literal"><span class="pre">PNet</span></code></a></td>
+<td>float: Net power output [W].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.POut" title="mcycle.cycles.rankinebasic.RankineBasic.POut"><code class="xref py py-obj docutils literal"><span class="pre">POut</span></code></a></td>
+<td>float: Power output (from expander) [W].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.QIn" title="mcycle.cycles.rankinebasic.RankineBasic.QIn"><code class="xref py py-obj docutils literal"><span class="pre">QIn</span></code></a></td>
+<td>float: Heat input (from evaporator) [W].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.QOut" title="mcycle.cycles.rankinebasic.RankineBasic.QOut"><code class="xref py py-obj docutils literal"><span class="pre">QOut</span></code></a></td>
+<td>float: Heat output (from condenser) [W].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.copy" title="mcycle.cycles.rankinebasic.RankineBasic.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.effExergy" title="mcycle.cycles.rankinebasic.RankineBasic.effExergy"><code class="xref py py-obj docutils literal"><span class="pre">effExergy</span></code></a></td>
+<td>float: Exergy efficiency</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.effGlobal" title="mcycle.cycles.rankinebasic.RankineBasic.effGlobal"><code class="xref py py-obj docutils literal"><span class="pre">effGlobal</span></code></a></td>
+<td>float: Global recovery efficiency</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.effRecovery" title="mcycle.cycles.rankinebasic.RankineBasic.effRecovery"><code class="xref py py-obj docutils literal"><span class="pre">effRecovery</span></code></a></td>
+<td>float: Exhaust heat recovery efficiency</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.effThermal" title="mcycle.cycles.rankinebasic.RankineBasic.effThermal"><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></a></td>
+<td>float: Cycle thermal efficiency [-]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.plot" title="mcycle.cycles.rankinebasic.RankineBasic.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a></td>
+<td>Plots the key cycle FlowStates on a T-s or p-h diagram.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.run" title="mcycle.cycles.rankinebasic.RankineBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a></td>
+<td>Compute all state FlowStates from initial FlowState and given component definitions</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_TCond</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_TEvap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_dpComp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_dpExp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_pRatioComp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_pRatioExp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sinkDead</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sinkIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sinkOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sourceDead</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sourceIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sourceOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state1</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state3</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state4</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state6</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.size" title="mcycle.cycles.rankinebasic.RankineBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a></td>
+<td>Impose the design parameters on the cycle and execute .size() for each component.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.sizeSetup" title="mcycle.cycles.rankinebasic.RankineBasic.sizeSetup"><code class="xref py py-obj docutils literal"><span class="pre">sizeSetup</span></code></a></td>
+<td>Impose the design parameters on the cycle (without executing .size() for each component).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.summary" title="mcycle.cycles.rankinebasic.RankineBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.cycles.rankinebasic.RankineBasic.update" title="mcycle.cycles.rankinebasic.RankineBasic.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) Cycle variables using keyword arguments.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.IComp">
+<code class="descname">IComp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.IComp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exergy destruction of compressor [W]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.ICond">
+<code class="descname">ICond</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.ICond" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exergy destruction of condenser [W]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.IEvap">
+<code class="descname">IEvap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.IEvap" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exergy destruction of evaporator [W]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.IExp">
+<code class="descname">IExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.IExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exergy destruction of expander [W]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.ITotal">
+<code class="descname">ITotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.ITotal" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Total exergy destruction of cycle [W]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.PIn">
+<code class="descname">PIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.PIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Power input (from compressor) [W].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.PNet">
+<code class="descname">PNet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.PNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Net power output [W].
+PNet = POut() - PIn()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.POut">
+<code class="descname">POut</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.POut" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Power output (from expander) [W].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.QIn">
+<code class="descname">QIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.QIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat input (from evaporator) [W].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.QOut">
+<code class="descname">QOut</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.QOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat output (from condenser) [W].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.TCond">
+<code class="descname">TCond</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.TCond" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Evaporation temperature of the working fluid in the compressor [K].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.TEvap">
+<code class="descname">TEvap</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.TEvap" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Evaporation temperature of the working fluid in the evaporator [K].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.config">
+<code class="descname">config</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Config: Cycle configuration parameters. Setter sets config object for all cycle components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.dpComp">
+<code class="descname">dpComp</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.dpComp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Pressure increase across the compressor [Pa].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.dpExp">
+<code class="descname">dpExp</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.dpExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Pressure drop across the expander [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.effExergy">
+<code class="descname">effExergy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.effExergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exergy efficiency</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.effGlobal">
+<code class="descname">effGlobal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.effGlobal" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Global recovery efficiency</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.effRecovery">
+<code class="descname">effRecovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.effRecovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Exhaust heat recovery efficiency</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.effThermal">
+<code class="descname">effThermal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.effThermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Cycle thermal efficiency [-]
+effThermal = PNet/QIn</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.mWf">
+<code class="descname">mWf</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.mWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Alias of wf.m; mass flow rate of the working fluid [Kg/s].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.pRatioComp">
+<code class="descname">pRatioComp</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.pRatioComp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Pressure ratio of the compressor.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.pRatioExp">
+<code class="descname">pRatioExp</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.pRatioExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Pressure ratio of the expander.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the key cycle FlowStates on a T-s or p-h diagram.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>graph</strong> : str, optional</p>
+<blockquote>
+<div><p>Type of graph to plot. Must be &#8216;Ts&#8217; or &#8216;ph&#8217;. Defaults to &#8216;Ts&#8217;.</p>
+</div></blockquote>
+<p><strong>title</strong> : str, optional</p>
+<blockquote>
+<div><p>Title to display on graph. Defaults to &#8216;RankineBasic plot&#8217;.</p>
+</div></blockquote>
+<p><strong>linestyle</strong> : str, optional</p>
+<blockquote>
+<div><p>Style of line used for working fluid plot points. Passed as a matplotlib.plot argument. Defaults to &#8216;-&#8216;.</p>
+</div></blockquote>
+<p><strong>marker</strong> : str, optional</p>
+<blockquote>
+<div><p>Marker style used for working fluid plot poitns. Passed as a matplotlib.plot argument. Defaults to &#8216;.&#8217;.</p>
+</div></blockquote>
+<p><strong>satCurve</strong> : bool, optional</p>
+<blockquote>
+<div><p>Display saturation curve. Defaults to True.</p>
+</div></blockquote>
+<p><strong>newFig</strong> : bool, optional</p>
+<blockquote>
+<div><p>Create new figure (else plot on existing figure). Defaults to True.</p>
+</div></blockquote>
+<p><strong>show</strong> : str, optional</p>
+<blockquote>
+<div><p>Show figure in window. Defaults to True.</p>
+</div></blockquote>
+<p><strong>savefig</strong> : bool, optional</p>
+<blockquote>
+<div><p>Save figure as &#8216;.png&#8217; or &#8216;.jpg&#8217; file in desired folder. Defaults to False.</p>
+</div></blockquote>
+<p><strong>savefig_name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name for saved plot file. Defaults to &#8216;plot_RankineBasic&#8217;.</p>
+</div></blockquote>
+<p><strong>savefig_folder</strong> : str, optional</p>
+<blockquote>
+<div><p>Folder in the current working directory to save figure into. Folder is created if it does not already exist. Figure is saved as &#8221;./savefig_folder/savefig_name.savefig_format&#8221;. If None or &#8216;&#8217;, figure is saved directly into the current working directory. Defaults to None.</p>
+</div></blockquote>
+<p><strong>savefig_format</strong> : str, optional</p>
+<blockquote>
+<div><p>Format of saved plot file. Must be &#8216;png&#8217; or &#8216;jpg&#8217;. Defaults to &#8216;png&#8217;.</p>
+</div></blockquote>
+<p><strong>savefig_dpi</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Dots per inch / pixels per inch of the saved image. Passed as a matplotlib.plot argument. Defaults to 600.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.pptdCond">
+<code class="descname">pptdCond</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.pptdCond" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Pinch-point temperature difference of condenser</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all state FlowStates from initial FlowState and given component definitions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>flowState</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>An initial working fluid FlowState. Defaults to None. If None, will search components (beginning with comp) for a non None flowIn.</p>
+</div></blockquote>
+<p><strong>component: str, optional</strong></p>
+<blockquote class="last">
+<div><p>Component for which flowState is set as flowInWf. Defaults to None.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sink4">
+<code class="descname">sink4</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sink4" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat sink when working fluid is at state4. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sink50">
+<code class="descname">sink50</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sink50" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat sink when working fluid is at state50. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sink51">
+<code class="descname">sink51</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sink51" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat sink when working fluid is at state51. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sink6">
+<code class="descname">sink6</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sink6" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat sink when working fluid is at state6. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sinkDead">
+<code class="descname">sinkDead</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkDead" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of cond.flowDeadSf. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sinkIn">
+<code class="descname">sinkIn</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of cond.flowInSf. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sinkOut">
+<code class="descname">sinkOut</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sinkOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of cond.flowOutSf. Only valid with a secondary flow as the heat sink.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Impose the design parameters on the cycle and execute .size() for each component.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sizeSetup">
+<code class="descname">sizeSetup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sizeSetup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Impose the design parameters on the cycle (without executing .size() for each component).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unitiseEvap</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the evap.unitise() is called if possible. Defaults to True.</p>
+</div></blockquote>
+<p><strong>unitiseCond</strong> : bool, optional</p>
+<blockquote class="last">
+<div><p>If True, cond.unitise() is called if possible. Defaults to True.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.source1">
+<code class="descname">source1</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.source1" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat source when working fluid is at state1. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.source20">
+<code class="descname">source20</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.source20" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat source when working fluid is at state20. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.source21">
+<code class="descname">source21</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.source21" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat source when working fluid is at state21. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.source3">
+<code class="descname">source3</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.source3" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Heat source when working fluid is at state3. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sourceDead">
+<code class="descname">sourceDead</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceDead" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of evap.flowDeadSf. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sourceIn">
+<code class="descname">sourceIn</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of evap.flowInSf. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.sourceOut">
+<code class="descname">sourceOut</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.sourceOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Alias of evap.flowOutSf. Only valid with a secondary flow as the heat source.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state1">
+<code class="descname">state1</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state1" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid flow at compressor outlet/ evaporator inlet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state20">
+<code class="descname">state20</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state20" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid saturated liquid FlowState in evaporator.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state21">
+<code class="descname">state21</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state21" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid saturated vapour FlowState in evaporator.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state3">
+<code class="descname">state3</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state3" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid FlowState at evaporator outlet/expander inlet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state4">
+<code class="descname">state4</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state4" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid FlowState at expander outlet/condenser inlet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state50">
+<code class="descname">state50</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state50" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid saturated liquid FlowState in condenser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state51">
+<code class="descname">state51</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state51" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid saturated vapour FlowState in condenser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.state6">
+<code class="descname">state6</code><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.state6" title="Permalink to this definition">¶</a></dt>
+<dd><p>FlowState: Working fluid FlowState at condenser outlet/ compressor inlet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of cycle properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>cycleStateKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Names of cycle flow states to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
+<p>Defaults to &#8216;none&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>componentKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Names of components to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all components in _components are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no components are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>componentKwargs</strong> : dict, optional</p>
+<blockquote>
+<div><p>Kwargs to parse to component summaries. Defaults to {&#8220;flowKeys&#8221;:&#8217;none&#8217;, &#8220;propertyKeys&#8221;:&#8217;none&#8217;}.</p>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RST_HEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.cycles.rankinebasic.RankineBasic.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.cycles.rankinebasic.RankineBasic.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) Cycle variables using keyword arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contents.html"
+                        title="previous chapter">Cycle Classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/cycles/rankinebasic.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contents.html" title="Cycle Classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" >Cycle Classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

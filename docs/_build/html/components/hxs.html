@@ -1,0 +1,1730 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Heat Exchanger Classes &#8212; MCycle 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Component Classes</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="heat-exchanger-classes">
+<h1>Heat Exchanger Classes<a class="headerlink" href="#heat-exchanger-classes" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic" title="mcycle.components.hxs.hx_basic.HxBasic"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hx_basic.HxBasic</span></code></a></td>
+<td>Characterises a basic heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hxunits.hxunit_basic.HxUnitBasic</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hx_basicplanar.HxBasicPlanar</span></code></a></td>
+<td>Characterises a basic planar heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hxunits.hxunit_basicplanar.HxUnitBasicPlanar</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate" title="mcycle.components.hxs.hx_plate.HxPlate"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hx_plate.HxPlate</span></code></a></td>
+<td>Characterises a basic plate heat exchanger consisting of alternating working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.hxs.hxunits.hxunit_plate.HxUnitPlate</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="module-mcycle.components.hxs.hx_basic">
+<span id="hxbasic-class"></span><h2>HxBasic Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_basic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic">
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basic.</code><code class="descname">HxBasic</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component22" title="mcycle.bases.component.Component22"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component22</span></code></a></p>
+<p>Characterises a basic heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>flowSense</strong> : str, optional</p>
+<blockquote>
+<div><p>Relative direction of the working and secondary flows. May be either &#8220;counterflow&#8221; or &#8220;parallel&#8221;. Defaults to &#8220;counterflow&#8221;.</p>
+</div></blockquote>
+<p><strong>NWf</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel working fluid channels [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>NSf</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel secondary fluid channels [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>NWall</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel walls [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>UWf_liq</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the single-phase liquid region (subcooled). Defaults to nan.</p>
+</div></blockquote>
+<p><strong>UWf_tp</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the two-phase liquid/vapour region. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>UWf_vap</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the single-phase vapour region (superheated). Defaults to nan.</p>
+</div></blockquote>
+<p><strong>USf</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the secondary fluid in a single-phase region. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>RfWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance factor due to fouling on the working fluid side [m^2K/W]. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>RfSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance factor due to fouling on the secondary fluid side [m^2K/W]. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>wall</strong> : SolidMaterial, optional</p>
+<blockquote>
+<div><p>Wall material. Defaults to None.</p>
+</div></blockquote>
+<p><strong>tWall</strong> : float, optional</p>
+<blockquote>
+<div><p>Thickness of the wall [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>A</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer surface area [m^2]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>ARatioWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioWall</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the wall [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>effThermal</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal efficiency [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>flowInWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowInSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowDeadSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Secondary fluid in its local dead state. Defaults to None.</p>
+</div></blockquote>
+<p><strong>sizeAttr</strong> : string, optional</p>
+<blockquote>
+<div><p>Default attribute used by size(). Defaults to &#8220;N&#8221;.</p>
+</div></blockquote>
+<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket containing solution of size(). Defaults to [1, 100].</p>
+<ul class="simple">
+<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+</ul>
+</div></blockquote>
+<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+</div></blockquote>
+<p><strong>name</strong> : string, optional</p>
+<blockquote>
+<div><p>Description of object. Defaults to &#8220;HxBasic instance&#8221;.</p>
+</div></blockquote>
+<p><strong>notes</strong> : string, optional</p>
+<blockquote>
+<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+</div></blockquote>
+<p><strong>config</strong> : Config, optional</p>
+<blockquote>
+<div><p>Configuration parameters. Defaults to the default Config object.</p>
+</div></blockquote>
+<p><strong>kwargs</strong> : optional</p>
+<blockquote class="last">
+<div><p>Arbitrary keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">A</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">NSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">NWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">NWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.Rf" title="mcycle.components.hxs.hx_basic.HxBasic.Rf"><code class="xref py py-obj docutils literal"><span class="pre">Rf</span></code></a></td>
+<td>float: Average of RfWf &amp; RfSf.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">RfSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">RfWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowDeadSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.flowInSf" title="mcycle.components.hxs.hx_basic.HxBasic.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.flowInWf" title="mcycle.components.hxs.hx_basic.HxBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<td>Alias for self.flowsIn[0]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.flowOutSf" title="mcycle.components.hxs.hx_basic.HxBasic.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.flowOutWf" title="mcycle.components.hxs.hx_basic.HxBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowSense</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.hWf" title="mcycle.components.hxs.hx_basic.HxBasic.hWf"><code class="xref py py-obj docutils literal"><span class="pre">hWf</span></code></a></td>
+<td>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_liq</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.hWf_sp" title="mcycle.components.hxs.hx_basic.HxBasic.hWf_sp"><code class="xref py py-obj docutils literal"><span class="pre">hWf_sp</span></code></a></td>
+<td>float: Average of hWf_liq &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_tp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_vap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.mSf" title="mcycle.components.hxs.hx_basic.HxBasic.mSf"><code class="xref py py-obj docutils literal"><span class="pre">mSf</span></code></a></td>
+<td>Alias for self.flowsIn[1].m</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.mWf" title="mcycle.components.hxs.hx_basic.HxBasic.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<td>Alias for self.flowsIn[0].m</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wall</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.Q" title="mcycle.components.hxs.hx_basic.HxBasic.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>float: Heat transfer from the secondary fluid to the working fluid [W].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.copy" title="mcycle.components.hxs.hx_basic.HxBasic.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.isEvap" title="mcycle.components.hxs.hx_basic.HxBasic.isEvap"><code class="xref py py-obj docutils literal"><span class="pre">isEvap</span></code></a></td>
+<td>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.run" title="mcycle.components.hxs.hx_basic.HxBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a></td>
+<td>Abstract method: must be defined by subclasses.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.summary" title="mcycle.components.hxs.hx_basic.HxBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.unitise" title="mcycle.components.hxs.hx_basic.HxBasic.unitise"><code class="xref py py-obj docutils literal"><span class="pre">unitise</span></code></a></td>
+<td>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.update" title="mcycle.components.hxs.hx_basic.HxBasic.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) variables using keyword arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.weight" title="mcycle.components.hxs.hx_basic.HxBasic.weight"><code class="xref py py-obj docutils literal"><span class="pre">weight</span></code></a></td>
+<td>float: Estimate of weight [Kg], based purely on wall properties.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.Q">
+<code class="descname">Q</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat transfer from the secondary fluid to the working fluid [W].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.Rf">
+<code class="descname">Rf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.Rf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of RfWf &amp; RfSf.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.flowInWf">
+<code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.flowInWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.flowOutWf">
+<code class="descname">flowOutWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.flowOutWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.hWf">
+<code class="descname">hWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.hWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.
+Setter makes all equal to desired value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.hWf_sp">
+<code class="descname">hWf_sp</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.hWf_sp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq &amp; hWf_vap.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.isEvap">
+<code class="descname">isEvap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.isEvap" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.mSf">
+<code class="descname">mSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.mSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.mWf">
+<code class="descname">mWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.mWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0].m</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method: must be defined by subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>flowKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
+<p>Defaults to &#8216;none&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.unitise">
+<code class="descname">unitise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.unitise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) variables using keyword arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.weight">
+<code class="descname">weight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Estimate of weight [Kg], based purely on wall properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="hxunitbasic-class">
+<h3>HxUnitBasic Class<a class="headerlink" href="#hxunitbasic-class" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="module-mcycle.components.hxs.hx_basicplanar">
+<span id="hxbasicplanar-class"></span><h2>HxBasicPlanar Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_basicplanar" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar">
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basicplanar.</code><code class="descname">HxBasicPlanar</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic" title="mcycle.components.hxs.hx_basic.HxBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hx_basic.HxBasic</span></code></a></p>
+<p>Characterises a basic planar heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>flowSense</strong> : str, optional</p>
+<blockquote>
+<div><p>Relative direction of the working and secondary flows. May be either &#8220;counterflow&#8221; or &#8220;parallel&#8221;. Defaults to &#8220;counterflow&#8221;.</p>
+</div></blockquote>
+<p><strong>NWf</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel working fluid channels [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>NSf</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel secondary fluid channels [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>NWall</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel walls [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>hWf_liq</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the single-phase liquid region (subcooled). Defaults to nan.</p>
+</div></blockquote>
+<p><strong>hWf_tp</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the two-phase liquid/vapour region. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>hWf_vap</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the working fluid in the single-phase vapour region (superheated). Defaults to nan.</p>
+</div></blockquote>
+<p><strong>hSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Heat transfer coefficient of the secondary fluid in a single-phase region. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>RfWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance due to fouling on the working fluid side. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>RfSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance due to fouling on the secondary fluid side. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>wall</strong> : SolidMaterial, optional</p>
+<blockquote>
+<div><p>Wall material. Defaults to None.</p>
+</div></blockquote>
+<p><strong>tWall</strong> : float, optional</p>
+<blockquote>
+<div><p>Thickness of the wall [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>L</strong> : float, optional</p>
+<blockquote>
+<div><p>Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>W</strong> : float, optional</p>
+<blockquote>
+<div><p>Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>ARatioWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioWall</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the wall [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>effThermal</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal efficiency [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>flowInWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowInSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowDeadSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Secondary fluid in its local dead state. Defaults to None.</p>
+</div></blockquote>
+<p><strong>sizeAttr</strong> : string, optional</p>
+<blockquote>
+<div><p>Default attribute used by size(). Defaults to &#8220;N&#8221;.</p>
+</div></blockquote>
+<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket containing solution of size(). Defaults to [1, 100].</p>
+<ul class="simple">
+<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+</ul>
+</div></blockquote>
+<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+</div></blockquote>
+<p><strong>name</strong> : string, optional</p>
+<blockquote>
+<div><p>Description of object. Defaults to &#8220;HxBasicPlanar instance&#8221;.</p>
+</div></blockquote>
+<p><strong>notes</strong> : string, optional</p>
+<blockquote>
+<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+</div></blockquote>
+<p><strong>config</strong> : Config, optional</p>
+<blockquote>
+<div><p>Configuration parameters. Defaults to the default Config object.</p>
+</div></blockquote>
+<p><strong>kwargs</strong> : optional</p>
+<blockquote class="last">
+<div><p>Arbitrary keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.A" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.A"><code class="xref py py-obj docutils literal"><span class="pre">A</span></code></a></td>
+<td>float: Heat transfer surface area. A = L * W.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">L</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">NSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">NWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">NWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Rf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Rf"><code class="xref py py-obj docutils literal"><span class="pre">Rf</span></code></a></td>
+<td>float: Average of RfWf &amp; RfSf.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">RfSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">RfWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">W</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowDeadSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInSf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInWf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<td>Alias for self.flowsIn[0]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutSf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutWf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowSense</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf"><code class="xref py py-obj docutils literal"><span class="pre">hWf</span></code></a></td>
+<td>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_liq</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf_sp" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf_sp"><code class="xref py py-obj docutils literal"><span class="pre">hWf_sp</span></code></a></td>
+<td>float: Average of hWf_liq &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_tp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_vap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mSf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mSf"><code class="xref py py-obj docutils literal"><span class="pre">mSf</span></code></a></td>
+<td>Alias for self.flowsIn[1].m</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mWf" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<td>Alias for self.flowsIn[0].m</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wall</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Q" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>float: Heat transfer from the secondary fluid to the working fluid [W].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.copy" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.isEvap" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.isEvap"><code class="xref py py-obj docutils literal"><span class="pre">isEvap</span></code></a></td>
+<td>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a></td>
+<td>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.unitise" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.unitise"><code class="xref py py-obj docutils literal"><span class="pre">unitise</span></code></a></td>
+<td>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.update" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) variables using keyword arguments.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.weight" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.weight"><code class="xref py py-obj docutils literal"><span class="pre">weight</span></code></a></td>
+<td>float: Estimate of weight [Kg], based purely on wall properties.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.A">
+<code class="descname">A</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.A" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat transfer surface area. A = L * W.
+Setter preserves the ratio of L/W.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Q">
+<code class="descname">Q</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat transfer from the secondary fluid to the working fluid [W].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Rf">
+<code class="descname">Rf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.Rf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of RfWf &amp; RfSf.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInWf">
+<code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowInWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutWf">
+<code class="descname">flowOutWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.flowOutWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf">
+<code class="descname">hWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.
+Setter makes all equal to desired value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf_sp">
+<code class="descname">hWf_sp</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.hWf_sp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq &amp; hWf_vap.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.isEvap">
+<code class="descname">isEvap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.isEvap" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mSf">
+<code class="descname">mSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mWf">
+<code class="descname">mWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.mWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0].m</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L">
+<code class="descname">size_L</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>flowKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
+<p>Defaults to &#8216;none&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.unitise">
+<code class="descname">unitise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.unitise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) variables using keyword arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.weight">
+<code class="descname">weight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Estimate of weight [Kg], based purely on wall properties.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="hxunitbasicplanar-class">
+<h3>HxUnitBasicPlanar Class<a class="headerlink" href="#hxunitbasicplanar-class" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="module-mcycle.components.hxs.hx_plate">
+<span id="hxplate-class"></span><h2>HxPlate Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_plate" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate">
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_plate.</code><code class="descname">HxPlate</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hx_basicplanar.HxBasicPlanar</span></code></a></p>
+<p>Characterises a basic plate heat exchanger consisting of alternating working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>flowSense</strong> : str, optional</p>
+<blockquote>
+<div><p>Relative direction of the working and secondary flows. May be either &#8220;counterflow&#8221; or &#8220;parallel&#8221;. Defaults to &#8220;counterflow&#8221;.</p>
+</div></blockquote>
+<p><strong>RfWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance due to fouling on the working fluid side. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>RfSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal resistance due to fouling on the secondary fluid side. Defaults to 0.</p>
+</div></blockquote>
+<p><strong>plate</strong> : SolidMaterial, optional</p>
+<blockquote>
+<div><p>Plate material. Defaults to None.</p>
+</div></blockquote>
+<p><strong>tPlate</strong> : float, optional</p>
+<blockquote>
+<div><p>Thickness of the plate [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>L</strong> : float, optional</p>
+<blockquote>
+<div><p>Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>W</strong> : float, optional</p>
+<blockquote>
+<div><p>Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>ARatioWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>ARatioPlate</strong> : float, optional</p>
+<blockquote>
+<div><p>Multiplier for the heat transfer surface area of the plate [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>NPlate</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of parallel plates [-]. The number of thermally activate plates is equal to NPlate - 2, due to the 2 end plates. Must be &gt;= 3. Defaults to 3.</p>
+</div></blockquote>
+<p><strong>DPortWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Diameter of the working fluid flow ports [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>DPortSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Diameter of the secondary fluid flow ports [m]. Defaults to nan.</p>
+</div></blockquote>
+<p><strong>LVertPortWf</strong> : float, optional</p>
+<blockquote>
+<div><p>Vertical distance between incoming and outgoing working fluid flow ports [m]. If None, L is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>LVertPortSf</strong> : float, optional</p>
+<blockquote>
+<div><p>Vertical distance between incoming and outgoing secondary fluid flow ports [m]. If None, L is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>coeffs_LPlate</strong> : list of float, optional</p>
+<blockquote>
+<div><p>Coefficients to calculate the total plate length from the length of the heat transfer area. LPlate = sum(coeffs_LPlate[i] * L**i). Defaults to [0, 1].</p>
+</div></blockquote>
+<p><strong>coeffs_WPlate</strong> : list of float, optional</p>
+<blockquote>
+<div><p>Coefficients to calculate the total plate width from the width of the heat transfer area. wPlate = sum(coeffs_WPlate[i] * W**i). Defaults to [0, 1].</p>
+</div></blockquote>
+<p><strong>coeffs_weight</strong> : list of float, optional</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Coefficients to calculate the total weight of the plates from the number of plates and the plate volume.::</dt>
+<dd><p class="first last">weight = sum(coeffs_weight[i] * NPlates**i)*(LPlate*WPlate*tPlate).</p>
+</dd>
+</dl>
+<p>If None, the weight is approximated from the plate geometry. Defaults to None.</p>
+</div></blockquote>
+<p><strong>effThermal</strong> : float, optional</p>
+<blockquote>
+<div><p>Thermal efficiency [-]. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>flowInWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowInSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Incoming FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutWf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the working fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowOutSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Outgoing FlowState of the secondary fluid. Defaults to None.</p>
+</div></blockquote>
+<p><strong>flowDeadSf</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Secondary fluid in its local dead state. Defaults to None.</p>
+</div></blockquote>
+<p><strong>sizeAttr</strong> : string, optional</p>
+<blockquote>
+<div><p>Default attribute used by size(). Defaults to &#8220;NPlate&#8221;.</p>
+</div></blockquote>
+<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket containing solution of size(). Defaults to [3, 100].</p>
+<ul class="simple">
+<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+</ul>
+</div></blockquote>
+<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<blockquote>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+</div></blockquote>
+<p><strong>name</strong> : string, optional</p>
+<blockquote>
+<div><p>Description of object. Defaults to &#8220;HxPlate instance&#8221;.</p>
+</div></blockquote>
+<p><strong>notes</strong> : string, optional</p>
+<blockquote>
+<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+</div></blockquote>
+<p><strong>config</strong> : Config, optional</p>
+<blockquote>
+<div><p>Configuration parameters. Defaults to the default Config object.</p>
+</div></blockquote>
+<p><strong>kwargs</strong> : optional</p>
+<blockquote class="last">
+<div><p>Arbitrary keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.A" title="mcycle.components.hxs.hx_plate.HxPlate.A"><code class="xref py py-obj docutils literal"><span class="pre">A</span></code></a></td>
+<td>float: Heat transfer surface area. A = L * W.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.ARatioPlate" title="mcycle.components.hxs.hx_plate.HxPlate.ARatioPlate"><code class="xref py py-obj docutils literal"><span class="pre">ARatioPlate</span></code></a></td>
+<td>float: Alias of self.ARatioWall</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ARatioWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">DPortSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DPortWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">L</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">LVertPortSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">LVertPortWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.NPlate" title="mcycle.components.hxs.hx_plate.HxPlate.NPlate"><code class="xref py py-obj docutils literal"><span class="pre">NPlate</span></code></a></td>
+<td>int: Alias of self.NWall</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">NSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">NWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">NWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.Rf" title="mcycle.components.hxs.hx_plate.HxPlate.Rf"><code class="xref py py-obj docutils literal"><span class="pre">Rf</span></code></a></td>
+<td>float: Average of RfWf &amp; RfSf.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">RfSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">RfWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">W</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">coeffs_LPlate</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">coeffs_WPlate</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">coeffs_weight</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowDeadSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.flowInSf" title="mcycle.components.hxs.hx_plate.HxPlate.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.flowInWf" title="mcycle.components.hxs.hx_plate.HxPlate.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<td>Alias for self.flowsIn[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.flowOutSf" title="mcycle.components.hxs.hx_plate.HxPlate.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.flowOutWf" title="mcycle.components.hxs.hx_plate.HxPlate.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowSense</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">geomPlate</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">geomPlateSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">geomPlateWf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hSf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.hWf" title="mcycle.components.hxs.hx_plate.HxPlate.hWf"><code class="xref py py-obj docutils literal"><span class="pre">hWf</span></code></a></td>
+<td>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_liq</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.hWf_sp" title="mcycle.components.hxs.hx_plate.HxPlate.hWf_sp"><code class="xref py py-obj docutils literal"><span class="pre">hWf_sp</span></code></a></td>
+<td>float: Average of hWf_liq &amp; hWf_vap.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_tp</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">hWf_vap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.mSf" title="mcycle.components.hxs.hx_plate.HxPlate.mSf"><code class="xref py py-obj docutils literal"><span class="pre">mSf</span></code></a></td>
+<td>Alias for self.flowsIn[1].m</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.mWf" title="mcycle.components.hxs.hx_plate.HxPlate.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<td>Alias for self.flowsIn[0].m</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.plate" title="mcycle.components.hxs.hx_plate.HxPlate.plate"><code class="xref py py-obj docutils literal"><span class="pre">plate</span></code></a></td>
+<td>SolidMaterial: Alias of self.wall</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.tPlate" title="mcycle.components.hxs.hx_plate.HxPlate.tPlate"><code class="xref py py-obj docutils literal"><span class="pre">tPlate</span></code></a></td>
+<td>float: Alias of self.tWall</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wall</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.LPlate" title="mcycle.components.hxs.hx_plate.HxPlate.LPlate"><code class="xref py py-obj docutils literal"><span class="pre">LPlate</span></code></a></td>
+<td>float: Total length of the plate; sum(coeffs_LPlate[i] * L**i).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.Q" title="mcycle.components.hxs.hx_plate.HxPlate.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>float: Heat transfer from the secondary fluid to the working fluid [W].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.WPlate" title="mcycle.components.hxs.hx_plate.HxPlate.WPlate"><code class="xref py py-obj docutils literal"><span class="pre">WPlate</span></code></a></td>
+<td>float: Total width of the plate; sum(coeffs_WPlate[i] * W**i).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.copy" title="mcycle.components.hxs.hx_plate.HxPlate.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpAccSf" title="mcycle.components.hxs.hx_plate.HxPlate.dpAccSf"><code class="xref py py-obj docutils literal"><span class="pre">dpAccSf</span></code></a></td>
+<td>float: Acceleration pressure drop of the secondary fluid [Pa].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpAccWf" title="mcycle.components.hxs.hx_plate.HxPlate.dpAccWf"><code class="xref py py-obj docutils literal"><span class="pre">dpAccWf</span></code></a></td>
+<td>float: Acceleration pressure drop of the working fluid [Pa].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpFSf" title="mcycle.components.hxs.hx_plate.HxPlate.dpFSf"><code class="xref py py-obj docutils literal"><span class="pre">dpFSf</span></code></a></td>
+<td>float: Frcitional pressure drop of the secondary fluid [Pa].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpFWf" title="mcycle.components.hxs.hx_plate.HxPlate.dpFWf"><code class="xref py py-obj docutils literal"><span class="pre">dpFWf</span></code></a></td>
+<td>float: Frictional pressure drop of the working fluid [Pa].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpHeadSf" title="mcycle.components.hxs.hx_plate.HxPlate.dpHeadSf"><code class="xref py py-obj docutils literal"><span class="pre">dpHeadSf</span></code></a></td>
+<td>float: Static head pressure drop of the secondary fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpHeadWf" title="mcycle.components.hxs.hx_plate.HxPlate.dpHeadWf"><code class="xref py py-obj docutils literal"><span class="pre">dpHeadWf</span></code></a></td>
+<td>float: Static head pressure drop of the working fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpPortSf" title="mcycle.components.hxs.hx_plate.HxPlate.dpPortSf"><code class="xref py py-obj docutils literal"><span class="pre">dpPortSf</span></code></a></td>
+<td>float: Port pressure loss of the secondary fluid [Pa].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpPortWf" title="mcycle.components.hxs.hx_plate.HxPlate.dpPortWf"><code class="xref py py-obj docutils literal"><span class="pre">dpPortWf</span></code></a></td>
+<td>float: Port pressure loss of the working fluid [Pa].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpSf" title="mcycle.components.hxs.hx_plate.HxPlate.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a></td>
+<td>float: Total pressure drop of the secondary fluid [Pa].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.dpWf" title="mcycle.components.hxs.hx_plate.HxPlate.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a></td>
+<td>float: Total pressure drop of the working fluid [Pa].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.isEvap" title="mcycle.components.hxs.hx_plate.HxPlate.isEvap"><code class="xref py py-obj docutils literal"><span class="pre">isEvap</span></code></a></td>
+<td>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="mcycle.components.hxs.hx_plate.HxPlate.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a></td>
+<td>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size_NPlate" title="mcycle.components.hxs.hx_plate.HxPlate.size_NPlate"><code class="xref py py-obj docutils literal"><span class="pre">size_NPlate</span></code></a></td>
+<td>int: size for NPlate that requires L to be closest to self.L</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.summary" title="mcycle.components.hxs.hx_plate.HxPlate.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.unitise" title="mcycle.components.hxs.hx_plate.HxPlate.unitise"><code class="xref py py-obj docutils literal"><span class="pre">unitise</span></code></a></td>
+<td>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.update" title="mcycle.components.hxs.hx_plate.HxPlate.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
+<td>Update (multiple) variables using keyword arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.weight" title="mcycle.components.hxs.hx_plate.HxPlate.weight"><code class="xref py py-obj docutils literal"><span class="pre">weight</span></code></a></td>
+<td>float: Approximate total weight of the heat exchanger plates [Kg], calculated as either</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.A">
+<code class="descname">A</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.A" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat transfer surface area. A = L * W.
+Setter preserves the ratio of L/W.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.ARatioPlate">
+<code class="descname">ARatioPlate</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.ARatioPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Alias of self.ARatioWall</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.LPlate">
+<code class="descname">LPlate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.LPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Total length of the plate; sum(coeffs_LPlate[i] * L**i).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.NPlate">
+<code class="descname">NPlate</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.NPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>int: Alias of self.NWall</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.Q">
+<code class="descname">Q</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Heat transfer from the secondary fluid to the working fluid [W].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.Rf">
+<code class="descname">Rf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.Rf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of RfWf &amp; RfSf.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.WPlate">
+<code class="descname">WPlate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.WPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Total width of the plate; sum(coeffs_WPlate[i] * W**i).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpAccSf">
+<code class="descname">dpAccSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpAccSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Acceleration pressure drop of the secondary fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpAccWf">
+<code class="descname">dpAccWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpAccWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Acceleration pressure drop of the working fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpFSf">
+<code class="descname">dpFSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpFSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Frcitional pressure drop of the secondary fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpFWf">
+<code class="descname">dpFWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpFWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Frictional pressure drop of the working fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpHeadSf">
+<code class="descname">dpHeadSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpHeadSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Static head pressure drop of the secondary fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpHeadWf">
+<code class="descname">dpHeadWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpHeadWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Static head pressure drop of the working fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpPortSf">
+<code class="descname">dpPortSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpPortSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Port pressure loss of the secondary fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpPortWf">
+<code class="descname">dpPortWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpPortWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Port pressure loss of the working fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpSf">
+<code class="descname">dpSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Total pressure drop of the secondary fluid [Pa].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.dpWf">
+<code class="descname">dpWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.dpWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Total pressure drop of the working fluid [Pa].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.flowInWf">
+<code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.flowInWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.flowOutWf">
+<code class="descname">flowOutWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.flowOutWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.hWf">
+<code class="descname">hWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.hWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq, hWf_tp &amp; hWf_vap.
+Setter makes all equal to desired value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.hWf_sp">
+<code class="descname">hWf_sp</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.hWf_sp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Average of hWf_liq &amp; hWf_vap.
+Setter makes both equal to desired value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.isEvap">
+<code class="descname">isEvap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.isEvap" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: True if the Hx is an evaporator; heat transfer from secondary fluid to working fluid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.mSf">
+<code class="descname">mSf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.mSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.mWf">
+<code class="descname">mWf</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.mWf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[0].m</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.plate">
+<code class="descname">plate</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.plate" title="Permalink to this definition">¶</a></dt>
+<dd><p>SolidMaterial: Alias of self.wall</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.size_L">
+<code class="descname">size_L</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.size_NPlate">
+<code class="descname">size_NPlate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size_NPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>int: size for NPlate that requires L to be closest to self.L</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
+<p>Defaults to &#8216;all&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>flowKeys</strong> : list or str, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+</li>
+<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
+<p>Defaults to &#8216;none&#8217;.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.tPlate">
+<code class="descname">tPlate</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.tPlate" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Alias of self.tWall</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.unitise">
+<code class="descname">unitise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.unitise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) variables using keyword arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.weight">
+<code class="descname">weight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Approximate total weight of the heat exchanger plates [Kg], calculated as either</p>
+<ul class="simple">
+<li>sum(coeffs_weight[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_weight is defined,</li>
+<li>or (LPlate*WPlate - 2(0.25*pi*DPortWf**2 + 0.25*pi*DPortSf**2))*tPlate*plate.rho*NPlate.</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="hxunitplate-class">
+<h3>HxUnitPlate Class<a class="headerlink" href="#hxunitplate-class" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Heat Exchanger Classes</a><ul>
+<li><a class="reference internal" href="#module-mcycle.components.hxs.hx_basic">HxBasic Class</a><ul>
+<li><a class="reference internal" href="#hxunitbasic-class">HxUnitBasic Class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-mcycle.components.hxs.hx_basicplanar">HxBasicPlanar Class</a><ul>
+<li><a class="reference internal" href="#hxunitbasicplanar-class">HxUnitBasicPlanar Class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-mcycle.components.hxs.hx_plate">HxPlate Class</a><ul>
+<li><a class="reference internal" href="#hxunitplate-class">HxUnitPlate Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/components/hxs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="contents.html" >Component Classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Momar Hughes.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>

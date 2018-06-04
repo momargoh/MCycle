@@ -1,0 +1,16 @@
+numpy
+scipy
+matplotlib
+CoolProp
+sphinxcontrib-websupport
+Pygments
+babel
+imagesize
+alabaster
+Jinja2
+snowballstemmer
+requests
+setuptools
+docutils
+six
+numpydoc
