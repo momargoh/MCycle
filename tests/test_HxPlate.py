@@ -6,6 +6,8 @@ import CoolProp as CP
 class TestHxPlateCorrChevron(unittest.TestCase):
     config = mc.Config()
     config.update({'dpAcc': False, 'dpPort': False, 'dpHead': False})
+    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
+                      ["all"], ["all"], ["sf"])
     hx = mc.HxPlate(
         flowSense="counterflow",
         RfWf=0,

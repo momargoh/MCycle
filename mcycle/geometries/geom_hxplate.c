@@ -20,7 +20,7 @@ END: Cython Metadata */
     #error Cython requires Python 2.6+ or Python 3.3+.
 #else
 #define CYTHON_ABI "0_27_3"
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1342,40 +1342,46 @@ static const char __pyx_k_GeomHxPlateCorrChevron_instance[] = "GeomHxPlateCorrCh
 static const char __pyx_k_Incompatible_checksums_s_vs_0x29[] = "Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x55[] = "Incompatible checksums (%s vs 0x55a232e = (_inputs, _properties, cls, h, ilist, itup, l, name, s, t, validClasses))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x58[] = "Incompatible checksums (%s vs 0x588448d = (_inputs, _properties, b, cls, ilist, itup, name, roughness, validClasses))";
-static PyObject *__pyx_kp_s_Cannot_set_b_given_h_t_one_must;
-static PyObject *__pyx_kp_s_GeomHxPlateCorrChevron_instance;
-static PyObject *__pyx_kp_s_GeomHxPlateFinOffset_instance;
-static PyObject *__pyx_kp_s_GeomHxPlateRough_instance;
-static PyObject *__pyx_kp_s_GeomHxPlateSmooth_instance;
-static PyObject *__pyx_n_s_HxPlate;
-static PyObject *__pyx_n_s_HxUnitPlate;
+static PyObject *__pyx_kp_u_Cannot_set_b_given_h_t_one_must;
+static PyObject *__pyx_kp_u_GeomHxPlateCorrChevron_instance;
+static PyObject *__pyx_kp_u_GeomHxPlateFinOffset_instance;
+static PyObject *__pyx_kp_u_GeomHxPlateRough_instance;
+static PyObject *__pyx_kp_u_GeomHxPlateSmooth_instance;
+static PyObject *__pyx_n_u_HxPlate;
+static PyObject *__pyx_n_u_HxUnitPlate;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x29;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x55;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x58;
 static PyObject *__pyx_n_s_PickleError;
-static PyObject *__pyx_n_s_angle;
+static PyObject *__pyx_n_u_angle;
 static PyObject *__pyx_n_s_b;
-static PyObject *__pyx_kp_s_b_2;
+static PyObject *__pyx_n_u_b;
+static PyObject *__pyx_kp_u_b_2;
 static PyObject *__pyx_n_s_beta;
+static PyObject *__pyx_n_u_beta;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_h;
+static PyObject *__pyx_n_u_h;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_l;
-static PyObject *__pyx_n_s_length;
-static PyObject *__pyx_kp_s_length_length;
+static PyObject *__pyx_n_u_l;
+static PyObject *__pyx_n_u_length;
+static PyObject *__pyx_kp_u_length_length;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mcycle_geometries_geom_hxplate;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
 static PyObject *__pyx_n_s_new;
-static PyObject *__pyx_n_s_none;
+static PyObject *__pyx_n_u_none;
 static PyObject *__pyx_n_s_phi;
+static PyObject *__pyx_n_u_phi;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pitchCorr;
+static PyObject *__pyx_n_u_pitchCorr;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
 static PyObject *__pyx_n_s_pyx_result;
@@ -1390,13 +1396,16 @@ static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_roughness;
+static PyObject *__pyx_n_u_roughness;
 static PyObject *__pyx_n_s_s;
+static PyObject *__pyx_n_u_s;
 static PyObject *__pyx_n_s_set_b;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_t;
+static PyObject *__pyx_n_u_t;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_warn;
@@ -1481,7 +1490,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_b,&__pyx_n_s_beta,&__pyx_n_s_pitchCorr,&__pyx_n_s_phi,&__pyx_n_s_name,0};
     PyObject* values[5] = {0,0,0,0,0};
-    values[4] = ((PyObject *)__pyx_kp_s_GeomHxPlateCorrChevron_instance);
+    values[4] = ((PyObject *)__pyx_kp_u_GeomHxPlateCorrChevron_instance);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -1621,7 +1630,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron
  *         self.validClasses = ('HxPlate', 'HxUnitPlate')
  *         self._inputs = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_name;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -1657,39 +1666,39 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_b, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_b, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_angle);
-  __Pyx_GIVEREF(__pyx_n_s_angle);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_angle);
+  __Pyx_INCREF(__pyx_n_u_angle);
+  __Pyx_GIVEREF(__pyx_n_u_angle);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_angle);
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_beta, __pyx_t_3) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_beta, __pyx_t_3) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_pitchCorr, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_pitchCorr, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/geometries/geom_hxplate.pyx":35
@@ -1704,13 +1713,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_none);
-  __Pyx_GIVEREF(__pyx_n_s_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_none);
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_phi, __pyx_t_3) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_phi, __pyx_t_3) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "mcycle/geometries/geom_hxplate.pyx":34
@@ -2075,6 +2084,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_2__reduce_cython__[] = "GeomHxPlateCorrChevron.__reduce_cython__(self)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2395,6 +2405,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrC
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_4__setstate_cython__[] = "GeomHxPlateCorrChevron.__setstate_cython__(self, __pyx_state)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2464,7 +2475,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_1
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_s,&__pyx_n_s_h,&__pyx_n_s_t,&__pyx_n_s_l,&__pyx_n_s_name,0};
     PyObject* values[5] = {0,0,0,0,0};
-    values[4] = ((PyObject *)__pyx_kp_s_GeomHxPlateFinOffset_instance);
+    values[4] = ((PyObject *)__pyx_kp_u_GeomHxPlateFinOffset_instance);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -2604,7 +2615,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset__
  *         self.validClasses = ("HxPlate", "HxUnitPlate")
  *         self._inputs = {"s": MCAttr(float, "length"), "h": MCAttr(float, "length"), "t": MCAttr(float, "length"),
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 83, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 83, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_name;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2640,39 +2651,39 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset__
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_s, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_s, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_length);
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_h, __pyx_t_3) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_h, __pyx_t_3) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_t, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_t, __pyx_t_4) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/geometries/geom_hxplate.pyx":86
@@ -2687,13 +2698,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset__
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_length);
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_l, __pyx_t_3) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_l, __pyx_t_3) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "mcycle/geometries/geom_hxplate.pyx":85
@@ -2723,13 +2734,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset__
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_s_b_2, __pyx_t_4) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_b_2, __pyx_t_4) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base._properties);
@@ -2845,7 +2856,7 @@ double __pyx_f_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_b(stru
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_3b(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_2b[] = "float: Plate spacing; b = h + t. Setter works only if either h or t is None.";
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_2b[] = "GeomHxPlateFinOffset.b(self) -> double\nfloat: Plate spacing; b = h + t. Setter works only if either h or t is None.";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_3b(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2974,7 +2985,7 @@ void __pyx_f_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_set_b(st
   __Pyx_INCREF(__pyx_n_s_warn);
   __Pyx_GIVEREF(__pyx_n_s_warn);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_warn);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
@@ -3080,7 +3091,7 @@ void __pyx_f_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_set_b(st
  * 
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Cannot_set_b_given_h_t_one_must, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Cannot_set_b_given_h_t_one_must, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->h); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -3212,6 +3223,7 @@ void __pyx_f_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_set_b(st
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_5set_b(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_4set_b[] = "GeomHxPlateFinOffset.set_b(self, value) -> void";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_5set_b(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3558,6 +3570,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_1
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_6__reduce_cython__[] = "GeomHxPlateFinOffset.__reduce_cython__(self)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3878,6 +3891,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOf
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_8__setstate_cython__[] = "GeomHxPlateFinOffset.__setstate_cython__(self, __pyx_state)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3945,7 +3959,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_1__in
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_b,&__pyx_n_s_roughness,&__pyx_n_s_name,0};
     PyObject* values[3] = {0,0,0};
-    values[2] = ((PyObject *)__pyx_kp_s_GeomHxPlateRough_instance);
+    values[2] = ((PyObject *)__pyx_kp_u_GeomHxPlateRough_instance);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -4045,7 +4059,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough___ini
  *         self.validClasses = ("HxPlate", "HxUnitPlate")
  *         self._inputs = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_name))||((__pyx_v_name) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_name)->tp_name), 0))) __PYX_ERR(0, 120, __pyx_L1_error)
   __pyx_t_2 = __pyx_v_name;
   __Pyx_INCREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4081,26 +4095,26 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough___ini
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_length);
   __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_b, __pyx_t_4) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_b, __pyx_t_4) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_kp_s_length_length);
-  __Pyx_GIVEREF(__pyx_kp_s_length_length);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_kp_s_length_length);
+  __Pyx_INCREF(__pyx_kp_u_length_length);
+  __Pyx_GIVEREF(__pyx_kp_u_length_length);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_kp_u_length_length);
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_roughness, __pyx_t_3) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_roughness, __pyx_t_3) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base._inputs);
@@ -4305,6 +4319,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_9roug
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_2__reduce_cython__[] = "GeomHxPlateRough.__reduce_cython__(self)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4611,6 +4626,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_4__setstate_cython__[] = "GeomHxPlateRough.__setstate_cython__(self, __pyx_state)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4677,7 +4693,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_1__i
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_b,&__pyx_n_s_name,0};
     PyObject* values[2] = {0,0};
-    values[1] = ((PyObject *)__pyx_kp_s_GeomHxPlateSmooth_instance);
+    values[1] = ((PyObject *)__pyx_kp_u_GeomHxPlateSmooth_instance);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -4825,13 +4841,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth___in
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_s_length);
-  __Pyx_GIVEREF(__pyx_n_s_length);
-  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_length);
+  __Pyx_INCREF(__pyx_n_u_length);
+  __Pyx_GIVEREF(__pyx_n_u_length);
+  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_length);
   __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_b, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_b, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs);
@@ -4851,13 +4867,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth___in
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_kp_s_length_length);
-  __Pyx_GIVEREF(__pyx_kp_s_length_length);
-  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_kp_s_length_length);
+  __Pyx_INCREF(__pyx_kp_u_length_length);
+  __Pyx_GIVEREF(__pyx_kp_u_length_length);
+  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_kp_u_length_length);
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_roughness, __pyx_t_2) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_roughness, __pyx_t_2) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._properties);
@@ -4896,6 +4912,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth___in
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_2__reduce_cython__[] = "GeomHxPlateSmooth.__reduce_cython__(self)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -5202,6 +5219,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmoot
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_4__setstate_cython__[] = "GeomHxPlateSmooth.__setstate_cython__(self, __pyx_state)";
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -5257,7 +5275,8 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmoot
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron = {"__pyx_unpickle_GeomHxPlateCorrChevron", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_GeomHxPlateCorrChevron[] = "__pyx_unpickle_GeomHxPlateCorrChevron(__pyx_type, long __pyx_checksum, __pyx_state)";
+static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron = {"__pyx_unpickle_GeomHxPlateCorrChevron", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_GeomHxPlateCorrChevron};
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_1__pyx_unpickle_GeomHxPlateCorrChevron(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
@@ -5363,7 +5382,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geo
     __Pyx_INCREF(__pyx_n_s_PickleError);
     __Pyx_GIVEREF(__pyx_n_s_PickleError);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
@@ -5644,7 +5663,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.cls);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.cls);
@@ -5680,7 +5699,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
@@ -5845,7 +5864,8 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset = {"__pyx_unpickle_GeomHxPlateFinOffset", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_GeomHxPlateFinOffset[] = "__pyx_unpickle_GeomHxPlateFinOffset(__pyx_type, long __pyx_checksum, __pyx_state)";
+static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset = {"__pyx_unpickle_GeomHxPlateFinOffset", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_GeomHxPlateFinOffset};
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_3__pyx_unpickle_GeomHxPlateFinOffset(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
@@ -5951,7 +5971,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
     __Pyx_INCREF(__pyx_n_s_PickleError);
     __Pyx_GIVEREF(__pyx_n_s_PickleError);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
@@ -6214,7 +6234,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.cls);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.cls);
@@ -6268,7 +6288,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
@@ -6433,7 +6453,8 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough = {"__pyx_unpickle_GeomHxPlateRough", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_4__pyx_unpickle_GeomHxPlateRough[] = "__pyx_unpickle_GeomHxPlateRough(__pyx_type, long __pyx_checksum, __pyx_state)";
+static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough = {"__pyx_unpickle_GeomHxPlateRough", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_4__pyx_unpickle_GeomHxPlateRough};
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateRough(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
@@ -6539,7 +6560,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_4__pyx_unpickle_Ge
     __Pyx_INCREF(__pyx_n_s_PickleError);
     __Pyx_GIVEREF(__pyx_n_s_PickleError);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
@@ -6811,7 +6832,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.cls);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.cls);
@@ -6847,7 +6868,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.name);
@@ -7003,7 +7024,8 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth = {"__pyx_unpickle_GeomHxPlateSmooth", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_6mcycle_10geometries_12geom_hxplate_6__pyx_unpickle_GeomHxPlateSmooth[] = "__pyx_unpickle_GeomHxPlateSmooth(__pyx_type, long __pyx_checksum, __pyx_state)";
+static PyMethodDef __pyx_mdef_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth = {"__pyx_unpickle_GeomHxPlateSmooth", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_6__pyx_unpickle_GeomHxPlateSmooth};
 static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_7__pyx_unpickle_GeomHxPlateSmooth(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
@@ -7109,7 +7131,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_6__pyx_unpickle_Ge
     __Pyx_INCREF(__pyx_n_s_PickleError);
     __Pyx_GIVEREF(__pyx_n_s_PickleError);
     PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
-    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
@@ -7381,7 +7403,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.cls);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.cls);
@@ -7417,7 +7439,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.__pyx_base.name);
   __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.__pyx_base.name);
@@ -7654,16 +7676,16 @@ static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrCh
 }
 
 static PyMethodDef __pyx_methods_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCorrChevron[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_3__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_5__setstate_cython__, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_3__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_2__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_5__setstate_cython__, METH_O, __pyx_doc_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_4__setstate_cython__},
   {0, 0, 0, 0}
 };
 
 static struct PyGetSetDef __pyx_getsets_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCorrChevron[] = {
-  {(char *)"b", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_b, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_b, (char *)0, 0},
-  {(char *)"beta", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_beta, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_beta, (char *)0, 0},
-  {(char *)"pitchCorr", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_pitchCorr, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_pitchCorr, (char *)0, 0},
-  {(char *)"phi", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_phi, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_phi, (char *)0, 0},
+  {(char *)"b", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_b, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_b, (char *)"b: 'double'", 0},
+  {(char *)"beta", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_beta, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_beta, (char *)"beta: 'double'", 0},
+  {(char *)"pitchCorr", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_pitchCorr, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_pitchCorr, (char *)"pitchCorr: 'double'", 0},
+  {(char *)"phi", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_phi, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_22GeomHxPlateCorrChevron_phi, (char *)"phi: 'double'", 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -7693,7 +7715,7 @@ static PyTypeObject __pyx_type_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCo
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Geometry of chevron corrugations for a plate heat exchanger.\n\nParameters\n----------\nb : float\n    Plate spacing for fluid channels [m].\nbeta : float\n    Plate corrugation chevron angle [deg].\npitchCorr : float\n    Plate corrugation pitch [m] (distance between corrugation 'bumps').\n      .. note:: Not to be confused with the plate pitch (pitchPlate) which is defined as the sum of the plate channel spacing and one plate thickness.\nphi : float\n    Corrugated plate surface enlargement factor; ratio of developed length to projected length.\n    ", /*tp_doc*/
+  "GeomHxPlateCorrChevron(b, beta, pitchCorr, phi, name=u'GeomHxPlateCorrChevron instance')\nGeometry of chevron corrugations for a plate heat exchanger.\n\nParameters\n----------\nb : float\n    Plate spacing for fluid channels [m].\nbeta : float\n    Plate corrugation chevron angle [deg].\npitchCorr : float\n    Plate corrugation pitch [m] (distance between corrugation 'bumps').\n      .. note:: Not to be confused with the plate pitch (pitchPlate) which is defined as the sum of the plate channel spacing and one plate thickness.\nphi : float\n    Corrugated plate surface enlargement factor; ratio of developed length to projected length.\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCorrChevron, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCorrChevron, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7815,17 +7837,17 @@ static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOff
 
 static PyMethodDef __pyx_methods_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFinOffset[] = {
   {"b", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_3b, METH_NOARGS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_2b},
-  {"set_b", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_5set_b, METH_O, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_9__setstate_cython__, METH_O, 0},
+  {"set_b", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_5set_b, METH_O, __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_4set_b},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_7__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_6__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_9__setstate_cython__, METH_O, __pyx_doc_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_8__setstate_cython__},
   {0, 0, 0, 0}
 };
 
 static struct PyGetSetDef __pyx_getsets_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFinOffset[] = {
-  {(char *)"s", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_s, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_s, (char *)0, 0},
-  {(char *)"h", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_h, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_h, (char *)0, 0},
-  {(char *)"t", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_t, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_t, (char *)0, 0},
-  {(char *)"l", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_l, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_l, (char *)0, 0},
+  {(char *)"s", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_s, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_s, (char *)"s: 'double'", 0},
+  {(char *)"h", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_h, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_h, (char *)"h: 'double'", 0},
+  {(char *)"t", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_t, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_t, (char *)"t: 'double'", 0},
+  {(char *)"l", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_l, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_20GeomHxPlateFinOffset_l, (char *)"l: 'double'", 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -7855,7 +7877,7 @@ static PyTypeObject __pyx_type_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFi
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Geometry of offset fins for a plate heat exchanger. Refer to Figure 1 in [Manglik1995]_.\n\nParameters\n-----------\ns : float\n    Lateral fin spacing [m].\nh : float\n    Fin channel height [m].\nt : float\n    Fin thickness [m].\nl : float\n    Individual fin length [m].\n\nReferences\n---------------\n\n.. [Manglik1995] Manglik and Bergles, Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger, Experimental Thermal and Fluid Science, Elsevier, 1995, 10, pp. 171-180.\n\nBibtex::\n\n@Article{manglik1995heat,\n  author    = {Raj M. Manglik and Arthur E. Bergles},\n  title     = {Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger},\n  journal   = {Experimental Thermal and Fluid Science},\n  year      = {1995},\n  volume    = {10},\n  number    = {2},\n  pages     = {171--180},\n  month     = {feb},\n  doi       = {10.1016/0894-1777(94)00096-q},\n  publisher = {Elsevier {BV}},\n}\n    ", /*tp_doc*/
+  "GeomHxPlateFinOffset(s, h, t, l, name=u'GeomHxPlateFinOffset instance')\nGeometry of offset fins for a plate heat exchanger. Refer to Figure 1 in [Manglik1995]_.\n\nParameters\n-----------\ns : float\n    Lateral fin spacing [m].\nh : float\n    Fin channel height [m].\nt : float\n    Fin thickness [m].\nl : float\n    Individual fin length [m].\n\nReferences\n---------------\n\n.. [Manglik1995] Manglik and Bergles, Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger, Experimental Thermal and Fluid Science, Elsevier, 1995, 10, pp. 171-180.\n\nBibtex::\n\n@Article{manglik1995heat,\n  author    = {Raj M. Manglik and Arthur E. Bergles},\n  title     = {Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger},\n  journal   = {Experimental Thermal and Fluid Science},\n  year      = {1995},\n  volume    = {10},\n  number    = {2},\n  pages     = {171--180},\n  month     = {feb},\n  doi       = {10.1016/0894-1777(94)00096-q},\n  publisher = {Elsevier {BV}},\n}\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFinOffset, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFinOffset, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7948,14 +7970,14 @@ static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_
 }
 
 static PyMethodDef __pyx_methods_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_3__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_5__setstate_cython__, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_3__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_2__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_5__setstate_cython__, METH_O, __pyx_doc_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_4__setstate_cython__},
   {0, 0, 0, 0}
 };
 
 static struct PyGetSetDef __pyx_getsets_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough[] = {
-  {(char *)"b", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_b, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_b, (char *)0, 0},
-  {(char *)"roughness", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_roughness, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_roughness, (char *)0, 0},
+  {(char *)"b", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_b, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_b, (char *)"b: 'double'", 0},
+  {(char *)"roughness", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_roughness, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_16GeomHxPlateRough_roughness, (char *)"roughness: 'double'", 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -7985,7 +8007,7 @@ static PyTypeObject __pyx_type_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRo
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Geometry of heat exchanger plate with a rough surface.\n\nParameters\n-----------\nb : float\n    Plate channel spacing [m].\nroughness : float\n    Surface roughness factor. (As is used on the Moody chart)\n", /*tp_doc*/
+  "GeomHxPlateRough(b, roughness, name=u'GeomHxPlateRough instance')\nGeometry of heat exchanger plate with a rough surface.\n\nParameters\n-----------\nb : float\n    Plate channel spacing [m].\nroughness : float\n    Surface roughness factor. (As is used on the Moody chart)\n", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -8028,8 +8050,8 @@ static PyObject *__pyx_tp_new_6mcycle_10geometries_12geom_hxplate_GeomHxPlateSmo
 }
 
 static PyMethodDef __pyx_methods_6mcycle_10geometries_12geom_hxplate_GeomHxPlateSmooth[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_3__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_5__setstate_cython__, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_3__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_2__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_5__setstate_cython__, METH_O, __pyx_doc_6mcycle_10geometries_12geom_hxplate_17GeomHxPlateSmooth_4__setstate_cython__},
   {0, 0, 0, 0}
 };
 
@@ -8059,7 +8081,7 @@ static PyTypeObject __pyx_type_6mcycle_10geometries_12geom_hxplate_GeomHxPlateSm
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Geometry of smooth heat exchanger plate (roughness factor is always None).\n\nParameters\n-----------\nb : float\n    Plate channel spacing [m].\n", /*tp_doc*/
+  "GeomHxPlateSmooth(b, name=u'GeomHxPlateSmooth instance')\nGeometry of smooth heat exchanger plate (roughness factor is always None).\n\nParameters\n-----------\nb : float\n    Plate channel spacing [m].\n", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -8128,40 +8150,46 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_Cannot_set_b_given_h_t_one_must, __pyx_k_Cannot_set_b_given_h_t_one_must, sizeof(__pyx_k_Cannot_set_b_given_h_t_one_must), 0, 0, 1, 0},
-  {&__pyx_kp_s_GeomHxPlateCorrChevron_instance, __pyx_k_GeomHxPlateCorrChevron_instance, sizeof(__pyx_k_GeomHxPlateCorrChevron_instance), 0, 0, 1, 0},
-  {&__pyx_kp_s_GeomHxPlateFinOffset_instance, __pyx_k_GeomHxPlateFinOffset_instance, sizeof(__pyx_k_GeomHxPlateFinOffset_instance), 0, 0, 1, 0},
-  {&__pyx_kp_s_GeomHxPlateRough_instance, __pyx_k_GeomHxPlateRough_instance, sizeof(__pyx_k_GeomHxPlateRough_instance), 0, 0, 1, 0},
-  {&__pyx_kp_s_GeomHxPlateSmooth_instance, __pyx_k_GeomHxPlateSmooth_instance, sizeof(__pyx_k_GeomHxPlateSmooth_instance), 0, 0, 1, 0},
-  {&__pyx_n_s_HxPlate, __pyx_k_HxPlate, sizeof(__pyx_k_HxPlate), 0, 0, 1, 1},
-  {&__pyx_n_s_HxUnitPlate, __pyx_k_HxUnitPlate, sizeof(__pyx_k_HxUnitPlate), 0, 0, 1, 1},
+  {&__pyx_kp_u_Cannot_set_b_given_h_t_one_must, __pyx_k_Cannot_set_b_given_h_t_one_must, sizeof(__pyx_k_Cannot_set_b_given_h_t_one_must), 0, 1, 0, 0},
+  {&__pyx_kp_u_GeomHxPlateCorrChevron_instance, __pyx_k_GeomHxPlateCorrChevron_instance, sizeof(__pyx_k_GeomHxPlateCorrChevron_instance), 0, 1, 0, 0},
+  {&__pyx_kp_u_GeomHxPlateFinOffset_instance, __pyx_k_GeomHxPlateFinOffset_instance, sizeof(__pyx_k_GeomHxPlateFinOffset_instance), 0, 1, 0, 0},
+  {&__pyx_kp_u_GeomHxPlateRough_instance, __pyx_k_GeomHxPlateRough_instance, sizeof(__pyx_k_GeomHxPlateRough_instance), 0, 1, 0, 0},
+  {&__pyx_kp_u_GeomHxPlateSmooth_instance, __pyx_k_GeomHxPlateSmooth_instance, sizeof(__pyx_k_GeomHxPlateSmooth_instance), 0, 1, 0, 0},
+  {&__pyx_n_u_HxPlate, __pyx_k_HxPlate, sizeof(__pyx_k_HxPlate), 0, 1, 0, 1},
+  {&__pyx_n_u_HxUnitPlate, __pyx_k_HxUnitPlate, sizeof(__pyx_k_HxUnitPlate), 0, 1, 0, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x29, __pyx_k_Incompatible_checksums_s_vs_0x29, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x29), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x55, __pyx_k_Incompatible_checksums_s_vs_0x55, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x55), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x58, __pyx_k_Incompatible_checksums_s_vs_0x58, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x58), 0, 0, 1, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
-  {&__pyx_n_s_angle, __pyx_k_angle, sizeof(__pyx_k_angle), 0, 0, 1, 1},
+  {&__pyx_n_u_angle, __pyx_k_angle, sizeof(__pyx_k_angle), 0, 1, 0, 1},
   {&__pyx_n_s_b, __pyx_k_b, sizeof(__pyx_k_b), 0, 0, 1, 1},
-  {&__pyx_kp_s_b_2, __pyx_k_b_2, sizeof(__pyx_k_b_2), 0, 0, 1, 0},
+  {&__pyx_n_u_b, __pyx_k_b, sizeof(__pyx_k_b), 0, 1, 0, 1},
+  {&__pyx_kp_u_b_2, __pyx_k_b_2, sizeof(__pyx_k_b_2), 0, 1, 0, 0},
   {&__pyx_n_s_beta, __pyx_k_beta, sizeof(__pyx_k_beta), 0, 0, 1, 1},
+  {&__pyx_n_u_beta, __pyx_k_beta, sizeof(__pyx_k_beta), 0, 1, 0, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 0, 1, 1},
+  {&__pyx_n_u_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 1, 0, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_l, __pyx_k_l, sizeof(__pyx_k_l), 0, 0, 1, 1},
-  {&__pyx_n_s_length, __pyx_k_length, sizeof(__pyx_k_length), 0, 0, 1, 1},
-  {&__pyx_kp_s_length_length, __pyx_k_length_length, sizeof(__pyx_k_length_length), 0, 0, 1, 0},
+  {&__pyx_n_u_l, __pyx_k_l, sizeof(__pyx_k_l), 0, 1, 0, 1},
+  {&__pyx_n_u_length, __pyx_k_length, sizeof(__pyx_k_length), 0, 1, 0, 1},
+  {&__pyx_kp_u_length_length, __pyx_k_length_length, sizeof(__pyx_k_length_length), 0, 1, 0, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_mcycle_geometries_geom_hxplate, __pyx_k_mcycle_geometries_geom_hxplate, sizeof(__pyx_k_mcycle_geometries_geom_hxplate), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
-  {&__pyx_n_s_none, __pyx_k_none, sizeof(__pyx_k_none), 0, 0, 1, 1},
+  {&__pyx_n_u_none, __pyx_k_none, sizeof(__pyx_k_none), 0, 1, 0, 1},
   {&__pyx_n_s_phi, __pyx_k_phi, sizeof(__pyx_k_phi), 0, 0, 1, 1},
+  {&__pyx_n_u_phi, __pyx_k_phi, sizeof(__pyx_k_phi), 0, 1, 0, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pitchCorr, __pyx_k_pitchCorr, sizeof(__pyx_k_pitchCorr), 0, 0, 1, 1},
+  {&__pyx_n_u_pitchCorr, __pyx_k_pitchCorr, sizeof(__pyx_k_pitchCorr), 0, 1, 0, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_result, __pyx_k_pyx_result, sizeof(__pyx_k_pyx_result), 0, 0, 1, 1},
@@ -8176,13 +8204,16 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_roughness, __pyx_k_roughness, sizeof(__pyx_k_roughness), 0, 0, 1, 1},
+  {&__pyx_n_u_roughness, __pyx_k_roughness, sizeof(__pyx_k_roughness), 0, 1, 0, 1},
   {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
+  {&__pyx_n_u_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 1, 0, 1},
   {&__pyx_n_s_set_b, __pyx_k_set_b, sizeof(__pyx_k_set_b), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 1},
+  {&__pyx_n_u_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 1, 0, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_warn, __pyx_k_warn, sizeof(__pyx_k_warn), 0, 0, 1, 1},
@@ -8207,7 +8238,7 @@ static int __Pyx_InitCachedConstants(void) {
  *         self._inputs = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
  *                 'phi': MCAttr(float, 'none')}
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_HxPlate, __pyx_n_s_HxUnitPlate); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_u_HxPlate, __pyx_n_u_HxUnitPlate); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -8218,7 +8249,7 @@ static int __Pyx_InitCachedConstants(void) {
  *         self._inputs = {"s": MCAttr(float, "length"), "h": MCAttr(float, "length"), "t": MCAttr(float, "length"),
  *                 "l": MCAttr(float, "length")}
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_HxPlate, __pyx_n_s_HxUnitPlate); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_u_HxPlate, __pyx_n_u_HxUnitPlate); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -8229,7 +8260,7 @@ static int __Pyx_InitCachedConstants(void) {
  *         self._inputs = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}
  *         self._properties = {}
  */
-  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_s_HxPlate, __pyx_n_s_HxUnitPlate); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_u_HxPlate, __pyx_n_u_HxUnitPlate); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 

@@ -5,7 +5,7 @@ cdef class MCAttr:
 
 Attributes
 -----------
-cls : 
+cls : Python class
     Python class of attribute.
 dimension : str, optional
     Dimensions of the attribute, eg. 'length/time'. Defaults to 'none'.
@@ -23,8 +23,8 @@ _inputs : dict
     Dictionary of input parameter data in the form {key: MCAttr(...)}.
 _properties : dict
     Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().
-name : str
-    User selected name for the object.
+name : str, optional
+    Descriptive name for the class instance. Defaults to "".
     """
     
     def __init__(self):
@@ -33,11 +33,15 @@ name : str
         #self.name = "" 
 
     cpdef public list _inputKeys(self):
+        return list(self._inputs.keys())
+    """
         cdef list ilist = []
         cdef str k
         for k, v in self._inputs.items():
             ilist.append(k)
         return ilist
+    """
+    
 
     cpdef public list _inputValues(self):
         cdef list ilist = []
@@ -47,11 +51,14 @@ name : str
         return ilist
 
     cpdef public list _propertyKeys(self):
+        return list(self._properties.keys())
+    """
         cdef list ilist = []
         cdef str k
         for k, v in self._properties.items():
             ilist.append(k)
         return ilist
+    """
 
     cpdef public list _propertyValues(self):
         cdef list ilist = []
@@ -139,13 +146,16 @@ hasSummaryList : list
                 else:
                     units = " [" + units + "]"
                 if type(attrVal) is float:
-                    fcnOutput = """{} = {}{},
+                    fcnOutput = """{} = {}{}
 """.format(key, PRINT_FORMAT_FLOAT, units).format(attrVal)
 
                 else:
-                    fcnOutput = """{} = {}{},
+                    fcnOutput = """{} = {}{}
 """.format(key, attrVal, units)
                 return fcnOutput
+        except AttributeError:
+            return """{} not yet defined
+""".format(key)
         except Exception as inst:
             return """Attribute "{}" not found: {}
 """.format(key, inst)

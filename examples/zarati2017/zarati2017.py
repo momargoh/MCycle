@@ -104,7 +104,7 @@ def run_example():
     # Computations
     # ************************************************
     print("Begin computing properties for different mass flow rates...")
-    mWf_vals = np.linspace(0.1, 1.0, 20)
+    mWf_vals = np.linspace(1.0, 10., 20)  #0.1, 1.0, 20)
     plot_x = []
     plot_y0 = []
     plot_y1 = []
@@ -113,14 +113,24 @@ def run_example():
     for m in mWf_vals:
         cycle.update({'mWf': m})
         cycle.sizeSetup(True, False)
+        print("temp wf entering evap = ", cycle.evap.flowInWf.T())
         try:
-            print("m = ", cycle.evap._mWf())
+            print()
+            print("m = ", cycle.evap._mWf(), " kg/s")
             cycle.evap.run()
             plot_x.append(m)
             plot_y0.append(cycle.evap.flowOutSf.cp())
             plot_y1.append(cycle.evap.flowOutWf.T())
             plot_y2.append(cycle.evap.flowOutSf.T())
-            plot_y3.append(cycle.evap.dpSf() / cycle.evap.flowInSf.p())
+            plot_y3.append(cycle.evap.dpSf() / cycle.evap.flowInSf.p() * 100)
+            hWf, hSf, U = [], [], []
+            for unit in cycle.evap._units:
+                hWf.append(unit._hWf())
+                hSf.append(unit._hSf())
+                U.append(unit.U())
+            print("heat trans coeff, wf : ", hWf)
+            print("heat trans coeff, sf : ", hSf)
+            print("overall heat trans coeff: ", U)
         except:
             print("No convergence for m={}".format(m))
     print("done.")

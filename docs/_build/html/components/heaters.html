@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Heater Classes &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>Heater Classes &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,11 +21,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -38,7 +35,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Component Classes</a> &#187;</li> 
       </ul>
     </div>  
@@ -56,13 +53,13 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="mcycle.components.heaters.htr_basic.HtrBasic"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasic</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="mcycle.components.heaters.htr_basic.HtrBasic"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasic</span></code></a>(…)</td>
 <td>Basic expansion defined by a pressure ratio and isentropic efficiency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP" title="mcycle.components.heaters.htr_basic.HtrBasicConstP"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasicConstP</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP" title="mcycle.components.heaters.htr_basic.HtrBasicConstP"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasicConstP</span></code></a>(…)</td>
 <td>Basic constant pressure heat addition.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV" title="mcycle.components.heaters.htr_basic.HtrBasicConstV"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasicConstV</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV" title="mcycle.components.heaters.htr_basic.HtrBasicConstV"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasicConstV</span></code></a>(…)</td>
 <td>Basic constant volume heat addition.</td>
 </tr>
 </tbody>
@@ -71,7 +68,7 @@
 <span id="htrbasic-class"></span><h2>HtrBasic Class<a class="headerlink" href="#module-mcycle.components.heaters.htr_basic" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic">
-<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasic</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasic</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'HtrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component11" title="mcycle.bases.component.Component11"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component11</span></code></a></p>
 <p>Basic expansion defined by a pressure ratio and isentropic efficiency.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -94,9 +91,13 @@
 <blockquote>
 <div><p>Outgoing FlowState. Defaults to None.</p>
 </div></blockquote>
+<p><strong>ambient</strong> : FlowState, optional</p>
+<blockquote>
+<div><p>Ambient environment flow state. Defaults to None.</p>
+</div></blockquote>
 <p><strong>sizeAttr</strong> : string, optional</p>
 <blockquote>
-<div><p>Default attribute used by size(). Defaults to &#8220;pRatio&#8221;.</p>
+<div><p>Default attribute used by size(). Defaults to “pRatio”.</p>
 </div></blockquote>
 <p><strong>sizeBracket</strong> : float or list of float, optional</p>
 <blockquote>
@@ -108,11 +109,11 @@
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
-<div><p>Description of Component object. Defaults to &#8220;ExpBasic instance&#8221;.</p>
+<div><p>Description of Component object. Defaults to “ExpBasic instance”.</p>
 </div></blockquote>
 <p><strong>notes</strong> : string, optional</p>
 <blockquote>
-<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+<div><p>Additional notes on the component such as model numbers. Defaults to “No notes/model info.”.</p>
 </div></blockquote>
 <p><strong>config</strong> : Config, optional</p>
 <blockquote>
@@ -133,53 +134,59 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.Q" title="mcycle.components.heaters.htr_basic.HtrBasic.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>Q: ‘double’</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.ambient" title="mcycle.components.heaters.htr_basic.HtrBasic.ambient"><code class="xref py py-obj docutils literal"><span class="pre">ambient</span></code></a></td>
+<td>ambient: mcycle.bases.flowstate.FlowState</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.config" title="mcycle.components.heaters.htr_basic.HtrBasic.config"><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></a></td>
+<td>config: mcycle.bases.config.Config</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasic.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.effThermal" title="mcycle.components.heaters.htr_basic.HtrBasic.effThermal"><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></a></td>
+<td>effThermal: ‘double’</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasic.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowsIn" title="mcycle.components.heaters.htr_basic.HtrBasic.flowsIn"><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></a></td>
+<td>flowsIn: list</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowsOut" title="mcycle.components.heaters.htr_basic.HtrBasic.flowsOut"><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></a></td>
+<td>flowsOut: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.m" title="mcycle.components.heaters.htr_basic.HtrBasic.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.m" title="mcycle.components.heaters.htr_basic.HtrBasic.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.mWf" title="mcycle.components.heaters.htr_basic.HtrBasic.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.mWf" title="mcycle.components.heaters.htr_basic.HtrBasic.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.name" title="mcycle.components.heaters.htr_basic.HtrBasic.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.notes" title="mcycle.components.heaters.htr_basic.HtrBasic.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
+<td>notes: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.runBracket" title="mcycle.components.heaters.htr_basic.HtrBasic.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
+<td>runBracket: ‘double [2]’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeAttr" title="mcycle.components.heaters.htr_basic.HtrBasic.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
+<td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeBracket" title="mcycle.components.heaters.htr_basic.HtrBasic.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
+<td>sizeBracket: list</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeUnitsBracket" title="mcycle.components.heaters.htr_basic.HtrBasic.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
+<td>sizeUnitsBracket: list</td>
 </tr>
 </tbody>
 </table>
@@ -190,48 +197,84 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.copy" title="mcycle.components.heaters.htr_basic.HtrBasic.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.copy" title="mcycle.components.heaters.htr_basic.HtrBasic.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasic.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasic.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a>(self)</td>
 <td>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasic.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasic.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a>(self)</td>
 <td>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.run" title="mcycle.components.heaters.htr_basic.HtrBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.size" title="mcycle.components.heaters.htr_basic.HtrBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeUnits" title="mcycle.components.heaters.htr_basic.HtrBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.summary" title="mcycle.components.heaters.htr_basic.HtrBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.summary" title="mcycle.components.heaters.htr_basic.HtrBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
 <td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.update" title="mcycle.components.heaters.htr_basic.HtrBasic.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic.update" title="mcycle.components.heaters.htr_basic.HtrBasic.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.Q">
+<code class="descname">Q</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Q: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.ambient">
+<code class="descname">ambient</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.ambient" title="Permalink to this definition">¶</a></dt>
+<dd><p>ambient: mcycle.bases.flowstate.FlowState</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.config">
+<code class="descname">config</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>config: mcycle.bases.config.Config</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.dpSf">
-<code class="descname">dpSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpSf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpSf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpSf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.dpWf">
-<code class="descname">dpWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpWf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpWf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.dpWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.effThermal">
+<code class="descname">effThermal</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.effThermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>effThermal: ‘double’</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -259,6 +302,18 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.flowsIn">
+<code class="descname">flowsIn</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowsIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsIn: list</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.flowsOut">
+<code class="descname">flowsOut</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.flowsOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsOut: list</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.m">
 <code class="descname">m</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.m" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0].m</p>
@@ -270,9 +325,60 @@
 <dd><p>Alias for self.flowsIn[0].m</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.notes">
+<code class="descname">notes</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>notes: unicode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.runBracket">
+<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.runBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBracket: ‘double [2]’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.size">
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.sizeAttr">
+<code class="descname">sizeAttr</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeAttr: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.sizeBracket">
+<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBracket: list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.sizeUnits">
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasic.sizeUnitsBracket">
+<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBracket: list</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>bool printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>flowKeys=u'none'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -288,10 +394,10 @@
 <div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
-<p>Defaults to &#8216;all&#8217;.</p>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -301,10 +407,10 @@
 <div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+<li><p class="first">‘all’: all flows are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
-<p>Defaults to &#8216;none&#8217;.</p>
+<li><p class="first">‘none’: no flows are included.</p>
+<p>Defaults to ‘none’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -324,15 +430,27 @@
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasic.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasic.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP">
-<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasicConstP</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasicConstP</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'HtrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="mcycle.components.heaters.htr_basic.HtrBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasic</span></code></a></p>
 <p>Basic constant pressure heat addition.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -357,7 +475,7 @@
 </div></blockquote>
 <p><strong>sizeAttr</strong> : string, optional</p>
 <blockquote>
-<div><p>Default attribute used by size(). Defaults to &#8220;effThermal&#8221;.</p>
+<div><p>Default attribute used by size(). Defaults to “effThermal”.</p>
 </div></blockquote>
 <p><strong>sizeBracket</strong> : float or list of float, optional</p>
 <blockquote>
@@ -369,11 +487,11 @@
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
-<div><p>Description of Component object. Defaults to &#8220;HtrBasicConstP instance&#8221;.</p>
+<div><p>Description of Component object. Defaults to “HtrBasicConstP instance”.</p>
 </div></blockquote>
 <p><strong>notes</strong> : string, optional</p>
 <blockquote>
-<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+<div><p>Additional notes on the component such as model numbers. Defaults to “No notes/model info.”.</p>
 </div></blockquote>
 <p><strong>config</strong> : Config, optional</p>
 <blockquote>
@@ -394,53 +512,59 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.Q" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>Q: ‘double’</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.ambient" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.ambient"><code class="xref py py-obj docutils literal"><span class="pre">ambient</span></code></a></td>
+<td>ambient: mcycle.bases.flowstate.FlowState</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.config" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.config"><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></a></td>
+<td>config: mcycle.bases.config.Config</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.effThermal" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.effThermal"><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></a></td>
+<td>effThermal: ‘double’</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsIn"><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></a></td>
+<td>flowsIn: list</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsOut"><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></a></td>
+<td>flowsOut: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.m" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.m" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.mWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.mWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.name" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.notes" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
+<td>notes: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.runBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
+<td>runBracket: ‘double [2]’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeAttr" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
+<td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
+<td>sizeBracket: list</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnitsBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
+<td>sizeUnitsBracket: list</td>
 </tr>
 </tbody>
 </table>
@@ -451,48 +575,84 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.copy" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.copy" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a>(self)</td>
 <td>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a>(self)</td>
 <td>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.run" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.run" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute outgoing FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.size" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnits" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.summary" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.summary" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
 <td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.update" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.update" title="mcycle.components.heaters.htr_basic.HtrBasicConstP.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.Q">
+<code class="descname">Q</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Q: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.ambient">
+<code class="descname">ambient</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.ambient" title="Permalink to this definition">¶</a></dt>
+<dd><p>ambient: mcycle.bases.flowstate.FlowState</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.config">
+<code class="descname">config</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>config: mcycle.bases.config.Config</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf">
-<code class="descname">dpSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpSf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpSf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf">
-<code class="descname">dpWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpWf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.dpWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.effThermal">
+<code class="descname">effThermal</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.effThermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>effThermal: ‘double’</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -520,6 +680,18 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsIn">
+<code class="descname">flowsIn</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsIn: list</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsOut">
+<code class="descname">flowsOut</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.flowsOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsOut: list</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.m">
 <code class="descname">m</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.m" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0].m</p>
@@ -531,15 +703,61 @@
 <dd><p>Alias for self.flowsIn[0].m</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.notes">
+<code class="descname">notes</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>notes: unicode</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute outgoing FlowState from component attributes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.runBracket">
+<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.runBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBracket: ‘double [2]’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.size">
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeAttr">
+<code class="descname">sizeAttr</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeAttr: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeBracket">
+<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBracket: list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnits">
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnitsBracket">
+<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBracket: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>bool printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>flowKeys=u'none'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -555,10 +773,10 @@
 <div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
-<p>Defaults to &#8216;all&#8217;.</p>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -568,10 +786,10 @@
 <div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+<li><p class="first">‘all’: all flows are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
-<p>Defaults to &#8216;none&#8217;.</p>
+<li><p class="first">‘none’: no flows are included.</p>
+<p>Defaults to ‘none’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -591,15 +809,27 @@
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstP.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstP.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV">
-<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasicConstV</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.heaters.htr_basic.</code><code class="descname">HtrBasicConstV</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'HtrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasic" title="mcycle.components.heaters.htr_basic.HtrBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.heaters.htr_basic.HtrBasic</span></code></a></p>
 <p>Basic constant volume heat addition.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -624,7 +854,7 @@
 </div></blockquote>
 <p><strong>sizeAttr</strong> : string, optional</p>
 <blockquote>
-<div><p>Default attribute used by size(). Defaults to &#8220;effThermal&#8221;.</p>
+<div><p>Default attribute used by size(). Defaults to “effThermal”.</p>
 </div></blockquote>
 <p><strong>sizeBracket</strong> : float or list of float, optional</p>
 <blockquote>
@@ -636,11 +866,11 @@
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
-<div><p>Description of Component object. Defaults to &#8220;HtrBasicConstV instance&#8221;.</p>
+<div><p>Description of Component object. Defaults to “HtrBasicConstV instance”.</p>
 </div></blockquote>
 <p><strong>notes</strong> : string, optional</p>
 <blockquote>
-<div><p>Additional notes on the component such as model numbers. Defaults to &#8220;No notes/model info.&#8221;.</p>
+<div><p>Additional notes on the component such as model numbers. Defaults to “No notes/model info.”.</p>
 </div></blockquote>
 <p><strong>config</strong> : Config, optional</p>
 <blockquote>
@@ -661,53 +891,59 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.Q" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.Q"><code class="xref py py-obj docutils literal"><span class="pre">Q</span></code></a></td>
+<td>Q: ‘double’</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.ambient" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.ambient"><code class="xref py py-obj docutils literal"><span class="pre">ambient</span></code></a></td>
+<td>ambient: mcycle.bases.flowstate.FlowState</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.config" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.config"><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></a></td>
+<td>config: mcycle.bases.config.Config</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.effThermal" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.effThermal"><code class="xref py py-obj docutils literal"><span class="pre">effThermal</span></code></a></td>
+<td>effThermal: ‘double’</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowInWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOutWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsIn" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsIn"><code class="xref py py-obj docutils literal"><span class="pre">flowsIn</span></code></a></td>
+<td>flowsIn: list</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsOut" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsOut"><code class="xref py py-obj docutils literal"><span class="pre">flowsOut</span></code></a></td>
+<td>flowsOut: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.m" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.m" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.mWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.mWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.mWf"><code class="xref py py-obj docutils literal"><span class="pre">mWf</span></code></a></td>
 <td>Alias for self.flowsIn[0].m</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.name" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.notes" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
+<td>notes: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.runBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
+<td>runBracket: ‘double [2]’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeAttr" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
+<td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
+<td>sizeBracket: list</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnitsBracket" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
+<td>sizeUnitsBracket: list</td>
 </tr>
 </tbody>
 </table>
@@ -718,48 +954,84 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.copy" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.copy" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf"><code class="xref py py-obj docutils literal"><span class="pre">dpSf</span></code></a>(self)</td>
 <td>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf"><code class="xref py py-obj docutils literal"><span class="pre">dpWf</span></code></a>(self)</td>
 <td>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.run" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.run" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute outgoing FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.size" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnits" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.summary" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.summary" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
 <td>Returns (and prints) a summary of the component attributes/properties/flows.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.update" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.update" title="mcycle.components.heaters.htr_basic.HtrBasicConstV.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.Q">
+<code class="descname">Q</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Q: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.ambient">
+<code class="descname">ambient</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.ambient" title="Permalink to this definition">¶</a></dt>
+<dd><p>ambient: mcycle.bases.flowstate.FlowState</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.config">
+<code class="descname">config</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>config: mcycle.bases.config.Config</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf">
-<code class="descname">dpSf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpSf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpSf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the secondary fluid [Pa]. Defaults to 0.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf">
-<code class="descname">dpWf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dpWf</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.dpWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Pressure drop of the working fluid [Pa]. Defaults to 0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.effThermal">
+<code class="descname">effThermal</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.effThermal" title="Permalink to this definition">¶</a></dt>
+<dd><p>effThermal: ‘double’</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -787,6 +1059,18 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsIn">
+<code class="descname">flowsIn</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsIn: list</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsOut">
+<code class="descname">flowsOut</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.flowsOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>flowsOut: list</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.m">
 <code class="descname">m</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.m" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0].m</p>
@@ -798,15 +1082,61 @@
 <dd><p>Alias for self.flowsIn[0].m</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.notes">
+<code class="descname">notes</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>notes: unicode</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute outgoing FlowState from component attributes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.runBracket">
+<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.runBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBracket: ‘double [2]’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.size">
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeAttr">
+<code class="descname">sizeAttr</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeAttr: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeBracket">
+<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBracket: list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnits">
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnitsBracket">
+<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBracket: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>bool printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>flowKeys=u'none'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of the component attributes/properties/flows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -822,10 +1152,10 @@
 <div><p>Keys of component properties to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
-<p>Defaults to &#8216;all&#8217;.</p>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -835,10 +1165,10 @@
 <div><p>Keys of component flows to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all flows are included,</p>
+<li><p class="first">‘all’: all flows are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no flows are included.</p>
-<p>Defaults to &#8216;none&#8217;.</p>
+<li><p class="first">‘none’: no flows are included.</p>
+<p>Defaults to ‘none’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -858,8 +1188,20 @@
 
 <dl class="method">
 <dt id="mcycle.components.heaters.htr_basic.HtrBasicConstV.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.heaters.htr_basic.HtrBasicConstV.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -913,13 +1255,13 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" >Component Classes</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

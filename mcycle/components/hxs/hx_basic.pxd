@@ -38,7 +38,7 @@ cdef class HxBasic(Component22):
     cdef public double _QWf(self)
     cdef public double _QSf(self)
     cpdef public double _Q(self)
-    cpdef public double Q(self)
+    #cpdef public double Q(self)
     cpdef public double weight(self)
 
     cpdef public unitise(self)

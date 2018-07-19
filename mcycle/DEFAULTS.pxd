@@ -9,9 +9,9 @@ cpdef public double RUN_BRACKET_MAX_H
 cpdef public double GRAVITY
 cpdef public str COOLPROP_EOS
 cpdef public str MPL_BACKEND
-cpdef public str PLOT_DIR
-cpdef public int PLOT_DPI
-cpdef public str PLOT_FORMAT
+#cpdef public str PLOT_DIR
+#cpdef public int PLOT_DPI
+#cpdef public str PLOT_FORMAT
 cpdef public str UNITS_SEPARATOR_NUMERATOR
 cpdef public str UNITS_SEPARATOR_DENOMINATOR
 cpdef public str PRINT_FORMAT_FLOAT
@@ -22,7 +22,7 @@ cdef public dict dimensionUnits
 cdef dict dimensionsEquiv
 cdef str _formatUnits(str dimensions, str separator)
 cpdef public str getUnits(str dimension)
-cpdef void checkDefaults()
+cpdef void updateDefaults()
 
 cdef public str _GITHUB_SOURCE_URL
 cdef public str _HOSTED_DOCS_URL

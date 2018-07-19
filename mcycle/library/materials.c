@@ -20,7 +20,7 @@ END: Cython Metadata */
     #error Cython requires Python 2.6+ or Python 3.3+.
 #else
 #define CYTHON_ABI "0_27_3"
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1573,81 +1573,82 @@ static const char __pyx_k_titanium_6_Al_4_V_from_Table_A_1[] = "titanium (6%-Al,
 static const char __pyx_k_titanium_pure_from_Table_A_1_Lie[] = "titanium (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V. A Heat Transfer Textbook Phlogiston Press, 2011";
 static const char __pyx_k_tungsten_pure_from_Table_A_1_Lie[] = "tungsten (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V. A Heat Transfer Textbook Phlogiston Press, 2011";
 static const char __pyx_k_zinc_pure_from_Table_A_1_Lienhar[] = "zinc (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V. A Heat Transfer Textbook Phlogiston Press, 2011";
-static PyObject *__pyx_kp_s_Chromel_P_Ni_10_Cr_from_Table_A;
-static PyObject *__pyx_kp_s_Inconel_X_750_73_Ni_15_Cr_6_75_F;
+static PyObject *__pyx_kp_u_Chromel_P_Ni_10_Cr_from_Table_A;
+static PyObject *__pyx_kp_u_Inconel_X_750_73_Ni_15_Cr_6_75_F;
 static PyObject *__pyx_n_s_T;
-static PyObject *__pyx_n_s_alumel;
-static PyObject *__pyx_kp_s_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta;
-static PyObject *__pyx_n_s_aluminium;
-static PyObject *__pyx_n_s_aluminium_6061_T6;
-static PyObject *__pyx_n_s_aluminium_7075_T6;
-static PyObject *__pyx_kp_s_aluminium_alloy_6061_T6_from_Tab;
-static PyObject *__pyx_kp_s_aluminium_alloy_7075_T6_from_Tab;
-static PyObject *__pyx_kp_s_aluminium_pure_from_Table_A_1_Li;
-static PyObject *__pyx_n_s_brass;
-static PyObject *__pyx_kp_s_brass_Cu_30_Zn_from_Table_A_1_Li;
-static PyObject *__pyx_kp_s_chromel_P;
-static PyObject *__pyx_n_s_chromium;
-static PyObject *__pyx_kp_s_chromium_from_Table_A_1_Lienhard;
+static PyObject *__pyx_n_u_T;
+static PyObject *__pyx_n_u_alumel;
+static PyObject *__pyx_kp_u_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta;
+static PyObject *__pyx_n_u_aluminium;
+static PyObject *__pyx_n_u_aluminium_6061_T6;
+static PyObject *__pyx_n_u_aluminium_7075_T6;
+static PyObject *__pyx_kp_u_aluminium_alloy_6061_T6_from_Tab;
+static PyObject *__pyx_kp_u_aluminium_alloy_7075_T6_from_Tab;
+static PyObject *__pyx_kp_u_aluminium_pure_from_Table_A_1_Li;
+static PyObject *__pyx_n_u_brass;
+static PyObject *__pyx_kp_u_brass_Cu_30_Zn_from_Table_A_1_Li;
+static PyObject *__pyx_kp_u_chromel_P;
+static PyObject *__pyx_n_u_chromium;
+static PyObject *__pyx_kp_u_chromium_from_Table_A_1_Lienhard;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_constantan;
-static PyObject *__pyx_kp_s_constantan_Cu_40_Ni_from_Table_A;
-static PyObject *__pyx_n_s_copper;
-static PyObject *__pyx_kp_s_copper_pure_from_Table_A_1_Lienh;
+static PyObject *__pyx_n_u_constantan;
+static PyObject *__pyx_kp_u_constantan_Cu_40_Ni_from_Table_A;
+static PyObject *__pyx_n_u_copper;
+static PyObject *__pyx_kp_u_copper_pure_from_Table_A_1_Lienh;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_deg;
-static PyObject *__pyx_n_s_duralumin;
-static PyObject *__pyx_kp_s_duralumin_4_Cu_0_5_Mg_from_Table;
-static PyObject *__pyx_n_s_gold;
-static PyObject *__pyx_kp_s_gold_pure_from_Table_A_1_Lienhar;
-static PyObject *__pyx_n_s_inconelX750;
-static PyObject *__pyx_n_s_iron;
-static PyObject *__pyx_kp_s_iron_pure_from_Table_A_1_Lienhar;
-static PyObject *__pyx_n_s_k;
-static PyObject *__pyx_n_s_lead;
-static PyObject *__pyx_kp_s_lead_pure_from_Table_A_1_Lienhar;
-static PyObject *__pyx_n_s_magnesium;
-static PyObject *__pyx_kp_s_magnesium_pure_from_Table_A_1_Li;
+static PyObject *__pyx_n_u_duralumin;
+static PyObject *__pyx_kp_u_duralumin_4_Cu_0_5_Mg_from_Table;
+static PyObject *__pyx_n_u_gold;
+static PyObject *__pyx_kp_u_gold_pure_from_Table_A_1_Lienhar;
+static PyObject *__pyx_n_u_inconelX750;
+static PyObject *__pyx_n_u_iron;
+static PyObject *__pyx_kp_u_iron_pure_from_Table_A_1_Lienhar;
+static PyObject *__pyx_n_u_k;
+static PyObject *__pyx_n_u_lead;
+static PyObject *__pyx_kp_u_lead_pure_from_Table_A_1_Lienhar;
+static PyObject *__pyx_n_u_magnesium;
+static PyObject *__pyx_kp_u_magnesium_pure_from_Table_A_1_Li;
 static PyObject *__pyx_n_s_main;
-static PyObject *__pyx_n_s_molybdenum;
-static PyObject *__pyx_kp_s_molybdenum_pure_from_Table_A_1_L;
+static PyObject *__pyx_n_u_molybdenum;
+static PyObject *__pyx_kp_u_molybdenum_pure_from_Table_A_1_L;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_nichrome;
-static PyObject *__pyx_n_s_nichromeV;
-static PyObject *__pyx_kp_s_nichrome_Ni_23_Fe_16_Cr_from_Tab;
-static PyObject *__pyx_kp_s_nichrome_V_Ni_20_Cr_1_4_Si_from;
-static PyObject *__pyx_n_s_nickel;
-static PyObject *__pyx_kp_s_nickel_pure_from_Table_A_1_Lienh;
+static PyObject *__pyx_n_u_nichrome;
+static PyObject *__pyx_n_u_nichromeV;
+static PyObject *__pyx_kp_u_nichrome_Ni_23_Fe_16_Cr_from_Tab;
+static PyObject *__pyx_kp_u_nichrome_V_Ni_20_Cr_1_4_Si_from;
+static PyObject *__pyx_n_u_nickel;
+static PyObject *__pyx_kp_u_nickel_pure_from_Table_A_1_Lienh;
 static PyObject *__pyx_n_s_notes;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_rho;
-static PyObject *__pyx_n_s_silicon;
-static PyObject *__pyx_kp_s_silicon_single_crystal_form_from;
-static PyObject *__pyx_n_s_silver;
-static PyObject *__pyx_kp_s_silver_99_99_pure_from_Table_A_1;
-static PyObject *__pyx_n_s_stainlessSteel_304;
-static PyObject *__pyx_n_s_stainlessSteel_316;
-static PyObject *__pyx_n_s_stainlessSteel_347;
-static PyObject *__pyx_kp_s_stainless_steel_AISI_304_from_Ta;
-static PyObject *__pyx_kp_s_stainless_steel_AISI_316_from_Ta;
-static PyObject *__pyx_kp_s_stainless_steel_AISI_347_from_Ta;
-static PyObject *__pyx_kp_s_steel_0_5_carbon_from_Table_A_1;
-static PyObject *__pyx_n_s_steel_0o5C;
-static PyObject *__pyx_n_s_steel_1010;
-static PyObject *__pyx_kp_s_steel_1_0_carbon_from_Table_A_1;
-static PyObject *__pyx_kp_s_steel_1_5_carbon_from_Table_A_1;
-static PyObject *__pyx_n_s_steel_1o0C;
-static PyObject *__pyx_n_s_steel_1o5C;
-static PyObject *__pyx_kp_s_steel_AISI_1010_from_Table_A_1_L;
+static PyObject *__pyx_n_u_silicon;
+static PyObject *__pyx_kp_u_silicon_single_crystal_form_from;
+static PyObject *__pyx_n_u_silver;
+static PyObject *__pyx_kp_u_silver_99_99_pure_from_Table_A_1;
+static PyObject *__pyx_n_u_stainlessSteel_304;
+static PyObject *__pyx_n_u_stainlessSteel_316;
+static PyObject *__pyx_n_u_stainlessSteel_347;
+static PyObject *__pyx_kp_u_stainless_steel_AISI_304_from_Ta;
+static PyObject *__pyx_kp_u_stainless_steel_AISI_316_from_Ta;
+static PyObject *__pyx_kp_u_stainless_steel_AISI_347_from_Ta;
+static PyObject *__pyx_kp_u_steel_0_5_carbon_from_Table_A_1;
+static PyObject *__pyx_n_u_steel_0o5C;
+static PyObject *__pyx_n_u_steel_1010;
+static PyObject *__pyx_kp_u_steel_1_0_carbon_from_Table_A_1;
+static PyObject *__pyx_kp_u_steel_1_5_carbon_from_Table_A_1;
+static PyObject *__pyx_n_u_steel_1o0C;
+static PyObject *__pyx_n_u_steel_1o5C;
+static PyObject *__pyx_kp_u_steel_AISI_1010_from_Table_A_1_L;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_titanium;
-static PyObject *__pyx_n_s_titanium_6Al4V;
-static PyObject *__pyx_kp_s_titanium_6_Al_4_V_from_Table_A_1;
-static PyObject *__pyx_kp_s_titanium_pure_from_Table_A_1_Lie;
-static PyObject *__pyx_n_s_tungsten;
-static PyObject *__pyx_kp_s_tungsten_pure_from_Table_A_1_Lie;
-static PyObject *__pyx_n_s_zinc;
-static PyObject *__pyx_kp_s_zinc_pure_from_Table_A_1_Lienhar;
+static PyObject *__pyx_n_u_titanium;
+static PyObject *__pyx_n_u_titanium_6Al4V;
+static PyObject *__pyx_kp_u_titanium_6_Al_4_V_from_Table_A_1;
+static PyObject *__pyx_kp_u_titanium_pure_from_Table_A_1_Lie;
+static PyObject *__pyx_n_u_tungsten;
+static PyObject *__pyx_kp_u_tungsten_pure_from_Table_A_1_Lie;
+static PyObject *__pyx_n_u_zinc;
+static PyObject *__pyx_kp_u_zinc_pure_from_Table_A_1_Lienhar;
 static PyObject *__pyx_pf_6mcycle_7library_9materials_alumel(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_T); /* proto */
 static PyObject *__pyx_pf_6mcycle_7library_9materials_2aluminium(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_T); /* proto */
 static PyObject *__pyx_pf_6mcycle_7library_9materials_4aluminium_6061_T6(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_T); /* proto */
@@ -1959,7 +1960,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -1975,7 +1976,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_38);
   __Pyx_GIVEREF(__pyx_int_38);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_int_38);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -1992,8 +1993,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_alumel) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_alumel) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":6
  * #: Alumel (Ni, 2%-Al, 2%-Mn, 1%-Si), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -2032,6 +2033,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_1alumel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_alumel[] = "alumel(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_1alumel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -2188,7 +2190,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_873_15);
   __Pyx_GIVEREF(__pyx_float_873_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_873_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2219,7 +2221,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_215);
   __Pyx_GIVEREF(__pyx_int_215);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_int_215);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2236,8 +2238,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_aluminium) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_aluminium_pure_from_Table_A_1_Li) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_aluminium) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_aluminium_pure_from_Table_A_1_Li) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":16
  * #: Aluminium (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -2276,6 +2278,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_3aluminium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_2aluminium[] = "aluminium(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_3aluminium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -2420,7 +2423,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_573_15);
   __Pyx_GIVEREF(__pyx_float_573_15);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_float_573_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2439,7 +2442,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_180);
   __Pyx_GIVEREF(__pyx_int_180);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_int_180);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2456,8 +2459,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_aluminium_6061_T6) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_aluminium_alloy_6061_T6_from_Tab) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_aluminium_6061_T6) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_aluminium_alloy_6061_T6_from_Tab) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":26
  * #: Aluminium alloy 6061-T6, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -2496,6 +2499,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_5aluminium_6061_T6(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_4aluminium_6061_T6[] = "aluminium_6061_T6(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_5aluminium_6061_T6(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -2646,7 +2650,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_573_15);
   __Pyx_GIVEREF(__pyx_float_573_15);
   PyList_SET_ITEM(__pyx_t_3, 6, __pyx_float_573_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2671,7 +2675,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_177);
   __Pyx_GIVEREF(__pyx_int_177);
   PyList_SET_ITEM(__pyx_t_3, 6, __pyx_int_177);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2688,8 +2692,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_aluminium_7075_T6) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_aluminium_alloy_7075_T6_from_Tab) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_aluminium_7075_T6) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_aluminium_alloy_7075_T6_from_Tab) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":36
  * #: Aluminium alloy 7075-T6, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -2728,6 +2732,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_7aluminium_7075_T6(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_6aluminium_7075_T6[] = "aluminium_7075_T6(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_7aluminium_7075_T6(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -2881,7 +2886,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2909,7 +2914,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_147);
   __Pyx_GIVEREF(__pyx_int_147);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_int_147);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2926,8 +2931,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_brass) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_brass_Cu_30_Zn_from_Table_A_1_Li) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_brass) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_brass_Cu_30_Zn_from_Table_A_1_Li) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":46
  * #: Brass, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -2966,6 +2971,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_9brass(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_8brass[] = "brass(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_9brass(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -3107,7 +3113,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3123,7 +3129,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_25);
   __Pyx_GIVEREF(__pyx_int_25);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_int_25);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3140,8 +3146,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_kp_s_chromel_P) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_Chromel_P_Ni_10_Cr_from_Table_A) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_kp_u_chromel_P) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_Chromel_P_Ni_10_Cr_from_Table_A) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":56
  * #: Chromel P (Ni, 10%-Cr), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -3180,6 +3186,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_11chromelP(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_10chromelP[] = "chromelP(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_11chromelP(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -3342,7 +3349,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3379,7 +3386,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_62);
   __Pyx_GIVEREF(__pyx_int_62);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_62);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3396,8 +3403,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_chromium) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_chromium_from_Table_A_1_Lienhard) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_chromium) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_chromium_from_Table_A_1_Lienhard) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":66
  * #: Chromium, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -3436,6 +3443,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_13chromium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_12chromium[] = "chromium(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_13chromium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -3583,7 +3591,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_473_15);
   __Pyx_GIVEREF(__pyx_float_473_15);
   PyList_SET_ITEM(__pyx_t_3, 5, __pyx_float_473_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3605,7 +3613,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_35);
   __Pyx_GIVEREF(__pyx_int_35);
   PyList_SET_ITEM(__pyx_t_3, 5, __pyx_int_35);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3622,8 +3630,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_constantan) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_constantan_Cu_40_Ni_from_Table_A) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_constantan) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_constantan_Cu_40_Ni_from_Table_A) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":76
  * #: Constantan, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -3662,6 +3670,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_15constantan(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_14constantan[] = "constantan(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_15constantan(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -3824,7 +3833,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3861,7 +3870,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_336);
   __Pyx_GIVEREF(__pyx_int_336);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_336);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3878,8 +3887,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_copper) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_copper_pure_from_Table_A_1_Lienh) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_copper) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_copper_pure_from_Table_A_1_Lienh) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":86
  * #: Copper (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -3918,6 +3927,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_17copper(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_16copper[] = "copper(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_17copper(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -4062,7 +4072,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_473_15);
   __Pyx_GIVEREF(__pyx_float_473_15);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_float_473_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4081,7 +4091,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_194);
   __Pyx_GIVEREF(__pyx_int_194);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_int_194);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4098,8 +4108,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_duralumin) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_duralumin_4_Cu_0_5_Mg_from_Table) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_duralumin) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_duralumin_4_Cu_0_5_Mg_from_Table) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":96
  * #: Duralumin, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -4138,6 +4148,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_19duralumin(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_18duralumin[] = "duralumin(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_19duralumin(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -4300,7 +4311,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4337,7 +4348,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_249);
   __Pyx_GIVEREF(__pyx_int_249);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_249);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4354,8 +4365,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_gold) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_gold_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_gold) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_gold_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":106
  * #: Gold (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -4394,6 +4405,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_21gold(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_20gold[] = "gold(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_21gold(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -4556,7 +4568,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4593,7 +4605,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_29);
   __Pyx_GIVEREF(__pyx_int_29);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_29);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4610,8 +4622,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_inconelX750) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_Inconel_X_750_73_Ni_15_Cr_6_75_F) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_inconelX750) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_Inconel_X_750_73_Ni_15_Cr_6_75_F) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":116
  * #: Inconel X-750 (73%-Ni, 15%-Cr, 6.75%-Fe, 2.5%-Ti, 0.85%-Nb, 0.8%-Al, 0.7%-Mn, 0.3%-Si), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -4650,6 +4662,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_23inconelX750(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_22inconelX750[] = "inconelX750(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_23inconelX750(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -4812,7 +4825,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4849,7 +4862,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_29_5);
   __Pyx_GIVEREF(__pyx_float_29_5);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_29_5);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4866,8 +4879,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_iron) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_iron_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_iron) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_iron_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":126
  * #: Iron (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -4906,6 +4919,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_25iron(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_24iron[] = "iron(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_25iron(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -5056,7 +5070,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_573_15);
   __Pyx_GIVEREF(__pyx_float_573_15);
   PyList_SET_ITEM(__pyx_t_3, 6, __pyx_float_573_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -5081,7 +5095,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_32);
   __Pyx_GIVEREF(__pyx_int_32);
   PyList_SET_ITEM(__pyx_t_3, 6, __pyx_int_32);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5098,8 +5112,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_lead) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_lead_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_lead) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_lead_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":136
  * #: Lead (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -5138,6 +5152,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_27lead(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_26lead[] = "lead(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_27lead(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -5294,7 +5309,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_873_15);
   __Pyx_GIVEREF(__pyx_float_873_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_873_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -5325,7 +5340,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_145);
   __Pyx_GIVEREF(__pyx_int_145);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_int_145);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5342,8 +5357,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_magnesium) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_magnesium_pure_from_Table_A_1_Li) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_magnesium) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_magnesium_pure_from_Table_A_1_Li) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":146
  * #: Magnesium (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -5382,6 +5397,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_29magnesium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_28magnesium[] = "magnesium(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_29magnesium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -5544,7 +5560,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -5581,7 +5597,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_103);
   __Pyx_GIVEREF(__pyx_int_103);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_103);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5598,8 +5614,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_molybdenum) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_molybdenum_pure_from_Table_A_1_L) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_molybdenum) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_molybdenum_pure_from_Table_A_1_L) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":156
  * #: Molybdenum (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -5638,6 +5654,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_31molybdenum(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_30molybdenum[] = "molybdenum(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_31molybdenum(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -5779,7 +5796,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -5795,7 +5812,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_18);
   __Pyx_GIVEREF(__pyx_int_18);
   PyList_SET_ITEM(__pyx_t_3, 3, __pyx_int_18);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5812,8 +5829,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_nichrome) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_nichrome_Ni_23_Fe_16_Cr_from_Tab) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_nichrome) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_nichrome_Ni_23_Fe_16_Cr_from_Tab) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":166
  * #: Nichrome (Ni, 23%-Fe, 16%-Cr), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -5852,6 +5869,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_33nichrome(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_32nichrome[] = "nichrome(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_33nichrome(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -6005,7 +6023,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -6030,7 +6048,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_24);
   __Pyx_GIVEREF(__pyx_int_24);
   PyList_SET_ITEM(__pyx_t_3, 6, __pyx_int_24);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6047,8 +6065,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_nichromeV) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_nichrome_V_Ni_20_Cr_1_4_Si_from) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_nichromeV) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_nichrome_V_Ni_20_Cr_1_4_Si_from) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":176
  * #: Nichrome V (Ni, 20%-Cr, 1.4%-Si), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -6087,6 +6105,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_35nichromeV(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_34nichromeV[] = "nichromeV(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_35nichromeV(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -6249,7 +6268,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -6286,7 +6305,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_78);
   __Pyx_GIVEREF(__pyx_int_78);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_78);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6303,8 +6322,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_nickel) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_nickel_pure_from_Table_A_1_Lienh) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_nickel) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_nickel_pure_from_Table_A_1_Lienh) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":186
  * #: Nickel (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -6343,6 +6362,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_37nickel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_36nickel[] = "nickel(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_37nickel(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -6499,7 +6519,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1073_15);
   __Pyx_GIVEREF(__pyx_float_1073_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1073_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -6530,7 +6550,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_29);
   __Pyx_GIVEREF(__pyx_int_29);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_int_29);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6547,8 +6567,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_steel_1010) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_steel_AISI_1010_from_Table_A_1_L) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_steel_1010) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_steel_AISI_1010_from_Table_A_1_L) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":196
  * #: Steel AISI 1010, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -6587,6 +6607,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_39steel_1010(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_38steel_1010[] = "steel_1010(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_39steel_1010(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -6743,7 +6764,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -6771,7 +6792,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_29);
   __Pyx_GIVEREF(__pyx_int_29);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_int_29);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6788,8 +6809,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_steel_0o5C) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_steel_0_5_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_steel_0o5C) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_steel_0_5_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":206
  * #: Steel 0.5%-carbon, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -6828,6 +6849,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_41steel_0o5C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_40steel_0o5C[] = "steel_0o5C(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_41steel_0o5C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -6984,7 +7006,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7012,7 +7034,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_28);
   __Pyx_GIVEREF(__pyx_int_28);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_int_28);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7029,8 +7051,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_steel_1o0C) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_steel_1_0_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_steel_1o0C) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_steel_1_0_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":216
  * #: Steel 1.0%-carbon, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -7069,6 +7091,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_43steel_1o0C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_42steel_1o0C[] = "steel_1o0C(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_43steel_1o0C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -7225,7 +7248,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7253,7 +7276,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_28);
   __Pyx_GIVEREF(__pyx_int_28);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_int_28);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7270,8 +7293,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_steel_1o5C) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_steel_1_5_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_steel_1o5C) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_steel_1_5_carbon_from_Table_A_1) < 0) __PYX_ERR(0, 226, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":226
  * #: Steel 1.5%-carbon, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -7310,6 +7333,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_45steel_1o5C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_44steel_1o5C[] = "steel_1o5C(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_45steel_1o5C(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -7457,7 +7481,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_873_15);
   __Pyx_GIVEREF(__pyx_float_873_15);
   PyList_SET_ITEM(__pyx_t_3, 5, __pyx_float_873_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7479,7 +7503,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_25);
   __Pyx_GIVEREF(__pyx_int_25);
   PyList_SET_ITEM(__pyx_t_3, 5, __pyx_int_25);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7496,8 +7520,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_stainlessSteel_304) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_stainless_steel_AISI_304_from_Ta) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_stainlessSteel_304) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_stainless_steel_AISI_304_from_Ta) < 0) __PYX_ERR(0, 236, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":236
  * #: Stainless steel AISI 304, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -7536,6 +7560,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_47stainlessSteel_304(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_46stainlessSteel_304[] = "stainlessSteel_304(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_47stainlessSteel_304(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -7692,7 +7717,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7723,7 +7748,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_26);
   __Pyx_GIVEREF(__pyx_int_26);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_int_26);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7740,8 +7765,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_stainlessSteel_316) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_stainless_steel_AISI_316_from_Ta) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_stainlessSteel_316) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_stainless_steel_AISI_316_from_Ta) < 0) __PYX_ERR(0, 246, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":246
  * #: Stainless steel AISI 316, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -7780,6 +7805,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_49stainlessSteel_316(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_48stainlessSteel_316[] = "stainlessSteel_316(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_49stainlessSteel_316(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -7936,7 +7962,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -7967,7 +7993,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_28);
   __Pyx_GIVEREF(__pyx_int_28);
   PyList_SET_ITEM(__pyx_t_3, 8, __pyx_int_28);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7984,8 +8010,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_stainlessSteel_347) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_stainless_steel_AISI_347_from_Ta) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_stainlessSteel_347) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_stainless_steel_AISI_347_from_Ta) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":256
  * #: Stainless steel AISI 347, from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -8024,6 +8050,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_51stainlessSteel_347(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_50stainlessSteel_347[] = "stainlessSteel_347(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_51stainlessSteel_347(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -8186,7 +8213,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -8223,7 +8250,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_25);
   __Pyx_GIVEREF(__pyx_int_25);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_25);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8240,8 +8267,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_silicon) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_silicon_single_crystal_form_from) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_silicon) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_silicon_single_crystal_form_from) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":266
  * #: Silicon (single crystal form), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -8280,6 +8307,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_53silicon(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_52silicon[] = "silicon(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_53silicon(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -8439,7 +8467,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1073_15);
   __Pyx_GIVEREF(__pyx_float_1073_15);
   PyList_SET_ITEM(__pyx_t_3, 9, __pyx_float_1073_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -8473,7 +8501,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_370);
   __Pyx_GIVEREF(__pyx_int_370);
   PyList_SET_ITEM(__pyx_t_3, 9, __pyx_int_370);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8490,8 +8518,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_silver) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_silver_99_99_pure_from_Table_A_1) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_silver) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_silver_99_99_pure_from_Table_A_1) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":277
  * #: Silver (99.99% pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -8530,6 +8558,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_55silver(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_54silver[] = "silver(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_55silver(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -8692,7 +8721,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -8729,7 +8758,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_22);
   __Pyx_GIVEREF(__pyx_int_22);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_22);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8746,8 +8775,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_titanium) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_titanium_pure_from_Table_A_1_Lie) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_titanium) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_titanium_pure_from_Table_A_1_Lie) < 0) __PYX_ERR(0, 288, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":288
  * #: Titanium (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -8786,6 +8815,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_57titanium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_56titanium[] = "titanium(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_57titanium(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -8930,7 +8960,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -8949,7 +8979,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_12_);
   __Pyx_GIVEREF(__pyx_float_12_);
   PyList_SET_ITEM(__pyx_t_3, 4, __pyx_float_12_);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8966,8 +8996,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_titanium_6Al4V) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_titanium_6_Al_4_V_from_Table_A_1) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_titanium_6Al4V) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_titanium_6_Al_4_V_from_Table_A_1) < 0) __PYX_ERR(0, 299, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":299
  * #: Titanium (6%-Al, 4%-V), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -9006,6 +9036,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_59titanium_6Al4V(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_58titanium_6Al4V[] = "titanium_6Al4V(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_59titanium_6Al4V(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -9168,7 +9199,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_1273_15);
   __Pyx_GIVEREF(__pyx_float_1273_15);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_float_1273_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -9205,7 +9236,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_114);
   __Pyx_GIVEREF(__pyx_int_114);
   PyList_SET_ITEM(__pyx_t_3, 10, __pyx_int_114);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9222,8 +9253,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_tungsten) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_tungsten_pure_from_Table_A_1_Lie) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_tungsten) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_tungsten_pure_from_Table_A_1_Lie) < 0) __PYX_ERR(0, 309, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":309
  * #: Tungsten (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -9262,6 +9293,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_61tungsten(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_60tungsten[] = "tungsten(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_61tungsten(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -9415,7 +9447,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_float_673_15);
   __Pyx_GIVEREF(__pyx_float_673_15);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_float_673_15);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_T, __pyx_t_3) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyList_New(8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -9443,7 +9475,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_INCREF(__pyx_int_100);
   __Pyx_GIVEREF(__pyx_int_100);
   PyList_SET_ITEM(__pyx_t_3, 7, __pyx_int_100);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_k, __pyx_t_3) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_data, __pyx_t_2) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9460,8 +9492,8 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_T, __pyx_t_2) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_s_zinc) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_s_zinc_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_n_u_zinc) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_notes, __pyx_kp_u_zinc_pure_from_Table_A_1_Lienhar) < 0) __PYX_ERR(0, 319, __pyx_L1_error)
 
   /* "mcycle/library/materials.pyx":319
  * #: Zinc (pure), from Table A.1; Lienhard, J. H. I. & Lienhard, J. H. V., *A Heat Transfer Textbook*, Phlogiston Press, 2011.
@@ -9500,6 +9532,7 @@ static struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial *__pyx_f_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_9materials_63zinc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_7library_9materials_62zinc[] = "zinc(double T=293.15) -> SolidMaterial";
 static PyObject *__pyx_pw_6mcycle_7library_9materials_63zinc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_T;
   PyObject *__pyx_r = 0;
@@ -9584,38 +9617,38 @@ static PyObject *__pyx_pf_6mcycle_7library_9materials_62zinc(CYTHON_UNUSED PyObj
 }
 
 static PyMethodDef __pyx_methods[] = {
-  {"alumel", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_1alumel, METH_VARARGS|METH_KEYWORDS, 0},
-  {"aluminium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_3aluminium, METH_VARARGS|METH_KEYWORDS, 0},
-  {"aluminium_6061_T6", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_5aluminium_6061_T6, METH_VARARGS|METH_KEYWORDS, 0},
-  {"aluminium_7075_T6", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_7aluminium_7075_T6, METH_VARARGS|METH_KEYWORDS, 0},
-  {"brass", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_9brass, METH_VARARGS|METH_KEYWORDS, 0},
-  {"chromelP", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_11chromelP, METH_VARARGS|METH_KEYWORDS, 0},
-  {"chromium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_13chromium, METH_VARARGS|METH_KEYWORDS, 0},
-  {"constantan", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_15constantan, METH_VARARGS|METH_KEYWORDS, 0},
-  {"copper", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_17copper, METH_VARARGS|METH_KEYWORDS, 0},
-  {"duralumin", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_19duralumin, METH_VARARGS|METH_KEYWORDS, 0},
-  {"gold", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_21gold, METH_VARARGS|METH_KEYWORDS, 0},
-  {"inconelX750", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_23inconelX750, METH_VARARGS|METH_KEYWORDS, 0},
-  {"iron", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_25iron, METH_VARARGS|METH_KEYWORDS, 0},
-  {"lead", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_27lead, METH_VARARGS|METH_KEYWORDS, 0},
-  {"magnesium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_29magnesium, METH_VARARGS|METH_KEYWORDS, 0},
-  {"molybdenum", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_31molybdenum, METH_VARARGS|METH_KEYWORDS, 0},
-  {"nichrome", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_33nichrome, METH_VARARGS|METH_KEYWORDS, 0},
-  {"nichromeV", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_35nichromeV, METH_VARARGS|METH_KEYWORDS, 0},
-  {"nickel", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_37nickel, METH_VARARGS|METH_KEYWORDS, 0},
-  {"steel_1010", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_39steel_1010, METH_VARARGS|METH_KEYWORDS, 0},
-  {"steel_0o5C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_41steel_0o5C, METH_VARARGS|METH_KEYWORDS, 0},
-  {"steel_1o0C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_43steel_1o0C, METH_VARARGS|METH_KEYWORDS, 0},
-  {"steel_1o5C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_45steel_1o5C, METH_VARARGS|METH_KEYWORDS, 0},
-  {"stainlessSteel_304", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_47stainlessSteel_304, METH_VARARGS|METH_KEYWORDS, 0},
-  {"stainlessSteel_316", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_49stainlessSteel_316, METH_VARARGS|METH_KEYWORDS, 0},
-  {"stainlessSteel_347", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_51stainlessSteel_347, METH_VARARGS|METH_KEYWORDS, 0},
-  {"silicon", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_53silicon, METH_VARARGS|METH_KEYWORDS, 0},
-  {"silver", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_55silver, METH_VARARGS|METH_KEYWORDS, 0},
-  {"titanium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_57titanium, METH_VARARGS|METH_KEYWORDS, 0},
-  {"titanium_6Al4V", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_59titanium_6Al4V, METH_VARARGS|METH_KEYWORDS, 0},
-  {"tungsten", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_61tungsten, METH_VARARGS|METH_KEYWORDS, 0},
-  {"zinc", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_63zinc, METH_VARARGS|METH_KEYWORDS, 0},
+  {"alumel", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_1alumel, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_alumel},
+  {"aluminium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_3aluminium, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_2aluminium},
+  {"aluminium_6061_T6", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_5aluminium_6061_T6, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_4aluminium_6061_T6},
+  {"aluminium_7075_T6", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_7aluminium_7075_T6, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_6aluminium_7075_T6},
+  {"brass", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_9brass, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_8brass},
+  {"chromelP", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_11chromelP, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_10chromelP},
+  {"chromium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_13chromium, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_12chromium},
+  {"constantan", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_15constantan, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_14constantan},
+  {"copper", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_17copper, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_16copper},
+  {"duralumin", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_19duralumin, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_18duralumin},
+  {"gold", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_21gold, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_20gold},
+  {"inconelX750", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_23inconelX750, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_22inconelX750},
+  {"iron", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_25iron, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_24iron},
+  {"lead", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_27lead, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_26lead},
+  {"magnesium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_29magnesium, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_28magnesium},
+  {"molybdenum", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_31molybdenum, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_30molybdenum},
+  {"nichrome", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_33nichrome, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_32nichrome},
+  {"nichromeV", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_35nichromeV, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_34nichromeV},
+  {"nickel", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_37nickel, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_36nickel},
+  {"steel_1010", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_39steel_1010, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_38steel_1010},
+  {"steel_0o5C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_41steel_0o5C, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_40steel_0o5C},
+  {"steel_1o0C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_43steel_1o0C, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_42steel_1o0C},
+  {"steel_1o5C", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_45steel_1o5C, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_44steel_1o5C},
+  {"stainlessSteel_304", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_47stainlessSteel_304, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_46stainlessSteel_304},
+  {"stainlessSteel_316", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_49stainlessSteel_316, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_48stainlessSteel_316},
+  {"stainlessSteel_347", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_51stainlessSteel_347, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_50stainlessSteel_347},
+  {"silicon", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_53silicon, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_52silicon},
+  {"silver", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_55silver, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_54silver},
+  {"titanium", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_57titanium, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_56titanium},
+  {"titanium_6Al4V", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_59titanium_6Al4V, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_58titanium_6Al4V},
+  {"tungsten", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_61tungsten, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_60tungsten},
+  {"zinc", (PyCFunction)__pyx_pw_6mcycle_7library_9materials_63zinc, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_9materials_62zinc},
   {0, 0, 0, 0}
 };
 
@@ -9652,81 +9685,82 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_Chromel_P_Ni_10_Cr_from_Table_A, __pyx_k_Chromel_P_Ni_10_Cr_from_Table_A, sizeof(__pyx_k_Chromel_P_Ni_10_Cr_from_Table_A), 0, 0, 1, 0},
-  {&__pyx_kp_s_Inconel_X_750_73_Ni_15_Cr_6_75_F, __pyx_k_Inconel_X_750_73_Ni_15_Cr_6_75_F, sizeof(__pyx_k_Inconel_X_750_73_Ni_15_Cr_6_75_F), 0, 0, 1, 0},
+  {&__pyx_kp_u_Chromel_P_Ni_10_Cr_from_Table_A, __pyx_k_Chromel_P_Ni_10_Cr_from_Table_A, sizeof(__pyx_k_Chromel_P_Ni_10_Cr_from_Table_A), 0, 1, 0, 0},
+  {&__pyx_kp_u_Inconel_X_750_73_Ni_15_Cr_6_75_F, __pyx_k_Inconel_X_750_73_Ni_15_Cr_6_75_F, sizeof(__pyx_k_Inconel_X_750_73_Ni_15_Cr_6_75_F), 0, 1, 0, 0},
   {&__pyx_n_s_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 1, 1},
-  {&__pyx_n_s_alumel, __pyx_k_alumel, sizeof(__pyx_k_alumel), 0, 0, 1, 1},
-  {&__pyx_kp_s_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta, __pyx_k_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta, sizeof(__pyx_k_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta), 0, 0, 1, 0},
-  {&__pyx_n_s_aluminium, __pyx_k_aluminium, sizeof(__pyx_k_aluminium), 0, 0, 1, 1},
-  {&__pyx_n_s_aluminium_6061_T6, __pyx_k_aluminium_6061_T6, sizeof(__pyx_k_aluminium_6061_T6), 0, 0, 1, 1},
-  {&__pyx_n_s_aluminium_7075_T6, __pyx_k_aluminium_7075_T6, sizeof(__pyx_k_aluminium_7075_T6), 0, 0, 1, 1},
-  {&__pyx_kp_s_aluminium_alloy_6061_T6_from_Tab, __pyx_k_aluminium_alloy_6061_T6_from_Tab, sizeof(__pyx_k_aluminium_alloy_6061_T6_from_Tab), 0, 0, 1, 0},
-  {&__pyx_kp_s_aluminium_alloy_7075_T6_from_Tab, __pyx_k_aluminium_alloy_7075_T6_from_Tab, sizeof(__pyx_k_aluminium_alloy_7075_T6_from_Tab), 0, 0, 1, 0},
-  {&__pyx_kp_s_aluminium_pure_from_Table_A_1_Li, __pyx_k_aluminium_pure_from_Table_A_1_Li, sizeof(__pyx_k_aluminium_pure_from_Table_A_1_Li), 0, 0, 1, 0},
-  {&__pyx_n_s_brass, __pyx_k_brass, sizeof(__pyx_k_brass), 0, 0, 1, 1},
-  {&__pyx_kp_s_brass_Cu_30_Zn_from_Table_A_1_Li, __pyx_k_brass_Cu_30_Zn_from_Table_A_1_Li, sizeof(__pyx_k_brass_Cu_30_Zn_from_Table_A_1_Li), 0, 0, 1, 0},
-  {&__pyx_kp_s_chromel_P, __pyx_k_chromel_P, sizeof(__pyx_k_chromel_P), 0, 0, 1, 0},
-  {&__pyx_n_s_chromium, __pyx_k_chromium, sizeof(__pyx_k_chromium), 0, 0, 1, 1},
-  {&__pyx_kp_s_chromium_from_Table_A_1_Lienhard, __pyx_k_chromium_from_Table_A_1_Lienhard, sizeof(__pyx_k_chromium_from_Table_A_1_Lienhard), 0, 0, 1, 0},
+  {&__pyx_n_u_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 1, 0, 1},
+  {&__pyx_n_u_alumel, __pyx_k_alumel, sizeof(__pyx_k_alumel), 0, 1, 0, 1},
+  {&__pyx_kp_u_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta, __pyx_k_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta, sizeof(__pyx_k_alumel_Ni_2_Al_2_Mn_1_Si_from_Ta), 0, 1, 0, 0},
+  {&__pyx_n_u_aluminium, __pyx_k_aluminium, sizeof(__pyx_k_aluminium), 0, 1, 0, 1},
+  {&__pyx_n_u_aluminium_6061_T6, __pyx_k_aluminium_6061_T6, sizeof(__pyx_k_aluminium_6061_T6), 0, 1, 0, 1},
+  {&__pyx_n_u_aluminium_7075_T6, __pyx_k_aluminium_7075_T6, sizeof(__pyx_k_aluminium_7075_T6), 0, 1, 0, 1},
+  {&__pyx_kp_u_aluminium_alloy_6061_T6_from_Tab, __pyx_k_aluminium_alloy_6061_T6_from_Tab, sizeof(__pyx_k_aluminium_alloy_6061_T6_from_Tab), 0, 1, 0, 0},
+  {&__pyx_kp_u_aluminium_alloy_7075_T6_from_Tab, __pyx_k_aluminium_alloy_7075_T6_from_Tab, sizeof(__pyx_k_aluminium_alloy_7075_T6_from_Tab), 0, 1, 0, 0},
+  {&__pyx_kp_u_aluminium_pure_from_Table_A_1_Li, __pyx_k_aluminium_pure_from_Table_A_1_Li, sizeof(__pyx_k_aluminium_pure_from_Table_A_1_Li), 0, 1, 0, 0},
+  {&__pyx_n_u_brass, __pyx_k_brass, sizeof(__pyx_k_brass), 0, 1, 0, 1},
+  {&__pyx_kp_u_brass_Cu_30_Zn_from_Table_A_1_Li, __pyx_k_brass_Cu_30_Zn_from_Table_A_1_Li, sizeof(__pyx_k_brass_Cu_30_Zn_from_Table_A_1_Li), 0, 1, 0, 0},
+  {&__pyx_kp_u_chromel_P, __pyx_k_chromel_P, sizeof(__pyx_k_chromel_P), 0, 1, 0, 0},
+  {&__pyx_n_u_chromium, __pyx_k_chromium, sizeof(__pyx_k_chromium), 0, 1, 0, 1},
+  {&__pyx_kp_u_chromium_from_Table_A_1_Lienhard, __pyx_k_chromium_from_Table_A_1_Lienhard, sizeof(__pyx_k_chromium_from_Table_A_1_Lienhard), 0, 1, 0, 0},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_constantan, __pyx_k_constantan, sizeof(__pyx_k_constantan), 0, 0, 1, 1},
-  {&__pyx_kp_s_constantan_Cu_40_Ni_from_Table_A, __pyx_k_constantan_Cu_40_Ni_from_Table_A, sizeof(__pyx_k_constantan_Cu_40_Ni_from_Table_A), 0, 0, 1, 0},
-  {&__pyx_n_s_copper, __pyx_k_copper, sizeof(__pyx_k_copper), 0, 0, 1, 1},
-  {&__pyx_kp_s_copper_pure_from_Table_A_1_Lienh, __pyx_k_copper_pure_from_Table_A_1_Lienh, sizeof(__pyx_k_copper_pure_from_Table_A_1_Lienh), 0, 0, 1, 0},
+  {&__pyx_n_u_constantan, __pyx_k_constantan, sizeof(__pyx_k_constantan), 0, 1, 0, 1},
+  {&__pyx_kp_u_constantan_Cu_40_Ni_from_Table_A, __pyx_k_constantan_Cu_40_Ni_from_Table_A, sizeof(__pyx_k_constantan_Cu_40_Ni_from_Table_A), 0, 1, 0, 0},
+  {&__pyx_n_u_copper, __pyx_k_copper, sizeof(__pyx_k_copper), 0, 1, 0, 1},
+  {&__pyx_kp_u_copper_pure_from_Table_A_1_Lienh, __pyx_k_copper_pure_from_Table_A_1_Lienh, sizeof(__pyx_k_copper_pure_from_Table_A_1_Lienh), 0, 1, 0, 0},
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_n_s_deg, __pyx_k_deg, sizeof(__pyx_k_deg), 0, 0, 1, 1},
-  {&__pyx_n_s_duralumin, __pyx_k_duralumin, sizeof(__pyx_k_duralumin), 0, 0, 1, 1},
-  {&__pyx_kp_s_duralumin_4_Cu_0_5_Mg_from_Table, __pyx_k_duralumin_4_Cu_0_5_Mg_from_Table, sizeof(__pyx_k_duralumin_4_Cu_0_5_Mg_from_Table), 0, 0, 1, 0},
-  {&__pyx_n_s_gold, __pyx_k_gold, sizeof(__pyx_k_gold), 0, 0, 1, 1},
-  {&__pyx_kp_s_gold_pure_from_Table_A_1_Lienhar, __pyx_k_gold_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_gold_pure_from_Table_A_1_Lienhar), 0, 0, 1, 0},
-  {&__pyx_n_s_inconelX750, __pyx_k_inconelX750, sizeof(__pyx_k_inconelX750), 0, 0, 1, 1},
-  {&__pyx_n_s_iron, __pyx_k_iron, sizeof(__pyx_k_iron), 0, 0, 1, 1},
-  {&__pyx_kp_s_iron_pure_from_Table_A_1_Lienhar, __pyx_k_iron_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_iron_pure_from_Table_A_1_Lienhar), 0, 0, 1, 0},
-  {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
-  {&__pyx_n_s_lead, __pyx_k_lead, sizeof(__pyx_k_lead), 0, 0, 1, 1},
-  {&__pyx_kp_s_lead_pure_from_Table_A_1_Lienhar, __pyx_k_lead_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_lead_pure_from_Table_A_1_Lienhar), 0, 0, 1, 0},
-  {&__pyx_n_s_magnesium, __pyx_k_magnesium, sizeof(__pyx_k_magnesium), 0, 0, 1, 1},
-  {&__pyx_kp_s_magnesium_pure_from_Table_A_1_Li, __pyx_k_magnesium_pure_from_Table_A_1_Li, sizeof(__pyx_k_magnesium_pure_from_Table_A_1_Li), 0, 0, 1, 0},
+  {&__pyx_n_u_duralumin, __pyx_k_duralumin, sizeof(__pyx_k_duralumin), 0, 1, 0, 1},
+  {&__pyx_kp_u_duralumin_4_Cu_0_5_Mg_from_Table, __pyx_k_duralumin_4_Cu_0_5_Mg_from_Table, sizeof(__pyx_k_duralumin_4_Cu_0_5_Mg_from_Table), 0, 1, 0, 0},
+  {&__pyx_n_u_gold, __pyx_k_gold, sizeof(__pyx_k_gold), 0, 1, 0, 1},
+  {&__pyx_kp_u_gold_pure_from_Table_A_1_Lienhar, __pyx_k_gold_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_gold_pure_from_Table_A_1_Lienhar), 0, 1, 0, 0},
+  {&__pyx_n_u_inconelX750, __pyx_k_inconelX750, sizeof(__pyx_k_inconelX750), 0, 1, 0, 1},
+  {&__pyx_n_u_iron, __pyx_k_iron, sizeof(__pyx_k_iron), 0, 1, 0, 1},
+  {&__pyx_kp_u_iron_pure_from_Table_A_1_Lienhar, __pyx_k_iron_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_iron_pure_from_Table_A_1_Lienhar), 0, 1, 0, 0},
+  {&__pyx_n_u_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 1, 0, 1},
+  {&__pyx_n_u_lead, __pyx_k_lead, sizeof(__pyx_k_lead), 0, 1, 0, 1},
+  {&__pyx_kp_u_lead_pure_from_Table_A_1_Lienhar, __pyx_k_lead_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_lead_pure_from_Table_A_1_Lienhar), 0, 1, 0, 0},
+  {&__pyx_n_u_magnesium, __pyx_k_magnesium, sizeof(__pyx_k_magnesium), 0, 1, 0, 1},
+  {&__pyx_kp_u_magnesium_pure_from_Table_A_1_Li, __pyx_k_magnesium_pure_from_Table_A_1_Li, sizeof(__pyx_k_magnesium_pure_from_Table_A_1_Li), 0, 1, 0, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {&__pyx_n_s_molybdenum, __pyx_k_molybdenum, sizeof(__pyx_k_molybdenum), 0, 0, 1, 1},
-  {&__pyx_kp_s_molybdenum_pure_from_Table_A_1_L, __pyx_k_molybdenum_pure_from_Table_A_1_L, sizeof(__pyx_k_molybdenum_pure_from_Table_A_1_L), 0, 0, 1, 0},
+  {&__pyx_n_u_molybdenum, __pyx_k_molybdenum, sizeof(__pyx_k_molybdenum), 0, 1, 0, 1},
+  {&__pyx_kp_u_molybdenum_pure_from_Table_A_1_L, __pyx_k_molybdenum_pure_from_Table_A_1_L, sizeof(__pyx_k_molybdenum_pure_from_Table_A_1_L), 0, 1, 0, 0},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_nichrome, __pyx_k_nichrome, sizeof(__pyx_k_nichrome), 0, 0, 1, 1},
-  {&__pyx_n_s_nichromeV, __pyx_k_nichromeV, sizeof(__pyx_k_nichromeV), 0, 0, 1, 1},
-  {&__pyx_kp_s_nichrome_Ni_23_Fe_16_Cr_from_Tab, __pyx_k_nichrome_Ni_23_Fe_16_Cr_from_Tab, sizeof(__pyx_k_nichrome_Ni_23_Fe_16_Cr_from_Tab), 0, 0, 1, 0},
-  {&__pyx_kp_s_nichrome_V_Ni_20_Cr_1_4_Si_from, __pyx_k_nichrome_V_Ni_20_Cr_1_4_Si_from, sizeof(__pyx_k_nichrome_V_Ni_20_Cr_1_4_Si_from), 0, 0, 1, 0},
-  {&__pyx_n_s_nickel, __pyx_k_nickel, sizeof(__pyx_k_nickel), 0, 0, 1, 1},
-  {&__pyx_kp_s_nickel_pure_from_Table_A_1_Lienh, __pyx_k_nickel_pure_from_Table_A_1_Lienh, sizeof(__pyx_k_nickel_pure_from_Table_A_1_Lienh), 0, 0, 1, 0},
+  {&__pyx_n_u_nichrome, __pyx_k_nichrome, sizeof(__pyx_k_nichrome), 0, 1, 0, 1},
+  {&__pyx_n_u_nichromeV, __pyx_k_nichromeV, sizeof(__pyx_k_nichromeV), 0, 1, 0, 1},
+  {&__pyx_kp_u_nichrome_Ni_23_Fe_16_Cr_from_Tab, __pyx_k_nichrome_Ni_23_Fe_16_Cr_from_Tab, sizeof(__pyx_k_nichrome_Ni_23_Fe_16_Cr_from_Tab), 0, 1, 0, 0},
+  {&__pyx_kp_u_nichrome_V_Ni_20_Cr_1_4_Si_from, __pyx_k_nichrome_V_Ni_20_Cr_1_4_Si_from, sizeof(__pyx_k_nichrome_V_Ni_20_Cr_1_4_Si_from), 0, 1, 0, 0},
+  {&__pyx_n_u_nickel, __pyx_k_nickel, sizeof(__pyx_k_nickel), 0, 1, 0, 1},
+  {&__pyx_kp_u_nickel_pure_from_Table_A_1_Lienh, __pyx_k_nickel_pure_from_Table_A_1_Lienh, sizeof(__pyx_k_nickel_pure_from_Table_A_1_Lienh), 0, 1, 0, 0},
   {&__pyx_n_s_notes, __pyx_k_notes, sizeof(__pyx_k_notes), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_rho, __pyx_k_rho, sizeof(__pyx_k_rho), 0, 0, 1, 1},
-  {&__pyx_n_s_silicon, __pyx_k_silicon, sizeof(__pyx_k_silicon), 0, 0, 1, 1},
-  {&__pyx_kp_s_silicon_single_crystal_form_from, __pyx_k_silicon_single_crystal_form_from, sizeof(__pyx_k_silicon_single_crystal_form_from), 0, 0, 1, 0},
-  {&__pyx_n_s_silver, __pyx_k_silver, sizeof(__pyx_k_silver), 0, 0, 1, 1},
-  {&__pyx_kp_s_silver_99_99_pure_from_Table_A_1, __pyx_k_silver_99_99_pure_from_Table_A_1, sizeof(__pyx_k_silver_99_99_pure_from_Table_A_1), 0, 0, 1, 0},
-  {&__pyx_n_s_stainlessSteel_304, __pyx_k_stainlessSteel_304, sizeof(__pyx_k_stainlessSteel_304), 0, 0, 1, 1},
-  {&__pyx_n_s_stainlessSteel_316, __pyx_k_stainlessSteel_316, sizeof(__pyx_k_stainlessSteel_316), 0, 0, 1, 1},
-  {&__pyx_n_s_stainlessSteel_347, __pyx_k_stainlessSteel_347, sizeof(__pyx_k_stainlessSteel_347), 0, 0, 1, 1},
-  {&__pyx_kp_s_stainless_steel_AISI_304_from_Ta, __pyx_k_stainless_steel_AISI_304_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_304_from_Ta), 0, 0, 1, 0},
-  {&__pyx_kp_s_stainless_steel_AISI_316_from_Ta, __pyx_k_stainless_steel_AISI_316_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_316_from_Ta), 0, 0, 1, 0},
-  {&__pyx_kp_s_stainless_steel_AISI_347_from_Ta, __pyx_k_stainless_steel_AISI_347_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_347_from_Ta), 0, 0, 1, 0},
-  {&__pyx_kp_s_steel_0_5_carbon_from_Table_A_1, __pyx_k_steel_0_5_carbon_from_Table_A_1, sizeof(__pyx_k_steel_0_5_carbon_from_Table_A_1), 0, 0, 1, 0},
-  {&__pyx_n_s_steel_0o5C, __pyx_k_steel_0o5C, sizeof(__pyx_k_steel_0o5C), 0, 0, 1, 1},
-  {&__pyx_n_s_steel_1010, __pyx_k_steel_1010, sizeof(__pyx_k_steel_1010), 0, 0, 1, 1},
-  {&__pyx_kp_s_steel_1_0_carbon_from_Table_A_1, __pyx_k_steel_1_0_carbon_from_Table_A_1, sizeof(__pyx_k_steel_1_0_carbon_from_Table_A_1), 0, 0, 1, 0},
-  {&__pyx_kp_s_steel_1_5_carbon_from_Table_A_1, __pyx_k_steel_1_5_carbon_from_Table_A_1, sizeof(__pyx_k_steel_1_5_carbon_from_Table_A_1), 0, 0, 1, 0},
-  {&__pyx_n_s_steel_1o0C, __pyx_k_steel_1o0C, sizeof(__pyx_k_steel_1o0C), 0, 0, 1, 1},
-  {&__pyx_n_s_steel_1o5C, __pyx_k_steel_1o5C, sizeof(__pyx_k_steel_1o5C), 0, 0, 1, 1},
-  {&__pyx_kp_s_steel_AISI_1010_from_Table_A_1_L, __pyx_k_steel_AISI_1010_from_Table_A_1_L, sizeof(__pyx_k_steel_AISI_1010_from_Table_A_1_L), 0, 0, 1, 0},
+  {&__pyx_n_u_silicon, __pyx_k_silicon, sizeof(__pyx_k_silicon), 0, 1, 0, 1},
+  {&__pyx_kp_u_silicon_single_crystal_form_from, __pyx_k_silicon_single_crystal_form_from, sizeof(__pyx_k_silicon_single_crystal_form_from), 0, 1, 0, 0},
+  {&__pyx_n_u_silver, __pyx_k_silver, sizeof(__pyx_k_silver), 0, 1, 0, 1},
+  {&__pyx_kp_u_silver_99_99_pure_from_Table_A_1, __pyx_k_silver_99_99_pure_from_Table_A_1, sizeof(__pyx_k_silver_99_99_pure_from_Table_A_1), 0, 1, 0, 0},
+  {&__pyx_n_u_stainlessSteel_304, __pyx_k_stainlessSteel_304, sizeof(__pyx_k_stainlessSteel_304), 0, 1, 0, 1},
+  {&__pyx_n_u_stainlessSteel_316, __pyx_k_stainlessSteel_316, sizeof(__pyx_k_stainlessSteel_316), 0, 1, 0, 1},
+  {&__pyx_n_u_stainlessSteel_347, __pyx_k_stainlessSteel_347, sizeof(__pyx_k_stainlessSteel_347), 0, 1, 0, 1},
+  {&__pyx_kp_u_stainless_steel_AISI_304_from_Ta, __pyx_k_stainless_steel_AISI_304_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_304_from_Ta), 0, 1, 0, 0},
+  {&__pyx_kp_u_stainless_steel_AISI_316_from_Ta, __pyx_k_stainless_steel_AISI_316_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_316_from_Ta), 0, 1, 0, 0},
+  {&__pyx_kp_u_stainless_steel_AISI_347_from_Ta, __pyx_k_stainless_steel_AISI_347_from_Ta, sizeof(__pyx_k_stainless_steel_AISI_347_from_Ta), 0, 1, 0, 0},
+  {&__pyx_kp_u_steel_0_5_carbon_from_Table_A_1, __pyx_k_steel_0_5_carbon_from_Table_A_1, sizeof(__pyx_k_steel_0_5_carbon_from_Table_A_1), 0, 1, 0, 0},
+  {&__pyx_n_u_steel_0o5C, __pyx_k_steel_0o5C, sizeof(__pyx_k_steel_0o5C), 0, 1, 0, 1},
+  {&__pyx_n_u_steel_1010, __pyx_k_steel_1010, sizeof(__pyx_k_steel_1010), 0, 1, 0, 1},
+  {&__pyx_kp_u_steel_1_0_carbon_from_Table_A_1, __pyx_k_steel_1_0_carbon_from_Table_A_1, sizeof(__pyx_k_steel_1_0_carbon_from_Table_A_1), 0, 1, 0, 0},
+  {&__pyx_kp_u_steel_1_5_carbon_from_Table_A_1, __pyx_k_steel_1_5_carbon_from_Table_A_1, sizeof(__pyx_k_steel_1_5_carbon_from_Table_A_1), 0, 1, 0, 0},
+  {&__pyx_n_u_steel_1o0C, __pyx_k_steel_1o0C, sizeof(__pyx_k_steel_1o0C), 0, 1, 0, 1},
+  {&__pyx_n_u_steel_1o5C, __pyx_k_steel_1o5C, sizeof(__pyx_k_steel_1o5C), 0, 1, 0, 1},
+  {&__pyx_kp_u_steel_AISI_1010_from_Table_A_1_L, __pyx_k_steel_AISI_1010_from_Table_A_1_L, sizeof(__pyx_k_steel_AISI_1010_from_Table_A_1_L), 0, 1, 0, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_titanium, __pyx_k_titanium, sizeof(__pyx_k_titanium), 0, 0, 1, 1},
-  {&__pyx_n_s_titanium_6Al4V, __pyx_k_titanium_6Al4V, sizeof(__pyx_k_titanium_6Al4V), 0, 0, 1, 1},
-  {&__pyx_kp_s_titanium_6_Al_4_V_from_Table_A_1, __pyx_k_titanium_6_Al_4_V_from_Table_A_1, sizeof(__pyx_k_titanium_6_Al_4_V_from_Table_A_1), 0, 0, 1, 0},
-  {&__pyx_kp_s_titanium_pure_from_Table_A_1_Lie, __pyx_k_titanium_pure_from_Table_A_1_Lie, sizeof(__pyx_k_titanium_pure_from_Table_A_1_Lie), 0, 0, 1, 0},
-  {&__pyx_n_s_tungsten, __pyx_k_tungsten, sizeof(__pyx_k_tungsten), 0, 0, 1, 1},
-  {&__pyx_kp_s_tungsten_pure_from_Table_A_1_Lie, __pyx_k_tungsten_pure_from_Table_A_1_Lie, sizeof(__pyx_k_tungsten_pure_from_Table_A_1_Lie), 0, 0, 1, 0},
-  {&__pyx_n_s_zinc, __pyx_k_zinc, sizeof(__pyx_k_zinc), 0, 0, 1, 1},
-  {&__pyx_kp_s_zinc_pure_from_Table_A_1_Lienhar, __pyx_k_zinc_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_zinc_pure_from_Table_A_1_Lienhar), 0, 0, 1, 0},
+  {&__pyx_n_u_titanium, __pyx_k_titanium, sizeof(__pyx_k_titanium), 0, 1, 0, 1},
+  {&__pyx_n_u_titanium_6Al4V, __pyx_k_titanium_6Al4V, sizeof(__pyx_k_titanium_6Al4V), 0, 1, 0, 1},
+  {&__pyx_kp_u_titanium_6_Al_4_V_from_Table_A_1, __pyx_k_titanium_6_Al_4_V_from_Table_A_1, sizeof(__pyx_k_titanium_6_Al_4_V_from_Table_A_1), 0, 1, 0, 0},
+  {&__pyx_kp_u_titanium_pure_from_Table_A_1_Lie, __pyx_k_titanium_pure_from_Table_A_1_Lie, sizeof(__pyx_k_titanium_pure_from_Table_A_1_Lie), 0, 1, 0, 0},
+  {&__pyx_n_u_tungsten, __pyx_k_tungsten, sizeof(__pyx_k_tungsten), 0, 1, 0, 1},
+  {&__pyx_kp_u_tungsten_pure_from_Table_A_1_Lie, __pyx_k_tungsten_pure_from_Table_A_1_Lie, sizeof(__pyx_k_tungsten_pure_from_Table_A_1_Lie), 0, 1, 0, 0},
+  {&__pyx_n_u_zinc, __pyx_k_zinc, sizeof(__pyx_k_zinc), 0, 1, 0, 1},
+  {&__pyx_kp_u_zinc_pure_from_Table_A_1_Lienhar, __pyx_k_zinc_pure_from_Table_A_1_Lienhar, sizeof(__pyx_k_zinc_pure_from_Table_A_1_Lienhar), 0, 1, 0, 0},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {

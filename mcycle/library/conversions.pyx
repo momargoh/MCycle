@@ -1,6 +1,15 @@
 """A brief collection of useful, MATLAB-style unit conversions."""
 
 
+cpdef double atm2Pa(double value):
+    "float: pressure: standard atmospheres to Pascal."
+    return value * 101325.
+
+
+cpdef double Pa2atm(double value):
+    "float: pressure: Pascal to standard atmospheres."
+    return value / 101325.
+
 cpdef double bar2Pa(double value):
     "float: pressure: bar to Pascal."
     return value * 10**5

@@ -151,7 +151,7 @@ kwargs : optional
                         "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"),
                         "sizeUnitsBracket": MCAttr(list, "none"), 'runBracket': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
-        self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+        self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
 
     cdef public tuple _unitArgsLiq(self):

@@ -20,7 +20,7 @@ END: Cython Metadata */
     #error Cython requires Python 2.6+ or Python 3.3+.
 #else
 #define CYTHON_ABI "0_27_3"
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1201,12 +1201,6 @@ static PyObject **__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_COOLPROP_EOS (*__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_MPL_BACKEND (*__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_PLOT_DIR = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_PLOT_DIR (*__pyx_vp_6mcycle_8DEFAULTS_PLOT_DIR)
-static int *__pyx_vp_6mcycle_8DEFAULTS_PLOT_DPI = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_PLOT_DPI (*__pyx_vp_6mcycle_8DEFAULTS_PLOT_DPI)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_PLOT_FORMAT = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_PLOT_FORMAT (*__pyx_vp_6mcycle_8DEFAULTS_PLOT_FORMAT)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR (*__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR = 0;
@@ -1260,16 +1254,16 @@ static const char __pyx_k_Altitude_must_be_below_86_000_m[] = "Altitude must be 
 static const char __pyx_k_Compute_FlowState_properties_in[] = "Compute FlowState properties in standard atmospheres.\n";
 static const char __pyx_k_Altitude_must_be_above_610_m_giv[] = "Altitude must be above -610 [m] (given: {})";
 static const char __pyx_k_Was_not_able_to_produce_FlowStat[] = "Was not able to produce FlowState from computed pStag={}, TStag={}";
-static PyObject *__pyx_n_s_Air;
-static PyObject *__pyx_kp_s_Altitude_must_be_above_610_m_giv;
-static PyObject *__pyx_kp_s_Altitude_must_be_below_86_000_m;
+static PyObject *__pyx_n_u_Air;
+static PyObject *__pyx_kp_u_Altitude_must_be_above_610_m_giv;
+static PyObject *__pyx_kp_u_Altitude_must_be_below_86_000_m;
 static PyObject *__pyx_n_s_CP;
 static PyObject *__pyx_n_s_CoolProp;
 static PyObject *__pyx_n_s_PT_INPUTS;
 static PyObject *__pyx_n_s_R;
 static PyObject *__pyx_n_s_TStag;
 static PyObject *__pyx_n_s_ValueError;
-static PyObject *__pyx_kp_s_Was_not_able_to_produce_FlowStat;
+static PyObject *__pyx_kp_u_Was_not_able_to_produce_FlowStat;
 static PyObject *__pyx_n_s_altitude;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_exp;
@@ -1553,7 +1547,7 @@ static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7li
   double __pyx_v_TStag = ((double)288.15);
   double __pyx_v_g = ((double)9.80665);
   double __pyx_v_R = ((double)287.058);
-  PyObject *__pyx_v_fluidCP = ((PyObject*)__pyx_n_s_Air);
+  PyObject *__pyx_v_fluidCP = ((PyObject*)__pyx_n_u_Air);
   int __pyx_v_phaseCP = ((int)-1);
   PyObject *__pyx_v_refLapseRate = 0;
   PyObject *__pyx_v_refAltitude = 0;
@@ -1613,7 +1607,7 @@ static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7li
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_altitude >= -610.0) != 0))) {
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Altitude_must_be_above_610_m_giv, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_above_610_m_giv, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
 
       /* "mcycle/library/standard_atmospheres.pyx":45
@@ -1699,7 +1693,7 @@ static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7li
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_altitude <= 86000.0) != 0))) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Altitude_must_be_below_86_000_m, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_below_86_000_m, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 
       /* "mcycle/library/standard_atmospheres.pyx":47
@@ -2185,7 +2179,7 @@ static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7li
  *             "Was not able to produce FlowState from computed pStag={}, TStag={}".             # <<<<<<<<<<<<<<
  *             format(_pStag, _TStag))
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Was_not_able_to_produce_FlowStat, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L8_except_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Was_not_able_to_produce_FlowStat, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_4);
 
       /* "mcycle/library/standard_atmospheres.pyx":68
@@ -2319,7 +2313,7 @@ static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7li
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_20standard_atmospheres_isa[] = "FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.\n\n\nParameters\n-----------\naltitude : float\n    Geopotential altitude [m].\npStag : float, optional\n    Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.\nTStag : float, optional\n    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 101325.\ng : float, optional\n    Acceleration due to gravity [m/s^2]. Assumed to be constant. Defaults to 9.80665.\nR : float, optional\n    Specific gas constant of air [J/Kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.\n";
+static char __pyx_doc_6mcycle_7library_20standard_atmospheres_isa[] = "isa(double altitude, double pStag=101325., double TStag=288.15, double g=9.80665, double R=287.058, unicode fluidCP=u'Air', int phaseCP=-1) -> FlowState\nFlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.\n\n\nParameters\n-----------\naltitude : float\n    Geopotential altitude [m].\npStag : float, optional\n    Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.\nTStag : float, optional\n    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 101325.\ng : float, optional\n    Acceleration due to gravity [m/s^2]. Assumed to be constant. Defaults to 9.80665.\nR : float, optional\n    Specific gas constant of air [J/Kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.\n";
 static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_altitude;
   double __pyx_v_pStag;
@@ -2334,7 +2328,7 @@ static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject 
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_altitude,&__pyx_n_s_pStag,&__pyx_n_s_TStag,&__pyx_n_s_g,&__pyx_n_s_R,&__pyx_n_s_fluidCP,&__pyx_n_s_phaseCP,0};
     PyObject* values[7] = {0,0,0,0,0,0,0};
-    values[5] = ((PyObject*)__pyx_n_s_Air);
+    values[5] = ((PyObject*)__pyx_n_u_Air);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -2456,7 +2450,7 @@ static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject 
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fluidCP), (&PyString_Type), 1, "fluidCP", 1))) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fluidCP), (&PyUnicode_Type), 1, "fluidCP", 1))) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_7library_20standard_atmospheres_isa(__pyx_self, __pyx_v_altitude, __pyx_v_pStag, __pyx_v_TStag, __pyx_v_g, __pyx_v_R, __pyx_v_fluidCP, __pyx_v_phaseCP);
 
   /* function exit code */
@@ -2537,16 +2531,16 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_n_s_Air, __pyx_k_Air, sizeof(__pyx_k_Air), 0, 0, 1, 1},
-  {&__pyx_kp_s_Altitude_must_be_above_610_m_giv, __pyx_k_Altitude_must_be_above_610_m_giv, sizeof(__pyx_k_Altitude_must_be_above_610_m_giv), 0, 0, 1, 0},
-  {&__pyx_kp_s_Altitude_must_be_below_86_000_m, __pyx_k_Altitude_must_be_below_86_000_m, sizeof(__pyx_k_Altitude_must_be_below_86_000_m), 0, 0, 1, 0},
+  {&__pyx_n_u_Air, __pyx_k_Air, sizeof(__pyx_k_Air), 0, 1, 0, 1},
+  {&__pyx_kp_u_Altitude_must_be_above_610_m_giv, __pyx_k_Altitude_must_be_above_610_m_giv, sizeof(__pyx_k_Altitude_must_be_above_610_m_giv), 0, 1, 0, 0},
+  {&__pyx_kp_u_Altitude_must_be_below_86_000_m, __pyx_k_Altitude_must_be_below_86_000_m, sizeof(__pyx_k_Altitude_must_be_below_86_000_m), 0, 1, 0, 0},
   {&__pyx_n_s_CP, __pyx_k_CP, sizeof(__pyx_k_CP), 0, 0, 1, 1},
   {&__pyx_n_s_CoolProp, __pyx_k_CoolProp, sizeof(__pyx_k_CoolProp), 0, 0, 1, 1},
   {&__pyx_n_s_PT_INPUTS, __pyx_k_PT_INPUTS, sizeof(__pyx_k_PT_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_R, __pyx_k_R, sizeof(__pyx_k_R), 0, 0, 1, 1},
   {&__pyx_n_s_TStag, __pyx_k_TStag, sizeof(__pyx_k_TStag), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-  {&__pyx_kp_s_Was_not_able_to_produce_FlowStat, __pyx_k_Was_not_able_to_produce_FlowStat, sizeof(__pyx_k_Was_not_able_to_produce_FlowStat), 0, 0, 1, 0},
+  {&__pyx_kp_u_Was_not_able_to_produce_FlowStat, __pyx_k_Was_not_able_to_produce_FlowStat, sizeof(__pyx_k_Was_not_able_to_produce_FlowStat), 0, 1, 0, 0},
   {&__pyx_n_s_altitude, __pyx_k_altitude, sizeof(__pyx_k_altitude), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_exp, __pyx_k_exp, sizeof(__pyx_k_exp), 0, 0, 1, 1},
@@ -2756,9 +2750,6 @@ static int __pyx_pymod_exec_standard_atmospheres(PyObject *__pyx_pyinit_module)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "GRAVITY", (void **)&__pyx_vp_6mcycle_8DEFAULTS_GRAVITY, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "COOLPROP_EOS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MPL_BACKEND", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "PLOT_DIR", (void **)&__pyx_vp_6mcycle_8DEFAULTS_PLOT_DIR, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "PLOT_DPI", (void **)&__pyx_vp_6mcycle_8DEFAULTS_PLOT_DPI, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "PLOT_FORMAT", (void **)&__pyx_vp_6mcycle_8DEFAULTS_PLOT_FORMAT, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "UNITS_SEPARATOR_NUMERATOR", (void **)&__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "UNITS_SEPARATOR_DENOMINATOR", (void **)&__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "PRINT_FORMAT_FLOAT", (void **)&__pyx_vp_6mcycle_8DEFAULTS_PRINT_FORMAT_FLOAT, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -2786,7 +2777,7 @@ static int __pyx_pymod_exec_standard_atmospheres(PyObject *__pyx_pyinit_module)
   __Pyx_INCREF(__pyx_n_s_nan);
   __Pyx_GIVEREF(__pyx_n_s_nan);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_nan);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
@@ -2807,7 +2798,7 @@ static int __pyx_pymod_exec_standard_atmospheres(PyObject *__pyx_pyinit_module)
   __Pyx_INCREF(__pyx_n_s_exp);
   __Pyx_GIVEREF(__pyx_n_s_exp);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_exp);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_numpy, __pyx_t_3, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_numpy, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
@@ -2823,7 +2814,7 @@ static int __pyx_pymod_exec_standard_atmospheres(PyObject *__pyx_pyinit_module)
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CoolProp, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_CoolProp, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_CP, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;

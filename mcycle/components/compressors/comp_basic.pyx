@@ -46,7 +46,7 @@ kwargs : optional
                  str sizeAttr="pRatio",
                  list sizeBracket=[1, 50],
                  list sizeUnitsBracket=[],
-                 str name="ExpBasic instance",
+                 str name="CompBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
@@ -58,7 +58,7 @@ kwargs : optional
                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
-                "pOut": MCAttr(float, "pressure"), "PIn": MCAttr(float, "power")}
+                "pOut": MCAttr(float, "pressure"), "PIn()": MCAttr(float, "power")}
         
     cpdef public double PIn(self):
         """float: Power input [W]."""

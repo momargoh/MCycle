@@ -1,4 +1,7 @@
-from ..DEFAULTS cimport COOLPROP_EOS, PLOT_DIR, PLOT_FORMAT, PLOT_DPI, MAXITER_CYCLE
+from ..DEFAULTS cimport MAXITER_CYCLE, COOLPROP_EOS #, PLOT_DIR, PLOT_FORMAT, PLOT_DPI, 
+from .. import DEFAULTS
+from ..DEFAULTS import getPlotDir
+from ..logger import log
 from ..bases.config cimport Config
 from ..bases.cycle cimport Cycle
 from ..bases.component cimport Component
@@ -526,69 +529,112 @@ kwargs : optional
 
     cpdef public double PIn(self):
         """float: Power input (from compressor) [W]."""
-        return self.comp._PIn()  #self._mWf() * (self.state1.h() - self.state6.h())
+        return self.comp.PIn()  #self._mWf() * (self.state1.h() - self.state6.h())
 
     cpdef public double POut(self):
         """float: Power output (from expander) [W]."""
-        return self.exp._POut()  # self._mWf() * (self.state3.h() - self.state4.h())
+        return self.exp.POut()  # self._mWf() * (self.state3.h() - self.state4.h())
 
     cpdef public double PNet(self):
         """float: Net power output [W].
         PNet = POut() - PIn()"""
         return self.POut() - self.PIn()
 
-    cpdef public double effThermal(self):
+    cpdef public double effThermal(self) except *:
         """float: Cycle thermal efficiency [-]
         effThermal = PNet/QIn"""
         return self.PNet() / self.QIn()
 
-    cpdef public double effRecovery(self):
+    cpdef public double effRecovery(self) except *:
         """float: Exhaust heat recovery efficiency"""
-        return (self._sourceIn().h() - self._sourceOut().h()) / (
-            self._sourceIn().h() - self._sourceAmbient().h())
+        if len(self.evap.flowsIn) == 1:
+            log("warning", "effRecovery() is not valid with {} evaporator".format(type(self.evap)))
+            return nan
+        else:
+            try:
+                return (self._sourceIn().h() - self._sourceOut().h()) / (self._sourceIn().h() - self._sourceAmbient().h())
+            except Exception as exc:
+                log("error", "effRecovery() could not be calculated", exc_info=exc)
+                return nan
 
-    cpdef public double effExergy(self):
+    cpdef public double effExergy(self) except *:
         """float: Exergy efficiency"""
-        return self.PNet() / self._sourceIn().m / (
-            self._sourceIn().h() - self._sourceAmbient().h())
+        if len(self.evap.flowsIn) == 1:
+            log("warning", "effExergy() is not valid with {} evaporator".format(type(self.evap)))
+            return nan
+        else:
+            try:
+                return self.PNet() / self._sourceIn().m / (self._sourceIn().h() - self._sourceAmbient().h())
+            except Exception as exc:
+                log("error", "effExergy() could not be calculated", exc_info=exc)
+                return nan
 
-    cpdef public double effGlobal(self):
+    cpdef public double effGlobal(self) except *:
         """float: Global recovery efficiency"""
         return self.effThermal() * self.effExergy()
 
-    cpdef public double IComp(self):
+    cpdef public double IComp(self) except *:
         """float: Exergy destruction of compressor [W]"""
-        return self._sinkAmbient().T() * self._mWf() * (
-            self._state1().s() - self._state50().s())
+        if len(self.cond.flowsIn) == 1:
+            log("warning", "IComp() is not valid with {} condenser".format(type(self.cond)))
+            return nan
+        else:
+            try:
+                return self._sinkAmbient().T() * self._mWf() * (
+                self._state1().s() - self._state6().s())
+            except Exception as exc:
+                log("error", "IComp() could not be calculated", exc_info=exc)
+                return nan
 
-    cpdef public double IEvap(self):
+    cpdef public double IEvap(self) except *:
         """float: Exergy destruction of evaporator [W]"""
         cdef FlowState ambientSource
-        try:
-            ambientSource = self._sourceIn().copyState(CP.PT_INPUTS, self._sourceAmbient.p(), self._sourceAmbient().T())
-        except Exception as exc:
-            warn("Could not create evaporator source flow at ambient conditions. Returned 0. "+exc)
-            return 0
-        cdef double I_13 = ambientSource.T() * (
-            self._mWf() * (self._state3().s() - self._state1().s()) + self._sourceIn().m *
-            (self._source1().s() - self._sourceIn().s()))
-        cdef double I_C0 = ambientSource.T() * self._sourceIn().m * (
-            (ambientSource.s() - self._source1().s()) +
-            (self._source1().h() - ambientSource.h()) / ambientSource.T())
-        return I_13 + I_C0
+        cdef double I_13, I_C0
+        if len(self.evap.flowsIn) == 1:
+            log("warning", "IEvap() is not valid with {} evaporator".format(type(self.evap)))
+            return nan
+        else:
+            try:
+                ambientSource = self._sourceIn().copyState(CP.PT_INPUTS, self._sourceAmbient.p(), self._sourceAmbient().T())
+            except Exception as exc:
+                log("warning", "Could not create evaporator source flow at ambient conditions. Returned nan. ", exc_info=exc)
+                return nan
+            I_13 = ambientSource.T() * (
+                self._mWf() * (self._state3().s() - self._state1().s()) + self._sourceIn().m *
+                (self._source1().s() - self._sourceIn().s()))
+            I_C0 = ambientSource.T() * self._sourceIn().m * (
+                (ambientSource.s() - self._source1().s()) +
+                (self._source1().h() - ambientSource.h()) / ambientSource.T())
+            return I_13 + I_C0
 
-    cpdef public double IExp(self):
+    cpdef public double IExp(self) except *:
         """float: Exergy destruction of expander [W]"""
-        return self._sinkAmbient().T() * self._mWf() * (
+        if len(self.cond.flowsIn) == 1:
+            log("warning", "IExp() is not valid with {} condenser".format(type(self.cond)))
+            return nan
+        else:
+            try:
+                return self._sinkAmbient().T() * self._mWf() * (
             self._state4().s() - self._state3().s())
+            except Exception as exc:
+                log("error", "IExp() could not be calculated", exc_info=exc)
+                return nan
 
-    cpdef public double ICond(self):
+    cpdef public double ICond(self) except *:
         """float: Exergy destruction of condenser [W]"""
-        return self._sinkAmbient().T() * self._mWf() * (
+        if len(self.cond.flowsIn) == 1:
+            log("warning", "ICond() is not valid with {} condenser".format(type(self.cond)))
+            return nan
+        else:
+            try:
+                return self._sinkAmbient().T() * self._mWf() * (
             (self._state50().s() - self._state4().s()) +
             (self._state4().h() - self._state50().h()) / self._sinkAmbient().T())
+            except Exception as exc:
+                log("error", "ICond() could not be calculated", exc_info=exc)
+                return nan
 
-    cpdef public double ITotal(self):
+    cpdef public double ITotal(self) except *:
         """float: Total exergy destruction of cycle [W]"""
         return self.IComp() + self.IEvap() + self.IExp() + self.ICond()
     
@@ -722,8 +768,8 @@ component: str, optional
                         raise ValueError(
                             """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
                             format(dp, self.state3.p()))
-                except Exception as inst:
-                    print(inst.__class__.__name__, ": ", inst)
+                except Exception as exc:
+                    print(exc.__class__.__name__, ": ", exc)
                     print(
                         "pressure drop in working fluid across evaporator ignored"
                     )
@@ -744,8 +790,8 @@ component: str, optional
                         raise ValueError(
                             """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
                             format(dp, state6new.p()))
-                except Exception as inst:
-                    print(inst.__class__.__name__, ": ", inst)
+                except Exception as exc:
+                    print(exc.__class__.__name__, ": ", exc)
                     print(
                         "pressure drop in working fluid across condenser ignored"
                     )
@@ -765,10 +811,10 @@ component: str, optional
 
 Parameters
 -----------
-unitiseEvap : bool, optional
-    If True, the evap.unitise() is called if possible. Defaults to True.
-unitiseCond : bool, optional
-    If True, cond.unitise() is called if possible. Defaults to True.
+unitiseEvap : bool
+    If True, the evap.unitise() is called if possible.
+unitiseCond : bool
+    If True, cond.unitise() is called if possible.
 """
         if self.subcool == 0:
             self.set_state6(self.wf.copyState(CP.PQ_INPUTS, self.pCond, 0))
@@ -878,8 +924,8 @@ unitiseCond : bool, optional
                         raise ValueError(
                             """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
                             format(dp, self._state3().p()))
-                except Exception as inst:
-                    print(inst.__class__.__name__, ": ", inst)
+                except Exception as exc:
+                    print(exc.__class__.__name__, ": ", exc)
                     print(
                         "pressure drop in working fluid across evaporator ignored"
                     )
@@ -933,8 +979,8 @@ unitiseCond : bool, optional
                         raise ValueError(
                             """pressure drop of working fluid in condenser is greater than actual pressure: {0}>{1}""".
                             format(dp, self.state6.p()))
-                except Exception as inst:
-                    print(inst.__class__.__name__, ": ", inst)
+                except Exception as exc:
+                    print(exc.__class__.__name__, ": ", exc)
                     print(
                         "pressure drop in working fluid across condenser ignored"
                     )
@@ -953,16 +999,16 @@ unitiseCond : bool, optional
     def plot(self,
              graph='Ts',
              title='RankineBasic plot',
-             linestyle='-',
-             marker='.',
              satCurve=True,
              newFig=True,
              show=True,
              savefig=False,
              savefig_name='plot_RankineBasic',
-             savefig_folder=PLOT_DIR,
-             savefig_format=PLOT_FORMAT,
-             savefig_dpi=PLOT_DPI):
+             savefig_folder='default',
+             savefig_format='default',
+             savefig_dpi='default',
+             linestyle='-',
+             marker='.'):
         """Plots the key cycle FlowStates on a T-s or p-h diagram.
 
 Parameters
@@ -971,10 +1017,6 @@ graph : str, optional
     Type of graph to plot. Must be 'Ts' or 'ph'. Defaults to 'Ts'.
 title : str, optional
     Title to display on graph. Defaults to 'RankineBasic plot'.
-linestyle : str, optional
-    Style of line used for working fluid plot points. Passed as a matplotlib.plot argument. Defaults to '-'.
-marker : str, optional
-    Marker style used for working fluid plot poitns. Passed as a matplotlib.plot argument. Defaults to '.'.
 satCurve : bool, optional
     Display saturation curve. Defaults to True.
 newFig : bool, optional
@@ -986,21 +1028,24 @@ savefig : bool, optional
 savefig_name : str, optional
     Name for saved plot file. Defaults to 'plot_RankineBasic'.
 savefig_folder : str, optional
-    Folder in the current working directory to save figure into. Folder is created if it does not already exist. Figure is saved as "./savefig_folder/savefig_name.savefig_format". If None or '', figure is saved directly into the current working directory. Defaults to None.
+    Folder in the current working directory to save figure into. Folder is created if it does not already exist. Figure is saved as "./savefig_folder/savefig_name.savefig_format". If None or '', figure is saved directly into the current working directory. If ``'default'``, :meth:`mcycle.DEFAULTS.PLOT_DIR <mcycle.DEFAULTS.PLOT_DIR>` is used. Defaults to ``'default'``.
 savefig_format : str, optional
-    Format of saved plot file. Must be 'png' or 'jpg'. Defaults to 'png'.
+    Format of saved plot file. Must be ``'png'`` or ``'jpg'``. If ``'default'``, :meth:`mcycle.DEFAULTS.PLOT_FORMAT <mcycle.DEFAULTS.PLOT_FORMAT>` is used. Defaults to ``'default'``.
 savefig_dpi : int, optional
-    Dots per inch / pixels per inch of the saved image. Passed as a matplotlib.plot argument. Defaults to 600.
+    Dots per inch / pixels per inch of the saved image. Passed as a matplotlib.plot argument. If ``'default'``, :meth:`mcycle.DEFAULTS.PLOT_DPI <mcycle.DEFAULTS.PLOT_DPI>` is used. Defaults to ``'default'``.
+linestyle : str, optional
+    Style of line used for working fluid plot points. Passed as a matplotlib.plot argument. Defaults to '-'.
+marker : str, optional
+    Marker style used for working fluid plot poitns. Passed as a matplotlib.plot argument. Defaults to '.'.
         """
         import matplotlib
         import matplotlib.pyplot as plt
-        assert savefig_format in [
+        assert savefig_format in ['default',
             'png', 'PNG', 'jpg', 'JPG'
         ], "savefig format must be 'png' or 'jpg', '{0}' is invalid.".format(
             savefig_format)
         xlabel = ''
         ylabel = ''
-        title = ''
         xvalsState = []
         yvalsState = []
         xvalsSource = []
@@ -1142,14 +1187,13 @@ savefig_dpi : int, optional
         plt.title(title)
         plt.grid(True)
         if savefig is True:
-            import os
-            cwd = os.getcwd()
-            if savefig_folder is None or savefig_folder == "":
-                folder = cwd
-            else:
-                if not os.path.exists(savefig_folder):
-                    os.makedirs(savefig_folder)
-                folder = "{}/{}".format(cwd, savefig_folder)
+            if savefig_folder == 'default':
+                savefig_folder = DEFAULTS.PLOT_DIR
+            if savefig_format == 'default':
+                savefig_format = DEFAULTS.PLOT_FORMAT
+            if savefig_dpi == 'default':
+                savefig_dpi = DEFAULTS.PLOT_DPI
+            folder = getPlotDir(savefig_folder)
             plt.savefig(
                 "{}/{}.{}".format(folder, savefig_name, savefig_format),
                 dpi=savefig_dpi,

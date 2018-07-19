@@ -8,13 +8,16 @@ cpdef public int MAXITER_CYCLE = 50
 cpdef public int MAXITER_COMPONENT = 50
 cpdef public int MAX_WALLS = 200
 cpdef public double RUN_BRACKET_MIN_H = 0.001
-cpdef public double RUN_BRACKET_MAX_H = 0.9 # runBracket = [h()*(1+RUN_BRACKET_MIN_H), h_critical()*RUN_BRACKET_MAX_H]
+cpdef public double RUN_BRACKET_MAX_H = 0.9
 cpdef public double GRAVITY = 9.80665
 cpdef public str COOLPROP_EOS = 'HEOS'
 cpdef public str MPL_BACKEND = 'TkAgg'
-cpdef public str PLOT_DIR = 'plots'
-cpdef public int PLOT_DPI = 600 
-cpdef public str PLOT_FORMAT = 'png'
+#cpdef public str PLOT_DIR = 'plots'
+#cpdef public int PLOT_DPI = 600 
+#cpdef public str PLOT_FORMAT = 'png'
+PLOT_DIR = 'plots'
+PLOT_DPI = 600 
+PLOT_FORMAT = 'png'
 cpdef public str UNITS_SEPARATOR_NUMERATOR = '.'
 cpdef public str UNITS_SEPARATOR_DENOMINATOR = '.'
 cpdef public str PRINT_FORMAT_FLOAT = '{:.4e}'
@@ -35,14 +38,14 @@ METHODS = {'HxPlateCorrChevronHeatWf': {
                      "tpCond": "hanLeeKim_tpCond"
                  },
                  'HxPlateCorrChevronHeatSf': {
-                     "sp": "savostinTikhonov_sp",
-                     "liq": "savostinTikhonov_sp",
-                     "vap": "savostinTikhonov_sp"
+                     "sp": "chisholmWannairachchi_sp",
+                     "liq": "chisholmWannairachchi_sp",
+                     "vap": "chisholmWannairachchi_sp"
                  },
                  'HxPlateCorrChevronFrictionSf': {
-                     "sp": "savostinTikhonov_sp",
-                     "liq": "savostinTikhonov_sp",
-                     "vap": "savostinTikhonov_sp"
+                     "sp": "chisholmWannairachchi_sp",
+                     "liq": "chisholmWannairachchi_sp",
+                     "vap": "chisholmWannairachchi_sp"
                  },
                  'HxPlateFinOffsetHeatWf': {
                      "sp": "manglikBergles_offset_sp",
@@ -151,8 +154,22 @@ cpdef public str getUnits(str dimension):
             output += "/" + _formatUnits(dimSplit[1], UNITS_SEPARATOR_DENOMINATOR)
         return output
 
-cpdef void checkDefaults():
-    """Checks all defaults are valid, called when mcycle is imported."""
+def getPlotDir(plotDir='default'):
+    """str: Return string of plots directory. Creates the directory if it does not yet exist."""
+    import os
+    cwd = os.getcwd()
+    if plotDir == 'default':
+        plotDir = PLOT_DIR
+    if plotDir is None or plotDir == "":
+        plotDir = cwd
+    else:
+        if not os.path.exists(plotDir):
+            os.makedirs(plotDir)
+        plotDir = "{}/{}".format(cwd, plotDir)
+    return plotDir
+
+cpdef void updateDefaults():
+    """Checks all defaults are valid and updates any that have changed, called when mcycle is imported."""
     from warnings import warn
     import matplotlib
     import os
@@ -166,8 +183,8 @@ cpdef void checkDefaults():
         warn("Unable to use {} as Matplotlib backend: remains as {}".format(
             MPL_BACKEND, matplotlib.get_backend()))
         
-    if not os.path.exists(PLOT_DIR):
-        os.makedirs(PLOT_DIR)
+    #if not os.path.exists(PLOT_DIR):
+    #    os.makedirs(PLOT_DIR)
     assert MAXITER_CYCLE > 0, "MAXITER_CYCLE must be >0, {} is invalid.".format(
         MAXITER_CYCLE)
     assert MAXITER_COMPONENT > 0, "MAXITER_COMPONENT must be >0, {} is invalid.".format(

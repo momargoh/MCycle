@@ -1,6 +1,7 @@
 numpy
 scipy
 matplotlib
+Cython
 CoolProp
 sphinxcontrib-websupport
 Pygments

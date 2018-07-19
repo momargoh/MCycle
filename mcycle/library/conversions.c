@@ -20,7 +20,7 @@ END: Cython Metadata */
     #error Cython requires Python 2.6+ or Python 3.3+.
 #else
 #define CYTHON_ABI "0_27_3"
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -914,6 +914,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
 /* Module declarations from 'mcycle.library.conversions' */
+static double __pyx_f_6mcycle_7library_11conversions_atm2Pa(double, int __pyx_skip_dispatch); /*proto*/
+static double __pyx_f_6mcycle_7library_11conversions_Pa2atm(double, int __pyx_skip_dispatch); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_bar2Pa(double, int __pyx_skip_dispatch); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double, int __pyx_skip_dispatch); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_mps2knots(double, int __pyx_skip_dispatch); /*proto*/
@@ -938,49 +940,51 @@ static const char __pyx_k_A_brief_collection_of_useful_MAT[] = "A brief collecti
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_bar2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2bar(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_4mps2knots(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_6knots2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_8kph2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_10mps2kph(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_12degC2K(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_14K2degC(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_16bhp2W(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_18W2bhp(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_20ft2m(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_22m2ft(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_atm2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2atm(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_4bar2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_6Pa2bar(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_8mps2knots(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_10knots2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_12kph2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_14mps2kph(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_16degC2K(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_18K2degC(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_20bhp2W(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_22W2bhp(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_24ft2m(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_26m2ft(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value); /* proto */
 
 /* "mcycle/library/conversions.pyx":4
  * 
  * 
- * cpdef double bar2Pa(double value):             # <<<<<<<<<<<<<<
- *     "float: pressure: bar to Pascal."
- *     return value * 10**5
+ * cpdef double atm2Pa(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: standard atmospheres to Pascal."
+ *     return value * 101325.
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_1bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static double __pyx_f_6mcycle_7library_11conversions_bar2Pa(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_1atm2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static double __pyx_f_6mcycle_7library_11conversions_atm2Pa(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("bar2Pa", 0);
+  __Pyx_RefNannySetupContext("atm2Pa", 0);
 
   /* "mcycle/library/conversions.pyx":6
- * cpdef double bar2Pa(double value):
- *     "float: pressure: bar to Pascal."
- *     return value * 10**5             # <<<<<<<<<<<<<<
+ * cpdef double atm2Pa(double value):
+ *     "float: pressure: standard atmospheres to Pascal."
+ *     return value * 101325.             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_r = (__pyx_v_value * 100000.0);
+  __pyx_r = (__pyx_v_value * 101325.);
   goto __pyx_L0;
 
   /* "mcycle/library/conversions.pyx":4
  * 
  * 
- * cpdef double bar2Pa(double value):             # <<<<<<<<<<<<<<
- *     "float: pressure: bar to Pascal."
- *     return value * 10**5
+ * cpdef double atm2Pa(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: standard atmospheres to Pascal."
+ *     return value * 101325.
  */
 
   /* function exit code */
@@ -990,36 +994,36 @@ static double __pyx_f_6mcycle_7library_11conversions_bar2Pa(double __pyx_v_value
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_1bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_bar2Pa[] = "float: pressure: bar to Pascal.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_1bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_1atm2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_atm2Pa[] = "atm2Pa(double value) -> double\nfloat: pressure: standard atmospheres to Pascal.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_1atm2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("bar2Pa (wrapper)", 0);
+  __Pyx_RefNannySetupContext("atm2Pa (wrapper)", 0);
   assert(__pyx_arg_value); {
     __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 4, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mcycle.library.conversions.bar2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.library.conversions.atm2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_bar2Pa(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_atm2Pa(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_bar2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_atm2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("bar2Pa", 0);
+  __Pyx_RefNannySetupContext("atm2Pa", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_bar2Pa(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_atm2Pa(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1028,7 +1032,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_bar2Pa(CYTHON_UNUSED Py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.library.conversions.bar2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.library.conversions.atm2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1039,18 +1043,188 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_bar2Pa(CYTHON_UNUSED Py
 /* "mcycle/library/conversions.pyx":9
  * 
  * 
+ * cpdef double Pa2atm(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: Pascal to standard atmospheres."
+ *     return value / 101325.
+ */
+
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2atm(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static double __pyx_f_6mcycle_7library_11conversions_Pa2atm(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  double __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("Pa2atm", 0);
+
+  /* "mcycle/library/conversions.pyx":11
+ * cpdef double Pa2atm(double value):
+ *     "float: pressure: Pascal to standard atmospheres."
+ *     return value / 101325.             # <<<<<<<<<<<<<<
+ * 
+ * cpdef double bar2Pa(double value):
+ */
+  __pyx_r = (__pyx_v_value / 101325.);
+  goto __pyx_L0;
+
+  /* "mcycle/library/conversions.pyx":9
+ * 
+ * 
+ * cpdef double Pa2atm(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: Pascal to standard atmospheres."
+ *     return value / 101325.
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2atm(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_2Pa2atm[] = "Pa2atm(double value) -> double\nfloat: pressure: Pascal to standard atmospheres.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2atm(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+  double __pyx_v_value;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("Pa2atm (wrapper)", 0);
+  assert(__pyx_arg_value); {
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("mcycle.library.conversions.Pa2atm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_2Pa2atm(__pyx_self, ((double)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2atm(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("Pa2atm", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_Pa2atm(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("mcycle.library.conversions.Pa2atm", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "mcycle/library/conversions.pyx":13
+ *     return value / 101325.
+ * 
+ * cpdef double bar2Pa(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: bar to Pascal."
+ *     return value * 10**5
+ */
+
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_5bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static double __pyx_f_6mcycle_7library_11conversions_bar2Pa(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  double __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("bar2Pa", 0);
+
+  /* "mcycle/library/conversions.pyx":15
+ * cpdef double bar2Pa(double value):
+ *     "float: pressure: bar to Pascal."
+ *     return value * 10**5             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = (__pyx_v_value * 100000.0);
+  goto __pyx_L0;
+
+  /* "mcycle/library/conversions.pyx":13
+ *     return value / 101325.
+ * 
+ * cpdef double bar2Pa(double value):             # <<<<<<<<<<<<<<
+ *     "float: pressure: bar to Pascal."
+ *     return value * 10**5
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_5bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_4bar2Pa[] = "bar2Pa(double value) -> double\nfloat: pressure: bar to Pascal.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_5bar2Pa(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+  double __pyx_v_value;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("bar2Pa (wrapper)", 0);
+  assert(__pyx_arg_value); {
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 13, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("mcycle.library.conversions.bar2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_4bar2Pa(__pyx_self, ((double)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_4bar2Pa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("bar2Pa", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_bar2Pa(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("mcycle.library.conversions.bar2Pa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "mcycle/library/conversions.pyx":18
+ * 
+ * 
  * cpdef double Pa2bar(double value):             # <<<<<<<<<<<<<<
  *     "float: pressure: Pascal to bar."
  *     return value * 10**-5
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_7Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("Pa2bar", 0);
 
-  /* "mcycle/library/conversions.pyx":11
+  /* "mcycle/library/conversions.pyx":20
  * cpdef double Pa2bar(double value):
  *     "float: pressure: Pascal to bar."
  *     return value * 10**-5             # <<<<<<<<<<<<<<
@@ -1060,7 +1234,7 @@ static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double __pyx_v_value
   __pyx_r = (__pyx_v_value * __Pyx_pow_long(10, -5L));
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":9
+  /* "mcycle/library/conversions.pyx":18
  * 
  * 
  * cpdef double Pa2bar(double value):             # <<<<<<<<<<<<<<
@@ -1075,15 +1249,15 @@ static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double __pyx_v_value
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_2Pa2bar[] = "float: pressure: Pascal to bar.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_7Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_6Pa2bar[] = "Pa2bar(double value) -> double\nfloat: pressure: Pascal to bar.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_7Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("Pa2bar (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1091,20 +1265,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_3Pa2bar(PyObject *__pyx
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_2Pa2bar(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_6Pa2bar(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2bar(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_6Pa2bar(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("Pa2bar", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_Pa2bar(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_Pa2bar(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1121,7 +1295,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2bar(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":14
+/* "mcycle/library/conversions.pyx":23
  * 
  * 
  * cpdef double mps2knots(double value):             # <<<<<<<<<<<<<<
@@ -1129,13 +1303,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_2Pa2bar(CYTHON_UNUSED P
  *     return value * 1.94384
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_5mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_9mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_mps2knots(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("mps2knots", 0);
 
-  /* "mcycle/library/conversions.pyx":16
+  /* "mcycle/library/conversions.pyx":25
  * cpdef double mps2knots(double value):
  *     "float: float: velocity: metres per second to knots."
  *     return value * 1.94384             # <<<<<<<<<<<<<<
@@ -1145,7 +1319,7 @@ static double __pyx_f_6mcycle_7library_11conversions_mps2knots(double __pyx_v_va
   __pyx_r = (__pyx_v_value * 1.94384);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":14
+  /* "mcycle/library/conversions.pyx":23
  * 
  * 
  * cpdef double mps2knots(double value):             # <<<<<<<<<<<<<<
@@ -1160,15 +1334,15 @@ static double __pyx_f_6mcycle_7library_11conversions_mps2knots(double __pyx_v_va
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_5mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_4mps2knots[] = "float: float: velocity: metres per second to knots.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_5mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_9mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_8mps2knots[] = "mps2knots(double value) -> double\nfloat: float: velocity: metres per second to knots.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_9mps2knots(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("mps2knots (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1176,20 +1350,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_5mps2knots(PyObject *__
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_4mps2knots(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_8mps2knots(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_4mps2knots(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_8mps2knots(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("mps2knots", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_mps2knots(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_mps2knots(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1206,7 +1380,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_4mps2knots(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":19
+/* "mcycle/library/conversions.pyx":28
  * 
  * 
  * cpdef double knots2mps(double value):             # <<<<<<<<<<<<<<
@@ -1214,13 +1388,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_4mps2knots(CYTHON_UNUSE
  *     return value / 1.94384
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_7knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_11knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_knots2mps(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("knots2mps", 0);
 
-  /* "mcycle/library/conversions.pyx":21
+  /* "mcycle/library/conversions.pyx":30
  * cpdef double knots2mps(double value):
  *     "float: velocity: knots to metres per second."
  *     return value / 1.94384             # <<<<<<<<<<<<<<
@@ -1230,7 +1404,7 @@ static double __pyx_f_6mcycle_7library_11conversions_knots2mps(double __pyx_v_va
   __pyx_r = (__pyx_v_value / 1.94384);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":19
+  /* "mcycle/library/conversions.pyx":28
  * 
  * 
  * cpdef double knots2mps(double value):             # <<<<<<<<<<<<<<
@@ -1245,15 +1419,15 @@ static double __pyx_f_6mcycle_7library_11conversions_knots2mps(double __pyx_v_va
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_7knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_6knots2mps[] = "float: velocity: knots to metres per second.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_7knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_11knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_10knots2mps[] = "knots2mps(double value) -> double\nfloat: velocity: knots to metres per second.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_11knots2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("knots2mps (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 19, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1261,20 +1435,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_7knots2mps(PyObject *__
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_6knots2mps(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_10knots2mps(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_6knots2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_10knots2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("knots2mps", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_knots2mps(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_knots2mps(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1291,7 +1465,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_6knots2mps(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":24
+/* "mcycle/library/conversions.pyx":33
  * 
  * 
  * cpdef double kph2mps(double value):             # <<<<<<<<<<<<<<
@@ -1299,13 +1473,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_6knots2mps(CYTHON_UNUSE
  *     return value / 3.6
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_9kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_13kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_kph2mps(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("kph2mps", 0);
 
-  /* "mcycle/library/conversions.pyx":26
+  /* "mcycle/library/conversions.pyx":35
  * cpdef double kph2mps(double value):
  *     "float: velocity: kilometers per hour to metres per second."
  *     return value / 3.6             # <<<<<<<<<<<<<<
@@ -1315,7 +1489,7 @@ static double __pyx_f_6mcycle_7library_11conversions_kph2mps(double __pyx_v_valu
   __pyx_r = (__pyx_v_value / 3.6);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":24
+  /* "mcycle/library/conversions.pyx":33
  * 
  * 
  * cpdef double kph2mps(double value):             # <<<<<<<<<<<<<<
@@ -1330,15 +1504,15 @@ static double __pyx_f_6mcycle_7library_11conversions_kph2mps(double __pyx_v_valu
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_9kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_8kph2mps[] = "float: velocity: kilometers per hour to metres per second.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_9kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_13kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_12kph2mps[] = "kph2mps(double value) -> double\nfloat: velocity: kilometers per hour to metres per second.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_13kph2mps(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("kph2mps (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1346,20 +1520,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_9kph2mps(PyObject *__py
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_8kph2mps(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_12kph2mps(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_8kph2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_12kph2mps(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("kph2mps", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_kph2mps(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_kph2mps(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1376,7 +1550,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_8kph2mps(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":29
+/* "mcycle/library/conversions.pyx":38
  * 
  * 
  * cpdef double mps2kph(double value):             # <<<<<<<<<<<<<<
@@ -1384,13 +1558,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_8kph2mps(CYTHON_UNUSED 
  *     return value * 3.6
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_11mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_15mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_mps2kph(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("mps2kph", 0);
 
-  /* "mcycle/library/conversions.pyx":31
+  /* "mcycle/library/conversions.pyx":40
  * cpdef double mps2kph(double value):
  *     "float: velocity: metres per second to kilometers per hour."
  *     return value * 3.6             # <<<<<<<<<<<<<<
@@ -1400,7 +1574,7 @@ static double __pyx_f_6mcycle_7library_11conversions_mps2kph(double __pyx_v_valu
   __pyx_r = (__pyx_v_value * 3.6);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":29
+  /* "mcycle/library/conversions.pyx":38
  * 
  * 
  * cpdef double mps2kph(double value):             # <<<<<<<<<<<<<<
@@ -1415,15 +1589,15 @@ static double __pyx_f_6mcycle_7library_11conversions_mps2kph(double __pyx_v_valu
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_11mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_10mps2kph[] = "float: velocity: metres per second to kilometers per hour.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_11mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_15mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_14mps2kph[] = "mps2kph(double value) -> double\nfloat: velocity: metres per second to kilometers per hour.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_15mps2kph(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("mps2kph (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1431,20 +1605,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_11mps2kph(PyObject *__p
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_10mps2kph(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_14mps2kph(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_10mps2kph(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_14mps2kph(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("mps2kph", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_mps2kph(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_mps2kph(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1461,7 +1635,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_10mps2kph(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":34
+/* "mcycle/library/conversions.pyx":43
  * 
  * 
  * cpdef double degC2K(double value):             # <<<<<<<<<<<<<<
@@ -1469,13 +1643,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_10mps2kph(CYTHON_UNUSED
  *     return value + 273.15
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_13degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_17degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_degC2K(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("degC2K", 0);
 
-  /* "mcycle/library/conversions.pyx":36
+  /* "mcycle/library/conversions.pyx":45
  * cpdef double degC2K(double value):
  *     "float: temperature: Celcius to Kelvin."
  *     return value + 273.15             # <<<<<<<<<<<<<<
@@ -1485,7 +1659,7 @@ static double __pyx_f_6mcycle_7library_11conversions_degC2K(double __pyx_v_value
   __pyx_r = (__pyx_v_value + 273.15);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":34
+  /* "mcycle/library/conversions.pyx":43
  * 
  * 
  * cpdef double degC2K(double value):             # <<<<<<<<<<<<<<
@@ -1500,15 +1674,15 @@ static double __pyx_f_6mcycle_7library_11conversions_degC2K(double __pyx_v_value
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_13degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_12degC2K[] = "float: temperature: Celcius to Kelvin.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_13degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_17degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_16degC2K[] = "degC2K(double value) -> double\nfloat: temperature: Celcius to Kelvin.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_17degC2K(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("degC2K (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 34, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1516,20 +1690,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_13degC2K(PyObject *__py
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_12degC2K(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_16degC2K(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_12degC2K(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_16degC2K(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("degC2K", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_degC2K(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_degC2K(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1546,7 +1720,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_12degC2K(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":39
+/* "mcycle/library/conversions.pyx":48
  * 
  * 
  * cpdef double K2degC(double value):             # <<<<<<<<<<<<<<
@@ -1554,13 +1728,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_12degC2K(CYTHON_UNUSED 
  *     return value - 273.15
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_15K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_19K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_K2degC(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("K2degC", 0);
 
-  /* "mcycle/library/conversions.pyx":41
+  /* "mcycle/library/conversions.pyx":50
  * cpdef double K2degC(double value):
  *     "float: temperature: Kelvin to Celcius."
  *     return value - 273.15             # <<<<<<<<<<<<<<
@@ -1570,7 +1744,7 @@ static double __pyx_f_6mcycle_7library_11conversions_K2degC(double __pyx_v_value
   __pyx_r = (__pyx_v_value - 273.15);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":39
+  /* "mcycle/library/conversions.pyx":48
  * 
  * 
  * cpdef double K2degC(double value):             # <<<<<<<<<<<<<<
@@ -1585,15 +1759,15 @@ static double __pyx_f_6mcycle_7library_11conversions_K2degC(double __pyx_v_value
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_15K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_14K2degC[] = "float: temperature: Kelvin to Celcius.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_15K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_19K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_18K2degC[] = "K2degC(double value) -> double\nfloat: temperature: Kelvin to Celcius.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_19K2degC(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("K2degC (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1601,20 +1775,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_15K2degC(PyObject *__py
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_14K2degC(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_18K2degC(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_14K2degC(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_18K2degC(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("K2degC", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_K2degC(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_K2degC(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1631,7 +1805,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_14K2degC(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":44
+/* "mcycle/library/conversions.pyx":53
  * 
  * 
  * cpdef double bhp2W(double value):             # <<<<<<<<<<<<<<
@@ -1639,13 +1813,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_14K2degC(CYTHON_UNUSED 
  *     return value * 745.699872
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_17bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_21bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_bhp2W(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("bhp2W", 0);
 
-  /* "mcycle/library/conversions.pyx":46
+  /* "mcycle/library/conversions.pyx":55
  * cpdef double bhp2W(double value):
  *     "float: power: Brake Horse Power to Watts."
  *     return value * 745.699872             # <<<<<<<<<<<<<<
@@ -1655,7 +1829,7 @@ static double __pyx_f_6mcycle_7library_11conversions_bhp2W(double __pyx_v_value,
   __pyx_r = (__pyx_v_value * 745.699872);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":44
+  /* "mcycle/library/conversions.pyx":53
  * 
  * 
  * cpdef double bhp2W(double value):             # <<<<<<<<<<<<<<
@@ -1670,15 +1844,15 @@ static double __pyx_f_6mcycle_7library_11conversions_bhp2W(double __pyx_v_value,
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_17bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_16bhp2W[] = "float: power: Brake Horse Power to Watts.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_17bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_21bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_20bhp2W[] = "bhp2W(double value) -> double\nfloat: power: Brake Horse Power to Watts.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_21bhp2W(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("bhp2W (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1686,20 +1860,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_17bhp2W(PyObject *__pyx
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_16bhp2W(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_20bhp2W(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_16bhp2W(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_20bhp2W(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("bhp2W", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_bhp2W(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_bhp2W(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1716,7 +1890,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_16bhp2W(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":49
+/* "mcycle/library/conversions.pyx":58
  * 
  * 
  * cpdef double W2bhp(double value):             # <<<<<<<<<<<<<<
@@ -1724,13 +1898,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_16bhp2W(CYTHON_UNUSED P
  *     return value / 745.699872
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_19W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_23W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_W2bhp(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("W2bhp", 0);
 
-  /* "mcycle/library/conversions.pyx":51
+  /* "mcycle/library/conversions.pyx":60
  * cpdef double W2bhp(double value):
  *     "float: power: Watts to Brake Horse Power."
  *     return value / 745.699872             # <<<<<<<<<<<<<<
@@ -1740,7 +1914,7 @@ static double __pyx_f_6mcycle_7library_11conversions_W2bhp(double __pyx_v_value,
   __pyx_r = (__pyx_v_value / 745.699872);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":49
+  /* "mcycle/library/conversions.pyx":58
  * 
  * 
  * cpdef double W2bhp(double value):             # <<<<<<<<<<<<<<
@@ -1755,15 +1929,15 @@ static double __pyx_f_6mcycle_7library_11conversions_W2bhp(double __pyx_v_value,
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_19W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_18W2bhp[] = "float: power: Watts to Brake Horse Power.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_19W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_23W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_22W2bhp[] = "W2bhp(double value) -> double\nfloat: power: Watts to Brake Horse Power.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_23W2bhp(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("W2bhp (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 49, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1771,20 +1945,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_19W2bhp(PyObject *__pyx
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_18W2bhp(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_22W2bhp(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_18W2bhp(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_22W2bhp(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("W2bhp", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_W2bhp(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_W2bhp(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1801,7 +1975,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_18W2bhp(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":54
+/* "mcycle/library/conversions.pyx":63
  * 
  * 
  * cpdef double ft2m(double value):             # <<<<<<<<<<<<<<
@@ -1809,13 +1983,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_18W2bhp(CYTHON_UNUSED P
  *     return value * 0.3048
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_21ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_25ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_ft2m(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("ft2m", 0);
 
-  /* "mcycle/library/conversions.pyx":56
+  /* "mcycle/library/conversions.pyx":65
  * cpdef double ft2m(double value):
  *     "float: length: Feet to metres."
  *     return value * 0.3048             # <<<<<<<<<<<<<<
@@ -1825,7 +1999,7 @@ static double __pyx_f_6mcycle_7library_11conversions_ft2m(double __pyx_v_value, 
   __pyx_r = (__pyx_v_value * 0.3048);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":54
+  /* "mcycle/library/conversions.pyx":63
  * 
  * 
  * cpdef double ft2m(double value):             # <<<<<<<<<<<<<<
@@ -1840,15 +2014,15 @@ static double __pyx_f_6mcycle_7library_11conversions_ft2m(double __pyx_v_value, 
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_21ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_20ft2m[] = "float: length: Feet to metres.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_21ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_25ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_24ft2m[] = "ft2m(double value) -> double\nfloat: length: Feet to metres.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_25ft2m(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("ft2m (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1856,20 +2030,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_21ft2m(PyObject *__pyx_
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_20ft2m(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_24ft2m(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_20ft2m(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_24ft2m(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("ft2m", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_ft2m(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_ft2m(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1886,7 +2060,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_20ft2m(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "mcycle/library/conversions.pyx":59
+/* "mcycle/library/conversions.pyx":68
  * 
  * 
  * cpdef double m2ft(double value):             # <<<<<<<<<<<<<<
@@ -1894,13 +2068,13 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_20ft2m(CYTHON_UNUSED Py
  *     return value / 0.3048
  */
 
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_23m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_27m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
 static double __pyx_f_6mcycle_7library_11conversions_m2ft(double __pyx_v_value, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("m2ft", 0);
 
-  /* "mcycle/library/conversions.pyx":61
+  /* "mcycle/library/conversions.pyx":70
  * cpdef double m2ft(double value):
  *     "float: length: Metres to feet."
  *     return value / 0.3048             # <<<<<<<<<<<<<<
@@ -1908,7 +2082,7 @@ static double __pyx_f_6mcycle_7library_11conversions_m2ft(double __pyx_v_value, 
   __pyx_r = (__pyx_v_value / 0.3048);
   goto __pyx_L0;
 
-  /* "mcycle/library/conversions.pyx":59
+  /* "mcycle/library/conversions.pyx":68
  * 
  * 
  * cpdef double m2ft(double value):             # <<<<<<<<<<<<<<
@@ -1923,15 +2097,15 @@ static double __pyx_f_6mcycle_7library_11conversions_m2ft(double __pyx_v_value, 
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_23m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_6mcycle_7library_11conversions_22m2ft[] = "float: length: Metres to feet.";
-static PyObject *__pyx_pw_6mcycle_7library_11conversions_23m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_27m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6mcycle_7library_11conversions_26m2ft[] = "m2ft(double value) -> double\nfloat: length: Metres to feet.";
+static PyObject *__pyx_pw_6mcycle_7library_11conversions_27m2ft(PyObject *__pyx_self, PyObject *__pyx_arg_value) {
   double __pyx_v_value;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("m2ft (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsDouble(__pyx_arg_value); if (unlikely((__pyx_v_value == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1939,20 +2113,20 @@ static PyObject *__pyx_pw_6mcycle_7library_11conversions_23m2ft(PyObject *__pyx_
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_22m2ft(__pyx_self, ((double)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_7library_11conversions_26m2ft(__pyx_self, ((double)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_11conversions_22m2ft(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
+static PyObject *__pyx_pf_6mcycle_7library_11conversions_26m2ft(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("m2ft", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_m2ft(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_7library_11conversions_m2ft(__pyx_v_value, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1970,18 +2144,20 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_22m2ft(CYTHON_UNUSED Py
 }
 
 static PyMethodDef __pyx_methods[] = {
-  {"bar2Pa", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_1bar2Pa, METH_O, __pyx_doc_6mcycle_7library_11conversions_bar2Pa},
-  {"Pa2bar", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_3Pa2bar, METH_O, __pyx_doc_6mcycle_7library_11conversions_2Pa2bar},
-  {"mps2knots", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_5mps2knots, METH_O, __pyx_doc_6mcycle_7library_11conversions_4mps2knots},
-  {"knots2mps", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_7knots2mps, METH_O, __pyx_doc_6mcycle_7library_11conversions_6knots2mps},
-  {"kph2mps", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_9kph2mps, METH_O, __pyx_doc_6mcycle_7library_11conversions_8kph2mps},
-  {"mps2kph", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_11mps2kph, METH_O, __pyx_doc_6mcycle_7library_11conversions_10mps2kph},
-  {"degC2K", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_13degC2K, METH_O, __pyx_doc_6mcycle_7library_11conversions_12degC2K},
-  {"K2degC", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_15K2degC, METH_O, __pyx_doc_6mcycle_7library_11conversions_14K2degC},
-  {"bhp2W", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_17bhp2W, METH_O, __pyx_doc_6mcycle_7library_11conversions_16bhp2W},
-  {"W2bhp", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_19W2bhp, METH_O, __pyx_doc_6mcycle_7library_11conversions_18W2bhp},
-  {"ft2m", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_21ft2m, METH_O, __pyx_doc_6mcycle_7library_11conversions_20ft2m},
-  {"m2ft", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_23m2ft, METH_O, __pyx_doc_6mcycle_7library_11conversions_22m2ft},
+  {"atm2Pa", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_1atm2Pa, METH_O, __pyx_doc_6mcycle_7library_11conversions_atm2Pa},
+  {"Pa2atm", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_3Pa2atm, METH_O, __pyx_doc_6mcycle_7library_11conversions_2Pa2atm},
+  {"bar2Pa", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_5bar2Pa, METH_O, __pyx_doc_6mcycle_7library_11conversions_4bar2Pa},
+  {"Pa2bar", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_7Pa2bar, METH_O, __pyx_doc_6mcycle_7library_11conversions_6Pa2bar},
+  {"mps2knots", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_9mps2knots, METH_O, __pyx_doc_6mcycle_7library_11conversions_8mps2knots},
+  {"knots2mps", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_11knots2mps, METH_O, __pyx_doc_6mcycle_7library_11conversions_10knots2mps},
+  {"kph2mps", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_13kph2mps, METH_O, __pyx_doc_6mcycle_7library_11conversions_12kph2mps},
+  {"mps2kph", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_15mps2kph, METH_O, __pyx_doc_6mcycle_7library_11conversions_14mps2kph},
+  {"degC2K", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_17degC2K, METH_O, __pyx_doc_6mcycle_7library_11conversions_16degC2K},
+  {"K2degC", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_19K2degC, METH_O, __pyx_doc_6mcycle_7library_11conversions_18K2degC},
+  {"bhp2W", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_21bhp2W, METH_O, __pyx_doc_6mcycle_7library_11conversions_20bhp2W},
+  {"W2bhp", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_23W2bhp, METH_O, __pyx_doc_6mcycle_7library_11conversions_22W2bhp},
+  {"ft2m", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_25ft2m, METH_O, __pyx_doc_6mcycle_7library_11conversions_24ft2m},
+  {"m2ft", (PyCFunction)__pyx_pw_6mcycle_7library_11conversions_27m2ft, METH_O, __pyx_doc_6mcycle_7library_11conversions_26m2ft},
   {0, 0, 0, 0}
 };
 

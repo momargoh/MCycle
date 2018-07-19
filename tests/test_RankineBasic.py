@@ -28,6 +28,8 @@ class TestRankineBasic(unittest.TestCase):
         'dpPort': False,
         'dpHead': False
     })
+    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
+                      ["all"], ["all"], ["sf"])
     cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                             subcool, config)
     cycle.update({
@@ -51,7 +53,7 @@ class TestRankineBasic(unittest.TestCase):
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(self.cycle.comp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.exp.pRatio, 10.22519893, 4)
-        self.assertAlmostEqual(self.cycle.evap.Q(), 83891.17350428084, 6)
+        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 6)
 
     def test_1_size_dpEvap_True(self):
         self.cycle.config.dpEvap = True
@@ -60,10 +62,10 @@ class TestRankineBasic(unittest.TestCase):
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(
             (self.cycle.comp.pRatio - 10.22519893) / 10.22519893, 0, 4)
-        self.assertAlmostEqual(self.cycle.exp.pRatio,
-                               (self.cycle.pEvap - 39607.4552153897) /
-                               self.cycle.pCond, 4)
-        self.assertAlmostEqual(self.cycle.evap.Q(), 83891.17350428084, 4)
+        self.assertAlmostEqual(
+            self.cycle.exp.pRatio,
+            (self.cycle.pEvap - 39607.4552153897) / self.cycle.pCond, 4)
+        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
 
     def test_cycle_plot(self):
         import os

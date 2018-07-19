@@ -9,7 +9,7 @@ cdef class FlowState(MCAB):
 
 Parameters
 ----------
-fluid : string
+fluid : str
     Description of fluid passed to CoolProp.
 
     - "fluid_name" for pure fluid. Eg, "air", "water", "CO2" *or*
@@ -22,14 +22,17 @@ phaseCP : int, optional
     Coolprop key for phase. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_. Eg, CoolProp.iphase_gas. Defaults to -1.
     .. note:: In MCycle, both -1 and 8 can be used for iphase_not_imposed
 
-m : float, optional
+m : double, optional
     Mass flow rate [Kg/s]. Defaults to nan.
 
 inputPairCP : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).
 
-input1, input2 : float, optional
+input1, input2 : double, optional
     Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to nan.
+
+name : str, optional
+    Descriptive name of instance. Defaults to "FlowState instance".
 
 Examples
 ----------

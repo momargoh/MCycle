@@ -143,7 +143,8 @@ rstHeading : int, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(RST_HEADINGS[rstHeading] * len(output))
+working fluid: {}
+""".format(RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
 
         cdef list hasSummaryList = []
         for k, v in self._inputs.items():
@@ -152,7 +153,7 @@ rstHeading : int, optional
             elif k in ["config"]:
                 pass
             else:
-                output += self.formatAttrUnitsForSummary({k: v}, hasSummaryList)
+                output += self.formatAttrForSummary({k: v}, hasSummaryList)
         #
         if propertyKeys == 'all':
             propertyKeys = self._propertyKeys()
@@ -164,12 +165,25 @@ Properties
 {}
 """.format(RST_HEADINGS[rstHeading + 1] * 10)
             for k in propertyKeys:
-                if k in self._propertyKeys():
-                    output += self.formatAttrForSummary(
-                        {k: self._properties[k]}, [])
-                else:
-                    output += k + """: property not found,
+                try:
+                    if k in self._propertyKeys():
+                        o = self.formatAttrForSummary(
+                            {k: self._properties[k]}, [])
+                    elif k+"()" in self._propertyKeys():
+                        o = self.formatAttrForSummary(
+                            {k+"()": self._properties[k+"()"]}, [])
+                    else:
+                        o = k + """: property not found
 """
+                    if "not found" not in o:
+                        output += o
+                    else:
+                        output += k + """: nan
+"""
+                except:
+                        output += k + """: nan
+"""
+                    
         #
         if componentKeys == 'all':
             componentKeys = self._componentKeys

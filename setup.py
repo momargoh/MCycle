@@ -25,17 +25,28 @@ if USE_CYTHON:
 cmdclass = {}
 ext_modules = []
 include_dirs = [numpy.get_include()]
-
+compiler_directives = {'embedsignature': True, "language_level": 3}
 if USE_CYTHON:
-    ext_modules = cythonize("mcycle/*.pyx") + cythonize(
-        "mcycle/*/*.pyx") + cythonize("mcycle/*/*/*.pyx")
+    ext_modules = cythonize(
+        "mcycle/*.pyx", compiler_directives=compiler_directives) + cythonize(
+            "mcycle/*/*.pyx",
+            compiler_directives=compiler_directives) + cythonize(
+                "mcycle/*/*/*.pyx", compiler_directives=compiler_directives)
     cmdclass.update({'build_ext': build_ext})
 else:
     ext_modules += [
-        Extension("mcycle/*", ["mcycle/*.c"]),
-        Extension("mcycle/*/*", ["mcycle/*/*.c"]),
-        Extension("mcycle/*/*/*", ["mcycle/*/*/*.c"]),
-        Extension("mcycle/*/*/*/*", ["mcycle/*/*/*/*.c"])
+        Extension(
+            "mcycle/*", ["mcycle/*.c"],
+            compiler_directives=compiler_directives),
+        Extension(
+            "mcycle/*/*", ["mcycle/*/*.c"],
+            compiler_directives=compiler_directives),
+        Extension(
+            "mcycle/*/*/*", ["mcycle/*/*/*.c"],
+            compiler_directives=compiler_directives),
+        Extension(
+            "mcycle/*/*/*/*", ["mcycle/*/*/*/*.c"],
+            compiler_directives=compiler_directives)
     ]
 
 setup(

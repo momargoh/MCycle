@@ -81,6 +81,10 @@ kwargs : optional
     cpdef public void run(self):
         pass
     
+    cpdef public double _Q(self):
+        """double: Heat [W] transferred to the working fluid."""
+        return self.Q
+    
 
 cdef class HtrBasicConstP(HtrBasic):
     r"""Basic constant pressure heat addition.

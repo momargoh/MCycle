@@ -58,7 +58,7 @@ kwargs : optional
                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
-                "pOut": MCAttr(float, "pressure"), "PIn": MCAttr(float, "power")}
+                "pOut": MCAttr(float, "pressure"), "POut()": MCAttr(float, "power")}
 
     cpdef double POut(self):
         """float: Power output [W]."""

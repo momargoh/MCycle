@@ -8,7 +8,7 @@ r"""
 from .logger import *
 updateLogger()
 from . import DEFAULTS
-DEFAULTS.checkDefaults()
+DEFAULTS.updateDefaults()
 from .DEFAULTS import getUnits, timeThis
 from . import bases
 from .bases import *

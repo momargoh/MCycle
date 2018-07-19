@@ -6,7 +6,6 @@ import CoolProp as CP
 class TestMethods(unittest.TestCase):
     configTest = mc.Config()
     methods = configTest.methods
-    print("METHODS TEST config.methods object", id(configTest.methods))
 
     def test_Methods_lookupMethod_HxPlateCorrChevron_using_args(self):
         self.methods['GeomHxPlateCorrChevronHeatWf'] = {

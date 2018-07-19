@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Welcome to MCycle’s documentation! &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>Welcome to MCycle’s documentation! &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,12 +21,12 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="MCycle README" href="README_link.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +39,7 @@
         <li class="right" >
           <a href="README_link.html" title="MCycle README"
              accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">MCycle 0.1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">MCycle 1.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -52,7 +49,7 @@
           <div class="body" role="main">
             
   <div class="section" id="welcome-to-mcycle-s-documentation">
-<h1>Welcome to MCycle&#8217;s documentation!<a class="headerlink" href="#welcome-to-mcycle-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to MCycle’s documentation!<a class="headerlink" href="#welcome-to-mcycle-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README_link.html">MCycle README</a><ul>
@@ -62,6 +59,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples/contents.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/quickstart.html">Quick start example of basic MCycle features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/hughes2017.html">Basic organic Rankine cycle with a corrugated-plate evaporator</a></li>
 </ul>
 </li>
@@ -71,8 +69,13 @@
 <h2>MCycle Source Code<a class="headerlink" href="#mcycle-source-code" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="defaults.html">MCycle Defaults</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="defaults.html#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="defaults.html#module-mcycle.DEFAULTS">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bases/contents.html">Base Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bases/mcabstractbase.html">MCycle Abstract Base Class</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="bases/mcabstractbase.html">MCycle Abstract Base Classes</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bases/component.html">Component Abstract Base Classes</a><ul class="simple">
@@ -94,9 +97,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bases/geom.html">Geom Abstract Base Class</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="bases/methods.html">Methods Class</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bases/solidmaterial.html">SolidMaterial Base Class</a><ul class="simple">
@@ -131,15 +131,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="components/hxs.html">Heat Exchanger Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hx_basic">HxBasic Class</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#hxunitbasic-class">HxUnitBasic Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hxunit_basic">HxUnitBasic Class</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hx_basicplanar">HxBasicPlanar Class</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#hxunitbasicplanar-class">HxUnitBasicPlanar Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hxunit_basicplanar">HxUnitBasicPlanar Class</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hx_plate">HxPlate Class</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#hxunitplate-class">HxUnitPlate Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="components/hxs.html#module-mcycle.components.hxs.hxunit_plate">HxUnitPlate Class</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -158,19 +164,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="methods/contents.html">Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="methods/heat_transfer.html">Heat Transfer Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="methods/heat_transfer.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methods/heat_transfer.html#returns">Returns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methods/heat_transfer.html#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methods/heat_transfer.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="library/contents.html">Library</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="library/compressible_flow_relations.html">Compressible Flow Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="library/conversions.html">Conversions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="library/heat_exchangers.html">Library Heat Exchangers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="library/heat_transfer_methods.html">Heat Transfer Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="library/heat_transfer_methods.html#references">References</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="library/materials.html">Library Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="library/standard_atmospheres.html">Standard Atmospheres</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defaults.html">MCycle Defaults</a></li>
 </ul>
 </div>
 </div>
@@ -192,7 +203,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to MCycle&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#">Welcome to MCycle’s documentation!</a><ul>
 <li><a class="reference internal" href="#mcycle-source-code">MCycle Source Code</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
@@ -235,12 +246,12 @@
         <li class="right" >
           <a href="README_link.html" title="MCycle README"
              >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">MCycle 0.1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">MCycle 1.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

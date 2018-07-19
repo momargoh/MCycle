@@ -122,12 +122,12 @@ kwargs : optional
     - if NPlate is even: the extra flow channel is assigned according to config.evenPlatesWf.
         """
         if self.NWall & 1:  # NPlate is odd
-            return (self.NWall - 1) / 2
+            return int((self.NWall - 1) / 2)
         else:
             if self.config.evenPlatesWf:
-                return self.NWall / 2
+                return int(self.NWall / 2)
             else:
-                return self.NWall / 2 - 1
+                return int(self.NWall / 2 - 1)
 
     cpdef public int _NSf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
@@ -136,12 +136,12 @@ kwargs : optional
     - if NPlate is even: the extra flow channel is assigned according to config.evenPlatesWf.
         """
         if self.NWall & 1:  # NPlate is odd
-            return (self.NWall - 1) / 2
+            return int((self.NWall - 1) / 2)
         else:
             if self.config.evenPlatesWf:
-                return self.NWall / 2 - 1
+                return int(self.NWall / 2 - 1)
             else:
-                return self.NWall / 2
+                return int(self.NWall / 2)
 
     cpdef public double _hWf(self):
         """float: Heat transfer coefficient of a working fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""

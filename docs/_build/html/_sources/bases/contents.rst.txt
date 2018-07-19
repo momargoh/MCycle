@@ -9,6 +9,5 @@ Base Classes
    cycle
    flowstates
    geom
-   methods
    solidmaterial
 

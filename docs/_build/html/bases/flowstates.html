@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>FlowState Base Classes &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>FlowState Base Classes &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,11 +21,11 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -38,7 +35,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Base Classes</a> &#187;</li> 
       </ul>
     </div>  
@@ -56,14 +53,14 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState" title="mcycle.bases.flowstate.FlowState"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstate.FlowState</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState" title="mcycle.bases.flowstate.FlowState"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstate.FlowState</span></code></a>(…)</td>
 <td>FlowState represents the state of a flow at a point by its state properties and a mass flow rate.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly" title="mcycle.bases.flowstatepoly.FlowStatePoly"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstatepoly.FlowStatePoly</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly" title="mcycle.bases.flowstatepoly.FlowStatePoly"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstatepoly.FlowStatePoly</span></code></a>(…)</td>
 <td>FlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData" title="mcycle.bases.flowstatepoly.RefData"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstatepoly.RefData</span></code></a></td>
-<td>RefData stores constant pressure thermodynamic properties of a &#8216;pure&#8217; fluid or mixture thereof.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData" title="mcycle.bases.flowstatepoly.RefData"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.bases.flowstatepoly.RefData</span></code></a>(…)</td>
+<td>cdef class. RefData stores constant pressure thermodynamic properties of a ‘pure’ fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.</td>
 </tr>
 </tbody>
 </table>
@@ -71,23 +68,23 @@
 <span id="flowstate-class"></span><h2>FlowState Class<a class="headerlink" href="#module-mcycle.bases.flowstate" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.bases.flowstate.FlowState">
-<em class="property">class </em><code class="descclassname">mcycle.bases.flowstate.</code><code class="descname">FlowState</code><a class="headerlink" href="#mcycle.bases.flowstate.FlowState" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.bases.flowstate.</code><code class="descname">FlowState</code><span class="sig-paren">(</span><em>unicode fluid</em>, <em>int phaseCP=-1</em>, <em>double m=nan</em>, <em>int inputPairCP=0</em>, <em>double input1=nan</em>, <em>double input2=nan</em>, <em>unicode name=u'FlowState instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mcabstractbase.html#mcycle.bases.mcabstractbase.MCAB" title="mcycle.bases.mcabstractbase.MCAB"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.mcabstractbase.MCAB</span></code></a></p>
 <p>FlowState represents the state of a flow at a point by its state properties and a mass flow rate. This class creates a <a class="reference external" href="http://www.coolprop.org/apidoc/CoolProp.CoolProp.html">CoolProp AbstractState</a> object to store the state properties and uses the routines of CoolProp.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fluid</strong> : string</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fluid</strong> : str</p>
 <blockquote>
 <div><p>Description of fluid passed to CoolProp.</p>
 <ul class="simple">
-<li>&#8220;fluid_name&#8221; for pure fluid. Eg, &#8220;air&#8221;, &#8220;water&#8221;, &#8220;CO2&#8221; <em>or</em></li>
-<li>&#8220;fluid0[mole_fraction0]&amp;fluid1[mole_fraction1]&amp;...&#8221; for mixtures. Eg, &#8220;CO2[0.5]&amp;CO[0.5]&#8221;.</li>
+<li>“fluid_name” for pure fluid. Eg, “air”, “water”, “CO2” <em>or</em></li>
+<li>“fluid0[mole_fraction0]&amp;fluid1[mole_fraction1]&amp;…” for mixtures. Eg, “CO2[0.5]&amp;CO[0.5]”.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">CoolProp&#8217;s mixture routines often raise errors; using mixtures should be avoided.</p>
+<p class="last">CoolProp’s mixture routines often raise errors; using mixtures should be avoided.</p>
 </div>
 </div></blockquote>
 <p><strong>phaseCP</strong> : int, optional</p>
@@ -95,7 +92,7 @@
 <div><p>Coolprop key for phase. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f">documentation</a>. Eg, CoolProp.iphase_gas. Defaults to -1.
 .. note:: In MCycle, both -1 and 8 can be used for iphase_not_imposed</p>
 </div></blockquote>
-<p><strong>m</strong> : float, optional</p>
+<p><strong>m</strong> : double, optional</p>
 <blockquote>
 <div><p>Mass flow rate [Kg/s]. Defaults to nan.</p>
 </div></blockquote>
@@ -103,9 +100,13 @@
 <blockquote>
 <div><p>CoolProp input pair key. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb">documentation</a>. Eg. CoolProp.HmassP_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).</p>
 </div></blockquote>
-<p><strong>input1, input2</strong> : float, optional</p>
-<blockquote class="last">
+<p><strong>input1, input2</strong> : double, optional</p>
+<blockquote>
 <div><p>Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to nan.</p>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Descriptive name of instance. Defaults to “FlowState instance”.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -114,7 +115,7 @@
 <p class="rubric">Examples</p>
 <p>import mcycle
 import CoolProp
-&gt;&gt;&gt; air = FlowState(&#8220;air&#8221;,-1,1.0,CoolProp.PT_INPUTS,101325,293.15)
+&gt;&gt;&gt; air = FlowState(“air”,-1,1.0,CoolProp.PT_INPUTS,101325,293.15)
 &gt;&gt;&gt; air.rho()
 1.2045751824931508
 &gt;&gt;&gt; air.cp()
@@ -126,17 +127,17 @@ import CoolProp
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.fluid" title="mcycle.bases.flowstate.FlowState.fluid"><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></a></td>
+<td>fluid: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.m" title="mcycle.bases.flowstate.FlowState.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<td>m: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.name" title="mcycle.bases.flowstate.FlowState.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.phaseCP" title="mcycle.bases.flowstate.FlowState.phaseCP"><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></a></td>
+<td>phaseCP: ‘int’</td>
 </tr>
 </tbody>
 </table>
@@ -147,81 +148,105 @@ import CoolProp
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.Pr" title="mcycle.bases.flowstate.FlowState.Pr"><code class="xref py py-obj docutils literal"><span class="pre">Pr</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.Pr" title="mcycle.bases.flowstate.FlowState.Pr"><code class="xref py py-obj docutils literal"><span class="pre">Pr</span></code></a>(self)</td>
 <td>double: Prandtl number [-].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.T" title="mcycle.bases.flowstate.FlowState.T"><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.T" title="mcycle.bases.flowstate.FlowState.T"><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></a>(self)</td>
 <td>double: Static temperture [K].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.copy" title="mcycle.bases.flowstate.FlowState.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.V" title="mcycle.bases.flowstate.FlowState.V"><code class="xref py py-obj docutils literal"><span class="pre">V</span></code></a>(self)</td>
+<td>double:  Volumetric flow rate [m^3/s].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.copy" title="mcycle.bases.flowstate.FlowState.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.copyState" title="mcycle.bases.flowstate.FlowState.copyState"><code class="xref py py-obj docutils literal"><span class="pre">copyState</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.copyState" title="mcycle.bases.flowstate.FlowState.copyState"><code class="xref py py-obj docutils literal"><span class="pre">copyState</span></code></a>(self,&nbsp;int&nbsp;inputPairCP,&nbsp;…)</td>
 <td>Creates a new copy of a FlowState object.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.cp" title="mcycle.bases.flowstate.FlowState.cp"><code class="xref py py-obj docutils literal"><span class="pre">cp</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.cp" title="mcycle.bases.flowstate.FlowState.cp"><code class="xref py py-obj docutils literal"><span class="pre">cp</span></code></a>(self)</td>
 <td>double: Specific mass heat capacity, const. pressure [J/K].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.h" title="mcycle.bases.flowstate.FlowState.h"><code class="xref py py-obj docutils literal"><span class="pre">h</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.h" title="mcycle.bases.flowstate.FlowState.h"><code class="xref py py-obj docutils literal"><span class="pre">h</span></code></a>(self)</td>
 <td>double:  Specific mass enthalpy [J/Kg].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.k" title="mcycle.bases.flowstate.FlowState.k"><code class="xref py py-obj docutils literal"><span class="pre">k</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.k" title="mcycle.bases.flowstate.FlowState.k"><code class="xref py py-obj docutils literal"><span class="pre">k</span></code></a>(self)</td>
 <td>double: Thermal conductivity [W/m.K].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.p" title="mcycle.bases.flowstate.FlowState.p"><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.p" title="mcycle.bases.flowstate.FlowState.p"><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></a>(self)</td>
 <td>double: Static pressure [Pa].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.phase" title="mcycle.bases.flowstate.FlowState.phase"><code class="xref py py-obj docutils literal"><span class="pre">phase</span></code></a></td>
-<td>str: identifier of phase; &#8216;liq&#8217;:subcooled liquid, &#8216;vap&#8217;:superheated vapour, &#8216;satLiq&#8217;:saturated liquid, &#8216;satVap&#8217;:saturated vapour, &#8216;tp&#8217;: two-phase liquid/vapour region.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.phase" title="mcycle.bases.flowstate.FlowState.phase"><code class="xref py py-obj docutils literal"><span class="pre">phase</span></code></a>(self)</td>
+<td>str: identifier of phase; ‘liq’:subcooled liquid, ‘vap’:superheated vapour, ‘satLiq’:saturated liquid, ‘satVap’:saturated vapour, ‘tp’: two-phase liquid/vapour region.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.rho" title="mcycle.bases.flowstate.FlowState.rho"><code class="xref py py-obj docutils literal"><span class="pre">rho</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.rho" title="mcycle.bases.flowstate.FlowState.rho"><code class="xref py py-obj docutils literal"><span class="pre">rho</span></code></a>(self)</td>
 <td>double:  Mass density [Kg/m^3].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.s" title="mcycle.bases.flowstate.FlowState.s"><code class="xref py py-obj docutils literal"><span class="pre">s</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.s" title="mcycle.bases.flowstate.FlowState.s"><code class="xref py py-obj docutils literal"><span class="pre">s</span></code></a>(self)</td>
 <td>double: Specific mass entropy [J/Kg.K].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.summary" title="mcycle.bases.flowstate.FlowState.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.summary" title="mcycle.bases.flowstate.FlowState.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True,&nbsp;…)</td>
 <td>Returns (and prints) a summary of FlowState properties.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.update" title="mcycle.bases.flowstate.FlowState.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.update" title="mcycle.bases.flowstate.FlowState.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.updateState" title="mcycle.bases.flowstate.FlowState.updateState"><code class="xref py py-obj docutils literal"><span class="pre">updateState</span></code></a></td>
-<td>Calls CoolProp&#8217;s AbstractState.update function.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.updateState" title="mcycle.bases.flowstate.FlowState.updateState"><code class="xref py py-obj docutils literal"><span class="pre">updateState</span></code></a>(self,&nbsp;int&nbsp;inputPairCP,&nbsp;…)</td>
+<td>Calls CoolProp’s AbstractState.update function.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.visc" title="mcycle.bases.flowstate.FlowState.visc"><code class="xref py py-obj docutils literal"><span class="pre">visc</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.v" title="mcycle.bases.flowstate.FlowState.v"><code class="xref py py-obj docutils literal"><span class="pre">v</span></code></a>(self)</td>
+<td>double:  Specific volume [m^3/Kg].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.visc" title="mcycle.bases.flowstate.FlowState.visc"><code class="xref py py-obj docutils literal"><span class="pre">visc</span></code></a>(self)</td>
 <td>double: Dynamic viscosity [N.s/m^2].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.x" title="mcycle.bases.flowstate.FlowState.x"><code class="xref py py-obj docutils literal"><span class="pre">x</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstate.FlowState.x" title="mcycle.bases.flowstate.FlowState.x"><code class="xref py py-obj docutils literal"><span class="pre">x</span></code></a>(self)</td>
 <td>double: Quality [-].</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.Pr">
-<code class="descname">Pr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.Pr" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Pr</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.Pr" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Prandtl number [-].</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp&#8217;s routines.</p>
+<p class="last">Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp’s routines.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.T">
-<code class="descname">T</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.T" title="Permalink to this definition">¶</a></dt>
+<code class="descname">T</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.T" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Static temperture [K].</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mcycle.bases.flowstate.FlowState.V">
+<code class="descname">V</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.V" title="Permalink to this definition">¶</a></dt>
+<dd><p>double:  Volumetric flow rate [m^3/s].</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.copyState">
-<code class="descname">copyState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.copyState" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copyState</code><span class="sig-paren">(</span><em>self</em>, <em>int inputPairCP</em>, <em>double input1</em>, <em>double input2</em><span class="sig-paren">)</span> &#x2192; FlowState<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.copyState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new copy of a FlowState object. As a shortcut, args can be passed to update the object copy (see update()).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -243,53 +268,77 @@ import CoolProp
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.cp">
-<code class="descname">cp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.cp" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.cp" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Specific mass heat capacity, const. pressure [J/K].</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp&#8217;s routines.</p>
+<p class="last">Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp’s routines.</p>
 </div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstate.FlowState.fluid">
+<code class="descname">fluid</code><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>fluid: unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.h">
-<code class="descname">h</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.h" title="Permalink to this definition">¶</a></dt>
+<code class="descname">h</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.h" title="Permalink to this definition">¶</a></dt>
 <dd><p>double:  Specific mass enthalpy [J/Kg].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.k">
-<code class="descname">k</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.k" title="Permalink to this definition">¶</a></dt>
+<code class="descname">k</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.k" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Thermal conductivity [W/m.K].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstate.FlowState.m">
+<code class="descname">m</code><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.m" title="Permalink to this definition">¶</a></dt>
+<dd><p>m: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstate.FlowState.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.p">
-<code class="descname">p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.p" title="Permalink to this definition">¶</a></dt>
+<code class="descname">p</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.p" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Static pressure [Pa].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.phase">
-<code class="descname">phase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.phase" title="Permalink to this definition">¶</a></dt>
-<dd><p>str: identifier of phase; &#8216;liq&#8217;:subcooled liquid, &#8216;vap&#8217;:superheated vapour, &#8216;satLiq&#8217;:saturated liquid, &#8216;satVap&#8217;:saturated vapour, &#8216;tp&#8217;: two-phase liquid/vapour region.</p>
+<code class="descname">phase</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; unicode<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>str: identifier of phase; ‘liq’:subcooled liquid, ‘vap’:superheated vapour, ‘satLiq’:saturated liquid, ‘satVap’:saturated vapour, ‘tp’: two-phase liquid/vapour region.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstate.FlowState.phaseCP">
+<code class="descname">phaseCP</code><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.phaseCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>phaseCP: ‘int’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.rho">
-<code class="descname">rho</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.rho" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rho</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.rho" title="Permalink to this definition">¶</a></dt>
 <dd><p>double:  Mass density [Kg/m^3].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.s">
-<code class="descname">s</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.s" title="Permalink to this definition">¶</a></dt>
+<code class="descname">s</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.s" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Specific mass entropy [J/Kg.K].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>bool printSummary=True</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of FlowState properties.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -311,14 +360,26 @@ import CoolProp
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.updateState">
-<code class="descname">updateState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.updateState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls CoolProp&#8217;s AbstractState.update function.</p>
+<code class="descname">updateState</code><span class="sig-paren">(</span><em>self</em>, <em>int inputPairCP</em>, <em>double input1</em>, <em>double input2</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.updateState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls CoolProp’s AbstractState.update function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -338,14 +399,20 @@ import CoolProp
 </dd></dl>
 
 <dl class="method">
+<dt id="mcycle.bases.flowstate.FlowState.v">
+<code class="descname">v</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.v" title="Permalink to this definition">¶</a></dt>
+<dd><p>double:  Specific volume [m^3/Kg].</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.visc">
-<code class="descname">visc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.visc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">visc</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.visc" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Dynamic viscosity [N.s/m^2].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstate.FlowState.x">
-<code class="descname">x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstate.FlowState.x" title="Permalink to this definition">¶</a></dt>
+<code class="descname">x</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstate.FlowState.x" title="Permalink to this definition">¶</a></dt>
 <dd><p>double: Quality [-].</p>
 </dd></dl>
 
@@ -356,9 +423,9 @@ import CoolProp
 <span id="flowstatepoly-class"></span><h2>FlowStatePoly Class<a class="headerlink" href="#module-mcycle.bases.flowstatepoly" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly">
-<em class="property">class </em><code class="descclassname">mcycle.bases.flowstatepoly.</code><code class="descname">FlowStatePoly</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.bases.flowstatepoly.</code><code class="descname">FlowStatePoly</code><span class="sig-paren">(</span><em>RefData refData</em>, <em>double m=nan</em>, <em>int inputPairCP=0</em>, <em>double input1=nan</em>, <em>double input2=nan</em>, <em>unicode name=u'FlowStatePoly instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.bases.flowstate.FlowState" title="mcycle.bases.flowstate.FlowState"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.flowstate.FlowState</span></code></a></p>
-<p>FlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate. It is an alternative to FlowState that uses polynomial interpolation of a crude constant pressure reference data map to evaluate the state properties, instead of calling them from a CoolProp AbstractState object. This class was created purely to overcome short comings with CoolProp&#8217;s mixture processes. Apart from creating new objects, FlowStatePoly has been built to be used in exactly the same way as FlowState.</p>
+<p>FlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate. It is an alternative to FlowState that uses polynomial interpolation of a crude constant pressure reference data map to evaluate the state properties, instead of calling them from a CoolProp AbstractState object. This class was created purely to overcome short comings with CoolProp’s mixture processes. Apart from creating new objects, FlowStatePoly has been built to be used in exactly the same way as FlowState.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">FlowStatePoly only supports constant pressure flows and assumes no phase changes occur.
@@ -372,13 +439,13 @@ It may not be used for the working fluid in a cycle, but may be used as the work
 <blockquote>
 <div><p>Constant pressure fluid reference data map.</p>
 </div></blockquote>
-<p><strong>m</strong> : float, optional</p>
+<p><strong>m</strong> : double, optional</p>
 <blockquote>
-<div><p>Mass flow rate [Kg/s]. Defaults to None.</p>
+<div><p>Mass flow rate [Kg/s]. Defaults to nan.</p>
 </div></blockquote>
 <p><strong>inputPairCP</strong> : int, optional</p>
 <blockquote>
-<div><p>CoolProp input pair key. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb">documentation</a>. Eg. CoolProp.HmassP_INPUTS. Defaults to None.</p>
+<div><p>CoolProp input pair key. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb">documentation</a>. Eg. CoolProp.HmassP_INPUTS. Defaults to INPUT_PAIR_INVALID == 0.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Only certain inputPairCP values are valid.
@@ -391,9 +458,9 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 </ul>
 </div>
 </div></blockquote>
-<p><strong>input1,input2</strong> : float, optional</p>
+<p><strong>input1,input2</strong> : double, optional</p>
 <blockquote class="last">
-<div><p>Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to None.</p>
+<div><p>Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to nan.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -415,20 +482,20 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.fluid" title="mcycle.bases.flowstatepoly.FlowStatePoly.fluid"><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></a></td>
+<td>fluid: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.m" title="mcycle.bases.flowstatepoly.FlowStatePoly.m"><code class="xref py py-obj docutils literal"><span class="pre">m</span></code></a></td>
+<td>m: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.name" title="mcycle.bases.flowstatepoly.FlowStatePoly.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phaseCP" title="mcycle.bases.flowstatepoly.FlowStatePoly.phaseCP"><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></a></td>
+<td>phaseCP: ‘int’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">refData</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.refData" title="mcycle.bases.flowstatepoly.FlowStatePoly.refData"><code class="xref py py-obj docutils literal"><span class="pre">refData</span></code></a></td>
+<td>refData: mcycle.bases.flowstatepoly.RefData</td>
 </tr>
 </tbody>
 </table>
@@ -439,86 +506,110 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.Pr" title="mcycle.bases.flowstatepoly.FlowStatePoly.Pr"><code class="xref py py-obj docutils literal"><span class="pre">Pr</span></code></a></td>
-<td>float: Prandtl number [-].</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.Pr" title="mcycle.bases.flowstatepoly.FlowStatePoly.Pr"><code class="xref py py-obj docutils literal"><span class="pre">Pr</span></code></a>(self)</td>
+<td>double: Prandtl number [-].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.T" title="mcycle.bases.flowstatepoly.FlowStatePoly.T"><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></a></td>
-<td>float: Static temperture [K].</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.T" title="mcycle.bases.flowstatepoly.FlowStatePoly.T"><code class="xref py py-obj docutils literal"><span class="pre">T</span></code></a>(self)</td>
+<td>double: Static temperture [K].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copy" title="mcycle.bases.flowstatepoly.FlowStatePoly.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.V" title="mcycle.bases.flowstatepoly.FlowStatePoly.V"><code class="xref py py-obj docutils literal"><span class="pre">V</span></code></a>(self)</td>
+<td>double:  Volumetric flow rate [m^3/s].</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copy" title="mcycle.bases.flowstatepoly.FlowStatePoly.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copyState" title="mcycle.bases.flowstatepoly.FlowStatePoly.copyState"><code class="xref py py-obj docutils literal"><span class="pre">copyState</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copyState" title="mcycle.bases.flowstatepoly.FlowStatePoly.copyState"><code class="xref py py-obj docutils literal"><span class="pre">copyState</span></code></a>(self,&nbsp;int&nbsp;inputPairCP,&nbsp;…)</td>
 <td>Creates a new copy of a FlowState object.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.cp" title="mcycle.bases.flowstatepoly.FlowStatePoly.cp"><code class="xref py py-obj docutils literal"><span class="pre">cp</span></code></a></td>
-<td>float: Specific mass heat capacity, const. pressure [J/K].</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.cp" title="mcycle.bases.flowstatepoly.FlowStatePoly.cp"><code class="xref py py-obj docutils literal"><span class="pre">cp</span></code></a>(self)</td>
+<td>double: Specific mass heat capacity, const. pressure [J/K].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.h" title="mcycle.bases.flowstatepoly.FlowStatePoly.h"><code class="xref py py-obj docutils literal"><span class="pre">h</span></code></a></td>
-<td>float: Specific mass enthalpy [J/Kg].</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.h" title="mcycle.bases.flowstatepoly.FlowStatePoly.h"><code class="xref py py-obj docutils literal"><span class="pre">h</span></code></a>(self)</td>
+<td>double: Specific mass enthalpy [J/Kg].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.k" title="mcycle.bases.flowstatepoly.FlowStatePoly.k"><code class="xref py py-obj docutils literal"><span class="pre">k</span></code></a></td>
-<td>float: Thermal conductivity [W/m.K].</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.k" title="mcycle.bases.flowstatepoly.FlowStatePoly.k"><code class="xref py py-obj docutils literal"><span class="pre">k</span></code></a>(self)</td>
+<td>double: Thermal conductivity [W/m.K].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.p" title="mcycle.bases.flowstatepoly.FlowStatePoly.p"><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></a></td>
-<td>float: Static pressure [Pa].</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.p" title="mcycle.bases.flowstatepoly.FlowStatePoly.p"><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></a>(self)</td>
+<td>double: Static pressure [Pa].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phase" title="mcycle.bases.flowstatepoly.FlowStatePoly.phase"><code class="xref py py-obj docutils literal"><span class="pre">phase</span></code></a></td>
-<td>str: identifier of phase; &#8216;liq&#8217;:subcooled liquid, &#8216;vap&#8217;:superheated vapour, &#8216;sp&#8217;: unknown single-phase.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phase" title="mcycle.bases.flowstatepoly.FlowStatePoly.phase"><code class="xref py py-obj docutils literal"><span class="pre">phase</span></code></a>(self)</td>
+<td>str: identifier of phase; ‘liq’:subcooled liquid, ‘vap’:superheated vapour, ‘sp’: unknown single-phase.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">populate_c</span></code></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.populate_c" title="mcycle.bases.flowstatepoly.FlowStatePoly.populate_c"><code class="xref py py-obj docutils literal"><span class="pre">populate_c</span></code></a>(self)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.rho" title="mcycle.bases.flowstatepoly.FlowStatePoly.rho"><code class="xref py py-obj docutils literal"><span class="pre">rho</span></code></a></td>
-<td>float: Mass density [Kg/m^3].</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.rho" title="mcycle.bases.flowstatepoly.FlowStatePoly.rho"><code class="xref py py-obj docutils literal"><span class="pre">rho</span></code></a>(self)</td>
+<td>double: Mass density [Kg/m^3].</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.s" title="mcycle.bases.flowstatepoly.FlowStatePoly.s"><code class="xref py py-obj docutils literal"><span class="pre">s</span></code></a></td>
-<td>float: Specific mass entropy [J/Kg.K].</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.s" title="mcycle.bases.flowstatepoly.FlowStatePoly.s"><code class="xref py py-obj docutils literal"><span class="pre">s</span></code></a>(self)</td>
+<td>double: Specific mass entropy [J/Kg.K].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.summary" title="mcycle.bases.flowstatepoly.FlowStatePoly.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.summary" title="mcycle.bases.flowstatepoly.FlowStatePoly.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True,&nbsp;…)</td>
 <td>Returns (and prints) a summary of FlowState properties.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.update" title="mcycle.bases.flowstatepoly.FlowStatePoly.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.update" title="mcycle.bases.flowstatepoly.FlowStatePoly.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.updateState" title="mcycle.bases.flowstatepoly.FlowStatePoly.updateState"><code class="xref py py-obj docutils literal"><span class="pre">updateState</span></code></a></td>
-<td>Calls CoolProp&#8217;s AbstractState.update function.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.updateState" title="mcycle.bases.flowstatepoly.FlowStatePoly.updateState"><code class="xref py py-obj docutils literal"><span class="pre">updateState</span></code></a>(self,&nbsp;int&nbsp;inputPairCP,&nbsp;…)</td>
+<td>void: Calls CoolProp’s AbstractState.update function.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.visc" title="mcycle.bases.flowstatepoly.FlowStatePoly.visc"><code class="xref py py-obj docutils literal"><span class="pre">visc</span></code></a></td>
-<td>float: Dynamic viscosity [N.s/m^2].</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.v" title="mcycle.bases.flowstatepoly.FlowStatePoly.v"><code class="xref py py-obj docutils literal"><span class="pre">v</span></code></a>(self)</td>
+<td>double:  Specific volume [m^3/Kg].</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.x" title="mcycle.bases.flowstatepoly.FlowStatePoly.x"><code class="xref py py-obj docutils literal"><span class="pre">x</span></code></a></td>
-<td>float: Quality [-]. By definition, x = -1 for all FlowStatePoly objects.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.visc" title="mcycle.bases.flowstatepoly.FlowStatePoly.visc"><code class="xref py py-obj docutils literal"><span class="pre">visc</span></code></a>(self)</td>
+<td>double: Dynamic viscosity [N.s/m^2].</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.FlowStatePoly.x" title="mcycle.bases.flowstatepoly.FlowStatePoly.x"><code class="xref py py-obj docutils literal"><span class="pre">x</span></code></a>(self)</td>
+<td>double: Quality [-]. By definition, x = -1 for all FlowStatePoly objects.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.Pr">
-<code class="descname">Pr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.Pr" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Prandtl number [-].</p>
+<code class="descname">Pr</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.Pr" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Prandtl number [-].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.T">
-<code class="descname">T</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.T" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Static temperture [K].</p>
+<code class="descname">T</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.T" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Static temperture [K].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.V">
+<code class="descname">V</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.V" title="Permalink to this definition">¶</a></dt>
+<dd><p>double:  Volumetric flow rate [m^3/s].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.copyState">
-<code class="descname">copyState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copyState" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copyState</code><span class="sig-paren">(</span><em>self</em>, <em>int inputPairCP</em>, <em>double input1</em>, <em>double input2</em><span class="sig-paren">)</span> &#x2192; FlowState<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.copyState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new copy of a FlowState object. As a shortcut, args can be passed to update the object copy (see update()).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputPairCP</strong> : input_pairs, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputPairCP</strong> : int, optional</p>
 <blockquote>
 <div><p>CoolProp input pair key. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb">documentation</a>. Eg. CoolProp.HmassP_INPUTS. Defaults to None.</p>
 </div></blockquote>
@@ -534,49 +625,84 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.cp">
-<code class="descname">cp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.cp" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Specific mass heat capacity, const. pressure [J/K].</p>
+<code class="descname">cp</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.cp" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Specific mass heat capacity, const. pressure [J/K].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.fluid">
+<code class="descname">fluid</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>fluid: unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.h">
-<code class="descname">h</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.h" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Specific mass enthalpy [J/Kg].</p>
+<code class="descname">h</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.h" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Specific mass enthalpy [J/Kg].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.k">
-<code class="descname">k</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.k" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Thermal conductivity [W/m.K].</p>
+<code class="descname">k</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Thermal conductivity [W/m.K].</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.m">
+<code class="descname">m</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.m" title="Permalink to this definition">¶</a></dt>
+<dd><p>m: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.p">
-<code class="descname">p</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.p" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Static pressure [Pa].</p>
+<code class="descname">p</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.p" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Static pressure [Pa].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.phase">
-<code class="descname">phase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phase" title="Permalink to this definition">¶</a></dt>
-<dd><p>str: identifier of phase; &#8216;liq&#8217;:subcooled liquid, &#8216;vap&#8217;:superheated vapour, &#8216;sp&#8217;: unknown single-phase.</p>
+<code class="descname">phase</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; unicode<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>str: identifier of phase; ‘liq’:subcooled liquid, ‘vap’:superheated vapour, ‘sp’: unknown single-phase.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.phaseCP">
+<code class="descname">phaseCP</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.phaseCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>phaseCP: ‘int’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.populate_c">
+<code class="descname">populate_c</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.populate_c" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.refData">
+<code class="descname">refData</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.refData" title="Permalink to this definition">¶</a></dt>
+<dd><p>refData: mcycle.bases.flowstatepoly.RefData</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.rho">
-<code class="descname">rho</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.rho" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Mass density [Kg/m^3].</p>
+<code class="descname">rho</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.rho" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Mass density [Kg/m^3].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.s">
-<code class="descname">s</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.s" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Specific mass entropy [J/Kg.K].</p>
+<code class="descname">s</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.s" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Specific mass entropy [J/Kg.K].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>bool printSummary=True</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of FlowState properties.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -598,14 +724,26 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.updateState">
-<code class="descname">updateState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.updateState" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls CoolProp&#8217;s AbstractState.update function.</p>
+<code class="descname">updateState</code><span class="sig-paren">(</span><em>self</em>, <em>int inputPairCP</em>, <em>double input1</em>, <em>double input2</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.updateState" title="Permalink to this definition">¶</a></dt>
+<dd><p>void: Calls CoolProp’s AbstractState.update function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -614,7 +752,7 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <blockquote>
 <div><p>CoolProp input pair key. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb">documentation</a>. Eg. CoolProp.HmassP_INPUTS.</p>
 </div></blockquote>
-<p><strong>input1,input2</strong> : float</p>
+<p><strong>input1,input2</strong> : double</p>
 <blockquote class="last">
 <div><p>Repective values of inputs corresponding to inputPairCP [in SI units]. One input must be equal to the pressure of refData. Both default to None.</p>
 </div></blockquote>
@@ -625,42 +763,51 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 </dd></dl>
 
 <dl class="method">
+<dt id="mcycle.bases.flowstatepoly.FlowStatePoly.v">
+<code class="descname">v</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.v" title="Permalink to this definition">¶</a></dt>
+<dd><p>double:  Specific volume [m^3/Kg].</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.visc">
-<code class="descname">visc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.visc" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Dynamic viscosity [N.s/m^2].</p>
+<code class="descname">visc</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.visc" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Dynamic viscosity [N.s/m^2].</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.FlowStatePoly.x">
-<code class="descname">x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.x" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: Quality [-]. By definition, x = -1 for all FlowStatePoly objects.</p>
+<code class="descname">x</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.bases.flowstatepoly.FlowStatePoly.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>double: Quality [-]. By definition, x = -1 for all FlowStatePoly objects.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="mcycle.bases.flowstatepoly.RefData">
-<em class="property">class </em><code class="descclassname">mcycle.bases.flowstatepoly.</code><code class="descname">RefData</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>RefData stores constant pressure thermodynamic properties of a &#8216;pure&#8217; fluid or mixture thereof. Property data can be directly input, or if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.</p>
+<em class="property">class </em><code class="descclassname">mcycle.bases.flowstatepoly.</code><code class="descname">RefData</code><span class="sig-paren">(</span><em>unicode fluid</em>, <em>int deg</em>, <em>double p</em>, <em>dict data</em>, <em>int phaseCP=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>cdef class. RefData stores constant pressure thermodynamic properties of a ‘pure’ fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fluid</strong> : string</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fluid</strong> : str</p>
 <blockquote>
-<div><p>Description of fluid passed to CoolProp.
-- &#8220;fluid_name&#8221; for pure fluid. Eg, &#8220;air&#8221;, &#8220;water&#8221;, &#8220;CO2&#8221; <em>or</em></p>
+<div><p>Description of fluid passed to CoolProp.</p>
 <ul class="simple">
-<li>&#8220;fluid0[mole_fraction0]&amp;fluid1[mole_fraction1]&amp;...&#8221; for mixtures. Eg, &#8220;CO2[0.5]&amp;CO[0.5]&#8221;.</li>
+<li>“fluid_name” for pure fluid. Eg, “air”, “water”, “CO2” <em>or</em></li>
+<li>“fluid0[mole_fraction0]&amp;fluid1[mole_fraction1]&amp;…” for mixtures. Eg, “CO2[0.5]&amp;CO[0.5]”.</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">CoolProp’s mixture routines often raise errors; using mixtures should be avoided.</p>
+</div>
 </div></blockquote>
-<p><strong>.. note:: CoolProp&#8217;s mixture routines often raise errors; using mixtures should be avoided.</strong></p>
 <p><strong>deg</strong> : int</p>
 <blockquote>
 <div><p>Polynomial degree used to fit the data using <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.polyfit.html">numpy.polyfit</a>. If -1, properties will be linearly interpolated between the data values using <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.interp.html">numpy.interp</a>.</p>
 </div></blockquote>
-<p><strong>p: float</strong></p>
+<p><strong>p: double</strong></p>
 <blockquote>
 <div><p>Constant static pressure [Pa] of the property data.</p>
 </div></blockquote>
@@ -668,20 +815,20 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <blockquote>
 <div><p>Dictionary of data map values. Data must be given as a list of floats for each of the following keys:</p>
 <ul class="simple">
-<li>&#8216;T&#8217; : static temperature [K].</li>
-<li>&#8216;h&#8217; : specific mass enthalpy [J/Kg].</li>
-<li>&#8216;rho&#8217; : mass density [Kg/m^3].</li>
-<li>&#8216;s&#8217; : specific mass entropy [J/Kg.K].</li>
-<li>&#8216;visc&#8217; : dynamic viscosity [N.s/m^2].</li>
-<li>&#8216;k&#8217; : thermal conductivity [W/m.K].</li>
-<li>&#8216;cp&#8217; : specific mass heat capacity, const. pressure [J/K].</li>
-<li>&#8216;Pr&#8217; : Prandtl number.</li>
+<li>‘T’ : static temperature [K].</li>
+<li>‘h’ : specific mass enthalpy [J/Kg].</li>
+<li>‘rho’ : mass density [Kg/m^3].</li>
+<li>‘s’ : specific mass entropy [J/Kg.K].</li>
+<li>‘visc’ : dynamic viscosity [N.s/m^2].</li>
+<li>‘k’ : thermal conductivity [W/m.K].</li>
+<li>‘cp’ : specific mass heat capacity, const. pressure [J/K].</li>
+<li>‘Pr’ : Prandtl number.</li>
 </ul>
 <p>A complete map must be provided or if only temperature values are provided, MCycle will attempt to populate the data using CoolProp.</p>
 </div></blockquote>
 <p><strong>phaseCP</strong> : int, optional</p>
 <blockquote class="last">
-<div><p>Coolprop key for phase. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f">documentation</a>. Eg, CoolProp.iphase_gas. Defaults to None.</p>
+<div><p>Coolprop key for phase. See <a class="reference external" href="http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f">documentation</a>. Eg, CoolProp.iphase_gas. Defaults to -1.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -694,20 +841,20 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">data</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.data" title="mcycle.bases.flowstatepoly.RefData.data"><code class="xref py py-obj docutils literal"><span class="pre">data</span></code></a></td>
+<td>data: dict</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">deg</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.deg" title="mcycle.bases.flowstatepoly.RefData.deg"><code class="xref py py-obj docutils literal"><span class="pre">deg</span></code></a></td>
+<td>deg: ‘int’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.fluid" title="mcycle.bases.flowstatepoly.RefData.fluid"><code class="xref py py-obj docutils literal"><span class="pre">fluid</span></code></a></td>
+<td>fluid: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.p" title="mcycle.bases.flowstatepoly.RefData.p"><code class="xref py py-obj docutils literal"><span class="pre">p</span></code></a></td>
+<td>p: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.phaseCP" title="mcycle.bases.flowstatepoly.RefData.phaseCP"><code class="xref py py-obj docutils literal"><span class="pre">phaseCP</span></code></a></td>
+<td>phaseCP: ‘int’</td>
 </tr>
 </tbody>
 </table>
@@ -718,15 +865,45 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.populateData" title="mcycle.bases.flowstatepoly.RefData.populateData"><code class="xref py py-obj docutils literal"><span class="pre">populateData</span></code></a></td>
-<td>Populate property data list from data[&#8216;T&#8217;] using CoolProp.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.flowstatepoly.RefData.populateData" title="mcycle.bases.flowstatepoly.RefData.populateData"><code class="xref py py-obj docutils literal"><span class="pre">populateData</span></code></a>(self)</td>
+<td>void: Populate property data list from data[‘T’] using CoolProp.</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.RefData.data">
+<code class="descname">data</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>data: dict</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.RefData.deg">
+<code class="descname">deg</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.deg" title="Permalink to this definition">¶</a></dt>
+<dd><p>deg: ‘int’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.RefData.fluid">
+<code class="descname">fluid</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>fluid: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.RefData.p">
+<code class="descname">p</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.p" title="Permalink to this definition">¶</a></dt>
+<dd><p>p: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.flowstatepoly.RefData.phaseCP">
+<code class="descname">phaseCP</code><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.phaseCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>phaseCP: ‘int’</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.bases.flowstatepoly.RefData.populateData">
-<code class="descname">populateData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.populateData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Populate property data list from data[&#8216;T&#8217;] using CoolProp.</p>
+<code class="descname">populateData</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.flowstatepoly.RefData.populateData" title="Permalink to this definition">¶</a></dt>
+<dd><p>void: Populate property data list from data[‘T’] using CoolProp.</p>
 </dd></dl>
 
 </dd></dl>
@@ -783,13 +960,13 @@ As FlowStatePoly only supports constant pressure flows, one input variable must 
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" >Base Classes</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

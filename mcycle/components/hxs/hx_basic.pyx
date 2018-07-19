@@ -235,9 +235,9 @@ kwargs : optional
             warn(err_msg)
             return self._QWf()
 
-    cpdef public double Q(self):
+    '''cpdef public double Q(self):
         """float: Heat transfer from the secondary fluid to the working fluid [W]."""
-        return self._Q()
+        return self._Q()'''
 
     cpdef public double weight(self):
         """float: Estimate of weight [Kg], based purely on wall properties."""

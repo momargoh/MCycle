@@ -230,8 +230,13 @@ Notes: {}
                             printSummary=False,
                             rstHeading=rstHeading + 1))
                 except AttributeError:
-                    output += """
-{}: flow not found""".format(key)
+                    added_output = r"""
+{} summary""".format(key)
+                    added_output += """
+{}
+flowstate not defined
+""".format(RST_HEADINGS[rstHeading + 1] * len(added_output))
+                    output += added_output
                 except:
                     output += """{}: {}
 """.format(key, "Error returning summary")

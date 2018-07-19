@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Conversions &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>Conversions &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,13 +21,13 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Library Heat Exchangers" href="heat_exchangers.html" />
     <link rel="prev" title="Compressible Flow Relations" href="compressible_flow_relations.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -46,7 +43,7 @@
         <li class="right" >
           <a href="compressible_flow_relations.html" title="Compressible Flow Relations"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Library</a> &#187;</li> 
       </ul>
     </div>  
@@ -61,74 +58,86 @@
 <p>A brief collection of useful, MATLAB-style unit conversions.</p>
 <dl class="function">
 <dt id="mcycle.library.conversions.K2degC">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">K2degC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.K2degC" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">K2degC</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.K2degC" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: temperature: Kelvin to Celcius.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mcycle.library.conversions.bar2pa">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">bar2pa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.bar2pa" title="Permalink to this definition">¶</a></dt>
+<dt id="mcycle.library.conversions.Pa2atm">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">Pa2atm</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.Pa2atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: pressure: Pascal to standard atmospheres.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mcycle.library.conversions.Pa2bar">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">Pa2bar</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.Pa2bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: pressure: Pascal to bar.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mcycle.library.conversions.W2bhp">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">W2bhp</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.W2bhp" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: power: Watts to Brake Horse Power.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mcycle.library.conversions.atm2Pa">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">atm2Pa</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.atm2Pa" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: pressure: standard atmospheres to Pascal.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mcycle.library.conversions.bar2Pa">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">bar2Pa</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.bar2Pa" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: pressure: bar to Pascal.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mcycle.library.conversions.bhp2w">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">bhp2w</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.bhp2w" title="Permalink to this definition">¶</a></dt>
+<dt id="mcycle.library.conversions.bhp2W">
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">bhp2W</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.bhp2W" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: power: Brake Horse Power to Watts.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.degC2K">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">degC2K</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.degC2K" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">degC2K</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.degC2K" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: temperature: Celcius to Kelvin.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.ft2m">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">ft2m</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.ft2m" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">ft2m</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.ft2m" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: length: Feet to metres.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.knots2mps">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">knots2mps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.knots2mps" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">knots2mps</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.knots2mps" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: velocity: knots to metres per second.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.kph2mps">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">kph2mps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.kph2mps" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">kph2mps</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.kph2mps" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: velocity: kilometers per hour to metres per second.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.m2ft">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">m2ft</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.m2ft" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">m2ft</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.m2ft" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: length: Metres to feet.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.mps2knots">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">mps2knots</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.mps2knots" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">mps2knots</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.mps2knots" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: float: velocity: metres per second to knots.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mcycle.library.conversions.mps2kph">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">mps2kph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.mps2kph" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">mcycle.library.conversions.</code><code class="descname">mps2kph</code><span class="sig-paren">(</span><em>double value</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.library.conversions.mps2kph" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: velocity: metres per second to kilometers per hour.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mcycle.library.conversions.pa2bar">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">pa2bar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.pa2bar" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: pressure: Pascal to bar.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mcycle.library.conversions.w2bhp">
-<code class="descclassname">mcycle.library.conversions.</code><code class="descname">w2bhp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.library.conversions.w2bhp" title="Permalink to this definition">¶</a></dt>
-<dd><p>float: power: Watts to Brake Horse Power.</p>
 </dd></dl>
 
 </div>
@@ -181,13 +190,13 @@
         <li class="right" >
           <a href="compressible_flow_relations.html" title="Compressible Flow Relations"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" >Library</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

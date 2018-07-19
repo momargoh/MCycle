@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>HxPlate Geometry Classes &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>HxPlate Geometry Classes &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,12 +21,12 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Geometry Classes" href="contents.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +39,7 @@
         <li class="right" >
           <a href="contents.html" title="Geometry Classes"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Geometry Classes</a> &#187;</li> 
       </ul>
     </div>  
@@ -60,23 +57,23 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron</span></code></a>(b,&nbsp;…)</td>
 <td>Geometry of chevron corrugations for a plate heat exchanger.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset</span></code></a>(s,&nbsp;…)</td>
+<td>Geometry of offset fins for a plate heat exchanger.</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateRough</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateRough</span></code></a>(b,&nbsp;…)</td>
+<td>Geometry of heat exchanger plate with a rough surface.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateSmooth</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth"><code class="xref py py-obj docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateSmooth</span></code></a>(b)</td>
+<td>Geometry of smooth heat exchanger plate (roughness factor is always None).</td>
 </tr>
 </tbody>
 </table>
 <span class="target" id="module-mcycle.geometries.geom_hxplate"></span><dl class="class">
 <dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron">
-<em class="property">class </em><code class="descclassname">mcycle.geometries.geom_hxplate.</code><code class="descname">GeomHxPlateCorrChevron</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.geometries.geom_hxplate.</code><code class="descname">GeomHxPlateCorrChevron</code><span class="sig-paren">(</span><em>b</em>, <em>beta</em>, <em>pitchCorr</em>, <em>phi</em>, <em>name=u'GeomHxPlateCorrChevron instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/geom.html#mcycle.bases.geom.Geom" title="mcycle.bases.geom.Geom"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.geom.Geom</span></code></a></p>
 <p>Geometry of chevron corrugations for a plate heat exchanger.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -94,7 +91,7 @@
 <p><strong>pitchCorr</strong> : float</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>Plate corrugation pitch [m] (distance between corrugation &#8216;bumps&#8217;).</dt>
+<dt>Plate corrugation pitch [m] (distance between corrugation ‘bumps’).</dt>
 <dd><div class="first last admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Not to be confused with the plate pitch (pitchPlate) which is defined as the sum of the plate channel spacing and one plate thickness.</p>
@@ -117,23 +114,23 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">b</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.b" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.b"><code class="xref py py-obj docutils literal"><span class="pre">b</span></code></a></td>
+<td>b: ‘double’</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">beta</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.beta" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.beta"><code class="xref py py-obj docutils literal"><span class="pre">beta</span></code></a></td>
+<td>beta: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.name" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">phi</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.phi" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.phi"><code class="xref py py-obj docutils literal"><span class="pre">phi</span></code></a></td>
+<td>phi: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pitchCorr</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.pitchCorr" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.pitchCorr"><code class="xref py py-obj docutils literal"><span class="pre">pitchCorr</span></code></a></td>
+<td>pitchCorr: ‘double’</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">validClasses</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClasses" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClasses"><code class="xref py py-obj docutils literal"><span class="pre">validClasses</span></code></a></td>
+<td>validClasses: tuple</td>
 </tr>
 </tbody>
 </table>
@@ -144,29 +141,71 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self[,&nbsp;printSummary,&nbsp;propertyKeys])</td>
 <td>Returns (and prints) a summary of the geometry attributes/properties.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass"><code class="xref py py-obj docutils literal"><span class="pre">validClass</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass" title="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass"><code class="xref py py-obj docutils literal"><span class="pre">validClass</span></code></a>(self,&nbsp;unicode&nbsp;cls)</td>
 <td>bool: Returns True if geometry is valid for the given class.</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.b">
+<code class="descname">b</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.b" title="Permalink to this definition">¶</a></dt>
+<dd><p>b: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.beta">
+<code class="descname">beta</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>beta: ‘double’</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.phi">
+<code class="descname">phi</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>phi: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.pitchCorr">
+<code class="descname">pitchCorr</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.pitchCorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>pitchCorr: ‘double’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary">
-<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns (and prints) a summary of the geometry attributes/properties.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -182,10 +221,10 @@
 <div><p>Names of component properties to be included. The following strings are also accepted as inputs:</p>
 </div></blockquote>
 <ul>
-<li><p class="first">&#8216;all&#8217;: all properties in _properties are included,</p>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
 </li>
-<li><p class="first">&#8216;none&#8217;: no properties are included.</p>
-<p>Defaults to &#8216;all&#8217;.</p>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -205,14 +244,604 @@
 
 <dl class="method">
 <dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass">
-<code class="descname">validClass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validClass</code><span class="sig-paren">(</span><em>self</em>, <em>unicode cls</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>bool: Returns True if geometry is valid for the given class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClasses">
+<code class="descname">validClasses</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateCorrChevron.validClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>validClasses: tuple</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset">
+<em class="property">class </em><code class="descclassname">mcycle.geometries.geom_hxplate.</code><code class="descname">GeomHxPlateFinOffset</code><span class="sig-paren">(</span><em>s</em>, <em>h</em>, <em>t</em>, <em>l</em>, <em>name=u'GeomHxPlateFinOffset instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../bases/geom.html#mcycle.bases.geom.Geom" title="mcycle.bases.geom.Geom"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.geom.Geom</span></code></a></p>
+<p>Geometry of offset fins for a plate heat exchanger. Refer to Figure 1 in <a class="reference internal" href="#manglik199523" id="id1">[Manglik199523]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>s</strong> : float</p>
+<blockquote>
+<div><p>Lateral fin spacing [m].</p>
+</div></blockquote>
+<p><strong>h</strong> : float</p>
+<blockquote>
+<div><p>Fin channel height [m].</p>
+</div></blockquote>
+<p><strong>t</strong> : float</p>
+<blockquote>
+<div><p>Fin thickness [m].</p>
+</div></blockquote>
+<p><strong>l</strong> : float</p>
+<blockquote class="last">
+<div><p>Individual fin length [m].</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="manglik199523" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Manglik199523]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Manglik and Bergles, Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger, Experimental Thermal and Fluid Science, Elsevier, 1995, 10, pp. 171-180.</td></tr>
+</tbody>
+</table>
+<p>Bibtex:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@Article</span><span class="p">{</span><span class="n">manglik1995heat</span><span class="p">,</span>
+</pre></div>
+</div>
+<blockquote>
+<div>author    = {Raj M. Manglik and Arthur E. Bergles},
+title     = {Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger},
+journal   = {Experimental Thermal and Fluid Science},
+year      = {1995},
+volume    = {10},
+number    = {2},
+pages     = {171–180},
+month     = {feb},
+doi       = {10.1016/0894-1777(94)00096-q},
+publisher = {Elsevier {BV}},</div></blockquote>
+<p>}</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.h" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.h"><code class="xref py py-obj docutils literal"><span class="pre">h</span></code></a></td>
+<td>h: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.l" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.l"><code class="xref py py-obj docutils literal"><span class="pre">l</span></code></a></td>
+<td>l: ‘double’</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.name" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.s" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.s"><code class="xref py py-obj docutils literal"><span class="pre">s</span></code></a></td>
+<td>s: ‘double’</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.t" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.t"><code class="xref py py-obj docutils literal"><span class="pre">t</span></code></a></td>
+<td>t: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClasses" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClasses"><code class="xref py py-obj docutils literal"><span class="pre">validClasses</span></code></a></td>
+<td>validClasses: tuple</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.b" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.b"><code class="xref py py-obj docutils literal"><span class="pre">b</span></code></a>(self)</td>
+<td>float: Plate spacing; b = h + t. Setter works only if either h or t is None.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.copy" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.set_b" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.set_b"><code class="xref py py-obj docutils literal"><span class="pre">set_b</span></code></a>(self,&nbsp;value)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.summary" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self[,&nbsp;printSummary,&nbsp;propertyKeys])</td>
+<td>Returns (and prints) a summary of the geometry attributes/properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.update" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClass" title="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClass"><code class="xref py py-obj docutils literal"><span class="pre">validClass</span></code></a>(self,&nbsp;unicode&nbsp;cls)</td>
+<td>bool: Returns True if geometry is valid for the given class.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.b">
+<code class="descname">b</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.b" title="Permalink to this definition">¶</a></dt>
+<dd><p>float: Plate spacing; b = h + t. Setter works only if either h or t is None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.h">
+<code class="descname">h</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.h" title="Permalink to this definition">¶</a></dt>
+<dd><p>h: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.l">
+<code class="descname">l</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.l" title="Permalink to this definition">¶</a></dt>
+<dd><p>l: ‘double’</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.s">
+<code class="descname">s</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.s" title="Permalink to this definition">¶</a></dt>
+<dd><p>s: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.set_b">
+<code class="descname">set_b</code><span class="sig-paren">(</span><em>self</em>, <em>value</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.set_b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the geometry attributes/properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Names of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
+</li>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.t">
+<code class="descname">t</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>t: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClass">
+<code class="descname">validClass</code><span class="sig-paren">(</span><em>self</em>, <em>unicode cls</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: Returns True if geometry is valid for the given class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClasses">
+<code class="descname">validClasses</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateFinOffset.validClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>validClasses: tuple</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough">
+<em class="property">class </em><code class="descclassname">mcycle.geometries.geom_hxplate.</code><code class="descname">GeomHxPlateRough</code><span class="sig-paren">(</span><em>b</em>, <em>roughness</em>, <em>name=u'GeomHxPlateRough instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../bases/geom.html#mcycle.bases.geom.Geom" title="mcycle.bases.geom.Geom"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.geom.Geom</span></code></a></p>
+<p>Geometry of heat exchanger plate with a rough surface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>b</strong> : float</p>
+<blockquote>
+<div><p>Plate channel spacing [m].</p>
+</div></blockquote>
+<p><strong>roughness</strong> : float</p>
+<blockquote class="last">
+<div><p>Surface roughness factor. (As is used on the Moody chart)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.b" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.b"><code class="xref py py-obj docutils literal"><span class="pre">b</span></code></a></td>
+<td>b: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.name" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.roughness" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.roughness"><code class="xref py py-obj docutils literal"><span class="pre">roughness</span></code></a></td>
+<td>roughness: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClasses" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClasses"><code class="xref py py-obj docutils literal"><span class="pre">validClasses</span></code></a></td>
+<td>validClasses: tuple</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.copy" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.summary" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self[,&nbsp;printSummary,&nbsp;propertyKeys])</td>
+<td>Returns (and prints) a summary of the geometry attributes/properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.update" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClass" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClass"><code class="xref py py-obj docutils literal"><span class="pre">validClass</span></code></a>(self,&nbsp;unicode&nbsp;cls)</td>
+<td>bool: Returns True if geometry is valid for the given class.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.b">
+<code class="descname">b</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.b" title="Permalink to this definition">¶</a></dt>
+<dd><p>b: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.roughness">
+<code class="descname">roughness</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.roughness" title="Permalink to this definition">¶</a></dt>
+<dd><p>roughness: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the geometry attributes/properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Names of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
+</li>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClass">
+<code class="descname">validClass</code><span class="sig-paren">(</span><em>self</em>, <em>unicode cls</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: Returns True if geometry is valid for the given class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClasses">
+<code class="descname">validClasses</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough.validClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>validClasses: tuple</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth">
+<em class="property">class </em><code class="descclassname">mcycle.geometries.geom_hxplate.</code><code class="descname">GeomHxPlateSmooth</code><span class="sig-paren">(</span><em>b</em>, <em>name=u'GeomHxPlateSmooth instance'</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateRough" title="mcycle.geometries.geom_hxplate.GeomHxPlateRough"><code class="xref py py-class docutils literal"><span class="pre">mcycle.geometries.geom_hxplate.GeomHxPlateRough</span></code></a></p>
+<p>Geometry of smooth heat exchanger plate (roughness factor is always None).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>b</strong> : float</p>
+<blockquote class="last">
+<div><p>Plate channel spacing [m].</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.b" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.b"><code class="xref py py-obj docutils literal"><span class="pre">b</span></code></a></td>
+<td>b: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.name" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.roughness" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.roughness"><code class="xref py py-obj docutils literal"><span class="pre">roughness</span></code></a></td>
+<td>roughness: ‘double’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClasses" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClasses"><code class="xref py py-obj docutils literal"><span class="pre">validClasses</span></code></a></td>
+<td>validClasses: tuple</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.copy" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
+<td>Return a new copy of a class object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.summary" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self[,&nbsp;printSummary,&nbsp;propertyKeys])</td>
+<td>Returns (and prints) a summary of the geometry attributes/properties.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.update" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClass" title="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClass"><code class="xref py py-obj docutils literal"><span class="pre">validClass</span></code></a>(self,&nbsp;unicode&nbsp;cls)</td>
+<td>bool: Returns True if geometry is valid for the given class.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.b">
+<code class="descname">b</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.b" title="Permalink to this definition">¶</a></dt>
+<dd><p>b: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.roughness">
+<code class="descname">roughness</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.roughness" title="Permalink to this definition">¶</a></dt>
+<dd><p>roughness: ‘double’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><em>self</em>, <em>printSummary=True</em>, <em>propertyKeys=u'all'</em>, <em>unicode name=u''</em>, <em>int rstHeading=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (and prints) a summary of the geometry attributes/properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>printSummary</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the summary string is printed as well as returned. Defaults to True.</p>
+</div></blockquote>
+<p><strong>propertyKeys</strong> : list, optional</p>
+<blockquote>
+<div><blockquote>
+<div><p>Names of component properties to be included. The following strings are also accepted as inputs:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">‘all’: all properties in _properties are included,</p>
+</li>
+<li><p class="first">‘none’: no properties are included.</p>
+<p>Defaults to ‘all’.</p>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote>
+<div><p>Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.</p>
+</div></blockquote>
+<p><strong>rstHeading</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClass">
+<code class="descname">validClass</code><span class="sig-paren">(</span><em>self</em>, <em>unicode cls</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool: Returns True if geometry is valid for the given class.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClasses">
+<code class="descname">validClasses</code><a class="headerlink" href="#mcycle.geometries.geom_hxplate.GeomHxPlateSmooth.validClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>validClasses: tuple</p>
 </dd></dl>
 
 </dd></dl>
@@ -261,13 +890,13 @@
         <li class="right" >
           <a href="contents.html" title="Geometry Classes"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" >Geometry Classes</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

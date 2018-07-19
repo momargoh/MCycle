@@ -18,17 +18,22 @@ About
 :Licence:
    Apache License 2.0
 :Requires:
-   numpy, scipy, matplotlib, CoolProp
+   numpy, scipy, matplotlib, Cython, CoolProp
 	
 
 MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynamic heat cycles. Sizing methods are based on empirical and theoretical correlations. Users may analyse cycles consisting of components including heaters, coolers, compressors, expanders and heat exchangers. The two main modes for analysing cycles or components are:
   
-* *size* : calculates a component characteristic/dimension required to satisfy a desired component outlet flow state/cycle flow states. This mode is used for sizing components.
+* ``size`` : calculates a component characteristic/dimension required to satisfy a desired component outlet flow state/cycle flow states. This mode is used for sizing components.
 
-* *run* : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
+* ``run`` : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or can be built from the provided docs using Sphinx (set to use Python3).
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or can be built from the provided docs using Sphinx (set to use Python3).::
 
+  sudo apt install python3-sphinx
+  cd docs
+  make clean && make html
+
+.. _section-README-installation:
 
 Installation
 ============
@@ -41,7 +46,11 @@ Requirements::
   pip3 install scipy
   pip3 install matplotlib
 
-MCycle also requires `CoolProp  <http://www.coolprop.org>`_, a free and open-source thermodynamic properties library. It is recommended to manually install the latest version of CoolProp before installing MCycle (rather than installing from pip which is not the latest version). Refer to their `guide on manual installation <http://www.coolprop.org/coolprop/wrappers/Python/index.html#manual-installation>`_, summarised below.::
+MCycle also requires `CoolProp <http://www.coolprop.org>`_, a free and open-source thermodynamic properties library. The latest stable version can be installed from pip::
+
+  pip3 install CoolProp
+
+Alternatively, the latest development version can be installed from the `Github source code <https://github.com/CoolProp/CoolProp>`_ (refer to their `guide on manual installation <http://www.coolprop.org/coolprop/wrappers/Python/index.html#manual-installation>`_, summarised below).::
   
   cd PATH/TO/CLONE/FOLDER
   git clone https://github.com/CoolProp/CoolProp.git --recursive  
@@ -52,14 +61,19 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 
   python3 setup.py install
   
-For the latest stable release, MCycle is available from pip by running:: 
+For the latest stable release, MCycle is also available from pip by running:: 
 
   pip3 install mcycle
   
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email or GitHub with any queries.
 
+.. readme-link-marker
+   
+.. _section-README-quickstart:
+
 Quick start
 ===========
 
-Have a look through ``mcycle/examples`` to get a feel for how to use the module (`link to documentaion <https://mcycle.readthedocs.io/examples/contents.html>`_). These examples can be easily copied to your local directory and modified to get you started.
+Have a look through the `quick start example <https://mcycle.readthedocs.io/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.readthedocs.io/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
+
 

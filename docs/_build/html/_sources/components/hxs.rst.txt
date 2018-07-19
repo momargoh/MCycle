@@ -7,11 +7,11 @@ Heat Exchanger Classes
      :toctree: 
 	       
      mcycle.components.hxs.hx_basic.HxBasic
-     mcycle.components.hxs.hxunits.hxunit_basic.HxUnitBasic
+     mcycle.components.hxs.hxunit_basic.HxUnitBasic
      mcycle.components.hxs.hx_basicplanar.HxBasicPlanar
-     mcycle.components.hxs.hxunits.hxunit_basicplanar.HxUnitBasicPlanar
+     mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar
      mcycle.components.hxs.hx_plate.HxPlate
-     mcycle.components.hxs.hxunits.hxunit_plate.HxUnitPlate
+     mcycle.components.hxs.hxunit_plate.HxUnitPlate
      
 
 
@@ -24,7 +24,7 @@ HxBasic Class
                 
 HxUnitBasic Class
 ******************
-.. automodule:: mcycle.components.hxs.hxunits.hxunit_basic
+.. automodule:: mcycle.components.hxs.hxunit_basic
    :members:
    :inherited-members:
    :show-inheritance:
@@ -38,7 +38,7 @@ HxBasicPlanar Class
       
 HxUnitBasicPlanar Class
 ************************
-.. automodule:: mcycle.components.hxs.hxunits.hxunit_basicplanar
+.. automodule:: mcycle.components.hxs.hxunit_basicplanar
    :members:
    :inherited-members:
    :show-inheritance:
@@ -52,7 +52,7 @@ HxPlate Class
 
 HxUnitPlate Class
 *******************
-.. automodule:: mcycle.components.hxs.hxunits.hxunit_plate
+.. automodule:: mcycle.components.hxs.hxunit_plate
    :members:
    :inherited-members:
    :show-inheritance:

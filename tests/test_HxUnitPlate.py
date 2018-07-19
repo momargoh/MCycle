@@ -20,14 +20,10 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         ARatioPlate=1,
         effThermal=1.0,
         config=mc.Config())
-    print("CONFIG.methods AT START OF SCRIPT ------------------ ",
-          id(hxUnit.config.methods),
-          hxUnit.config.methods['HxPlateCorrChevronFrictionWf'])
+    hxUnit.config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
+                             ["all"], ["all"], ["sf"])
 
     def test_size_liq(self):
-        print("CONFIG AT START OF TEST ------------------ ",
-              id(self.hxUnit.config.methods),
-              self.hxUnit.config.methods['HxPlateCorrChevronFrictionWf'])
         flowInWf = mc.FlowState("R123", -1, 0.34307814292524513, CP.PT_INPUTS,
                                 1000000., 300.57890653991495)
         flowOutWf = mc.FlowState("R123", -1, 0.34307814292524513, CP.PT_INPUTS,

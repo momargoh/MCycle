@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>MCycle Abstract Base Class &#8212; MCycle 0.1.0 documentation</title>
-    
+    <title>MCycle Abstract Base Classes &#8212; MCycle 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.0',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,12 +21,12 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Base Classes" href="contents.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +39,7 @@
         <li class="right" >
           <a href="contents.html" title="Base Classes"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" accesskey="U">Base Classes</a> &#187;</li> 
       </ul>
     </div>  
@@ -53,24 +50,27 @@
           <div class="body" role="main">
             
   <div class="section" id="module-mcycle.bases.mcabstractbase">
-<span id="mcycle-abstract-base-class"></span><h1>MCycle Abstract Base Class<a class="headerlink" href="#module-mcycle.bases.mcabstractbase" title="Permalink to this headline">¶</a></h1>
+<span id="mcycle-abstract-base-classes"></span><h1>MCycle Abstract Base Classes<a class="headerlink" href="#module-mcycle.bases.mcabstractbase" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="mcycle.bases.mcabstractbase.MCAB">
 <em class="property">class </em><code class="descclassname">mcycle.bases.mcabstractbase.</code><code class="descname">MCAB</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Abstract base class for all MCycle classes.</p>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="13%" />
-<col width="87%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>_inputs</strong></td>
-<td>(dict) Dictionary of input parameter data in the form {key: MCAttr(...)}.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB._inputs" title="mcycle.bases.mcabstractbase.MCAB._inputs"><code class="xref py py-obj docutils literal"><span class="pre">_inputs</span></code></a></td>
+<td>_inputs: dict</td>
 </tr>
-<tr class="row-even"><td><strong>_properties</strong></td>
-<td>(dict) Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB._properties" title="mcycle.bases.mcabstractbase.MCAB._properties"><code class="xref py py-obj docutils literal"><span class="pre">_properties</span></code></a></td>
+<td>_properties: dict</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB.name" title="mcycle.bases.mcabstractbase.MCAB.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>name: unicode</td>
 </tr>
 </tbody>
 </table>
@@ -81,30 +81,104 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB.copy" title="mcycle.bases.mcabstractbase.MCAB.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB.copy" title="mcycle.bases.mcabstractbase.MCAB.copy"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a>(self,&nbsp;dict&nbsp;kwargs={})</td>
 <td>Return a new copy of a class object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB.update" title="mcycle.bases.mcabstractbase.MCAB.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a></td>
-<td>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAB.update" title="mcycle.bases.mcabstractbase.MCAB.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>(self,&nbsp;dict&nbsp;kwargs)</td>
+<td>Update (multiple) class variables from a dictionary of keyword arguments.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="mcycle.bases.mcabstractbase.MCAB._copy">
-<code class="descname">_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; MCAB<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
+<dt id="mcycle.bases.mcabstractbase.MCAB._inputKeys">
+<code class="descname">_inputKeys</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._inputKeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.mcabstractbase.MCAB._inputValues">
+<code class="descname">_inputValues</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._inputValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.mcabstractbase.MCAB._inputs">
+<code class="descname">_inputs</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>_inputs: dict</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.mcabstractbase.MCAB._properties">
+<code class="descname">_properties</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>_properties: dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.mcabstractbase.MCAB._propertyKeys">
+<code class="descname">_propertyKeys</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._propertyKeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mcycle.bases.mcabstractbase.MCAB._propertyValues">
+<code class="descname">_propertyValues</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB._propertyValues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mcycle.bases.mcabstractbase.MCAB.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.mcabstractbase.MCAB.name">
+<code class="descname">name</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name: unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.mcabstractbase.MCAB.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update (multiple) class variables from a dictionary of keyword arguments; kwargs={&#8216;key&#8217;: value}.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>dict kwargs</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAB.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update (multiple) class variables from a dictionary of keyword arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of attributes and their updated value; kwargs={‘key’: value}.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -112,24 +186,8 @@
 <dl class="class">
 <dt id="mcycle.bases.mcabstractbase.MCAttr">
 <em class="property">class </em><code class="descclassname">mcycle.bases.mcabstractbase.</code><code class="descname">MCAttr</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAttr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cls :</strong></p>
-<blockquote>
-<div><p>Python class of attribute.</p>
-</div></blockquote>
-<p><strong>dimension</strong> : str, optional</p>
-<blockquote class="last">
-<div><p>Dimensions of the attribute, eg. &#8216;length/time&#8217;. Defaults to &#8216;none&#8217;.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Attributes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -137,15 +195,32 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cls</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAttr.cls" title="mcycle.bases.mcabstractbase.MCAttr.cls"><code class="xref py py-obj docutils literal"><span class="pre">cls</span></code></a></td>
+<td>cls: object</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">dimension</span></code></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.mcabstractbase.MCAttr.dimension" title="mcycle.bases.mcabstractbase.MCAttr.dimension"><code class="xref py py-obj docutils literal"><span class="pre">dimension</span></code></a></td>
+<td>dimension: unicode</td>
 </tr>
 </tbody>
 </table>
+<dl class="attribute">
+<dt id="mcycle.bases.mcabstractbase.MCAttr.cls">
+<code class="descname">cls</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAttr.cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>cls: object</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.mcabstractbase.MCAttr.dimension">
+<code class="descname">dimension</code><a class="headerlink" href="#mcycle.bases.mcabstractbase.MCAttr.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>dimension: unicode</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mcycle.bases.mcabstractbase.__pyx_unpickle_MCAB">
+<code class="descclassname">mcycle.bases.mcabstractbase.</code><code class="descname">__pyx_unpickle_MCAB</code><span class="sig-paren">(</span><em>__pyx_type</em>, <em>long __pyx_checksum</em>, <em>__pyx_state</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.mcabstractbase.__pyx_unpickle_MCAB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -191,13 +266,13 @@
         <li class="right" >
           <a href="contents.html" title="Base Classes"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MCycle 1.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="contents.html" >Base Classes</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Momar Hughes.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

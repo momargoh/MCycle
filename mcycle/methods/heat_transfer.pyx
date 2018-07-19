@@ -479,7 +479,7 @@ cpdef dict gungorWinterton_tpEvap_h(FlowState flowIn,
                                     double W,
                                     Geom geom2=None,
                                     vertical=False):
-    r"""TODO see eqn in Zarati paper. Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Gungor]_ 
+    r"""TODO see eqn in Zarati paper. Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Gungor]_
 
 Returns
 --------
@@ -516,7 +516,8 @@ cpdef dict gungorWinterton_tpEvap_h(FlowState flowIn,
                                     double W,
                                     Geom geom2=None,
                                     vertical=False):
-    r"""Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Gungor]_ K. E. Gungor and R. H. S. Winterton, “Simplified general correlation for saturated flow boiling and comparison with data,” Chemical Engineering Research and Design, vol. 65, no. 2, pp. 148-–156, 1987. As found in Z. Zhou, X. Fang , D. Li , "Evaluation of Correlations of Flow Boiling Heat Transfer of R22 in Horizontal Channels,"The Scientific World Journal, vol. 2013, Article ID 458797, 14 pages, doi:10.1155/2013/458797
+    r"""Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Gungor1987]_ K. E. Gungor and R. H. S. Winterton, “Simplified general correlation for saturated flow boiling and comparison with data,” Chemical Engineering Research and Design, vol. 65, no. 2, pp. 148-–156, 1987. As cited  in [Zhou2013]_ Z. Zhou, X. Fang , D. Li , "Evaluation of Correlations of Flow Boiling Heat Transfer of R22 in Horizontal Channels,"The Scientific World Journal, vol. 2013, Article ID 458797, 14 pages, doi:10.1155/2013/458797
+
 Returns
 --------
 dict of float : {"h"}

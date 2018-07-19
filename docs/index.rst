@@ -14,13 +14,13 @@ MCycle Source Code
 .. toctree::
    :maxdepth: 6
 
+   defaults
    bases/contents
    components/contents
    cycles/contents
    geometries/contents
    methods/contents
    library/contents
-   defaults
 
 
 

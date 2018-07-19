@@ -20,7 +20,7 @@ END: Cython Metadata */
     #error Cython requires Python 2.6+ or Python 3.3+.
 #else
 #define CYTHON_ABI "0_27_3"
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1053,9 +1053,9 @@ static PyObject *__pyx_n_s_M;
 static PyObject *__pyx_n_s_R;
 static PyObject *__pyx_n_s_T;
 static PyObject *__pyx_n_s_TTotalRatio;
-static PyObject *__pyx_kp_s_TTotalRatio_and_M_provided_pTota;
-static PyObject *__pyx_kp_s_TTotalRatio_given_or_M_given_mus;
-static PyObject *__pyx_kp_s_T_given_must_be_provided;
+static PyObject *__pyx_kp_u_TTotalRatio_and_M_provided_pTota;
+static PyObject *__pyx_kp_u_TTotalRatio_given_or_M_given_mus;
+static PyObject *__pyx_kp_u_T_given_must_be_provided;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_gamma;
@@ -1063,11 +1063,11 @@ static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_p;
 static PyObject *__pyx_n_s_pTotalRatio;
-static PyObject *__pyx_kp_s_pTotalRatio_and_M_provided_TTota;
-static PyObject *__pyx_kp_s_pTotalRatio_given_or_M_given_mus;
-static PyObject *__pyx_kp_s_p_given_or_R_given_must_be_provi;
+static PyObject *__pyx_kp_u_pTotalRatio_and_M_provided_TTota;
+static PyObject *__pyx_kp_u_pTotalRatio_given_or_M_given_mus;
+static PyObject *__pyx_kp_u_p_given_or_R_given_must_be_provi;
 static PyObject *__pyx_n_s_rho;
-static PyObject *__pyx_kp_s_rho_given_must_be_provided;
+static PyObject *__pyx_kp_u_rho_given_must_be_provided;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_warn;
 static PyObject *__pyx_n_s_warnings;
@@ -1139,7 +1139,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_speedOfSoun
     __pyx_t_1 = __pyx_t_2;
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_p_given_or_R_given_must_be_provi, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_p_given_or_R_given_must_be_provi, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = PyFloat_FromDouble(__pyx_v_p); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
@@ -1224,7 +1224,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_speedOfSoun
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!((__pyx_v_rho != 0.0) != 0))) {
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_rho_given_must_be_provided, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_rho_given_must_be_provided, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_9 = PyFloat_FromDouble(__pyx_v_rho); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 22, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
@@ -1319,7 +1319,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_speedOfSoun
     #ifndef CYTHON_WITHOUT_ASSERTIONS
     if (unlikely(!Py_OptimizeFlag)) {
       if (unlikely(!((__pyx_v_T != 0.0) != 0))) {
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_T_given_must_be_provided, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_T_given_must_be_provided, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_5 = PyFloat_FromDouble(__pyx_v_T); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
@@ -1415,7 +1415,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_speedOfSoun
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_1speedOfSound(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_speedOfSound[] = "float: speed of sound from gamma and either static pressure & mass density or; gas constant & static temperature.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\np : double\n    Static pressure [Pa]. Defaults to 0.\nrho : double\n    Mass density [kg/m^3]. Defaults to 0.\nR : double\n    Gas constant [J/kg/K]. Defaults to 0.\nT : double\n    Static temperature [K]. Defaults to 0.\n    ";
+static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_speedOfSound[] = "speedOfSound(double gamma, double p=0, double rho=0, double R=0, double T=0) -> double\nfloat: speed of sound from gamma and either static pressure & mass density or; gas constant & static temperature.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\np : double\n    Static pressure [Pa]. Defaults to 0.\nrho : double\n    Mass density [kg/m^3]. Defaults to 0.\nR : double\n    Gas constant [J/kg/K]. Defaults to 0.\nT : double\n    Static temperature [K]. Defaults to 0.\n    ";
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_1speedOfSound(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_gamma;
   double __pyx_v_p;
@@ -1615,7 +1615,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_pTotalRatio
     __pyx_t_1 = __pyx_t_2;
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_TTotalRatio_given_or_M_given_mus, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_TTotalRatio_given_or_M_given_mus, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = PyFloat_FromDouble(__pyx_v_TTotalRatio); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
@@ -1821,7 +1821,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_pTotalRatio
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_3pTotalRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_2pTotalRatio[] = "float: ratio of static pressure to total pressure (also called absolute or stagnation pressure) calculated from gamma and either static to total temperature ratio or Mach number.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\nTTotalRatio : double, optional\n    Ratio of static temperature to total temperature. Defaults to O.\nM : double, optional\n    Mach number. Defaults to 0.\n    ";
+static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_2pTotalRatio[] = "pTotalRatio(double gamma, double TTotalRatio=0, double M=0) -> double\nfloat: ratio of static pressure to total pressure (also called absolute or stagnation pressure) calculated from gamma and either static to total temperature ratio or Mach number.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\nTTotalRatio : double, optional\n    Ratio of static temperature to total temperature. Defaults to O.\nM : double, optional\n    Mach number. Defaults to 0.\n    ";
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_3pTotalRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_gamma;
   double __pyx_v_TTotalRatio;
@@ -1986,7 +1986,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_TTotalRatio
     __pyx_t_1 = __pyx_t_2;
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_pTotalRatio_given_or_M_given_mus, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_pTotalRatio_given_or_M_given_mus, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = PyFloat_FromDouble(__pyx_v_pTotalRatio); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
@@ -2186,7 +2186,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_TTotalRatio
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_5TTotalRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_4TTotalRatio[] = "float: ratio of static temperature to total temperature (also called absolute or stagnation temperature) calculated from gamma and either static to total pressure ratio or Mach number.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\npTotalRatio : double, optional\n    Ratio of static pressure to total pressure. Defaults to O.\nM : double, optional\n    Mach number. Defaults to 0.\n    ";
+static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_4TTotalRatio[] = "TTotalRatio(double gamma, double pTotalRatio=0, double M=0) -> double\nfloat: ratio of static temperature to total temperature (also called absolute or stagnation temperature) calculated from gamma and either static to total pressure ratio or Mach number.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\npTotalRatio : double, optional\n    Ratio of static pressure to total pressure. Defaults to O.\nM : double, optional\n    Mach number. Defaults to 0.\n    ";
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_5TTotalRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_gamma;
   double __pyx_v_pTotalRatio;
@@ -2361,7 +2361,7 @@ static double __pyx_f_6mcycle_7library_27compressible_flow_relations_chokedAreaR
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_7chokedAreaRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_6chokedAreaRatio[] = "float: ratio of flow area to choked area.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\nM : double\n    Mach number. Defaults to 0.\n    ";
+static char __pyx_doc_6mcycle_7library_27compressible_flow_relations_6chokedAreaRatio[] = "chokedAreaRatio(double gamma, double M) -> double\nfloat: ratio of flow area to choked area.\n\nParameters\n-----------\ngamma : double\n    Ratio of specific heats.\nM : double\n    Mach number. Defaults to 0.\n    ";
 static PyObject *__pyx_pw_6mcycle_7library_27compressible_flow_relations_7chokedAreaRatio(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   double __pyx_v_gamma;
   double __pyx_v_M;
@@ -2489,9 +2489,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_R, __pyx_k_R, sizeof(__pyx_k_R), 0, 0, 1, 1},
   {&__pyx_n_s_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 1, 1},
   {&__pyx_n_s_TTotalRatio, __pyx_k_TTotalRatio, sizeof(__pyx_k_TTotalRatio), 0, 0, 1, 1},
-  {&__pyx_kp_s_TTotalRatio_and_M_provided_pTota, __pyx_k_TTotalRatio_and_M_provided_pTota, sizeof(__pyx_k_TTotalRatio_and_M_provided_pTota), 0, 0, 1, 0},
-  {&__pyx_kp_s_TTotalRatio_given_or_M_given_mus, __pyx_k_TTotalRatio_given_or_M_given_mus, sizeof(__pyx_k_TTotalRatio_given_or_M_given_mus), 0, 0, 1, 0},
-  {&__pyx_kp_s_T_given_must_be_provided, __pyx_k_T_given_must_be_provided, sizeof(__pyx_k_T_given_must_be_provided), 0, 0, 1, 0},
+  {&__pyx_kp_u_TTotalRatio_and_M_provided_pTota, __pyx_k_TTotalRatio_and_M_provided_pTota, sizeof(__pyx_k_TTotalRatio_and_M_provided_pTota), 0, 1, 0, 0},
+  {&__pyx_kp_u_TTotalRatio_given_or_M_given_mus, __pyx_k_TTotalRatio_given_or_M_given_mus, sizeof(__pyx_k_TTotalRatio_given_or_M_given_mus), 0, 1, 0, 0},
+  {&__pyx_kp_u_T_given_must_be_provided, __pyx_k_T_given_must_be_provided, sizeof(__pyx_k_T_given_must_be_provided), 0, 1, 0, 0},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_gamma, __pyx_k_gamma, sizeof(__pyx_k_gamma), 0, 0, 1, 1},
@@ -2499,11 +2499,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 0, 1, 1},
   {&__pyx_n_s_pTotalRatio, __pyx_k_pTotalRatio, sizeof(__pyx_k_pTotalRatio), 0, 0, 1, 1},
-  {&__pyx_kp_s_pTotalRatio_and_M_provided_TTota, __pyx_k_pTotalRatio_and_M_provided_TTota, sizeof(__pyx_k_pTotalRatio_and_M_provided_TTota), 0, 0, 1, 0},
-  {&__pyx_kp_s_pTotalRatio_given_or_M_given_mus, __pyx_k_pTotalRatio_given_or_M_given_mus, sizeof(__pyx_k_pTotalRatio_given_or_M_given_mus), 0, 0, 1, 0},
-  {&__pyx_kp_s_p_given_or_R_given_must_be_provi, __pyx_k_p_given_or_R_given_must_be_provi, sizeof(__pyx_k_p_given_or_R_given_must_be_provi), 0, 0, 1, 0},
+  {&__pyx_kp_u_pTotalRatio_and_M_provided_TTota, __pyx_k_pTotalRatio_and_M_provided_TTota, sizeof(__pyx_k_pTotalRatio_and_M_provided_TTota), 0, 1, 0, 0},
+  {&__pyx_kp_u_pTotalRatio_given_or_M_given_mus, __pyx_k_pTotalRatio_given_or_M_given_mus, sizeof(__pyx_k_pTotalRatio_given_or_M_given_mus), 0, 1, 0, 0},
+  {&__pyx_kp_u_p_given_or_R_given_must_be_provi, __pyx_k_p_given_or_R_given_must_be_provi, sizeof(__pyx_k_p_given_or_R_given_must_be_provi), 0, 1, 0, 0},
   {&__pyx_n_s_rho, __pyx_k_rho, sizeof(__pyx_k_rho), 0, 0, 1, 1},
-  {&__pyx_kp_s_rho_given_must_be_provided, __pyx_k_rho_given_must_be_provided, sizeof(__pyx_k_rho_given_must_be_provided), 0, 0, 1, 0},
+  {&__pyx_kp_u_rho_given_must_be_provided, __pyx_k_rho_given_must_be_provided, sizeof(__pyx_k_rho_given_must_be_provided), 0, 1, 0, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_warn, __pyx_k_warn, sizeof(__pyx_k_warn), 0, 0, 1, 1},
   {&__pyx_n_s_warnings, __pyx_k_warnings, sizeof(__pyx_k_warnings), 0, 0, 1, 1},
@@ -2524,7 +2524,7 @@ static int __Pyx_InitCachedConstants(void) {
  *             "TTotalRatio and M provided, pTotalRatio calculated from TTotalRatio"
  *         )
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_TTotalRatio_and_M_provided_pTota); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_TTotalRatio_and_M_provided_pTota); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -2535,7 +2535,7 @@ static int __Pyx_InitCachedConstants(void) {
  *             "pTotalRatio and M provided, TTotalRatio calculated from pTotalRatio"
  *         )
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_pTotalRatio_and_M_provided_TTota); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_pTotalRatio_and_M_provided_TTota); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
   __Pyx_RefNannyFinishContext();
@@ -2709,7 +2709,7 @@ static int __pyx_pymod_exec_compressible_flow_relations(PyObject *__pyx_pyinit_m
   __Pyx_INCREF(__pyx_n_s_warn);
   __Pyx_GIVEREF(__pyx_n_s_warn);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_warn);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_warn); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
