@@ -157,11 +157,15 @@ kwargs : optional
         cdef HxUnitBasic unit
         for key, value in kwargs.items():
             if key not in [
-                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf"
-            ]:
+                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf"] and "sizeBracket" not in key and "sizeUnitsBracket" not in key:
                 super(Component22, self).update({key: value})
                 for unit in self._units:
                     unit.update({key: value})
+            elif "sizeUnitsBracket" in key:
+                super(Component22, self).update({key: value})
+                for unit in self._units:
+                    unit.update({key[:4] + key[9:]
+: value})
             else:
                 super(Component22, self).update({key: value})
                         

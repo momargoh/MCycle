@@ -373,6 +373,7 @@ unitsBracket : float or list of float, optional
             unitsBracket = self.sizeUnitsBracket
         try:
             if attr in ["N", "NPlate"]:
+                self.update({'sizeBracket': bracket, 'sizeUnitsBracket': unitsBracket})
                 self.unitise()
                 self.NWall = self.size_NPlate()
             else:

@@ -56,5 +56,6 @@ env.bak/
 venv.bak/
 
 # Development files
+_scikitbuild/
 notes.txt
 mcycle.log

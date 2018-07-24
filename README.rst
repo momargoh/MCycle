@@ -27,12 +27,18 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 * ``run`` : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or can be built from the provided docs using Sphinx (set to use Python3).::
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_.
+
+.. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or
+   
+The documentation comes pre-compiled in the ``docs/_build/html`` folder, or can be built from the provided docs using Sphinx (set to use Python3).::
 
   sudo apt install python3-sphinx
   cd docs
   make clean && make html
 
+.. note:: A deprecated version of the MCycle documentation is available at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_, this is in the process of being updated. Use the pre-compiled version for now.
+            
 .. _section-README-installation:
 
 Installation
@@ -61,9 +67,10 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 
   python3 setup.py install
   
-For the latest stable release, MCycle is also available from pip by running:: 
+.. note:: A deprecated version of MCycle is available from pip. This will soon be replaced by the most recent version (requiring Cython).
+..   For the latest stable release, MCycle is also available from pip by running:: 
 
-  pip3 install mcycle
+..  pip3 install mcycle
   
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email or GitHub with any queries.
 

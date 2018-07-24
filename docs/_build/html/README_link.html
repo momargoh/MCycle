@@ -90,11 +90,16 @@
 <li><code class="docutils literal"><span class="pre">size</span></code> : calculates a component characteristic/dimension required to satisfy a desired component outlet flow state/cycle flow states. This mode is used for sizing components.</li>
 <li><code class="docutils literal"><span class="pre">run</span></code> : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.</li>
 </ul>
-<p>The Github project page can be found at <a class="reference external" href="https://github.com/momargoh/MCycle">https://github.com/momargoh/MCycle</a>. The documentation is hosted at <a class="reference external" href="https://mcycle.readthedocs.io">https://mcycle.readthedocs.io</a> or can be built from the provided docs using Sphinx (set to use Python3).:</p>
+<p>The Github project page can be found at <a class="reference external" href="https://github.com/momargoh/MCycle">https://github.com/momargoh/MCycle</a>.</p>
+<p>The documentation comes pre-compiled in the <code class="docutils literal"><span class="pre">docs/_build/html</span></code> folder, or can be built from the provided docs using Sphinx (set to use Python3).:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">sphinx</span>
 <span class="n">cd</span> <span class="n">docs</span>
 <span class="n">make</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">html</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A deprecated version of the MCycle documentation is available at <a class="reference external" href="https://mcycle.readthedocs.io">https://mcycle.readthedocs.io</a>, this is in the process of being updated. Use the pre-compiled version for now.</p>
 </div>
 </div>
 <div class="section" id="installation">
@@ -122,9 +127,9 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>For the latest stable release, MCycle is also available from pip by running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">mcycle</span>
-</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A deprecated version of MCycle is available from pip. This will soon be replaced by the most recent version (requiring Cython).</p>
 </div>
 <p>Contributions towards the project source code will be gratefully received. Feel free to contact the author via email or GitHub with any queries.</p>
 </div>

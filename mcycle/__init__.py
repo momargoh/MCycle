@@ -9,7 +9,7 @@ from .logger import *
 updateLogger()
 from . import DEFAULTS
 DEFAULTS.updateDefaults()
-from .DEFAULTS import getUnits, timeThis
+from .DEFAULTS import getUnits, timeThis, updateDefaults
 from . import bases
 from .bases import *
 from .components import *

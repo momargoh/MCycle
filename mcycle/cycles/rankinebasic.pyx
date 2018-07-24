@@ -90,8 +90,8 @@ kwargs : optional
                     value.update({'flowInSf':self.sinkIn})
                 setattr(self, key, value)
             else:
-                if "__" in key:
-                    key_split = key.split("__", 1)
+                if "." in key:
+                    key_split = key.split(".", 1)
                     key_attr = getattr(self, key_split[0])
                     key_attr.update({key_split[1]: value})
                 else:
@@ -308,16 +308,31 @@ kwargs : optional
         self.set_state6(obj)
 
     cpdef public FlowState _sourceIn(self):
-        return self.evap.flowsIn[1]
+        if len(self.evap.flowsIn) > 1:
+            return self.evap.flowsIn[1]
+        else:
+            return None
     
     cpdef public void set_sourceIn(self, FlowState obj):
-        self.evap.flowsIn[1] = obj
+        if len(self.evap.flowsIn) > 1:
+            self.evap.flowsIn[1] = obj
+        else:
+            log("info", "Could not set RankineBasic.sourceIn with {} evaporator".format(type(self.evap)))
+            pass
+        
 
     cpdef public FlowState _sourceOut(self):
-        return self.evap.flowsOut[1]
+        if len(self.evap.flowsOut) > 1:
+            return self.evap.flowsOut[1]
+        else:
+            return None
     
     cpdef public void set_sourceOut(self, FlowState obj):
-        self.evap.flowsOut[1] = obj
+        if len(self.evap.flowsOut) > 1:
+            self.evap.flowsOut[1] = obj
+        else:
+            log("info", "Could not set RankineBasic.sourceOut with {} evaporator".format(type(self.evap)))
+            pass
 
     cpdef public FlowState _source1(self):
         if "counter" in self.evap.flowSense.lower():
@@ -413,10 +428,17 @@ kwargs : optional
         self.set_sourceAmbient(obj)
         
     cpdef public FlowState _sinkIn(self):
-        return self.cond.flowsIn[1]
+        if len(self.cond.flowsIn) > 1:
+            return self.cond.flowsIn[1]
+        else:
+            return None
 
     cpdef public void set_sinkIn(self, FlowState obj):
-        self.cond.flowInSf = obj
+        if len(self.evap.flowsOut) > 1:
+            self.cond.flowsIn[1] = obj
+        else:
+            log("info", "Could not set RankineBasic.sinkIn with {} condenser".format(type(self.cond)))
+            pass
 
     cpdef public FlowState _sinkOut(self):
         return self.cond.flowsOut[1]
@@ -466,7 +488,7 @@ kwargs : optional
             ) / self._sink4().m / self.cond._effFactorSf()
         else:
             return None
-        return self._sinkIn().copyState(CP.HmassP_INPUTS, h, self()._sinkIn.p())
+        return self._sinkIn().copyState(CP.HmassP_INPUTS, h, self._sinkIn().p())
 
     cpdef public FlowState _sinkAmbient(self):
         return self.cond.ambient
@@ -502,12 +524,12 @@ kwargs : optional
     @property
     def sink51(self):
         """FlowState: Heat sink when working fluid is at state51. Only valid with a secondary flow as the heat sink."""
-        self._sink51()
+        return self._sink51()
 
     @property
     def sink6(self):
         """FlowState: Heat sink when working fluid is at state6. Only valid with a secondary flow as the heat sink."""
-        self._sink6()
+        return self._sink6()
 
     @property
     def sinkAmbient(self):
@@ -848,8 +870,8 @@ unitiseCond : bool
                 self.evap.unitise()
         if issubclass(type(self.cond), HxBasic):
             hOut = self.cond.flowsIn[1].h() - self._mWf() * self.cond._effFactorWf(
-            ) * (self.cond.flowsOut[0].h() - self.cond.flowIn[0].h()
-                 ) / self.cond._mSf() / self.cond._effFactor[1]()
+            ) * (self.cond.flowsOut[0].h() - self.cond.flowsIn[0].h()
+                 ) / self.cond._mSf() / self.cond._effFactorSf()
             self.cond.flowsOut[1] = self.cond.flowsIn[1].copyState(
                 CP.HmassP_INPUTS, hOut, self.cond.flowsIn[1].p())
             if unitiseCond:

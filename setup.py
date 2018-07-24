@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Setup file for mcycle"""
-USE_CYTHON = True
+USE_CYTHON = 'auto'
 
-from setuptools import setup, find_packages
+from setuptools import setup
+from setuptools import find_packages
+#from skbuild import setup
 from os import path
 from distutils.core import setup
 from distutils.extension import Extension
@@ -11,16 +13,33 @@ import numpy
 here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
-
+try:
+    import Cython
+    v = Cython.__version__.split(".")
+    if int(v[0]) == 0 and int(v[1]) < 27:
+        raise ImportError(
+            "Exiting installation - Please upgrade Cython to at least v0.28. Try running the command: pip3 install --upgrade Cython"
+        )
+    else:
+        USE_CYTHON = True
+except ImportError:
+    USE_CYTHON = False
+    raise ImportError(
+        "Exiting installation - Could not import Cython. Try running the command: pip3 install Cython"
+    )  # Cython is required for installation
 if USE_CYTHON:
     try:
         from Cython.Distutils import build_ext
         from Cython.Build import cythonize
-    except ImportError:
+    except ImportError as exc:
         if USE_CYTHON == 'auto':
             USE_CYTHON = False
         else:
-            raise
+            raise ImportError(
+                """Exiting installation - Importing Cython unexpectedly failed due to: {}
+Try re-installing Cython by running the commands:
+pip3 uninstall Cython
+pip3 install Cython""".format(exc))
 
 cmdclass = {}
 ext_modules = []
@@ -79,7 +98,7 @@ setup(
     dependency_links=['https://github.com/CoolProp/CoolProp.git'],
     extras_require={},
     python_requires='>=3',
-    package_data={},
+    package_data={'mcycle': ['*.pxd', '*.pyx']},
     include_package_data=True,
     data_files=[],
     entry_points={},

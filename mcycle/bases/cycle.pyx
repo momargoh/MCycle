@@ -51,6 +51,7 @@ config : Config, optional
         cdef str key
         cdef list key_split
         cdef dict store = {}
+        print(kwargs)
         for key, value in kwargs.items():
             if hasattr(self, 'set_{}'.format(key)):
                 getattr(self, 'set_{}'.format(key))(value)
