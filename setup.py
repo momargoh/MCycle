@@ -94,7 +94,7 @@ setup(
     keywords=
     'thermodynamics organic Rankine cycle power cycle evaporator expander condenser compressor heat exchanger heater cooler',
     packages=find_packages(),
-    install_requires=['numpy', 'scipy', 'matplotlib', 'CoolProp'],
+    install_requires=['numpy', 'scipy', 'matplotlib', 'Cython', 'CoolProp'],
     dependency_links=['https://github.com/CoolProp/CoolProp.git'],
     extras_require={},
     python_requires='>=3',
