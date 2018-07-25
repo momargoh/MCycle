@@ -5,7 +5,7 @@ Welcome to MCycle's documentation!
 .. toctree::
    :maxdepth: 2
 
-   README_link
+   readme
    examples/contents
 
 MCycle Source Code

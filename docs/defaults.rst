@@ -134,7 +134,7 @@ Attributes
                  }}
   
 Methods
-========
+--------
 .. automodule:: mcycle.DEFAULTS
    :members:
    :undoc-members:
