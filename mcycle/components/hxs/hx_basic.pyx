@@ -3,7 +3,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS, RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H
+from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS
 from .hxunit_basic cimport HxUnitBasic
 import CoolProp as CP
 from warnings import warn
@@ -107,7 +107,7 @@ kwargs : optional
                  str sizeAttr="NPlate",
                  list sizeBracket=[1, 100],
                  list sizeUnitsBracket=[1e-5, 1.],
-                 runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket=[nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),

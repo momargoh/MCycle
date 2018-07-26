@@ -4,8 +4,8 @@ cpdef public double TOLABS_X
 cpdef public int MAXITER_CYCLE
 cpdef public int MAXITER_COMPONENT
 cpdef public int MAX_WALLS
-cpdef public double RUN_BRACKET_MIN_H
-cpdef public double RUN_BRACKET_MAX_H
+#cpdef public double RUN_BRACKET_MIN_H
+#cpdef public double RUN_BRACKET_MAX_H
 cpdef public double GRAVITY
 cpdef public str COOLPROP_EOS
 cpdef public str MPL_BACKEND

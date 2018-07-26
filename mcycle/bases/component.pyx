@@ -1,9 +1,10 @@
-from ..DEFAULTS cimport MAXITER_COMPONENT, RST_HEADINGS, PRINT_FORMAT_FLOAT, getUnits, RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H
+from ..DEFAULTS cimport MAXITER_COMPONENT, RST_HEADINGS, PRINT_FORMAT_FLOAT, getUnits
+from ..logger import log
 from .mcabstractbase cimport MCAB, MCAttr
 from .flowstate cimport FlowState
 from .config cimport Config
+from math import nan
 
-cpdef public double runBracket[2]
 
 cdef class Component(MCAB):
     """Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.
@@ -40,7 +41,7 @@ kwargs : optional
                  str sizeAttr='',
                  list sizeBracket=[],
                  list sizeUnitsBracket=[],
-                 runBracket =[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket = [nan, nan],
                  str name='Component instance',
                  str notes='No notes/model info.',
                  Config config=Config()):
@@ -325,7 +326,7 @@ kwargs : optional
                  str sizeAttr="",
                  list sizeBracket=[],
                  list sizeUnitsBracket=[],
-                 runBracket = [RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket = [nan, nan],
                  str name="Component11 instance",
                  str notes="No notes/model info.",
                  config=Config()):
@@ -352,6 +353,28 @@ kwargs : optional
     @flowOut.setter
     def flowOut(self, obj):
         self.flowsOut[0] = obj
+        
+    @property
+    def flowInSf(self):
+        """Alias for self.flowsIn[1]"""
+        log("warning", "flowInSf is not valid for {} (getter called)".format(self.__class__.__name__))
+        return None
+
+    @flowInSf.setter
+    def flowInSf(self, obj):
+        log("warning", "flowInSf is not valid for {} (setter called)".format(self.__class__.__name__))
+        pass
+
+    @property
+    def flowOutSf(self):
+        """Alias for self.flowsOut[1]"""
+        log("warning", "flowOutSf is not valid for {} (getter called)".format(self.__class__.__name__))
+        return None
+
+    @flowOutSf.setter
+    def flowOutSf(self, obj):
+        log("warning", "flowOutSf is not valid for {} (setter called)".format(self.__class__.__name__))
+        pass
 
     cpdef public double _m(self):
         return self.flowsIn[0].m
@@ -409,7 +432,7 @@ kwargs : optional
                  str sizeAttr="",
                  list sizeBracket=[],
                  list sizeUnitsBracket=[],
-                 runBracket = [RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket = [nan, nan],
                  str name="Component22 instance",
                  str notes="No notes/model info.",
                  Config config=Config()):

@@ -356,7 +356,6 @@ def run_mass():
         cycle.sizeSetup(True, False)
         cycle.evap.size_NPlate()
         plot_dpSf.append(cycle.evap.dpSf() / (10**5))
-        print(" frac, NPlate : ", frac, cycle.evap.mWf, cycle.evap.NPlate)
         NPlateLowerBound = cycle.evap.NPlate
 
     print("Create plots in ./{} folder...".format(mc.DEFAULTS.PLOT_DIR))

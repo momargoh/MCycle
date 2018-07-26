@@ -1,4 +1,4 @@
-from ...DEFAULTS cimport TOLABS, RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H
+from ...DEFAULTS cimport TOLABS
 from .hx_basic cimport HxBasic
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
 from ...bases.config cimport Config
@@ -109,7 +109,7 @@ kwargs : optional
                  str sizeAttr="NPlate",
                  list sizeBracket=[1, 100],
                  list sizeUnitsBracket=[1e-5, 1.],
-                 runBracket = [RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket = [nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),
@@ -256,6 +256,7 @@ unitsBracket : float or list of float, optional
         cdef FlowState minWf = self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[0]._state.Tmin())
         cdef double deltah
         try:
+            """
             if self.isEvap():
                 deltah = critWf.h() - self.flowsIn[0].h()
                 a = self.flowsIn[0].h() + deltah*self.runBracket[0]
@@ -273,9 +274,16 @@ unitsBracket : float or list of float, optional
                 else:
                     deltah = self.flowsIn[0].h() - self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[1].T()).h()
                     a = self.flowsIn[0].h() - deltah*self.runBracket[1]
+           
             sizedValue = opt.brentq(self._f_runHxBasicPlanar,
                                     a,
                                     b,
+                                    args=(saveL),
+                                    rtol=self.config.tolRel,
+                                    xtol=self.config.tolAbs)
+            """
+            sizedValue = opt.brentq(self._f_runHxBasicPlanar,
+                                    *self.runBracket,
                                     args=(saveL),
                                     rtol=self.config.tolRel,
                                     xtol=self.config.tolAbs)

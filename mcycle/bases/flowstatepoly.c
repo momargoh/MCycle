@@ -1566,10 +1566,6 @@ static int *__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_MAXITER_COMPONENT (*__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT)
 static int *__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_MAX_WALLS (*__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS)
-static double *__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MIN_H = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_RUN_BRACKET_MIN_H (*__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MIN_H)
-static double *__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MAX_H = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_RUN_BRACKET_MAX_H (*__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MAX_H)
 static double *__pyx_vp_6mcycle_8DEFAULTS_GRAVITY = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_GRAVITY (*__pyx_vp_6mcycle_8DEFAULTS_GRAVITY)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS = 0;
@@ -11940,8 +11936,6 @@ static int __pyx_pymod_exec_flowstatepoly(PyObject *__pyx_pyinit_module)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAXITER_CYCLE", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAXITER_CYCLE, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAXITER_COMPONENT", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAX_WALLS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "RUN_BRACKET_MIN_H", (void **)&__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MIN_H, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "RUN_BRACKET_MAX_H", (void **)&__pyx_vp_6mcycle_8DEFAULTS_RUN_BRACKET_MAX_H, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "GRAVITY", (void **)&__pyx_vp_6mcycle_8DEFAULTS_GRAVITY, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "COOLPROP_EOS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MPL_BACKEND", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)

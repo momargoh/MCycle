@@ -1,4 +1,4 @@
-from ...DEFAULTS cimport TOLABS, MAXITER_COMPONENT, MAX_WALLS, RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H
+from ...DEFAULTS cimport TOLABS, MAXITER_COMPONENT, MAX_WALLS
 from .hxunit_basic cimport HxUnitBasic
 from .hx_basicplanar cimport HxBasicPlanar
 from .hxunit_plate cimport HxUnitPlate
@@ -118,7 +118,7 @@ kwargs : optional
                  str sizeAttr="NPlate",
                  list sizeBracket=[3, 100],
                  list sizeUnitsBracket=[1e-5, 10.],
-                 runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H],
+                 runBracket=[nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),

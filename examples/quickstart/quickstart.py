@@ -77,6 +77,15 @@ def run_off_design():
     Qfraction_vals = np.linspace(0.8, 1.2, 11, True)
     Q_vals = Qfraction_vals * cycle.QIn()
 
+    runLowerBound = cycle.evap.flowInWf.copyState(CP.PQ_INPUTS,
+                                                  cycle.evap.flowInWf.p(),
+                                                  0.4).h()
+
+    runUpperBound = cycle.evap.flowInWf.copyState(CP.PT_INPUTS,
+                                                  cycle.evap.flowInWf.p(),
+                                                  420.).h()
+    cycle.evap.update({'runBracket': [runLowerBound, runUpperBound]})
+
     state3_vals = []
     effThermal_vals = []
     newFigFlag = True

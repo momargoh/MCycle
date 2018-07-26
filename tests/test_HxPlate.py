@@ -103,6 +103,10 @@ class TestHxPlateCorrChevron(unittest.TestCase):
     def test_run1(self):
         flowInWf = mc.FlowState("R245fa", -1, 2, CP.PT_INPUTS, 2e5, 300.)
         flowInSf = mc.FlowState("water", -1, 5., CP.PT_INPUTS, 1e5, 600.)
+
+        hLowerBound = flowInWf.h() * 1.01
+        hUpperBound = flowInWf.copyState(CP.PT_INPUTS, 2e5, 350.).h()
+
         self.hx.update({
             'L': 0.269,
             'NPlate': 5,
@@ -111,14 +115,19 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,
             'sizeUnitsBracket': [1e-5, 1.],
-            'runBracket': [0.01, 0.8]
+            'runBracket': [hLowerBound, hUpperBound]
         })
         self.hx.run()
         #self.hx.summary(flowKeys='all')
+        self.assertAlmostEqual(self.hx.flowOutWf.T(), 318.22, 2)
 
     def test_run2(self):
         flowInWf = mc.FlowState("water", -1, 0.1, CP.PT_INPUTS, 1.1e5, 700.)
         flowInSf = mc.FlowState("water", -1, 0.1, CP.PT_INPUTS, 1e5, 500.)
+
+        hLowerBound = flowInWf.h() * 0.99
+        hUpperBound = flowInWf.copyState(CP.PT_INPUTS, 1.1e5, 600.).h()
+
         self.hx.update({
             'L': 0.1,
             'NPlate': 3,
@@ -127,10 +136,11 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,
             'sizeUnitsBracket': [1e-5, 5.],
-            'runBracket': [0.01, 0.9]
+            'runBracket': [hLowerBound, hUpperBound]
         })
         self.hx.run()
         #self.hx.summary(flowKeys='all')
+        self.assertAlmostEqual(self.hx.flowOutWf.T(), 643.66, 2)
 
 
 if __name__ == "__main__":

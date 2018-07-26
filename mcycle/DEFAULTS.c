@@ -1209,8 +1209,6 @@ __PYX_EXTERN_C DL_EXPORT(double) TOLABS_X;
 __PYX_EXTERN_C DL_EXPORT(int) MAXITER_CYCLE;
 __PYX_EXTERN_C DL_EXPORT(int) MAXITER_COMPONENT;
 __PYX_EXTERN_C DL_EXPORT(int) MAX_WALLS;
-__PYX_EXTERN_C DL_EXPORT(double) RUN_BRACKET_MIN_H;
-__PYX_EXTERN_C DL_EXPORT(double) RUN_BRACKET_MAX_H;
 __PYX_EXTERN_C DL_EXPORT(double) GRAVITY;
 __PYX_EXTERN_C DL_EXPORT(PyObject) *COOLPROP_EOS;
 __PYX_EXTERN_C DL_EXPORT(PyObject) *MPL_BACKEND;
@@ -1345,8 +1343,6 @@ static const char __pyx_k_mcycle_DEFAULTS[] = "mcycle.DEFAULTS";
 static const char __pyx_k_hanLeeKim_tpCond[] = "hanLeeKim_tpCond";
 static const char __pyx_k_GITHUB_SOURCE_URL[] = "_GITHUB_SOURCE_URL";
 static const char __pyx_k_MAXITER_COMPONENT[] = "MAXITER_COMPONENT";
-static const char __pyx_k_RUN_BRACKET_MAX_H[] = "RUN_BRACKET_MAX_H";
-static const char __pyx_k_RUN_BRACKET_MIN_H[] = "RUN_BRACKET_MIN_H";
 static const char __pyx_k_PRINT_FORMAT_FLOAT[] = "PRINT_FORMAT_FLOAT";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_took_mins_s_to_run[] = "{}() took {} mins {} s to run.";
@@ -1425,8 +1421,6 @@ static PyObject *__pyx_n_u_PNG;
 static PyObject *__pyx_n_s_PRINT_FORMAT_FLOAT;
 static PyObject *__pyx_n_u_Pa;
 static PyObject *__pyx_n_s_RST_HEADINGS;
-static PyObject *__pyx_n_s_RUN_BRACKET_MAX_H;
-static PyObject *__pyx_n_s_RUN_BRACKET_MIN_H;
 static PyObject *__pyx_n_s_TOLABS;
 static PyObject *__pyx_n_s_TOLABS_X;
 static PyObject *__pyx_n_s_TOLREL;
@@ -1557,8 +1551,6 @@ double TOLABS_X;
 int MAXITER_CYCLE;
 int MAXITER_COMPONENT;
 int MAX_WALLS;
-double RUN_BRACKET_MIN_H;
-double RUN_BRACKET_MAX_H;
 double GRAVITY;
 PyObject *COOLPROP_EOS = 0;
 PyObject *MPL_BACKEND = 0;
@@ -4591,8 +4583,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_PRINT_FORMAT_FLOAT, __pyx_k_PRINT_FORMAT_FLOAT, sizeof(__pyx_k_PRINT_FORMAT_FLOAT), 0, 0, 1, 1},
   {&__pyx_n_u_Pa, __pyx_k_Pa, sizeof(__pyx_k_Pa), 0, 1, 0, 1},
   {&__pyx_n_s_RST_HEADINGS, __pyx_k_RST_HEADINGS, sizeof(__pyx_k_RST_HEADINGS), 0, 0, 1, 1},
-  {&__pyx_n_s_RUN_BRACKET_MAX_H, __pyx_k_RUN_BRACKET_MAX_H, sizeof(__pyx_k_RUN_BRACKET_MAX_H), 0, 0, 1, 1},
-  {&__pyx_n_s_RUN_BRACKET_MIN_H, __pyx_k_RUN_BRACKET_MIN_H, sizeof(__pyx_k_RUN_BRACKET_MIN_H), 0, 0, 1, 1},
   {&__pyx_n_s_TOLABS, __pyx_k_TOLABS, sizeof(__pyx_k_TOLABS), 0, 0, 1, 1},
   {&__pyx_n_s_TOLABS_X, __pyx_k_TOLABS_X, sizeof(__pyx_k_TOLABS_X), 0, 0, 1, 1},
   {&__pyx_n_s_TOLREL, __pyx_k_TOLREL, sizeof(__pyx_k_TOLREL), 0, 0, 1, 1},
@@ -4919,8 +4909,6 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_MAXITER_CYCLE, (void *)&MAXITER_CYCLE, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_MAXITER_COMPONENT, (void *)&MAXITER_COMPONENT, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_MAX_WALLS, (void *)&MAX_WALLS, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_RUN_BRACKET_MIN_H, (void *)&RUN_BRACKET_MIN_H, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_RUN_BRACKET_MAX_H, (void *)&RUN_BRACKET_MAX_H, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_GRAVITY, (void *)&GRAVITY, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_COOLPROP_EOS, (void *)&COOLPROP_EOS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_MPL_BACKEND, (void *)&MPL_BACKEND, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -5010,7 +4998,7 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
  * cpdef public int MAXITER_CYCLE = 50
  * cpdef public int MAXITER_COMPONENT = 50             # <<<<<<<<<<<<<<
  * cpdef public int MAX_WALLS = 200
- * cpdef public double RUN_BRACKET_MIN_H = 0.001
+ * #cpdef public double RUN_BRACKET_MIN_H = 0.001
  */
   MAXITER_COMPONENT = 50;
 
@@ -5018,32 +5006,14 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
  * cpdef public int MAXITER_CYCLE = 50
  * cpdef public int MAXITER_COMPONENT = 50
  * cpdef public int MAX_WALLS = 200             # <<<<<<<<<<<<<<
- * cpdef public double RUN_BRACKET_MIN_H = 0.001
- * cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * #cpdef public double RUN_BRACKET_MIN_H = 0.001
+ * #cpdef public double RUN_BRACKET_MAX_H = 0.9
  */
   MAX_WALLS = 0xC8;
 
-  /* "mcycle/DEFAULTS.pyx":10
- * cpdef public int MAXITER_COMPONENT = 50
- * cpdef public int MAX_WALLS = 200
- * cpdef public double RUN_BRACKET_MIN_H = 0.001             # <<<<<<<<<<<<<<
- * cpdef public double RUN_BRACKET_MAX_H = 0.9
- * cpdef public double GRAVITY = 9.80665
- */
-  RUN_BRACKET_MIN_H = 0.001;
-
-  /* "mcycle/DEFAULTS.pyx":11
- * cpdef public int MAX_WALLS = 200
- * cpdef public double RUN_BRACKET_MIN_H = 0.001
- * cpdef public double RUN_BRACKET_MAX_H = 0.9             # <<<<<<<<<<<<<<
- * cpdef public double GRAVITY = 9.80665
- * cpdef public str COOLPROP_EOS = 'HEOS'
- */
-  RUN_BRACKET_MAX_H = 0.9;
-
   /* "mcycle/DEFAULTS.pyx":12
- * cpdef public double RUN_BRACKET_MIN_H = 0.001
- * cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * #cpdef public double RUN_BRACKET_MIN_H = 0.001
+ * #cpdef public double RUN_BRACKET_MAX_H = 0.9
  * cpdef public double GRAVITY = 9.80665             # <<<<<<<<<<<<<<
  * cpdef public str COOLPROP_EOS = 'HEOS'
  * cpdef public str MPL_BACKEND = 'TkAgg'
@@ -5051,7 +5021,7 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
   GRAVITY = 9.80665;
 
   /* "mcycle/DEFAULTS.pyx":13
- * cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * #cpdef public double RUN_BRACKET_MAX_H = 0.9
  * cpdef public double GRAVITY = 9.80665
  * cpdef public str COOLPROP_EOS = 'HEOS'             # <<<<<<<<<<<<<<
  * cpdef public str MPL_BACKEND = 'TkAgg'
