@@ -68,3 +68,13 @@ cpdef double ft2m(double value):
 cpdef double m2ft(double value):
     "float: length: Metres to feet."
     return value / 0.3048
+
+
+cpdef double in2m(double value):
+    "float: length: Inches to metres."
+    return value * 0.0254
+
+
+cpdef double m2in(double value):
+    "float: length: Metres to inches."
+    return value / 0.0254
