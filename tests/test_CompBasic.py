@@ -19,7 +19,7 @@ class TestCompBasic(unittest.TestCase):
             'flowOut': flowOut,
             'm': 9.5,
             'sizeAttr': 'effIsentropic',
-            'sizeBracket': [0.5, 0.9]
+            'sizeBounds': [0.5, 0.9]
         })
         self.comp.size()
         self.assertAlmostEqual(self.comp.effIsentropic, 0.787, 3)
@@ -31,7 +31,7 @@ class TestCompBasic(unittest.TestCase):
             'm': 9.5,
             'pRatio': -1,
             'sizeAttr': 'pRatio',
-            'sizeBracket': [4, 8]
+            'sizeBounds': [4, 8]
         })
         self.comp.size()
         self.assertAlmostEqual(self.comp.pRatio, 5., 5)

@@ -21,12 +21,12 @@ ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "pRatio".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1, 50].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "ExpBasic instance".
 notes : string, optional
@@ -44,18 +44,18 @@ kwargs : optional
                  FlowState flowOut=None,
                  FlowState ambient=None,
                  str sizeAttr="pRatio",
-                 list sizeBracket=[1, 50],
-                 list sizeUnitsBracket=[],
+                 list sizeBounds=[1, 50],
+                 list sizeUnitsBounds=[],
                  str name="CompBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
-        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
+        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
                          config)
         self.pRatio = pRatio
         self.effIsentropic = effIsentropic
         self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),
-                "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
                 "pOut": MCAttr(float, "pressure"), "PIn()": MCAttr(float, "power")}
@@ -73,27 +73,27 @@ kwargs : optional
         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, hOut,
                                         self.flowsIn[0].p() * self.pRatio)
 
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
 ------------
 sizeAttr : string, optional
     Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-sizeBracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+sizeBounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef FlowState flowOut_s
         if attr == '':
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             if attr == 'pRatio':
                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -105,11 +105,11 @@ sizeBracket : float or list of float, optional
                 self.effIsentropic = (flowOut_s.h() - self.flowsIn[0].h()) / (
                     self.flowsOut[0].h() - self.flowsIn[0].h())
             else:
-                super(CompBasic, self)._size(attr, bracket, unitsBracket)
+                super(CompBasic, self)._size(attr, bounds, unitsBounds)
         except AssertionError as err:
             raise err
         except:
-            raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bracket, unitsBracket))
+            raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bounds, unitsBounds))
 
     @property
     def pIn(self):

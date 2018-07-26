@@ -18,7 +18,7 @@
   #define DL_IMPORT(_T) _T
 #endif
 
-__PYX_EXTERN_C double runBracket[2];
+__PYX_EXTERN_C double runBounds[2];
 
 #endif /* !__PYX_HAVE_API__mcycle__bases__component */
 

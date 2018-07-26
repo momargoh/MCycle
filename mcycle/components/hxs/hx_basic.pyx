@@ -63,14 +63,14 @@ ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "N".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1, 100].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
-sizeUnitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+sizeUnitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxBasic instance".
 notes : string, optional
@@ -105,9 +105,9 @@ kwargs : optional
                  FlowState flowOutSf=None,
                  FlowState ambient=None,
                  str sizeAttr="NPlate",
-                 list sizeBracket=[1, 100],
-                 list sizeUnitsBracket=[1e-5, 1.],
-                 runBracket=[nan, nan],
+                 list sizeBounds=[1, 100],
+                 list sizeUnitsBounds=[1e-5, 1.],
+                 runBounds=[nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),
@@ -133,7 +133,7 @@ kwargs : optional
         self.ARatioWall = ARatioWall
         self.effThermal = effThermal
         super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, ambient, sizeAttr,
-                         sizeBracket, sizeUnitsBracket, runBracket, name, notes, config)
+                         sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
         self._units = []
         self._unitClass = _unitClass
         if self.hasInAndOut(0) and self.hasInAndOut(1):
@@ -146,8 +146,8 @@ kwargs : optional
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
-                        "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"),
-                        "sizeUnitsBracket": MCAttr(list, "none"), 'runBracket': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
+                        "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -157,11 +157,11 @@ kwargs : optional
         cdef HxUnitBasic unit
         for key, value in kwargs.items():
             if key not in [
-                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf"] and "sizeBracket" not in key and "sizeUnitsBracket" not in key:
+                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf"] and "sizeBounds" not in key and "sizeUnitsBounds" not in key:
                 super(Component22, self).update({key: value})
                 for unit in self._units:
                     unit.update({key: value})
-            elif "sizeUnitsBracket" in key:
+            elif "sizeUnitsBounds" in key:
                 super(Component22, self).update({key: value})
                 for unit in self._units:
                     unit.update({key[:4] + key[9:]
@@ -414,7 +414,7 @@ kwargs : optional
                     **{wfX1_key: wf_i1},
                     **{sfX0_key: sf_i},
                     **{sfX1_key: sf_i1},
-                    sizeBracket=self.sizeUnitsBracket,
+                    sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
                 if self.isEvap():
                     self._units.append(unit)
@@ -488,7 +488,7 @@ kwargs : optional
                     **{wfX1_key: wf_i1},
                     **{sfX0_key: sf_i},
                     **{sfX1_key: sf_i1},
-                    sizeBracket=self.sizeUnitsBracket,
+                    sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
                 if self.isEvap():
                     self._units.append(unit)
@@ -541,7 +541,7 @@ kwargs : optional
                     **{wfX1_key: wf_i1},
                     **{sfX0_key: sf_i},
                     **{sfX1_key: sf_i1},
-                    sizeBracket=self.sizeUnitsBracket,
+                    sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
                 if self.isEvap():
                     self._units.append(unit)
@@ -554,45 +554,45 @@ kwargs : optional
             return None
 
         
-    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBracket):
+    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBounds):
         self.update({attr: value})
         A_units = 0.
         for unit in self._units:
-            unit.sizeUnits('A', unitsBracket)
+            unit.sizeUnits('A', unitsBounds)
             A_units += unit.A
         return A_units - self._A()
                 
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
 
-unitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBracket is used. Defaults to None.
+unitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """
         cdef double hOutSf, A_unitstol
         cdef HxUnitBasic unit
         if attr == "":
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             if attr == "A":
                 self.unitise()
                 A_units = 0.
                 for unit in self._units:
-                    unit.sizeUnits('A', unitsBracket)
+                    unit.sizeUnits('A', unitsBounds)
                     A_units += unit._A()
                 self.A = A_units
                 # return self._A()
@@ -608,18 +608,18 @@ unitsBracket : float or list of float, optional
                 self.unitise()
 
                 tol = self.config.tolAbs + self.config.tolRel * abs(self.Q())
-                if len(bracket) == 2:
+                if len(bounds) == 2:
                     sizedValue = opt.brentq(
                         self._f_sizeHxBasic,
-                        bracket[0],
-                        bracket[1],
-                        args=(attr, unitsBracket),
+                        bounds[0],
+                        bounds[1],
+                        args=(attr, unitsBounds),
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(bracket) == 1:
-                    sizedValue = opt.newton(self._f_sizeHxBasic, bracket[0], args=(attr, unitsBracket), tol=tol)
+                elif len(bounds) == 1:
+                    sizedValue = opt.newton(self._f_sizeHxBasic, bounds[0], args=(attr, unitsBounds), tol=tol)
                 else:
-                    raise ValueError("bracket is not valid (given: {})".format(bracket))
+                    raise ValueError("bounds is not valid (given: {})".format(bounds))
                 self.update({attr, sizedValue})
                 #return sizedValue
         except AssertionError as err:
@@ -627,7 +627,7 @@ unitsBracket : float or list of float, optional
         except:
             raise StopIteration(
                 "Warning: {}.size({},{},{}) failed to converge.".format(
-                    self.__class__.__name__, attr, bracket, unitsBracket))
+                    self.__class__.__name__, attr, bounds, unitsBounds))
 
     @property
     def hWf(self):

@@ -39,16 +39,16 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutSf': flowOutSf
         })
 
-        self.hxUnit.update({'sizeAttr': 'L', 'sizeBracket': [0.005, 0.5]})
+        self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.005, 0.5]})
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.0636564105282744) / 0.0636564105282744, 0, 4)
-        self.hxUnit.update({'sizeAttr': 'W', 'sizeBracket': [50e-3, 500e-3]})
+        self.hxUnit.update({'sizeAttr': 'W', 'sizeBounds': [50e-3, 500e-3]})
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(self.hxUnit.W, 95e-3, 7)
         self.hxUnit.update({
             'sizeAttr': 'geomPlateWf.b',
-            'sizeBracket': [0.1e-3, 10e-3]
+            'sizeBounds': [0.1e-3, 10e-3]
         })
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(
@@ -74,7 +74,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutSf': flowOutSf
         })
         #
-        self.hxUnit.update({'sizeAttr': 'L', 'sizeBracket': [0.001, 0.5]})
+        self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.001, 0.5]})
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.003778819723856917) / 0.003778819723856917,
@@ -99,7 +99,7 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutSf': flowOutSf
         })
         #
-        self.hxUnit.update({'sizeAttr': 'L', 'sizeBracket': [0.0001, 0.5]})
+        self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.0001, 0.5]})
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(
             abs(self.hxUnit.L - 0.0009979724829425561) / 0.0009979724829425561,

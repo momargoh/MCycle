@@ -59,12 +59,12 @@ flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "L".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1e-5, 10.0].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of object. Defaults to "HxUnitPlateCorrugated instance".
 notes : string, optional
@@ -95,14 +95,14 @@ kwargs : optional
                  FlowState flowOutWf=None,
                  FlowState flowOutSf=None,
                  str sizeAttr="L",
-                 list sizeBracket=[1e-5, 10.0],
+                 list sizeBounds=[1e-5, 10.0],
                  str name="HxUnitPlateCorrugated instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
         super().__init__(flowSense, -1, -1, NPlate, nan, nan, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
-                         sizeAttr, sizeBracket, name, notes, config)
+                         sizeAttr, sizeBounds, name, notes, config)
         self.geomPlateWf = geomPlateWf
         self.geomPlateSf = geomPlateSf
         
@@ -110,7 +110,7 @@ kwargs : optional
                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"), 
-                        "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "U()": MCAttr( "htc"), "A()": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -225,40 +225,40 @@ kwargs : optional
         self.update({attr: value})
         return self.Q() - self.Q_LMTD()
     
-    cpdef public void sizeUnits(self, str attr, list bracket) except *:
+    cpdef public void sizeUnits(self, str attr, list bounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be solved. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef double tol, sizedValue, fa, fb, r
-        cdef list bracketOriginal
+        cdef list boundsOriginal
         if attr == '':
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        bracketOriginal = bracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        boundsOriginal = bounds
         try:
             tol = self.config.tolAbs + self.config.tolRel * self.Q()
-            if len(bracket) == 2:
+            if len(bounds) == 2:
                 try:
                     sizedValue = opt.brentq(self._f_sizeUnitsHxUnitPlate,
-                                            bracket[0],
-                                            bracket[1],
+                                            bounds[0],
+                                            bounds[1],
                                             args=(attr),
                                             rtol=self.config.tolRel,
                                             xtol=self.config.tolAbs)
                 except:
-                    a = bracket[0]
-                    b = bracket[1]
+                    a = bounds[0]
+                    b = bounds[1]
                     fa = self._f_sizeUnitsHxUnitPlate(a, attr)
                     fb = self._f_sizeUnitsHxUnitPlate(b, attr)
                     r = a - fa*(b-a)/(fb-fa)
@@ -278,12 +278,12 @@ bracket : float or list of float, optional
                                             rtol=self.config.tolRel,
                                             xtol=self.config.tolAbs)
                         except Exception as exc:
-                            warn('Could not find solution in brackets {} or {}.'.format([a, 2*r-a], [b, 2*r-b]))
+                            warn('Could not find solution in boundss {} or {}.'.format([a, 2*r-a], [b, 2*r-b]))
                             raise exc
-            elif len(bracket) == 1:
-                sizedValue = opt.newton(self._f_sizeUnitsHxUnitPlate, bracket[0], tol=tol, args=(attr))
+            elif len(bounds) == 1:
+                sizedValue = opt.newton(self._f_sizeUnitsHxUnitPlate, bounds[0], tol=tol, args=(attr))
             else:
-                raise ValueError("bracket is not valid (given: {})".format(bracket))
+                raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue})
             # return sizedValue
         except AssertionError as err:
@@ -291,7 +291,7 @@ bracket : float or list of float, optional
         except:
             raise Exception(
                 "{}.sizeUnit({},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bracketOriginal))
+                    self.__class__.__name__, attr, boundsOriginal))
 
 
     @property

@@ -57,7 +57,7 @@ rstHeading : int, optional
                     "flowOutWf", "flowInSf", "flowOutSf"
             ]:
                 pass
-            elif k in ["sizeAttr", "sizeBracket", "sizeUnitsBracket"]:
+            elif k in ["sizeAttr", "sizeBounds", "sizeUnitsBounds"]:
                 pass
             elif k in ["name", "notes", "config"]:
                 pass

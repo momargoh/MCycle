@@ -66,7 +66,7 @@
 </table>
 <span class="target" id="module-mcycle.bases.component"></span><dl class="class">
 <dt id="mcycle.bases.component.Component">
-<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component</code><span class="sig-paren">(</span><em>list flowsIn, list flowsOut=[None], FlowState ambient=None, unicode sizeAttr=u'', list sizeBracket=[], list sizeUnitsBracket=[], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'Component instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component</code><span class="sig-paren">(</span><em>list flowsIn, list flowsOut=[None], FlowState ambient=None, unicode sizeAttr=u'', list sizeBounds=[], list sizeUnitsBounds=[], runBounds=[nan, nan], unicode name=u'Component instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="mcabstractbase.html#mcycle.bases.mcabstractbase.MCAB" title="mcycle.bases.mcabstractbase.MCAB"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.mcabstractbase.MCAB</span></code></a></p>
 <p>Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -85,12 +85,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to None.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to None.</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -147,17 +147,17 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.notes" title="mcycle.bases.component.Component.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.runBracket" title="mcycle.bases.component.Component.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.runBounds" title="mcycle.bases.component.Component.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeAttr" title="mcycle.bases.component.Component.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeBracket" title="mcycle.bases.component.Component.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeBounds" title="mcycle.bases.component.Component.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeUnitsBracket" title="mcycle.bases.component.Component.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeUnitsBounds" title="mcycle.bases.component.Component.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -174,10 +174,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.run" title="mcycle.bases.component.Component.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute the outgoing working fluid FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.size" title="mcycle.bases.component.Component.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.size" title="mcycle.bases.component.Component.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeUnits" title="mcycle.bases.component.Component.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component.sizeUnits" title="mcycle.bases.component.Component.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component.summary" title="mcycle.bases.component.Component.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -267,14 +267,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.bases.component.Component.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.bases.component.Component.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.bases.component.Component.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -284,20 +284,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.bases.component.Component.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.bases.component.Component.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.bases.component.Component.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.bases.component.Component.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.bases.component.Component.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.bases.component.Component.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -374,7 +374,7 @@
 
 <dl class="class">
 <dt id="mcycle.bases.component.Component11">
-<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component11</code><span class="sig-paren">(</span><em>FlowState flowIn, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'', list sizeBracket=[], list sizeUnitsBracket=[], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'Component11 instance', unicode notes=u'No notes/model info.', config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component11" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component11</code><span class="sig-paren">(</span><em>FlowState flowIn, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'', list sizeBounds=[], list sizeUnitsBounds=[], runBounds=[nan, nan], unicode name=u'Component11 instance', unicode notes=u'No notes/model info.', config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component11" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.bases.component.Component" title="mcycle.bases.component.Component"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component</span></code></a></p>
 <p>Component with 1 incoming and 1 outgoing flow of the working fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -393,12 +393,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to None.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to None.</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -437,11 +437,17 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowIn" title="mcycle.bases.component.Component11.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowInWf" title="mcycle.bases.component.Component11.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowInSf" title="mcycle.bases.component.Component11.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowInWf" title="mcycle.bases.component.Component11.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowOut" title="mcycle.bases.component.Component11.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowOut" title="mcycle.bases.component.Component11.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowOutSf" title="mcycle.bases.component.Component11.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.flowOutWf" title="mcycle.bases.component.Component11.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
@@ -464,17 +470,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.notes" title="mcycle.bases.component.Component11.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.runBracket" title="mcycle.bases.component.Component11.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.runBounds" title="mcycle.bases.component.Component11.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeAttr" title="mcycle.bases.component.Component11.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeBracket" title="mcycle.bases.component.Component11.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeBounds" title="mcycle.bases.component.Component11.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeUnitsBracket" title="mcycle.bases.component.Component11.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeUnitsBounds" title="mcycle.bases.component.Component11.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -491,10 +497,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.run" title="mcycle.bases.component.Component11.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute the outgoing working fluid FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.size" title="mcycle.bases.component.Component11.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.size" title="mcycle.bases.component.Component11.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeUnits" title="mcycle.bases.component.Component11.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component11.sizeUnits" title="mcycle.bases.component.Component11.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component11.summary" title="mcycle.bases.component.Component11.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -542,6 +548,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.bases.component.Component11.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.bases.component.Component11.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.bases.component.Component11.flowInWf">
 <code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.bases.component.Component11.flowInWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0]</p>
@@ -551,6 +563,12 @@
 <dt id="mcycle.bases.component.Component11.flowOut">
 <code class="descname">flowOut</code><a class="headerlink" href="#mcycle.bases.component.Component11.flowOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.bases.component.Component11.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.bases.component.Component11.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -602,14 +620,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component11.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.bases.component.Component11.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.bases.component.Component11.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.bases.component.Component11.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component11.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component11.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component11.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -619,20 +637,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component11.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.bases.component.Component11.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.bases.component.Component11.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.bases.component.Component11.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component11.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component11.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component11.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component11.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.bases.component.Component11.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.bases.component.Component11.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.bases.component.Component11.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -709,7 +727,7 @@
 
 <dl class="class">
 <dt id="mcycle.bases.component.Component22">
-<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component22</code><span class="sig-paren">(</span><em>FlowState flowInWf, FlowState flowInSf, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'', list sizeBracket=[], list sizeUnitsBracket=[], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'Component22 instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component22" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.bases.component.</code><code class="descname">Component22</code><span class="sig-paren">(</span><em>FlowState flowInWf, FlowState flowInSf, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'', list sizeBounds=[], list sizeUnitsBounds=[], runBounds=[nan, nan], unicode name=u'Component22 instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component22" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.bases.component.Component" title="mcycle.bases.component.Component"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component</span></code></a></p>
 <p>Component with 2 incoming and 2 outgoing flows of the working fluid and a secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -736,12 +754,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to None.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to None.</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -807,17 +825,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.notes" title="mcycle.bases.component.Component22.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.runBracket" title="mcycle.bases.component.Component22.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.runBounds" title="mcycle.bases.component.Component22.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeAttr" title="mcycle.bases.component.Component22.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeBracket" title="mcycle.bases.component.Component22.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeBounds" title="mcycle.bases.component.Component22.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeUnitsBracket" title="mcycle.bases.component.Component22.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeUnitsBounds" title="mcycle.bases.component.Component22.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -834,10 +852,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.run" title="mcycle.bases.component.Component22.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute the outgoing working fluid FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.size" title="mcycle.bases.component.Component22.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.size" title="mcycle.bases.component.Component22.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeUnits" title="mcycle.bases.component.Component22.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.bases.component.Component22.sizeUnits" title="mcycle.bases.component.Component22.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.bases.component.Component22.summary" title="mcycle.bases.component.Component22.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -945,14 +963,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component22.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.bases.component.Component22.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.bases.component.Component22.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.bases.component.Component22.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component22.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component22.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.bases.component.Component22.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -962,20 +980,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component22.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.bases.component.Component22.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.bases.component.Component22.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.bases.component.Component22.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.bases.component.Component22.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component22.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.bases.component.Component22.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.bases.component.Component22.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.bases.component.Component22.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.bases.component.Component22.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.bases.component.Component22.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">

@@ -196,7 +196,7 @@ def run_pptd():
             })
             cycle.sizeSetup(False, False)
             cycle.evap._size("NPlate",
-                             [NPlateLowerBound, cycle.evap.sizeBracket[1]], [])
+                             [NPlateLowerBound, cycle.evap.sizeBounds[1]], [])
             plot_eff[i].append(cycle.effExergy())
             plot_NPlate[i].append(cycle.evap.NPlate)
             plot_weight[i].append(cycle.evap.weight())
@@ -286,7 +286,7 @@ def run_pressure():
         cycle.sizeSetup(True, False)
         cycle.evap.update({
             'L': mc.library.alfaLaval_AC30EQ().L,
-            'sizeBracket[0]':
+            'sizeBounds[0]':
             NPlateLowerBound  # use previous solution for better bounds
         })
         cycle.evap.size_NPlate()
@@ -351,7 +351,7 @@ def run_mass():
         cycle.update({'pptdEvap': pptdEvap})
         cycle.evap.update({
             'L': mc.library.alfaLaval_AC30EQ().L,
-            'sizeBracket[0]': NPlateLowerBound
+            'sizeBounds[0]': NPlateLowerBound
         })
         cycle.sizeSetup(True, False)
         cycle.evap.size_NPlate()

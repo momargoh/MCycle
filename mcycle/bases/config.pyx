@@ -40,7 +40,7 @@ divT : float, optional
     Temperature difference for unitising single-phase flows. Defaults to 5 [K].
 divX : float, optional
     Quality difference for unitising two-phase flows. Defaults to 0.1.
-sizeBracket_L : list of float len==2, optional
+sizeBounds_L : list of float len==2, optional
     Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].
 maxIterCycle : int, optional
     Max number of iterations for convergence of cycle. Defaults to 50.

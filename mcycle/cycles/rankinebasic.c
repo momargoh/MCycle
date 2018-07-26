@@ -872,9 +872,9 @@ struct __pyx_obj_6mcycle_5bases_9component_Component {
   PyObject *flowsOut;
   struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *ambient;
   PyObject *sizeAttr;
-  PyObject *sizeBracket;
-  PyObject *sizeUnitsBracket;
-  double runBracket[2];
+  PyObject *sizeBounds;
+  PyObject *sizeUnitsBounds;
+  double runBounds[2];
   PyObject *notes;
   struct __pyx_obj_6mcycle_5bases_6config_Config *config;
 };

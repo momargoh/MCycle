@@ -53,12 +53,12 @@ flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "N".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [3, 100].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "HxBasic instance".
 notes : string, optional
@@ -91,7 +91,7 @@ kwargs : optional
                  FlowState flowOutWf=None,
                  FlowState flowOutSf=None,
                  str sizeAttr="A",
-                 list sizeBracket=[0.01, 10.0],
+                 list sizeBounds=[0.01, 10.0],
                  str name="HxUnitBasic instance",
                  str  notes="No notes/model info.",
                  Config config=Config()):
@@ -103,7 +103,7 @@ kwargs : optional
         super().__init__(flowSense, NWf, NSf, NWall, hWf, hSf, RfWf, RfSf,
                          wall, tWall, L * W, ARatioWf, ARatioSf, ARatioWall,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
-                         sizeAttr, sizeBracket, name, notes, config)
+                         sizeAttr, sizeBounds, name, notes, config)
         
         self._inputs = {"flowSense": MCAttr(str, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
                         "NWall": MCAttr(int, "none"), "hWf": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
@@ -111,7 +111,7 @@ kwargs : optional
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "flowDeadSf": MCAttr(FlowState, "none"),
-                        "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "U()": MCAttr( "htc"), "A()": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -119,37 +119,37 @@ kwargs : optional
     cpdef public double _A(self):
         return self.L * self.W
 
-    cpdef public void sizeUnits(self, str attr, list bracket) except *:
+    cpdef public void sizeUnits(self, str attr, list bounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         if attr is "":
             attr = self.sizeAttr
-        if bracket is []:
-            bracket = self.sizeBracket
+        if bounds is []:
+            bounds = self.sizeBounds
         try:
             if attr in ["L", "W", "A"]:
                 setattr(self, attr, 1.)
                 setattr(self, attr, self.Q() / self.Q_LMTD())
                 # return getattr(self, attr)
             else:
-                super(HxUnitBasicPlanar, self).sizeUnits(attr, bracket)
+                super(HxUnitBasicPlanar, self).sizeUnits(attr, bounds)
         except AssertionError as err:
             raise err
         except:
             raise StopIteration(
                 "Warning: {}.size({},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bracket))
+                    self.__class__.__name__, attr, bounds))
     
     @property
     def A(self):

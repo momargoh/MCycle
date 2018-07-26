@@ -21,12 +21,12 @@ ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "pRatio".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1, 50].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "ExpBasic instance".
 notes : string, optional
@@ -44,12 +44,12 @@ kwargs : optional
                  FlowState flowOut=None,
                  FlowState ambient=None,
                  str sizeAttr="pRatio",
-                 list sizeBracket=[1, 50],
-                 list sizeUnitsBracket=[],
+                 list sizeBounds=[1, 50],
+                 list sizeUnitsBounds=[],
                  str name="HtrBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
-        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
+        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
                          config)
         assert (
             effThermal > 0 and effThermal <= 1.
@@ -59,7 +59,7 @@ kwargs : optional
         
         self._inputs = {"Q": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
-                "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
                 "dpSf()": MCAttr(float, "pressure")}
@@ -101,12 +101,12 @@ flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "effThermal".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [0.1, 1.0].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "HtrBasicConstP instance".
 notes : string, optional
@@ -124,38 +124,38 @@ kwargs : optional
                  FlowState flowOut=None,
                  FlowState ambient=None,
                  str sizeAttr="pRatio",
-                 list sizeBracket=[1, 50],
-                 list sizeUnitsBracket=[],
+                 list sizeBounds=[1, 50],
+                 list sizeUnitsBounds=[],
                  str name="HtrBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
-        super().__init__(Q, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, name, notes,
+        super().__init__(Q, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
                          config)
 
     cpdef public void run(self):
         """Compute outgoing FlowState from component attributes."""
         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, self.flowsIn[0].h() + self.Q * self.effThermal / self._m(), self.flowsIn[0].p())
 
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
 ------------
 attr : string, optional
     Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         if attr == '':
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].
                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"
@@ -169,13 +169,13 @@ bracket : float or list of float, optional
                 self.m = (
                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.Q
             else:
-                super(HtrBasic, self)._size(attr, bracket, unitsBracket)
+                super(HtrBasic, self)._size(attr, bounds, unitsBounds)
         except AssertionError as err:
             raise err
         except:
             raise StopIteration(
                 "Warning: {}.size({},{},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bracket, unitsBracket))
+                    self.__class__.__name__, attr, bounds, unitsBounds))
 
 
 cdef class HtrBasicConstV(HtrBasic):
@@ -193,12 +193,12 @@ flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "effThermal".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [0.1, 1.0].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "HtrBasicConstV instance".
 notes : string, optional
@@ -216,38 +216,38 @@ kwargs : optional
                  FlowState flowOut=None,
                  FlowState ambient=None,
                  str sizeAttr="pRatio",
-                 list sizeBracket=[1, 50],
-                 list sizeUnitsBracket=[],
+                 list sizeBounds=[1, 50],
+                 list sizeUnitsBounds=[],
                  str name="HtrBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
-        super().__init__(Q, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, name, notes,
+        super().__init__(Q, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
                          config)
         
     cpdef public void run(self):
         """Compute outgoing FlowState from component attributes."""
         self.flowsOut[0] = self.flowsIn[0].copyState(CP.DmassHmass_INPUTS, self.flowsIn[0].rho(), self.flowsIn[0].h() + self.Q * self.effThermal / self._m())
 
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
 ------------
 attr : string, optional
     Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         if attr == '':
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             assert abs(1 - self.flowsOut[0].rho() / self.flowsIn[0].rho()
                        ) < self.config._tolRel_rho, "flowOut.rho != flowIn.rho"
@@ -261,10 +261,10 @@ bracket : float or list of float, optional
                 self.m = (
                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.Q
             else:
-                super(HtrBasic, self)._size(attr, bracket)
+                super(HtrBasic, self)._size(attr, bounds)
         except AssertionError as err:
             raise err
         except:
             raise StopIteration(
                 "Warning: {}.size({},{},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bracket, unitsBracket))
+                    self.__class__.__name__, attr, bounds, unitsBounds))

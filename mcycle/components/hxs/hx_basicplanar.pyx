@@ -64,14 +64,14 @@ ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "N".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1, 100].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
-sizeUnitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+sizeUnitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxBasicPlanar instance".
 notes : string, optional
@@ -107,9 +107,9 @@ kwargs : optional
                  FlowState flowOutSf=None,
                  FlowState ambient=None,
                  str sizeAttr="NPlate",
-                 list sizeBracket=[1, 100],
-                 list sizeUnitsBracket=[1e-5, 1.],
-                 runBracket = [nan, nan],
+                 list sizeBounds=[1, 100],
+                 list sizeUnitsBounds=[1e-5, 1.],
+                 runBounds = [nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),
@@ -124,7 +124,7 @@ kwargs : optional
                          hSf, RfWf, RfSf, wall, tWall, L * W, ARatioWf,
                          ARatioSf, ARatioWall, effThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
-                         sizeBracket, sizeUnitsBracket, runBracket, name, notes, config, _unitClass)
+                         sizeBounds, sizeUnitsBounds, runBounds, name, notes, config, _unitClass)
         self._units = []
         self._unitClass = HxUnitBasicPlanar
         if self.hasInAndOut(0) and self.hasInAndOut(1):
@@ -136,8 +136,8 @@ kwargs : optional
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
-                        "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"),
-                        "sizeUnitsBracket": MCAttr(list, "none"), 'runBracket': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
+                        "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -166,71 +166,71 @@ kwargs : optional
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioWall,
                 self.effThermal)
 
-    cpdef public double size_L(self, list unitsBracket):
+    cpdef public double size_L(self, list unitsBounds):
         """float: Solve for the required length of the Hx to satisfy the heat transfer equations [m]."""
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         cdef double L = 0.
         cdef HxUnitBasicPlanar unit
         for unit in self._units:
             if abs(unit.Q()) > TOLABS:
-                unit.sizeUnits('L', unitsBracket)
+                unit.sizeUnits('L', unitsBounds)
                 L += unit.L
         self.L = L
         return L
 
 
-    cpdef double _f_sizeHxBasicPlanar(self, double value, double L, str attr, list unitsBracket):
+    cpdef double _f_sizeHxBasicPlanar(self, double value, double L, str attr, list unitsBounds):
         self.update({attr: value})
-        return self.size_L(unitsBracket) - L
+        return self.size_L(unitsBounds) - L
                         
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=[a]: scipy.optimize.newton is used.
+    - if bounds=[a]: scipy.optimize.newton is used.
 
-unitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBracket is used. Defaults to None.
+unitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """
         cdef double L, tol
         cdef HxUnitBasicPlanar unit
         if attr == '':
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             if attr == "L":
-                self.size_L(unitsBracket)
+                self.size_L(unitsBounds)
             elif attr == "flowOutSf":
-                super(HxBasicPlanar, self)._size(attr, bracket, unitsBracket)
+                super(HxBasicPlanar, self)._size(attr, bounds, unitsBounds)
             else:
                 # self.unitise()
                 L = self.L
 
                 tol = self.config.tolAbs + self.config.tolRel * abs(self._Q())
-                if len(bracket) == 2:
+                if len(bounds) == 2:
                     sizedValue = opt.brentq(
                         self._f_sizeHxBasicPlanar,
-                        bracket[0],
-                        bracket[1],
-                        args=(L, attr, unitsBracket),
+                        bounds[0],
+                        bounds[1],
+                        args=(L, attr, unitsBounds),
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(bracket) == 1:
-                    sizedValue = opt.newton(self._f_sizeHxBasicPlanar, bracket[0], args=(L, attr, unitsBracket), tol=tol)
+                elif len(bounds) == 1:
+                    sizedValue = opt.newton(self._f_sizeHxBasicPlanar, bounds[0], args=(L, attr, unitsBounds), tol=tol)
                 else:
-                    raise ValueError("bracket is not valid (given: {})".format(bracket))
+                    raise ValueError("bounds is not valid (given: {})".format(bounds))
                 self.update({attr: sizedValue})
                 #return sizedValue
         except AssertionError as err:
@@ -240,14 +240,14 @@ unitsBracket : float or list of float, optional
         except:
             raise StopIteration(
                 "Warning: {}.size({},{},{}) failed to converge.".format(
-                    self.__class__.__name__, attr, bracket, unitsBracket))
+                    self.__class__.__name__, attr, bounds, unitsBounds))
 
     cpdef double _f_runHxBasicPlanar(self, double value, double saveL):
         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, value, self.flowsIn[0].p())
         cdef double hOut = self.flowsIn[1].h() - self._mWf() * self._effFactorWf() * (self.flowsOut[0].h() - self.flowsIn[0].h()) / self._mSf() / self._effFactorSf()
         self.flowsOut[1] = self.flowsIn[1].copyState(CP.HmassP_INPUTS, hOut, self.flowsIn[1].p())
         self.unitise()
-        o = saveL - self.size_L(self.sizeUnitsBracket)
+        o = saveL - self.size_L(self.sizeUnitsBounds)
         return o
         
     cpdef public void run(self):
@@ -259,21 +259,21 @@ unitsBracket : float or list of float, optional
             """
             if self.isEvap():
                 deltah = critWf.h() - self.flowsIn[0].h()
-                a = self.flowsIn[0].h() + deltah*self.runBracket[0]
+                a = self.flowsIn[0].h() + deltah*self.runBounds[0]
                 if self.flowsIn[1].T() > critWf.T():
-                    b = self.flowsIn[0].h() + deltah*self.runBracket[1]
+                    b = self.flowsIn[0].h() + deltah*self.runBounds[1]
                 else:
                     deltah = self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[1].T()).h() - self.flowsIn[0].h()
-                    b = self.flowsIn[0].h() + deltah*(self.runBracket[1])
+                    b = self.flowsIn[0].h() + deltah*(self.runBounds[1])
             else:
                 deltah = self.flowsIn[0].h() - minWf.h()
-                b = self.flowsIn[0].h() - deltah*self.runBracket[0]
+                b = self.flowsIn[0].h() - deltah*self.runBounds[0]
                 
                 if self.flowsIn[1].T() < minWf.T():
-                    a = self.flowsIn[0].h() - deltah*self.runBracket[1]
+                    a = self.flowsIn[0].h() - deltah*self.runBounds[1]
                 else:
                     deltah = self.flowsIn[0].h() - self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[1].T()).h()
-                    a = self.flowsIn[0].h() - deltah*self.runBracket[1]
+                    a = self.flowsIn[0].h() - deltah*self.runBounds[1]
            
             sizedValue = opt.brentq(self._f_runHxBasicPlanar,
                                     a,
@@ -283,7 +283,7 @@ unitsBracket : float or list of float, optional
                                     xtol=self.config.tolAbs)
             """
             sizedValue = opt.brentq(self._f_runHxBasicPlanar,
-                                    *self.runBracket,
+                                    *self.runBounds,
                                     args=(saveL),
                                     rtol=self.config.tolRel,
                                     xtol=self.config.tolAbs)
@@ -293,8 +293,8 @@ unitsBracket : float or list of float, optional
             raise err
         except Exception as exc:
             raise StopIteration(
-                "{}.run() failed to converge. Check brackets for solution: runBracket={}. ".format(
-                    self.__class__.__name__, self.runBracket), exc)
+                "{}.run() failed to converge. Check boundss for solution: runBounds={}. ".format(
+                    self.__class__.__name__, self.runBounds), exc)
 
             
     @property

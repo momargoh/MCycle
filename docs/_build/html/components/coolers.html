@@ -68,7 +68,7 @@
 <span id="clrbasic-class"></span><h2>ClrBasic Class<a class="headerlink" href="#module-mcycle.components.coolers.clr_basic" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasic">
-<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasic</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasic</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBounds=[1, 50], list sizeUnitsBounds=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component11" title="mcycle.bases.component.Component11"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component11</span></code></a></p>
 <p>Basic expansion defined by a pressure ratio and isentropic efficiency.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -99,12 +99,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “pRatio”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [1, 50].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -149,11 +149,17 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowIn" title="mcycle.components.coolers.clr_basic.ClrBasic.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowInSf" title="mcycle.components.coolers.clr_basic.ClrBasic.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOutSf" title="mcycle.components.coolers.clr_basic.ClrBasic.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOutWf" title="mcycle.components.coolers.clr_basic.ClrBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
@@ -176,17 +182,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.notes" title="mcycle.components.coolers.clr_basic.ClrBasic.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.runBracket" title="mcycle.components.coolers.clr_basic.ClrBasic.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.runBounds" title="mcycle.components.coolers.clr_basic.ClrBasic.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeAttr" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeBracket" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeBounds" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBracket" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBounds" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -209,10 +215,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.run" title="mcycle.components.coolers.clr_basic.ClrBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.size" title="mcycle.components.coolers.clr_basic.ClrBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.size" title="mcycle.components.coolers.clr_basic.ClrBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic.summary" title="mcycle.components.coolers.clr_basic.ClrBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -284,6 +290,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasic.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasic.flowInWf">
 <code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowInWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0]</p>
@@ -293,6 +305,12 @@
 <dt id="mcycle.components.coolers.clr_basic.ClrBasic.flowOut">
 <code class="descname">flowOut</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasic.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -343,14 +361,14 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasic.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasic.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasic.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -360,20 +378,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasic.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasic.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasic.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -450,7 +468,7 @@
 
 <dl class="class">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP">
-<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasicConstP</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasicConstP</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBounds=[1, 50], list sizeUnitsBounds=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic" title="mcycle.components.coolers.clr_basic.ClrBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.coolers.clr_basic.ClrBasic</span></code></a></p>
 <p>Basic constant pressure heat addition.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -477,12 +495,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “effThermal”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [0.1, 1.0].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -527,11 +545,17 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowIn" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInSf" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutSf" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
@@ -554,17 +578,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.notes" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.runBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.runBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeAttr" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -587,10 +611,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.run" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute outgoing FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.size" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.size" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.summary" title="mcycle.components.coolers.clr_basic.ClrBasicConstP.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -662,6 +686,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf">
 <code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowInWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0]</p>
@@ -671,6 +701,12 @@
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut">
 <code class="descname">flowOut</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -722,14 +758,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -739,20 +775,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstP.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -829,7 +865,7 @@
 
 <dl class="class">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV">
-<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasicConstV</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.coolers.clr_basic.</code><code class="descname">ClrBasicConstV</code><span class="sig-paren">(</span><em>double Q, double effThermal=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBounds=[1, 50], list sizeUnitsBounds=[], unicode name=u'ClrBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasic" title="mcycle.components.coolers.clr_basic.ClrBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.coolers.clr_basic.ClrBasic</span></code></a></p>
 <p>Basic constant volume heat addition.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -856,12 +892,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “effThermal”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [0.1, 1.0].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -906,11 +942,17 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowIn" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInSf" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutSf" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutWf" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
@@ -933,17 +975,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.notes" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.runBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.runBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeAttr" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBracket" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBounds" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -966,10 +1008,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.run" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute outgoing FlowState from component attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.size" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.size" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.summary" title="mcycle.components.coolers.clr_basic.ClrBasicConstV.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -1041,6 +1083,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf">
 <code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowInWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0]</p>
@@ -1050,6 +1098,12 @@
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut">
 <code class="descname">flowOut</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1101,14 +1155,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1118,20 +1172,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.coolers.clr_basic.ClrBasicConstV.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">

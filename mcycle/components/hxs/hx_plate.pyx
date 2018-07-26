@@ -70,14 +70,14 @@ ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to "NPlate".
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [3, 100].
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
-sizeUnitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+sizeUnitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxPlate instance".
 notes : string, optional
@@ -116,9 +116,9 @@ kwargs : optional
                  FlowState flowOutSf=None,
                  FlowState ambient=None,
                  str sizeAttr="NPlate",
-                 list sizeBracket=[3, 100],
-                 list sizeUnitsBracket=[1e-5, 10.],
-                 runBracket=[nan, nan],
+                 list sizeBounds=[3, 100],
+                 list sizeUnitsBounds=[1e-5, 10.],
+                 runBounds=[nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),
@@ -139,7 +139,7 @@ kwargs : optional
                          RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
                          ARatioPlate, effThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
-                         sizeBracket, sizeUnitsBracket, runBracket, name, notes, config, _unitClass)
+                         sizeBounds, sizeUnitsBounds, runBounds, name, notes, config, _unitClass)
 
         self._unitClass = HxUnitPlate
 
@@ -148,8 +148,8 @@ kwargs : optional
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),
                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
-                        "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"),
-                        "sizeUnitsBracket": MCAttr(list, "none"), 'runBracket': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
+                        "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -330,12 +330,12 @@ kwargs : optional
     cpdef public int size_NPlate(self) except *:
         """int: size for NPlate that requires L to be closest to self.L"""
         cdef double diff
-        cdef int NPlate = self.sizeBracket[0]
+        cdef int NPlate = self.sizeBounds[0]
         cdef double L = self.L
         cdef list diff_vals = [nan, nan]
-        while NPlate < self.sizeBracket[1]:
+        while NPlate < self.sizeBounds[1]:
             self.update({'NWall':NPlate})
-            diff = self.size_L(self.sizeUnitsBracket) - L
+            diff = self.size_L(self.sizeUnitsBounds) - L
             diff_vals = [diff_vals[1], diff]
             if diff > 0:
                 NPlate += 1
@@ -343,46 +343,46 @@ kwargs : optional
                 break
         if abs(diff_vals[0]) < abs(diff_vals[1]):
             self.update({'NWall':NPlate-1})
-            self.size_L(self.sizeUnitsBracket)
+            self.size_L(self.sizeUnitsBounds)
             return NPlate - 1
         else:
             return NPlate
 
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
 
-unitsBracket : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBracket is used. Defaults to None.
+unitsBounds : float or list of float, optional
+    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """
         if attr == "":
             attr = self.sizeAttr
-        if bracket == []:
-            bracket = self.sizeBracket
-        if unitsBracket == []:
-            unitsBracket = self.sizeUnitsBracket
+        if bounds == []:
+            bounds = self.sizeBounds
+        if unitsBounds == []:
+            unitsBounds = self.sizeUnitsBounds
         try:
             if attr in ["N", "NPlate"]:
-                self.update({'sizeBracket': bracket, 'sizeUnitsBracket': unitsBracket})
+                self.update({'sizeBounds': bounds, 'sizeUnitsBounds': unitsBounds})
                 self.unitise()
                 self.NWall = self.size_NPlate()
             else:
-                super(HxPlate, self)._size(attr, bracket, unitsBracket)
+                super(HxPlate, self)._size(attr, bounds, unitsBounds)
         except AssertionError as err:
             raise err
         except:
             raise StopIteration("{}.size({},{},{}) failed to converge.".format(
-                self.__class__.__name__, attr, bracket, unitsBracket))
+                self.__class__.__name__, attr, bounds, unitsBounds))
 
     @property
     def NWf(self):

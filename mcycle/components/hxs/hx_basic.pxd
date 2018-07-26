@@ -47,5 +47,5 @@ cdef class HxBasic(Component22):
     cdef public tuple _unitArgsVap(self)
     cdef bint _checkContinuous(self)
 
-    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBracket)
+    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBounds)
     

@@ -264,7 +264,7 @@
 <span class="go">        for pptd in pptd_vals[i]:</span>
 <span class="go">            cycle.update({&#39;pptdEvap&#39;: pptd, &#39;evap.L&#39;: mc.library.alfaLaval_AC30EQ().L})</span>
 <span class="go">            cycle.sizeSetup(False, False)</span>
-<span class="go">            cycle.evap._size(&quot;NPlate&quot;, [NPlateLowerBound, cycle.evap.sizeBracket[1]], [])</span>
+<span class="go">            cycle.evap._size(&quot;NPlate&quot;, [NPlateLowerBound, cycle.evap.sizeBounds[1]], [])</span>
 <span class="go">            plot_eff[i].append(cycle.effExergy())</span>
 <span class="go">            plot_NPlate[i].append(cycle.evap.NPlate)</span>
 <span class="go">            plot_weight[i].append(cycle.evap.weight())</span>
@@ -293,7 +293,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)):</span>
 <span class="go">        cycle.update({&#39;pEvap&#39;: p_vals[i] * 10**5, &#39;pptdEvap&#39;: 10.})</span>
 <span class="go">        cycle.sizeSetup(True, False)</span>
-<span class="go">        cycle.evap.update({&#39;L&#39;: mc.library.alfaLaval_AC30EQ().L, &#39;sizeBracket[0]&#39;: NPlateLowerBound})</span>
+<span class="go">        cycle.evap.update({&#39;L&#39;: mc.library.alfaLaval_AC30EQ().L, &#39;sizeBounds[0]&#39;: NPlateLowerBound})</span>
 <span class="go">        cycle.evap.size_NPlate()</span>
 <span class="go">        plot_NPlate.append(cycle.evap.NPlate)</span>
 <span class="go">        plot_dpWf.append(cycle.evap.dpWf() / (10**5))</span>
@@ -323,7 +323,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">frac</span> <span class="ow">in</span> <span class="n">fraction_vals</span><span class="p">:</span>
 <span class="go">        cycle.evap.mSf = mSource * frac</span>
 <span class="go">        cycle.update({&#39;pptdEvap&#39;: pptdEvap})</span>
-<span class="go">        cycle.evap.update({&#39;L&#39;: mc.library.alfaLaval_AC30EQ().L, &#39;sizeBracket[0]&#39;: NPlateLowerBound})</span>
+<span class="go">        cycle.evap.update({&#39;L&#39;: mc.library.alfaLaval_AC30EQ().L, &#39;sizeBounds[0]&#39;: NPlateLowerBound})</span>
 <span class="go">        cycle.sizeSetup(True, False)</span>
 <span class="go">        cycle.evap.size_NPlate()</span>
 <span class="go">        plot_dpSf.append(cycle.evap.dpSf() / (10**5))</span>
@@ -565,7 +565,7 @@
             <span class="p">})</span>
             <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">_size</span><span class="p">(</span><span class="s2">&quot;NPlate&quot;</span><span class="p">,</span>
-                             <span class="p">[</span><span class="n">NPlateLowerBound</span><span class="p">,</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">sizeBracket</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[])</span>
+                             <span class="p">[</span><span class="n">NPlateLowerBound</span><span class="p">,</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">sizeBounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[])</span>
             <span class="n">plot_eff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">effExergy</span><span class="p">())</span>
             <span class="n">plot_NPlate</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">NPlate</span><span class="p">)</span>
             <span class="n">plot_weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">weight</span><span class="p">())</span>
@@ -655,7 +655,7 @@
         <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
             <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">L</span><span class="p">,</span>
-            <span class="s1">&#39;sizeBracket[0]&#39;</span><span class="p">:</span>
+            <span class="s1">&#39;sizeBounds[0]&#39;</span><span class="p">:</span>
             <span class="n">NPlateLowerBound</span>  <span class="c1"># use previous solution for better bounds</span>
         <span class="p">})</span>
         <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">size_NPlate</span><span class="p">()</span>
@@ -720,12 +720,11 @@
         <span class="n">cycle</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pptdEvap&#39;</span><span class="p">:</span> <span class="n">pptdEvap</span><span class="p">})</span>
         <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
             <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="n">mc</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">alfaLaval_AC30EQ</span><span class="p">()</span><span class="o">.</span><span class="n">L</span><span class="p">,</span>
-            <span class="s1">&#39;sizeBracket[0]&#39;</span><span class="p">:</span> <span class="n">NPlateLowerBound</span>
+            <span class="s1">&#39;sizeBounds[0]&#39;</span><span class="p">:</span> <span class="n">NPlateLowerBound</span>
         <span class="p">})</span>
         <span class="n">cycle</span><span class="o">.</span><span class="n">sizeSetup</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">size_NPlate</span><span class="p">()</span>
         <span class="n">plot_dpSf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">dpSf</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; frac, NPlate : &quot;</span><span class="p">,</span> <span class="n">frac</span><span class="p">,</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">mWf</span><span class="p">,</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">NPlate</span><span class="p">)</span>
         <span class="n">NPlateLowerBound</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">evap</span><span class="o">.</span><span class="n">NPlate</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Create plots in ./</span><span class="si">{}</span><span class="s2"> folder...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">DEFAULTS</span><span class="o">.</span><span class="n">PLOT_DIR</span><span class="p">))</span>

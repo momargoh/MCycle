@@ -84,7 +84,7 @@ def run_off_design():
     runUpperBound = cycle.evap.flowInWf.copyState(CP.PT_INPUTS,
                                                   cycle.evap.flowInWf.p(),
                                                   420.).h()
-    cycle.evap.update({'runBracket': [runLowerBound, runUpperBound]})
+    cycle.evap.update({'runBounds': [runLowerBound, runUpperBound]})
 
     state3_vals = []
     effThermal_vals = []

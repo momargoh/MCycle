@@ -27,7 +27,7 @@ class TestClrBasic(unittest.TestCase):
         flowIn = mc.FlowState("He", -1, -1, CP.PT_INPUTS, 6.7e6, 1190)
 
         clr = mc.ClrBasicConstP(3.975e6, 1.0, flowIn, flowOut)
-        clr.update({'sizeAttr': 'm', 'sizeBracket': [0.8, 1.1]})
+        clr.update({'sizeAttr': 'm', 'sizeBounds': [0.8, 1.1]})
         clr.size()
         self.assertAlmostEqual(clr.m, 1.000, 3)
 

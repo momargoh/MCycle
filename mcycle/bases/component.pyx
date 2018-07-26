@@ -17,12 +17,12 @@ flowsOut : list of FlowState, optional
     Outgoing FlowStates. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to None.
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to None.
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -39,9 +39,9 @@ kwargs : optional
                  list flowsOut=[None],
                  FlowState ambient=None,
                  str sizeAttr='',
-                 list sizeBracket=[],
-                 list sizeUnitsBracket=[],
-                 runBracket = [nan, nan],
+                 list sizeBounds=[],
+                 list sizeUnitsBounds=[],
+                 runBounds = [nan, nan],
                  str name='Component instance',
                  str notes='No notes/model info.',
                  Config config=Config()):
@@ -49,78 +49,78 @@ kwargs : optional
         self.flowsOut = flowsOut
         self.ambient = ambient
         self.sizeAttr = sizeAttr
-        self.sizeBracket = sizeBracket
-        self.runBracket = runBracket
-        self.sizeUnitsBracket = sizeUnitsBracket
+        self.sizeBounds = sizeBounds
+        self.runBounds = runBounds
+        self.sizeUnitsBounds = sizeUnitsBounds
         self.name = name
         self.notes = notes
         self.config = config
-        self._inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"), "sizeUnitsBracket": MCAttr(list, "none"), "runBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+        self._inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time")}
                 
     cpdef public void run(self):
         """Compute the outgoing working fluid FlowState from component attributes."""
         pass
 
-    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str attr, list bracket, list unitsBracket):
-        self.update({attr: value, 'sizeBracket': bracket, 'sizeUnitsBracket': unitsBracket})
+    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str attr, list bounds, list unitsBounds):
+        self.update({attr: value, 'sizeBounds': bounds, 'sizeUnitsBounds': unitsBounds})
         self.run()
         return getattr(self.flowsOut[0], self.config.tolAttr)() - getattr(flowOutTarget, self.config.tolAttr)()
     
-    cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
         """Solve for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bracket : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.
+bounds : float or list of float, optional
+    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
 
-    - if bracket=[a,b]: scipy.optimize.brentq is used.
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if bracket=a or [a]: scipy.optimize.newton is used.
+    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef double tol
         try:
             import scipy.optimize as opt
             if attr == '':
                 attr = self.sizeAttr
-            if bracket == []:
-                bracket = self.sizeBracket
-            if unitsBracket == []:
-                unitsBracket = self.sizeUnitsBracket
+            if bounds == []:
+                bounds = self.sizeBounds
+            if unitsBounds == []:
+                unitsBounds = self.sizeUnitsBounds
             flowOutTarget = self.flowsOut[0]._copy({})
 
             tol = self.config.tolAbs + self.config.tolRel * getattr(flowOutTarget, self.config.tolAttr)()
-            if len(bracket) == 2:
+            if len(bounds) == 2:
                 sizedValue = opt.brentq(
                     self._f_sizeComponent,
-                    bracket[0],
-                    bracket[1],
-                    args=(flowOutTarget, attr, bracket, unitsBracket),
+                    bounds[0],
+                    bounds[1],
+                    args=(flowOutTarget, attr, bounds, unitsBounds),
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs,
                     maxiter=MAXITER_COMPONENT)
-            elif len(bracket) == 1:
+            elif len(bounds) == 1:
                 sizedValue = opt.newton(
                     self._f_sizeComponent,
-                    bracket[0],
-                    args=(flowOutTarget, attr, bracket, unitsBracket),
+                    bounds[0],
+                    args=(flowOutTarget, attr, bounds, unitsBounds),
                     tol=tol,
                     maxiter=MAXITER_COMPONENT)
             else:
-                raise ValueError("bracket is not valid (given: {})".format(bracket))
+                raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue, 'flowsOut[0]': flowOutTarget})
         except:
             raise StopIteration("{}.size({},{},{}) failed to converge.".format(
-                self.__class__.__name__, attr, bracket, unitsBracket))
+                self.__class__.__name__, attr, bounds, unitsBounds))
 
-    cpdef public void sizeUnits(self, str attr, list bracket) except *:
+    cpdef public void sizeUnits(self, str attr, list bounds) except *:
         pass
     
-    def size(self, str attr='', list bracket=[], list unitsBracket=[]):
-        self._size(attr, bracket, unitsBracket)
+    def size(self, str attr='', list bounds=[], list unitsBounds=[]):
+        self._size(attr, bounds, unitsBounds)
         
     def summary(self,
                 bint printSummary=True,
@@ -168,7 +168,7 @@ Notes: {}
                     "flowOutWf", "flowInSf", "flowOutSf"
             ]:
                 pass
-            elif k in ["sizeAttr", "sizeBracket", "sizeUnitsBracket", 'runBracket']:
+            elif k in ["sizeAttr", "sizeBounds", "sizeUnitsBounds", 'runBounds']:
                 pass
             elif k in ["name", "notes", "config"]:
                 pass
@@ -302,12 +302,12 @@ flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to None.
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to None.
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -324,16 +324,16 @@ kwargs : optional
                  FlowState flowOut=None,
                  FlowState ambient=None,
                  str sizeAttr="",
-                 list sizeBracket=[],
-                 list sizeUnitsBracket=[],
-                 runBracket = [nan, nan],
+                 list sizeBounds=[],
+                 list sizeUnitsBounds=[],
+                 runBounds = [nan, nan],
                  str name="Component11 instance",
                  str notes="No notes/model info.",
                  config=Config()):
         if flowOut is not None and flowIn is not None:
             assert flowOut.m == flowIn.m, "mass flow rate of flowIn and flowOut must be equal"
-        super().__init__([flowIn], [flowOut], ambient, sizeAttr, sizeBracket, sizeUnitsBracket, runBracket, name, notes, config)
-        self._inputs = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"), "sizeUnitsBracket": MCAttr(list, "none"), "runBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+        super().__init__([flowIn], [flowOut], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
+        self._inputs = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
         self._properties = {"m": MCAttr(str, "mass/time")}
 
     @property
@@ -406,12 +406,12 @@ flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 sizeAttr : string, optional
     Default attribute used by size(). Defaults to None.
-sizeBracket : float or list of float, optional
+sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to None.
 
-    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.
+    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
 
-    - if sizeBracket=a or [a]: scipy.optimize.newton is used.
+    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
@@ -430,9 +430,9 @@ kwargs : optional
                  FlowState flowOutSf=None,
                  FlowState ambient=None,
                  str sizeAttr="",
-                 list sizeBracket=[],
-                 list sizeUnitsBracket=[],
-                 runBracket = [nan, nan],
+                 list sizeBounds=[],
+                 list sizeUnitsBounds=[],
+                 runBounds = [nan, nan],
                  str name="Component22 instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
@@ -444,8 +444,8 @@ kwargs : optional
                     1].m, "mass flow rate of flowsIn[{0}] and flowsOut[{0}] must be equal".format(
                         i)
         
-        super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf], ambient, sizeAttr, sizeBracket, sizeUnitsBracket, runBracket, name, notes, config)
-        self._inputs = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBracket": MCAttr(list, "none"), "sizeUnitsBracket": MCAttr(list, "none"), "runBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+        super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
+        self._inputs = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time"),"mSf": MCAttr(float, "mass/time")}
         
     @property

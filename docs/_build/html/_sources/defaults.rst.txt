@@ -23,10 +23,10 @@ Attributes
   int : Maximum number of walls for a Component (eg; heat exchangers). Defaults to 200.
 .. attribute:: mcycle.DEFAULTS.RUN_BRACKET_MIN_H
 
-  double : Lower bound of relative bracket for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.001.
+  double : Lower bound of relative bounds for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.001.
 .. attribute:: mcycle.DEFAULTS.RUN_BRACKET_MAX_H
 
-  double : Upper bound of relative bracket for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.9.
+  double : Upper bound of relative bounds for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.9.
 .. attribute:: mcycle.DEFAULTS.GRAVITY
 
   double : Vertical cceleration due to gravity. Defaults to 9.80665 [m/s^2].
@@ -134,7 +134,7 @@ Attributes
                  }}
   
 Methods
-========
+--------
 .. automodule:: mcycle.DEFAULTS
    :members:
    :undoc-members:

@@ -79,7 +79,7 @@
 <span id="hxbasic-class"></span><h2>HxBasic Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_basic" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.hxs.hx_basic.HxBasic">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basic.</code><code class="descname">HxBasic</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf_liq=nan, double hWf_tp=nan, double hWf_vap=nan, double hSf=nan, double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=nan, double A=nan, double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBracket=[1, 100], list sizeUnitsBracket=[1e-5, 1.], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitBasic</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basic.</code><code class="descname">HxBasic</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf_liq=nan, double hWf_tp=nan, double hWf_vap=nan, double hSf=nan, double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=nan, double A=nan, double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBounds=[1, 100], list sizeUnitsBounds=[1e-5, 1.], runBounds=[nan, nan], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitBasic</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component22" title="mcycle.bases.component.Component22"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component22</span></code></a></p>
 <p>Characterises a basic heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -178,17 +178,17 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “N”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [1, 100].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
-<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeUnitsBounds</strong> : float or list of float, optional</p>
 <blockquote>
-<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
@@ -307,17 +307,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.notes" title="mcycle.components.hxs.hx_basic.HxBasic.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.runBracket" title="mcycle.components.hxs.hx_basic.HxBasic.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.runBounds" title="mcycle.components.hxs.hx_basic.HxBasic.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeAttr" title="mcycle.components.hxs.hx_basic.HxBasic.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeBracket" title="mcycle.components.hxs.hx_basic.HxBasic.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeBounds" title="mcycle.components.hxs.hx_basic.HxBasic.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBracket" title="mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBounds" title="mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.tWall" title="mcycle.components.hxs.hx_basic.HxBasic.tWall"><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></a></td>
 <td>tWall: ‘double’</td>
@@ -349,10 +349,10 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.run" title="mcycle.components.hxs.hx_basic.HxBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Abstract method: must be defined by subclasses.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.size" title="mcycle.components.hxs.hx_basic.HxBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.size" title="mcycle.components.hxs.hx_basic.HxBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnits" title="mcycle.components.hxs.hx_basic.HxBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnits" title="mcycle.components.hxs.hx_basic.HxBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic.summary" title="mcycle.components.hxs.hx_basic.HxBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -593,14 +593,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basic.HxBasic.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_basic.HxBasic.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -610,20 +610,20 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basic.HxBasic.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_basic.HxBasic.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basic.HxBasic.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -714,7 +714,7 @@ Setter makes both equal to desired value.</p>
 <span id="hxunitbasic-class"></span><h3>HxUnitBasic Class<a class="headerlink" href="#module-mcycle.components.hxs.hxunit_basic" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_basic.</code><code class="descname">HxUnitBasic</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf=float(u'nan'), double hSf=float(u'nan'), double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=float(u'nan'), double A=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'A', list sizeBracket=[0.01, 10.0], unicode name=u'HxUnitBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_basic.</code><code class="descname">HxUnitBasic</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf=float(u'nan'), double hSf=float(u'nan'), double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=float(u'nan'), double A=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'A', list sizeBounds=[0.01, 10.0], unicode name=u'HxUnitBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component22" title="mcycle.bases.component.Component22"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component22</span></code></a></p>
 <p>Characterises a basic heat exchanger unit consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -801,12 +801,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “N”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [3, 100].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -914,17 +914,17 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.notes" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBracket" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBounds" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeAttr" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBracket" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBounds" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBracket" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBounds" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.tWall" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.tWall"><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></a></td>
 <td>tWall: ‘double’</td>
@@ -974,10 +974,10 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.run" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Run the HX from the incoming FlowState, using the epsilon-NTU method to produce an initial solution estimate.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.size" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.size" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td>Size for the value of the nominated attribute required to achieve the defined outgoing FlowState.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.summary" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -1219,14 +1219,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1236,14 +1236,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Size for the value of the nominated attribute required to achieve the defined outgoing FlowState.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1253,12 +1253,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.</p>
 </div></blockquote>
-<p><strong>bracket</strong> : float or list of float, optional</p>
+<p><strong>bounds</strong> : float or list of float, optional</p>
 <blockquote class="last">
-<div><p>Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.</p>
+<div><p>Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.</p>
 <ul class="simple">
-<li>if bracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if bracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if bounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if bounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 </td>
@@ -1268,9 +1268,9 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -1375,7 +1375,7 @@ Setter makes both equal to desired value.</p>
 <span id="hxbasicplanar-class"></span><h2>HxBasicPlanar Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_basicplanar" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basicplanar.</code><code class="descname">HxBasicPlanar</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, hWf_liq=nan, hWf_tp=nan, hWf_vap=nan, double hSf=nan, double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=nan, double L=nan, double W=nan, double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBracket=[1, 100], list sizeUnitsBracket=[1e-5, 1.], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitBasicPlanar</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_basicplanar.</code><code class="descname">HxBasicPlanar</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, hWf_liq=nan, hWf_tp=nan, hWf_vap=nan, double hSf=nan, double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=nan, double L=nan, double W=nan, double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBounds=[1, 100], list sizeUnitsBounds=[1e-5, 1.], runBounds=[nan, nan], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitBasicPlanar</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hx_basic.HxBasic" title="mcycle.components.hxs.hx_basic.HxBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hx_basic.HxBasic</span></code></a></p>
 <p>Characterises a basic planar heat exchanger consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1478,17 +1478,17 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “N”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [1, 100].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
-<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeUnitsBounds</strong> : float or list of float, optional</p>
 <blockquote>
-<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
@@ -1613,17 +1613,17 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.notes" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBracket" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBounds" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeAttr" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBracket" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBounds" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBracket" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBounds" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.tWall" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.tWall"><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></a></td>
 <td>tWall: ‘double’</td>
@@ -1655,13 +1655,13 @@ Setter makes both equal to desired value.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.run" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a>(self,&nbsp;list&nbsp;unitsBracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a>(self,&nbsp;list&nbsp;unitsBounds)</td>
 <td>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -1914,14 +1914,14 @@ Setter makes both equal to desired value.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1931,25 +1931,25 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L">
-<code class="descname">size_L</code><span class="sig-paren">(</span><em>self</em>, <em>list unitsBracket</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size_L</code><span class="sig-paren">(</span><em>self</em>, <em>list unitsBounds</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar.size_L" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</p>
 </dd></dl>
 
@@ -2041,7 +2041,7 @@ Setter makes both equal to desired value.</p>
 <span id="hxunitbasicplanar-class"></span><h3>HxUnitBasicPlanar Class<a class="headerlink" href="#module-mcycle.components.hxs.hxunit_basicplanar" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_basicplanar.</code><code class="descname">HxUnitBasicPlanar</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf=float(u'nan'), double hSf=float(u'nan'), double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=float(u'nan'), double L=float(u'nan'), double W=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'A', list sizeBracket=[0.01, 10.0], unicode name=u'HxUnitBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_basicplanar.</code><code class="descname">HxUnitBasicPlanar</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NWf=1, int NSf=1, int NWall=1, double hWf=float(u'nan'), double hSf=float(u'nan'), double RfWf=0, double RfSf=0, SolidMaterial wall=None, double tWall=float(u'nan'), double L=float(u'nan'), double W=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioWall=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'A', list sizeBounds=[0.01, 10.0], unicode name=u'HxUnitBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hxunit_basic.HxUnitBasic" title="mcycle.components.hxs.hxunit_basic.HxUnitBasic"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hxunit_basic.HxUnitBasic</span></code></a></p>
 <p>Characterises a basic planar heat exchanger unit consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2132,12 +2132,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “N”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [3, 100].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -2251,17 +2251,17 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.notes" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.notes"><code class="xref py py-obj docutils literal"><span class="pre">notes</span></code></a></td>
 <td>notes: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBracket" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBounds" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeAttr" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBracket" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBounds" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBracket" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBounds" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.tWall" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.tWall"><code class="xref py py-obj docutils literal"><span class="pre">tWall</span></code></a></td>
 <td>tWall: ‘double’</td>
@@ -2311,10 +2311,10 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.run" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Run the HX from the incoming FlowState, using the epsilon-NTU method to produce an initial solution estimate.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td>Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.summary" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -2569,14 +2569,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2586,14 +2586,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2603,12 +2603,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.</p>
 </div></blockquote>
-<p><strong>bracket</strong> : float or list of float, optional</p>
+<p><strong>bounds</strong> : float or list of float, optional</p>
 <blockquote class="last">
-<div><p>Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.</p>
+<div><p>Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.</p>
 <ul class="simple">
-<li>if bracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if bracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if bounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if bounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 </td>
@@ -2618,9 +2618,9 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -2725,7 +2725,7 @@ Setter makes both equal to desired value.</p>
 <span id="hxplate-class"></span><h2>HxPlate Class<a class="headerlink" href="#module-mcycle.components.hxs.hx_plate" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.hxs.hx_plate.HxPlate">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_plate.</code><code class="descname">HxPlate</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NPlate=3, double RfWf=0, double RfSf=0, SolidMaterial plate=None, double tPlate=nan, Geom geomPlateWf=None, Geom geomPlateSf=None, double L=nan, double W=nan, double ARatioWf=1, double ARatioSf=1, double ARatioPlate=1, double DPortWf=nan, double DPortSf=nan, double LVertPortWf=nan, double LVertPortSf=nan, list coeffs_LPlate=[0, 1], list coeffs_WPlate=[0, 1], list coeffs_weight=[], double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBracket=[3, 100], list sizeUnitsBracket=[1e-5, 10.], runBracket=[RUN_BRACKET_MIN_H, RUN_BRACKET_MAX_H], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitPlate</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hx_plate.</code><code class="descname">HxPlate</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NPlate=3, double RfWf=0, double RfSf=0, SolidMaterial plate=None, double tPlate=nan, Geom geomPlateWf=None, Geom geomPlateSf=None, double L=nan, double W=nan, double ARatioWf=1, double ARatioSf=1, double ARatioPlate=1, double DPortWf=nan, double DPortSf=nan, double LVertPortWf=nan, double LVertPortSf=nan, list coeffs_LPlate=[0, 1], list coeffs_WPlate=[0, 1], list coeffs_weight=[], double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, FlowState ambient=None, unicode sizeAttr=u'NPlate', list sizeBounds=[3, 100], list sizeUnitsBounds=[1e-5, 10.], runBounds=[nan, nan], unicode name=u'HxBasic instance', unicode notes=u'No notes/model info.', Config config=Config(), _unitClass=HxUnitPlate</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hx_basicplanar.HxBasicPlanar" title="mcycle.components.hxs.hx_basicplanar.HxBasicPlanar"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hx_basicplanar.HxBasicPlanar</span></code></a></p>
 <p>Characterises a basic plate heat exchanger consisting of alternating working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2837,17 +2837,17 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “NPlate”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [3, 100].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
-<p><strong>sizeUnitsBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeUnitsBounds</strong> : float or list of float, optional</p>
 <blockquote>
-<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bracket is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
+<div><p>Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].</p>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
 <blockquote>
@@ -3011,17 +3011,17 @@ Setter makes both equal to desired value.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.plate" title="mcycle.components.hxs.hx_plate.HxPlate.plate"><code class="xref py py-obj docutils literal"><span class="pre">plate</span></code></a></td>
 <td>SolidMaterial: Alias of self.wall</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.runBracket" title="mcycle.components.hxs.hx_plate.HxPlate.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.runBounds" title="mcycle.components.hxs.hx_plate.HxPlate.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeAttr" title="mcycle.components.hxs.hx_plate.HxPlate.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeBracket" title="mcycle.components.hxs.hx_plate.HxPlate.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeBounds" title="mcycle.components.hxs.hx_plate.HxPlate.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBracket" title="mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBounds" title="mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.tPlate" title="mcycle.components.hxs.hx_plate.HxPlate.tPlate"><code class="xref py py-obj docutils literal"><span class="pre">tPlate</span></code></a></td>
 <td>float: Alias of self.tWall</td>
@@ -3086,13 +3086,13 @@ Setter makes both equal to desired value.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.run" title="mcycle.components.hxs.hx_plate.HxPlate.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size" title="mcycle.components.hxs.hx_plate.HxPlate.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size" title="mcycle.components.hxs.hx_plate.HxPlate.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnits" title="mcycle.components.hxs.hx_plate.HxPlate.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnits" title="mcycle.components.hxs.hx_plate.HxPlate.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="mcycle.components.hxs.hx_plate.HxPlate.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a>(self,&nbsp;list&nbsp;unitsBracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="mcycle.components.hxs.hx_plate.HxPlate.size_L"><code class="xref py py-obj docutils literal"><span class="pre">size_L</span></code></a>(self,&nbsp;list&nbsp;unitsBounds)</td>
 <td>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hx_plate.HxPlate.size_NPlate" title="mcycle.components.hxs.hx_plate.HxPlate.size_NPlate"><code class="xref py py-obj docutils literal"><span class="pre">size_NPlate</span></code></a>(self)</td>
@@ -3470,14 +3470,14 @@ Setter makes both equal to desired value.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_plate.HxPlate.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_plate.HxPlate.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3487,25 +3487,25 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_plate.HxPlate.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_plate.HxPlate.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hx_plate.HxPlate.size_L">
-<code class="descname">size_L</code><span class="sig-paren">(</span><em>self</em>, <em>list unitsBracket</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size_L</code><span class="sig-paren">(</span><em>self</em>, <em>list unitsBounds</em><span class="sig-paren">)</span> &#x2192; double<a class="headerlink" href="#mcycle.components.hxs.hx_plate.HxPlate.size_L" title="Permalink to this definition">¶</a></dt>
 <dd><p>float: Solve for the required length of the Hx to satisfy the heat transfer equations [m].</p>
 </dd></dl>
 
@@ -3613,7 +3613,7 @@ Setter makes both equal to desired value.</p>
 <span id="hxunitplate-class"></span><h3>HxUnitPlate Class<a class="headerlink" href="#module-mcycle.components.hxs.hxunit_plate" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate">
-<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_plate.</code><code class="descname">HxUnitPlate</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NPlate=3, double RfWf=0, double RfSf=0, SolidMaterial plate=None, double tPlate=float(u'nan'), Geom geomPlateWf=None, Geom geomPlateSf=None, double L=float(u'nan'), double W=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioPlate=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'L', list sizeBracket=[1e-5, 10.0], unicode name=u'HxUnitPlateCorrugated instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.hxs.hxunit_plate.</code><code class="descname">HxUnitPlate</code><span class="sig-paren">(</span><em>unicode flowSense=u'counterflow', int NPlate=3, double RfWf=0, double RfSf=0, SolidMaterial plate=None, double tPlate=float(u'nan'), Geom geomPlateWf=None, Geom geomPlateSf=None, double L=float(u'nan'), double W=float(u'nan'), double ARatioWf=1, double ARatioSf=1, double ARatioPlate=1, double effThermal=1.0, FlowState flowInWf=None, FlowState flowInSf=None, FlowState flowOutWf=None, FlowState flowOutSf=None, unicode sizeAttr=u'L', list sizeBounds=[1e-5, 10.0], unicode name=u'HxUnitPlateCorrugated instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar" title="mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar"><code class="xref py py-class docutils literal"><span class="pre">mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar</span></code></a></p>
 <p>Characterises a basic plate heat exchanger unit consisting of alternating working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3701,12 +3701,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “L”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [1e-5, 10.0].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -3838,17 +3838,17 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.plate" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.plate"><code class="xref py py-obj docutils literal"><span class="pre">plate</span></code></a></td>
 <td>alias of self.wall.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBracket" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBounds" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeAttr" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBracket" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBounds" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBracket" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBounds" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.tPlate" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.tPlate"><code class="xref py py-obj docutils literal"><span class="pre">tPlate</span></code></a></td>
 <td>alias of self.tWall.</td>
@@ -3901,10 +3901,10 @@ Setter makes both equal to desired value.</p>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.run" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Run the HX from the incoming FlowState, using the epsilon-NTU method to produce an initial solution estimate.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.size" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.size" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td>Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.summary" title="mcycle.components.hxs.hxunit_plate.HxUnitPlate.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -4189,14 +4189,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -4206,14 +4206,14 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4223,12 +4223,12 @@ Setter makes both equal to desired value.</p>
 <blockquote>
 <div><p>Attribute to be solved. If None, self.sizeAttr is used. Defaults to None.</p>
 </div></blockquote>
-<p><strong>bracket</strong> : float or list of float, optional</p>
+<p><strong>bounds</strong> : float or list of float, optional</p>
 <blockquote class="last">
-<div><p>Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.</p>
+<div><p>Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.</p>
 <ul class="simple">
-<li>if bracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if bracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if bounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if bounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 </td>
@@ -4238,9 +4238,9 @@ Setter makes both equal to desired value.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.hxs.hxunit_plate.HxUnitPlate.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">

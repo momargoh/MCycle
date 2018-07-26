@@ -66,7 +66,7 @@
 <span id="compbasic-class"></span><h2>CompBasic Class<a class="headerlink" href="#module-mcycle.components.compressors.comp_basic" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="mcycle.components.compressors.comp_basic.CompBasic">
-<em class="property">class </em><code class="descclassname">mcycle.components.compressors.comp_basic.</code><code class="descname">CompBasic</code><span class="sig-paren">(</span><em>double pRatio, double effIsentropic=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'CompBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mcycle.components.compressors.comp_basic.</code><code class="descname">CompBasic</code><span class="sig-paren">(</span><em>double pRatio, double effIsentropic=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBounds=[1, 50], list sizeUnitsBounds=[], unicode name=u'CompBasic instance', unicode notes=u'No notes/model info.', Config config=Config()</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../bases/component.html#mcycle.bases.component.Component11" title="mcycle.bases.component.Component11"><code class="xref py py-class docutils literal"><span class="pre">mcycle.bases.component.Component11</span></code></a></p>
 <p>Basic expansion defined by a pressure ratio and isentropic efficiency.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -97,12 +97,12 @@
 <blockquote>
 <div><p>Default attribute used by size(). Defaults to “pRatio”.</p>
 </div></blockquote>
-<p><strong>sizeBracket</strong> : float or list of float, optional</p>
+<p><strong>sizeBounds</strong> : float or list of float, optional</p>
 <blockquote>
 <div><p>Bracket containing solution of size(). Defaults to [1, 50].</p>
 <ul class="simple">
-<li>if sizeBracket=[a,b]: scipy.optimize.brentq is used.</li>
-<li>if sizeBracket=a or [a]: scipy.optimize.newton is used.</li>
+<li>if sizeBounds=[a,b]: scipy.optimize.brentq is used.</li>
+<li>if sizeBounds=a or [a]: scipy.optimize.newton is used.</li>
 </ul>
 </div></blockquote>
 <p><strong>name</strong> : string, optional</p>
@@ -144,11 +144,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowIn" title="mcycle.components.compressors.comp_basic.CompBasic.flowIn"><code class="xref py py-obj docutils literal"><span class="pre">flowIn</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInWf" title="mcycle.components.compressors.comp_basic.CompBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInSf" title="mcycle.components.compressors.comp_basic.CompBasic.flowInSf"><code class="xref py py-obj docutils literal"><span class="pre">flowInSf</span></code></a></td>
+<td>Alias for self.flowsIn[1]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInWf" title="mcycle.components.compressors.comp_basic.CompBasic.flowInWf"><code class="xref py py-obj docutils literal"><span class="pre">flowInWf</span></code></a></td>
 <td>Alias for self.flowsIn[0]</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOut" title="mcycle.components.compressors.comp_basic.CompBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOut" title="mcycle.components.compressors.comp_basic.CompBasic.flowOut"><code class="xref py py-obj docutils literal"><span class="pre">flowOut</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOutSf" title="mcycle.components.compressors.comp_basic.CompBasic.flowOutSf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutSf</span></code></a></td>
+<td>Alias for self.flowsOut[1]</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOutWf" title="mcycle.components.compressors.comp_basic.CompBasic.flowOutWf"><code class="xref py py-obj docutils literal"><span class="pre">flowOutWf</span></code></a></td>
 <td>Alias for self.flowsOut[0]</td>
@@ -180,17 +186,17 @@
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.pRatio" title="mcycle.components.compressors.comp_basic.CompBasic.pRatio"><code class="xref py py-obj docutils literal"><span class="pre">pRatio</span></code></a></td>
 <td>pRatio: ‘double’</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.runBracket" title="mcycle.components.compressors.comp_basic.CompBasic.runBracket"><code class="xref py py-obj docutils literal"><span class="pre">runBracket</span></code></a></td>
-<td>runBracket: ‘double [2]’</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.runBounds" title="mcycle.components.compressors.comp_basic.CompBasic.runBounds"><code class="xref py py-obj docutils literal"><span class="pre">runBounds</span></code></a></td>
+<td>runBounds: ‘double [2]’</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeAttr" title="mcycle.components.compressors.comp_basic.CompBasic.sizeAttr"><code class="xref py py-obj docutils literal"><span class="pre">sizeAttr</span></code></a></td>
 <td>sizeAttr: unicode</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeBracket" title="mcycle.components.compressors.comp_basic.CompBasic.sizeBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeBracket</span></code></a></td>
-<td>sizeBracket: list</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeBounds" title="mcycle.components.compressors.comp_basic.CompBasic.sizeBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeBounds</span></code></a></td>
+<td>sizeBounds: list</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBracket" title="mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBracket"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBracket</span></code></a></td>
-<td>sizeUnitsBracket: list</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBounds" title="mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBounds"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnitsBounds</span></code></a></td>
+<td>sizeUnitsBounds: list</td>
 </tr>
 </tbody>
 </table>
@@ -210,10 +216,10 @@
 <tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.run" title="mcycle.components.compressors.comp_basic.CompBasic.run"><code class="xref py py-obj docutils literal"><span class="pre">run</span></code></a>(self)</td>
 <td>Compute for the outgoing working fluid FlowState from component attributes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.size" title="mcycle.components.compressors.comp_basic.CompBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bracket=[],&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.size" title="mcycle.components.compressors.comp_basic.CompBasic.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a>(self,&nbsp;unicode&nbsp;attr=u,&nbsp;list&nbsp;bounds=[],&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnits" title="mcycle.components.compressors.comp_basic.CompBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bracket)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnits" title="mcycle.components.compressors.comp_basic.CompBasic.sizeUnits"><code class="xref py py-obj docutils literal"><span class="pre">sizeUnits</span></code></a>(self,&nbsp;unicode&nbsp;attr,&nbsp;list&nbsp;bounds)</td>
 <td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#mcycle.components.compressors.comp_basic.CompBasic.summary" title="mcycle.components.compressors.comp_basic.CompBasic.summary"><code class="xref py py-obj docutils literal"><span class="pre">summary</span></code></a>(self,&nbsp;bool&nbsp;printSummary=True[,&nbsp;…])</td>
@@ -273,6 +279,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowInSf">
+<code class="descname">flowInSf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsIn[1]</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="mcycle.components.compressors.comp_basic.CompBasic.flowInWf">
 <code class="descname">flowInWf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowInWf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsIn[0]</p>
@@ -282,6 +294,12 @@
 <dt id="mcycle.components.compressors.comp_basic.CompBasic.flowOut">
 <code class="descname">flowOut</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.flowsOut[0]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.flowOutSf">
+<code class="descname">flowOutSf</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.flowOutSf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for self.flowsOut[1]</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -351,14 +369,14 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.compressors.comp_basic.CompBasic.runBracket">
-<code class="descname">runBracket</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.runBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>runBracket: ‘double [2]’</p>
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.runBounds">
+<code class="descname">runBounds</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.runBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>runBounds: ‘double [2]’</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.compressors.comp_basic.CompBasic.size">
-<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bracket=[]</em>, <em>list unitsBracket=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">size</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr=u''</em>, <em>list bounds=[]</em>, <em>list unitsBounds=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -368,20 +386,20 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.compressors.comp_basic.CompBasic.sizeBracket">
-<code class="descname">sizeBracket</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeBracket: list</p>
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.sizeBounds">
+<code class="descname">sizeBounds</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeBounds: list</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mcycle.components.compressors.comp_basic.CompBasic.sizeUnits">
-<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bracket</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sizeUnits</code><span class="sig-paren">(</span><em>self</em>, <em>unicode attr</em>, <em>list bounds</em><span class="sig-paren">)</span> &#x2192; void<a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnits" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBracket">
-<code class="descname">sizeUnitsBracket</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBracket" title="Permalink to this definition">¶</a></dt>
-<dd><p>sizeUnitsBracket: list</p>
+<dt id="mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBounds">
+<code class="descname">sizeUnitsBounds</code><a class="headerlink" href="#mcycle.components.compressors.comp_basic.CompBasic.sizeUnitsBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>sizeUnitsBounds: list</p>
 </dd></dl>
 
 <dl class="method">

@@ -52,7 +52,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'geomPlateWf.b': 1.096e-3,
             'W': 95e-3
         })
-        self.hx.update({'sizeAttr': 'L', 'sizeBracket': [0.005, 0.5]})
+        self.hx.update({'sizeAttr': 'L', 'sizeBounds': [0.005, 0.5]})
         self.hx._size('', [], [])
         self.assertAlmostEqual(abs(self.hx.L - 269e-3) / 269e-3, 0, 2)
         #
@@ -66,7 +66,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'geomPlateWf.b': 1.096e-3,
             'W': 95e-3
         })
-        self.hx.update({'sizeAttr': 'W', 'sizeBracket': [50e-3, 500e-3]})
+        self.hx.update({'sizeAttr': 'W', 'sizeBounds': [50e-3, 500e-3]})
         self.hx._size('', [], [])
         self.assertAlmostEqual(abs(self.hx.W - 95e-3) / 95e-3, 0, 4)
 
@@ -79,7 +79,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
         })
         self.hx.update({
             'sizeAttr': 'geomPlateWf.b',
-            'sizeBracket': [0.1e-3, 10e-3]
+            'sizeBounds': [0.1e-3, 10e-3]
         })
         self.hx._size('', [], [])
         self.assertAlmostEqual(abs(self.hx.geomPlateWf.b - 1.096e-3), 0, 4)
@@ -91,12 +91,12 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'geomPlateWf.b': 1.096e-3,
             'W': 95e-3
         })
-        self.hx.update({'sizeAttr': 'NPlate', 'sizeBracket': [10, 50]})
+        self.hx.update({'sizeAttr': 'NPlate', 'sizeBounds': [10, 50]})
         self.hx._size('', [], [])
         self.assertEqual(self.hx.NPlate, 23)
 
-    def test_1_size_L_solution_not_in_bracket_Exception(self):
-        self.hx.update({'sizeAttr': 'L', 'sizeBracket': [0.5, 5.]})
+    def test_1_size_L_solution_not_in_bounds_Exception(self):
+        self.hx.update({'sizeAttr': 'L', 'sizeBounds': [0.5, 5.]})
         self.hx._size('', [], [])
         self.assertRaises(Exception)
 
@@ -114,8 +114,8 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'W': 95e-3,
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,
-            'sizeUnitsBracket': [1e-5, 1.],
-            'runBracket': [hLowerBound, hUpperBound]
+            'sizeUnitsBounds': [1e-5, 1.],
+            'runBounds': [hLowerBound, hUpperBound]
         })
         self.hx.run()
         #self.hx.summary(flowKeys='all')
@@ -135,8 +135,8 @@ class TestHxPlateCorrChevron(unittest.TestCase):
             'W': 95e-3,
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,
-            'sizeUnitsBracket': [1e-5, 5.],
-            'runBracket': [hLowerBound, hUpperBound]
+            'sizeUnitsBounds': [1e-5, 5.],
+            'runBounds': [hLowerBound, hUpperBound]
         })
         self.hx.run()
         #self.hx.summary(flowKeys='all')

@@ -29,7 +29,7 @@ class TestExpBasic(unittest.TestCase):
 
         exp = mc.ExpBasic(-1, 0.686, flowIn, flowOut)
         exp.update({'m': 1.})
-        exp.size()  # defaults to sizeAttr=pRatio,sizeBracket=[1,50]
+        exp.size()  # defaults to sizeAttr=pRatio,sizeBounds=[1,50]
         self.assertAlmostEqual(exp.pRatio,  40.0, 5)
 
 

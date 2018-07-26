@@ -850,9 +850,9 @@ struct __pyx_obj_6mcycle_5bases_9component_Component {
   PyObject *flowsOut;
   struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *ambient;
   PyObject *sizeAttr;
-  PyObject *sizeBracket;
-  PyObject *sizeUnitsBracket;
-  double runBracket[2];
+  PyObject *sizeBounds;
+  PyObject *sizeUnitsBounds;
+  double runBounds[2];
   PyObject *notes;
   struct __pyx_obj_6mcycle_5bases_6config_Config *config;
 };
@@ -1399,7 +1399,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 double __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic_PIn(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic_run(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bracket, PyObject *__pyx_v_unitsBracket, int __pyx_skip_dispatch); /* proto*/
+void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds, PyObject *__pyx_v_unitsBounds, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from 'mcycle.bases.mcabstractbase' */
 static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = 0;
@@ -1460,6 +1460,7 @@ static const char __pyx_k_notes[] = "notes";
 static const char __pyx_k_power[] = "power";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_super[] = "super";
+static const char __pyx_k_bounds[] = "bounds";
 static const char __pyx_k_config[] = "config";
 static const char __pyx_k_flowIn[] = "flowIn";
 static const char __pyx_k_format[] = "format";
@@ -1470,7 +1471,6 @@ static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_ambient[] = "ambient";
-static const char __pyx_k_bracket[] = "bracket";
 static const char __pyx_k_flowOut[] = "flowOut";
 static const char __pyx_k_CoolProp[] = "CoolProp";
 static const char __pyx_k_getstate[] = "__getstate__";
@@ -1487,11 +1487,11 @@ static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
+static const char __pyx_k_sizeBounds[] = "sizeBounds";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_sizeBracket[] = "sizeBracket";
+static const char __pyx_k_unitsBounds[] = "unitsBounds";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
-static const char __pyx_k_unitsBracket[] = "unitsBracket";
 static const char __pyx_k_HmassP_INPUTS[] = "HmassP_INPUTS";
 static const char __pyx_k_OverflowError[] = "OverflowError";
 static const char __pyx_k_PSmass_INPUTS[] = "PSmass_INPUTS";
@@ -1501,13 +1501,13 @@ static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AssertionError[] = "AssertionError";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_sizeUnitsBracket[] = "sizeUnitsBracket";
+static const char __pyx_k_sizeUnitsBounds[] = "sizeUnitsBounds";
 static const char __pyx_k_CompBasic_instance[] = "CompBasic instance";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_No_notes_model_info[] = "No notes/model info.";
 static const char __pyx_k_pyx_unpickle_CompBasic[] = "__pyx_unpickle_CompBasic";
 static const char __pyx_k_size_failed_to_converge[] = "{}.size({},{},{}) failed to converge.";
-static const char __pyx_k_Incompatible_checksums_s_vs_0x38[] = "Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))";
+static const char __pyx_k_Incompatible_checksums_s_vs_0xb2[] = "Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))";
 static const char __pyx_k_mcycle_components_compressors_co[] = "mcycle.components.compressors.comp_basic";
 static const char __pyx_k_pIn_given_cannot_be_greater_than[] = "pIn (given: {}) cannot be greater than pOut = {}";
 static const char __pyx_k_pOut_given_cannot_be_less_than_p[] = "pOut (given: {}) cannot be less than pIn = {}";
@@ -1516,7 +1516,7 @@ static PyObject *__pyx_n_s_CP;
 static PyObject *__pyx_kp_u_CompBasic_instance;
 static PyObject *__pyx_n_s_CoolProp;
 static PyObject *__pyx_n_s_HmassP_INPUTS;
-static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x38;
+static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb2;
 static PyObject *__pyx_n_s_IndexError;
 static PyObject *__pyx_kp_u_No_notes_model_info;
 static PyObject *__pyx_n_s_OverflowError;
@@ -1530,7 +1530,7 @@ static PyObject *__pyx_kp_u__4;
 static PyObject *__pyx_n_s_ambient;
 static PyObject *__pyx_n_u_ambient;
 static PyObject *__pyx_n_s_attr;
-static PyObject *__pyx_n_s_bracket;
+static PyObject *__pyx_n_s_bounds;
 static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_config;
@@ -1588,20 +1588,20 @@ static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_size;
 static PyObject *__pyx_n_s_sizeAttr;
 static PyObject *__pyx_n_u_sizeAttr;
-static PyObject *__pyx_n_s_sizeBracket;
-static PyObject *__pyx_n_u_sizeBracket;
-static PyObject *__pyx_n_s_sizeUnitsBracket;
-static PyObject *__pyx_n_u_sizeUnitsBracket;
+static PyObject *__pyx_n_s_sizeBounds;
+static PyObject *__pyx_n_u_sizeBounds;
+static PyObject *__pyx_n_s_sizeUnitsBounds;
+static PyObject *__pyx_n_u_sizeUnitsBounds;
 static PyObject *__pyx_kp_u_size_failed_to_converge;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_unitsBracket;
+static PyObject *__pyx_n_s_unitsBounds;
 static PyObject *__pyx_n_s_update;
-static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, double __pyx_v_pRatio, double __pyx_v_effIsentropic, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowIn, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_ambient, PyObject *__pyx_v_sizeAttr, PyObject *__pyx_v_sizeBracket, PyObject *__pyx_v_sizeUnitsBracket, PyObject *__pyx_v_name, PyObject *__pyx_v_notes, struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_v_config); /* proto */
+static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, double __pyx_v_pRatio, double __pyx_v_effIsentropic, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowIn, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_ambient, PyObject *__pyx_v_sizeAttr, PyObject *__pyx_v_sizeBounds, PyObject *__pyx_v_sizeUnitsBounds, PyObject *__pyx_v_name, PyObject *__pyx_v_notes, struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_v_config); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_2PIn(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_4run(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bracket, PyObject *__pyx_v_unitsBracket); /* proto */
+static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds, PyObject *__pyx_v_unitsBounds); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_3pIn___get__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self); /* proto */
 static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_3pIn_2__set__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, double __pyx_v_value); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_4pOut___get__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self); /* proto */
@@ -1617,7 +1617,7 @@ static PyObject *__pyx_tp_new_6mcycle_10components_11compressors_10comp_basic_Co
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_50;
-static PyObject *__pyx_int_59186126;
+static PyObject *__pyx_int_186749657;
 static PyObject *__pyx_k_;
 static PyObject *__pyx_k__2;
 static struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_k__3;
@@ -1641,8 +1641,8 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
   struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut = 0;
   struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_ambient = 0;
   PyObject *__pyx_v_sizeAttr = 0;
-  PyObject *__pyx_v_sizeBracket = 0;
-  PyObject *__pyx_v_sizeUnitsBracket = 0;
+  PyObject *__pyx_v_sizeBounds = 0;
+  PyObject *__pyx_v_sizeUnitsBounds = 0;
   PyObject *__pyx_v_name = 0;
   PyObject *__pyx_v_notes = 0;
   struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_v_config = 0;
@@ -1650,7 +1650,7 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pRatio,&__pyx_n_s_effIsentropic,&__pyx_n_s_flowIn,&__pyx_n_s_flowOut,&__pyx_n_s_ambient,&__pyx_n_s_sizeAttr,&__pyx_n_s_sizeBracket,&__pyx_n_s_sizeUnitsBracket,&__pyx_n_s_name,&__pyx_n_s_notes,&__pyx_n_s_config,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pRatio,&__pyx_n_s_effIsentropic,&__pyx_n_s_flowIn,&__pyx_n_s_flowOut,&__pyx_n_s_ambient,&__pyx_n_s_sizeAttr,&__pyx_n_s_sizeBounds,&__pyx_n_s_sizeUnitsBounds,&__pyx_n_s_name,&__pyx_n_s_notes,&__pyx_n_s_config,0};
     PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
 
     /* "mcycle/components/compressors/comp_basic.pyx":43
@@ -1676,7 +1676,7 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
  *                  FlowState flowOut=None,
  *                  FlowState ambient=None,             # <<<<<<<<<<<<<<
  *                  str sizeAttr="pRatio",
- *                  list sizeBracket=[1, 50],
+ *                  list sizeBounds=[1, 50],
  */
     values[4] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
     values[5] = ((PyObject*)__pyx_n_u_pRatio);
@@ -1752,13 +1752,13 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
         CYTHON_FALLTHROUGH;
         case  6:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_sizeBracket);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_sizeBounds);
           if (value) { values[6] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_sizeUnitsBracket);
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_sizeUnitsBounds);
           if (value) { values[7] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
@@ -1820,8 +1820,8 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
     __pyx_v_flowOut = ((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)values[3]);
     __pyx_v_ambient = ((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)values[4]);
     __pyx_v_sizeAttr = ((PyObject*)values[5]);
-    __pyx_v_sizeBracket = ((PyObject*)values[6]);
-    __pyx_v_sizeUnitsBracket = ((PyObject*)values[7]);
+    __pyx_v_sizeBounds = ((PyObject*)values[6]);
+    __pyx_v_sizeUnitsBounds = ((PyObject*)values[7]);
     __pyx_v_name = ((PyObject*)values[8]);
     __pyx_v_notes = ((PyObject*)values[9]);
     __pyx_v_config = ((struct __pyx_obj_6mcycle_5bases_6config_Config *)values[10]);
@@ -1838,12 +1838,12 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 44, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 45, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 46, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBracket), (&PyList_Type), 1, "sizeBracket", 1))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBracket), (&PyList_Type), 1, "sizeUnitsBracket", 1))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 48, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 49, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 50, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(((struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *)__pyx_v_self), __pyx_v_pRatio, __pyx_v_effIsentropic, __pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_ambient, __pyx_v_sizeAttr, __pyx_v_sizeBracket, __pyx_v_sizeUnitsBracket, __pyx_v_name, __pyx_v_notes, __pyx_v_config);
+  __pyx_r = __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(((struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *)__pyx_v_self), __pyx_v_pRatio, __pyx_v_effIsentropic, __pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_ambient, __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, __pyx_v_config);
 
   /* "mcycle/components/compressors/comp_basic.pyx":40
  *     """
@@ -1862,7 +1862,7 @@ static int __pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, double __pyx_v_pRatio, double __pyx_v_effIsentropic, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowIn, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_ambient, PyObject *__pyx_v_sizeAttr, PyObject *__pyx_v_sizeBracket, PyObject *__pyx_v_sizeUnitsBracket, PyObject *__pyx_v_name, PyObject *__pyx_v_notes, struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_v_config) {
+static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic___init__(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, double __pyx_v_pRatio, double __pyx_v_effIsentropic, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowIn, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_ambient, PyObject *__pyx_v_sizeAttr, PyObject *__pyx_v_sizeBounds, PyObject *__pyx_v_sizeUnitsBounds, PyObject *__pyx_v_name, PyObject *__pyx_v_notes, struct __pyx_obj_6mcycle_5bases_6config_Config *__pyx_v_config) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1876,7 +1876,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   /* "mcycle/components/compressors/comp_basic.pyx":52
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):
- *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,             # <<<<<<<<<<<<<<
+ *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,             # <<<<<<<<<<<<<<
  *                          config)
  *         self.pRatio = pRatio
  */
@@ -1905,7 +1905,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
 
   /* "mcycle/components/compressors/comp_basic.pyx":53
  *                  Config config=Config()):
- *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
+ *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)             # <<<<<<<<<<<<<<
  *         self.pRatio = pRatio
  *         self.effIsentropic = effIsentropic
@@ -1924,7 +1924,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   }
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBracket, __pyx_v_sizeUnitsBracket, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
+    PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
     __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -1933,7 +1933,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   #endif
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBracket, __pyx_v_sizeUnitsBracket, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
+    PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
     __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
@@ -1958,12 +1958,12 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
     __Pyx_INCREF(__pyx_v_sizeAttr);
     __Pyx_GIVEREF(__pyx_v_sizeAttr);
     PyTuple_SET_ITEM(__pyx_t_6, 3+__pyx_t_5, __pyx_v_sizeAttr);
-    __Pyx_INCREF(__pyx_v_sizeBracket);
-    __Pyx_GIVEREF(__pyx_v_sizeBracket);
-    PyTuple_SET_ITEM(__pyx_t_6, 4+__pyx_t_5, __pyx_v_sizeBracket);
-    __Pyx_INCREF(__pyx_v_sizeUnitsBracket);
-    __Pyx_GIVEREF(__pyx_v_sizeUnitsBracket);
-    PyTuple_SET_ITEM(__pyx_t_6, 5+__pyx_t_5, __pyx_v_sizeUnitsBracket);
+    __Pyx_INCREF(__pyx_v_sizeBounds);
+    __Pyx_GIVEREF(__pyx_v_sizeBounds);
+    PyTuple_SET_ITEM(__pyx_t_6, 4+__pyx_t_5, __pyx_v_sizeBounds);
+    __Pyx_INCREF(__pyx_v_sizeUnitsBounds);
+    __Pyx_GIVEREF(__pyx_v_sizeUnitsBounds);
+    PyTuple_SET_ITEM(__pyx_t_6, 5+__pyx_t_5, __pyx_v_sizeUnitsBounds);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 6+__pyx_t_5, __pyx_t_3);
     __Pyx_INCREF(__pyx_v_name);
@@ -1984,7 +1984,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/components/compressors/comp_basic.pyx":54
- *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
+ *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)
  *         self.pRatio = pRatio             # <<<<<<<<<<<<<<
  *         self.effIsentropic = effIsentropic
@@ -2006,7 +2006,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
  *         self.effIsentropic = effIsentropic
  *         self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
  *                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2041,7 +2041,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
  *         self.effIsentropic = effIsentropic
  *         self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
  *                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
  */
   __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
@@ -2100,7 +2100,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   /* "mcycle/components/compressors/comp_basic.pyx":58
  *         self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
  *                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
  *                         "config": MCAttr(Config, "none")}
  *         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
  */
@@ -2115,7 +2115,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   __pyx_t_6 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_sizeBracket, __pyx_t_6) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_sizeBounds, __pyx_t_6) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
@@ -2128,7 +2128,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_sizeUnitsBracket, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_u_sizeUnitsBounds, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -2159,7 +2159,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
 
   /* "mcycle/components/compressors/comp_basic.pyx":59
  *                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}             # <<<<<<<<<<<<<<
  *         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
  *                 "pOut": MCAttr(float, "pressure"), "PIn()": MCAttr(float, "power")}
@@ -2183,7 +2183,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
  *         self.effIsentropic = effIsentropic
  *         self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
  *                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"),"sizeAttr": MCAttr(str, "none"),
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  */
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs);
@@ -2192,7 +2192,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   __pyx_t_1 = 0;
 
   /* "mcycle/components/compressors/comp_basic.pyx":60
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
  *         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
  *                 "pOut": MCAttr(float, "pressure"), "PIn()": MCAttr(float, "power")}
@@ -2262,7 +2262,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic__
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "mcycle/components/compressors/comp_basic.pyx":60
- *                 "sizeBracket": MCAttr(list, "none"),"sizeUnitsBracket": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
  *         self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
  *                 "pOut": MCAttr(float, "pressure"), "PIn()": MCAttr(float, "power")}
@@ -2838,7 +2838,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic_run(stru
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, hOut,
  *                                         self.flowsIn[0].p() * self.pRatio)             # <<<<<<<<<<<<<<
  * 
- *     cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:
+ *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
  */
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -3006,13 +3006,13 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 /* "mcycle/components/compressors/comp_basic.pyx":76
  *                                         self.flowsIn[0].p() * self.pRatio)
  * 
- *     cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:             # <<<<<<<<<<<<<<
+ *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
  *         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
  * 
  */
 
 static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_7_size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bracket, PyObject *__pyx_v_unitsBracket, int __pyx_skip_dispatch) {
+void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds, PyObject *__pyx_v_unitsBounds, int __pyx_skip_dispatch) {
   struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_flowOut_s = 0;
   PyObject *__pyx_v_err = NULL;
   __Pyx_RefNannyDeclarations
@@ -3041,8 +3041,8 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
   PyObject *__pyx_t_23 = NULL;
   __Pyx_RefNannySetupContext("_size", 0);
   __Pyx_INCREF(__pyx_v_attr);
-  __Pyx_INCREF(__pyx_v_bracket);
-  __Pyx_INCREF(__pyx_v_unitsBracket);
+  __Pyx_INCREF(__pyx_v_bounds);
+  __Pyx_INCREF(__pyx_v_unitsBounds);
   /* Check if called by wrapper */
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
@@ -3065,7 +3065,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       }
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
-        PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+        PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
         __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
@@ -3073,7 +3073,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       #endif
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-        PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+        PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
         __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
@@ -3088,12 +3088,12 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
         __Pyx_INCREF(__pyx_v_attr);
         __Pyx_GIVEREF(__pyx_v_attr);
         PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_attr);
-        __Pyx_INCREF(__pyx_v_bracket);
-        __Pyx_GIVEREF(__pyx_v_bracket);
-        PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_bracket);
-        __Pyx_INCREF(__pyx_v_unitsBracket);
-        __Pyx_GIVEREF(__pyx_v_unitsBracket);
-        PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_unitsBracket);
+        __Pyx_INCREF(__pyx_v_bounds);
+        __Pyx_GIVEREF(__pyx_v_bounds);
+        PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_bounds);
+        __Pyx_INCREF(__pyx_v_unitsBounds);
+        __Pyx_GIVEREF(__pyx_v_unitsBounds);
+        PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_unitsBounds);
         __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3111,7 +3111,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
  *         cdef FlowState flowOut_s
  *         if attr == '':             # <<<<<<<<<<<<<<
  *             attr = self.sizeAttr
- *         if bracket == []:
+ *         if bounds == []:
  */
   __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_kp_u__4, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
   __pyx_t_8 = (__pyx_t_7 != 0);
@@ -3121,8 +3121,8 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
  *         cdef FlowState flowOut_s
  *         if attr == '':
  *             attr = self.sizeAttr             # <<<<<<<<<<<<<<
- *         if bracket == []:
- *             bracket = self.sizeBracket
+ *         if bounds == []:
+ *             bounds = self.sizeBounds
  */
     __pyx_t_1 = __pyx_v_self->__pyx_base.__pyx_base.sizeAttr;
     __Pyx_INCREF(__pyx_t_1);
@@ -3134,20 +3134,20 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
  *         cdef FlowState flowOut_s
  *         if attr == '':             # <<<<<<<<<<<<<<
  *             attr = self.sizeAttr
- *         if bracket == []:
+ *         if bounds == []:
  */
   }
 
   /* "mcycle/components/compressors/comp_basic.pyx":93
  *         if attr == '':
  *             attr = self.sizeAttr
- *         if bracket == []:             # <<<<<<<<<<<<<<
- *             bracket = self.sizeBracket
- *         if unitsBracket == []:
+ *         if bounds == []:             # <<<<<<<<<<<<<<
+ *             bounds = self.sizeBounds
+ *         if unitsBounds == []:
  */
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bracket, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bounds, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3155,64 +3155,64 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
 
     /* "mcycle/components/compressors/comp_basic.pyx":94
  *             attr = self.sizeAttr
- *         if bracket == []:
- *             bracket = self.sizeBracket             # <<<<<<<<<<<<<<
- *         if unitsBracket == []:
- *             unitsBracket = self.sizeUnitsBracket
+ *         if bounds == []:
+ *             bounds = self.sizeBounds             # <<<<<<<<<<<<<<
+ *         if unitsBounds == []:
+ *             unitsBounds = self.sizeUnitsBounds
  */
-    __pyx_t_2 = __pyx_v_self->__pyx_base.__pyx_base.sizeBracket;
+    __pyx_t_2 = __pyx_v_self->__pyx_base.__pyx_base.sizeBounds;
     __Pyx_INCREF(__pyx_t_2);
-    __Pyx_DECREF_SET(__pyx_v_bracket, ((PyObject*)__pyx_t_2));
+    __Pyx_DECREF_SET(__pyx_v_bounds, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
     /* "mcycle/components/compressors/comp_basic.pyx":93
  *         if attr == '':
  *             attr = self.sizeAttr
- *         if bracket == []:             # <<<<<<<<<<<<<<
- *             bracket = self.sizeBracket
- *         if unitsBracket == []:
+ *         if bounds == []:             # <<<<<<<<<<<<<<
+ *             bounds = self.sizeBounds
+ *         if unitsBounds == []:
  */
   }
 
   /* "mcycle/components/compressors/comp_basic.pyx":95
- *         if bracket == []:
- *             bracket = self.sizeBracket
- *         if unitsBracket == []:             # <<<<<<<<<<<<<<
- *             unitsBracket = self.sizeUnitsBracket
+ *         if bounds == []:
+ *             bounds = self.sizeBounds
+ *         if unitsBounds == []:             # <<<<<<<<<<<<<<
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:
  */
   __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBracket, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBounds, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_8) {
 
     /* "mcycle/components/compressors/comp_basic.pyx":96
- *             bracket = self.sizeBracket
- *         if unitsBracket == []:
- *             unitsBracket = self.sizeUnitsBracket             # <<<<<<<<<<<<<<
+ *             bounds = self.sizeBounds
+ *         if unitsBounds == []:
+ *             unitsBounds = self.sizeUnitsBounds             # <<<<<<<<<<<<<<
  *         try:
  *             if attr == 'pRatio':
  */
-    __pyx_t_1 = __pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBracket;
+    __pyx_t_1 = __pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBounds;
     __Pyx_INCREF(__pyx_t_1);
-    __Pyx_DECREF_SET(__pyx_v_unitsBracket, ((PyObject*)__pyx_t_1));
+    __Pyx_DECREF_SET(__pyx_v_unitsBounds, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
     /* "mcycle/components/compressors/comp_basic.pyx":95
- *         if bracket == []:
- *             bracket = self.sizeBracket
- *         if unitsBracket == []:             # <<<<<<<<<<<<<<
- *             unitsBracket = self.sizeUnitsBracket
+ *         if bounds == []:
+ *             bounds = self.sizeBounds
+ *         if unitsBounds == []:             # <<<<<<<<<<<<<<
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:
  */
   }
 
   /* "mcycle/components/compressors/comp_basic.pyx":97
- *         if unitsBracket == []:
- *             unitsBracket = self.sizeUnitsBracket
+ *         if unitsBounds == []:
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
  *             if attr == 'pRatio':
  *                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -3227,7 +3227,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
     /*try:*/ {
 
       /* "mcycle/components/compressors/comp_basic.pyx":98
- *             unitsBracket = self.sizeUnitsBracket
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:
  *             if attr == 'pRatio':             # <<<<<<<<<<<<<<
  *                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -3307,7 +3307,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
         __pyx_v_self->pRatio = __pyx_t_12;
 
         /* "mcycle/components/compressors/comp_basic.pyx":98
- *             unitsBracket = self.sizeUnitsBracket
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:
  *             if attr == 'pRatio':             # <<<<<<<<<<<<<<
  *                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -3623,7 +3623,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
  *                 self.effIsentropic = (flowOut_s.h() - self.flowsIn[0].h()) / (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h())             # <<<<<<<<<<<<<<
  *             else:
- *                 super(CompBasic, self)._size(attr, bracket, unitsBracket)
+ *                 super(CompBasic, self)._size(attr, bounds, unitsBounds)
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -3712,7 +3712,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       /* "mcycle/components/compressors/comp_basic.pyx":108
  *                     self.flowsOut[0].h() - self.flowsIn[0].h())
  *             else:
- *                 super(CompBasic, self)._size(attr, bracket, unitsBracket)             # <<<<<<<<<<<<<<
+ *                 super(CompBasic, self)._size(attr, bounds, unitsBounds)             # <<<<<<<<<<<<<<
  *         except AssertionError as err:
  *             raise err
  */
@@ -3745,7 +3745,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
         }
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+          PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
           __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -3753,7 +3753,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+          PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
           __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_GOTREF(__pyx_t_4);
@@ -3768,12 +3768,12 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
           __Pyx_INCREF(__pyx_v_attr);
           __Pyx_GIVEREF(__pyx_v_attr);
           PyTuple_SET_ITEM(__pyx_t_2, 0+__pyx_t_5, __pyx_v_attr);
-          __Pyx_INCREF(__pyx_v_bracket);
-          __Pyx_GIVEREF(__pyx_v_bracket);
-          PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_bracket);
-          __Pyx_INCREF(__pyx_v_unitsBracket);
-          __Pyx_GIVEREF(__pyx_v_unitsBracket);
-          PyTuple_SET_ITEM(__pyx_t_2, 2+__pyx_t_5, __pyx_v_unitsBracket);
+          __Pyx_INCREF(__pyx_v_bounds);
+          __Pyx_GIVEREF(__pyx_v_bounds);
+          PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_bounds);
+          __Pyx_INCREF(__pyx_v_unitsBounds);
+          __Pyx_GIVEREF(__pyx_v_unitsBounds);
+          PyTuple_SET_ITEM(__pyx_t_2, 2+__pyx_t_5, __pyx_v_unitsBounds);
           __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3784,8 +3784,8 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       __pyx_L12:;
 
       /* "mcycle/components/compressors/comp_basic.pyx":97
- *         if unitsBracket == []:
- *             unitsBracket = self.sizeUnitsBracket
+ *         if unitsBounds == []:
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
  *             if attr == 'pRatio':
  *                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -3806,7 +3806,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
 
     /* "mcycle/components/compressors/comp_basic.pyx":109
  *             else:
- *                 super(CompBasic, self)._size(attr, bracket, unitsBracket)
+ *                 super(CompBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
  *             raise err
  *         except:
@@ -3823,11 +3823,11 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       /*try:*/ {
 
         /* "mcycle/components/compressors/comp_basic.pyx":110
- *                 super(CompBasic, self)._size(attr, bracket, unitsBracket)
+ *                 super(CompBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:
  *             raise err             # <<<<<<<<<<<<<<
  *         except:
- *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bracket, unitsBracket))
+ *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bounds, unitsBounds))
  */
         __Pyx_Raise(__pyx_v_err, 0, 0, 0);
         __PYX_ERR(0, 110, __pyx_L18_error)
@@ -3835,7 +3835,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
 
       /* "mcycle/components/compressors/comp_basic.pyx":109
  *             else:
- *                 super(CompBasic, self)._size(attr, bracket, unitsBracket)
+ *                 super(CompBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
  *             raise err
  *         except:
@@ -3884,7 +3884,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
  *         except AssertionError as err:
  *             raise err
  *         except:             # <<<<<<<<<<<<<<
- *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bracket, unitsBracket))
+ *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bounds, unitsBounds))
  * 
  */
     /*except:*/ {
@@ -3897,7 +3897,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       /* "mcycle/components/compressors/comp_basic.pyx":112
  *             raise err
  *         except:
- *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bracket, unitsBracket))             # <<<<<<<<<<<<<<
+ *             raise StopIteration('{}.size({},{},{}) failed to converge.'.format(self.__class__.__name__, attr, bounds, unitsBounds))             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
@@ -3922,7 +3922,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       }
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
-        PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_14, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+        PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_14, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
         __pyx_t_13 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 112, __pyx_L8_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_13);
@@ -3931,7 +3931,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
       #endif
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
-        PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_14, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket};
+        PyObject *__pyx_temp[5] = {__pyx_t_3, __pyx_t_14, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
         __pyx_t_13 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 112, __pyx_L8_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_13);
@@ -3949,12 +3949,12 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
         __Pyx_INCREF(__pyx_v_attr);
         __Pyx_GIVEREF(__pyx_v_attr);
         PyTuple_SET_ITEM(__pyx_t_23, 1+__pyx_t_15, __pyx_v_attr);
-        __Pyx_INCREF(__pyx_v_bracket);
-        __Pyx_GIVEREF(__pyx_v_bracket);
-        PyTuple_SET_ITEM(__pyx_t_23, 2+__pyx_t_15, __pyx_v_bracket);
-        __Pyx_INCREF(__pyx_v_unitsBracket);
-        __Pyx_GIVEREF(__pyx_v_unitsBracket);
-        PyTuple_SET_ITEM(__pyx_t_23, 3+__pyx_t_15, __pyx_v_unitsBracket);
+        __Pyx_INCREF(__pyx_v_bounds);
+        __Pyx_GIVEREF(__pyx_v_bounds);
+        PyTuple_SET_ITEM(__pyx_t_23, 2+__pyx_t_15, __pyx_v_bounds);
+        __Pyx_INCREF(__pyx_v_unitsBounds);
+        __Pyx_GIVEREF(__pyx_v_unitsBounds);
+        PyTuple_SET_ITEM(__pyx_t_23, 3+__pyx_t_15, __pyx_v_unitsBounds);
         __pyx_t_14 = 0;
         __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_23, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 112, __pyx_L8_except_error)
         __Pyx_GOTREF(__pyx_t_13);
@@ -3976,8 +3976,8 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
     __pyx_L8_except_error:;
 
     /* "mcycle/components/compressors/comp_basic.pyx":97
- *         if unitsBracket == []:
- *             unitsBracket = self.sizeUnitsBracket
+ *         if unitsBounds == []:
+ *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
  *             if attr == 'pRatio':
  *                 self.pRatio = self.flowsOut[0].p() / self.flowsIn[0].p()
@@ -3993,7 +3993,7 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
   /* "mcycle/components/compressors/comp_basic.pyx":76
  *                                         self.flowsIn[0].p() * self.pRatio)
  * 
- *     cpdef public void _size(self, str attr, list bracket, list unitsBracket) except *:             # <<<<<<<<<<<<<<
+ *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
  *         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
  * 
  */
@@ -4014,23 +4014,23 @@ void __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(st
   __Pyx_XDECREF((PyObject *)__pyx_v_flowOut_s);
   __Pyx_XDECREF(__pyx_v_err);
   __Pyx_XDECREF(__pyx_v_attr);
-  __Pyx_XDECREF(__pyx_v_bracket);
-  __Pyx_XDECREF(__pyx_v_unitsBracket);
+  __Pyx_XDECREF(__pyx_v_bounds);
+  __Pyx_XDECREF(__pyx_v_unitsBounds);
   __Pyx_RefNannyFinishContext();
 }
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_7_size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size[] = "CompBasic._size(self, unicode attr, list bracket, list unitsBracket) -> void\nSolve for the value of the nominated attribute required to achieve the defined outgoing FlowState.\n\nParameters\n------------\nsizeAttr : string, optional\n    Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.\nsizeBracket : float or list of float, optional\n    Bracket containing solution of size(). If None, self.sizeBracket is used. Defaults to None.\n\n    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.\n\n    - if sizeBracket=a or [a]: scipy.optimize.newton is used.\n        ";
+static char __pyx_doc_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size[] = "CompBasic._size(self, unicode attr, list bounds, list unitsBounds) -> void\nSolve for the value of the nominated attribute required to achieve the defined outgoing FlowState.\n\nParameters\n------------\nsizeAttr : string, optional\n    Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.\nsizeBounds : float or list of float, optional\n    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.\n\n    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.\n\n    - if sizeBounds=a or [a]: scipy.optimize.newton is used.\n        ";
 static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompBasic_7_size(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_attr = 0;
-  PyObject *__pyx_v_bracket = 0;
-  PyObject *__pyx_v_unitsBracket = 0;
+  PyObject *__pyx_v_bounds = 0;
+  PyObject *__pyx_v_unitsBounds = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_size (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_attr,&__pyx_n_s_bracket,&__pyx_n_s_unitsBracket,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_attr,&__pyx_n_s_bounds,&__pyx_n_s_unitsBounds,0};
     PyObject* values[3] = {0,0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -4052,13 +4052,13 @@ static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompB
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_bracket)) != 0)) kw_args--;
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_bounds)) != 0)) kw_args--;
         else {
           __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 1); __PYX_ERR(0, 76, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_unitsBracket)) != 0)) kw_args--;
+        if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_unitsBounds)) != 0)) kw_args--;
         else {
           __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 2); __PYX_ERR(0, 76, __pyx_L3_error)
         }
@@ -4074,8 +4074,8 @@ static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompB
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
     __pyx_v_attr = ((PyObject*)values[0]);
-    __pyx_v_bracket = ((PyObject*)values[1]);
-    __pyx_v_unitsBracket = ((PyObject*)values[2]);
+    __pyx_v_bounds = ((PyObject*)values[1]);
+    __pyx_v_unitsBounds = ((PyObject*)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
@@ -4086,9 +4086,9 @@ static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompB
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_attr), (&PyUnicode_Type), 1, "attr", 1))) __PYX_ERR(0, 76, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bracket), (&PyList_Type), 1, "bracket", 1))) __PYX_ERR(0, 76, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBracket), (&PyList_Type), 1, "unitsBracket", 1))) __PYX_ERR(0, 76, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(((struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *)__pyx_v_self), __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bounds), (&PyList_Type), 1, "bounds", 1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBounds), (&PyList_Type), 1, "unitsBounds", 1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(((struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *)__pyx_v_self), __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4099,13 +4099,13 @@ static PyObject *__pyx_pw_6mcycle_10components_11compressors_10comp_basic_9CompB
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bracket, PyObject *__pyx_v_unitsBracket) {
+static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_6_size(struct __pyx_obj_6mcycle_10components_11compressors_10comp_basic_CompBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds, PyObject *__pyx_v_unitsBounds) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_size", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bracket, __pyx_v_unitsBracket, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_f_6mcycle_10components_11compressors_10comp_basic_9CompBasic__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
   __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
@@ -5059,7 +5059,7 @@ static int __pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompBasic_1
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)
  */
 
 /* Python wrapper */
@@ -5094,7 +5094,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)             # <<<<<<<<<<<<<<
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -5102,7 +5102,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->pRatio); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_carray_to_py_double(__pyx_v_self->__pyx_base.__pyx_base.runBracket, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_carray_to_py_double(__pyx_v_self->__pyx_base.__pyx_base.runBounds, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = PyTuple_New(16); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -5145,12 +5145,12 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   __Pyx_INCREF(__pyx_v_self->__pyx_base.__pyx_base.sizeAttr);
   __Pyx_GIVEREF(__pyx_v_self->__pyx_base.__pyx_base.sizeAttr);
   PyTuple_SET_ITEM(__pyx_t_4, 13, __pyx_v_self->__pyx_base.__pyx_base.sizeAttr);
-  __Pyx_INCREF(__pyx_v_self->__pyx_base.__pyx_base.sizeBracket);
-  __Pyx_GIVEREF(__pyx_v_self->__pyx_base.__pyx_base.sizeBracket);
-  PyTuple_SET_ITEM(__pyx_t_4, 14, __pyx_v_self->__pyx_base.__pyx_base.sizeBracket);
-  __Pyx_INCREF(__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBracket);
-  __Pyx_GIVEREF(__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBracket);
-  PyTuple_SET_ITEM(__pyx_t_4, 15, __pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBracket);
+  __Pyx_INCREF(__pyx_v_self->__pyx_base.__pyx_base.sizeBounds);
+  __Pyx_GIVEREF(__pyx_v_self->__pyx_base.__pyx_base.sizeBounds);
+  PyTuple_SET_ITEM(__pyx_t_4, 14, __pyx_v_self->__pyx_base.__pyx_base.sizeBounds);
+  __Pyx_INCREF(__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBounds);
+  __Pyx_GIVEREF(__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBounds);
+  PyTuple_SET_ITEM(__pyx_t_4, 15, __pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBounds);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -5159,7 +5159,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
   /* "(tree fragment)":4
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
@@ -5170,7 +5170,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   __pyx_t_4 = 0;
 
   /* "(tree fragment)":5
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -5203,12 +5203,12 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
  *         state += (_dict,)
  *         use_setstate = True             # <<<<<<<<<<<<<<
  *     else:
- *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBracket is not None or self.sizeUnitsBracket is not None
+ *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBounds is not None or self.sizeUnitsBounds is not None
  */
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":5
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -5220,9 +5220,9 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   /* "(tree fragment)":9
  *         use_setstate = True
  *     else:
- *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBracket is not None or self.sizeUnitsBracket is not None             # <<<<<<<<<<<<<<
+ *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBounds is not None or self.sizeUnitsBounds is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, None), state
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, None), state
  */
   /*else*/ {
     __pyx_t_5 = (__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs != ((PyObject*)Py_None));
@@ -5302,14 +5302,14 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
       __pyx_t_6 = __pyx_t_7;
       goto __pyx_L4_bool_binop_done;
     }
-    __pyx_t_7 = (__pyx_v_self->__pyx_base.__pyx_base.sizeBracket != ((PyObject*)Py_None));
+    __pyx_t_7 = (__pyx_v_self->__pyx_base.__pyx_base.sizeBounds != ((PyObject*)Py_None));
     __pyx_t_5 = (__pyx_t_7 != 0);
     if (!__pyx_t_5) {
     } else {
       __pyx_t_6 = __pyx_t_5;
       goto __pyx_L4_bool_binop_done;
     }
-    __pyx_t_5 = (__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBracket != ((PyObject*)Py_None));
+    __pyx_t_5 = (__pyx_v_self->__pyx_base.__pyx_base.sizeUnitsBounds != ((PyObject*)Py_None));
     __pyx_t_7 = (__pyx_t_5 != 0);
     __pyx_t_6 = __pyx_t_7;
     __pyx_L4_bool_binop_done:;
@@ -5319,20 +5319,20 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
   /* "(tree fragment)":10
  *     else:
- *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBracket is not None or self.sizeUnitsBracket is not None
+ *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBounds is not None or self.sizeUnitsBounds is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, None), state
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, None), state
  *     else:
  */
   __pyx_t_6 = (__pyx_v_use_setstate != 0);
   if (__pyx_t_6) {
 
     /* "(tree fragment)":11
- *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBracket is not None or self.sizeUnitsBracket is not None
+ *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBounds is not None or self.sizeUnitsBounds is not None
  *     if use_setstate:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, state)
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, state)
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_CompBasic); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 11, __pyx_L1_error)
@@ -5342,9 +5342,9 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_59186126);
-    __Pyx_GIVEREF(__pyx_int_59186126);
-    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_59186126);
+    __Pyx_INCREF(__pyx_int_186749657);
+    __Pyx_GIVEREF(__pyx_int_186749657);
+    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_186749657);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
     PyTuple_SET_ITEM(__pyx_t_4, 2, Py_None);
@@ -5365,17 +5365,17 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
     /* "(tree fragment)":10
  *     else:
- *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBracket is not None or self.sizeUnitsBracket is not None
+ *         use_setstate = self._inputs is not None or self._properties is not None or self.ambient is not None or self.config is not None or self.flowsIn is not None or self.flowsOut is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.notes is not None or self.sizeAttr is not None or self.sizeBounds is not None or self.sizeUnitsBounds is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, None), state
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":13
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, None), state
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, None), state
  *     else:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_CompBasic__set_state(self, __pyx_state)
  */
@@ -5388,9 +5388,9 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_59186126);
-    __Pyx_GIVEREF(__pyx_int_59186126);
-    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_59186126);
+    __Pyx_INCREF(__pyx_int_186749657);
+    __Pyx_GIVEREF(__pyx_int_186749657);
+    PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_186749657);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_state);
@@ -5410,7 +5410,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBracket, self.sizeAttr, self.sizeBracket, self.sizeUnitsBracket)
+ *     state = (self._inputs, self._properties, self.ambient, self.config, self.effIsentropic, self.flowsIn, self.flowsOut, self.ilist, self.itup, self.name, self.notes, self.pRatio, self.runBounds, self.sizeAttr, self.sizeBounds, self.sizeUnitsBounds)
  */
 
   /* function exit code */
@@ -5431,7 +5431,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
 /* "(tree fragment)":14
  *     else:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, state)
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CompBasic__set_state(self, __pyx_state)
  */
@@ -5457,7 +5457,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, state)
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_CompBasic__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -5468,7 +5468,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
   /* "(tree fragment)":14
  *     else:
- *         return __pyx_unpickle_CompBasic, (type(self), 0x3871bce, state)
+ *         return __pyx_unpickle_CompBasic, (type(self), 0xb2192d9, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_CompBasic__set_state(self, __pyx_state)
  */
@@ -5488,7 +5488,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic_9CompB
 
 /* "(tree fragment)":1
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError
  */
 
@@ -5582,18 +5582,18 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
 
   /* "(tree fragment)":2
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):
- *     if __pyx_checksum != 0x3871bce:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0xb2192d9:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  */
-  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x3871bce) != 0);
+  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0xb2192d9) != 0);
   if (__pyx_t_1) {
 
     /* "(tree fragment)":3
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  *     __pyx_result = CompBasic.__new__(__pyx_type)
  */
     __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 3, __pyx_L1_error)
@@ -5612,15 +5612,15 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":4
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = CompBasic.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
     __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 4, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x38, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 4, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0xb2, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 4, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_INCREF(__pyx_v___pyx_PickleError);
@@ -5676,15 +5676,15 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
 
     /* "(tree fragment)":2
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):
- *     if __pyx_checksum != 0x3871bce:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0xb2192d9:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":5
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  *     __pyx_result = CompBasic.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
@@ -5738,7 +5738,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
   __pyx_t_3 = 0;
 
   /* "(tree fragment)":6
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  *     __pyx_result = CompBasic.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
@@ -5761,7 +5761,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":6
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3871bce = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBracket, sizeAttr, sizeBracket, sizeUnitsBracket))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0xb2192d9 = (_inputs, _properties, ambient, config, effIsentropic, flowsIn, flowsOut, ilist, itup, name, notes, pRatio, runBounds, sizeAttr, sizeBounds, sizeUnitsBounds))" % __pyx_checksum)
  *     __pyx_result = CompBasic.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
@@ -5774,7 +5774,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -5783,7 +5783,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError
  */
 
@@ -5808,7 +5808,7 @@ static PyObject *__pyx_pf_6mcycle_10components_11compressors_10comp_basic___pyx_
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -5831,7 +5831,7 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
   /* "(tree fragment)":10
  *     return __pyx_result
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]             # <<<<<<<<<<<<<<
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]             # <<<<<<<<<<<<<<
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[16])
  */
@@ -5981,7 +5981,7 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__Pyx_carray_from_py_double(__pyx_t_1, __pyx_t_3, 2) < 0)) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  memcpy(&(__pyx_v___pyx_result->__pyx_base.__pyx_base.runBracket[0]), __pyx_t_3, sizeof(__pyx_v___pyx_result->__pyx_base.__pyx_base.runBracket[0]) * (2));
+  memcpy(&(__pyx_v___pyx_result->__pyx_base.__pyx_base.runBounds[0]), __pyx_t_3, sizeof(__pyx_v___pyx_result->__pyx_base.__pyx_base.runBounds[0]) * (2));
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(2, 10, __pyx_L1_error)
@@ -6002,9 +6002,9 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
   __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBracket);
-  __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBracket);
-  __pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBracket = ((PyObject*)__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBounds);
+  __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBounds);
+  __pyx_v___pyx_result->__pyx_base.__pyx_base.sizeBounds = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6014,14 +6014,14 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
   __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBracket);
-  __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBracket);
-  __pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBracket = ((PyObject*)__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBounds);
+  __Pyx_DECREF(__pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBounds);
+  __pyx_v___pyx_result->__pyx_base.__pyx_base.sizeUnitsBounds = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[16])
  */
@@ -6043,7 +6043,7 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
   if (__pyx_t_4) {
 
     /* "(tree fragment)":12
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[16])             # <<<<<<<<<<<<<<
  */
@@ -6108,7 +6108,7 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
 
     /* "(tree fragment)":11
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[16])
  */
@@ -6118,7 +6118,7 @@ static PyObject *__pyx_f_6mcycle_10components_11compressors_10comp_basic___pyx_u
  *         __pyx_unpickle_CompBasic__set_state(<CompBasic> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_CompBasic__set_state(CompBasic __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBracket = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBracket = __pyx_state[14]; __pyx_result.sizeUnitsBracket = __pyx_state[15]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ambient = __pyx_state[2]; __pyx_result.config = __pyx_state[3]; __pyx_result.effIsentropic = __pyx_state[4]; __pyx_result.flowsIn = __pyx_state[5]; __pyx_result.flowsOut = __pyx_state[6]; __pyx_result.ilist = __pyx_state[7]; __pyx_result.itup = __pyx_state[8]; __pyx_result.name = __pyx_state[9]; __pyx_result.notes = __pyx_state[10]; __pyx_result.pRatio = __pyx_state[11]; __pyx_result.runBounds = __pyx_state[12]; __pyx_result.sizeAttr = __pyx_state[13]; __pyx_result.sizeBounds = __pyx_state[14]; __pyx_result.sizeUnitsBounds = __pyx_state[15]
  *     if len(__pyx_state) > 16 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -6805,7 +6805,7 @@ static PyTypeObject __pyx_type_6mcycle_10components_11compressors_10comp_basic_C
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "CompBasic(double pRatio, double effIsentropic=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBracket=[1, 50], list sizeUnitsBracket=[], unicode name=u'CompBasic instance', unicode notes=u'No notes/model info.', Config config=Config())\nBasic expansion defined by a pressure ratio and isentropic efficiency.\n\nParameters\n----------\npRatio : float\n    Pressure increase ratio [-].\neffIsentropic : float, optional\n    Isentropic efficiency [-]. Defaults to 1.\nflowIn : FlowState, optional\n    Incoming FlowState. Defaults to None.\nflowOut : FlowState, optional\n    Outgoing FlowState. Defaults to None.\nambient : FlowState, optional\n    Ambient environment flow state. Defaults to None.\nsizeAttr : string, optional\n    Default attribute used by size(). Defaults to \"pRatio\".\nsizeBracket : float or list of float, optional\n    Bracket containing solution of size(). Defaults to [1, 50].\n\n    - if sizeBracket=[a,b]: scipy.optimize.brentq is used.\n\n    - if sizeBracket=a or [a]: scipy.optimize.newton is used.\nname : string, optional\n    Description of Component object. Defaults to \"ExpBasic instance\".\nnotes : string, optional\n    Additional notes on the component such as model numbers. Defaults to \"No notes/model info.\".\nconfig : Config, optional\n    Configuration parameters. Defaults to the default Config object.\nkwargs : optional\n    Arbitrary keyword arguments.\n    ", /*tp_doc*/
+  "CompBasic(double pRatio, double effIsentropic=1.0, FlowState flowIn=None, FlowState flowOut=None, FlowState ambient=None, unicode sizeAttr=u'pRatio', list sizeBounds=[1, 50], list sizeUnitsBounds=[], unicode name=u'CompBasic instance', unicode notes=u'No notes/model info.', Config config=Config())\nBasic expansion defined by a pressure ratio and isentropic efficiency.\n\nParameters\n----------\npRatio : float\n    Pressure increase ratio [-].\neffIsentropic : float, optional\n    Isentropic efficiency [-]. Defaults to 1.\nflowIn : FlowState, optional\n    Incoming FlowState. Defaults to None.\nflowOut : FlowState, optional\n    Outgoing FlowState. Defaults to None.\nambient : FlowState, optional\n    Ambient environment flow state. Defaults to None.\nsizeAttr : string, optional\n    Default attribute used by size(). Defaults to \"pRatio\".\nsizeBounds : float or list of float, optional\n    Bracket containing solution of size(). Defaults to [1, 50].\n\n    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.\n\n    - if sizeBounds=a or [a]: scipy.optimize.newton is used.\nname : string, optional\n    Description of Component object. Defaults to \"ExpBasic instance\".\nnotes : string, optional\n    Additional notes on the component such as model numbers. Defaults to \"No notes/model info.\".\nconfig : Config, optional\n    Configuration parameters. Defaults to the default Config object.\nkwargs : optional\n    Arbitrary keyword arguments.\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10components_11compressors_10comp_basic_CompBasic, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10components_11compressors_10comp_basic_CompBasic, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -6879,7 +6879,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_CompBasic_instance, __pyx_k_CompBasic_instance, sizeof(__pyx_k_CompBasic_instance), 0, 1, 0, 0},
   {&__pyx_n_s_CoolProp, __pyx_k_CoolProp, sizeof(__pyx_k_CoolProp), 0, 0, 1, 1},
   {&__pyx_n_s_HmassP_INPUTS, __pyx_k_HmassP_INPUTS, sizeof(__pyx_k_HmassP_INPUTS), 0, 0, 1, 1},
-  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x38, __pyx_k_Incompatible_checksums_s_vs_0x38, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x38), 0, 0, 1, 0},
+  {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb2, __pyx_k_Incompatible_checksums_s_vs_0xb2, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb2), 0, 0, 1, 0},
   {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
   {&__pyx_kp_u_No_notes_model_info, __pyx_k_No_notes_model_info, sizeof(__pyx_k_No_notes_model_info), 0, 1, 0, 0},
   {&__pyx_n_s_OverflowError, __pyx_k_OverflowError, sizeof(__pyx_k_OverflowError), 0, 0, 1, 1},
@@ -6893,7 +6893,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ambient, __pyx_k_ambient, sizeof(__pyx_k_ambient), 0, 0, 1, 1},
   {&__pyx_n_u_ambient, __pyx_k_ambient, sizeof(__pyx_k_ambient), 0, 1, 0, 1},
   {&__pyx_n_s_attr, __pyx_k_attr, sizeof(__pyx_k_attr), 0, 0, 1, 1},
-  {&__pyx_n_s_bracket, __pyx_k_bracket, sizeof(__pyx_k_bracket), 0, 0, 1, 1},
+  {&__pyx_n_s_bounds, __pyx_k_bounds, sizeof(__pyx_k_bounds), 0, 0, 1, 1},
   {&__pyx_n_s_class, __pyx_k_class, sizeof(__pyx_k_class), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_config, __pyx_k_config, sizeof(__pyx_k_config), 0, 0, 1, 1},
@@ -6951,15 +6951,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
   {&__pyx_n_s_sizeAttr, __pyx_k_sizeAttr, sizeof(__pyx_k_sizeAttr), 0, 0, 1, 1},
   {&__pyx_n_u_sizeAttr, __pyx_k_sizeAttr, sizeof(__pyx_k_sizeAttr), 0, 1, 0, 1},
-  {&__pyx_n_s_sizeBracket, __pyx_k_sizeBracket, sizeof(__pyx_k_sizeBracket), 0, 0, 1, 1},
-  {&__pyx_n_u_sizeBracket, __pyx_k_sizeBracket, sizeof(__pyx_k_sizeBracket), 0, 1, 0, 1},
-  {&__pyx_n_s_sizeUnitsBracket, __pyx_k_sizeUnitsBracket, sizeof(__pyx_k_sizeUnitsBracket), 0, 0, 1, 1},
-  {&__pyx_n_u_sizeUnitsBracket, __pyx_k_sizeUnitsBracket, sizeof(__pyx_k_sizeUnitsBracket), 0, 1, 0, 1},
+  {&__pyx_n_s_sizeBounds, __pyx_k_sizeBounds, sizeof(__pyx_k_sizeBounds), 0, 0, 1, 1},
+  {&__pyx_n_u_sizeBounds, __pyx_k_sizeBounds, sizeof(__pyx_k_sizeBounds), 0, 1, 0, 1},
+  {&__pyx_n_s_sizeUnitsBounds, __pyx_k_sizeUnitsBounds, sizeof(__pyx_k_sizeUnitsBounds), 0, 0, 1, 1},
+  {&__pyx_n_u_sizeUnitsBounds, __pyx_k_sizeUnitsBounds, sizeof(__pyx_k_sizeUnitsBounds), 0, 1, 0, 1},
   {&__pyx_kp_u_size_failed_to_converge, __pyx_k_size_failed_to_converge, sizeof(__pyx_k_size_failed_to_converge), 0, 1, 0, 0},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_unitsBracket, __pyx_k_unitsBracket, sizeof(__pyx_k_unitsBracket), 0, 0, 1, 1},
+  {&__pyx_n_s_unitsBounds, __pyx_k_unitsBounds, sizeof(__pyx_k_unitsBounds), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -6983,7 +6983,7 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError
  */
   __pyx_tuple__5 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(2, 1, __pyx_L1_error)
@@ -7002,7 +7002,7 @@ static int __Pyx_InitGlobals(void) {
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_50 = PyInt_FromLong(50); if (unlikely(!__pyx_int_50)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_59186126 = PyInt_FromLong(59186126L); if (unlikely(!__pyx_int_59186126)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_186749657 = PyInt_FromLong(186749657L); if (unlikely(!__pyx_int_186749657)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7193,8 +7193,8 @@ static int __pyx_pymod_exec_comp_basic(PyObject *__pyx_pyinit_module)
   /* "mcycle/components/compressors/comp_basic.pyx":47
  *                  FlowState ambient=None,
  *                  str sizeAttr="pRatio",
- *                  list sizeBracket=[1, 50],             # <<<<<<<<<<<<<<
- *                  list sizeUnitsBracket=[],
+ *                  list sizeBounds=[1, 50],             # <<<<<<<<<<<<<<
+ *                  list sizeUnitsBounds=[],
  *                  str name="CompBasic instance",
  */
   __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
@@ -7211,8 +7211,8 @@ static int __pyx_pymod_exec_comp_basic(PyObject *__pyx_pyinit_module)
 
   /* "mcycle/components/compressors/comp_basic.pyx":48
  *                  str sizeAttr="pRatio",
- *                  list sizeBracket=[1, 50],
- *                  list sizeUnitsBracket=[],             # <<<<<<<<<<<<<<
+ *                  list sizeBounds=[1, 50],
+ *                  list sizeUnitsBounds=[],             # <<<<<<<<<<<<<<
  *                  str name="CompBasic instance",
  *                  str notes="No notes/model info.",
  */
@@ -7226,7 +7226,7 @@ static int __pyx_pymod_exec_comp_basic(PyObject *__pyx_pyinit_module)
  *                  str name="CompBasic instance",
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):             # <<<<<<<<<<<<<<
- *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBracket, sizeUnitsBracket, [0, 0], name, notes,
+ *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)
  */
   __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
@@ -7237,7 +7237,7 @@ static int __pyx_pymod_exec_comp_basic(PyObject *__pyx_pyinit_module)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_CompBasic(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
- *     if __pyx_checksum != 0x3871bce:
+ *     if __pyx_checksum != 0xb2192d9:
  *         from pickle import PickleError as __pyx_PickleError
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_10components_11compressors_10comp_basic_1__pyx_unpickle_CompBasic, NULL, __pyx_n_s_mcycle_components_compressors_co); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 1, __pyx_L1_error)

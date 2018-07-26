@@ -1316,9 +1316,9 @@ static const char __pyx_k_summary_2[] = "summary";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_rstHeading[] = "rstHeading";
+static const char __pyx_k_sizeBounds[] = "sizeBounds";
 static const char __pyx_k_validClass[] = "validClass";
 static const char __pyx_k_PickleError[] = "PickleError";
-static const char __pyx_k_sizeBracket[] = "sizeBracket";
 static const char __pyx_k_printSummary[] = "printSummary";
 static const char __pyx_k_propertyKeys[] = "propertyKeys";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
@@ -1328,7 +1328,7 @@ static const char __pyx_k_Geom_instance[] = "Geom instance";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_sizeUnitsBracket[] = "sizeUnitsBracket";
+static const char __pyx_k_sizeUnitsBounds[] = "sizeUnitsBounds";
 static const char __pyx_k_mcycle_bases_geom[] = "mcycle.bases.geom";
 static const char __pyx_k_pyx_unpickle_Geom[] = "__pyx_unpickle_Geom";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -1383,8 +1383,8 @@ static PyObject *__pyx_n_s_rstHeading;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_u_sizeAttr;
-static PyObject *__pyx_n_u_sizeBracket;
-static PyObject *__pyx_n_u_sizeUnitsBracket;
+static PyObject *__pyx_n_u_sizeBounds;
+static PyObject *__pyx_n_u_sizeUnitsBounds;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_kp_u_summary;
 static PyObject *__pyx_n_s_summary_2;
@@ -2201,7 +2201,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
     /* "mcycle/bases/geom.pyx":60
  *             ]:
  *                 pass
- *             elif k in ["sizeAttr", "sizeBracket", "sizeUnitsBracket"]:             # <<<<<<<<<<<<<<
+ *             elif k in ["sizeAttr", "sizeBounds", "sizeUnitsBounds"]:             # <<<<<<<<<<<<<<
  *                 pass
  *             elif k in ["name", "notes", "config"]:
  */
@@ -2213,13 +2213,13 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L15_bool_binop_done;
     }
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_6, __pyx_n_u_sizeBracket, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_6, __pyx_n_u_sizeBounds, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
     if (!__pyx_t_2) {
     } else {
       __pyx_t_1 = __pyx_t_2;
       goto __pyx_L15_bool_binop_done;
     }
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_6, __pyx_n_u_sizeUnitsBracket, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_6, __pyx_n_u_sizeUnitsBounds, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_2;
     __pyx_L15_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -2229,7 +2229,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
     }
 
     /* "mcycle/bases/geom.pyx":62
- *             elif k in ["sizeAttr", "sizeBracket", "sizeUnitsBracket"]:
+ *             elif k in ["sizeAttr", "sizeBounds", "sizeUnitsBounds"]:
  *                 pass
  *             elif k in ["name", "notes", "config"]:             # <<<<<<<<<<<<<<
  *                 pass
@@ -3883,8 +3883,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_u_sizeAttr, __pyx_k_sizeAttr, sizeof(__pyx_k_sizeAttr), 0, 1, 0, 1},
-  {&__pyx_n_u_sizeBracket, __pyx_k_sizeBracket, sizeof(__pyx_k_sizeBracket), 0, 1, 0, 1},
-  {&__pyx_n_u_sizeUnitsBracket, __pyx_k_sizeUnitsBracket, sizeof(__pyx_k_sizeUnitsBracket), 0, 1, 0, 1},
+  {&__pyx_n_u_sizeBounds, __pyx_k_sizeBounds, sizeof(__pyx_k_sizeBounds), 0, 1, 0, 1},
+  {&__pyx_n_u_sizeUnitsBounds, __pyx_k_sizeUnitsBounds, sizeof(__pyx_k_sizeUnitsBounds), 0, 1, 0, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_kp_u_summary, __pyx_k_summary, sizeof(__pyx_k_summary), 0, 1, 0, 0},
   {&__pyx_n_s_summary_2, __pyx_k_summary_2, sizeof(__pyx_k_summary_2), 0, 0, 1, 1},

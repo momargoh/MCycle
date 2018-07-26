@@ -125,7 +125,7 @@ This produces the following graph.
 Printing cycle summaries
 -------------------------------------------------------------
 
-Although plotting the cycle is a great visual representation of the cycle, often a more in depth summary is required. Here we will size the cycle to the design parameters and print a complete summary of the cycle. The :meth:`size() <mcycle.cycles.rankinebasic.RankineBasic.size>` method, as mentioned above, calls the :meth:`size() <mcycle.bases.components.size>` method of each component of the cycle. The ``sizeAttr`` attribute determines which component attribute will be sized, while the ``sizeBracket`` attribute defines the bracket containing the solution (not all components require this for their ``size()`` method). For now, we will use the default values for each of the cycle components.
+Although plotting the cycle is a great visual representation of the cycle, often a more in depth summary is required. Here we will size the cycle to the design parameters and print a complete summary of the cycle. The :meth:`size() <mcycle.cycles.rankinebasic.RankineBasic.size>` method, as mentioned above, calls the :meth:`size() <mcycle.bases.components.size>` method of each component of the cycle. The ``sizeAttr`` attribute determines which component attribute will be sized, while the ``sizeBounds`` attribute defines the bounds containing the solution (not all components require this for their ``size()`` method). For now, we will use the default values for each of the cycle components.
 
     >>> cycle.size()
 

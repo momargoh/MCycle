@@ -197,7 +197,7 @@ Next, we study the effects of the evaporator pinch-point temperature difference 
             for pptd in pptd_vals[i]:
                 cycle.update({'pptdEvap': pptd, 'evap.L': mc.library.alfaLaval_AC30EQ().L})
                 cycle.sizeSetup(False, False)
-                cycle.evap._size("NPlate", [NPlateLowerBound, cycle.evap.sizeBracket[1]], [])
+                cycle.evap._size("NPlate", [NPlateLowerBound, cycle.evap.sizeBounds[1]], [])
                 plot_eff[i].append(cycle.effExergy())
                 plot_NPlate[i].append(cycle.evap.NPlate)
                 plot_weight[i].append(cycle.evap.weight())
@@ -230,7 +230,7 @@ We now move on to studying the effects of the working fluid evaporating pressure
     >>> for i in range(len(p_vals)):
             cycle.update({'pEvap': p_vals[i] * 10**5, 'pptdEvap': 10.})
             cycle.sizeSetup(True, False)
-            cycle.evap.update({'L': mc.library.alfaLaval_AC30EQ().L, 'sizeBracket[0]': NPlateLowerBound})
+            cycle.evap.update({'L': mc.library.alfaLaval_AC30EQ().L, 'sizeBounds[0]': NPlateLowerBound})
             cycle.evap.size_NPlate()
             plot_NPlate.append(cycle.evap.NPlate)
             plot_dpWf.append(cycle.evap.dpWf() / (10**5))
@@ -263,7 +263,7 @@ Finally, we study the effect of the mass flow rate of the exhaust gasses on thei
     >>> for frac in fraction_vals:
             cycle.evap.mSf = mSource * frac
             cycle.update({'pptdEvap': pptdEvap})
-            cycle.evap.update({'L': mc.library.alfaLaval_AC30EQ().L, 'sizeBracket[0]': NPlateLowerBound})
+            cycle.evap.update({'L': mc.library.alfaLaval_AC30EQ().L, 'sizeBounds[0]': NPlateLowerBound})
             cycle.sizeSetup(True, False)
             cycle.evap.size_NPlate()
             plot_dpSf.append(cycle.evap.dpSf() / (10**5))
