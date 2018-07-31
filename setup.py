@@ -71,7 +71,7 @@ else:
 setup(
     name='mcycle',
     version='1.0.0',
-    description='Power cycle sizing and analysis package',
+    description='1D sizing and analysis of thermodynamic power cycles',
     long_description=long_description,
     url='https://github.com/momargoh/MCycle',
     author='Momar Hughes',
