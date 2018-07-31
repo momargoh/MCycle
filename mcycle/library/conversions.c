@@ -882,9 +882,6 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object);
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-/* None.proto */
-static CYTHON_INLINE long __Pyx_pow_long(long, long);
-
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
@@ -1219,7 +1216,7 @@ static PyObject *__pyx_pf_6mcycle_7library_11conversions_4bar2Pa(CYTHON_UNUSED P
  * 
  * cpdef double Pa2bar(double value):             # <<<<<<<<<<<<<<
  *     "float: pressure: Pascal to bar."
- *     return value * 10**-5
+ *     return value / 10**5
  */
 
 static PyObject *__pyx_pw_6mcycle_7library_11conversions_7Pa2bar(PyObject *__pyx_self, PyObject *__pyx_arg_value); /*proto*/
@@ -1231,11 +1228,11 @@ static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double __pyx_v_value
   /* "mcycle/library/conversions.pyx":20
  * cpdef double Pa2bar(double value):
  *     "float: pressure: Pascal to bar."
- *     return value * 10**-5             # <<<<<<<<<<<<<<
+ *     return value / 10**5             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_r = (__pyx_v_value * __Pyx_pow_long(10, -5L));
+  __pyx_r = (__pyx_v_value / 100000.0);
   goto __pyx_L0;
 
   /* "mcycle/library/conversions.pyx":18
@@ -1243,7 +1240,7 @@ static double __pyx_f_6mcycle_7library_11conversions_Pa2bar(double __pyx_v_value
  * 
  * cpdef double Pa2bar(double value):             # <<<<<<<<<<<<<<
  *     "float: pressure: Pascal to bar."
- *     return value * 10**-5
+ *     return value / 10**5
  */
 
   /* function exit code */
@@ -2814,33 +2811,6 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 bad:
     Py_XDECREF(py_code);
     Py_XDECREF(py_frame);
-}
-
-/* None */
-static CYTHON_INLINE long __Pyx_pow_long(long b, long e) {
-    long t = b;
-    switch (e) {
-        case 3:
-            t *= b;
-        CYTHON_FALLTHROUGH;
-        case 2:
-            t *= b;
-        CYTHON_FALLTHROUGH;
-        case 1:
-            return t;
-        case 0:
-            return 1;
-    }
-    #if 1
-    if (unlikely(e<0)) return 0;
-    #endif
-    t = 1;
-    while (likely(e)) {
-        t *= (b * (e&1)) | ((~e)&1);
-        b *= b;
-        e >>= 1;
-    }
-    return t;
 }
 
 /* CIntToPy */

@@ -17,7 +17,7 @@ def run_example():
     mc.DEFAULTS.PLOT_DIR = 'plots'  # directory to save plots into
     mc.DEFAULTS.PLOT_FORMAT = 'png'  # change to "jpg" if preferred
     mc.DEFAULTS.PLOT_DPI = 600  # dpi (resolution) of plots
-    mc.DEFAULTS.checkDefaults()  # check the defaults are OK
+    mc.DEFAULTS.updateDefaults()  # check the defaults are OK
     # custom format for matplotlib
     mpl.rc("lines", lw=2.0)
     mpl.rc("lines", markersize=2)

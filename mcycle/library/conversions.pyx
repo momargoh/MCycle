@@ -17,7 +17,7 @@ cpdef double bar2Pa(double value):
 
 cpdef double Pa2bar(double value):
     "float: pressure: Pascal to bar."
-    return value * 10**-5
+    return value / 10**5
 
 
 cpdef double mps2knots(double value):
