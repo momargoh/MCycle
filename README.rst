@@ -1,7 +1,9 @@
 =================
 MCycle README
 =================
-
+.. image:: https://zenodo.org/badge/124180557.svg
+   :target: https://zenodo.org/badge/latestdoi/124180557
+   
 .. contents::
 
 About
