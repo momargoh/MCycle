@@ -5,6 +5,7 @@ from ...bases.geom cimport Geom
 
 cdef class HxPlate(HxBasicPlanar):
 
+    cpdef public void update(self, dict kwargs)
     cpdef public Geom geomPlateWf
     cpdef public Geom geomPlateSf
     cpdef public double DPortWf

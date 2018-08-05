@@ -3,6 +3,7 @@ from .hxunit_basic cimport HxUnitBasic
 from .hx_basicplanar cimport HxBasicPlanar
 from .hxunit_plate cimport HxUnitPlate
 from ...bases.config cimport Config
+from ...bases.component cimport Component22
 from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
@@ -168,7 +169,15 @@ kwargs : optional
     cdef public tuple _unitArgsVap(self):
         """Arguments passed to HxUnits in the vapour region."""
         return self._unitArgsLiq()
-
+    
+    cpdef public void update(self, dict kwargs):
+        """Update (multiple) variables using keyword arguments."""
+        for key, value in kwargs.items():
+            if key not in ["DPortWf", "DPortSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_weight"]:
+                super(HxBasicPlanar, self).update({key: value})
+            else:
+                super(Component22, self).update({key: value})
+                
     cpdef public double LPlate(self):
         """float: Total length of the plate; sum(coeffs_LPlate[i] * L**i)."""
         cdef double ans = 0
