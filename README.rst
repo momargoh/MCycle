@@ -1,8 +1,6 @@
 =================
 MCycle README
 =================
-.. image:: https://zenodo.org/badge/124180557.svg
-   :target: https://zenodo.org/badge/latestdoi/124180557
    
 .. contents::
 
@@ -10,7 +8,7 @@ About
 =========
 
 :Version:
-   1.0
+   1.0.0
 :Author:
    Momar Hughes
 :Contact:
@@ -21,6 +19,12 @@ About
    Apache License 2.0
 :Requires:
    numpy, scipy, matplotlib, Cython, CoolProp
+.. image:: http://joss.theoj.org/papers/10.21105/joss.00710/status.svg
+   :target: https://doi.org/10.21105/joss.00710
+   :alt: JOSS Publication
+.. image:: https://readthedocs.org/projects/mcycle/badge/?version=latest
+   :target: https://mcycle.readthedocs.io/?badge=latest
+   :alt: Docs Build Status
 	
 
 MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynamic heat cycles. Sizing methods are based on empirical and theoretical correlations. Users may analyse cycles consisting of components including heaters, coolers, compressors, expanders and heat exchangers. The two main modes for analysing cycles or components are:
@@ -29,17 +33,27 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 * ``run`` : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_.
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_.
 
-.. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_ or
-   
-The documentation comes pre-compiled in the ``docs/_build/html`` folder, or can be built from the provided docs using Sphinx (set to use Python3).::
+Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following the publication.
 
-  sudo apt install python3-sphinx
-  cd docs
-  make clean && make html
+.. code-block:: none
 
-.. note:: A deprecated version of the MCycle documentation is available at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_, this is in the process of being updated. Use the pre-compiled version for now.
+  Hughes, M. (2018). MCycle: A Python package for 1D sizing and analysis of thermodynamic power cycles. Journal of Open Source Software, 3(28), 710, https://doi.org/10.21105/joss.00710
+
+  @article{hughes2018mcycle,
+    title={{MCycle}: A Python package for 1D sizing and analysis of thermodynamic power cycles},
+    author={Momar Graham-Orr Hughes},
+    journal={Journal of Open Source Software (JOSS)},
+    volume={3},
+    number={28},
+    pages={710},
+    year={2018},
+    month=aug,
+    publisher={The Open Journal},
+    url={https://doi.org/10.21105/joss.00710},
+    doi={10.21105/joss.00710},
+  }
             
 .. _section-README-installation:
 
@@ -73,8 +87,6 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 ..   For the latest stable release, MCycle is also available from pip by running:: 
 
 ..  pip3 install mcycle
-  
-Contributions towards the project source code will be gratefully received. Feel free to contact the author via email or GitHub with any queries.
 
 .. readme-link-marker
    
