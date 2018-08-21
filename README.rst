@@ -35,7 +35,7 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_.
 
-Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following the publication.
+Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following `publication <https://doi.org/10.21105/joss.00710>`_.
 
 .. code-block:: none
 
