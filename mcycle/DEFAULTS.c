@@ -1276,6 +1276,8 @@ static const char __pyx_k_path[] = "path";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
 static const char __pyx_k_warn[] = "warn";
+static const char __pyx_k_DIV_T[] = "DIV_T";
+static const char __pyx_k_DIV_X[] = "DIV_X";
 static const char __pyx_k_TkAgg[] = "TkAgg";
 static const char __pyx_k_angle[] = "angle";
 static const char __pyx_k_array[] = "array";
@@ -1382,6 +1384,8 @@ static const char __pyx_k_It_is_recommended_to_select_UNIT_2[] = "It is recommen
 static PyObject *__pyx_kp_u_;
 static PyObject *__pyx_kp_u_4e;
 static PyObject *__pyx_n_s_COOLPROP_EOS;
+static PyObject *__pyx_n_s_DIV_T;
+static PyObject *__pyx_n_s_DIV_X;
 static PyObject *__pyx_n_s_GITHUB_SOURCE_URL;
 static PyObject *__pyx_n_s_GRAVITY;
 static PyObject *__pyx_n_u_HEOS;
@@ -1537,6 +1541,8 @@ static PyObject *__pyx_pf_6mcycle_8DEFAULTS_4updateDefaults(CYTHON_UNUSED PyObje
 static PyObject *__pyx_pf_6mcycle_8DEFAULTS_8timeThis_func_wrapper(PyObject *__pyx_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
 static PyObject *__pyx_pf_6mcycle_8DEFAULTS_6timeThis(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_func); /* proto */
 static PyObject *__pyx_tp_new_6mcycle_8DEFAULTS___pyx_scope_struct__timeThis(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_float_5_;
+static PyObject *__pyx_float_0_1;
 static PyObject *__pyx_int_60;
 static PyObject *__pyx_int_600;
 static PyObject *__pyx_tuple__7;
@@ -4544,6 +4550,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_, __pyx_k_, sizeof(__pyx_k_), 0, 1, 0, 0},
   {&__pyx_kp_u_4e, __pyx_k_4e, sizeof(__pyx_k_4e), 0, 1, 0, 0},
   {&__pyx_n_s_COOLPROP_EOS, __pyx_k_COOLPROP_EOS, sizeof(__pyx_k_COOLPROP_EOS), 0, 0, 1, 1},
+  {&__pyx_n_s_DIV_T, __pyx_k_DIV_T, sizeof(__pyx_k_DIV_T), 0, 0, 1, 1},
+  {&__pyx_n_s_DIV_X, __pyx_k_DIV_X, sizeof(__pyx_k_DIV_X), 0, 0, 1, 1},
   {&__pyx_n_s_GITHUB_SOURCE_URL, __pyx_k_GITHUB_SOURCE_URL, sizeof(__pyx_k_GITHUB_SOURCE_URL), 0, 0, 1, 1},
   {&__pyx_n_s_GRAVITY, __pyx_k_GRAVITY, sizeof(__pyx_k_GRAVITY), 0, 0, 1, 1},
   {&__pyx_n_u_HEOS, __pyx_k_HEOS, sizeof(__pyx_k_HEOS), 0, 1, 0, 1},
@@ -4750,6 +4758,8 @@ static int __Pyx_InitCachedConstants(void) {
 
 static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_float_5_ = PyFloat_FromDouble(5.); if (unlikely(!__pyx_float_5_)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_0_1 = PyFloat_FromDouble(0.1); if (unlikely(!__pyx_float_0_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_60 = PyInt_FromLong(60); if (unlikely(!__pyx_int_60)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_600 = PyInt_FromLong(600); if (unlikely(!__pyx_int_600)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
@@ -4971,7 +4981,7 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
  * cpdef public double TOLABS = 1e-7
  * cpdef public double TOLREL = 1e-7             # <<<<<<<<<<<<<<
  * cpdef public double TOLABS_X = 1e-10
- * cpdef public int MAXITER_CYCLE = 50
+ * DIV_T = 5.
  */
   TOLREL = 1e-7;
 
@@ -4979,41 +4989,59 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
  * cpdef public double TOLABS = 1e-7
  * cpdef public double TOLREL = 1e-7
  * cpdef public double TOLABS_X = 1e-10             # <<<<<<<<<<<<<<
- * cpdef public int MAXITER_CYCLE = 50
- * cpdef public int MAXITER_COMPONENT = 50
+ * DIV_T = 5.
+ * DIV_X = 0.1
  */
   TOLABS_X = 1e-10;
 
   /* "mcycle/DEFAULTS.pyx":7
  * cpdef public double TOLREL = 1e-7
  * cpdef public double TOLABS_X = 1e-10
+ * DIV_T = 5.             # <<<<<<<<<<<<<<
+ * DIV_X = 0.1
+ * cpdef public int MAXITER_CYCLE = 50
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DIV_T, __pyx_float_5_) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+
+  /* "mcycle/DEFAULTS.pyx":8
+ * cpdef public double TOLABS_X = 1e-10
+ * DIV_T = 5.
+ * DIV_X = 0.1             # <<<<<<<<<<<<<<
+ * cpdef public int MAXITER_CYCLE = 50
+ * cpdef public int MAXITER_COMPONENT = 50
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DIV_X, __pyx_float_0_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+
+  /* "mcycle/DEFAULTS.pyx":9
+ * DIV_T = 5.
+ * DIV_X = 0.1
  * cpdef public int MAXITER_CYCLE = 50             # <<<<<<<<<<<<<<
  * cpdef public int MAXITER_COMPONENT = 50
  * cpdef public int MAX_WALLS = 200
  */
   MAXITER_CYCLE = 50;
 
-  /* "mcycle/DEFAULTS.pyx":8
- * cpdef public double TOLABS_X = 1e-10
+  /* "mcycle/DEFAULTS.pyx":10
+ * DIV_X = 0.1
  * cpdef public int MAXITER_CYCLE = 50
  * cpdef public int MAXITER_COMPONENT = 50             # <<<<<<<<<<<<<<
  * cpdef public int MAX_WALLS = 200
- * #cpdef public double RUN_BRACKET_MIN_H = 0.001
+ * cpdef public double GRAVITY = 9.80665
  */
   MAXITER_COMPONENT = 50;
 
-  /* "mcycle/DEFAULTS.pyx":9
+  /* "mcycle/DEFAULTS.pyx":11
  * cpdef public int MAXITER_CYCLE = 50
  * cpdef public int MAXITER_COMPONENT = 50
  * cpdef public int MAX_WALLS = 200             # <<<<<<<<<<<<<<
- * #cpdef public double RUN_BRACKET_MIN_H = 0.001
- * #cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * cpdef public double GRAVITY = 9.80665
+ * cpdef public str COOLPROP_EOS = 'HEOS'
  */
   MAX_WALLS = 0xC8;
 
   /* "mcycle/DEFAULTS.pyx":12
- * #cpdef public double RUN_BRACKET_MIN_H = 0.001
- * #cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * cpdef public int MAXITER_COMPONENT = 50
+ * cpdef public int MAX_WALLS = 200
  * cpdef public double GRAVITY = 9.80665             # <<<<<<<<<<<<<<
  * cpdef public str COOLPROP_EOS = 'HEOS'
  * cpdef public str MPL_BACKEND = 'TkAgg'
@@ -5021,7 +5049,7 @@ static int __pyx_pymod_exec_DEFAULTS(PyObject *__pyx_pyinit_module)
   GRAVITY = 9.80665;
 
   /* "mcycle/DEFAULTS.pyx":13
- * #cpdef public double RUN_BRACKET_MAX_H = 0.9
+ * cpdef public int MAX_WALLS = 200
  * cpdef public double GRAVITY = 9.80665
  * cpdef public str COOLPROP_EOS = 'HEOS'             # <<<<<<<<<<<<<<
  * cpdef public str MPL_BACKEND = 'TkAgg'

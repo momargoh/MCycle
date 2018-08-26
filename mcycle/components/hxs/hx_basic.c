@@ -865,7 +865,7 @@ struct __pyx_obj_6mcycle_5bases_9component_Component {
 };
 
 
-/* "bases/component.pxd":26
+/* "bases/component.pxd":28
  * 
  * 
  * cdef class Component11(Component):             # <<<<<<<<<<<<<<
@@ -877,7 +877,7 @@ struct __pyx_obj_6mcycle_5bases_9component_Component11 {
 };
 
 
-/* "bases/component.pxd":30
+/* "bases/component.pxd":32
  * 
  * 
  * cdef class Component22(Component):             # <<<<<<<<<<<<<<
@@ -1084,6 +1084,8 @@ struct __pyx_vtabstruct_6mcycle_5bases_9component_Component {
   struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
   int (*hasInAndOut)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int);
   double (*_mWf)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
+  void (*clearWfFlows)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
+  void (*clearAllFlows)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
   void (*run)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
   double (*_f_sizeComponent)(struct __pyx_obj_6mcycle_5bases_9component_Component *, double, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch);
   void (*_size)(struct __pyx_obj_6mcycle_5bases_9component_Component *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch);
@@ -1092,7 +1094,7 @@ struct __pyx_vtabstruct_6mcycle_5bases_9component_Component {
 static struct __pyx_vtabstruct_6mcycle_5bases_9component_Component *__pyx_vtabptr_6mcycle_5bases_9component_Component;
 
 
-/* "bases/component.pxd":26
+/* "bases/component.pxd":28
  * 
  * 
  * cdef class Component11(Component):             # <<<<<<<<<<<<<<
@@ -1107,7 +1109,7 @@ struct __pyx_vtabstruct_6mcycle_5bases_9component_Component11 {
 static struct __pyx_vtabstruct_6mcycle_5bases_9component_Component11 *__pyx_vtabptr_6mcycle_5bases_9component_Component11;
 
 
-/* "bases/component.pxd":30
+/* "bases/component.pxd":32
  * 
  * 
  * cdef class Component22(Component):             # <<<<<<<<<<<<<<
@@ -20572,8 +20574,8 @@ static int __pyx_pymod_exec_hx_basic(PyObject *__pyx_pyinit_module)
   __pyx_vtabptr_6mcycle_5bases_9flowstate_FlowState = (struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9flowstate_FlowState->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9flowstate_FlowState)) __PYX_ERR(5, 4, __pyx_L1_error)
   __pyx_ptype_6mcycle_5bases_9component_Component = __Pyx_ImportType("mcycle.bases.component", "Component", sizeof(struct __pyx_obj_6mcycle_5bases_9component_Component), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9component_Component)) __PYX_ERR(6, 5, __pyx_L1_error)
   __pyx_vtabptr_6mcycle_5bases_9component_Component = (struct __pyx_vtabstruct_6mcycle_5bases_9component_Component*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9component_Component->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9component_Component)) __PYX_ERR(6, 5, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_9component_Component11 = __Pyx_ImportType("mcycle.bases.component", "Component11", sizeof(struct __pyx_obj_6mcycle_5bases_9component_Component11), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9component_Component11)) __PYX_ERR(6, 26, __pyx_L1_error)
-  __pyx_vtabptr_6mcycle_5bases_9component_Component11 = (struct __pyx_vtabstruct_6mcycle_5bases_9component_Component11*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9component_Component11->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9component_Component11)) __PYX_ERR(6, 26, __pyx_L1_error)
+  __pyx_ptype_6mcycle_5bases_9component_Component11 = __Pyx_ImportType("mcycle.bases.component", "Component11", sizeof(struct __pyx_obj_6mcycle_5bases_9component_Component11), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9component_Component11)) __PYX_ERR(6, 28, __pyx_L1_error)
+  __pyx_vtabptr_6mcycle_5bases_9component_Component11 = (struct __pyx_vtabstruct_6mcycle_5bases_9component_Component11*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9component_Component11->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9component_Component11)) __PYX_ERR(6, 28, __pyx_L1_error)
   __pyx_ptype_6mcycle_5bases_13solidmaterial_SolidMaterial = __Pyx_ImportType("mcycle.bases.solidmaterial", "SolidMaterial", sizeof(struct __pyx_obj_6mcycle_5bases_13solidmaterial_SolidMaterial), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_13solidmaterial_SolidMaterial)) __PYX_ERR(7, 3, __pyx_L1_error)
   __pyx_vtabptr_6mcycle_5bases_13solidmaterial_SolidMaterial = (struct __pyx_vtabstruct_6mcycle_5bases_13solidmaterial_SolidMaterial*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_13solidmaterial_SolidMaterial->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_13solidmaterial_SolidMaterial)) __PYX_ERR(7, 3, __pyx_L1_error)
   __pyx_ptype_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic = __Pyx_ImportType("mcycle.components.hxs.hxunit_basic", "HxUnitBasic", sizeof(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic), 1); if (unlikely(!__pyx_ptype_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic)) __PYX_ERR(8, 6, __pyx_L1_error)

@@ -47,16 +47,19 @@ class TestRankineBasic(unittest.TestCase):
         self.assertAlmostEqual(self.cycle.mWf, 0.34307814292524513, 10)
 
     def test_1_size(self):
-        self.cycle.config.dpEvap = False
+        self.cycle.update({"config.dpEvap": False, "evap.L": 0.269})
         self.cycle.size()
+        self.assertEqual(self.cycle.evap.NPlate, 23)
         self.assertAlmostEqual(
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(self.cycle.comp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.exp.pRatio, 10.22519893, 4)
-        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 6)
+        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
+        print("dpEvap = False")
+        self.cycle.state3.summary()
 
     def test_1_size_dpEvap_True(self):
-        self.cycle.config.dpEvap = True
+        self.cycle.update({"config.dpEvap": True, "evap.L": 0.269})
         self.cycle.size()
         self.assertAlmostEqual(
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
@@ -66,6 +69,83 @@ class TestRankineBasic(unittest.TestCase):
             self.cycle.exp.pRatio,
             (self.cycle.pEvap - 39607.4552153897) / self.cycle.pCond, 4)
         self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
+
+    def test_1_run_from_comp(self):
+        self.cycle.update({
+            "config.dpEvap": False,
+            "evap.NPlate": 23,
+            "evap.L": 0.269,
+            "pRatioExp": 10.22519893,
+            "pRatioComp": 10.22519893,
+            "cond.Q": 73582.4417680011
+        })
+        self.cycle.clearWfFlows()
+        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 20.).h()
+        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 32.).h()
+        self.evap.update({"runBounds": [rb0, rb1]})
+        self.cycle.set_state6(self.wf.copyState(CP.QT_INPUTS, 0, self.TCond))
+        self.cycle.run()
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.p() / self.cycle.pCond) - 1, 0, 5)
+        self.assertAlmostEqual(
+            abs(self.cycle.state3.T() / (self.cycle.TEvap + 30)) - 1, 0, 3)
+
+    '''
+    def test_1_run_from_comp_dpEvap_True(self):
+        self.cycle.update({
+            "config.dpEvap": True,
+            "evap.NPlate": 23,
+            "evap.L": 0.269,
+            "exp.pRatio": 9.820204742676,
+            "comp.pRatio": 10.22519893,
+            "cond.Q": 73582.4417680011
+        })
+        self.cycle.clearWfFlows()
+        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 20.).h()
+        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 32.).h()
+        self.evap.update({"runBounds": [rb0, rb1]})
+        self.cycle.set_state6(self.wf.copyState(CP.QT_INPUTS, 0, self.TCond))
+        self.cycle.run()
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.p() / self.cycle.pCond) - 1, 0, 5)
+        self.assertAlmostEqual(abs(self.cycle.state3.T() / (413.67)) - 1, 0, 2)
+        self.assertAlmostEqual(
+            abs(self.cycle.state3.p() / (9.6039e5)) - 1, 0, 1)
+    '''
+
+    def test_1_run_from_exp(self):
+        self.cycle.update({
+            "config.dpEvap": False,
+            "evap.NPlate": 23,
+            "evap.L": 0.269,
+            "pRatioExp": 10.22519893,
+            "pRatioComp": 10.22519893,
+            "cond.Q": 73582.4417680011
+        })
+        self.cycle.clearWfFlows()
+        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 20.).h()
+        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+                                self.cycle.TEvap + 32.).h()
+        self.evap.update({"runBounds": [rb0, rb1]})
+        self.cycle.set_state3(
+            self.wf.copyState(CP.PT_INPUTS, self.cycle.pEvap,
+                              self.cycle.TEvap + 30))
+        self.cycle.run()
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
+        self.assertAlmostEqual(
+            abs(self.cycle.state4.p() / self.cycle.pCond) - 1, 0, 5)
+        self.assertAlmostEqual(
+            abs(self.cycle.state3.T() / (self.cycle.TEvap + 30)) - 1, 0, 3)
 
     def test_cycle_plot(self):
         import os

@@ -1,6 +1,6 @@
 from .mcabstractbase cimport MCAB, MCAttr
 from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
-from ..DEFAULTS import METHODS
+from .. import DEFAULTS
 import copy
 
 cdef class Config(MCAB):
@@ -80,10 +80,10 @@ _tolAbs_x : float, optional
                  str tolAttr="h",
                  double tolAbs=TOLABS,
                  double tolRel=TOLREL,
-                 double divT=5.,
-                 double divX=0.1,
+                 double divT=DEFAULTS.DIV_T,
+                 double divX=DEFAULTS.DIV_X,
                  bint evenPlatesWf=False,
-                 dict methods=METHODS,
+                 dict methods=DEFAULTS.METHODS,
                  str name="Config instance"):
         self.dpEvap = dpEvap
         self.dpCond = dpCond

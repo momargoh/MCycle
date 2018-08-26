@@ -17,6 +17,8 @@ cdef class Component(MCAB):
 
     cpdef public double _mWf(self)
     #cpdef _update(self, list kwargs)
+    cpdef public void clearWfFlows(self)
+    cpdef public void clearAllFlows(self)
     cpdef public void run(self)
     cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str sizeAttr, list sizeBounds, list sizeUnitsBounds)
     cpdef public void _size(self, str attr, list bounds, list boundsUnits) except *

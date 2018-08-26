@@ -252,9 +252,10 @@ unitsBounds : float or list of float, optional
         
     cpdef public void run(self):
         cdef double tol, sizedValue, a, b, saveL = self.L
+        """
         cdef FlowState critWf = self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[0]._state.T_critical())
         cdef FlowState minWf = self.flowsIn[0].copyState(CP.PT_INPUTS, self.flowsIn[0].p(), self.flowsIn[0]._state.Tmin())
-        cdef double deltah
+        cdef double deltah"""
         try:
             """
             if self.isEvap():
@@ -293,8 +294,11 @@ unitsBounds : float or list of float, optional
             raise err
         except Exception as exc:
             raise StopIteration(
-                "{}.run() failed to converge. Check boundss for solution: runBounds={}. ".format(
+                "{}.run() failed to converge. Check bounds for solution: runBounds={}. ".format(
                     self.__class__.__name__, self.runBounds), exc)
+        finally:
+            
+            self.update({"L": saveL})
 
             
     @property

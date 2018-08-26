@@ -1326,8 +1326,8 @@ static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_ValueError;
 static const char __pyx_k_g[] = "g";
 static const char __pyx_k_h[] = "h";
-static const char __pyx_k__5[] = "";
-static const char __pyx_k__6[] = "\n{}\n";
+static const char __pyx_k__7[] = "";
+static const char __pyx_k__8[] = "\n{}\n";
 static const char __pyx_k_sf[] = "sf";
 static const char __pyx_k_sp[] = "sp";
 static const char __pyx_k_tp[] = "tp";
@@ -1350,6 +1350,8 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_none[] = "none";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_DIV_T[] = "DIV_T";
+static const char __pyx_k_DIV_X[] = "DIV_X";
 static const char __pyx_k_dpFSf[] = "dpFSf";
 static const char __pyx_k_dpFWf[] = "dpFWf";
 static const char __pyx_k_flows[] = "flows";
@@ -1441,6 +1443,8 @@ static const char __pyx_k_lookup_of_requires_4_args_in_the[] = "lookup() of {} r
 static PyObject *__pyx_kp_u_Attribute_must_be_True_or_False;
 static PyObject *__pyx_kp_u_Config_instance;
 static PyObject *__pyx_n_s_DEFAULTS;
+static PyObject *__pyx_n_s_DIV_T;
+static PyObject *__pyx_n_s_DIV_X;
 static PyObject *__pyx_n_u_Geom;
 static PyObject *__pyx_n_u_GeomHxPlateCorrChevron;
 static PyObject *__pyx_n_u_GeomHxPlateFinOffset;
@@ -1454,8 +1458,9 @@ static PyObject *__pyx_kp_u_Method_for_phase_of_not_found_fo;
 static PyObject *__pyx_kp_u_Methods_for_class_are_not_yet_de;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_ValueError;
-static PyObject *__pyx_kp_u__5;
-static PyObject *__pyx_kp_u__6;
+static PyObject *__pyx_n_s__7;
+static PyObject *__pyx_kp_u__7;
+static PyObject *__pyx_kp_u__8;
 static PyObject *__pyx_n_u_acceleration;
 static PyObject *__pyx_n_u_all;
 static PyObject *__pyx_kp_u_all_sp;
@@ -1638,15 +1643,17 @@ static PyObject *__pyx_k_;
 static double __pyx_k__2;
 static double __pyx_k__3;
 static double __pyx_k__4;
-static PyObject *__pyx_tuple__7;
-static PyObject *__pyx_tuple__8;
+static double __pyx_k__5;
+static double __pyx_k__6;
 static PyObject *__pyx_tuple__9;
 static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__14;
-static PyObject *__pyx_codeobj__15;
+static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_codeobj__17;
 
 /* "mcycle/bases/config.pyx":68
  * """
@@ -2044,22 +2051,22 @@ static int __pyx_pw_6mcycle_5bases_6config_6Config_1__init__(PyObject *__pyx_v_s
     if (values[14]) {
       __pyx_v_divT = __pyx_PyFloat_AsDouble(values[14]); if (unlikely((__pyx_v_divT == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L3_error)
     } else {
-      __pyx_v_divT = ((double)5.);
+      __pyx_v_divT = __pyx_k__5;
     }
     if (values[15]) {
       __pyx_v_divX = __pyx_PyFloat_AsDouble(values[15]); if (unlikely((__pyx_v_divX == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L3_error)
     } else {
-      __pyx_v_divX = ((double)0.1);
+      __pyx_v_divX = __pyx_k__6;
     }
     if (values[16]) {
       __pyx_v_evenPlatesWf = __Pyx_PyObject_IsTrue(values[16]); if (unlikely((__pyx_v_evenPlatesWf == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L3_error)
     } else {
 
       /* "mcycle/bases/config.pyx":85
- *                  double divT=5.,
- *                  double divX=0.1,
+ *                  double divT=DEFAULTS.DIV_T,
+ *                  double divX=DEFAULTS.DIV_X,
  *                  bint evenPlatesWf=False,             # <<<<<<<<<<<<<<
- *                  dict methods=METHODS,
+ *                  dict methods=DEFAULTS.METHODS,
  *                  str name="Config instance"):
  */
       __pyx_v_evenPlatesWf = ((int)0);
@@ -2107,7 +2114,7 @@ static int __pyx_pf_6mcycle_5bases_6config_6Config___init__(struct __pyx_obj_6mc
   __Pyx_RefNannySetupContext("__init__", 0);
 
   /* "mcycle/bases/config.pyx":88
- *                  dict methods=METHODS,
+ *                  dict methods=DEFAULTS.METHODS,
  *                  str name="Config instance"):
  *         self.dpEvap = dpEvap             # <<<<<<<<<<<<<<
  *         self.dpCond = dpCond
@@ -3895,7 +3902,7 @@ static PyObject *__pyx_pw_6mcycle_5bases_6config_6Config_3summary(PyObject *__py
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_printSummary,&__pyx_n_s_name,&__pyx_n_s_rstHeading,0};
     PyObject* values[3] = {0,0,0};
-    values[1] = ((PyObject*)__pyx_kp_u__5);
+    values[1] = ((PyObject*)__pyx_kp_u__7);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -4002,7 +4009,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
  *             name = self.name
  *         output = r"{} summary".format(name)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_name, __pyx_kp_u__5, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_name, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
@@ -4090,7 +4097,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
  *         for i in self._inputs:
  *             output += self.formatAttrForSummary(i, [])
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u__6, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u__8, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (unlikely(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -4439,8 +4446,8 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                 if len(args) == 4:
  *                     geom, transfer, phase, flow = args
  */
-        __Pyx_INCREF(__pyx_tuple__7);
-        __pyx_v_listKwargs = __pyx_tuple__7;
+        __Pyx_INCREF(__pyx_tuple__9);
+        __pyx_v_listKwargs = __pyx_tuple__9;
 
         /* "mcycle/bases/config.pyx":227
  *                 """args must be in the form (geom, transfer, phase, flow)."""
@@ -4634,8 +4641,8 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
  *                 listTransfer = ("heat", "friction")
  */
-        __Pyx_INCREF(__pyx_tuple__8);
-        __pyx_v_listGeomHxPlate = __pyx_tuple__8;
+        __Pyx_INCREF(__pyx_tuple__10);
+        __pyx_v_listGeomHxPlate = __pyx_tuple__10;
 
         /* "mcycle/bases/config.pyx":236
  *                 listGeomHxPlate = ("GeomHxPlateCorrChevron",
@@ -4644,8 +4651,8 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                 listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')
  *                 listFlows = ("wf", "sf")
  */
-        __Pyx_INCREF(__pyx_tuple__9);
-        __pyx_v_listTransfer = __pyx_tuple__9;
+        __Pyx_INCREF(__pyx_tuple__11);
+        __pyx_v_listTransfer = __pyx_tuple__11;
 
         /* "mcycle/bases/config.pyx":237
  *                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
@@ -4654,8 +4661,8 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                 listFlows = ("wf", "sf")
  *                 assert geom in listGeomHxPlate, "'geom' arg must be in {}, ({} given)".format(
  */
-        __Pyx_INCREF(__pyx_tuple__10);
-        __pyx_v_listPhase = __pyx_tuple__10;
+        __Pyx_INCREF(__pyx_tuple__12);
+        __pyx_v_listPhase = __pyx_tuple__12;
 
         /* "mcycle/bases/config.pyx":238
  *                 listTransfer = ("heat", "friction")
@@ -4664,8 +4671,8 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                 assert geom in listGeomHxPlate, "'geom' arg must be in {}, ({} given)".format(
  *                     listGeomHxPlate, geom)
  */
-        __Pyx_INCREF(__pyx_tuple__11);
-        __pyx_v_listFlows = __pyx_tuple__11;
+        __Pyx_INCREF(__pyx_tuple__13);
+        __pyx_v_listFlows = __pyx_tuple__13;
 
         /* "mcycle/bases/config.pyx":239
  *                 listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')
@@ -5080,7 +5087,7 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __pyx_t_6 = PyUnicode_Join(__pyx_kp_u__5, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L3_error)
+          __pyx_t_6 = PyUnicode_Join(__pyx_kp_u__7, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF_SET(__pyx_v_phase, ((PyObject*)__pyx_t_6));
@@ -5188,7 +5195,7 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  */
         __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_geom, __pyx_n_s_strip); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 251, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L3_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 251, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
@@ -5278,7 +5285,7 @@ PyObject *__pyx_f_6mcycle_5bases_6config_6Config_lookupMethod(struct __pyx_obj_6
  *                     raise ValueError(
  *                         "Method for {} phase of {} not found (found dict: {})".format(
  */
-        __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_v_ret, __pyx_kp_u__5, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 254, __pyx_L3_error)
+        __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_v_ret, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 254, __pyx_L3_error)
         __pyx_t_13 = (__pyx_t_11 != 0);
         if (!__pyx_t_13) {
         } else {
@@ -6049,7 +6056,7 @@ static void __pyx_f_6mcycle_5bases_6config_6Config_set_method(struct __pyx_obj_6
  */
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_geom, __pyx_n_s_strip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 298, __pyx_L1_error)
@@ -9825,7 +9832,7 @@ static PyTypeObject __pyx_type_6mcycle_5bases_6config_Config = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Config(bool dpEvap=False, bool dpCond=False, bool dpFWf=True, bool dpFSf=True, bool dpAccWf=True, bool dpAccSf=True, bool dpHeadWf=True, bool dpHeadSf=True, bool dpPortWf=True, bool dpPortSf=True, double g=GRAVITY, unicode tolAttr=u'h', double tolAbs=TOLABS, double tolRel=TOLREL, double divT=5., double divX=0.1, bool evenPlatesWf=False, dict methods=METHODS, unicode name=u'Config instance')\nGeneral configuration parameters containing parameters pertaining to Cycles and Components. It is recommended to pass the same Config object to all Components in a Cycle.\n\nAttributes\n-----------\ndpEvap : bool, optional\n    Evaluate pressure drop of working fluid in evaporator. Defaults to False.\ndpCond : bool, optional\n    Evaluate pressure drop of working fluid in condenser. Defaults to False.\ndpFWf : bool, optional\n    Evaluate frictional pressure drops of working fluid. Defaults to True.\ndpFSf : bool, optional\n    Evaluate frictional pressure drops of secondary fluid. Defaults to True.\ndpAccWf : bool, optional\n    Evaluate acceleration pressure drops of working fluid. Defaults to True.\ndpAccSf : bool, optional\n    Evaluate acceleration pressure drops of secondary fluid. Defaults to True.\ndpHeadWf : bool, optional\n    Evaluate static head drops of working fluid. Defaults to True.\ndpHeadSf : bool, optional\n    Evaluate static head drops of secondary fluid. Defaults to True.\ndpPortWf : bool, optional\n    Evaluate port pressure loss of working fluid. Defaults to True.\ndpPortSf : bool, optional\n    Evaluate port pressure loss of secondary fluid. Defaults to True.\ng : float, optional\n    Acceleration due to gravity [m/s^2]. Defaults to 9.81.\ntolAttr : string, optional\n    FlowState attribute for cycle convergence. Defaults to \"h\".\ntolAbs : float, optional\n    Absolute tolerance for determining cycle convergence. Defaults to 1e-9.\ntolRel : float, optional\n    Relative tolerance for determining cycle convergence. Defaults to 1e-7.\ndivT : float, optio""nal\n    Temperature difference for unitising single-phase flows. Defaults to 5 [K].\ndivX : float, optional\n    Quality difference for unitising two-phase flows. Defaults to 0.1.\nsizeBounds_L : list of float len==2, optional\n    Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].\nmaxIterCycle : int, optional\n    Max number of iterations for convergence of cycle. Defaults to 50.\nmaxWalls : int, optional\n    Max number of walls a solution may have. Defaults to 200.\nevenPlatesWf : bool, optional\n    If there are an even number of plates in a plate heat exchanger, an extra working fluid channel is created rather than an extra secondary fluid channel. Defaults to False.\nmethods : dict, optional\n    Dictionary that stores all information about selection of computational methods.\n\nPrivate Attributes\n------------------\n_tolRel_p : float, optional\n    Relative tolerance used in assert statements for determining equivalence of pressures. Defaults to 1e-7.\n_tolRel_T : float, optional\n    Relative tolerance used in assert statements for determining equivalence of temperatures. Defaults to 1e-7.\n_tolRel_h : float, optional\n    Relative tolerance used in assert statements for determining equivalence of specific enthalpies. Defaults to 1e-7.\n_tolRel_rho : float, optional\n    Relative tolerance used in assert statements for determining equivalence of densities. Defaults to 1e-7.\n_tolAbs_x : float, optional\n    Absolute tolerance used for determining whether a FlowState is in the two-phase region. Defaults to mcycle.DEFAULTS.TOLABS_X\n", /*tp_doc*/
+  "Config(bool dpEvap=False, bool dpCond=False, bool dpFWf=True, bool dpFSf=True, bool dpAccWf=True, bool dpAccSf=True, bool dpHeadWf=True, bool dpHeadSf=True, bool dpPortWf=True, bool dpPortSf=True, double g=GRAVITY, unicode tolAttr=u'h', double tolAbs=TOLABS, double tolRel=TOLREL, double divT=DEFAULTS.DIV_T, double divX=DEFAULTS.DIV_X, bool evenPlatesWf=False, dict methods=DEFAULTS.METHODS, unicode name=u'Config instance')\nGeneral configuration parameters containing parameters pertaining to Cycles and Components. It is recommended to pass the same Config object to all Components in a Cycle.\n\nAttributes\n-----------\ndpEvap : bool, optional\n    Evaluate pressure drop of working fluid in evaporator. Defaults to False.\ndpCond : bool, optional\n    Evaluate pressure drop of working fluid in condenser. Defaults to False.\ndpFWf : bool, optional\n    Evaluate frictional pressure drops of working fluid. Defaults to True.\ndpFSf : bool, optional\n    Evaluate frictional pressure drops of secondary fluid. Defaults to True.\ndpAccWf : bool, optional\n    Evaluate acceleration pressure drops of working fluid. Defaults to True.\ndpAccSf : bool, optional\n    Evaluate acceleration pressure drops of secondary fluid. Defaults to True.\ndpHeadWf : bool, optional\n    Evaluate static head drops of working fluid. Defaults to True.\ndpHeadSf : bool, optional\n    Evaluate static head drops of secondary fluid. Defaults to True.\ndpPortWf : bool, optional\n    Evaluate port pressure loss of working fluid. Defaults to True.\ndpPortSf : bool, optional\n    Evaluate port pressure loss of secondary fluid. Defaults to True.\ng : float, optional\n    Acceleration due to gravity [m/s^2]. Defaults to 9.81.\ntolAttr : string, optional\n    FlowState attribute for cycle convergence. Defaults to \"h\".\ntolAbs : float, optional\n    Absolute tolerance for determining cycle convergence. Defaults to 1e-9.\ntolRel : float, optional\n    Relative tolerance for determining cycle convergence. Defaul""ts to 1e-7.\ndivT : float, optional\n    Temperature difference for unitising single-phase flows. Defaults to 5 [K].\ndivX : float, optional\n    Quality difference for unitising two-phase flows. Defaults to 0.1.\nsizeBounds_L : list of float len==2, optional\n    Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].\nmaxIterCycle : int, optional\n    Max number of iterations for convergence of cycle. Defaults to 50.\nmaxWalls : int, optional\n    Max number of walls a solution may have. Defaults to 200.\nevenPlatesWf : bool, optional\n    If there are an even number of plates in a plate heat exchanger, an extra working fluid channel is created rather than an extra secondary fluid channel. Defaults to False.\nmethods : dict, optional\n    Dictionary that stores all information about selection of computational methods.\n\nPrivate Attributes\n------------------\n_tolRel_p : float, optional\n    Relative tolerance used in assert statements for determining equivalence of pressures. Defaults to 1e-7.\n_tolRel_T : float, optional\n    Relative tolerance used in assert statements for determining equivalence of temperatures. Defaults to 1e-7.\n_tolRel_h : float, optional\n    Relative tolerance used in assert statements for determining equivalence of specific enthalpies. Defaults to 1e-7.\n_tolRel_rho : float, optional\n    Relative tolerance used in assert statements for determining equivalence of densities. Defaults to 1e-7.\n_tolAbs_x : float, optional\n    Absolute tolerance used for determining whether a FlowState is in the two-phase region. Defaults to mcycle.DEFAULTS.TOLABS_X\n", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_5bases_6config_Config, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_5bases_6config_Config, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -9897,6 +9904,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Attribute_must_be_True_or_False, __pyx_k_Attribute_must_be_True_or_False, sizeof(__pyx_k_Attribute_must_be_True_or_False), 0, 1, 0, 0},
   {&__pyx_kp_u_Config_instance, __pyx_k_Config_instance, sizeof(__pyx_k_Config_instance), 0, 1, 0, 0},
   {&__pyx_n_s_DEFAULTS, __pyx_k_DEFAULTS, sizeof(__pyx_k_DEFAULTS), 0, 0, 1, 1},
+  {&__pyx_n_s_DIV_T, __pyx_k_DIV_T, sizeof(__pyx_k_DIV_T), 0, 0, 1, 1},
+  {&__pyx_n_s_DIV_X, __pyx_k_DIV_X, sizeof(__pyx_k_DIV_X), 0, 0, 1, 1},
   {&__pyx_n_u_Geom, __pyx_k_Geom, sizeof(__pyx_k_Geom), 0, 1, 0, 1},
   {&__pyx_n_u_GeomHxPlateCorrChevron, __pyx_k_GeomHxPlateCorrChevron, sizeof(__pyx_k_GeomHxPlateCorrChevron), 0, 1, 0, 1},
   {&__pyx_n_u_GeomHxPlateFinOffset, __pyx_k_GeomHxPlateFinOffset, sizeof(__pyx_k_GeomHxPlateFinOffset), 0, 1, 0, 1},
@@ -9910,8 +9919,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Methods_for_class_are_not_yet_de, __pyx_k_Methods_for_class_are_not_yet_de, sizeof(__pyx_k_Methods_for_class_are_not_yet_de), 0, 1, 0, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-  {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
-  {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
+  {&__pyx_n_s__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 1, 1},
+  {&__pyx_kp_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 0},
+  {&__pyx_kp_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 0},
   {&__pyx_n_u_acceleration, __pyx_k_acceleration, sizeof(__pyx_k_acceleration), 0, 1, 0, 1},
   {&__pyx_n_u_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 1, 0, 1},
   {&__pyx_kp_u_all_sp, __pyx_k_all_sp, sizeof(__pyx_k_all_sp), 0, 1, 0, 0},
@@ -10049,9 +10059,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 if len(args) == 4:
  *                     geom, transfer, phase, flow = args
  */
-  __pyx_tuple__7 = PyTuple_Pack(4, __pyx_n_u_geom, __pyx_n_u_transfer, __pyx_n_u_phase, __pyx_n_u_flow); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 226, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
+  __pyx_tuple__9 = PyTuple_Pack(4, __pyx_n_u_geom, __pyx_n_u_transfer, __pyx_n_u_phase, __pyx_n_u_flow); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
 
   /* "mcycle/bases/config.pyx":234
  *                         format(cls, listKwargs, len(args)))
@@ -10060,9 +10070,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
  *                 listTransfer = ("heat", "friction")
  */
-  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_u_GeomHxPlateCorrChevron, __pyx_n_u_GeomHxPlateFinOffset, __pyx_n_u_GeomHxPlateSmooth); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 234, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_n_u_GeomHxPlateCorrChevron, __pyx_n_u_GeomHxPlateFinOffset, __pyx_n_u_GeomHxPlateSmooth); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
 
   /* "mcycle/bases/config.pyx":236
  *                 listGeomHxPlate = ("GeomHxPlateCorrChevron",
@@ -10071,9 +10081,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')
  *                 listFlows = ("wf", "sf")
  */
-  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_n_u_heat, __pyx_n_u_friction); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 236, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_u_heat, __pyx_n_u_friction); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 236, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
 
   /* "mcycle/bases/config.pyx":237
  *                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
@@ -10082,9 +10092,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 listFlows = ("wf", "sf")
  *                 assert geom in listGeomHxPlate, "'geom' arg must be in {}, ({} given)".format(
  */
-  __pyx_tuple__10 = PyTuple_Pack(5, __pyx_n_u_sp, __pyx_n_u_liq, __pyx_n_u_vap, __pyx_n_u_tpEvap, __pyx_n_u_tpCond); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 237, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_tuple__12 = PyTuple_Pack(5, __pyx_n_u_sp, __pyx_n_u_liq, __pyx_n_u_vap, __pyx_n_u_tpEvap, __pyx_n_u_tpCond); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
 
   /* "mcycle/bases/config.pyx":238
  *                 listTransfer = ("heat", "friction")
@@ -10093,9 +10103,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                 assert geom in listGeomHxPlate, "'geom' arg must be in {}, ({} given)".format(
  *                     listGeomHxPlate, geom)
  */
-  __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_u_wf, __pyx_n_u_sf); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 238, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_u_wf, __pyx_n_u_sf); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
 
   /* "mcycle/bases/config.pyx":251
  *                 assert phase in listPhase, "'phase' arg must be in listPhase ({} given)".format(
@@ -10104,9 +10114,9 @@ static int __Pyx_InitCachedConstants(void) {
  *                     "Geom") + transfer.title() + flow.title()
  *                 ret = self.methods[lookup_dict][phase]
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_u_Geom); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 251, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_n_u_Geom); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
   /* "mcycle/bases/config.pyx":298
  * 
@@ -10115,19 +10125,19 @@ static int __Pyx_InitCachedConstants(void) {
  *             for transfer in transfers:
  *                 for phase in phases:
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_u_Geom); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 298, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__13);
-  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_u_Geom); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Config(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x58a2d84:
  *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_tuple__14 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Config, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Config, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -10195,6 +10205,7 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
+  double __pyx_t_4;
   __Pyx_RefNannyDeclarations
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m && __pyx_m == __pyx_pyinit_module) return 0;
@@ -10326,27 +10337,27 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
   /* "mcycle/bases/config.pyx":3
  * from .mcabstractbase cimport MCAB, MCAttr
  * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
- * from ..DEFAULTS import METHODS             # <<<<<<<<<<<<<<
+ * from .. import DEFAULTS             # <<<<<<<<<<<<<<
  * import copy
  * 
  */
   __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_METHODS);
-  __Pyx_GIVEREF(__pyx_n_s_METHODS);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_METHODS);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_DEFAULTS, __pyx_t_2, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_DEFAULTS);
+  __Pyx_GIVEREF(__pyx_n_s_DEFAULTS);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_DEFAULTS);
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s__7, __pyx_t_2, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_METHODS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_DEFAULTS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_METHODS, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DEFAULTS, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "mcycle/bases/config.pyx":4
  * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
- * from ..DEFAULTS import METHODS
+ * from .. import DEFAULTS
  * import copy             # <<<<<<<<<<<<<<
  * 
  * cdef class Config(MCAB):
@@ -10370,7 +10381,7 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
  *                  str tolAttr="h",
  *                  double tolAbs=TOLABS,             # <<<<<<<<<<<<<<
  *                  double tolRel=TOLREL,
- *                  double divT=5.,
+ *                  double divT=DEFAULTS.DIV_T,
  */
   __pyx_k__3 = __pyx_v_6mcycle_8DEFAULTS_TOLABS;
 
@@ -10378,44 +10389,79 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
  *                  str tolAttr="h",
  *                  double tolAbs=TOLABS,
  *                  double tolRel=TOLREL,             # <<<<<<<<<<<<<<
- *                  double divT=5.,
- *                  double divX=0.1,
+ *                  double divT=DEFAULTS.DIV_T,
+ *                  double divX=DEFAULTS.DIV_X,
  */
   __pyx_k__4 = __pyx_v_6mcycle_8DEFAULTS_TOLREL;
 
-  /* "mcycle/bases/config.pyx":86
- *                  double divX=0.1,
+  /* "mcycle/bases/config.pyx":83
+ *                  double tolAbs=TOLABS,
+ *                  double tolRel=TOLREL,
+ *                  double divT=DEFAULTS.DIV_T,             # <<<<<<<<<<<<<<
+ *                  double divX=DEFAULTS.DIV_X,
  *                  bint evenPlatesWf=False,
- *                  dict methods=METHODS,             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_DEFAULTS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_DIV_T); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_k__5 = __pyx_t_4;
+
+  /* "mcycle/bases/config.pyx":84
+ *                  double tolRel=TOLREL,
+ *                  double divT=DEFAULTS.DIV_T,
+ *                  double divX=DEFAULTS.DIV_X,             # <<<<<<<<<<<<<<
+ *                  bint evenPlatesWf=False,
+ *                  dict methods=DEFAULTS.METHODS,
+ */
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_DEFAULTS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_DIV_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_k__6 = __pyx_t_4;
+
+  /* "mcycle/bases/config.pyx":86
+ *                  double divX=DEFAULTS.DIV_X,
+ *                  bint evenPlatesWf=False,
+ *                  dict methods=DEFAULTS.METHODS,             # <<<<<<<<<<<<<<
  *                  str name="Config instance"):
  *         self.dpEvap = dpEvap
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_METHODS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_DEFAULTS); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (!(likely(PyDict_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 86, __pyx_L1_error)
-  __pyx_k_ = ((PyObject*)__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_METHODS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(PyDict_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_k_ = ((PyObject*)__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Config(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x58a2d84:
  *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5bases_6config_1__pyx_unpickle_Config, NULL, __pyx_n_s_mcycle_bases_config); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Config, __pyx_t_3) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5bases_6config_1__pyx_unpickle_Config, NULL, __pyx_n_s_mcycle_bases_config); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Config, __pyx_t_2) < 0) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "mcycle/bases/config.pyx":1
  * from .mcabstractbase cimport MCAB, MCAttr             # <<<<<<<<<<<<<<
  * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
- * from ..DEFAULTS import METHODS
+ * from .. import DEFAULTS
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_3) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 

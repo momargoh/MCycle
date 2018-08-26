@@ -65,7 +65,7 @@ kwargs : optional
         self.subcool = subcool
         super().__init__(("evap", "exp", "cond", "comp"),
                          ("1", "20", "21", "3", "4", "51", "50", "6"), config)
-        self.config = config  # use setter to set for all components
+        self.set_config(config)  # use setter to set for all components
         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
                 "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
@@ -80,6 +80,7 @@ kwargs : optional
         """Update (multiple) Cycle variables using keyword arguments."""
         cdef str key
         cdef list keySplit
+        cdef dict store = {}
         for key, value in kwargs.items():
             if key == "evap" and self.sourceIn is not None:
                 if issubclass(type(value), HxBasic):
@@ -95,11 +96,16 @@ kwargs : optional
                     key_attr = getattr(self, key_split[0])
                     key_attr.update({key_split[1]: value})
                 else:
+                    store[key] = value
+                    """
                     try:
                         setter = getattr(self, 'set_{}'.format(key))
                         setter(value)
                     except:
                         setattr(self, key, value)
+                    """
+        if store != {}:
+            super(RankineBasic, self).update(store)
 
     cpdef public double _mWf(self):
         return self.wf.m
@@ -168,7 +174,7 @@ kwargs : optional
         return self.pEvap / self.pCond
     
     cpdef public void set_pRatioComp(self, double value):
-        self.pEvap = self.pComp * value
+        self.pEvap = self.pCond * value
         self.comp.pRatio = value
 
     @property
@@ -757,76 +763,87 @@ kwargs : optional
             print("pptdEvap is not a valid attribute for a {0} condenser".
                   format(type(self.cond)))
 
-    def run(self, component='', flowState=None):
-        """Compute all state FlowStates from initial FlowState and given component definitions
-
-Parameters
-----------
-flowState : FlowState, optional
-        An initial working fluid FlowState. Defaults to None. If None, will search components (beginning with comp) for a non None flowIn.
-component: str, optional
-        Component for which flowState is set as flowInWf. Defaults to None.
+    cpdef public void run(self):
+        """Compute all state FlowStates from initial FlowState and given component definitions.
         """
-        # TODO sort out tolerancing
         state6new = None
-        diff = self.config.tolAbs * 5
-        count = 0
-        while diff > self.config.tolAbs:
-            self.comp.run()
-            self.state1 = self.comp.flowsOut[0]
-            self.evap.run()
-            self.set_sourceOut(self.evap.flowsOut[1])
-            self.set_state3(self.evap.flowsOut[0])
-            self.evap.unitise()
-            if self.config.dpEvap is True:
-                try:
-                    self.evap.solve()
-                    dp = self.evap.dpWf()
-                    if dp < self.state3.p():
-                        self.state3.updateState(CP.HmassP_INPUTS,
-                                           self.state3.h(),
-                                           self.state3.p() - dp)
-                    else:
-                        raise ValueError(
-                            """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
-                            format(dp, self.state3.p()))
-                except Exception as exc:
-                    print(exc.__class__.__name__, ": ", exc)
-                    print(
-                        "pressure drop in working fluid across evaporator ignored"
-                    )
-            self.exp.run()
-            self.set_state4(self.exp.flowsOut[0])
-            self.cond.run()
-            state6new = self.cond.flowsOut[0]
-            self.set_sinkOut(self.cond.flowsOut[1])
-            self.cond._unitise()
-            if self.config.dpCond is True:
-                try:
-                    self.cond.solve()
-                    dp = self.cond.dpWf()
-                    if dp < state6new.p():
-                        state6new.updateState(CP.HmassP_INPUTS,
-                                         state6new.h(), state6new.p() - dp)
-                    else:
-                        raise ValueError(
-                            """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
-                            format(dp, state6new.p()))
-                except Exception as exc:
-                    print(exc.__class__.__name__, ": ", exc)
-                    print(
-                        "pressure drop in working fluid across condenser ignored"
-                    )
-            diff = abs(
-                getattr(self.state6, self.config.tolAttr) - getattr(
-                    state6new, self.config.tolAttr))
+        cdef double diffAbs = self.config.tolAbs * 10 # set to large value
+        cdef double diffRel = self.config.tolRel * 10 # set to large value
+        cdef int count = 0
+        if self.comp.flowsIn[0] is None and self.evap.flowsIn[0] is None and self.exp.flowsIn[0] is None and self.cond.flowsIn[0] is None:
+            msg = "All incoming component working fluid flowstates are None: one must be initialised to execute run()"
+            log("error", msg)
+            raise ValueError(msg)
+        while diffRel > self.config.tolRel and diffAbs > self.config.tolAbs:
+            if count == 0 and self.comp.flowsIn[0] is None:
+                pass
+            else:
+                self.comp.run()
+                self.set_state1(self.comp.flowsOut[0])
+            if count == 0 and self.evap.flowsIn[0] is None:
+                pass
+            else:
+                self.evap.run()
+                self.set_state3(self.evap.flowsOut[0])
+                if len(self.evap.flowsIn) > 1:
+                    self.set_sourceOut(self.evap.flowsOut[1])
+                if hasattr(self.evap, "unitise"): #this should be in Hx.run() logic
+                    self.evap.unitise()
+                    self.evap.size_L([])
+                if self.config.dpEvap is True:
+                    try:
+                        dp = self.evap.dpWf()
+                        if dp < self.state3.p():
+                            self.state3.updateState(CP.HmassP_INPUTS,
+                                               self.state3.h(),
+                                               self.state3.p() - dp)
+                        else:
+                            ValueError(
+                                """Evaporator pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
+                                format(dp, self.state3.p()))
+                    except Exception as exc:
+                        log("warning", "RankineBasic.run(); pressure drop in working fluid across evaporator ignored", exc_info=exc)
+            if count == 0 and self.exp.flowsIn[0] is None:
+                pass
+            else:
+                self.exp.run()
+                self.set_state4(self.exp.flowsOut[0])
+            if count == 0 and self.cond.flowsIn[0] is None:
+                pass
+            else:
+                self.cond.run()
+                state6new = self.cond.flowsOut[0]
+                if len(self.cond.flowsIn) > 1:
+                    self.set_sinkOut(self.cond.flowsOut[1])
+                if hasattr(self.cond, "unitise"):
+                    self.cond.unitise()
+                if self.config.dpCond is True:
+                    try:
+                        #self.cond.size()
+                        dp = self.cond.dpWf()
+                        if dp < state6new.p():
+                            state6new.updateState(CP.HmassP_INPUTS,
+                                             state6new.h(), state6new.p() - dp)
+                        else:
+                            raise ValueError(
+                                """Condenser pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
+                                format(dp, state6new.p()))
+                    except Exception as exc:
+                        log("warning", "RankineBasic.run(); pressure drop in working fluid across condenser ignored", exc_info=exc)
+            if count == 0 and self.comp.flowsIn[0] is None:
+                pass
+            else:
+                diffAbs = abs(
+                getattr(self.state6, self.config.tolAttr)() - getattr(
+                    state6new, self.config.tolAttr)())
+                diffRel = diffAbs / getattr(self.state6, self.config.tolAttr)()
             self.set_state6(state6new)
             count += 1
-            if count > self.config.maxIterationsCycle:
-                raise StopIteration(
-                    """{0} iterations without {1} converging: diff={2}>tol={3}""".
-                    format(self.config.maxIterationsCycle, self.config.tolAttr,
-                           diff, self.config.tolAbs))
+            if count > MAXITER_CYCLE:
+                msg = """{0} iterations without {1} converging: diffRel={2}>tol={3}""".format(MAXITER_CYCLE, self.config.tolAttr,
+                                                                                              diffRel, self.config.tolRel)
+                log("error", msg)
+                raise StopIteration(msg)
     
     cpdef public void sizeSetup(self, bint unitiseEvap, bint unitiseCond):
         """Impose the design parameters on the cycle (without executing .size() for each component).

@@ -57,6 +57,18 @@ kwargs : optional
         self.config = config
         self._inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time")}
+    
+
+    cpdef public void clearWfFlows(self):
+        self.flowsIn[0] = None
+        self.flowsOut[0] = None
+            
+    cpdef public void clearAllFlows(self):
+        cdef size_t i
+        for i in len(self.flowsIn):
+            self.flowsIn[i] = None
+        for i in len(self.flowsOut):
+            self.flowsOut[i] = None
                 
     cpdef public void run(self):
         """Compute the outgoing working fluid FlowState from component attributes."""

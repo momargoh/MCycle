@@ -1,4 +1,5 @@
 from .mcabstractbase cimport MCAB, MCAttr
+from .component cimport Component
 from .config cimport Config
 from .flowstate cimport FlowState
 from ..DEFAULTS cimport RST_HEADINGS
@@ -24,7 +25,7 @@ config : Config, optional
                  str name="Cycle"):
         self._componentKeys = _componentKeys
         self._cycleStateKeys = _cycleStateKeys
-        self._config = config
+        self.config = config
         self._inputs = {"_componentKeys": MCAttr(list, "none"), "_cycleStateKeys": MCAttr(list, "none"), "config": MCAttr(str, "none"), "name": MCAttr(str, "none")}
         self._properties = {}
         self.name = name
@@ -51,7 +52,6 @@ config : Config, optional
         cdef str key
         cdef list key_split
         cdef dict store = {}
-        print(kwargs)
         for key, value in kwargs.items():
             if hasattr(self, 'set_{}'.format(key)):
                 getattr(self, 'set_{}'.format(key))(value)
@@ -59,31 +59,32 @@ config : Config, optional
                 store[key] = value
         if store != {}:        
             super(Cycle, self).update(store)
-                
 
-    @property
-    def config(self):
-        """Config: Cycle configuration parameters. Setter sets config object for all cycle components."""
-        return self._config
+    cpdef public void clearWfFlows(self):
+        cdef Component c
+        for c in self._componentObjs():
+            c.flowsIn[0] = None
+            c.flowsOut[0] = None
+            
+    cpdef public void clearAllFlows(self):
+        cdef Component c
+        cdef size_t i
+        for c in self._componentObjs():
+            for i in len(c.flowsIn):
+                c.flowsIn[i] = None
+            for i in len(c.flowsOut):
+                c.flowsOut[i] = None
 
-    @config.setter
-    def config(self, obj):
-        self._config = obj
+    cpdef public void set_config(self, Config obj):
+        self.config = obj
         for cmpnt in self._componentObjs():
             cmpnt.update({'config': obj})
             
-    def run(self, str componentKey='', FlowState flowState=None):
+    cpdef public void run(self):
         """Abstract method: Compute all state FlowStates from initial FlowState and set component characteristics.
 
 This function must be overridden by subclasses.
-
-Parameters
-----------
-flowState : FlowState, optional
-    FlowState to intiate the cycle. Defaults to None. If None, will search components for a non None flowIn and use that to initiate the cycle.
-component : string
-    Component for which flowState is set as flowInWf
-"""
+        """
         pass
 
     cpdef public void size(self):
@@ -216,7 +217,7 @@ Properties
                             rstHeading=rstHeading + 1))
                 except AttributeError:
                     output += """
-cycle state{}: flow not found""".format(cs)
+cycle {}: flow not found""".format(cs)
                 except:
                     output += """{}: {}
 """.format(flow, "Error returning summary")

@@ -4,11 +4,11 @@ import numpy as np
 cpdef public double TOLABS = 1e-7
 cpdef public double TOLREL = 1e-7
 cpdef public double TOLABS_X = 1e-10
+DIV_T = 5.
+DIV_X = 0.1
 cpdef public int MAXITER_CYCLE = 50
 cpdef public int MAXITER_COMPONENT = 50
 cpdef public int MAX_WALLS = 200
-#cpdef public double RUN_BRACKET_MIN_H = 0.001
-#cpdef public double RUN_BRACKET_MAX_H = 0.9
 cpdef public double GRAVITY = 9.80665
 cpdef public str COOLPROP_EOS = 'HEOS'
 cpdef public str MPL_BACKEND = 'TkAgg'
