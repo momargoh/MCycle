@@ -261,7 +261,7 @@ args : tuple
                 raise ValueError("Methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, _GITHUB_SOURCE_URL))
         except:
             raise
-
+            
     cpdef void set_method(self, str method, list geoms, list transfers, list phases, list flows):
         """Set a method to multiple geometries, transfer types, flows and phases.
 
@@ -301,4 +301,5 @@ flows : list of str
                     for flow in flows:
                         lookup_dict = geom + transfer.title() + flow.title()
                         self.methods[lookup_dict][phase] = method
+
 

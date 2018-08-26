@@ -7,6 +7,26 @@ class TestMethods(unittest.TestCase):
     configTest = mc.Config()
     methods = configTest.methods
 
+    def test_add_method_success(self):
+        def custom_method(p0, p1, p2):
+            return {"h": 0}
+
+        mc.add_method(custom_method, "heat_transfer")
+        self.assertEqual(
+            getattr(mc.methods.heat_transfer, "custom_method"), custom_method)
+
+    def test_add_method_fail_method_is_string(self):
+        with self.assertRaises(TypeError):
+            mc.add_method("custom_method", "heat_transfer")
+
+    def test_add_method_fail_submodule_not_valid(self):
+        with self.assertRaises(ValueError):
+
+            def custom_method(p0, p1, p2):
+                return {"h": 0}
+
+            mc.add_method(custom_method, "fail_submodule")
+
     def test_Methods_lookupMethod_HxPlateCorrChevron_using_args(self):
         self.methods['GeomHxPlateCorrChevronHeatWf'] = {
             "sp": "chisholmWannairachchi_sp",

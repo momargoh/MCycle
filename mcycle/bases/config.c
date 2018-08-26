@@ -6198,6 +6198,7 @@ static void __pyx_f_6mcycle_5bases_6config_6Config_set_method(struct __pyx_obj_6
  *                         lookup_dict = geom + transfer.title() + flow.title()
  *                         self.methods[lookup_dict][phase] = method             # <<<<<<<<<<<<<<
  * 
+ * 
  */
           if (unlikely(__pyx_v_self->methods == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");

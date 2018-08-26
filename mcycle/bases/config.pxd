@@ -27,3 +27,4 @@ cdef class Config(MCAB):
     
     cpdef public str lookupMethod(self, str cls, tuple args)
     cpdef void set_method(self, str method, list geoms, list transfers, list phases, list flows)
+

@@ -17,3 +17,5 @@ from .cycles import *
 from .geometries import *
 from . import library
 from .library import *
+from . import methods
+from .methods import *
