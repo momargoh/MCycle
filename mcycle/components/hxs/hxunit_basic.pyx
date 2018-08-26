@@ -3,8 +3,10 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from warnings import warn
 from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS, MAXITER_COMPONENT
+from ...methods.heat_transfer cimport lmtd
+from warnings import warn
+from math import nan
 import CoolProp as CP
 import numpy as np
 import scipy.optimize as opt
@@ -76,13 +78,13 @@ kwargs : optional
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
-                 double hWf=float("nan"),
-                 double hSf=float("nan"),
+                 double hWf=nan,
+                 double hSf=nan,
                  double RfWf=0,
                  double RfSf=0,
                  SolidMaterial wall=None,
-                 double tWall=float("nan"),
-                 double A=float("nan"),
+                 double tWall=nan,
+                 double A=nan,
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioWall=1,
@@ -306,27 +308,13 @@ kwargs : optional
         cdef double RWall = self.tWall / self.wall.k() / self.ARatioWall / self.NWall
         return (RWf + RSf + RWall)**-1
 
-    cpdef public double LMTD(self):
-        """float: Log-mean temperature difference [K]"""
-        cdef double dT1 = 0
-        cdef double dT2 = 0
-        if "counter" in self.flowSense.lower():
-            dT1 = self.flowsIn[1].T() - self.flowsOut[0].T()
-            dT2 = self.flowsOut[1].T() - self.flowsIn[0].T()
-        elif "parallel" in self.flowSense.lower():
-            dT1 = self.flowsOut[1].T() - self.flowsOut[0].T()
-            dT2 = self.flowsIn[1].T() - self.flowsIn[0].T()
-        ans = (dT1 - dT2) / np.log(dT1 / dT2)
-        if np.isnan(ans):
-            warn(
-                "LMTD found non valid flow temperatures: flowInWf={}, flowOutWf={}, flowInSf={}, flowOutSf={}".
-                format(self.flowsIn[0].T(), self.flowsOut[0].T(), self.flowsIn[1].T(),
-                       self.flowsOut[1].T()))
-        return ans
+    cpdef public double lmtd(self):
+        """float: Log-mean temperature difference [K]."""
+        return lmtd(self.flowsIn[0].T(), self.flowsOut[0].T(), self.flowsIn[1].T(), self.flowsOut[1].T(), self.flowSense)
 
-    cdef public double Q_LMTD(self):
+    cdef public double Q_lmtd(self):
         """float: Heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""
-        return self.U() * self._A() * self.LMTD()
+        return self.U() * self._A() * self.lmtd()
 
     cpdef public double weight(self):
         """float: Estimate of weight [Kg], based purely on wall properties."""
@@ -344,10 +332,10 @@ kwargs : optional
             CP.HmassP_INPUTS, self.flowsIn[1].h() - self._mWf() * self._effFactorWf() *
             (self.flowsOut[0].h() - self.flowsIn[0].h()
              ) / self._mSf() / self._effFactorSf(), self.flowsIn[1].p())
-        cdef double diff = abs(self.Q() - self.Q_LMTD()) / self.Q()
+        cdef double diff = abs(self.Q() - self.Q_lmtd()) / self.Q()
         cdef int count = 0
         while diff > self.config._tolRel_h:
-            q = self.Q_LMTD()
+            q = self.Q_lmtd()
             self.flowsOut[0] = self.flowsIn[0].copyState(
                 CP.HmassP_INPUTS,
                 self.flowsIn[0].h() + q / self._effFactorWf() / self._mWf(),
@@ -368,7 +356,7 @@ kwargs : optional
 
     cdef double _f_sizeHxUnitBasic(self, double value, str attr):
         self.update({attr: value})
-        return self.Q() - self.Q_LMTD()
+        return self.Q() - self.Q_lmtd()
                 
     cpdef public void sizeUnits(self, str attr, list bounds) except *:
         """Size for the value of the nominated attribute required to achieve the defined outgoing FlowState.
@@ -392,7 +380,7 @@ bounds : float or list of float, optional
         try:
             if attr == "A":
                 self.A = 1.
-                self.A = self.Q() / self.Q_LMTD()
+                self.A = self.Q() / self.Q_lmtd()
                 #return self.A
             else:
                 tol = self.config.tolAbs + self.config.tolRel * self.Q()

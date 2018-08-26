@@ -1150,9 +1150,9 @@ struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic {
   double (*QWf)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *);
   double (*QSf)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *);
   double (*Q)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
-  double (*Q_LMTD)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *);
+  double (*Q_lmtd)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *);
   double (*U)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
-  double (*LMTD)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
+  double (*lmtd)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
   double (*weight)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
   double (*_f_sizeHxUnitBasic)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, double, PyObject *);
 };
@@ -5461,7 +5461,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate
  * 
  *     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):             # <<<<<<<<<<<<<<
  *         self.update({attr: value})
- *         return self.Q() - self.Q_LMTD()
+ *         return self.Q() - self.Q_lmtd()
  */
 
 static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate_21_f_sizeUnitsHxUnitPlate(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
@@ -5547,7 +5547,7 @@ static double __pyx_f_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate__f_
  * 
  *     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):
  *         self.update({attr: value})             # <<<<<<<<<<<<<<
- *         return self.Q() - self.Q_LMTD()
+ *         return self.Q() - self.Q_lmtd()
  * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
@@ -5562,11 +5562,11 @@ static double __pyx_f_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate__f_
   /* "mcycle/components/hxs/hxunit_plate.pyx":226
  *     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):
  *         self.update({attr: value})
- *         return self.Q() - self.Q_LMTD()             # <<<<<<<<<<<<<<
+ *         return self.Q() - self.Q_lmtd()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public void sizeUnits(self, str attr, list bounds) except *:
  */
-  __pyx_r = (((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_plate_HxUnitPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.Q(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self), 0) - ((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_plate_HxUnitPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.Q_LMTD(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self)));
+  __pyx_r = (((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_plate_HxUnitPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.Q(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self), 0) - ((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_plate_HxUnitPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.Q_lmtd(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self)));
   goto __pyx_L0;
 
   /* "mcycle/components/hxs/hxunit_plate.pyx":224
@@ -5574,7 +5574,7 @@ static double __pyx_f_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate__f_
  * 
  *     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):             # <<<<<<<<<<<<<<
  *         self.update({attr: value})
- *         return self.Q() - self.Q_LMTD()
+ *         return self.Q() - self.Q_lmtd()
  */
 
   /* function exit code */
@@ -5683,7 +5683,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate
 }
 
 /* "mcycle/components/hxs/hxunit_plate.pyx":228
- *         return self.Q() - self.Q_LMTD()
+ *         return self.Q() - self.Q_lmtd()
  * 
  *     cpdef public void sizeUnits(self, str attr, list bounds) except *:             # <<<<<<<<<<<<<<
  *         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
@@ -7133,7 +7133,7 @@ void __pyx_f_6mcycle_10components_3hxs_12hxunit_plate_11HxUnitPlate_sizeUnits(st
   }
 
   /* "mcycle/components/hxs/hxunit_plate.pyx":228
- *         return self.Q() - self.Q_LMTD()
+ *         return self.Q() - self.Q_lmtd()
  * 
  *     cpdef public void sizeUnits(self, str attr, list bounds) except *:             # <<<<<<<<<<<<<<
  *         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.

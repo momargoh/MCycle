@@ -140,7 +140,7 @@ bounds : float or list of float, optional
         try:
             if attr in ["L", "W", "A"]:
                 setattr(self, attr, 1.)
-                setattr(self, attr, self.Q() / self.Q_LMTD())
+                setattr(self, attr, self.Q() / self.Q_lmtd())
                 # return getattr(self, attr)
             else:
                 super(HxUnitBasicPlanar, self).sizeUnits(attr, bounds)

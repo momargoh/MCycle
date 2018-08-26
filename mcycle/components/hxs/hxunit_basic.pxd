@@ -35,9 +35,9 @@ cdef class HxUnitBasic(Component22):
     cdef public double QWf(self)
     cdef public double QSf(self)
     cpdef public double Q(self)
-    cdef public double Q_LMTD(self)
+    cdef public double Q_lmtd(self)
     cpdef public double U(self)
-    cpdef public double LMTD(self)
+    cpdef public double lmtd(self)
     cpdef public double weight(self)
 
     cdef double _f_sizeHxUnitBasic(self, double value, str attr)

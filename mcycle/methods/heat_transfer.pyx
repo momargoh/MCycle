@@ -10,10 +10,8 @@ b : float
     Corrugated plate channel spacing [m].
 beta : float
     Corrugated plate chevron angle [degrees].
-N : int
-    Number of parallel flow channels of the fluid.
-Nu : float
-    Nusselt number.
+charLength : float
+    Characteristic length [m].
 De : float
     Equivalent diameter [m].
     .. note: Equivalent diameter may be equal to the hydraulic diameter, such as for circular cross sections.
@@ -31,6 +29,10 @@ k : float
     Thermal conductivity [W/m.K].
 L : float
     Length of heat transfer area parallel to the flow [m] (plate or pipe length).
+N : int
+    Number of parallel flow channels of the fluid.
+Nu : float
+    Nusselt number.
 phi : float
     Corrugated plate surface enlargement factor; ratio of developed length to projected length.
 pitchCorr : float
@@ -59,6 +61,7 @@ from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from .. import geometries as gms
 from math import nan, sin, cos, pi, log, exp
+from warnings import warn
 import numpy as np
 import CoolProp as CP
 
@@ -73,20 +76,46 @@ cdef str _assertGeomErrMsg(Geom geom, str method_name):
 
 
 # -----------------------------------------------------------------
-# Useful functions
+# useful functions
 # -----------------------------------------------------------------
 
-cpdef double htc(double Nu, double k, double De):
-    """float: h, heat transfer co-efficient [W/m^2.K].
+cpdef public double htc(double Nu, double k, double charLength) except *:
+    """float: h, heat transfer coefficient [W/m^2.K].
 """
-    return Nu * k / De
+    return Nu * k / charLength
 
 
-cpdef double dpf(double f, double G, double L, double Dh, double rho, int N):
+cpdef public double dpf(double f, double G, double L, double Dh, double rho, int N) except *:
     """float: dpF, single-phase pressure drop due to friction [Pa].
 """
     return f * 2 * G**2 * L * N / Dh / rho
 
+
+# -----------------------------------------------------------------
+# heat exchangers
+# -----------------------------------------------------------------
+
+cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, str flowSense) except *:
+    """float: Log-mean temperature difference [K]."""
+    cdef double dT1 = 0
+    cdef double dT2 = 0
+    cdef double ans
+    cdef str msg
+    if flowSense not in ["counterflow", "parallel"]:
+        raise ValueError("lmtd flowSense not valid/supported (given: {})".format(flowSense))
+    if flowSense == "counterflow":
+        dT1 = TIn2 - TOut1
+        dT2 = TOut2 - TIn1
+    elif flowSense == "parallel":
+        dT1 = TOut2 - TOut1
+        dT2 = TIn2 - TIn1
+    ans = (dT1 - dT2) / np.log(dT1 / dT2)
+    if np.isnan(ans):
+        msg = "lmtd found non-valid flow temperatures: TIn1={}, TOut1={}, TIn2={}, TOut2={}".format(TIn1, TOut1, TIn2, TOut2)
+        log("warning", msg)
+        warn(msg)
+    return ans
+    
 
 # -----------------------------------------------------------------
 # single-phase relations, plate exchangers

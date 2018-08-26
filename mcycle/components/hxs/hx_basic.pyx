@@ -25,13 +25,13 @@ NSf : int, optional
     Number of parallel secondary fluid channels [-]. Defaults to 1.
 NWall : int, optional
     Number of parallel walls [-]. Defaults to 1.
-UWf_liq : float, optional
+hWf_liq : float, optional
     Heat transfer coefficient of the working fluid in the single-phase liquid region (subcooled). Defaults to nan.
-UWf_tp : float, optional
+hWf_tp : float, optional
     Heat transfer coefficient of the working fluid in the two-phase liquid/vapour region. Defaults to nan.
-UWf_vap : float, optional
+hWf_vap : float, optional
     Heat transfer coefficient of the working fluid in the single-phase vapour region (superheated). Defaults to nan.
-USf : float, optional
+hSf : float, optional
     Heat transfer coefficient of the secondary fluid in a single-phase region. Defaults to nan.
 RfWf : float, optional
     Thermal resistance factor due to fouling on the working fluid side [m^2K/W]. Defaults to 0.

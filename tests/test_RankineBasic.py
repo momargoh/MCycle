@@ -55,8 +55,6 @@ class TestRankineBasic(unittest.TestCase):
         self.assertAlmostEqual(self.cycle.comp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.exp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
-        print("dpEvap = False")
-        self.cycle.state3.summary()
 
     def test_1_size_dpEvap_True(self):
         self.cycle.update({"config.dpEvap": True, "evap.L": 0.269})

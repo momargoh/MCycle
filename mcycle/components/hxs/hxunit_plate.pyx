@@ -223,7 +223,7 @@ kwargs : optional
 
     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):
         self.update({attr: value})
-        return self.Q() - self.Q_LMTD()
+        return self.Q() - self.Q_lmtd()
     
     cpdef public void sizeUnits(self, str attr, list bounds) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
