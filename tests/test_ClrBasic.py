@@ -9,16 +9,16 @@ class TestClrBasic(unittest.TestCase):
         flowIn = mc.FlowState("He", -1, -1, CP.PT_INPUTS, 6.7e6, 1190)
 
         clr = mc.ClrBasicConstP(-1, 1.0, flowIn, flowOut)
-        clr.update({'m': 1.0, 'sizeAttr': 'Q'})
+        clr.update({'m': 1.0, 'sizeAttr': 'QCool'})
         clr.size()
-        self.assertAlmostEqual(clr.Q / 1e6, 3.975, 3)
+        self.assertAlmostEqual(clr.Q() / 1e6, -3.975, 3)
 
     def test_ClrBasicConstP_solve_Q_assert_error(self):
         flowOut = mc.FlowState("He", -1, -1, CP.PT_INPUTS, 6.7e6, 424)
         flowIn = mc.FlowState("He", -1, -1, CP.PT_INPUTS, 6.8e6, 1190)
 
         clr = mc.ClrBasicConstP(-1, 1.0, flowIn, flowOut)
-        clr.update({'m': 1.0, 'sizeAttr': 'Q'})
+        clr.update({'m': 1.0, 'sizeAttr': 'QCool'})
         with self.assertRaises(AssertionError):
             clr.size()
 

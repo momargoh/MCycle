@@ -37,11 +37,11 @@ cdef class HxBasic(Component22):
     cpdef public double _effFactorSf(self)
     cdef public double _QWf(self)
     cdef public double _QSf(self)
-    cpdef public double _Q(self)
+    cpdef public double Q(self)
     #cpdef public double Q(self)
     cpdef public double weight(self)
 
-    cpdef public unitise(self)
+    cpdef public void unitise(self)
     cdef public tuple _unitArgsLiq(self)
     cdef public tuple _unitArgsTp(self)
     cdef public tuple _unitArgsVap(self)

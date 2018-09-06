@@ -24,6 +24,11 @@ cdef class FlowState(MCAB):
     cpdef public double cp(self)
     cpdef public double Pr(self)
     cpdef public double V(self)
+    cpdef public double pCrit(self)
+    cpdef public double pMin(self)
+    cpdef public double TCrit(self)
+    cpdef public double TMin(self)
+
     cpdef public str phase(self)
     
 

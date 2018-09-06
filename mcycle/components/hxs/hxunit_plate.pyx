@@ -19,7 +19,7 @@ cdef class HxUnitPlate(HxUnitBasicPlanar):
 Parameters
 ----------
 flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counterflow" or "parallel". Defaults to "counterflow".
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 NPlate : int, optional
     Number of parallel plates [-]. Defaults to 3.
 RfWf : float, optional
@@ -76,7 +76,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counterflow",
+                 str flowSense="counter",
                  int NPlate=3,
                  double RfWf=0,
                  double RfSf=0,
@@ -99,6 +99,7 @@ kwargs : optional
                  str name="HxUnitPlateCorrugated instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         super().__init__(flowSense, -1, -1, NPlate, nan, nan, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,

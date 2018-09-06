@@ -44,7 +44,11 @@ pip3 install Cython""".format(exc))
 cmdclass = {}
 ext_modules = []
 include_dirs = [numpy.get_include()]
-compiler_directives = {'embedsignature': True, "language_level": 3}
+compiler_directives = {
+    'embedsignature': True,
+    "language_level": 3,
+    "wraparound": False
+}
 if USE_CYTHON:
     ext_modules = cythonize(
         "mcycle/*.pyx", compiler_directives=compiler_directives) + cythonize(
@@ -70,7 +74,7 @@ else:
 
 setup(
     name='mcycle',
-    version='1.0.0',
+    version='1.0.1',
     description='1D sizing and analysis of thermodynamic power cycles',
     long_description=long_description,
     url='https://github.com/momargoh/MCycle',

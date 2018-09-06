@@ -17,7 +17,7 @@ cdef class HxBasicPlanar(HxBasic):
 Parameters
 ----------
 flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counterflow" or "parallel". Defaults to "counterflow".
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -83,7 +83,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counterflow",
+                 str flowSense="counter",
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -114,10 +114,7 @@ kwargs : optional
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitBasicPlanar):
-        assert "counter" in flowSense.lower() or "parallel" in flowSense.lower(
-        ), "{} is not a valid value for flowSense; must be 'counterflow' or 'parallel'.".format(
-            flowSense)
-
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         self.L = L
         self.W = W
         super().__init__(flowSense, NWf, NSf, NWall, hWf_liq, hWf_tp, hWf_vap,
@@ -139,7 +136,7 @@ kwargs : optional
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
-        self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+        self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
 
     cpdef public double _A(self):
@@ -218,7 +215,7 @@ unitsBounds : float or list of float, optional
                 # self.unitise()
                 L = self.L
 
-                tol = self.config.tolAbs + self.config.tolRel * abs(self._Q())
+                tol = self.config.tolAbs + self.config.tolRel * abs(self.Q())
                 if len(bounds) == 2:
                     sizedValue = opt.brentq(
                         self._f_sizeHxBasicPlanar,
@@ -248,6 +245,7 @@ unitsBounds : float or list of float, optional
         self.flowsOut[1] = self.flowsIn[1].copyState(CP.HmassP_INPUTS, hOut, self.flowsIn[1].p())
         self.unitise()
         o = saveL - self.size_L(self.sizeUnitsBounds)
+        #print("----------- _f_runHxBasicPlanar, saveL - self.size_L = ", o)
         return o
         
     cpdef public void run(self):

@@ -27,11 +27,11 @@ wf = mc.FlowState(
 print("  - created working fluid")
 exp = mc.ExpBasic(pRatio=1, effIsentropic=0.9, sizeAttr="pRatio")
 print("  - created expander")
-cond = mc.ClrBasicConstP(Q=1, effThermal=1.0, sizeAttr="Q")
+cond = mc.ClrBasicConstP(QCool=1, effThermal=1.0, sizeAttr="Q")
 print("  - created condenser")
 comp = mc.CompBasic(pRatio=1, effIsentropic=0.85, sizeAttr="pRatio")
 print("  - created compressor")
-evap = mc.HtrBasicConstP(Q=1, effThermal=1.0, sizeAttr="Q")
+evap = mc.HtrBasicConstP(QHeat=1, effThermal=1.0, sizeAttr="Q")
 print("  - created evaporator")
 config = mc.Config()
 print("  - created configuration object")
@@ -89,8 +89,8 @@ def run_off_design():
     state3_vals = []
     effThermal_vals = []
     newFigFlag = True
-    for Q in Q_vals:
-        cycle.evap.Q = Q
+    for QHeat in Q_vals:
+        cycle.evap.QHeat = QHeat
         cycle.evap.run()
         cycle.set_state3(cycle.evap.flowOutWf)
         cycle.exp.run()

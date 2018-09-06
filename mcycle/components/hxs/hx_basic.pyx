@@ -18,7 +18,7 @@ cdef class HxBasic(Component22):
 Parameters
 ----------
 flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counterflow" or "parallel". Defaults to "counterflow".
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -82,7 +82,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counterflow",
+                 str flowSense="counter",
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -112,9 +112,7 @@ kwargs : optional
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitBasic):
-        assert "counter" in flowSense.lower() or "parallel" in flowSense.lower(
-        ), "{} is not a valid value for flowSense; must be 'counterflow' or 'parallel'.".format(
-            flowSense)
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         self.flowSense = flowSense
         self.NWf = NWf
         self.NSf = NSf
@@ -226,19 +224,22 @@ kwargs : optional
         else:
             return 0
 
-    cpdef public double _Q(self):
+    cpdef public double Q(self):
         """float: Heat transfer from the secondary fluid to the working fluid [W]."""
-        cdef str err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
-            self._effFactorWf(), self._QWf(), self._effFactorSf(), self._QSf(),
-            self.effThermal)
-        if abs(self._QWf()) < TOLABS and abs(self._QSf()) < TOLABS:
+        cdef str err_msg
+        cdef double qWf = self._QWf()
+        cdef double qSf = self._QSf()
+        if abs(qWf) < TOLABS and abs(qSf) < TOLABS:
             return 0
-        elif abs((self._QWf() + self._QSf()) / (self._QWf())) < TOLREL:
-            return self._QWf()
+        elif abs((qWf + qSf) / (qWf)) < TOLREL:
+            return qWf
         else:
+            err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
+            self._effFactorWf(), qWf, self._effFactorSf(), qSf,
+            self.effThermal)
             warn(err_msg)
-            return self._QWf()
-
+            return qWf
+        
     '''cpdef public double Q(self):
         """float: Heat transfer from the secondary fluid to the working fluid [W]."""
         return self._Q()'''
@@ -299,7 +300,7 @@ kwargs : optional
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
                 self.ARatioWf, self.ARatioSf, self.ARatioWall, self.effThermal)
 
-    cpdef public unitise(self):
+    cpdef public void unitise(self):
         """Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties."""
         self._units = []
         cdef FlowState inWf = self.flowsIn[0]._copy({})
@@ -550,8 +551,6 @@ kwargs : optional
         if not self._checkContinuous():
             self._units = []
             raise ValueError("HxUnits are not in continuous order")
-        else:
-            return None
 
         
     cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBounds):

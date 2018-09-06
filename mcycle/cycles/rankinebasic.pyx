@@ -11,6 +11,7 @@ from ..components.hxs.hx_basic cimport HxBasic
 from math import nan, isnan
 import numpy as np
 import CoolProp as CP
+
 from warnings import warn
 
 
@@ -96,16 +97,26 @@ kwargs : optional
                     key_attr = getattr(self, key_split[0])
                     key_attr.update({key_split[1]: value})
                 else:
+                    """
                     store[key] = value
                     """
                     try:
                         setter = getattr(self, 'set_{}'.format(key))
                         setter(value)
-                    except:
-                        setattr(self, key, value)
-                    """
+                    except AttributeError:
+                        super(RankineBasic, self).update({key: value}) #setattr(self, key, value)
+        """
+        for key, value in store:
+            try:
+                setter = getattr(self, 'set_{}'.format(key))
+                setter(value)
+            except:
+                super(RankineBasic, self).update({key, value})
+        """
+        """    
         if store != {}:
             super(RankineBasic, self).update(store)
+        """
 
     cpdef public double _mWf(self):
         return self.wf.m
@@ -134,8 +145,7 @@ kwargs : optional
 
     @TCond.setter
     def TCond(self, value):
-        self.pCond = CP.CoolProp.PropsSI('P', 'T', value, 'Q', 0,
-                                         COOLPROP_EOS + "::" + self.wf.fluid)
+        self.set_TCond(value)
 
     cpdef public double _TEvap(self):
         return self.wf.copyState(CP.PQ_INPUTS, self.pEvap, 0).T()
@@ -147,13 +157,11 @@ kwargs : optional
     @property
     def TEvap(self):
         """float: Evaporation temperature of the working fluid in the evaporator [K]."""
-        return CP.CoolProp.PropsSI('T', 'P', self.pEvap, 'Q', 0,
-                                   COOLPROP_EOS + "::" + self.wf.fluid)
+        return self._TEvap()
 
     @TEvap.setter
     def TEvap(self, value):
-        self.pEvap = CP.CoolProp.PropsSI('P', 'T', value, 'Q', 0,
-                                         COOLPROP_EOS + "::" + self.wf.fluid)
+        self.set_TEvap(value)
         
     cpdef public double _dpComp(self):
         return self.pEvap - self.pCond
@@ -341,20 +349,20 @@ kwargs : optional
             pass
 
     cpdef public FlowState _source1(self):
-        if "counter" in self.evap.flowSense.lower():
+        if self.evap.flowSense == "counter":
             return self._sourceOut()
-        elif "parallel" in self.evap.flowSense.lower():
+        elif self.evap.flowSense == "parallel":
             return self._sourceIn()
         else:
             return None
 
     cpdef public FlowState _source20(self):
         cdef double h
-        if "counter" in self.evap.flowSense.lower():
+        if self.evap.flowSense == "counter":
             h = self._source1().h() + self._mWf() * self.evap._effFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._effFactorSf()
-        elif "parallel" in self.evap.flowSense.lower():
+        elif self.evap.flowSense == "parallel":
             h = self._source1().h() - self._mWf() * self.evap._effFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._effFactorSf()
@@ -364,11 +372,11 @@ kwargs : optional
 
     cpdef public FlowState _source21(self):
         cdef double h
-        if "counter" in self.evap.flowSense.lower():
+        if self.evap.flowSense == "counter":
             h = self._source1().h() + self._mWf() * self.evap._effFactorSf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._effFactorSf()
-        elif "parallel" in self.evap.flowSense.lower():
+        elif self.evap.flowSense.lower() == "parallel":
             h = self._source1().h() - self._mWf() * self.evap._effFactorWf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._effFactorSf()
@@ -377,9 +385,9 @@ kwargs : optional
         return self._sourceIn().copyState(CP.HmassP_INPUTS, h, self._sourceIn().p())
 
     cpdef public FlowState _source3(self):
-        if "counter" in self.evap.flowSense.lower():
+        if self.evap.flowSense == "counter":
             return self._sourceIn()
-        elif "parallel" in self.evap.flowSense.lower():
+        elif self.evap.flowSense == "parallel":
             return self._sourceOut()
         else:
             return None
@@ -440,7 +448,7 @@ kwargs : optional
             return None
 
     cpdef public void set_sinkIn(self, FlowState obj):
-        if len(self.evap.flowsOut) > 1:
+        if len(self.cond.flowsIn) > 1:
             self.cond.flowsIn[1] = obj
         else:
             log("info", "Could not set RankineBasic.sinkIn with {} condenser".format(type(self.cond)))
@@ -453,7 +461,7 @@ kwargs : optional
         self.cond.flowsOut[1] = obj
 
     cpdef public FlowState _sink4(self):
-        if self.cond.flowSense == "counterflow":
+        if self.cond.flowSense == "counter":
             return self._sinkOut()
         elif self.cond.flowSense == "parallel":
             return self._sinkIn()
@@ -461,20 +469,20 @@ kwargs : optional
             return None
         
     cpdef public FlowState _sink6(self):
-        if "counter" in self.cond.flowSense.lower():
+        if self.cond.flowSense == "counter":
             return self._sinkIn()
-        elif "parallel" in self.cond.flowSense.lower():
+        elif self.cond.flowSense == "parallel":
             return self._sinkOut()
         else:
             return None
     
     cpdef public FlowState _sink50(self):
         cdef double h
-        if "counter" in self.cond.flowSense.lower():
+        if self.cond.flowSense == "counter":
             h = self._sink4().h() - self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._effFactorSf()
-        elif "parallel" in self.cond.flowSense.lower():
+        elif self.cond.flowSense == "parallel":
             h = self._sink4().h() + self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._effFactorSf()
@@ -484,11 +492,11 @@ kwargs : optional
 
     cpdef public FlowState _sink51(self):
         cdef double h
-        if "counter" in self.cond.flowSense.lower():
+        if self.cond.flowSense == "counter":
             h = self._sink4().h() - self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._effFactorSf()
-        elif "parallel" in self.cond.flowSense.lower():
+        elif self.cond.flowSense == "parallel":
             h = self._sink4().h() + self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._effFactorSf()
@@ -549,11 +557,11 @@ kwargs : optional
 
     cpdef public double QIn(self):
         """float: Heat input (from evaporator) [W]."""
-        return self.evap._Q() #self._mWf() * (self.state3.h() - self.state1.h())
+        return self.evap.Q() #self._mWf() * (self.state3.h() - self.state1.h())
 
     cpdef public double QOut(self):
         """float: Heat output (from condenser) [W]."""
-        return self.cond._Q() #self._mWf() * (self.state4.h() - self.state6.h())
+        return self.cond.Q() #self._mWf() * (self.state4.h() - self.state6.h())
 
     cpdef public double PIn(self):
         """float: Power input (from compressor) [W]."""
@@ -669,7 +677,7 @@ kwargs : optional
     cpdef public double _pptdEvap(self):
         """float: Pinch-point temperature difference of evaporator"""
         if issubclass(type(self.evap), HxBasic):
-            if "counter" in self.evap.flowSense.lower():
+            if self.evap.flowSense == "counter":
                 if self._state1() and self._state20() and self._source1() and self._source20():
                     return min(self._source20().T() - self._state20().T(),
                                self._source1().T() - self._state1().T())
@@ -740,7 +748,7 @@ kwargs : optional
     def pptdCond(self):
         """float: Pinch-point temperature difference of condenser"""
         if issubclass(type(self.cond), HxBasic):
-            if "counter" in self.cond.flowSense.lower():
+            if self.cond.flowSense == "counter":
 
                 if self.state4 and self.state51 and self.sink4 and self.sink51:
                     return min(self.state51.T() - self.sink51.T(),
@@ -907,6 +915,7 @@ unitiseCond : bool
         cdef int count, cycle_count = 0
         cdef FlowState state1_old, state4_old, state4_s
         cdef FlowState state6_old = self._state6().copy({})
+        cdef str msg
         while cycle_diff > self.config.tolAbs:
             diff = self.config.tolAbs * 5
             count = 0
@@ -961,13 +970,11 @@ unitiseCond : bool
                                            self._state3().p() - dp)
                     else:
                         raise ValueError(
-                            """pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
+                            """Pressure drop in working fluid is greater than actual pressure: {0}>{1}""".
                             format(dp, self._state3().p()))
-                except Exception as exc:
-                    print(exc.__class__.__name__, ": ", exc)
-                    print(
-                        "pressure drop in working fluid across evaporator ignored"
-                    )
+                except ValueError as exc:
+                    msg = "RankineBasic.size(), pressure drop in working fluid across evaporator ignored"
+                    log("warning", msg, exc_info=exc)
             self.set_state3(self.evap.flowsOut[0])
             #
             diff = self.config.tolAbs * 5
@@ -1016,13 +1023,11 @@ unitiseCond : bool
                                            self._state6().p() - dp)
                     else:
                         raise ValueError(
-                            """pressure drop of working fluid in condenser is greater than actual pressure: {0}>{1}""".
+                            """Pressure drop of working fluid in condenser is greater than actual pressure: {0}>{1}""".
                             format(dp, self.state6.p()))
-                except Exception as exc:
-                    print(exc.__class__.__name__, ": ", exc)
-                    print(
-                        "pressure drop in working fluid across condenser ignored"
-                    )
+                except ValueError as exc:
+                    msg = "RankineBasic.size(), pressure drop in working fluid across condenser ignored"
+                    log("warning", msg, exc_info=exc)
             self.set_state6(self.cond.flowsOut[0])
             cycle_diff = getattr(self.state6, self.config.tolAttr)() - getattr(
                 state6_old, self.config.tolAttr)()
@@ -1093,26 +1098,19 @@ marker : str, optional
         yvalsSink = []
         xvalsSat = []
         yvalsSat = []
-
         if graph == 'Ts':
             x = "s"
             y = "T"
             xlabel = 's [J/Kg.K]'
             ylabel = 'T [K]'
             title = title
-            Tcrit = CP.CoolProp.PropsSI(COOLPROP_EOS + "::" + self.wf.fluid,
-                                        "Tcrit")
-            Tmin = CP.CoolProp.PropsSI(COOLPROP_EOS + "::" + self.wf.fluid,
-                                       "Tmin")
+            Tcrit = self.wf.TCrit()
+            Tmin = self.wf.TMin()
             xvalsSat2, yvalsSat2 = [], []
             for T in np.linspace(Tmin, Tcrit, 100, False):
-                xvalsSat.append(
-                    CP.CoolProp.PropsSI("S", "Q", 0, "T", T, COOLPROP_EOS +
-                                        "::" + self.wf.fluid))
+                xvalsSat.append(self.wf.copyState(CP.QT_INPUTS, 0, T).s())
                 yvalsSat.append(T)
-                xvalsSat2.append(
-                    CP.CoolProp.PropsSI("S", "Q", 1, "T", T, COOLPROP_EOS +
-                                        "::" + self.wf.fluid))
+                xvalsSat2.append(self.wf.copyState(CP.QT_INPUTS, 1, T).s())
                 yvalsSat2.append(T)
             xvalsSat = xvalsSat + list(reversed(xvalsSat2))
             yvalsSat = yvalsSat + list(reversed(yvalsSat2))
@@ -1122,19 +1120,13 @@ marker : str, optional
             xlabel = 'h [J/Kg]'
             ylabel = 'p [Pa]'
             title = title
-            pcrit = CP.CoolProp.PropsSI(COOLPROP_EOS + "::" + self.wf.fluid,
-                                        "pcrit")
-            pmin = CP.CoolProp.PropsSI(COOLPROP_EOS + "::" + self.wf.fluid,
-                                       "pmin")
+            pcrit = self.wf.pCrit()
+            pmin = self.wf.pMin()
             xvalsSat2, yvalsSat2 = [], []
             for p in np.linspace(pmin, pcrit, 100, False):
-                xvalsSat.append(
-                    CP.CoolProp.PropsSI("H", "Q", 0, "P", p, COOLPROP_EOS +
-                                        "::" + self.wf.fluid))
+                xvalsSat.append(self.wf.copyState(CP.PQ_INPUTS, p, 0).h())
                 yvalsSat.append(p)
-                xvalsSat2.append(
-                    CP.CoolProp.PropsSI("H", "Q", 1, "P", p, COOLPROP_EOS +
-                                        "::" + self.wf.fluid))
+                xvalsSat2.append(self.wf.copyState(CP.PQ_INPUTS, p, 1).h())
                 yvalsSat2.append(p)
             xvalsSat = xvalsSat + list(reversed(xvalsSat2))
             yvalsSat = yvalsSat + list(reversed(yvalsSat2))
@@ -1159,7 +1151,7 @@ marker : str, optional
                            self.source1], [self.state20, self.source20],
                           [self.state21,
                            self.source21], [self.state3, self.source3]]
-            if "counter" in self.evap.flowSense.lower():
+            if self.evap.flowSense == "counter":
                 if self.source20.h() < self.source1.h():
                     plotSource.remove([self.state20, self.source20])
                 if self.source21.h() > self.source3.h():
@@ -1176,7 +1168,7 @@ marker : str, optional
         if issubclass(type(self.cond), HxBasic):
             plotSink = [[self.state6, self.sink6], [self.state50, self.sink50],
                         [self.state51, self.sink51], [self.state4, self.sink4]]
-            if "counter" in self.cond.flowSense.lower():
+            if self.cond.flowSense == "counter":
                 if self.sink51.h() > self.sink4.h():
                     plotSink.remove([self.state51, self.sink51])
                 if self.sink50.h() < self.sink6.h():

@@ -1,6 +1,7 @@
 from .mcabstractbase cimport MCAttr
 from .flowstate cimport FlowState
 from ..DEFAULTS cimport COOLPROP_EOS
+from ..logger import log
 import CoolProp as CP
 from math import nan, isnan
 import numpy as np
@@ -214,6 +215,26 @@ input1,input2 : double
     cpdef public double x(self):
         """double: Quality [-]. By definition, x = -1 for all FlowStatePoly objects."""
         return -1
+    
+    cpdef public double pCrit(self):
+        r"""double: Critical pressure [Pa]."""
+        log("warning", "FlowStatePoly, critical pressure is not defined for mixtures")
+        return nan
+    
+    cpdef public double pMin(self):
+        r"""double: Minimum pressure [Pa]."""
+        log("warning", "FlowStatePoly, minimum pressure is not defined for mixtures")
+        return nan
+    
+    cpdef public double TCrit(self):
+        r"""double: Critical temperture [K]."""
+        log("warning", "FlowStatePoly, critical temperature is not defined for mixtures")
+        return nan
+    
+    cpdef public double TMin(self):
+        r"""double: Minimum temperture [K]."""
+        log("warning", "FlowStatePoly, minimum temperature is not defined for mixtures")
+        return nan
 
     cpdef public str phase(self):
         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""

@@ -12,7 +12,7 @@ cdef class HxUnitBasicPlanar(HxUnitBasic):
 Parameters
 ----------
 flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counterflow" or "parallel". Defaults to "counterflow".
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -70,7 +70,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counterflow",
+                 str flowSense="counter",
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -95,9 +95,7 @@ kwargs : optional
                  str name="HxUnitBasic instance",
                  str  notes="No notes/model info.",
                  Config config=Config()):
-        assert "counter" in flowSense.lower() or "parallel" in flowSense.lower(
-        ), "{0} is not a valid value for flowSense; must be 'counterflow' or 'parallel'.".format(
-            flowSense)
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)        
         self.L = L
         self.W = W
         super().__init__(flowSense, NWf, NSf, NWall, hWf, hSf, RfWf, RfSf,

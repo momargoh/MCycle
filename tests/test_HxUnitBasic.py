@@ -4,7 +4,7 @@ import CoolProp as CP
 
 
 class TestHxUnitBasic(unittest.TestCase):
-    hxUnit = mc.HxUnitBasic(flowSense="counterflow")
+    hxUnit = mc.HxUnitBasic(flowSense="counter")
 
     def test_phaseWf_tpEvap_with_x_0(self):
         flowInWf = mc.FlowState("R123", -1, -1, CP.PQ_INPUTS, 1000000., 0)
@@ -19,8 +19,9 @@ class TestHxUnitBasic(unittest.TestCase):
         self.assertEqual(self.hxUnit.phaseWf(), "tpCond")
 
     def test_accept_FlowStatePoly(self):
-        refData = mc.RefData("air", 2, 101325.,
-                             {'T': [200, 250, 300, 350, 400]})
+        refData = mc.RefData("air", 2, 101325., {
+            'T': [200, 250, 300, 350, 400]
+        })
         flow = mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 101325., 293.15)
         self.hxUnit.update({'flowInSf': flow})
 

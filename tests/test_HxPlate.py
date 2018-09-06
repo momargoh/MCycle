@@ -9,7 +9,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
     config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
                       ["all"], ["all"], ["sf"])
     hx = mc.HxPlate(
-        flowSense="counterflow",
+        flowSense="counter",
         RfWf=0,
         RfSf=0,
         plate=mc.library.stainlessSteel_316(573.15),

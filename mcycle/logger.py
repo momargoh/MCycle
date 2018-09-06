@@ -1,6 +1,6 @@
 import logging
+import os, sys
 
-LOG_FILE = "mcycle.log"
 LOG_FILEMODE = "w"
 LOG_LEVEL = "DEBUG"
 LOGGER = logging.getLogger()
@@ -10,8 +10,12 @@ def updateLogger():
     logLevel = getattr(logging, LOG_LEVEL, None)
     if not isinstance(logLevel, int):
         raise ValueError('Invalid log level: %s' % LOG_LEVEL)
-    #LOGGER = logging.getLogger()
     LOGGER.setLevel(logLevel)
+    try:
+        LOG_FILE = os.path.basename(sys.argv[0]).replace(".py", "").replace(
+            ".pyx", "") + ".log"
+    except:
+        LOG_FILE = "mcycle.log"
     fh = logging.FileHandler(LOG_FILE, LOG_FILEMODE, delay=True)
     fh.setLevel(logLevel)
     formatter = logging.Formatter(
@@ -24,7 +28,7 @@ def updateLogger():
 updateLogger()
 
 
-def log(lvl, msg, *args, **kwargs):
+def log(lvl, msg, exc_info=None, **kwargs):
     assert lvl.lower() in [
         "notset", "debug", "info", "warning", "error", "critical"
     ], "{} is not a valid logging level".format(lvl)
@@ -36,4 +40,4 @@ def log(lvl, msg, *args, **kwargs):
         "error": logging.ERROR,
         "critical": logging.CRITICAL
     }
-    LOGGER.log(lvls[lvl.lower()], msg, *args, **kwargs)
+    LOGGER.log(lvls[lvl.lower()], msg, exc_info=exc_info, **kwargs)

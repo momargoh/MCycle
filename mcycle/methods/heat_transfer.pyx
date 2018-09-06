@@ -101,9 +101,9 @@ cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, s
     cdef double dT2 = 0
     cdef double ans
     cdef str msg
-    if flowSense not in ["counterflow", "parallel"]:
+    if flowSense != "counter" and flowSense != "parallel":
         raise ValueError("lmtd flowSense not valid/supported (given: {})".format(flowSense))
-    if flowSense == "counterflow":
+    if flowSense == "counter":
         dT1 = TIn2 - TOut1
         dT2 = TOut2 - TIn1
     elif flowSense == "parallel":

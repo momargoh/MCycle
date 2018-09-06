@@ -87,7 +87,7 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 ..   For the latest stable release, MCycle is also available from pip by running:: 
 
 ..  pip3 install mcycle
-
+     
 .. readme-link-marker
    
 .. _section-README-quickstart:
@@ -97,4 +97,8 @@ Quick start
 
 Have a look through the `quick start example <https://mcycle.readthedocs.io/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.readthedocs.io/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
 
+   
+Changelog
+==========
 
+:ref:`doc-changelog`

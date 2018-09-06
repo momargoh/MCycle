@@ -1,3 +1,4 @@
+from .logger import log
 import timeit
 import numpy as np
 
@@ -208,14 +209,17 @@ def timeThis(func):
         ret = func(*args, **kwargs)
         cdef float runTime = timeit.default_timer() - start
         cdef float m, s, h
+        cdef str msg
         if runTime < 60.:
-            print("{}() took {} seconds to run.".format(func.__name__, runTime))
+            msg = "{}() took {} seconds to run.".format(func.__name__, runTime)
         elif runTime < 3600.:
             m, s = divmod(runTime, 60)
-            print("{}() took {} mins {} s to run.".format(func.__name__, m, s))
+            msg = "{}() took {} mins {} s to run.".format(func.__name__, m, s)
         else:
             m, s = divmod(runTime, 60)
             h, m = divmod(m, 60)
-            print("{}() took {} hrs {} mins {} s to run.".format(func.__name__, h, m, s))
+            msg = "{}() took {} hrs {} mins {} s to run.".format(func.__name__, h, m, s)
+        log("info", msg)
+        print(msg)
         return ret
     return func_wrapper

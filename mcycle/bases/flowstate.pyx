@@ -235,7 +235,23 @@ name : str, optional
     cpdef public double V(self):
         r"""double:  Volumetric flow rate [m^3/s]."""
         return self.m / self.rho()
-
+    
+    cpdef public double pCrit(self):
+        r"""double: Critical pressure [Pa]."""
+        return CP.CoolProp.PropsSI("pCrit", self.fluid)
+    
+    cpdef public double pMin(self):
+        r"""double: Minimum pressure [Pa]."""
+        return CP.CoolProp.PropsSI("pmin", self.fluid)
+    
+    cpdef public double TCrit(self):
+        r"""double: Critical temperture [K]."""
+        return CP.CoolProp.PropsSI("Tcrit", self.fluid)
+    
+    cpdef public double TMin(self):
+        r"""double: Minimum temperture [K]."""
+        return CP.CoolProp.PropsSI("Tmin", self.fluid)
+    
     cpdef public str phase(self):
         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region."""
         cdef FlowState liq

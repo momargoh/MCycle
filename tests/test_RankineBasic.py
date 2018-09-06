@@ -19,7 +19,7 @@ class TestRankineBasic(unittest.TestCase):
     sinkIn = mc.FlowState("Air", -1, 0.20, CP.PT_INPUTS, 0.88260e5, 281.65)
     sinkAmbient = sinkIn.copy()
     sourceAmbient = sinkIn.copy()
-    cond = mc.ClrBasicConstP(nan, 1, sizeAttr="Q")
+    cond = mc.ClrBasicConstP(nan, 1, sizeAttr="QCool")
     config = mc.Config()
     config.update({
         'dpEvap': False,
@@ -54,7 +54,7 @@ class TestRankineBasic(unittest.TestCase):
             abs(self.cycle.evap.L - 0.268278920236407), 0, 2)
         self.assertAlmostEqual(self.cycle.comp.pRatio, 10.22519893, 4)
         self.assertAlmostEqual(self.cycle.exp.pRatio, 10.22519893, 4)
-        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
+        self.assertAlmostEqual(self.cycle.evap.Q(), 83891.17350428084, 4)
 
     def test_1_size_dpEvap_True(self):
         self.cycle.update({"config.dpEvap": True, "evap.L": 0.269})
@@ -66,7 +66,7 @@ class TestRankineBasic(unittest.TestCase):
         self.assertAlmostEqual(
             self.cycle.exp.pRatio,
             (self.cycle.pEvap - 39607.4552153897) / self.cycle.pCond, 4)
-        self.assertAlmostEqual(self.cycle.evap._Q(), 83891.17350428084, 4)
+        self.assertAlmostEqual(self.cycle.evap.Q(), 83891.17350428084, 4)
 
     def test_1_run_from_comp(self):
         self.cycle.update({
@@ -75,7 +75,7 @@ class TestRankineBasic(unittest.TestCase):
             "evap.L": 0.269,
             "pRatioExp": 10.22519893,
             "pRatioComp": 10.22519893,
-            "cond.Q": 73582.4417680011
+            "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWfFlows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
@@ -100,7 +100,7 @@ class TestRankineBasic(unittest.TestCase):
             "evap.L": 0.269,
             "exp.pRatio": 9.820204742676,
             "comp.pRatio": 10.22519893,
-            "cond.Q": 73582.4417680011
+            "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWfFlows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
@@ -126,7 +126,7 @@ class TestRankineBasic(unittest.TestCase):
             "evap.L": 0.269,
             "pRatioExp": 10.22519893,
             "pRatioComp": 10.22519893,
-            "cond.Q": 73582.4417680011
+            "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWfFlows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,

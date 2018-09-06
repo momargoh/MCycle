@@ -19,7 +19,7 @@ cdef class HxPlate(HxBasicPlanar):
 Parameters
 ----------
 flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counterflow" or "parallel". Defaults to "counterflow".
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 RfWf : float, optional
     Thermal resistance due to fouling on the working fluid side. Defaults to 0.
 RfSf : float, optional
@@ -90,7 +90,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counterflow",
+                 str flowSense="counter",
                  int NPlate=3,
                  double RfWf=0,
                  double RfSf=0,
@@ -124,9 +124,7 @@ kwargs : optional
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitPlate):
-        assert "counter" in flowSense.lower() or "parallel" in flowSense.lower(
-        ), "{} is not a valid value for flowSense; must be 'counterflow' or 'parallel'.".format(
-            flowSense)
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         self.geomPlateWf = geomPlateWf
         self.geomPlateSf = geomPlateSf
         self.DPortWf = DPortWf

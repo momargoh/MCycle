@@ -5,7 +5,7 @@ from .. import geometries as gms
 from . import materials as mats
 
 
-def alfaLaval_AC30EQ(flowSense="counterflow",
+def alfaLaval_AC30EQ(flowSense="counter",
                      flowInWf=None,
                      flowInSf=None,
                      flowOutWf=None,
@@ -49,13 +49,14 @@ def alfaLaval_AC30EQ(flowSense="counterflow",
         sizeBounds=sizeBounds,
         sizeUnitsBounds=sizeUnitsBounds,
         name=name,
-        notes="Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf",
+        notes=
+        "Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf",
         config=config)
     hx.update(kwargs)
     return hx
 
 
-def alfaLaval_CBXP27(flowSense="counterflow",
+def alfaLaval_CBXP27(flowSense="counter",
                      flowInWf=None,
                      flowInSf=None,
                      flowOutWf=None,
@@ -99,7 +100,8 @@ def alfaLaval_CBXP27(flowSense="counterflow",
         sizeBounds=sizeBounds,
         sizeUnitsBounds=sizeUnitsBounds,
         name=name,
-        notes="Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf",
+        notes=
+        "Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf",
         config=config)
     hx.update(kwargs)
     return hx
