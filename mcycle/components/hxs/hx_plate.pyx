@@ -236,7 +236,9 @@ kwargs : optional
         """float: Frictional pressure drop of the working fluid [Pa]."""
         cdef double dp = 0
         cdef HxUnitPlate unit
-        for unit in self._units:
+        cdef size_t i
+        for i in range(len(self._units)):#unit in self._units:
+            unit = self._units[i]
             dp += unit._dpFWf()
         return dp
 
@@ -244,7 +246,9 @@ kwargs : optional
         """float: Frcitional pressure drop of the secondary fluid [Pa]."""
         cdef double dp = 0
         cdef HxUnitPlate unit
-        for unit in self._units:
+        cdef size_t i
+        for i in range(len(self._units)):#unit in self._units:
+            unit = self._units[i]
             dp += unit._dpFSf()
         return dp
 

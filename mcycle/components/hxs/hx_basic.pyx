@@ -3,12 +3,14 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS
+from ...DEFAULTS cimport TOLABS_X
+from ...logger import log
 from .hxunit_basic cimport HxUnitBasic
 import CoolProp as CP
 from warnings import warn
 from math import nan
 import numpy as np
+cimport numpy as np
 import scipy.optimize as opt
 
 
@@ -210,7 +212,7 @@ kwargs : optional
 
     cdef public double _QWf(self):
         """float: Heat transfer to the working fluid [W]."""
-        if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > TOLABS:
+        if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > self.config.tolAbs:
             return (self.flowsOut[0].h() - self.flowsIn[0].h()
                     ) * self._mWf() * self._effFactorWf()
         else:
@@ -218,31 +220,29 @@ kwargs : optional
 
     cdef public double _QSf(self):
         """float: Heat transfer to the secondary fluid [W]."""
-        if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > TOLABS:
+        if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > self.config.tolAbs:
             return (self.flowsOut[1].h() - self.flowsIn[1].h()
                     ) * self._mSf() * self._effFactorSf()
         else:
             return 0
 
     cpdef public double Q(self):
-        """float: Heat transfer from the secondary fluid to the working fluid [W]."""
+        """float: Heat transfer to the working fluid from the secondary fluid [W]."""
         cdef str err_msg
         cdef double qWf = self._QWf()
         cdef double qSf = self._QSf()
-        if abs(qWf) < TOLABS and abs(qSf) < TOLABS:
+        cdef double tolAbs = self.config.tolAbs
+        if abs(qWf) < tolAbs and abs(qSf) < tolAbs:
             return 0
-        elif abs((qWf + qSf) / (qWf)) < TOLREL:
+        elif abs((qWf + qSf) / (qWf)) < self.config.tolRel:
             return qWf
         else:
-            err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
+            msg = """{}.Q(), QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(self.__class__.__name__,
             self._effFactorWf(), qWf, self._effFactorSf(), qSf,
             self.effThermal)
-            warn(err_msg)
+            log("error", msg)
+            warn(msg)
             return qWf
-        
-    '''cpdef public double Q(self):
-        """float: Heat transfer from the secondary fluid to the working fluid [W]."""
-        return self._Q()'''
 
     cpdef public double weight(self):
         """float: Estimate of weight [Kg], based purely on wall properties."""
@@ -282,7 +282,6 @@ kwargs : optional
 
     cdef public tuple _unitArgsLiq(self):
         """Arguments passed to single-phase liquid HxUnits in unitise()."""
-        print("HX BASIC UNITARGSLIQ CALLED")
         return (self.flowSense, self.NWf, self.NSf, self.NWall,
                 self.hWf_liq, self.hSf, self.RfWf, self.RfSf, self.wall,
                 self.tWall, nan, self.ARatioWf, self.ARatioSf,
@@ -303,12 +302,20 @@ kwargs : optional
     cpdef public void unitise(self):
         """Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties."""
         self._units = []
+        cdef list _units = []
+        cdef _unitClass = self._unitClass
         cdef FlowState inWf = self.flowsIn[0]._copy({})
+        cdef double inWf_h = inWf.h()
         cdef FlowState liqWf = self.flowsIn[0].copyState(CP.PQ_INPUTS, self.flowsIn[0].p(), 0)
+        cdef double liqWf_h = liqWf.h()
         cdef FlowState vapWf = self.flowsIn[0].copyState(CP.PQ_INPUTS, self.flowsIn[0].p(), 1)
+        cdef double vapWf_h = vapWf.h()
         cdef FlowState outWf = self.flowsOut[0]._copy({})
+        cdef double outWf_h = outWf.h()
         cdef FlowState inSf = self.flowsIn[1]._copy({})
+        cdef double inSf_h = inSf.h()
         cdef FlowState outSf = self.flowsOut[1]._copy({})
+        cdef double outSf_h = outSf.h()
         cdef FlowState wfX0_obj = None
         cdef FlowState sfX0_obj = None
         cdef FlowState wfX1_obj = None
@@ -317,22 +324,26 @@ kwargs : optional
         cdef str sfX0_key = ""
         cdef str wfX1_key = ""
         cdef str sfX1_key = ""
-        cdef bint endFound
+        cdef bint endFound, isEvap = self.isEvap()
         cdef double hLiqSf = nan
         cdef double hVapSf = nan
-        cdef int i, N_units
+        cdef size_t i, N_units, flowSense
         cdef FlowState wf_i, wf_i1, sf_i, sf_i1
         cdef HxUnitBasic unit
-        cdef list hWf_unit, hSf_unit
-        if self.isEvap():
+        cdef double[:] hWf_unit, hSf_unit
+        if self.flowSense == "counter":
+            flowSense = 0
+        elif self.flowSense == "parallel":
+            flowSense = 1
+        if isEvap:
             wfX0_obj = inWf
             wfX0_key = "flowInWf"
             wfX1_key = "flowOutWf"
-            if "counter" in self.flowSense.lower():
+            if flowSense == 0:
                 sfX0_obj = outSf
                 sfX0_key = "flowOutSf"
                 sfX1_key = "flowInSf"
-            elif "parallel" in self.flowSense.lower():
+            elif flowSense == 1:
                 sfX0_obj = inSf
                 sfX0_key = "flowInSf"
                 sfX1_key = "flowOutSf"
@@ -340,55 +351,54 @@ kwargs : optional
             wfX0_obj = outWf
             wfX0_key = "flowOutWf"
             wfX1_key = "flowInWf"
-            if "counter" in self.flowSense.lower():
+            if flowSense == 0:
                 sfX0_obj = inSf
                 sfX0_key = "flowInSf"
                 sfX1_key = "flowOutSf"
-            elif "parallel" in self.flowSense.lower():
+            elif flowSense == 1:
                 sfX0_obj = outSf
                 sfX0_key = "flowOutSf"
                 sfX1_key = "flowInSf"
         endFound = False
         # Section A
-        # if wfX0_obj.h() < liqWf.h():
-        if endFound is False and wfX0_obj.h() < liqWf.h() and wfX0_obj.x() < -TOLABS_X:
-            if self.isEvap():
-                if outWf.h() > liqWf.h():
+        if endFound is False and wfX0_obj.h() < liqWf_h and wfX0_obj.x() < -TOLABS_X:
+            if isEvap:
+                if outWf_h > liqWf_h:
                     wfX1_obj = liqWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         hLiqSf = sfX0_obj.h() + self._mWf() * self._effFactorWf() * (
-                            liqWf.h() - wfX0_obj.h()
+                            liqWf_h - wfX0_obj.h()
                         ) / self._mSf() / self._effFactorSf()
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         hLiqSf = sfX0_obj.h() - self._mWf() * self._effFactorWf() * (
-                            liqWf.h() - wfX0_obj.h()
+                            liqWf_h - wfX0_obj.h()
                         ) / self._mSf() / self._effFactorSf()
                     sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hLiqSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = outWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         sfX1_obj = inSf
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         sfX1_obj = outSf
-            else:  # not self.isEvap()
-                if inWf.h() > liqWf.h():
+            else:  # not isEvap
+                if inWf_h > liqWf_h:
                     wfX1_obj = liqWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         hLiqSf = sfX0_obj.h() + self.mWf * self._effFactorWf() * (
-                            liqWf.h() - wfX0_obj.h()
+                            liqWf_h - wfX0_obj.h()
                         ) / self.mSf / self._effFactorSf()
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         hLiqSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
-                            liqWf.h() - wfX0_obj.h()
+                            liqWf_h - wfX0_obj.h()
                         ) / self.mSf / self._effFactorSf()
                     sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hLiqSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = inWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         sfX1_obj = outSf
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         sfX1_obj = inSf
         else:
             wfX0_key = ""
@@ -401,15 +411,15 @@ kwargs : optional
                 wfX1_key, wfX1_obj.h(), wfX0_key, wfX0_obj.h())
             N_units = int(
                 np.ceil((wfX1_obj.T() - wfX0_obj.T()) / self.config.divT)) + 1
-            hWf_unit = list(np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True))
-            hSf_unit = list(np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True))
+            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
+            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
                 wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
                 wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
                 sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
 
                 sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
-                unit = self._unitClass(
+                unit = _unitClass(
                     *self._unitArgsLiq(),
                     **{wfX0_key: wf_i},
                     **{wfX1_key: wf_i1},
@@ -417,53 +427,53 @@ kwargs : optional
                     **{sfX1_key: sf_i1},
                     sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
-                if self.isEvap():
-                    self._units.append(unit)
+                if isEvap:
+                    _units.append(unit)
                 else:
-                    self._units.insert(0, unit)
+                    _units.insert(0, unit)
             wfX0_obj = wfX1_obj
             sfX0_obj = sfX1_obj
         # Section B
-        if endFound is False and wfX0_obj.h() < vapWf.h():
-            if self.isEvap():
+        if endFound is False and wfX0_obj.h() < vapWf_h:
+            if isEvap:
                 wfX0_key = "flowInWf"
-                if outWf.h() > vapWf.h():
+                if outWf_h > vapWf_h:
                     wfX1_obj = vapWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         hVapSf = sfX0_obj.h() + self._mWf() * self._effFactorWf() * (
-                            vapWf.h() - wfX0_obj.h()
+                            vapWf_h - wfX0_obj.h()
                         ) / self._mSf() / self._effFactorSf()
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         hVapSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
-                            vapWf.h() - wfX0_obj.h()
+                            vapWf_h - wfX0_obj.h()
                         ) / self._mSf() / self._effFactorSf()
                     sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hVapSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = outWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         sfX1_obj = inSf
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         sfX1_obj = outSf
-            else:  # not self.isEvap()
+            else:  # not isEvap
                 wfX0_key = "flowOutWf"
-                if inWf.h() > vapWf.h():
+                if inWf_h > vapWf_h:
                     wfX1_obj = vapWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         hVapSf = sfX0_obj.h() + self.mWf * self._effFactorWf() * (
-                            vapWf.h() - wfX0_obj.h()
+                            vapWf_h - wfX0_obj.h()
                         ) / self.mSf / self._effFactorSf()
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         hVapSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
-                            vapWf.h() - wfX0_obj.h()
+                            vapWf_h - wfX0_obj.h()
                         ) / self.mSf / self._effFactorSf()
                     sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hVapSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = inWf
-                    if "counter" in self.flowSense.lower():
+                    if flowSense == 0:
                         sfX1_obj = outSf
-                    elif "parallel" in self.flowSense.lower():
+                    elif flowSense == 1:
                         sfX1_obj = inSf
         else:
             wfX0_key = ""
@@ -476,14 +486,14 @@ kwargs : optional
                         wfX1_key,wfX1_obj.x(), wfX0_key,wfX0_obj.x())
             N_units = int(
                 np.ceil((wfX1_obj.x() - wfX0_obj.x()) / self.config.divX)) + 1
-            hWf_unit = list(np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True))
-            hSf_unit = list(np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True))
+            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
+            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
                 wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
                 wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
                 sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
                 sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
-                unit = self._unitClass(
+                unit = _unitClass(
                     *self._unitArgsTp(),
                     **{wfX0_key: wf_i},
                     **{wfX1_key: wf_i1},
@@ -491,52 +501,51 @@ kwargs : optional
                     **{sfX1_key: sf_i1},
                     sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
-                if self.isEvap():
-                    self._units.append(unit)
+                if isEvap:
+                    _units.append(unit)
                 else:
-                    self._units.insert(0, unit)
+                    _units.insert(0, unit)
             wfX0_obj = wfX1_obj
             sfX0_obj = sfX1_obj
 
         # Section C
-        # if wfX0_obj.h() >= vapWf.h() and wfX0_obj.x() < -TOLABS_X:
-        if endFound is False and (wfX0_obj.h() - vapWf.h()
-                                  ) / vapWf.h() >= self.config._tolRel_h or (
+        if endFound is False and (wfX0_obj.h() - vapWf_h
+                                  ) / vapWf_h >= self.config._tolRel_h or (
                                       1 - wfX0_obj.x()) < TOLABS_X:
-            if self.isEvap():
+            if isEvap:
                 wfX0_key = "flowInWf"
                 wfX1_obj = outWf
-                if "counter" in self.flowSense.lower():
+                if flowSense == 0:
                     sfX1_obj = inSf
-                elif "parallel" in self.flowSense.lower():
+                elif flowSense == 1:
                     sfX1_obj = outSf
-            else:  # not self.isEvap()
+            else:  # not isEvap
                 wfX0_key = "flowOutWf"
                 wfX1_obj = inWf
-                if "counter" in self.flowSense.lower():
+                if flowSense == 0:
                     sfX1_obj = outSf
-                elif "parallel" in self.flowSense.lower():
+                elif flowSense == 1:
                     sfX1_obj = inSf
         else:
             wfX0_key = ""
             # wfX1_key = None
         #
-        if wfX0_key != "" and (wfX1_obj.h() - vapWf.h()
-                                     ) / vapWf.h() >= self.config._tolRel_h:
+        if wfX0_key != "" and (wfX1_obj.h() - vapWf_h
+                                     ) / vapWf_h >= self.config._tolRel_h:
             assert (
                 (wfX1_obj.h() - wfX0_obj.h())
             ) / wfX0_obj.h() > self.config._tolRel_h, "Superheated region: {}, h={} lower enthalpy than {}, h={}".format(
                 wfX1_key, wfX1_obj.h(), wfX0_key, wfX0_obj.h())
             N_units = int(
                 np.ceil((wfX1_obj.T() - wfX0_obj.T()) / self.config.divT)) + 1
-            hWf_unit = list(np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True))
-            hSf_unit = list(np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True))
+            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
+            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
                 wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
                 wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
                 sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
                 sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
-                unit = self._unitClass(
+                unit = _unitClass(
                     *self._unitArgsVap(),
                     **{wfX0_key: wf_i},
                     **{wfX1_key: wf_i1},
@@ -544,12 +553,14 @@ kwargs : optional
                     **{sfX1_key: sf_i1},
                     sizeBounds=self.sizeUnitsBounds,
                     config=self.config)
-                if self.isEvap():
-                    self._units.append(unit)
+                if isEvap:
+                    _units.append(unit)
                 else:
-                    self._units.insert(0, unit)
-        if not self._checkContinuous():
-            self._units = []
+                    _units.insert(0, unit)
+        if self._checkContinuous():
+            self._units = _units
+        else:
+            log("critical", "HxUnits are not in continuous order")
             raise ValueError("HxUnits are not in continuous order")
 
         

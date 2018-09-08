@@ -169,7 +169,9 @@ kwargs : optional
             unitsBounds = self.sizeUnitsBounds
         cdef double L = 0.
         cdef HxUnitBasicPlanar unit
-        for unit in self._units:
+        cdef size_t i
+        for i in range(len(self._units)):#unit in self._units:
+            unit = self._units[i]
             if abs(unit.Q()) > TOLABS:
                 unit.sizeUnits('L', unitsBounds)
                 L += unit.L
