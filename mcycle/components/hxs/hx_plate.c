@@ -1897,7 +1897,7 @@ static PyObject *__pyx_builtin_IndexError;
 static const char __pyx_k_A[] = "A";
 static const char __pyx_k_L[] = "L";
 static const char __pyx_k_N[] = "N";
-static const char __pyx_k_Q[] = "_Q()";
+static const char __pyx_k_Q[] = "Q()";
 static const char __pyx_k_W[] = "W";
 static const char __pyx_k_b[] = "b";
 static const char __pyx_k_CP[] = "CP";
@@ -2114,7 +2114,9 @@ static PyObject *__pyx_n_u_flowSense;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_u_fouling;
 static PyObject *__pyx_n_s_geomPlateSf;
+static PyObject *__pyx_n_u_geomPlateSf;
 static PyObject *__pyx_n_s_geomPlateWf;
+static PyObject *__pyx_n_u_geomPlateWf;
 static PyObject *__pyx_kp_u_geomPlate_is_not_valid_geomPlate;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_import;
@@ -3359,10 +3361,10 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
  *         self._unitClass = HxUnitPlate
  * 
  *         self._inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),             # <<<<<<<<<<<<<<
- *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
+ *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(31); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(33); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -3407,7 +3409,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
   /* "mcycle/components/hxs/hx_plate.pyx":146
  * 
  *         self._inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
- *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),             # <<<<<<<<<<<<<<
+ *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),             # <<<<<<<<<<<<<<
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),
  *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  */
@@ -3452,6 +3454,32 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
+  __pyx_t_22 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_geomPlateWf, __pyx_t_22) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  __pyx_t_22 = PyTuple_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  PyTuple_SET_ITEM(__pyx_t_22, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_4geom_Geom));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_n_u_none);
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_22, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_geomPlateSf, __pyx_t_4) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
   __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
   PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
@@ -3479,7 +3507,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
 
   /* "mcycle/components/hxs/hx_plate.pyx":147
  *         self._inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
- *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
+ *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),             # <<<<<<<<<<<<<<
  *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
@@ -3616,7 +3644,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/components/hxs/hx_plate.pyx":148
- *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
+ *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),
  *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),             # <<<<<<<<<<<<<<
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
@@ -3748,7 +3776,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
  *                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
  */
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -3807,7 +3835,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
  *                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}             # <<<<<<<<<<<<<<
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
  */
   __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
@@ -3828,7 +3856,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
  *         self._unitClass = HxUnitPlate
  * 
  *         self._inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),             # <<<<<<<<<<<<<<
- *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
+ *                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"),
  */
   __Pyx_GIVEREF(__pyx_t_5);
@@ -3840,7 +3868,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
   /* "mcycle/components/hxs/hx_plate.pyx":153
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
  * 
  */
@@ -3892,7 +3920,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
 
   /* "mcycle/components/hxs/hx_plate.pyx":154
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}             # <<<<<<<<<<<<<<
  * 
  *     cdef public tuple _unitArgsLiq(self):
@@ -3913,7 +3941,7 @@ static int __pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate___init__(struct
   /* "mcycle/components/hxs/hx_plate.pyx":153
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
  * 
  */
@@ -13583,7 +13611,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_u_fouling, __pyx_k_fouling, sizeof(__pyx_k_fouling), 0, 1, 0, 1},
   {&__pyx_n_s_geomPlateSf, __pyx_k_geomPlateSf, sizeof(__pyx_k_geomPlateSf), 0, 0, 1, 1},
+  {&__pyx_n_u_geomPlateSf, __pyx_k_geomPlateSf, sizeof(__pyx_k_geomPlateSf), 0, 1, 0, 1},
   {&__pyx_n_s_geomPlateWf, __pyx_k_geomPlateWf, sizeof(__pyx_k_geomPlateWf), 0, 0, 1, 1},
+  {&__pyx_n_u_geomPlateWf, __pyx_k_geomPlateWf, sizeof(__pyx_k_geomPlateWf), 0, 1, 0, 1},
   {&__pyx_kp_u_geomPlate_is_not_valid_geomPlate, __pyx_k_geomPlate_is_not_valid_geomPlate, sizeof(__pyx_k_geomPlate_is_not_valid_geomPlate), 0, 1, 0, 0},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -13675,7 +13705,7 @@ static int __Pyx_InitCachedConstants(void) {
   /* "mcycle/components/hxs/hx_plate.pyx":153
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),             # <<<<<<<<<<<<<<
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
  * 
  */
@@ -13685,7 +13715,7 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "mcycle/components/hxs/hx_plate.pyx":154
  *                         "config": MCAttr(Config, "none")}
- *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "_Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
+ *         self._properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
  *                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}             # <<<<<<<<<<<<<<
  * 
  *     cdef public tuple _unitArgsLiq(self):
