@@ -54,7 +54,8 @@ kwargs : optional
                  double superheat=nan,
                  double pCond=nan,
                  double subcool=nan,
-                 Config config=Config()):
+                 Config config=Config(),
+                 str name="RankineBasic instance"):
         self.wf = wf
         self.evap = evap
         self.exp = exp
@@ -65,7 +66,7 @@ kwargs : optional
         self.pCond = pCond
         self.subcool = subcool
         super().__init__(("evap", "exp", "cond", "comp"),
-                         ("1", "20", "21", "3", "4", "51", "50", "6"), config)
+                         ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
         self.set_config(config)  # use setter to set for all components
         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
