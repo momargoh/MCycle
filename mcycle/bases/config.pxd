@@ -4,6 +4,7 @@ cdef class Config(MCAB):
 
     cpdef public bint dpEvap
     cpdef public bint dpCond
+    cpdef public bint evenPlatesWf
     cpdef public bint dpFWf
     cpdef public bint dpFSf
     cpdef public bint dpAccWf
@@ -12,6 +13,8 @@ cdef class Config(MCAB):
     cpdef public bint dpHeadSf
     cpdef public bint dpPortWf
     cpdef public bint dpPortSf
+    cpdef public double dpPortInFactor
+    cpdef public double dpPortOutFactor
     cpdef public double g
     cpdef public str tolAttr
     cpdef public double tolAbs
@@ -19,7 +22,6 @@ cdef class Config(MCAB):
     cpdef public double divT
     cpdef public double divX
     cpdef public dict methods
-    cpdef public bint evenPlatesWf
     cpdef public double _tolRel_p 
     cpdef public double _tolRel_T 
     cpdef public double _tolRel_h 

@@ -797,6 +797,7 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
   int dpEvap;
   int dpCond;
+  int evenPlatesWf;
   int dpFWf;
   int dpFSf;
   int dpAccWf;
@@ -805,6 +806,8 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   int dpHeadSf;
   int dpPortWf;
   int dpPortSf;
+  double dpPortInFactor;
+  double dpPortOutFactor;
   double g;
   PyObject *tolAttr;
   double tolAbs;
@@ -812,7 +815,6 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   double divT;
   double divX;
   PyObject *methods;
-  int evenPlatesWf;
   double _tolRel_p;
   double _tolRel_T;
   double _tolRel_h;

@@ -808,6 +808,7 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
   int dpEvap;
   int dpCond;
+  int evenPlatesWf;
   int dpFWf;
   int dpFSf;
   int dpAccWf;
@@ -816,6 +817,8 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   int dpHeadSf;
   int dpPortWf;
   int dpPortSf;
+  double dpPortInFactor;
+  double dpPortOutFactor;
   double g;
   PyObject *tolAttr;
   double tolAbs;
@@ -823,7 +826,6 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   double divT;
   double divX;
   PyObject *methods;
-  int evenPlatesWf;
   double _tolRel_p;
   double _tolRel_T;
   double _tolRel_h;
@@ -6122,8 +6124,8 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
  *     cpdef public double dpPortWf(self):
  *         """float: Port pressure loss of the working fluid [Pa]."""
  *         cdef double GPort = self._mWf() / (0.25 * pi * self.DPortWf**2)             # <<<<<<<<<<<<<<
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[0].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[0].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
  */
   __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base._mWf(((struct __pyx_obj_6mcycle_5bases_9component_Component *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6149,11 +6151,11 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
   /* "mcycle/components/hxs/hx_plate.pyx":258
  *         """float: Port pressure loss of the working fluid [Pa]."""
  *         cdef double GPort = self._mWf() / (0.25 * pi * self.DPortWf**2)
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[0].rho()             # <<<<<<<<<<<<<<
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[0].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()             # <<<<<<<<<<<<<<
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
  *         return dpIn + dpOut
  */
-  __pyx_t_2 = PyFloat_FromDouble(((1.0 * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.config->dpPortInFactor * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6192,12 +6194,12 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
 
   /* "mcycle/components/hxs/hx_plate.pyx":259
  *         cdef double GPort = self._mWf() / (0.25 * pi * self.DPortWf**2)
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[0].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[0].rho()             # <<<<<<<<<<<<<<
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()             # <<<<<<<<<<<<<<
  *         return dpIn + dpOut
  * 
  */
-  __pyx_t_3 = PyFloat_FromDouble(((0.4 * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(((__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.config->dpPortOutFactor * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6235,8 +6237,8 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
   __pyx_v_dpOut = __pyx_t_5;
 
   /* "mcycle/components/hxs/hx_plate.pyx":260
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[0].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[0].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
  *         return dpIn + dpOut             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double dpPortSf(self):

@@ -793,6 +793,7 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
   int dpEvap;
   int dpCond;
+  int evenPlatesWf;
   int dpFWf;
   int dpFSf;
   int dpAccWf;
@@ -801,6 +802,8 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   int dpHeadSf;
   int dpPortWf;
   int dpPortSf;
+  double dpPortInFactor;
+  double dpPortOutFactor;
   double g;
   PyObject *tolAttr;
   double tolAbs;
@@ -808,7 +811,6 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   double divT;
   double divX;
   PyObject *methods;
-  int evenPlatesWf;
   double _tolRel_p;
   double _tolRel_T;
   double _tolRel_h;
@@ -4989,7 +4991,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9component_9Component_16summary(struct 
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 174, __pyx_L1_error)
   }
-  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = PyObject_Length(__pyx_v_output); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
   __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 174, __pyx_L1_error)
@@ -5486,7 +5488,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9component_9Component_16summary(struct 
       __PYX_ERR(0, 205, __pyx_L1_error)
     }
     __pyx_t_12 = (__pyx_v_rstHeading + 1);
-    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_12, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_12, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_10 = PyObject_Length(__pyx_v_outputProperties); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 205, __pyx_L1_error)
     __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
@@ -6586,7 +6588,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9component_9Component_16summary(struct 
             __PYX_ERR(0, 251, __pyx_L43_except_error)
           }
           __pyx_t_12 = (__pyx_v_rstHeading + 1);
-          __pyx_t_21 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_12, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 251, __pyx_L43_except_error)
+          __pyx_t_21 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_12, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 251, __pyx_L43_except_error)
           __Pyx_GOTREF(__pyx_t_21);
           __pyx_t_7 = PyObject_Length(__pyx_v_added_output); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 251, __pyx_L43_except_error)
           __pyx_t_20 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 251, __pyx_L43_except_error)
@@ -7530,7 +7532,7 @@ int __pyx_f_6mcycle_5bases_9component_9Component_hasInAndOut(struct __pyx_obj_6m
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
         __PYX_ERR(0, 297, __pyx_L3_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->flowsIn, __pyx_v_flowIndex, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->flowsIn, __pyx_v_flowIndex, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = (((PyObject *)Py_TYPE(__pyx_t_5)) == ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -7552,7 +7554,7 @@ int __pyx_f_6mcycle_5bases_9component_9Component_hasInAndOut(struct __pyx_obj_6m
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
         __PYX_ERR(0, 298, __pyx_L3_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->flowsOut, __pyx_v_flowIndex, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->flowsOut, __pyx_v_flowIndex, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
 
       /* "mcycle/bases/component.pyx":297
@@ -11620,7 +11622,7 @@ static int __pyx_pf_6mcycle_5bases_9component_11Component22___init__(struct __py
  *                 assert flows[i][0].m == flows[i][
  *                     1].m, "mass flow rate of flowsIn[{0}] and flowsOut[{0}] must be equal".format(
  */
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 454, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
@@ -11633,7 +11635,7 @@ static int __pyx_pf_6mcycle_5bases_9component_11Component22___init__(struct __py
       __pyx_t_5 = __pyx_t_7;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -11654,7 +11656,7 @@ static int __pyx_pf_6mcycle_5bases_9component_11Component22___init__(struct __py
  */
       #ifndef CYTHON_WITHOUT_ASSERTIONS
       if (unlikely(!Py_OptimizeFlag)) {
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 455, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 455, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 455, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
@@ -11662,7 +11664,7 @@ static int __pyx_pf_6mcycle_5bases_9component_11Component22___init__(struct __py
         __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_m); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 455, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 455, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_flows, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 455, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 455, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);

@@ -255,8 +255,8 @@ kwargs : optional
     cpdef public double dpPortWf(self):
         """float: Port pressure loss of the working fluid [Pa]."""
         cdef double GPort = self._mWf() / (0.25 * pi * self.DPortWf**2)
-        cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[0].rho()
-        cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[0].rho()
+        cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
+        cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
         return dpIn + dpOut
 
     cpdef public double dpPortSf(self):

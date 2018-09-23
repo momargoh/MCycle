@@ -68,6 +68,7 @@ _tolAbs_x : float, optional
     def __init__(self,
                  bint dpEvap=False,
                  bint dpCond=False,
+                 bint evenPlatesWf=False,
                  bint dpFWf=True,
                  bint dpFSf=True,
                  bint dpAccWf=True,
@@ -76,17 +77,21 @@ _tolAbs_x : float, optional
                  bint dpHeadSf=True,
                  bint dpPortWf=True,
                  bint dpPortSf=True,
+                 double dpPortInFactor=DEFAULTS.DP_PORT_IN_FACTOR,
+                 double dpPortOutFactor=DEFAULTS.DP_PORT_OUT_FACTOR,
                  double g=GRAVITY,
                  str tolAttr="h",
                  double tolAbs=TOLABS,
                  double tolRel=TOLREL,
                  double divT=DEFAULTS.DIV_T,
                  double divX=DEFAULTS.DIV_X,
-                 bint evenPlatesWf=False,
                  dict methods=DEFAULTS.METHODS,
                  str name="Config instance"):
+        # Cycle config parameters
         self.dpEvap = dpEvap
         self.dpCond = dpCond
+        # HxPlate config parameters
+        self.evenPlatesWf = evenPlatesWf
         self.dpFWf = dpFWf
         self.dpFSf = dpFSf
         self.dpAccWf = dpAccWf
@@ -95,16 +100,18 @@ _tolAbs_x : float, optional
         self.dpHeadSf = dpHeadSf
         self.dpPortWf = dpPortWf
         self.dpPortSf = dpPortSf
+        self.dpPortInFactor = dpPortInFactor
+        self.dpPortOutFactor = dpPortOutFactor
+        # general config parameters
         self.g = g
+        # tolerances
         self.tolAttr = tolAttr
         self.tolAbs = tolAbs
         self.tolRel = tolRel
         self.divT = divT
         assert divX <= 1
         self.divX = divX
-        #
-        self.evenPlatesWf = evenPlatesWf
-        #
+        # methods
         self.methods = copy.deepcopy(methods)
         #
         self._tolRel_p = TOLREL
@@ -112,10 +119,10 @@ _tolAbs_x : float, optional
         self._tolRel_h = TOLREL
         self._tolRel_rho = TOLREL
         self.name = name
-        self._inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "dpFWf": MCAttr(bool,"none"),
+        self._inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "evenPlatesWf": MCAttr(bool,"none"), "dpFWf": MCAttr(bool,"none"),
                "dpFSf": MCAttr(bool, "none"), "dpAccWf": MCAttr(bool,"none"), "dpAccSf": MCAttr(bool,"none"), "dpHeadWf": MCAttr(bool,"none"),
-               "dpHeadSf": MCAttr(bool,"none"), "dpPortWf": MCAttr(bool,"none"), "dpPortSf": MCAttr(bool,"none"), "g": MCAttr(float,"acceleration"),
-               "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "evenPlatesWf": MCAttr(bool,"none"), "methods": MCAttr(dict, "none"),
+               "dpHeadSf": MCAttr(bool,"none"), "dpPortWf": MCAttr(bool,"none"), "dpPortSf": MCAttr(bool,"none"), "dpPortInFactor": MCAttr(float,"none"), "dpPortOutFactor": MCAttr(float,"none"), "g": MCAttr(float,"acceleration"),
+               "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "methods": MCAttr(dict, "none"),
                         "name": MCAttr(str, "none")}
         self._properties = {"_tolRel_p": MCAttr(float,"none"),
                "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float,"none")}

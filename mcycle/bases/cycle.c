@@ -795,6 +795,7 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
   int dpEvap;
   int dpCond;
+  int evenPlatesWf;
   int dpFWf;
   int dpFSf;
   int dpAccWf;
@@ -803,6 +804,8 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   int dpHeadSf;
   int dpPortWf;
   int dpPortSf;
+  double dpPortInFactor;
+  double dpPortOutFactor;
   double g;
   PyObject *tolAttr;
   double tolAbs;
@@ -810,7 +813,6 @@ struct __pyx_obj_6mcycle_5bases_6config_Config {
   double divT;
   double divX;
   PyObject *methods;
-  int evenPlatesWf;
   double _tolRel_p;
   double _tolRel_T;
   double _tolRel_h;
@@ -4015,7 +4017,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_5cycle_5Cycle_14summary(struct __pyx_ob
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 149, __pyx_L1_error)
   }
-  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   if (unlikely(__pyx_v_output == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
@@ -4277,7 +4279,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_5cycle_5Cycle_14summary(struct __pyx_ob
       __PYX_ERR(0, 168, __pyx_L1_error)
     }
     __pyx_t_13 = (__pyx_v_rstHeading + 1);
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_6 = PyNumber_Multiply(__pyx_t_3, __pyx_int_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
