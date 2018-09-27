@@ -1,5 +1,5 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
+from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
 from .. import DEFAULTS
 import copy
 
@@ -204,7 +204,7 @@ name : str, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(RST_HEADINGS[rstHeading] * len(output))
+""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
         for i in self._inputs:
             output += self.formatAttrForSummary(i, [])
         if printSummary:

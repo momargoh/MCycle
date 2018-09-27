@@ -1,4 +1,5 @@
-from ..DEFAULTS cimport MAXITER_COMPONENT, RST_HEADINGS, PRINT_FORMAT_FLOAT, getUnits
+from ..DEFAULTS cimport getUnits
+from .. import DEFAULTS 
 from ..logger import log
 from .mcabstractbase cimport MCAB, MCAttr
 from .flowstate cimport FlowState
@@ -113,14 +114,14 @@ bounds : float or list of float, optional
                     args=(flowOutTarget, attr, bounds, unitsBounds),
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs,
-                    maxiter=MAXITER_COMPONENT)
+                    maxiter=DEFAULTS.MAXITER_COMPONENT)
             elif len(bounds) == 1:
                 sizedValue = opt.newton(
                     self._f_sizeComponent,
                     bounds[0],
                     args=(flowOutTarget, attr, bounds, unitsBounds),
                     tol=tol,
-                    maxiter=MAXITER_COMPONENT)
+                    maxiter=DEFAULTS.MAXITER_COMPONENT)
             else:
                 raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue, 'flowsOut[0]': flowOutTarget})
@@ -171,7 +172,7 @@ rstHeading : int, optional
         output += """
 {}
 Notes: {}
-""".format(RST_HEADINGS[rstHeading] * len(output), self.notes)
+""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output), self.notes)
 
         hasSummaryList = []
         for k, v in self._inputs.items():
@@ -202,7 +203,7 @@ Notes: {}
             output += """
 {}
 {}
-""".format(outputProperties, RST_HEADINGS[rstHeading+1] * len(outputProperties))
+""".format(outputProperties, DEFAULTS.RST_HEADINGS[rstHeading+1] * len(outputProperties))
             
             for k in propertyKeys:
                 if k in self._propertyKeys():
@@ -228,6 +229,9 @@ Notes: {}
                     flowKeys.append("flowsOut[{}]".format(i))
         if flowKeys == 'none':
             flowKeys = []
+        flowPropVals = []
+        flowPropKeys = []
+        del_flowKeys = []
         if len(flowKeys) > 0:
             for key in flowKeys:
                 try:
@@ -236,23 +240,43 @@ Notes: {}
                         flowObj = getattr(self, keyList)[int(keyId)]
                     else:
                         flowObj = getattr(self, key)
-                    output += """
-{}""".format(
-                        flowObj.summary(
-                            name=key,
-                            printSummary=False,
-                            rstHeading=rstHeading + 1))
-                except AttributeError:
-                    added_output = r"""
-{} summary""".format(key)
-                    added_output += """
+                    print("fpk = ", flowPropKeys)
+                    if flowPropKeys == []:
+                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._propertyKeys()]
+                    flowPropVals.append(flowObj._propertyValues())
+                except AttributeError as exc:
+                    log("warning", "{}.summary() could not find flow={}".format(self.__class__.__name__, key), exc)
+                    del_flowKeys.append(flowKeys.index(key))
+                except Exception as exc:
+                    log("warning", "{}.summary() unexpected error".format(self.__class__.__name__, key), exc)
+                    del_flowKeys.appendflowKeys.index((key))
+            del_flowKeys.reverse()
+            for i in del_flowKeys:
+                del flowKeys[i]
+            if len(flowKeys) == 0:
+                pass
+            else:
+                output += """
+FlowStates
 {}
-flowstate not defined
-""".format(RST_HEADINGS[rstHeading + 1] * len(added_output))
-                    output += added_output
-                except:
-                    output += """{}: {}
-""".format(key, "Error returning summary")
+""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1]*10)
+                table = ""
+                flowPropValsStr = [list(map(lambda x: DEFAULTS.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
+                max_lens = [len(max(li, key=len)) for li in flowPropValsStr]
+                str_formats = ["{:<%s}" % max_lens[i] for i in range(len(max_lens))]
+                table_header0 = " {} |"*len(flowPropVals)
+                table_header0 = table_header0.format(*str_formats)
+                table_header = "|{}|" + table_header0 + """
+"""
+                table_header = table_header.format("    ", *flowKeys)
+                table += table_header
+                for i in range(len(flowPropVals[0])):
+                    table_row = "|{}|" + " {} |".format(DEFAULTS.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
+"""
+                    vals = [l[i] for l in flowPropVals]
+                    table_row = table_row.format(flowPropKeys[i], *vals)
+                    table += table_row
+                output += table
         else:
             pass
         if printSummary:

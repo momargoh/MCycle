@@ -2,7 +2,8 @@ from .mcabstractbase cimport MCAB, MCAttr
 from .component cimport Component
 from .config cimport Config
 from .flowstate cimport FlowState
-from ..DEFAULTS cimport RST_HEADINGS
+from .. import DEFAULTS
+from ..logger import log
 
 
 cdef class Cycle(MCAB):
@@ -146,7 +147,7 @@ rstHeading : int, optional
         output += """
 {}
 working fluid: {}
-""".format(RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
+""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
 
         cdef list hasSummaryList = []
         for k, v in self._inputs.items():
@@ -165,7 +166,7 @@ working fluid: {}
             output += """
 Properties
 {}
-""".format(RST_HEADINGS[rstHeading + 1] * 10)
+""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1] * 10)
             for k in propertyKeys:
                 try:
                     if k in self._propertyKeys():
@@ -203,24 +204,53 @@ Properties
             cycleStateKeys = self._cycleStateKeys
         if cycleStateKeys == 'none':
             cycleStateKeys = []
+        flowKeys = []
+        flowPropVals = []
+        flowPropKeys = []
+        del_flowKeys = []
         if len(cycleStateKeys) > 0:
             for cs in cycleStateKeys:
                 if not cs.startswith("state"):
                     cs = "state" + cs
+                flowKeys.append(cs)
                 try:
-                    flow = getattr(self, cs)
-                    output += """
-{}""".format(
-                        flow.summary(
-                            name=cs,
-                            printSummary=False,
-                            rstHeading=rstHeading + 1))
-                except AttributeError:
-                    output += """
-cycle {}: flow not found""".format(cs)
-                except:
-                    output += """{}: {}
-""".format(flow, "Error returning summary")
+                    flowObj = getattr(self, cs)
+                    if flowPropKeys == []:
+                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._propertyKeys()]
+                    flowPropVals.append(flowObj._propertyValues())
+                except AttributeError as exc:
+                    log("warning", "{}.summary() could not find flow={}".format(self.__class__.__name__, cs), exc)
+                    del_flowKeys.append(flowKeys.index(cs))
+                except Exception as exc:
+                    log("warning", "{}.summary() unexpected error".format(self.__class__.__name__, cs), exc)
+                    del_flowKeys.append(flowKeys.index(cs))
+            del_flowKeys.reverse()
+            for i in del_flowKeys:
+                del flowKeys[i]
+            if len(flowKeys) == 0:
+                pass
+            else:
+                output += """
+Cycle FlowStates
+{}
+""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1]*16)
+                table = ""
+                flowPropValsStr = [list(map(lambda x: DEFAULTS.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
+                max_lens = [len(max(li, key=len)) for li in flowPropValsStr]
+                str_formats = ["{:<%s}" % max_lens[x] for x in range(len(max_lens))]
+                table_header0 = " {} |"*len(flowPropVals)
+                table_header0 = table_header0.format(*str_formats)
+                table_header = "|{}|" + table_header0 + """
+"""
+                table_header = table_header.format("    ", *flowKeys)
+                table += table_header
+                for x in range(len(flowPropVals[0])):
+                    table_row = "|{}|" + " {} |".format(DEFAULTS.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
+"""
+                    vals = [l[x] for l in flowPropVals]
+                    table_row = table_row.format(flowPropKeys[x], *vals)
+                    table += table_row
+                output += table
         else:
             pass
         if printSummary:

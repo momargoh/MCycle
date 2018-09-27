@@ -18,10 +18,10 @@ cpdef public str MPL_BACKEND = 'TkAgg'
 PLOT_DIR = 'plots'
 PLOT_DPI = 600 
 PLOT_FORMAT = 'png'
-cpdef public str UNITS_SEPARATOR_NUMERATOR = '.'
-cpdef public str UNITS_SEPARATOR_DENOMINATOR = '.'
-cpdef public str PRINT_FORMAT_FLOAT = '{:.4e}'
-cpdef public list RST_HEADINGS = ['=', '-', '^', '"']
+UNITS_SEPARATOR_NUMERATOR = '.'
+UNITS_SEPARATOR_DENOMINATOR = '.'
+PRINT_FORMAT_FLOAT = '{: .4e}'
+RST_HEADINGS = ['=', '-', '^', '"']
 
 METHODS = {'HxPlateCorrChevronHeatWf': {
                      "sp": "chisholmWannairachchi_sp",

@@ -1,5 +1,5 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from ..DEFAULTS cimport RST_HEADINGS
+from .. import DEFAULTS
 import numpy as np
 
 cdef list propertiesList = ['k']
@@ -109,7 +109,7 @@ rstHeading : int, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(RST_HEADINGS[rstHeading] * len(output))
+""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
 
         hasSummaryList = []
         for k, v in self._inputs.items():

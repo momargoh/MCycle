@@ -1,5 +1,6 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from ..DEFAULTS cimport TOLABS_X, RST_HEADINGS, COOLPROP_EOS
+from ..DEFAULTS cimport TOLABS_X, COOLPROP_EOS
+from .. import DEFAULTS
 from math import nan, isnan
 import CoolProp as CP
 import numpy as np
@@ -165,7 +166,7 @@ name : str, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(RST_HEADINGS[rstHeading] * len(output))
+""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
         for k, v in self._properties.items():
             output += self.formatAttrForSummary({k: v}, [])
         if printSummary:

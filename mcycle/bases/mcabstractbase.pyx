@@ -1,4 +1,5 @@
-from ..DEFAULTS cimport getUnits, PRINT_FORMAT_FLOAT
+from ..DEFAULTS cimport getUnits
+from .. import DEFAULTS
 
 cdef class MCAttr:
     """Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.
@@ -147,7 +148,7 @@ hasSummaryList : list
                     units = " [" + units + "]"
                 if type(attrVal) is float:
                     fcnOutput = """{} = {}{}
-""".format(key, PRINT_FORMAT_FLOAT, units).format(attrVal)
+""".format(key, DEFAULTS.PRINT_FORMAT_FLOAT, units).format(attrVal)
 
                 else:
                     fcnOutput = """{} = {}{}

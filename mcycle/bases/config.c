@@ -1297,14 +1297,6 @@ static PyObject **__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_COOLPROP_EOS (*__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_MPL_BACKEND (*__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR (*__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR (*__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_PRINT_FORMAT_FLOAT = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_PRINT_FORMAT_FLOAT (*__pyx_vp_6mcycle_8DEFAULTS_PRINT_FORMAT_FLOAT)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_RST_HEADINGS = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS (*__pyx_vp_6mcycle_8DEFAULTS_RST_HEADINGS)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits = 0;
 #define __pyx_v_6mcycle_8DEFAULTS_dimensionUnits (*__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits)
 static PyObject **__pyx_vp_6mcycle_8DEFAULTS_dimensionsEquiv = 0;
@@ -1412,6 +1404,7 @@ static const char __pyx_k_set_method[] = "set_method";
 static const char __pyx_k_tolRel_rho[] = "_tolRel_rho";
 static const char __pyx_k_HxUnitPlate[] = "HxUnitPlate";
 static const char __pyx_k_PickleError[] = "PickleError";
+static const char __pyx_k_RST_HEADINGS[] = "RST_HEADINGS";
 static const char __pyx_k_acceleration[] = "acceleration";
 static const char __pyx_k_evenPlatesWf[] = "evenPlatesWf";
 static const char __pyx_k_lookupMethod[] = "lookupMethod";
@@ -1465,6 +1458,7 @@ static PyObject *__pyx_n_s_METHODS;
 static PyObject *__pyx_kp_u_Method_for_phase_of_not_found_fo;
 static PyObject *__pyx_kp_u_Methods_for_class_are_not_yet_de;
 static PyObject *__pyx_n_s_PickleError;
+static PyObject *__pyx_n_s_RST_HEADINGS;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_kp_u__10;
 static PyObject *__pyx_n_s__9;
@@ -4187,18 +4181,20 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
   /* "mcycle/bases/config.pyx":207
  *         output += """
  * {}
- * """.format(RST_HEADINGS[rstHeading] * len(output))             # <<<<<<<<<<<<<<
+ * """.format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))             # <<<<<<<<<<<<<<
  *         for i in self._inputs:
  *             output += self.formatAttrForSummary(i, [])
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u__10, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 207, __pyx_L1_error)
-  }
-  __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_6mcycle_8DEFAULTS_RST_HEADINGS, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_DEFAULTS); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_RST_HEADINGS); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_rstHeading, int, 1, __Pyx_PyInt_From_int, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (unlikely(__pyx_v_output == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(0, 207, __pyx_L1_error)
@@ -4262,7 +4258,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
  *         output = r"{} summary".format(name)
  *         output += """             # <<<<<<<<<<<<<<
  * {}
- * """.format(RST_HEADINGS[rstHeading] * len(output))
+ * """.format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
  */
   __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_output, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -4273,7 +4269,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
 
   /* "mcycle/bases/config.pyx":208
  * {}
- * """.format(RST_HEADINGS[rstHeading] * len(output))
+ * """.format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
  *         for i in self._inputs:             # <<<<<<<<<<<<<<
  *             output += self.formatAttrForSummary(i, [])
  *         if printSummary:
@@ -4298,7 +4294,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_6config_6Config_2summary(struct __pyx_o
     __pyx_t_3 = 0;
 
     /* "mcycle/bases/config.pyx":209
- * """.format(RST_HEADINGS[rstHeading] * len(output))
+ * """.format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
  *         for i in self._inputs:
  *             output += self.formatAttrForSummary(i, [])             # <<<<<<<<<<<<<<
  *         if printSummary:
@@ -10229,6 +10225,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Method_for_phase_of_not_found_fo, __pyx_k_Method_for_phase_of_not_found_fo, sizeof(__pyx_k_Method_for_phase_of_not_found_fo), 0, 1, 0, 0},
   {&__pyx_kp_u_Methods_for_class_are_not_yet_de, __pyx_k_Methods_for_class_are_not_yet_de, sizeof(__pyx_k_Methods_for_class_are_not_yet_de), 0, 1, 0, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
+  {&__pyx_n_s_RST_HEADINGS, __pyx_k_RST_HEADINGS, sizeof(__pyx_k_RST_HEADINGS), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
   {&__pyx_n_s__9, __pyx_k__9, sizeof(__pyx_k__9), 0, 0, 1, 1},
@@ -10634,10 +10631,6 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "GRAVITY", (void **)&__pyx_vp_6mcycle_8DEFAULTS_GRAVITY, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "COOLPROP_EOS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "MPL_BACKEND", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "UNITS_SEPARATOR_NUMERATOR", (void **)&__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_NUMERATOR, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "UNITS_SEPARATOR_DENOMINATOR", (void **)&__pyx_vp_6mcycle_8DEFAULTS_UNITS_SEPARATOR_DENOMINATOR, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "PRINT_FORMAT_FLOAT", (void **)&__pyx_vp_6mcycle_8DEFAULTS_PRINT_FORMAT_FLOAT, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "RST_HEADINGS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_RST_HEADINGS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "dimensionUnits", (void **)&__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "dimensionsEquiv", (void **)&__pyx_vp_6mcycle_8DEFAULTS_dimensionsEquiv, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "_GITHUB_SOURCE_URL", (void **)&__pyx_vp_6mcycle_8DEFAULTS__GITHUB_SOURCE_URL, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -10651,7 +10644,7 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
 
   /* "mcycle/bases/config.pyx":3
  * from .mcabstractbase cimport MCAB, MCAttr
- * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
+ * from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
  * from .. import DEFAULTS             # <<<<<<<<<<<<<<
  * import copy
  * 
@@ -10671,7 +10664,7 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "mcycle/bases/config.pyx":4
- * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
+ * from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
  * from .. import DEFAULTS
  * import copy             # <<<<<<<<<<<<<<
  * 
@@ -10802,7 +10795,7 @@ static int __pyx_pymod_exec_config(PyObject *__pyx_pyinit_module)
 
   /* "mcycle/bases/config.pyx":1
  * from .mcabstractbase cimport MCAB, MCAttr             # <<<<<<<<<<<<<<
- * from ..DEFAULTS cimport RST_HEADINGS, TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
+ * from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
  * from .. import DEFAULTS
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)

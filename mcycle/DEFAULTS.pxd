@@ -15,11 +15,11 @@ cpdef public str MPL_BACKEND
 #cpdef public str PLOT_DIR
 #cpdef public int PLOT_DPI
 #cpdef public str PLOT_FORMAT
-cpdef public str UNITS_SEPARATOR_NUMERATOR
-cpdef public str UNITS_SEPARATOR_DENOMINATOR
-cpdef public str PRINT_FORMAT_FLOAT
-cpdef public list RST_HEADINGS
-# cpdef public dict METHODS
+#cpdef public str UNITS_SEPARATOR_NUMERATOR
+#cpdef public str UNITS_SEPARATOR_DENOMINATOR
+#cpdef public str PRINT_FORMAT_FLOAT
+#cpdef public list RST_HEADINGS
+#cpdef public dict METHODS
 
 cdef public dict dimensionUnits
 cdef dict dimensionsEquiv
