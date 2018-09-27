@@ -5,6 +5,7 @@ from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS, MAXITER_COMPONENT
 from ...methods.heat_transfer cimport lmtd
+from ...logger import log
 from warnings import warn
 from math import nan
 import CoolProp as CP
@@ -164,7 +165,7 @@ kwargs : optional
 
     @property
     def twoPhaseWf(self):
-        """bool: Return True if working fluid is in 2-phase region."""
+        """DEPRECATED bool: Return True if working fluid is in 2-phase region."""
         if self.hasInAndOut(0):
             if self.flowsIn[0].x() >= -self.config._tolAbs_x and self.flowsIn[0].x() <= 1 + self.config._tolAbs_x and self.flowsOut[0].x() >= -self.config._tolAbs_x and self.flowsOut[0].x() <= 1 + self.config._tolAbs_x:
                 return True
@@ -183,88 +184,106 @@ kwargs : optional
     
     cpdef public str phaseWf(self):
         """str: Identifier of working fluid phase: 'liq': subcooled liquid, 'vap': superheated vapour, 'tpEvap' or 'tpCond': evaporating or condensing in two-phase liq/vapour region."""
-        if self.hasInAndOut(0):
-            if self.flowsIn[0].phase() == "satLiq":
-                if self.flowsOut[0].phase() == "tp":
-                    return "tpEvap"
-                elif self.flowsOut[0].phase() == "liq":
-                    return "liq"
-                else:
-                    raise ValueError(
-                        "Could not determine phase of WF flow. flowIn={}, flowOut={}".
-                        format(self.flowsIn[0].phase(), self.flowsOut[0].phase()))
-            elif self.flowsIn[0].phase() == "satVap":
-                if self.flowsOut[0].phase() == "tp":
+        cdef str flowInPhase, flowOutPhase
+        try:
+            flowInPhase = self.flowsIn[0].phase()
+            if self.hasInAndOut(0):
+                flowOutPhase = self.flowsOut[0].phase()
+
+                if flowInPhase == "satLiq":
+                    if flowOutPhase == "tp":
+                        return "tpEvap"
+                    elif flowOutPhase == "liq":
+                        return "liq"
+                    else:
+                        raise ValueError(
+                            "Could not determine phase of WF flow. flowIn={}, flowOut={}".
+                            format(flowInPhase, flowOutPhase))
+                elif flowInPhase == "satVap":
+                    if flowOutPhase == "tp":
+                        return "tpCond"
+                    elif flowOutPhase == "vap":
+                        return "vap"
+                    else:
+                        raise ValueError(
+                            "could not determine phase of WF flow. flowIn={}, flowOut={}".
+                            format(flowInPhase, flowOutPhase))
+                elif flowInPhase == "tp" and flowOutPhase == "satLiq":
                     return "tpCond"
-                elif self.flowsOut[0].phase() == "vap":
+                elif flowInPhase == "tp" and flowOutPhase == "satVap":
+                    return "tpEvap"
+                elif flowInPhase == "tp" and flowOutPhase == "tp":
+                    if self.flowsIn[0].h() < self.flowsOut[0].h():
+                        return "tpEvap"
+                    else:
+                        return "tpCond"
+                elif flowInPhase == "liq" or flowOutPhase == "liq":
+                    return "liq"
+                elif flowInPhase == "vap" or flowOutPhase == "vap":
                     return "vap"
                 else:
-                    raise ValueError(
-                        "could not determine phase of WF flow. flowIn={}, flowOut={}".
-                        format(self.flowsIn[0].phase(), self.flowsOut[0].phase()))
-            elif self.flowsIn[0].phase() == "tp" and self.flowsOut[0].phase() == "satLiq":
-                return "tpCond"
-            elif self.flowsIn[0].phase() == "tp" and self.flowsOut[0].phase() == "satVap":
-                return "tpEvap"
-            elif self.flowsIn[0].phase() == "tp" and self.flowsOut[0].phase() == "tp":
-                if self.flowsIn[0].h() < self.flowsOut[0].h():
-                    return "tpEvap"
-                else:
-                    return "tpCond"
-            elif self.flowsIn[0].phase() == "liq" or self.flowsOut[0].phase() == "liq":
-                return "liq"
-            elif self.flowsIn[0].phase() == "vap" or self.flowsOut[0].phase() == "vap":
-                return "vap"
+                    raise ValueError("Unknown phase")
             else:
-                raise ValueError(
-                    "could not determine phase of WF flow. flowIn={}, flowOut={}".
-                    format(self.flowsIn[0].phase(), self.flowsOut[0].phase()))
-        else:
-            if self.flowsIn[0].phase() == "tp":
-                if self.flowsIn[0].T() < self.flowsIn[1].T():
-                    return "tpEvap"
-                else:
-                    return "tpCond"
+                if flowInPhase == "tp":
+                    if self.flowsIn[0].T() < self.flowsIn[1].T():
+                        return "tpEvap"
+                    else:
+                        return "tpCond"
 
-            elif self.flowsIn[0].phase() == "satLiq":
-                if self.flowsIn[0].T() < self.flowsIn[1].T():
-                    return "tpEvap"
-                else:
+                elif flowInPhase == "satLiq":
+                    if self.flowsIn[0].T() < self.flowsIn[1].T():
+                        return "tpEvap"
+                    else:
+                        return "liq"
+                elif flowInPhase == "satVap":
+                    if self.flowsIn[0].T() < self.flowsIn[1].T():
+                        return "vap"
+                    else:
+                        return "tpCond"
+
+                elif flowInPhase == "liq":
+
                     return "liq"
-            elif self.flowsIn[0].phase() == "satVap":
-                if self.flowsIn[0].T() < self.flowsIn[1].T():
+                elif flowInPhase == "vap":
                     return "vap"
                 else:
-                    return "tpCond"
-
-            elif self.flowsIn[0].phase() == "liq":
-
-                return "liq"
-            elif self.flowsIn[0].phase() == "vap":
-                return "vap"
-            else:
-                raise ValueError(
-                    "Could not determine phase of WF flow. flowIn={}, flowOut={}".
-                    format(self.flowsIn[0].phase(), self.flowsOut[0].phase()))
+                    raise ValueError("Unknown phase")
+        except Exception as exc:
+            msg = "Could not determine phase of WF flow. flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+            log("error", msg, exc)
+            raise exc
 
     cpdef public str phaseSf(self):
         """str: Identifier of secondary fluid phase: 'liq': subcooled liquid, 'vap': superheated vapour, 'sp': unknown single-phase."""
-        if self.hasInAndOut(1):
-            if self.flowsIn[1].phase() == "liq" or self.flowsOut[1].phase() == "liq":
-                return "liq"
-            elif self.flowsIn[1].phase() == "vap" or self.flowsOut[1].phase() == "vap":
-                return "vap"
-            elif self.flowsIn[1].phase() == "sp" or self.flowsOut[1].phase() == "sp":
-                return "sp"
-        else:
-            if self.flowsIn[1].phase() == "liq":
-                return "liq"
-            elif self.flowsIn[1].phase() == "vap":
-                return "vap"
-            elif self.flowsIn[1].phase() == "sp":
-                return "sp"
+        cdef str flowInPhase, flowOutPhase
+        try:
+            flowInPhase = self.flowsIn[1].phase()
+            if self.hasInAndOut(1):
+                flowOutPhase = self.flowsOut[1].phase()
+                if flowInPhase == "liq" or flowOutPhase == "liq":
+                    return "liq"
+                elif flowInPhase == "vap" or flowOutPhase == "vap":
+                    return "vap"
+                elif flowInPhase == "sp" or flowOutPhase == "sp":
+                    return "sp"
+                else:
+                    raise ValueError("Unknown phase")
+            else:
+                if flowInPhase == "liq":
+                    return "liq"
+                elif flowInPhase == "vap":
+                    return "vap"
+                elif flowInPhase == "sp":
+                    return "sp"
+                else:
+                    raise ValueError("Unknown phase")
+        except Exception as exc:
+            msg = "Could not determine phase of WF flow. flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+            log("error", msg, exc)
+            raise exc
+            
 
-    cdef public double QWf(self):
+    cpdef public double QWf(self):
         """float: Heat transfer to the working fluid [W]."""
         if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > TOLABS:
             return (self.flowsOut[0].h() - self.flowsIn[0].h()
@@ -272,7 +291,7 @@ kwargs : optional
         else:
             return 0
 
-    cdef public double QSf(self):
+    cpdef public double QSf(self):
         """float: Heat transfer to the secondary fluid [W]."""
         if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > TOLABS:
             return (self.flowsOut[1].h() - self.flowsIn[1].h()
@@ -282,16 +301,19 @@ kwargs : optional
 
     cpdef public double Q(self):
         """float: Heat transfer from the secondary fluid to the working fluid [W]."""
-        err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
-            self._effFactorWf(), self.QWf(), self._effFactorSf(), self.QSf(),
-            self.effThermal)
-        if abs(self.QWf()) < TOLABS and abs(self.QSf()) < TOLABS:
+        cdef str err_msg
+        cdef double QWf = self.QWf()
+        cdef double QSf = self.QSf()
+        if abs(QWf) < TOLABS and abs(QSf) < TOLABS:
             return 0
-        elif abs((self.QWf() + self.QSf()) / (self.QWf())) < TOLREL:
-            return self.QWf()
+        elif abs((QWf + QSf) / QWf) < TOLREL:
+            return QWf
         else:
+            err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
+            self._effFactorWf(), QWf, self._effFactorSf(), QSf,
+            self.effThermal)
             warn(err_msg)
-            return self.QWf()
+            return QWf
 
     cpdef public int _NWf(self):
         return self.NWf
@@ -311,7 +333,7 @@ kwargs : optional
         return lmtd(self.flowsIn[0].T(), self.flowsOut[0].T(), self.flowsIn[1].T(), self.flowsOut[1].T(), self.flowSense)
 
     cdef public double Q_lmtd(self):
-        """float: Heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""
+        """float: Absolute value of heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""
         return self.U() * self._A() * self.lmtd()
 
     cpdef public double weight(self):
@@ -354,7 +376,7 @@ kwargs : optional
 
     cdef double _f_sizeHxUnitBasic(self, double value, str attr):
         self.update({attr: value})
-        return self.Q() - self.Q_lmtd()
+        return abs(self.Q()) - self.Q_lmtd()
                 
     cpdef public void sizeUnits(self, str attr, list bounds) except *:
         """Size for the value of the nominated attribute required to achieve the defined outgoing FlowState.
@@ -378,7 +400,7 @@ bounds : float or list of float, optional
         try:
             if attr == "A":
                 self.A = 1.
-                self.A = self.Q() / self.Q_lmtd()
+                self.A = abs(self.Q() / self.Q_lmtd())
                 #return self.A
             else:
                 tol = self.config.tolAbs + self.config.tolRel * self.Q()

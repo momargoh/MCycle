@@ -60,7 +60,7 @@ from ..DEFAULTS cimport GRAVITY
 from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from .. import geometries as gms
-from math import nan, sin, cos, pi, log, exp
+from math import nan, sin, cos, pi, log, exp, isnan
 from warnings import warn
 import numpy as np
 import CoolProp as CP
@@ -101,14 +101,14 @@ cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, s
     cdef double dT2 = 0
     cdef double ans
     cdef str msg
-    if flowSense != "counter" and flowSense != "parallel":
-        raise ValueError("lmtd flowSense not valid/supported (given: {})".format(flowSense))
     if flowSense == "counter":
         dT1 = TIn2 - TOut1
         dT2 = TOut2 - TIn1
     elif flowSense == "parallel":
         dT1 = TOut2 - TOut1
         dT2 = TIn2 - TIn1
+    else:
+        raise ValueError("lmtd flowSense not valid/supported (given: {})".format(flowSense))
     ans = (dT1 - dT2) / np.log(dT1 / dT2)
     if np.isnan(ans):
         msg = "lmtd found non-valid flow temperatures: TIn1={}, TOut1={}, TIn2={}, TOut2={}".format(TIn1, TOut1, TIn2, TOut2)
@@ -180,13 +180,17 @@ dict of float : {"h", "f", "dpF"}
     cdef double f, Nu
     if Re / geom.phi < 600:
         f = 6.25 * (1 + 0.95 * psi**1.72) * geom.phi**1.84 * Re**-0.84
-        Nu = 1.26 * (0.62 + 0.38 * np.cos(2.3 * psi) * geom.phi**
-                     (1 - a1) * avg.Pr()**(1. / 3) * Re**a1)
+        Nu = 1.26 * ((0.62 + 0.38 * cos(2.3 * psi)) * geom.phi**(1 - a1) * avg.Pr()**(1. / 3) * Re**a1)
     else:
-        f = 0.95 * (0.62 + 0.38 * np.cos(2.6 * psi)) * geom.phi**(
+        f = 0.95 * (0.62 + 0.38 * cos(2.6 * psi)) * geom.phi**(
             1 + a2) * Re**(-a2)
         Nu = 0.072*geom.phi**0.33*avg.Pr()**(1./3)*Re**0.67 \
-            * np.exp(0.5*psi+0.17*psi**2)
+            * exp(0.5*psi+0.17*psi**2)
+    if Nu < 0.:
+        msg = "savostinTikhonov_sp calculated a negative Nu value"
+        log("error", msg)
+        warn(msg)
+    Nu = abs(Nu)
     cdef double h = htc(Nu, avg.k(), Dh)
     cdef double dpF = dpf(f, G, L, Dh, avg.rho(), 1)
     return {"h": h, "f": f, "dpF": dpF}
@@ -256,9 +260,8 @@ dict of float : {"h", "f", "dpF"}
     cdef double Re = G * Dh / avg.visc()
     cdef double Re_eq = G_eq * Dh / avg.visc()
     cdef double q = m_channel * (flowOut.h() - flowIn.h()) / (W * L)
-    cdef double Bo_eq = q / G_eq / (vap.h() - liq.h())
-    cdef double h = 1.926 * Re_eq / (liq.Pr()**(-1. / 3) * Re**0.5 * Bo_eq
-                         **-0.3 * Dh / liq.k())
+    cdef double Bo_eq = abs(q / G_eq / (vap.h() - liq.h()))
+    cdef double h = 1.926 * Re_eq / (liq.Pr()**(-1. / 3) * Re**0.5 * Bo_eq**-0.3 * Dh / liq.k())
     cdef double f
     if Re_eq < 6000:
         f = 6.947e5 * Re_eq**-1.109 / Re**0.5
