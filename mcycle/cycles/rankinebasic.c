@@ -1083,13 +1083,14 @@ static struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *__pyx_vtabpt
 
 struct __pyx_vtabstruct_6mcycle_5bases_5cycle_Cycle {
   struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
-  void (*set_config)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, struct __pyx_obj_6mcycle_5bases_6config_Config *, int __pyx_skip_dispatch);
   PyObject *(*_cycleStateObjs)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *);
   PyObject *(*_componentObjs)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *);
   void (*run)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
   void (*size)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
-  void (*clearWfFlows)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
-  void (*clearAllFlows)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
+  void (*clearWf_flows)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
+  void (*clearAll_flows)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, int __pyx_skip_dispatch);
+  void (*setAll_config)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, struct __pyx_obj_6mcycle_5bases_6config_Config *, int __pyx_skip_dispatch);
+  void (*updateAll_config)(struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *, PyObject *, int __pyx_skip_dispatch);
 };
 static struct __pyx_vtabstruct_6mcycle_5bases_5cycle_Cycle *__pyx_vtabptr_6mcycle_5bases_5cycle_Cycle;
 
@@ -2972,7 +2973,7 @@ static int __pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic___init__(struc
  *         self.subcool = subcool
  *         super().__init__(("evap", "exp", "cond", "comp"),             # <<<<<<<<<<<<<<
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  */
   __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -2993,7 +2994,7 @@ static int __pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic___init__(struc
  *         self.subcool = subcool
  *         super().__init__(("evap", "exp", "cond", "comp"),
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)             # <<<<<<<<<<<<<<
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
  */
   __pyx_t_3 = NULL;
@@ -3049,18 +3050,9 @@ static int __pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic___init__(struc
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/cycles/rankinebasic.pyx":70
- *         super().__init__(("evap", "exp", "cond", "comp"),
- *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
- *         self.set_config(config)  # use setter to set for all components             # <<<<<<<<<<<<<<
- *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
- *                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
- */
-  ((struct __pyx_vtabstruct_6mcycle_6cycles_12rankinebasic_RankineBasic *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_config(((struct __pyx_obj_6mcycle_5bases_5cycle_Cycle *)__pyx_v_self), __pyx_v_config, 0);
-
   /* "mcycle/cycles/rankinebasic.pyx":71
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),             # <<<<<<<<<<<<<<
  *                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
  *                 "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
@@ -3108,7 +3100,7 @@ static int __pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic___init__(struc
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "mcycle/cycles/rankinebasic.pyx":72
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
  *                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
  *                 "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
@@ -3224,7 +3216,7 @@ static int __pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic___init__(struc
 
   /* "mcycle/cycles/rankinebasic.pyx":71
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),             # <<<<<<<<<<<<<<
  *                 "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
  *                 "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
@@ -36102,7 +36094,7 @@ static int __Pyx_InitCachedConstants(void) {
  *         self.subcool = subcool
  *         super().__init__(("evap", "exp", "cond", "comp"),             # <<<<<<<<<<<<<<
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  */
   __pyx_tuple__6 = PyTuple_Pack(4, __pyx_n_u_evap, __pyx_n_u_exp, __pyx_n_u_cond, __pyx_n_u_comp); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
@@ -36112,7 +36104,7 @@ static int __Pyx_InitCachedConstants(void) {
  *         self.subcool = subcool
  *         super().__init__(("evap", "exp", "cond", "comp"),
  *                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)             # <<<<<<<<<<<<<<
- *         self.set_config(config)  # use setter to set for all components
+ *         #self.setAll_config(config)  # use setter to set for all components
  *         self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
  */
   __pyx_tuple__7 = PyTuple_Pack(8, __pyx_kp_u_1, __pyx_kp_u_20, __pyx_kp_u_21, __pyx_kp_u_3, __pyx_kp_u_4, __pyx_kp_u_51, __pyx_kp_u_50, __pyx_kp_u_6); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 69, __pyx_L1_error)

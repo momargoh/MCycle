@@ -61,13 +61,13 @@ config : Config, optional
         if store != {}:        
             super(Cycle, self).update(store)
 
-    cpdef public void clearWfFlows(self):
+    cpdef public void clearWf_flows(self):
         cdef Component c
         for c in self._componentObjs():
             c.flowsIn[0] = None
             c.flowsOut[0] = None
             
-    cpdef public void clearAllFlows(self):
+    cpdef public void clearAll_flows(self):
         cdef Component c
         cdef size_t i
         for c in self._componentObjs():
@@ -76,10 +76,15 @@ config : Config, optional
             for i in len(c.flowsOut):
                 c.flowsOut[i] = None
 
-    cpdef public void set_config(self, Config obj):
+    cpdef public void setAll_config(self, Config obj):
         self.config = obj
         for cmpnt in self._componentObjs():
             cmpnt.update({'config': obj})
+            
+    cpdef public void updateAll_config(self, dict kwargs):
+        self.config.update(kwargs)
+        for cmpnt in self._componentObjs():
+            cmpnt.update(kwargs)
             
     cpdef public void run(self):
         """Abstract method: Compute all state FlowStates from initial FlowState and set component characteristics.

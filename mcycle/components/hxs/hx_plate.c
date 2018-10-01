@@ -6356,8 +6356,8 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
  *     cpdef public double dpPortSf(self):
  *         """float: Port pressure loss of the secondary fluid [Pa]."""
  *         cdef double GPort = self._mSf() / (0.25 * pi * self.DPortSf**2)             # <<<<<<<<<<<<<<
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[1].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[1].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
  */
   __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base._mSf(((struct __pyx_obj_6mcycle_5bases_9component_Component22 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6383,11 +6383,11 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
   /* "mcycle/components/hxs/hx_plate.pyx":265
  *         """float: Port pressure loss of the secondary fluid [Pa]."""
  *         cdef double GPort = self._mSf() / (0.25 * pi * self.DPortSf**2)
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[1].rho()             # <<<<<<<<<<<<<<
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[1].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()             # <<<<<<<<<<<<<<
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
  *         return dpIn + dpOut
  */
-  __pyx_t_2 = PyFloat_FromDouble(((1.0 * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(((__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.config->dpPortInFactor * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6426,12 +6426,12 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
 
   /* "mcycle/components/hxs/hx_plate.pyx":266
  *         cdef double GPort = self._mSf() / (0.25 * pi * self.DPortSf**2)
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[1].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[1].rho()             # <<<<<<<<<<<<<<
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()             # <<<<<<<<<<<<<<
  *         return dpIn + dpOut
  * 
  */
-  __pyx_t_3 = PyFloat_FromDouble(((0.4 * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(((__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.config->dpPortOutFactor * pow(__pyx_v_GPort, 2.0)) / 2.0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6469,8 +6469,8 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
   __pyx_v_dpOut = __pyx_t_5;
 
   /* "mcycle/components/hxs/hx_plate.pyx":267
- *         cdef double dpIn = 1.0 * GPort**2 / 2 / self.flowsIn[1].rho()
- *         cdef double dpOut = 0.4 * GPort**2 / 2 / self.flowsOut[1].rho()
+ *         cdef double dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
+ *         cdef double dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
  *         return dpIn + dpOut             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double dpAccWf(self):

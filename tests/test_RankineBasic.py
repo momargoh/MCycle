@@ -32,6 +32,7 @@ class TestRankineBasic(unittest.TestCase):
                       ["all"], ["all"], ["sf"])
     cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                             subcool, config)
+    cycle.setAll_config(config)
     cycle.update({
         'TCond': TCond,
         'sourceIn': sourceIn,
@@ -77,7 +78,7 @@ class TestRankineBasic(unittest.TestCase):
             "pRatioComp": 10.22519893,
             "cond.QCool": 73582.4417680011
         })
-        self.cycle.clearWfFlows()
+        self.cycle.clearWf_flows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
                                 self.cycle.TEvap + 20.).h()
         rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
@@ -102,7 +103,7 @@ class TestRankineBasic(unittest.TestCase):
             "comp.pRatio": 10.22519893,
             "cond.QCool": 73582.4417680011
         })
-        self.cycle.clearWfFlows()
+        self.cycle.clearWf_flows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
                                 self.cycle.TEvap + 20.).h()
         rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
@@ -128,7 +129,7 @@ class TestRankineBasic(unittest.TestCase):
             "pRatioComp": 10.22519893,
             "cond.QCool": 73582.4417680011
         })
-        self.cycle.clearWfFlows()
+        self.cycle.clearWf_flows()
         rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
                                 self.cycle.TEvap + 20.).h()
         rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
