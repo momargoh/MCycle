@@ -70,7 +70,9 @@ kwargs : dict
         if kwargs != {}:
             copy.update(kwargs)
         try: # copy _units if relevant
-            copy.update({'_units': self._units})
+            copy._units = []
+            for unit in self._units:
+                copy._units.append(unit._copy({}))
         except:
             pass
         return copy
