@@ -53,13 +53,6 @@ name : str, optional
 
     cpdef public list _propertyKeys(self):
         return list(self._properties.keys())
-    """
-        cdef list ilist = []
-        cdef str k
-        for k, v in self._properties.items():
-            ilist.append(k)
-        return ilist
-    """
 
     cpdef public list _propertyValues(self):
         cdef list ilist = []
@@ -83,7 +76,7 @@ kwargs : dict
         if kwargs != {}:
             copy.update(kwargs)
         return copy
-
+    
     def copy(self, dict kwargs={}):
         """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
 

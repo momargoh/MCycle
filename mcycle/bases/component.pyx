@@ -59,6 +59,21 @@ kwargs : optional
         self._inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
         self._properties = {"mWf": MCAttr(float, "mass/time")}
     
+    cpdef public MCAB _copy(self, dict kwargs):
+        """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
+
+Parameters
+-----------
+kwargs : dict
+    Dictionary of attributes and their updated value."""
+        copy = self.__class__(*self._inputValues())
+        if kwargs != {}:
+            copy.update(kwargs)
+        try: # copy _units if relevant
+            copy.update({'_units': self._units})
+        except:
+            pass
+        return copy
 
     cpdef public void clearWfFlows(self):
         self.flowsIn[0] = None
@@ -86,9 +101,15 @@ kwargs : optional
 Parameters
 -----------
 attr : string, optional
-    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bounds : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
+    Attribute to be sized. If None, self.sizeAttr is used.
+bounds : float or list of float
+    Bracket containing solution of size(). If None, self.sizeBounds is used.
+
+    - if bounds=[a,b]: scipy.optimize.brentq is used.
+
+    - if bounds=a or [a]: scipy.optimize.newton is used.
+unitsBounds : float or list of float
+    Bracket parsed to _units attribute, if relevant, containing solutions of sizeUnits(). If None, self.sizeUnitsBounds is used.
 
     - if bounds=[a,b]: scipy.optimize.brentq is used.
 
@@ -133,6 +154,7 @@ bounds : float or list of float, optional
         pass
     
     def size(self, str attr='', list bounds=[], list unitsBounds=[]):
+        """Alias of _size(), giving default values of attr='', bounds=[], unitsBounds=[]."""
         self._size(attr, bounds, unitsBounds)
         
     def summary(self,
