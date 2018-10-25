@@ -14,7 +14,15 @@ import CoolProp as CP
 
 from warnings import warn
 
-
+cdef dict _inputs = {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
+                "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
+                "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
+                "subcool": MCAttr(float, "temperature"), "config": MCAttr(Config, "none")}
+cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "QIn()": MCAttr(float, "power"), "QOut()": MCAttr(float, "power"),
+                "PIn()": MCAttr(float, "power"), "POut()": MCAttr(float, "power"),
+                "effThermal()": MCAttr(float, "none"), "effExergy()": MCAttr(float, "none"),
+                "IComp()": MCAttr(float, "power"), "IEvap()": MCAttr(float, "power"),
+                "IExp()": MCAttr(float, "power"), "ICond()": MCAttr(float, "power")}
 cdef class RankineBasic(Cycle):
     """Defines all cycle components and design parameters for a basic four-stage (steam/organic) Rankine cycle.
 
@@ -68,15 +76,8 @@ kwargs : optional
         super().__init__(("evap", "exp", "cond", "comp"),
                          ("1", "20", "21", "3", "4", "51", "50", "6"), config, name)
         #self.setAll_config(config)  # use setter to set for all components
-        self._inputs =  {"wf": MCAttr(FlowState, "none"), "evap": MCAttr(Component, "none"), "exp": MCAttr(Component, "none"),
-                "cond": MCAttr(Component, "none"), "comp": MCAttr(Component, "none"), "pEvap": MCAttr(float, "pressure"),
-                "superheat": MCAttr(float, "temperature"), "pCond": MCAttr(float, "pressure"),
-                "subcool": MCAttr(float, "temperature"), "config": MCAttr(Config, "none")}
-        self._properties = {"mWf": MCAttr(float, "mass/time"), "QIn()": MCAttr(float, "power"), "QOut()": MCAttr(float, "power"),
-                "PIn()": MCAttr(float, "power"), "POut()": MCAttr(float, "power"),
-                "effThermal()": MCAttr(float, "none"), "effExergy()": MCAttr(float, "none"),
-                "IComp()": MCAttr(float, "power"), "IEvap()": MCAttr(float, "power"),
-                "IExp()": MCAttr(float, "power"), "ICond()": MCAttr(float, "power")}
+        self._inputs =  _inputs
+        self._properties = _properties
 
     cpdef public void update(self, dict kwargs):
         """Update (multiple) Cycle variables using keyword arguments."""

@@ -7,6 +7,9 @@ from .config cimport Config
 from math import nan
 
 
+cdef dict _inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _properties = {"mWf": MCAttr(float, "mass/time")}
+        
 cdef class Component(MCAB):
     """Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.
 
@@ -56,8 +59,8 @@ kwargs : optional
         self.name = name
         self.notes = notes
         self.config = config
-        self._inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-        self._properties = {"mWf": MCAttr(float, "mass/time")}
+        self._inputs = _inputs
+        self._properties = _properties
     
     cpdef public MCAB _copy(self, dict kwargs):
         """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
@@ -350,7 +353,9 @@ FlowStates
         except:
             raise
 
-
+cdef dict _inputs11 = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _properties11 = {"m": MCAttr(str, "mass/time")}
+        
 cdef class Component11(Component):
     """Component with 1 incoming and 1 outgoing flow of the working fluid.
 
@@ -393,8 +398,8 @@ kwargs : optional
         if flowOut is not None and flowIn is not None:
             assert flowOut.m == flowIn.m, "mass flow rate of flowIn and flowOut must be equal"
         super().__init__([flowIn], [flowOut], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
-        self._inputs = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-        self._properties = {"m": MCAttr(str, "mass/time")}
+        self._inputs = _inputs11
+        self._properties = _properties11
 
     @property
     def flowIn(self):
@@ -450,7 +455,9 @@ kwargs : optional
             if flow is not None:
                 flow.m = value
 
-
+cdef dict _inputs22 = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _properties22 = {"mWf": MCAttr(float, "mass/time"),"mSf": MCAttr(float, "mass/time")}
+        
 cdef class Component22(Component):
     """Component with 2 incoming and 2 outgoing flows of the working fluid and a secondary fluid.
 
@@ -505,8 +512,8 @@ kwargs : optional
                         i)
         
         super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
-        self._inputs = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-        self._properties = {"mWf": MCAttr(float, "mass/time"),"mSf": MCAttr(float, "mass/time")}
+        self._inputs = _inputs22
+        self._properties = _properties22
         
     @property
     def flowInSf(self):

@@ -2,6 +2,8 @@ from .mcabstractbase cimport MCAB, MCAttr
 from .. import DEFAULTS
 import numpy as np
 
+cdef dict _inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none"), "deg": MCAttr(int, "none"), "T": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none")}
+cdef dict _properties = {"k()": MCAttr(float, "conductivity") }
 cdef list propertiesList = ['k']
 
 cdef class SolidMaterial(MCAB):
@@ -49,8 +51,8 @@ kwargs : optional
         self.name = name
         self.notes = notes
         #self.config = config
-        self._inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none"), "deg": MCAttr(int, "none"), "T": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none")}
-        self._properties = {"k()": MCAttr(float, "conductivity") }
+        self._inputs = _inputs
+        self._properties = _properties
 
     cpdef public void populate_c(self):
         self._c = {}

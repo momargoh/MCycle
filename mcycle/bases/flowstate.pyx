@@ -5,6 +5,15 @@ from math import nan, isnan
 import CoolProp as CP
 import numpy as np
 
+cdef dict _inputs = {"fluid": MCAttr(str, "none"), "phaseCP": MCAttr(int, "none"),
+                "m": MCAttr(float, "mass/time"), "_inputPairCP": MCAttr(int, "none"),
+                        "_input1": MCAttr(float, "none"), "_input2": MCAttr(float, "none"), "name": MCAttr(str,"none")}
+cdef dict _properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
+                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
+                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
+                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
+                "x()": MCAttr(float, "none")}
+
 cdef class FlowState(MCAB):
     """FlowState represents the state of a flow at a point by its state properties and a mass flow rate. This class creates a `CoolProp AbstractState <http://www.coolprop.org/apidoc/CoolProp.CoolProp.html>`_ object to store the state properties and uses the routines of CoolProp.
 
@@ -61,15 +70,8 @@ import CoolProp
         self._input1 = input1
         self._input2 = input2
         self.name = name
-        self._inputs = {"fluid": MCAttr(str, "none"), "phaseCP": MCAttr(int, "none"),
-                "m": MCAttr(float, "mass/time"), "_inputPairCP": MCAttr(int, "none"),
-                        "_input1": MCAttr(float, "none"), "_input2": MCAttr(float, "none"), "name": MCAttr(str,"none")}
-        self._properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
-                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
-                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
-                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
-                "x()": MCAttr(float, "none")}
-        
+        self._inputs = _inputs
+        self._properties = _properties
         self._state = None
 
         # determine if pure or mixture

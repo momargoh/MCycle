@@ -1,14 +1,17 @@
 from .mcabstractbase cimport MCAB, MCAttr
 from .. import DEFAULTS
 
+cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}
+cdef dict _properties = {}
+        
 cdef class Geom(MCAB):
     """Abstract class for geometries."""
 
     def __init__(self, tuple validClasses, str name="Geom instance"):
         self.validClasses = validClasses
         self.name = name
-        self._inputs = {"validClasses": MCAttr(tuple, "none")}
-        self._properties = {}
+        self._inputs =_inputs
+        self._properties = _properties
         
     cpdef bint validClass(self, str cls):
         """bool: Returns True if geometry is valid for the given class."""

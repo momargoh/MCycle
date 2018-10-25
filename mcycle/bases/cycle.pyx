@@ -6,6 +6,9 @@ from .. import DEFAULTS
 from ..logger import log
 
 
+cdef dict _inputs = {"_componentKeys": MCAttr(list, "none"), "_cycleStateKeys": MCAttr(list, "none"), "config": MCAttr(str, "none"), "name": MCAttr(str, "none")}
+cdef dict _properties = {}
+        
 cdef class Cycle(MCAB):
     r"""Abstract base class for all cycles.
 
@@ -27,8 +30,8 @@ config : Config, optional
         self._componentKeys = _componentKeys
         self._cycleStateKeys = _cycleStateKeys
         self.config = config
-        self._inputs = {"_componentKeys": MCAttr(list, "none"), "_cycleStateKeys": MCAttr(list, "none"), "config": MCAttr(str, "none"), "name": MCAttr(str, "none")}
-        self._properties = {}
+        self._inputs = _inputs
+        self._properties = _properties
         self.name = name
 
     cdef public list _cycleStateObjs(self):

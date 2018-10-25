@@ -5,6 +5,13 @@ from ...bases.mcabstractbase cimport MCAttr
 from ...logger import log
 import CoolProp as CP
 
+cdef dict _inputs = {"QCool": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
+                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
+                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "config": MCAttr(Config, "none")}
+cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
+                "dpSf()": MCAttr(float, "pressure")}
+        
 cdef class ClrBasic(Component11):
     r"""Basic heat removal defined by the cooling power and its thermal efficiency.
 
@@ -57,12 +64,8 @@ kwargs : optional
         ), "Thermal efficiency={} is not in range (0, 1]".format(effThermal)
         self.QCool = QCool
         self.effThermal = effThermal
-        self._inputs = {"QCool": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
-                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
-                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
-                        "config": MCAttr(Config, "none")}
-        self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
-                "dpSf()": MCAttr(float, "pressure")}
+        self._inputs = _inputs
+        self._properties = _properties
 
     cpdef public double _effFactorWf(self):
         return self.effThermal

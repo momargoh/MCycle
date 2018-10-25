@@ -4,6 +4,13 @@ from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 import CoolProp as CP
 
+cdef dict _inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
+                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
+                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "config": MCAttr(Config, "none")}
+cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
+                "pOut": MCAttr(float, "pressure"), "POut()": MCAttr(float, "power")}
+
 cdef class ExpBasic(Component11):
     r"""Basic expansion defined by a pressure ratio and isentropic efficiency.
 
@@ -53,12 +60,8 @@ kwargs : optional
                          config)
         self.pRatio = pRatio
         self.effIsentropic = effIsentropic
-        self._inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
-                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
-                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
-                        "config": MCAttr(Config, "none")}
-        self._properties= {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
-                "pOut": MCAttr(float, "pressure"), "POut()": MCAttr(float, "power")}
+        self._inputs = _inputs
+        self._properties = _properties
 
     cpdef double POut(self):
         """float: Power output [W]."""

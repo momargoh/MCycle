@@ -1,7 +1,9 @@
 from ..bases.geom cimport Geom
 from ..bases.mcabstractbase cimport MCAttr
 
-
+cdef dict _inputsHxPlateCorrChevron = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
+                'phi': MCAttr(float, 'none')}
+cdef dict _propertiesHxPlateCorrChevron = {}
 cdef class GeomHxPlateCorrChevron(Geom):
     r"""Geometry of chevron corrugations for a plate heat exchanger.
 
@@ -31,9 +33,12 @@ phi : float
         self.phi = phi
         self.name = name
         self.validClasses = ('HxPlate', 'HxUnitPlate')
-        self._inputs = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
-                'phi': MCAttr(float, 'none')}
-        self._properties = {}
+        self._inputs = _inputsHxPlateCorrChevron
+        self._properties = _propertiesHxPlateCorrChevron
+
+cdef dict _inputsHxPlateFinOffset = {"s": MCAttr(float, "length"), "h": MCAttr(float, "length"), "t": MCAttr(float, "length"),
+                "l": MCAttr(float, "length")}
+cdef dict _propertiesHxPlateFinOffset = {"b()": MCAttr(float, "length")}
         
 cdef class GeomHxPlateFinOffset(Geom):
     r"""Geometry of offset fins for a plate heat exchanger. Refer to Figure 1 in [Manglik1995]_.
@@ -82,9 +87,8 @@ Bibtex::
         self.l = l
         self.name = name
         self.validClasses = ("HxPlate", "HxUnitPlate")
-        self._inputs = {"s": MCAttr(float, "length"), "h": MCAttr(float, "length"), "t": MCAttr(float, "length"),
-                "l": MCAttr(float, "length")}
-        self._properties = {"b()": MCAttr(float, "length")}
+        self._inputs = _inputsHxPlateFinOffset
+        self._properties = _propertiesHxPlateFinOffset
 
     cpdef public double b(self):
         """float: Plate spacing; b = h + t. Setter works only if either h or t is None."""
@@ -99,6 +103,8 @@ Bibtex::
         else:
             warn("Cannot set b, given h={}, t={}, one must set to -1".format(self.h, self.t))
 
+cdef dict _inputsHxPlateRough = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}
+cdef dict _propertiesHxPlateRough = {}
 
 cdef class GeomHxPlateRough(Geom):
     r"""Geometry of heat exchanger plate with a rough surface.
@@ -119,8 +125,12 @@ roughness : float
         self.roughness = roughness
         self.name = name
         self.validClasses = ("HxPlate", "HxUnitPlate")
-        self._inputs = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}
-        self._properties = {}
+        self._inputs = _inputsHxPlateRough
+        self._properties = _propertiesHxPlateRough
+
+        
+cdef dict _inputsHxPlateSmooth = {"b": MCAttr(float, "length")}
+cdef dict _propertiesHxPlateSmooth = {"roughness": MCAttr(float, "length/length")}
 
 cdef class GeomHxPlateSmooth(GeomHxPlateRough):
     """Geometry of smooth heat exchanger plate (roughness factor is always None).
@@ -135,5 +145,5 @@ b : float
                  b,
                  name="GeomHxPlateSmooth instance"):
         super(GeomHxPlateSmooth, self).__init__(b, 0, name)
-        self._inputs = {"b": MCAttr(float, "length")}
-        self._properties = {"roughness": MCAttr(float, "length/length")}
+        self._inputs = _inputsHxPlateSmooth
+        self._properties = _propertiesHxPlateSmooth

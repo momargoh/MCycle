@@ -6,6 +6,8 @@ from ..logger import log
 from math import nan, isnan
 import CoolProp as CP
 
+cdef dict _inputsFixedOut = {"inputPairCP": MCAttr(int, "none"), "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _propertiesFixedOut = {"m": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "dp()": MCAttr( "pressure")}
 
 cdef class FixedOut(Component11):
     r"""Fixed outgoing working fluid flowstate.
@@ -44,9 +46,8 @@ flowOut : FlowState, optional
         self.inputPairCP = inputPairCP
         self.input1 = input1
         self.input2 = input2
-        self._inputs = {"inputPairCP": MCAttr(int, "none"),
-                        "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-        self._properties = {"m": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "dp()": MCAttr( "pressure")}
+        self._inputs = _inputsFixedOut
+        self._properties = _propertiesFixedOut
         self.run()
 
     cpdef public void run(self):

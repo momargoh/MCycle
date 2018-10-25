@@ -900,7 +900,7 @@ struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasic {
 };
 
 
-/* "mcycle/components/heaters/htr_basic.pyx":88
+/* "mcycle/components/heaters/htr_basic.pyx":91
  * 
  * 
  * cdef class HtrBasicConstP(HtrBasic):             # <<<<<<<<<<<<<<
@@ -912,7 +912,7 @@ struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP {
 };
 
 
-/* "mcycle/components/heaters/htr_basic.pyx":182
+/* "mcycle/components/heaters/htr_basic.pyx":185
  * 
  * 
  * cdef class HtrBasicConstV(HtrBasic):             # <<<<<<<<<<<<<<
@@ -1046,8 +1046,8 @@ struct __pyx_vtabstruct_6mcycle_5bases_9component_Component22 {
 static struct __pyx_vtabstruct_6mcycle_5bases_9component_Component22 *__pyx_vtabptr_6mcycle_5bases_9component_Component22;
 
 
-/* "mcycle/components/heaters/htr_basic.pyx":8
- * import CoolProp as CP
+/* "mcycle/components/heaters/htr_basic.pyx":15
+ *                 "dpSf()": MCAttr(float, "pressure")}
  * 
  * cdef class HtrBasic(Component11):             # <<<<<<<<<<<<<<
  *     r"""Basic heat addition defined by a heating power and thermal efficiency.
@@ -1065,7 +1065,7 @@ struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasic {
 static struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasic *__pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
 
 
-/* "mcycle/components/heaters/htr_basic.pyx":88
+/* "mcycle/components/heaters/htr_basic.pyx":91
  * 
  * 
  * cdef class HtrBasicConstP(HtrBasic):             # <<<<<<<<<<<<<<
@@ -1079,7 +1079,7 @@ struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP 
 static struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *__pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP;
 
 
-/* "mcycle/components/heaters/htr_basic.pyx":182
+/* "mcycle/components/heaters/htr_basic.pyx":185
  * 
  * 
  * cdef class HtrBasicConstV(HtrBasic):             # <<<<<<<<<<<<<<
@@ -1519,6 +1519,8 @@ static PyTypeObject *__pyx_ptype_6mcycle_5bases_9component_Component22 = 0;
 static PyTypeObject *__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic = 0;
 static PyTypeObject *__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP = 0;
 static PyTypeObject *__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV = 0;
+static PyObject *__pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs = 0;
+static PyObject *__pyx_v_6mcycle_10components_7heaters_9htr_basic__properties = 0;
 static PyObject *__pyx_f_6mcycle_10components_7heaters_9htr_basic___pyx_unpickle_HtrBasic__set_state(struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasic *, PyObject *); /*proto*/
 static PyObject *__pyx_f_6mcycle_10components_7heaters_9htr_basic___pyx_unpickle_HtrBasicConstP__set_state(struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *, PyObject *); /*proto*/
 static PyObject *__pyx_f_6mcycle_10components_7heaters_9htr_basic___pyx_unpickle_HtrBasicConstV__set_state(struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *, PyObject *); /*proto*/
@@ -1551,8 +1553,8 @@ static const char __pyx_k_rho[] = "rho";
 static const char __pyx_k_run[] = "run";
 static const char __pyx_k_attr[] = "attr";
 static const char __pyx_k_dict[] = "__dict__";
-static const char __pyx_k_dpSf[] = "dpSf()";
-static const char __pyx_k_dpWf[] = "dpWf()";
+static const char __pyx_k_dpSf[] = "dpSf";
+static const char __pyx_k_dpWf[] = "dpWf";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "name";
@@ -1568,8 +1570,8 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_super[] = "super";
 static const char __pyx_k_bounds[] = "bounds";
 static const char __pyx_k_config[] = "config";
-static const char __pyx_k_dpSf_2[] = "dpSf";
-static const char __pyx_k_dpWf_2[] = "dpWf";
+static const char __pyx_k_dpSf_2[] = "dpSf()";
+static const char __pyx_k_dpWf_2[] = "dpWf()";
 static const char __pyx_k_flowIn[] = "flowIn";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
@@ -1659,10 +1661,10 @@ static PyObject *__pyx_n_s_config;
 static PyObject *__pyx_n_u_config;
 static PyObject *__pyx_n_s_copyState;
 static PyObject *__pyx_n_s_dict;
-static PyObject *__pyx_kp_u_dpSf;
-static PyObject *__pyx_n_s_dpSf_2;
-static PyObject *__pyx_kp_u_dpWf;
-static PyObject *__pyx_n_s_dpWf_2;
+static PyObject *__pyx_n_s_dpSf;
+static PyObject *__pyx_kp_u_dpSf_2;
+static PyObject *__pyx_n_s_dpWf;
+static PyObject *__pyx_kp_u_dpWf_2;
 static PyObject *__pyx_n_s_effFactorSf;
 static PyObject *__pyx_n_s_effFactorWf;
 static PyObject *__pyx_n_s_effThermal;
@@ -1778,7 +1780,7 @@ static PyObject *__pyx_codeobj__12;
 static PyObject *__pyx_codeobj__14;
 static PyObject *__pyx_codeobj__16;
 
-/* "mcycle/components/heaters/htr_basic.pyx":39
+/* "mcycle/components/heaters/htr_basic.pyx":46
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -1807,7 +1809,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_QHeat,&__pyx_n_s_effThermal,&__pyx_n_s_flowIn,&__pyx_n_s_flowOut,&__pyx_n_s_ambient,&__pyx_n_s_sizeAttr,&__pyx_n_s_sizeBounds,&__pyx_n_s_sizeUnitsBounds,&__pyx_n_s_name,&__pyx_n_s_notes,&__pyx_n_s_config,0};
     PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
 
-    /* "mcycle/components/heaters/htr_basic.pyx":42
+    /* "mcycle/components/heaters/htr_basic.pyx":49
  *                  double QHeat,
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,             # <<<<<<<<<<<<<<
@@ -1816,7 +1818,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
  */
     values[2] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":43
+    /* "mcycle/components/heaters/htr_basic.pyx":50
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,             # <<<<<<<<<<<<<<
@@ -1825,7 +1827,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
  */
     values[3] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":44
+    /* "mcycle/components/heaters/htr_basic.pyx":51
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,
  *                  FlowState ambient=None,             # <<<<<<<<<<<<<<
@@ -1935,7 +1937,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 46, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1964,9 +1966,9 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L3_error)
+    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L3_error)
     } else {
       __pyx_v_effThermal = ((double)1.0);
     }
@@ -1982,24 +1984,24 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_1__init__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 46, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasic.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 42, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 43, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 44, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 46, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 48, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 49, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 55, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(((struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasic *)__pyx_v_self), __pyx_v_QHeat, __pyx_v_effThermal, __pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_ambient, __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, __pyx_v_config);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":39
+  /* "mcycle/components/heaters/htr_basic.pyx":46
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -2029,14 +2031,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":51
+  /* "mcycle/components/heaters/htr_basic.pyx":58
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):
  *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,             # <<<<<<<<<<<<<<
  *                          config)
  *         assert (
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
@@ -2044,13 +2046,13 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
@@ -2059,7 +2061,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_3, 1, __pyx_int_0);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":52
+  /* "mcycle/components/heaters/htr_basic.pyx":59
  *                  Config config=Config()):
  *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)             # <<<<<<<<<<<<<<
@@ -2081,7 +2083,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2090,14 +2092,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[11] = {__pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_t_3, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 10+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(10+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(10+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -2132,14 +2134,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
     __Pyx_GIVEREF(((PyObject *)__pyx_v_config));
     PyTuple_SET_ITEM(__pyx_t_6, 9+__pyx_t_5, ((PyObject *)__pyx_v_config));
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":53
+  /* "mcycle/components/heaters/htr_basic.pyx":60
  *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)
  *         assert (             # <<<<<<<<<<<<<<
@@ -2149,7 +2151,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":54
+    /* "mcycle/components/heaters/htr_basic.pyx":61
  *                          config)
  *         assert (
  *             effThermal > 0 and effThermal <= 1.             # <<<<<<<<<<<<<<
@@ -2167,16 +2169,16 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_7)) {
 
-      /* "mcycle/components/heaters/htr_basic.pyx":55
+      /* "mcycle/components/heaters/htr_basic.pyx":62
  *         assert (
  *             effThermal > 0 and effThermal <= 1.
  *         ), "Thermal efficiency={} is not in range (0, 1]".format(effThermal)             # <<<<<<<<<<<<<<
  *         self.QHeat = QHeat
  *         self.effThermal = effThermal
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Thermal_efficiency_is_not_in_ran, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Thermal_efficiency_is_not_in_ran, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 62, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2189,14 +2191,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
         }
       }
       if (!__pyx_t_3) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_6};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -2205,36 +2207,36 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_6};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
           __Pyx_GIVEREF(__pyx_t_6);
           PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_6);
           __pyx_t_6 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyTuple_Pack(1, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_Pack(1, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_2);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 53, __pyx_L1_error)
+      __PYX_ERR(0, 60, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "mcycle/components/heaters/htr_basic.pyx":56
+  /* "mcycle/components/heaters/htr_basic.pyx":63
  *             effThermal > 0 and effThermal <= 1.
  *         ), "Thermal efficiency={} is not in range (0, 1]".format(effThermal)
  *         self.QHeat = QHeat             # <<<<<<<<<<<<<<
@@ -2243,276 +2245,42 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
  */
   __pyx_v_self->QHeat = __pyx_v_QHeat;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":57
+  /* "mcycle/components/heaters/htr_basic.pyx":64
  *         ), "Thermal efficiency={} is not in range (0, 1]".format(effThermal)
  *         self.QHeat = QHeat
  *         self.effThermal = effThermal             # <<<<<<<<<<<<<<
  * 
- *         self._inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
+ *         self._inputs = _inputs
  */
   __pyx_v_self->effThermal = __pyx_v_effThermal;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":59
+  /* "mcycle/components/heaters/htr_basic.pyx":66
  *         self.effThermal = effThermal
  * 
- *         self._inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
- *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_u_power);
-  __Pyx_GIVEREF(__pyx_n_u_power);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_power);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_QHeat, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_effThermal, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":60
+ *         self._inputs = _inputs             # <<<<<<<<<<<<<<
+ *         self._properties = _properties
  * 
- *         self._inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
- *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- *                         "config": MCAttr(Config, "none")}
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_flowIn, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_flowOut, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ambient, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyUnicode_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeAttr, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":61
- *         self._inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
- *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
- *                         "config": MCAttr(Config, "none")}
- *         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
- */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)(&PyList_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyList_Type)));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyList_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeBounds, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyList_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyList_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyList_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeUnitsBounds, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyUnicode_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_name, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyUnicode_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_none);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_notes, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":62
- *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- *                         "config": MCAttr(Config, "none")}             # <<<<<<<<<<<<<<
- *         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
- *                 "dpSf()": MCAttr(float, "pressure")}
- */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
-  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_config, __pyx_t_4) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":59
- *         self.effThermal = effThermal
- * 
- *         self._inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
- *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- */
-  __Pyx_GIVEREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs);
+  __Pyx_GIVEREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs);
   __Pyx_DECREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs);
-  __pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_v_self->__pyx_base.__pyx_base.__pyx_base._inputs = __pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":63
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- *                         "config": MCAttr(Config, "none")}
- *         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
- *                 "dpSf()": MCAttr(float, "pressure")}
+  /* "mcycle/components/heaters/htr_basic.pyx":67
  * 
- */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_kp_u_mass_time);
-  __Pyx_GIVEREF(__pyx_kp_u_mass_time);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_kp_u_mass_time);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_mWf, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_u_pressure);
-  __Pyx_GIVEREF(__pyx_n_u_pressure);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_pressure);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_dpWf, __pyx_t_4) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":64
- *                         "config": MCAttr(Config, "none")}
- *         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
- *                 "dpSf()": MCAttr(float, "pressure")}             # <<<<<<<<<<<<<<
+ *         self._inputs = _inputs
+ *         self._properties = _properties             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double _effFactorWf(self):
  */
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
-  PyTuple_SET_ITEM(__pyx_t_4, 0, ((PyObject *)(&PyFloat_Type)));
-  __Pyx_INCREF(__pyx_n_u_pressure);
-  __Pyx_GIVEREF(__pyx_n_u_pressure);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_pressure);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_dpSf, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "mcycle/components/heaters/htr_basic.pyx":63
- *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
- *                         "config": MCAttr(Config, "none")}
- *         self._properties= {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
- *                 "dpSf()": MCAttr(float, "pressure")}
- * 
- */
-  __Pyx_GIVEREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__properties);
+  __Pyx_GIVEREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__properties);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._properties);
   __Pyx_DECREF(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base._properties);
-  __pyx_v_self->__pyx_base.__pyx_base.__pyx_base._properties = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_v_self->__pyx_base.__pyx_base.__pyx_base._properties = __pyx_v_6mcycle_10components_7heaters_9htr_basic__properties;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":39
+  /* "mcycle/components/heaters/htr_basic.pyx":46
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -2536,8 +2304,8 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic___init__(
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":66
- *                 "dpSf()": MCAttr(float, "pressure")}
+/* "mcycle/components/heaters/htr_basic.pyx":69
+ *         self._properties = _properties
  * 
  *     cpdef public double _effFactorWf(self):             # <<<<<<<<<<<<<<
  *         return 1
@@ -2558,7 +2326,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(C
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_effFactorWf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_effFactorWf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_3_effFactorWf)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -2573,14 +2341,14 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(C
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2589,7 +2357,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(C
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":67
+  /* "mcycle/components/heaters/htr_basic.pyx":70
  * 
  *     cpdef public double _effFactorWf(self):
  *         return 1             # <<<<<<<<<<<<<<
@@ -2599,8 +2367,8 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(C
   __pyx_r = 1.0;
   goto __pyx_L0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":66
- *                 "dpSf()": MCAttr(float, "pressure")}
+  /* "mcycle/components/heaters/htr_basic.pyx":69
+ *         self._properties = _properties
  * 
  *     cpdef public double _effFactorWf(self):             # <<<<<<<<<<<<<<
  *         return 1
@@ -2640,7 +2408,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_2_e
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_effFactorWf", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorWf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2657,7 +2425,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_2_e
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":69
+/* "mcycle/components/heaters/htr_basic.pyx":72
  *         return 1
  * 
  *     cpdef public double _effFactorSf(self):             # <<<<<<<<<<<<<<
@@ -2679,7 +2447,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(s
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_effFactorSf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_effFactorSf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_5_effFactorSf)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -2694,14 +2462,14 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(s
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2710,7 +2478,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(s
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":70
+  /* "mcycle/components/heaters/htr_basic.pyx":73
  * 
  *     cpdef public double _effFactorSf(self):
  *         return self.effThermal             # <<<<<<<<<<<<<<
@@ -2720,7 +2488,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(s
   __pyx_r = __pyx_v_self->effThermal;
   goto __pyx_L0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":69
+  /* "mcycle/components/heaters/htr_basic.pyx":72
  *         return 1
  * 
  *     cpdef public double _effFactorSf(self):             # <<<<<<<<<<<<<<
@@ -2761,7 +2529,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_4_e
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_effFactorSf", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2778,7 +2546,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_4_e
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":72
+/* "mcycle/components/heaters/htr_basic.pyx":75
  *         return self.effThermal
  * 
  *     cpdef public double  dpWf(self):             # <<<<<<<<<<<<<<
@@ -2800,7 +2568,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(CYTHON_UN
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_dpWf_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_dpWf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_7dpWf)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -2815,14 +2583,14 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(CYTHON_UN
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2831,7 +2599,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(CYTHON_UN
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":74
+  /* "mcycle/components/heaters/htr_basic.pyx":77
  *     cpdef public double  dpWf(self):
  *         """float: Pressure drop of the working fluid [Pa]. Defaults to 0."""
  *         return 0             # <<<<<<<<<<<<<<
@@ -2841,7 +2609,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(CYTHON_UN
   __pyx_r = 0.0;
   goto __pyx_L0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":72
+  /* "mcycle/components/heaters/htr_basic.pyx":75
  *         return self.effThermal
  * 
  *     cpdef public double  dpWf(self):             # <<<<<<<<<<<<<<
@@ -2882,7 +2650,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_6dp
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("dpWf", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpWf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2899,7 +2667,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_6dp
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":76
+/* "mcycle/components/heaters/htr_basic.pyx":79
  *         return 0
  * 
  *     cpdef public double dpSf(self):             # <<<<<<<<<<<<<<
@@ -2921,7 +2689,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(CYTHON_UN
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_dpSf_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_dpSf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_9dpSf)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -2936,14 +2704,14 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(CYTHON_UN
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2952,7 +2720,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(CYTHON_UN
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":78
+  /* "mcycle/components/heaters/htr_basic.pyx":81
  *     cpdef public double dpSf(self):
  *         """float: Pressure drop of the secondary fluid [Pa]. Defaults to 0."""
  *         return 0             # <<<<<<<<<<<<<<
@@ -2962,7 +2730,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(CYTHON_UN
   __pyx_r = 0.0;
   goto __pyx_L0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":76
+  /* "mcycle/components/heaters/htr_basic.pyx":79
  *         return 0
  * 
  *     cpdef public double dpSf(self):             # <<<<<<<<<<<<<<
@@ -3003,7 +2771,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_8dp
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("dpSf", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_dpSf(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3020,7 +2788,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_8dp
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":80
+/* "mcycle/components/heaters/htr_basic.pyx":83
  *         return 0
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -3040,7 +2808,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(CYTHON_UNUSE
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_11run)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -3055,10 +2823,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(CYTHON_UNUSE
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3069,7 +2837,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(CYTHON_UNUSE
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":81
+  /* "mcycle/components/heaters/htr_basic.pyx":84
  * 
  *     cpdef public void run(self):
  *         pass             # <<<<<<<<<<<<<<
@@ -3089,7 +2857,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(CYTHON_UNUSE
   __Pyx_RefNannyFinishContext();
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":80
+/* "mcycle/components/heaters/htr_basic.pyx":83
  *         return 0
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -3117,7 +2885,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_10r
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("run", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3134,7 +2902,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_10r
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":83
+/* "mcycle/components/heaters/htr_basic.pyx":86
  *         pass
  * 
  *     cpdef public double Q(self):             # <<<<<<<<<<<<<<
@@ -3156,7 +2924,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(struct __pyx
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Q); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_Q); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_13Q)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -3171,14 +2939,14 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(struct __pyx
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L1_error)
+      __pyx_t_5 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_5 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_r = __pyx_t_5;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3187,7 +2955,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(struct __pyx
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":85
+  /* "mcycle/components/heaters/htr_basic.pyx":88
  *     cpdef public double Q(self):
  *         """double: Heat [W] transferred to the working fluid."""
  *         return self.QHeat             # <<<<<<<<<<<<<<
@@ -3197,7 +2965,7 @@ double __pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(struct __pyx
   __pyx_r = __pyx_v_self->QHeat;
   goto __pyx_L0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":83
+  /* "mcycle/components/heaters/htr_basic.pyx":86
  *         pass
  * 
  *     cpdef public double Q(self):             # <<<<<<<<<<<<<<
@@ -3238,7 +3006,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_12Q
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("Q", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3837,7 +3605,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_16_
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":119
+/* "mcycle/components/heaters/htr_basic.pyx":122
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -3866,7 +3634,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_QHeat,&__pyx_n_s_effThermal,&__pyx_n_s_flowIn,&__pyx_n_s_flowOut,&__pyx_n_s_ambient,&__pyx_n_s_sizeAttr,&__pyx_n_s_sizeBounds,&__pyx_n_s_sizeUnitsBounds,&__pyx_n_s_name,&__pyx_n_s_notes,&__pyx_n_s_config,0};
     PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
 
-    /* "mcycle/components/heaters/htr_basic.pyx":122
+    /* "mcycle/components/heaters/htr_basic.pyx":125
  *                  double QHeat,
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,             # <<<<<<<<<<<<<<
@@ -3875,7 +3643,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
  */
     values[2] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":123
+    /* "mcycle/components/heaters/htr_basic.pyx":126
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,             # <<<<<<<<<<<<<<
@@ -3884,7 +3652,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
  */
     values[3] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":124
+    /* "mcycle/components/heaters/htr_basic.pyx":127
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,
  *                  FlowState ambient=None,             # <<<<<<<<<<<<<<
@@ -3994,7 +3762,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 119, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 122, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4023,9 +3791,9 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L3_error)
+    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L3_error)
+      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L3_error)
     } else {
       __pyx_v_effThermal = ((double)1.0);
     }
@@ -4041,24 +3809,24 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_1_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 119, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 122, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstP.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 122, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 123, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 124, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 125, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 126, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 127, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 128, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 129, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 126, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 133, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___init__(((struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self), __pyx_v_QHeat, __pyx_v_effThermal, __pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_ambient, __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, __pyx_v_config);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":119
+  /* "mcycle/components/heaters/htr_basic.pyx":122
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -4087,14 +3855,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":131
+  /* "mcycle/components/heaters/htr_basic.pyx":134
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,             # <<<<<<<<<<<<<<
  *                          config)
  * 
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP));
@@ -4102,18 +3870,18 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_QHeat); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_QHeat); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":132
+  /* "mcycle/components/heaters/htr_basic.pyx":135
  *                  Config config=Config()):
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
  *                          config)             # <<<<<<<<<<<<<<
@@ -4135,7 +3903,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_5, __pyx_t_3, __pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4145,7 +3913,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_5, __pyx_t_3, __pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4153,7 +3921,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(11+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(11+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -4191,14 +3959,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
     PyTuple_SET_ITEM(__pyx_t_7, 10+__pyx_t_6, ((PyObject *)__pyx_v_config));
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":119
+  /* "mcycle/components/heaters/htr_basic.pyx":122
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -4223,7 +3991,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP___
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":134
+/* "mcycle/components/heaters/htr_basic.pyx":137
  *                          config)
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -4249,7 +4017,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_3run)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -4264,10 +4032,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4278,7 +4046,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":136
+  /* "mcycle/components/heaters/htr_basic.pyx":139
  *     cpdef public void run(self):
  *         """Compute outgoing FlowState from component attributes."""
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m(), self.flowsIn[0].p())             # <<<<<<<<<<<<<<
@@ -4287,25 +4055,25 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
  */
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 136, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copyState); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copyState); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_CP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_CP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_HmassP_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_HmassP_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 136, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -4319,10 +4087,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -4330,21 +4098,21 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
   __pyx_t_8 = ((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0);
   if (unlikely(__pyx_t_8 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 136, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  __pyx_t_6 = PyFloat_FromDouble((__pyx_t_7 / __pyx_t_8)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble((__pyx_t_7 / __pyx_t_8)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = PyNumber_Add(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 136, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -4358,10 +4126,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4380,7 +4148,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4391,7 +4159,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4400,7 +4168,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -4414,19 +4182,19 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(struc
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 136, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   }
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1) < 0)) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1) < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":134
+  /* "mcycle/components/heaters/htr_basic.pyx":137
  *                          config)
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -4469,7 +4237,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("run", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4486,7 +4254,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":138
+/* "mcycle/components/heaters/htr_basic.pyx":141
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m(), self.flowsIn[0].p())
  * 
  *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
@@ -4533,7 +4301,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_5_size)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -4552,7 +4320,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -4560,13 +4328,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         if (__pyx_t_4) {
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4580,7 +4348,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         __Pyx_INCREF(__pyx_v_unitsBounds);
         __Pyx_GIVEREF(__pyx_v_unitsBounds);
         PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_unitsBounds);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -4592,18 +4360,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":152
+  /* "mcycle/components/heaters/htr_basic.pyx":155
  *     - if bounds=a or [a]: scipy.optimize.newton is used.
  *         """
  *         if attr == '':             # <<<<<<<<<<<<<<
  *             attr = self.sizeAttr
  *         if bounds == []:
  */
-  __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
   __pyx_t_8 = (__pyx_t_7 != 0);
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":153
+    /* "mcycle/components/heaters/htr_basic.pyx":156
  *         """
  *         if attr == '':
  *             attr = self.sizeAttr             # <<<<<<<<<<<<<<
@@ -4615,7 +4383,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_DECREF_SET(__pyx_v_attr, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":152
+    /* "mcycle/components/heaters/htr_basic.pyx":155
  *     - if bounds=a or [a]: scipy.optimize.newton is used.
  *         """
  *         if attr == '':             # <<<<<<<<<<<<<<
@@ -4624,22 +4392,22 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":154
+  /* "mcycle/components/heaters/htr_basic.pyx":157
  *         if attr == '':
  *             attr = self.sizeAttr
  *         if bounds == []:             # <<<<<<<<<<<<<<
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bounds, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bounds, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":155
+    /* "mcycle/components/heaters/htr_basic.pyx":158
  *             attr = self.sizeAttr
  *         if bounds == []:
  *             bounds = self.sizeBounds             # <<<<<<<<<<<<<<
@@ -4651,7 +4419,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_DECREF_SET(__pyx_v_bounds, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":154
+    /* "mcycle/components/heaters/htr_basic.pyx":157
  *         if attr == '':
  *             attr = self.sizeAttr
  *         if bounds == []:             # <<<<<<<<<<<<<<
@@ -4660,22 +4428,22 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":156
+  /* "mcycle/components/heaters/htr_basic.pyx":159
  *         if bounds == []:
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:             # <<<<<<<<<<<<<<
  *             unitsBounds = self.sizeUnitsBounds
  *         try:
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBounds, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBounds, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":157
+    /* "mcycle/components/heaters/htr_basic.pyx":160
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds             # <<<<<<<<<<<<<<
@@ -4687,7 +4455,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_DECREF_SET(__pyx_v_unitsBounds, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":156
+    /* "mcycle/components/heaters/htr_basic.pyx":159
  *         if bounds == []:
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:             # <<<<<<<<<<<<<<
@@ -4696,7 +4464,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":158
+  /* "mcycle/components/heaters/htr_basic.pyx":161
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -4712,7 +4480,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_XGOTREF(__pyx_t_11);
     /*try:*/ {
 
-      /* "mcycle/components/heaters/htr_basic.pyx":159
+      /* "mcycle/components/heaters/htr_basic.pyx":162
  *             unitsBounds = self.sizeUnitsBounds
  *         try:
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].             # <<<<<<<<<<<<<<
@@ -4723,11 +4491,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       if (unlikely(!Py_OptimizeFlag)) {
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 159, __pyx_L6_error)
+          __PYX_ERR(0, 162, __pyx_L6_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_2 = NULL;
@@ -4741,15 +4509,15 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_2) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":160
+        /* "mcycle/components/heaters/htr_basic.pyx":163
  *         try:
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"             # <<<<<<<<<<<<<<
@@ -4758,19 +4526,19 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 159, __pyx_L6_error)
+          __PYX_ERR(0, 162, __pyx_L6_error)
         }
 
-        /* "mcycle/components/heaters/htr_basic.pyx":159
+        /* "mcycle/components/heaters/htr_basic.pyx":162
  *             unitsBounds = self.sizeUnitsBounds
  *         try:
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].             # <<<<<<<<<<<<<<
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"
  *             if attr == "Q" or attr == "QHeat":
  */
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_p); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_2 = NULL;
@@ -4784,66 +4552,66 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_2) {
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else {
-          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_6, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_6, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L6_error)
+        __pyx_t_6 = PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":160
+        /* "mcycle/components/heaters/htr_basic.pyx":163
  *         try:
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"             # <<<<<<<<<<<<<<
  *             if attr == "Q" or attr == "QHeat":
  *                 self.QHeat = (
  */
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.config->_tolRel_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L6_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.config->_tolRel_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = PyObject_RichCompare(__pyx_t_6, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L6_error)
+        __pyx_t_1 = PyObject_RichCompare(__pyx_t_6, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 160, __pyx_L6_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 163, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(!__pyx_t_8)) {
           PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_flowOut_p_flowIn_p);
-          __PYX_ERR(0, 159, __pyx_L6_error)
+          __PYX_ERR(0, 162, __pyx_L6_error)
         }
       }
       #endif
 
-      /* "mcycle/components/heaters/htr_basic.pyx":161
+      /* "mcycle/components/heaters/htr_basic.pyx":164
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"
  *             if attr == "Q" or attr == "QHeat":             # <<<<<<<<<<<<<<
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  */
-      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_Q, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 161, __pyx_L6_error)
+      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_Q, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 164, __pyx_L6_error)
       __pyx_t_12 = (__pyx_t_7 != 0);
       if (!__pyx_t_12) {
       } else {
         __pyx_t_8 = __pyx_t_12;
         goto __pyx_L13_bool_binop_done;
       }
-      __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_QHeat, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 161, __pyx_L6_error)
+      __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_QHeat, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 164, __pyx_L6_error)
       __pyx_t_7 = (__pyx_t_12 != 0);
       __pyx_t_8 = __pyx_t_7;
       __pyx_L13_bool_binop_done:;
       if (__pyx_t_8) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":163
+        /* "mcycle/components/heaters/htr_basic.pyx":166
  *             if attr == "Q" or attr == "QHeat":
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal             # <<<<<<<<<<<<<<
@@ -4852,11 +4620,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 163, __pyx_L6_error)
+          __PYX_ERR(0, 166, __pyx_L6_error)
         }
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -4870,20 +4638,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_3) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 163, __pyx_L6_error)
+          __PYX_ERR(0, 166, __pyx_L6_error)
         }
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -4897,33 +4665,33 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_3) {
-          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else {
-          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_6 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L6_error)
+        __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":162
+        /* "mcycle/components/heaters/htr_basic.pyx":165
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"
  *             if attr == "Q" or attr == "QHeat":
  *                 self.QHeat = (             # <<<<<<<<<<<<<<
@@ -4932,7 +4700,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         __pyx_v_self->__pyx_base.QHeat = __pyx_t_13;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":161
+        /* "mcycle/components/heaters/htr_basic.pyx":164
  *             assert abs(1 - self.flowsOut[0].p() / self.flowsIn[0].
  *                        p()) < self.config._tolRel_p, "flowOut.p != flowIn.p"
  *             if attr == "Q" or attr == "QHeat":             # <<<<<<<<<<<<<<
@@ -4942,18 +4710,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":164
+      /* "mcycle/components/heaters/htr_basic.pyx":167
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":             # <<<<<<<<<<<<<<
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  */
-      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_effThermal, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 164, __pyx_L6_error)
+      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_effThermal, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 167, __pyx_L6_error)
       __pyx_t_7 = (__pyx_t_8 != 0);
       if (__pyx_t_7) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":166
+        /* "mcycle/components/heaters/htr_basic.pyx":169
  *             elif attr == "effThermal":
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat             # <<<<<<<<<<<<<<
@@ -4962,11 +4730,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 166, __pyx_L6_error)
+          __PYX_ERR(0, 169, __pyx_L6_error)
         }
-        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_6 = NULL;
@@ -4980,20 +4748,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_6) {
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else {
-          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 166, __pyx_L6_error)
+          __PYX_ERR(0, 169, __pyx_L6_error)
         }
-        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_6 = NULL;
@@ -5007,33 +4775,33 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_6) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L6_error)
+        __pyx_t_13 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_13 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":165
+        /* "mcycle/components/heaters/htr_basic.pyx":168
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":
  *                 self.effThermal = (             # <<<<<<<<<<<<<<
@@ -5042,7 +4810,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         __pyx_v_self->__pyx_base.effThermal = __pyx_t_13;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":164
+        /* "mcycle/components/heaters/htr_basic.pyx":167
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":             # <<<<<<<<<<<<<<
@@ -5052,18 +4820,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":167
+      /* "mcycle/components/heaters/htr_basic.pyx":170
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":             # <<<<<<<<<<<<<<
  *                 self.m = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  */
-      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_m, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 167, __pyx_L6_error)
+      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_m, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 170, __pyx_L6_error)
       __pyx_t_8 = (__pyx_t_7 != 0);
       if (__pyx_t_8) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":169
+        /* "mcycle/components/heaters/htr_basic.pyx":172
  *             elif attr == "m":
  *                 self.m = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat             # <<<<<<<<<<<<<<
@@ -5072,11 +4840,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 169, __pyx_L6_error)
+          __PYX_ERR(0, 172, __pyx_L6_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -5090,20 +4858,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_1) {
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else {
-          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 169, __pyx_L6_error)
+          __PYX_ERR(0, 172, __pyx_L6_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -5117,41 +4885,41 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           }
         }
         if (__pyx_t_1) {
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else {
-          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_6 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":168
+        /* "mcycle/components/heaters/htr_basic.pyx":171
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":
  *                 self.m = (             # <<<<<<<<<<<<<<
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  *             else:
  */
-        if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_m, __pyx_t_6) < 0) __PYX_ERR(0, 168, __pyx_L6_error)
+        if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_m, __pyx_t_6) < 0) __PYX_ERR(0, 171, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":167
+        /* "mcycle/components/heaters/htr_basic.pyx":170
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":             # <<<<<<<<<<<<<<
@@ -5161,7 +4929,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":171
+      /* "mcycle/components/heaters/htr_basic.pyx":174
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds, unitsBounds)             # <<<<<<<<<<<<<<
@@ -5169,7 +4937,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  *             log("error", "HtrBasicConstP unknown AssertionError", err)
  */
       /*else*/ {
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L6_error)
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
         __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
@@ -5177,10 +4945,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         __Pyx_INCREF(((PyObject *)__pyx_v_self));
         __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
         PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_self));
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -5198,7 +4966,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_6);
         } else
@@ -5206,13 +4974,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_6);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L6_error)
+          __pyx_t_1 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           if (__pyx_t_3) {
             __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5226,7 +4994,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           __Pyx_INCREF(__pyx_v_unitsBounds);
           __Pyx_GIVEREF(__pyx_v_unitsBounds);
           PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_5, __pyx_v_unitsBounds);
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 174, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
@@ -5235,7 +5003,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       }
       __pyx_L12:;
 
-      /* "mcycle/components/heaters/htr_basic.pyx":158
+      /* "mcycle/components/heaters/htr_basic.pyx":161
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -5254,7 +5022,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":172
+    /* "mcycle/components/heaters/htr_basic.pyx":175
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
@@ -5264,7 +5032,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __pyx_t_5 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_AssertionError);
     if (__pyx_t_5) {
       __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstP._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 172, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 175, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_1);
@@ -5272,14 +5040,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       __pyx_v_err = __pyx_t_2;
       /*try:*/ {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":173
+        /* "mcycle/components/heaters/htr_basic.pyx":176
  *                 super(HtrBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:
  *             log("error", "HtrBasicConstP unknown AssertionError", err)             # <<<<<<<<<<<<<<
  *             raise err
  *         except Exception as exc:
  */
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L20_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L20_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_14 = NULL;
         __pyx_t_5 = 0;
@@ -5296,7 +5064,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_14, __pyx_n_u_error, __pyx_kp_u_HtrBasicConstP_unknown_Assertion, __pyx_v_err};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L20_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L20_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -5304,13 +5072,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_14, __pyx_n_u_error, __pyx_kp_u_HtrBasicConstP_unknown_Assertion, __pyx_v_err};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L20_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L20_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 173, __pyx_L20_error)
+          __pyx_t_15 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 176, __pyx_L20_error)
           __Pyx_GOTREF(__pyx_t_15);
           if (__pyx_t_14) {
             __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -5324,14 +5092,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           __Pyx_INCREF(__pyx_v_err);
           __Pyx_GIVEREF(__pyx_v_err);
           PyTuple_SET_ITEM(__pyx_t_15, 2+__pyx_t_5, __pyx_v_err);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L20_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L20_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":174
+        /* "mcycle/components/heaters/htr_basic.pyx":177
  *         except AssertionError as err:
  *             log("error", "HtrBasicConstP unknown AssertionError", err)
  *             raise err             # <<<<<<<<<<<<<<
@@ -5339,10 +5107,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
  *             msg = "{}.size({},{},{}) failed to converge".format(
  */
         __Pyx_Raise(__pyx_v_err, 0, 0, 0);
-        __PYX_ERR(0, 174, __pyx_L20_error)
+        __PYX_ERR(0, 177, __pyx_L20_error)
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":172
+      /* "mcycle/components/heaters/htr_basic.pyx":175
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds, unitsBounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
@@ -5389,7 +5157,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       }
     }
 
-    /* "mcycle/components/heaters/htr_basic.pyx":175
+    /* "mcycle/components/heaters/htr_basic.pyx":178
  *             log("error", "HtrBasicConstP unknown AssertionError", err)
  *             raise err
  *         except Exception as exc:             # <<<<<<<<<<<<<<
@@ -5399,7 +5167,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __pyx_t_16 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_16) {
       __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstP._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_6) < 0) __PYX_ERR(0, 175, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_6) < 0) __PYX_ERR(0, 178, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_6);
@@ -5407,26 +5175,26 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
       __pyx_v_exc = __pyx_t_2;
       /*try:*/ {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":176
+        /* "mcycle/components/heaters/htr_basic.pyx":179
  *             raise err
  *         except Exception as exc:
  *             msg = "{}.size({},{},{}) failed to converge".format(             # <<<<<<<<<<<<<<
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_size_failed_to_converge, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L31_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_size_failed_to_converge, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_4);
 
-        /* "mcycle/components/heaters/htr_basic.pyx":177
+        /* "mcycle/components/heaters/htr_basic.pyx":180
  *         except Exception as exc:
  *             msg = "{}.size({},{},{}) failed to converge".format(
  *                     self.__class__.__name__, attr, bounds, unitsBounds)             # <<<<<<<<<<<<<<
  *             log("error", msg, exc)
  *             raise StopIteration(msg)
  */
-        __pyx_t_15 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 177, __pyx_L31_error)
+        __pyx_t_15 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 180, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_name_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 177, __pyx_L31_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_name_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 180, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __pyx_t_15 = NULL;
@@ -5444,7 +5212,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[5] = {__pyx_t_15, __pyx_t_14, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 4+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 4+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L31_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5453,14 +5221,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[5] = {__pyx_t_15, __pyx_t_14, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 4+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 4+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L31_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         } else
         #endif
         {
-          __pyx_t_24 = PyTuple_New(4+__pyx_t_16); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 176, __pyx_L31_error)
+          __pyx_t_24 = PyTuple_New(4+__pyx_t_16); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 179, __pyx_L31_error)
           __Pyx_GOTREF(__pyx_t_24);
           if (__pyx_t_15) {
             __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_24, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -5477,7 +5245,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           __Pyx_GIVEREF(__pyx_v_unitsBounds);
           PyTuple_SET_ITEM(__pyx_t_24, 3+__pyx_t_16, __pyx_v_unitsBounds);
           __pyx_t_14 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L31_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
         }
@@ -5485,14 +5253,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         __pyx_v_msg = __pyx_t_3;
         __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":178
+        /* "mcycle/components/heaters/htr_basic.pyx":181
  *             msg = "{}.size({},{},{}) failed to converge".format(
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)             # <<<<<<<<<<<<<<
  *             raise StopIteration(msg)
  * 
  */
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L31_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_24 = NULL;
         __pyx_t_16 = 0;
@@ -5509,7 +5277,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_24, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L31_error)
           __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -5517,13 +5285,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_24, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L31_error)
           __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_14 = PyTuple_New(3+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 178, __pyx_L31_error)
+          __pyx_t_14 = PyTuple_New(3+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 181, __pyx_L31_error)
           __Pyx_GOTREF(__pyx_t_14);
           if (__pyx_t_24) {
             __Pyx_GIVEREF(__pyx_t_24); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_24); __pyx_t_24 = NULL;
@@ -5537,34 +5305,34 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
           __Pyx_INCREF(__pyx_v_exc);
           __Pyx_GIVEREF(__pyx_v_exc);
           PyTuple_SET_ITEM(__pyx_t_14, 2+__pyx_t_16, __pyx_v_exc);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 178, __pyx_L31_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L31_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":179
+        /* "mcycle/components/heaters/htr_basic.pyx":182
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)
  *             raise StopIteration(msg)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-        __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L31_error)
+        __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_v_msg);
         __Pyx_GIVEREF(__pyx_v_msg);
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_msg);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_StopIteration, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L31_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_StopIteration, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L31_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(0, 179, __pyx_L31_error)
+        __PYX_ERR(0, 182, __pyx_L31_error)
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":175
+      /* "mcycle/components/heaters/htr_basic.pyx":178
  *             log("error", "HtrBasicConstP unknown AssertionError", err)
  *             raise err
  *         except Exception as exc:             # <<<<<<<<<<<<<<
@@ -5614,7 +5382,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":158
+    /* "mcycle/components/heaters/htr_basic.pyx":161
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -5629,7 +5397,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(str
     __pyx_L11_try_end:;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":138
+  /* "mcycle/components/heaters/htr_basic.pyx":141
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m(), self.flowsIn[0].p())
  * 
  *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
@@ -5694,17 +5462,17 @@ static PyObject *__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_bounds)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 1); __PYX_ERR(0, 138, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 1); __PYX_ERR(0, 141, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_unitsBounds)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 2); __PYX_ERR(0, 138, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 2); __PYX_ERR(0, 141, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_size") < 0)) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_size") < 0)) __PYX_ERR(0, 141, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -5719,15 +5487,15 @@ static PyObject *__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 141, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstP._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_attr), (&PyUnicode_Type), 1, "attr", 1))) __PYX_ERR(0, 138, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bounds), (&PyList_Type), 1, "bounds", 1))) __PYX_ERR(0, 138, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBounds), (&PyList_Type), 1, "unitsBounds", 1))) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_attr), (&PyUnicode_Type), 1, "attr", 1))) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bounds), (&PyList_Type), 1, "bounds", 1))) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBounds), (&PyList_Type), 1, "unitsBounds", 1))) __PYX_ERR(0, 141, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_4_size(((struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP *)__pyx_v_self), __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds);
 
   /* function exit code */
@@ -5745,8 +5513,8 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_size", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6193,7 +5961,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":213
+/* "mcycle/components/heaters/htr_basic.pyx":216
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -6222,7 +5990,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_QHeat,&__pyx_n_s_effThermal,&__pyx_n_s_flowIn,&__pyx_n_s_flowOut,&__pyx_n_s_ambient,&__pyx_n_s_sizeAttr,&__pyx_n_s_sizeBounds,&__pyx_n_s_sizeUnitsBounds,&__pyx_n_s_name,&__pyx_n_s_notes,&__pyx_n_s_config,0};
     PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
 
-    /* "mcycle/components/heaters/htr_basic.pyx":216
+    /* "mcycle/components/heaters/htr_basic.pyx":219
  *                  double QHeat,
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,             # <<<<<<<<<<<<<<
@@ -6231,7 +5999,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
  */
     values[2] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":217
+    /* "mcycle/components/heaters/htr_basic.pyx":220
  *                  double effThermal=1.0,
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,             # <<<<<<<<<<<<<<
@@ -6240,7 +6008,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
  */
     values[3] = (PyObject *)((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)Py_None);
 
-    /* "mcycle/components/heaters/htr_basic.pyx":218
+    /* "mcycle/components/heaters/htr_basic.pyx":221
  *                  FlowState flowIn=None,
  *                  FlowState flowOut=None,
  *                  FlowState ambient=None,             # <<<<<<<<<<<<<<
@@ -6350,7 +6118,7 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 213, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 216, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6379,9 +6147,9 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L3_error)
+    __pyx_v_QHeat = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_QHeat == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L3_error)
+      __pyx_v_effThermal = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_effThermal == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L3_error)
     } else {
       __pyx_v_effThermal = ((double)1.0);
     }
@@ -6397,24 +6165,24 @@ static int __pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_1_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 213, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 216, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstV.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 216, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 217, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 218, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 219, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 220, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 221, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 222, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 223, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowIn), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowIn", 0))) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_flowOut), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "flowOut", 0))) __PYX_ERR(0, 220, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ambient), __pyx_ptype_6mcycle_5bases_9flowstate_FlowState, 1, "ambient", 0))) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeAttr), (&PyUnicode_Type), 1, "sizeAttr", 1))) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeBounds), (&PyList_Type), 1, "sizeBounds", 1))) __PYX_ERR(0, 223, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sizeUnitsBounds), (&PyList_Type), 1, "sizeUnitsBounds", 1))) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 225, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_notes), (&PyUnicode_Type), 1, "notes", 1))) __PYX_ERR(0, 226, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_config), __pyx_ptype_6mcycle_5bases_6config_Config, 1, "config", 0))) __PYX_ERR(0, 227, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___init__(((struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self), __pyx_v_QHeat, __pyx_v_effThermal, __pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_ambient, __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, __pyx_v_config);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":213
+  /* "mcycle/components/heaters/htr_basic.pyx":216
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -6443,14 +6211,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":225
+  /* "mcycle/components/heaters/htr_basic.pyx":228
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,             # <<<<<<<<<<<<<<
  *                          config)
  * 
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV));
@@ -6458,18 +6226,18 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_QHeat); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_QHeat); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_effThermal); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "mcycle/components/heaters/htr_basic.pyx":226
+  /* "mcycle/components/heaters/htr_basic.pyx":229
  *                  Config config=Config()):
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
  *                          config)             # <<<<<<<<<<<<<<
@@ -6491,7 +6259,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_5, __pyx_t_3, __pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6501,7 +6269,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[12] = {__pyx_t_5, __pyx_t_3, __pyx_t_4, ((PyObject *)__pyx_v_flowIn), ((PyObject *)__pyx_v_flowOut), ((PyObject *)__pyx_v_ambient), __pyx_v_sizeAttr, __pyx_v_sizeBounds, __pyx_v_sizeUnitsBounds, __pyx_v_name, __pyx_v_notes, ((PyObject *)__pyx_v_config)};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 11+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6509,7 +6277,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(11+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(11+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -6547,14 +6315,14 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
     PyTuple_SET_ITEM(__pyx_t_7, 10+__pyx_t_6, ((PyObject *)__pyx_v_config));
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":213
+  /* "mcycle/components/heaters/htr_basic.pyx":216
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -6579,7 +6347,7 @@ static int __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV___
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":228
+/* "mcycle/components/heaters/htr_basic.pyx":231
  *                          config)
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -6605,7 +6373,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_3run)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -6620,10 +6388,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6634,7 +6402,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":230
+  /* "mcycle/components/heaters/htr_basic.pyx":233
  *     cpdef public void run(self):
  *         """Compute outgoing FlowState from component attributes."""
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.DmassHmass_INPUTS, self.flowsIn[0].rho(), self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m())             # <<<<<<<<<<<<<<
@@ -6643,25 +6411,25 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
  */
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copyState); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copyState); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_CP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_CP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_DmassHmass_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_DmassHmass_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rho); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_rho); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -6675,20 +6443,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_h); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_h); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -6702,10 +6470,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6713,11 +6481,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
   __pyx_t_9 = ((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0);
   if (unlikely(__pyx_t_9 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  __pyx_t_7 = PyFloat_FromDouble((__pyx_t_8 / __pyx_t_9)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble((__pyx_t_8 / __pyx_t_9)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = PyNumber_Add(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6736,7 +6504,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6747,7 +6515,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_2, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6756,7 +6524,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -6770,19 +6538,19 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(struc
     __pyx_t_4 = 0;
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 230, __pyx_L1_error)
+    __PYX_ERR(0, 233, __pyx_L1_error)
   }
-  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1) < 0)) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1) < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":228
+  /* "mcycle/components/heaters/htr_basic.pyx":231
  *                          config)
  * 
  *     cpdef public void run(self):             # <<<<<<<<<<<<<<
@@ -6825,7 +6593,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("run", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6842,7 +6610,7 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   return __pyx_r;
 }
 
-/* "mcycle/components/heaters/htr_basic.pyx":232
+/* "mcycle/components/heaters/htr_basic.pyx":235
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.DmassHmass_INPUTS, self.flowsIn[0].rho(), self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m())
  * 
  *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
@@ -6888,7 +6656,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_5_size)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -6907,7 +6675,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -6915,13 +6683,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 232, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 235, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         if (__pyx_t_4) {
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -6935,7 +6703,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         __Pyx_INCREF(__pyx_v_unitsBounds);
         __Pyx_GIVEREF(__pyx_v_unitsBounds);
         PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_v_unitsBounds);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -6947,18 +6715,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":246
+  /* "mcycle/components/heaters/htr_basic.pyx":249
  *     - if bounds=a or [a]: scipy.optimize.newton is used.
  *         """
  *         if attr == '':             # <<<<<<<<<<<<<<
  *             attr = self.sizeAttr
  *         if bounds == []:
  */
-  __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_kp_u__7, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
   __pyx_t_8 = (__pyx_t_7 != 0);
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":247
+    /* "mcycle/components/heaters/htr_basic.pyx":250
  *         """
  *         if attr == '':
  *             attr = self.sizeAttr             # <<<<<<<<<<<<<<
@@ -6970,7 +6738,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_DECREF_SET(__pyx_v_attr, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":246
+    /* "mcycle/components/heaters/htr_basic.pyx":249
  *     - if bounds=a or [a]: scipy.optimize.newton is used.
  *         """
  *         if attr == '':             # <<<<<<<<<<<<<<
@@ -6979,22 +6747,22 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":248
+  /* "mcycle/components/heaters/htr_basic.pyx":251
  *         if attr == '':
  *             attr = self.sizeAttr
  *         if bounds == []:             # <<<<<<<<<<<<<<
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bounds, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_bounds, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 251, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":249
+    /* "mcycle/components/heaters/htr_basic.pyx":252
  *             attr = self.sizeAttr
  *         if bounds == []:
  *             bounds = self.sizeBounds             # <<<<<<<<<<<<<<
@@ -7006,7 +6774,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_DECREF_SET(__pyx_v_bounds, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":248
+    /* "mcycle/components/heaters/htr_basic.pyx":251
  *         if attr == '':
  *             attr = self.sizeAttr
  *         if bounds == []:             # <<<<<<<<<<<<<<
@@ -7015,22 +6783,22 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":250
+  /* "mcycle/components/heaters/htr_basic.pyx":253
  *         if bounds == []:
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:             # <<<<<<<<<<<<<<
  *             unitsBounds = self.sizeUnitsBounds
  *         try:
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBounds, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_unitsBounds, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_8) {
 
-    /* "mcycle/components/heaters/htr_basic.pyx":251
+    /* "mcycle/components/heaters/htr_basic.pyx":254
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds             # <<<<<<<<<<<<<<
@@ -7042,7 +6810,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_DECREF_SET(__pyx_v_unitsBounds, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":250
+    /* "mcycle/components/heaters/htr_basic.pyx":253
  *         if bounds == []:
  *             bounds = self.sizeBounds
  *         if unitsBounds == []:             # <<<<<<<<<<<<<<
@@ -7051,7 +6819,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":252
+  /* "mcycle/components/heaters/htr_basic.pyx":255
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -7067,7 +6835,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_XGOTREF(__pyx_t_11);
     /*try:*/ {
 
-      /* "mcycle/components/heaters/htr_basic.pyx":253
+      /* "mcycle/components/heaters/htr_basic.pyx":256
  *             unitsBounds = self.sizeUnitsBounds
  *         try:
  *             assert abs(1 - self.flowsOut[0].rho() / self.flowsIn[0].rho()             # <<<<<<<<<<<<<<
@@ -7078,11 +6846,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       if (unlikely(!Py_OptimizeFlag)) {
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 253, __pyx_L6_error)
+          __PYX_ERR(0, 256, __pyx_L6_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rho); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rho); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_2 = NULL;
@@ -7096,20 +6864,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_2) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 253, __pyx_L6_error)
+          __PYX_ERR(0, 256, __pyx_L6_error)
         }
-        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rho); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rho); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_2 = NULL;
@@ -7123,57 +6891,57 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_2) {
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else {
-          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_6, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_6, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L6_error)
+        __pyx_t_6 = PyNumber_Absolute(__pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":254
+        /* "mcycle/components/heaters/htr_basic.pyx":257
  *         try:
  *             assert abs(1 - self.flowsOut[0].rho() / self.flowsIn[0].rho()
  *                        ) < self.config._tolRel_rho, "flowOut.rho != flowIn.rho"             # <<<<<<<<<<<<<<
  *             if attr == "Q":
  *                 self.QHeat = (
  */
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.config->_tolRel_rho); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 254, __pyx_L6_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.config->_tolRel_rho); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = PyObject_RichCompare(__pyx_t_6, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L6_error)
+        __pyx_t_1 = PyObject_RichCompare(__pyx_t_6, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 254, __pyx_L6_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 257, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(!__pyx_t_8)) {
           PyErr_SetObject(PyExc_AssertionError, __pyx_kp_u_flowOut_rho_flowIn_rho);
-          __PYX_ERR(0, 253, __pyx_L6_error)
+          __PYX_ERR(0, 256, __pyx_L6_error)
         }
       }
       #endif
 
-      /* "mcycle/components/heaters/htr_basic.pyx":255
+      /* "mcycle/components/heaters/htr_basic.pyx":258
  *             assert abs(1 - self.flowsOut[0].rho() / self.flowsIn[0].rho()
  *                        ) < self.config._tolRel_rho, "flowOut.rho != flowIn.rho"
  *             if attr == "Q":             # <<<<<<<<<<<<<<
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  */
-      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_Q, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 255, __pyx_L6_error)
+      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_Q, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 258, __pyx_L6_error)
       __pyx_t_7 = (__pyx_t_8 != 0);
       if (__pyx_t_7) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":257
+        /* "mcycle/components/heaters/htr_basic.pyx":260
  *             if attr == "Q":
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal             # <<<<<<<<<<<<<<
@@ -7182,11 +6950,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 257, __pyx_L6_error)
+          __PYX_ERR(0, 260, __pyx_L6_error)
         }
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -7200,20 +6968,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_3) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 257, __pyx_L6_error)
+          __PYX_ERR(0, 260, __pyx_L6_error)
         }
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -7227,33 +6995,33 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_3) {
-          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else {
-          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_6 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L6_error)
+        __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":256
+        /* "mcycle/components/heaters/htr_basic.pyx":259
  *                        ) < self.config._tolRel_rho, "flowOut.rho != flowIn.rho"
  *             if attr == "Q":
  *                 self.QHeat = (             # <<<<<<<<<<<<<<
@@ -7262,7 +7030,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
         __pyx_v_self->__pyx_base.QHeat = __pyx_t_12;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":255
+        /* "mcycle/components/heaters/htr_basic.pyx":258
  *             assert abs(1 - self.flowsOut[0].rho() / self.flowsIn[0].rho()
  *                        ) < self.config._tolRel_rho, "flowOut.rho != flowIn.rho"
  *             if attr == "Q":             # <<<<<<<<<<<<<<
@@ -7272,18 +7040,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":258
+      /* "mcycle/components/heaters/htr_basic.pyx":261
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":             # <<<<<<<<<<<<<<
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  */
-      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_effThermal, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 258, __pyx_L6_error)
+      __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_effThermal, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 261, __pyx_L6_error)
       __pyx_t_8 = (__pyx_t_7 != 0);
       if (__pyx_t_8) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":260
+        /* "mcycle/components/heaters/htr_basic.pyx":263
  *             elif attr == "effThermal":
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat             # <<<<<<<<<<<<<<
@@ -7292,11 +7060,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 260, __pyx_L6_error)
+          __PYX_ERR(0, 263, __pyx_L6_error)
         }
-        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_6 = NULL;
@@ -7310,20 +7078,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_6) {
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else {
-          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 260, __pyx_L6_error)
+          __PYX_ERR(0, 263, __pyx_L6_error)
         }
-        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_6 = NULL;
@@ -7337,33 +7105,33 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_6) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else {
-          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
+          __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._m(((struct __pyx_obj_6mcycle_5bases_9component_Component11 *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L6_error)
+        __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":259
+        /* "mcycle/components/heaters/htr_basic.pyx":262
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":
  *                 self.effThermal = (             # <<<<<<<<<<<<<<
@@ -7372,7 +7140,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
         __pyx_v_self->__pyx_base.effThermal = __pyx_t_12;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":258
+        /* "mcycle/components/heaters/htr_basic.pyx":261
  *                 self.QHeat = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.effThermal
  *             elif attr == "effThermal":             # <<<<<<<<<<<<<<
@@ -7382,18 +7150,18 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":261
+      /* "mcycle/components/heaters/htr_basic.pyx":264
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":             # <<<<<<<<<<<<<<
  *                 self.m = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  */
-      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_m, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 261, __pyx_L6_error)
+      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_attr, __pyx_n_u_m, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 264, __pyx_L6_error)
       __pyx_t_7 = (__pyx_t_8 != 0);
       if (__pyx_t_7) {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":263
+        /* "mcycle/components/heaters/htr_basic.pyx":266
  *             elif attr == "m":
  *                 self.m = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat             # <<<<<<<<<<<<<<
@@ -7402,11 +7170,11 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  */
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 263, __pyx_L6_error)
+          __PYX_ERR(0, 266, __pyx_L6_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsOut, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -7420,20 +7188,20 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_1) {
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else {
-          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
+          __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (unlikely(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 263, __pyx_L6_error)
+          __PYX_ERR(0, 266, __pyx_L6_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.flowsIn, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_h); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -7447,41 +7215,41 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           }
         }
         if (__pyx_t_1) {
-          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L6_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else {
-          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
+          __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L6_error)
         }
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_6 = PyNumber_Subtract(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.effThermal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.QHeat); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L6_error)
+        __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 266, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":262
+        /* "mcycle/components/heaters/htr_basic.pyx":265
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":
  *                 self.m = (             # <<<<<<<<<<<<<<
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  *             else:
  */
-        if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_m, __pyx_t_6) < 0) __PYX_ERR(0, 262, __pyx_L6_error)
+        if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_m, __pyx_t_6) < 0) __PYX_ERR(0, 265, __pyx_L6_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":261
+        /* "mcycle/components/heaters/htr_basic.pyx":264
  *                 self.effThermal = (
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) * self._m() / self.QHeat
  *             elif attr == "m":             # <<<<<<<<<<<<<<
@@ -7491,7 +7259,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         goto __pyx_L12;
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":265
+      /* "mcycle/components/heaters/htr_basic.pyx":268
  *                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.effThermal / self.QHeat
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds)             # <<<<<<<<<<<<<<
@@ -7499,7 +7267,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  *             log("error", "HtrBasicConstV unknown AssertionError", err)
  */
       /*else*/ {
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L6_error)
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
         __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic));
@@ -7507,10 +7275,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         __Pyx_INCREF(((PyObject *)__pyx_v_self));
         __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
         PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_self));
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L6_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L6_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 268, __pyx_L6_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = NULL;
@@ -7528,7 +7296,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_attr, __pyx_v_bounds};
-          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 268, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_6);
         } else
@@ -7536,13 +7304,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_attr, __pyx_v_bounds};
-          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 268, __pyx_L6_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_6);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L6_error)
+          __pyx_t_1 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_1);
           if (__pyx_t_3) {
             __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -7553,7 +7321,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           __Pyx_INCREF(__pyx_v_bounds);
           __Pyx_GIVEREF(__pyx_v_bounds);
           PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_5, __pyx_v_bounds);
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L6_error)
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 268, __pyx_L6_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
@@ -7562,7 +7330,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       }
       __pyx_L12:;
 
-      /* "mcycle/components/heaters/htr_basic.pyx":252
+      /* "mcycle/components/heaters/htr_basic.pyx":255
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -7581,7 +7349,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":266
+    /* "mcycle/components/heaters/htr_basic.pyx":269
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
@@ -7591,7 +7359,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __pyx_t_5 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_AssertionError);
     if (__pyx_t_5) {
       __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstV._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 266, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_2, &__pyx_t_1) < 0) __PYX_ERR(0, 269, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_1);
@@ -7599,14 +7367,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       __pyx_v_err = __pyx_t_2;
       /*try:*/ {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":267
+        /* "mcycle/components/heaters/htr_basic.pyx":270
  *                 super(HtrBasic, self)._size(attr, bounds)
  *         except AssertionError as err:
  *             log("error", "HtrBasicConstV unknown AssertionError", err)             # <<<<<<<<<<<<<<
  *             raise err
  *         except Exception as exc:
  */
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L18_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L18_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_13 = NULL;
         __pyx_t_5 = 0;
@@ -7623,7 +7391,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_n_u_error, __pyx_kp_u_HtrBasicConstV_unknown_Assertion, __pyx_v_err};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L18_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L18_error)
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -7631,13 +7399,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_13, __pyx_n_u_error, __pyx_kp_u_HtrBasicConstV_unknown_Assertion, __pyx_v_err};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L18_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L18_error)
           __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_14 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 267, __pyx_L18_error)
+          __pyx_t_14 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 270, __pyx_L18_error)
           __Pyx_GOTREF(__pyx_t_14);
           if (__pyx_t_13) {
             __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_13); __pyx_t_13 = NULL;
@@ -7651,14 +7419,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           __Pyx_INCREF(__pyx_v_err);
           __Pyx_GIVEREF(__pyx_v_err);
           PyTuple_SET_ITEM(__pyx_t_14, 2+__pyx_t_5, __pyx_v_err);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L18_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L18_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":268
+        /* "mcycle/components/heaters/htr_basic.pyx":271
  *         except AssertionError as err:
  *             log("error", "HtrBasicConstV unknown AssertionError", err)
  *             raise err             # <<<<<<<<<<<<<<
@@ -7666,10 +7434,10 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
  *             msg = "{}.size({},{},{}) failed to converge".format(
  */
         __Pyx_Raise(__pyx_v_err, 0, 0, 0);
-        __PYX_ERR(0, 268, __pyx_L18_error)
+        __PYX_ERR(0, 271, __pyx_L18_error)
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":266
+      /* "mcycle/components/heaters/htr_basic.pyx":269
  *             else:
  *                 super(HtrBasic, self)._size(attr, bounds)
  *         except AssertionError as err:             # <<<<<<<<<<<<<<
@@ -7716,7 +7484,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       }
     }
 
-    /* "mcycle/components/heaters/htr_basic.pyx":269
+    /* "mcycle/components/heaters/htr_basic.pyx":272
  *             log("error", "HtrBasicConstV unknown AssertionError", err)
  *             raise err
  *         except Exception as exc:             # <<<<<<<<<<<<<<
@@ -7726,7 +7494,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_15) {
       __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstV._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_6) < 0) __PYX_ERR(0, 269, __pyx_L8_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_6) < 0) __PYX_ERR(0, 272, __pyx_L8_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_6);
@@ -7734,26 +7502,26 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
       __pyx_v_exc = __pyx_t_2;
       /*try:*/ {
 
-        /* "mcycle/components/heaters/htr_basic.pyx":270
+        /* "mcycle/components/heaters/htr_basic.pyx":273
  *             raise err
  *         except Exception as exc:
  *             msg = "{}.size({},{},{}) failed to converge".format(             # <<<<<<<<<<<<<<
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_size_failed_to_converge, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L29_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_size_failed_to_converge, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_4);
 
-        /* "mcycle/components/heaters/htr_basic.pyx":271
+        /* "mcycle/components/heaters/htr_basic.pyx":274
  *         except Exception as exc:
  *             msg = "{}.size({},{},{}) failed to converge".format(
  *                     self.__class__.__name__, attr, bounds, unitsBounds)             # <<<<<<<<<<<<<<
  *             log("error", msg, exc)
  *             raise StopIteration(msg)
  */
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 271, __pyx_L29_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 274, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_name_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 271, __pyx_L29_error)
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_name_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 274, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __pyx_t_14 = NULL;
@@ -7771,7 +7539,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[5] = {__pyx_t_14, __pyx_t_13, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L29_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -7780,14 +7548,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[5] = {__pyx_t_14, __pyx_t_13, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 4+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L29_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         } else
         #endif
         {
-          __pyx_t_23 = PyTuple_New(4+__pyx_t_15); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 270, __pyx_L29_error)
+          __pyx_t_23 = PyTuple_New(4+__pyx_t_15); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 273, __pyx_L29_error)
           __Pyx_GOTREF(__pyx_t_23);
           if (__pyx_t_14) {
             __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_23, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -7804,7 +7572,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           __Pyx_GIVEREF(__pyx_v_unitsBounds);
           PyTuple_SET_ITEM(__pyx_t_23, 3+__pyx_t_15, __pyx_v_unitsBounds);
           __pyx_t_13 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_23, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 270, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_23, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L29_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         }
@@ -7812,14 +7580,14 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         __pyx_v_msg = __pyx_t_3;
         __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":272
+        /* "mcycle/components/heaters/htr_basic.pyx":275
  *             msg = "{}.size({},{},{}) failed to converge".format(
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)             # <<<<<<<<<<<<<<
  *             raise StopIteration(msg)
  * 
  */
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L29_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_23 = NULL;
         __pyx_t_15 = 0;
@@ -7836,7 +7604,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_23, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L29_error)
           __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
@@ -7844,13 +7612,13 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[4] = {__pyx_t_23, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_15, 3+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L29_error)
           __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else
         #endif
         {
-          __pyx_t_13 = PyTuple_New(3+__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 272, __pyx_L29_error)
+          __pyx_t_13 = PyTuple_New(3+__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 275, __pyx_L29_error)
           __Pyx_GOTREF(__pyx_t_13);
           if (__pyx_t_23) {
             __Pyx_GIVEREF(__pyx_t_23); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_23); __pyx_t_23 = NULL;
@@ -7864,33 +7632,33 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
           __Pyx_INCREF(__pyx_v_exc);
           __Pyx_GIVEREF(__pyx_v_exc);
           PyTuple_SET_ITEM(__pyx_t_13, 2+__pyx_t_15, __pyx_v_exc);
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L29_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L29_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "mcycle/components/heaters/htr_basic.pyx":273
+        /* "mcycle/components/heaters/htr_basic.pyx":276
  *                     self.__class__.__name__, attr, bounds, unitsBounds)
  *             log("error", msg, exc)
  *             raise StopIteration(msg)             # <<<<<<<<<<<<<<
  * 
  */
-        __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L29_error)
+        __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_v_msg);
         __Pyx_GIVEREF(__pyx_v_msg);
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_msg);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_StopIteration, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L29_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_StopIteration, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(0, 273, __pyx_L29_error)
+        __PYX_ERR(0, 276, __pyx_L29_error)
       }
 
-      /* "mcycle/components/heaters/htr_basic.pyx":269
+      /* "mcycle/components/heaters/htr_basic.pyx":272
  *             log("error", "HtrBasicConstV unknown AssertionError", err)
  *             raise err
  *         except Exception as exc:             # <<<<<<<<<<<<<<
@@ -7940,7 +7708,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     goto __pyx_L8_except_error;
     __pyx_L8_except_error:;
 
-    /* "mcycle/components/heaters/htr_basic.pyx":252
+    /* "mcycle/components/heaters/htr_basic.pyx":255
  *         if unitsBounds == []:
  *             unitsBounds = self.sizeUnitsBounds
  *         try:             # <<<<<<<<<<<<<<
@@ -7955,7 +7723,7 @@ void __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(str
     __pyx_L11_try_end:;
   }
 
-  /* "mcycle/components/heaters/htr_basic.pyx":232
+  /* "mcycle/components/heaters/htr_basic.pyx":235
  *         self.flowsOut[0] = self.flowsIn[0].copyState(CP.DmassHmass_INPUTS, self.flowsIn[0].rho(), self.flowsIn[0].h() + self.QHeat * self.effThermal / self._m())
  * 
  *     cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:             # <<<<<<<<<<<<<<
@@ -8020,17 +7788,17 @@ static PyObject *__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_bounds)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 1); __PYX_ERR(0, 232, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 1); __PYX_ERR(0, 235, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_unitsBounds)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 2); __PYX_ERR(0, 232, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, 2); __PYX_ERR(0, 235, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_size") < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_size") < 0)) __PYX_ERR(0, 235, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -8045,15 +7813,15 @@ static PyObject *__pyx_pw_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 232, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_size", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 235, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.components.heaters.htr_basic.HtrBasicConstV._size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_attr), (&PyUnicode_Type), 1, "attr", 1))) __PYX_ERR(0, 232, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bounds), (&PyList_Type), 1, "bounds", 1))) __PYX_ERR(0, 232, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBounds), (&PyList_Type), 1, "unitsBounds", 1))) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_attr), (&PyUnicode_Type), 1, "attr", 1))) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_bounds), (&PyList_Type), 1, "bounds", 1))) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_unitsBounds), (&PyList_Type), 1, "unitsBounds", 1))) __PYX_ERR(0, 235, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_4_size(((struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV *)__pyx_v_self), __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds);
 
   /* function exit code */
@@ -8071,8 +7839,8 @@ static PyObject *__pyx_pf_6mcycle_10components_7heaters_9htr_basic_14HtrBasicCon
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_size", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size(__pyx_v_self, __pyx_v_attr, __pyx_v_bounds, __pyx_v_unitsBounds, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11370,10 +11138,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_config, __pyx_k_config, sizeof(__pyx_k_config), 0, 1, 0, 1},
   {&__pyx_n_s_copyState, __pyx_k_copyState, sizeof(__pyx_k_copyState), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
-  {&__pyx_kp_u_dpSf, __pyx_k_dpSf, sizeof(__pyx_k_dpSf), 0, 1, 0, 0},
-  {&__pyx_n_s_dpSf_2, __pyx_k_dpSf_2, sizeof(__pyx_k_dpSf_2), 0, 0, 1, 1},
-  {&__pyx_kp_u_dpWf, __pyx_k_dpWf, sizeof(__pyx_k_dpWf), 0, 1, 0, 0},
-  {&__pyx_n_s_dpWf_2, __pyx_k_dpWf_2, sizeof(__pyx_k_dpWf_2), 0, 0, 1, 1},
+  {&__pyx_n_s_dpSf, __pyx_k_dpSf, sizeof(__pyx_k_dpSf), 0, 0, 1, 1},
+  {&__pyx_kp_u_dpSf_2, __pyx_k_dpSf_2, sizeof(__pyx_k_dpSf_2), 0, 1, 0, 0},
+  {&__pyx_n_s_dpWf, __pyx_k_dpWf, sizeof(__pyx_k_dpWf), 0, 0, 1, 1},
+  {&__pyx_kp_u_dpWf_2, __pyx_k_dpWf_2, sizeof(__pyx_k_dpWf_2), 0, 1, 0, 0},
   {&__pyx_n_s_effFactorSf, __pyx_k_effFactorSf, sizeof(__pyx_k_effFactorSf), 0, 0, 1, 1},
   {&__pyx_n_s_effFactorWf, __pyx_k_effFactorWf, sizeof(__pyx_k_effFactorWf), 0, 0, 1, 1},
   {&__pyx_n_s_effThermal, __pyx_k_effThermal, sizeof(__pyx_k_effThermal), 0, 0, 1, 1},
@@ -11443,9 +11211,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 172, __pyx_L1_error)
-  __pyx_builtin_StopIteration = __Pyx_GetBuiltinName(__pyx_n_s_StopIteration); if (!__pyx_builtin_StopIteration) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_builtin_StopIteration = __Pyx_GetBuiltinName(__pyx_n_s_StopIteration); if (!__pyx_builtin_StopIteration) __PYX_ERR(0, 182, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(2, 116, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(2, 81, __pyx_L1_error)
   __pyx_builtin_OverflowError = __Pyx_GetBuiltinName(__pyx_n_s_OverflowError); if (!__pyx_builtin_OverflowError) __PYX_ERR(2, 81, __pyx_L1_error)
@@ -11546,6 +11314,7 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
 {
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannyDeclarations
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m && __pyx_m == __pyx_pyinit_module) return 0;
@@ -11630,6 +11399,8 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   /*--- Constants init code ---*/
   if (__Pyx_InitCachedConstants() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   /*--- Global init code ---*/
+  __pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  __pyx_v_6mcycle_10components_7heaters_9htr_basic__properties = ((PyObject*)Py_None); Py_INCREF(Py_None);
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
@@ -11644,33 +11415,33 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasic._effFactorSf = (double (*)(struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic__effFactorSf;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasic.Q = (double (*)(struct __pyx_obj_6mcycle_10components_7heaters_9htr_basic_HtrBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_8HtrBasic_Q;
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic.tp_base = __pyx_ptype_6mcycle_5bases_9component_Component11;
-  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "HtrBasic", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "HtrBasic", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic = &__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
   __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP = &__pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.__pyx_base = *__pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.__pyx_base.__pyx_base.__pyx_base.run = (void (*)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP_run;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.__pyx_base.__pyx_base.__pyx_base._size = (void (*)(struct __pyx_obj_6mcycle_5bases_9component_Component *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstP__size;
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.tp_base = __pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
-  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "HtrBasicConstP", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "HtrBasicConstP", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
   __pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP = &__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstP;
   __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV = &__pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.__pyx_base = *__pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.__pyx_base.__pyx_base.__pyx_base.run = (void (*)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV_run;
   __pyx_vtable_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.__pyx_base.__pyx_base.__pyx_base._size = (void (*)(struct __pyx_obj_6mcycle_5bases_9component_Component *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_7heaters_9htr_basic_14HtrBasicConstV__size;
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.tp_base = __pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasic;
-  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
   __pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "HtrBasicConstV", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV.tp_dict, __pyx_vtabptr_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "HtrBasicConstV", (PyObject *)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
   __pyx_ptype_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV = &__pyx_type_6mcycle_10components_7heaters_9htr_basic_HtrBasicConstV;
   /*--- Type import code ---*/
   __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = __Pyx_ImportType("mcycle.bases.mcabstractbase", "MCAttr", sizeof(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr)) __PYX_ERR(3, 1, __pyx_L1_error)
@@ -11717,21 +11488,263 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
  * from ...logger import log
  * import CoolProp as CP             # <<<<<<<<<<<<<<
  * 
- * cdef class HtrBasic(Component11):
+ * cdef dict _inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
  */
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_CoolProp, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_CP, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":46
+  /* "mcycle/components/heaters/htr_basic.pyx":8
+ * import CoolProp as CP
+ * 
+ * cdef dict _inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
+ *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyFloat_Type)));
+  __Pyx_INCREF(__pyx_n_u_power);
+  __Pyx_GIVEREF(__pyx_n_u_power);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_power);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_QHeat, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_none);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_effThermal, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":9
+ * 
+ * cdef dict _inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
+ *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                         "config": MCAttr(Config, "none")}
+ */
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_flowIn, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_none);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_flowOut, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_ambient, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyUnicode_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_none);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeAttr, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":10
+ * cdef dict _inputs = {"QHeat": MCAttr(float, "power"), "effThermal": MCAttr(float, "none"),
+ *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),             # <<<<<<<<<<<<<<
+ *                         "config": MCAttr(Config, "none")}
+ * cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
+ */
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)(&PyList_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyList_Type)));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyList_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeBounds, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyList_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyList_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyList_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_none);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_sizeUnitsBounds, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyUnicode_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_name, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyUnicode_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyUnicode_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyUnicode_Type)));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_none);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_notes, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":11
+ *                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                         "config": MCAttr(Config, "none")}             # <<<<<<<<<<<<<<
+ * cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
+ *                 "dpSf()": MCAttr(float, "pressure")}
+ */
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
+  __Pyx_GIVEREF(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config));
+  __Pyx_INCREF(__pyx_n_u_none);
+  __Pyx_GIVEREF(__pyx_n_u_none);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_config, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_XGOTREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs);
+  __Pyx_DECREF_SET(__pyx_v_6mcycle_10components_7heaters_9htr_basic__inputs, ((PyObject*)__pyx_t_2));
+  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":12
+ *                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+ *                         "config": MCAttr(Config, "none")}
+ * cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),             # <<<<<<<<<<<<<<
+ *                 "dpSf()": MCAttr(float, "pressure")}
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
+  __Pyx_INCREF(__pyx_kp_u_mass_time);
+  __Pyx_GIVEREF(__pyx_kp_u_mass_time);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_kp_u_mass_time);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_mWf, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyFloat_Type)));
+  __Pyx_INCREF(__pyx_n_u_pressure);
+  __Pyx_GIVEREF(__pyx_n_u_pressure);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_pressure);
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_dpWf_2, __pyx_t_3) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":13
+ *                         "config": MCAttr(Config, "none")}
+ * cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
+ *                 "dpSf()": MCAttr(float, "pressure")}             # <<<<<<<<<<<<<<
+ * 
+ * cdef class HtrBasic(Component11):
+ */
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)(&PyFloat_Type)));
+  __Pyx_GIVEREF(((PyObject *)(&PyFloat_Type)));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)(&PyFloat_Type)));
+  __Pyx_INCREF(__pyx_n_u_pressure);
+  __Pyx_GIVEREF(__pyx_n_u_pressure);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_pressure);
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_dpSf_2, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_XGOTREF(__pyx_v_6mcycle_10components_7heaters_9htr_basic__properties);
+  __Pyx_DECREF_SET(__pyx_v_6mcycle_10components_7heaters_9htr_basic__properties, ((PyObject*)__pyx_t_2));
+  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "mcycle/components/heaters/htr_basic.pyx":53
  *                  FlowState ambient=None,
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],             # <<<<<<<<<<<<<<
  *                  list sizeUnitsBounds=[],
  *                  str name="HtrBasic instance",
  */
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
@@ -11743,40 +11756,40 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":47
+  /* "mcycle/components/heaters/htr_basic.pyx":54
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],
  *                  list sizeUnitsBounds=[],             # <<<<<<<<<<<<<<
  *                  str name="HtrBasic instance",
  *                  str notes="No notes/model info.",
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__2 = ((PyObject*)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":50
+  /* "mcycle/components/heaters/htr_basic.pyx":57
  *                  str name="HtrBasic instance",
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):             # <<<<<<<<<<<<<<
  *         super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
  *                          config)
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__3 = ((struct __pyx_obj_6mcycle_5bases_6config_Config *)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":126
+  /* "mcycle/components/heaters/htr_basic.pyx":129
  *                  FlowState ambient=None,
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],             # <<<<<<<<<<<<<<
  *                  list sizeUnitsBounds=[],
  *                  str name="HtrBasicConstV instance",
  */
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
@@ -11788,40 +11801,40 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":127
+  /* "mcycle/components/heaters/htr_basic.pyx":130
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],
  *                  list sizeUnitsBounds=[],             # <<<<<<<<<<<<<<
  *                  str name="HtrBasicConstV instance",
  *                  str notes="No notes/model info.",
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__5 = ((PyObject*)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":130
+  /* "mcycle/components/heaters/htr_basic.pyx":133
  *                  str name="HtrBasicConstV instance",
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):             # <<<<<<<<<<<<<<
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
  *                          config)
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__6 = ((struct __pyx_obj_6mcycle_5bases_6config_Config *)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":220
+  /* "mcycle/components/heaters/htr_basic.pyx":223
  *                  FlowState ambient=None,
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],             # <<<<<<<<<<<<<<
  *                  list sizeUnitsBounds=[],
  *                  str name="HtrBasicConstV instance",
  */
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_int_1);
   __Pyx_GIVEREF(__pyx_int_1);
@@ -11833,27 +11846,27 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":221
+  /* "mcycle/components/heaters/htr_basic.pyx":224
  *                  str sizeAttr="QHeat",
  *                  list sizeBounds=[1, 50],
  *                  list sizeUnitsBounds=[],             # <<<<<<<<<<<<<<
  *                  str name="HtrBasicConstV instance",
  *                  str notes="No notes/model info.",
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__9 = ((PyObject*)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/components/heaters/htr_basic.pyx":224
+  /* "mcycle/components/heaters/htr_basic.pyx":227
  *                  str name="HtrBasicConstV instance",
  *                  str notes="No notes/model info.",
  *                  Config config=Config()):             # <<<<<<<<<<<<<<
  *         super().__init__(QHeat, effThermal, flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, name, notes,
  *                          config)
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_6config_Config), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__10 = ((struct __pyx_obj_6mcycle_5bases_6config_Config *)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -11915,6 +11928,7 @@ static int __pyx_pymod_exec_htr_basic(PyObject *__pyx_pyinit_module)
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init mcycle.components.heaters.htr_basic", 0, __pyx_lineno, __pyx_filename);

@@ -3,6 +3,15 @@ from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
 from .. import DEFAULTS
 import copy
 
+
+cdef dict _inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "evenPlatesWf": MCAttr(bool,"none"), "dpFWf": MCAttr(bool,"none"),
+               "dpFSf": MCAttr(bool, "none"), "dpAccWf": MCAttr(bool,"none"), "dpAccSf": MCAttr(bool,"none"), "dpHeadWf": MCAttr(bool,"none"),
+               "dpHeadSf": MCAttr(bool,"none"), "dpPortWf": MCAttr(bool,"none"), "dpPortSf": MCAttr(bool,"none"), "dpPortInFactor": MCAttr(float,"none"), "dpPortOutFactor": MCAttr(float,"none"), "g": MCAttr(float,"acceleration"),
+               "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "methods": MCAttr(dict, "none"),
+                        "name": MCAttr(str, "none")}
+cdef dict _properties = {"_tolRel_p": MCAttr(float,"none"),
+               "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float,"none")}
+        
 cdef class Config(MCAB):
     """General configuration parameters containing parameters pertaining to Cycles and Components. It is recommended to pass the same Config object to all Components in a Cycle.
 
@@ -119,13 +128,8 @@ _tolAbs_x : float, optional
         self._tolRel_h = TOLREL
         self._tolRel_rho = TOLREL
         self.name = name
-        self._inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "evenPlatesWf": MCAttr(bool,"none"), "dpFWf": MCAttr(bool,"none"),
-               "dpFSf": MCAttr(bool, "none"), "dpAccWf": MCAttr(bool,"none"), "dpAccSf": MCAttr(bool,"none"), "dpHeadWf": MCAttr(bool,"none"),
-               "dpHeadSf": MCAttr(bool,"none"), "dpPortWf": MCAttr(bool,"none"), "dpPortSf": MCAttr(bool,"none"), "dpPortInFactor": MCAttr(float,"none"), "dpPortOutFactor": MCAttr(float,"none"), "g": MCAttr(float,"acceleration"),
-               "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "methods": MCAttr(dict, "none"),
-                        "name": MCAttr(str, "none")}
-        self._properties = {"_tolRel_p": MCAttr(float,"none"),
-               "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float,"none")}
+        self._inputs = _inputs
+        self._properties = _properties
 
     @property
     def dpF(self):

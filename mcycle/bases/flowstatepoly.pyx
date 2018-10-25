@@ -6,6 +6,15 @@ import CoolProp as CP
 from math import nan, isnan
 import numpy as np
 
+cdef dict _inputs = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
+                "_inputPairCP": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
+                        "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
+cdef dict _properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
+                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
+                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
+                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
+                "x()": MCAttr(float, "none")}
+
 cdef dict _validInputPairs
 _validInputPairs = {'T': CP.PT_INPUTS, 'rho': CP.DmassP_INPUTS, 'h': CP.HmassP_INPUTS, 's': CP.PSmass_INPUTS}
         
@@ -67,14 +76,8 @@ Examples
         self._inputProperty = ''
         self._inputValue = nan
         self._validateInputs()
-        self._inputs = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
-                "_inputPairCP": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
-                        "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
-        self._properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
-                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
-                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
-                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
-                "x()": MCAttr(float, "none")}
+        self._inputs = _inputs
+        self._properties = _properties
 
         
     cpdef public FlowState copyState(self, int inputPairCP, double input1, double input2):
