@@ -8,7 +8,7 @@ About
 =========
 
 :Version:
-   1.0.0
+   1.0.1
 :Author:
    Momar Hughes
 :Contact:
@@ -68,16 +68,9 @@ Requirements::
   pip3 install scipy
   pip3 install matplotlib
 
-MCycle also requires `CoolProp <http://www.coolprop.org>`_, a free and open-source thermodynamic properties library. The latest stable version can be installed from pip::
+MCycle also requires `CoolProp <http://www.coolprop.org>`_, a free and open-source thermodynamic properties library. The latest version can be installed from pip::
 
   pip3 install CoolProp
-
-Alternatively, the latest development version can be installed from the `Github source code <https://github.com/CoolProp/CoolProp>`_ (refer to their `guide on manual installation <http://www.coolprop.org/coolprop/wrappers/Python/index.html#manual-installation>`_, summarised below).::
-  
-  cd PATH/TO/CLONE/FOLDER
-  git clone https://github.com/CoolProp/CoolProp.git --recursive  
-  cd wrappers/Python
-  sudo python3 setup.py install
 
 MCycle should now be ready to be installed. For the latest updates, clone/download the source code from the `Github page <https://github.com/momargoh/MCycle>`_ and run from the package directory::
 
@@ -97,8 +90,3 @@ Quick start
 
 Have a look through the `quick start example <https://mcycle.readthedocs.io/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.readthedocs.io/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
 
-   
-Changelog
-==========
-
-:ref:`doc-changelog`

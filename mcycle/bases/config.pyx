@@ -202,15 +202,14 @@ name : str, optional
     Name of the object, prepended to the summary heading. If None, the class name is used. Defaults to None.
         """
         cdef str output
-        cdef tuple i
         if name == "":
             name = self.name
         output = r"{} summary".format(name)
         output += """
 {}
 """.format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
-        for i in self._inputs:
-            output += self.formatAttrForSummary(i, [])
+        for k, v in self._inputs:
+            output += self.formatAttrForSummary({k: v}, [])
         if printSummary:
             print(output)
         return output

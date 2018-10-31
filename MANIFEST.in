@@ -3,6 +3,7 @@ include README.rst
 
 global-include *.pyx
 global-include *.pxd
+global-include *.c
 
 recursive-include tests *
 recursive-exclude * __pycache__

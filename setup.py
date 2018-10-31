@@ -2,17 +2,18 @@
 """Setup file for mcycle"""
 USE_CYTHON = 'auto'
 
+import os
 from setuptools import setup
 from setuptools import find_packages
-#from skbuild import setup
-from os import path
-from distutils.core import setup
-from distutils.extension import Extension
+#from distutils.core import setup
+#from distutils.extension import Extension
+from setuptools.extension import Extension
 import numpy
 
-here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+here = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
+
 try:
     import Cython
     v = Cython.__version__.split(".")
@@ -24,9 +25,10 @@ try:
         USE_CYTHON = True
 except ImportError:
     USE_CYTHON = False
-    raise ImportError(
+    '''raise ImportError(
         "Exiting installation - Could not import Cython. Try running the command: pip3 install Cython"
-    )  # Cython is required for installation
+    )'''
+
 if USE_CYTHON:
     try:
         from Cython.Distutils import build_ext
@@ -47,40 +49,44 @@ include_dirs = [numpy.get_include()]
 compiler_directives = {
     'embedsignature': True,
     "language_level": 3,
+    "boundscheck": False,
     "wraparound": False
 }
+
+
+def scanForExtension(directory, extension, files=[]):
+    "Find all files with extension in directory and any subdirectories, modified from https://github.com/cython/cython/wiki/PackageHierarchy"
+    for f in os.listdir(directory):
+        path = os.path.join(directory, f)
+        if os.path.isfile(path) and path.endswith(extension):
+            files.append(path[:-2])
+        elif os.path.isdir(path):
+            scanForExtension(path, extension, files)
+    return files
+
+
 if USE_CYTHON:
-    ext_modules = cythonize(
-        "mcycle/*.pyx", compiler_directives=compiler_directives) + cythonize(
-            "mcycle/*/*.pyx",
-            compiler_directives=compiler_directives) + cythonize(
-                "mcycle/*/*/*.pyx", compiler_directives=compiler_directives)
+    pyx_exts = scanForExtension("mcycle", ".pyx")
+    for ext in pyx_exts:
+        ext_modules += cythonize(
+            "mcycle/*.pyx", compiler_directives=compiler_directives)
     cmdclass.update({'build_ext': build_ext})
 else:
-    ext_modules += [
-        Extension(
-            "mcycle/*", ["mcycle/*.c"],
-            compiler_directives=compiler_directives),
-        Extension(
-            "mcycle/*/*", ["mcycle/*/*.c"],
-            compiler_directives=compiler_directives),
-        Extension(
-            "mcycle/*/*/*", ["mcycle/*/*/*.c"],
-            compiler_directives=compiler_directives),
-        Extension(
-            "mcycle/*/*/*/*", ["mcycle/*/*/*/*.c"],
-            compiler_directives=compiler_directives)
-    ]
-
+    c_exts = scanForExtension("mcycle", ".c")
+    for ext in c_exts:
+        ext_modules += [Extension(ext, ['{}.c'.format(ext)])]
+meta = {}
+with open('mcycle/__meta__.py') as fp:
+    exec (fp.read(), meta)  # get variables from mcycle/__meta__
 setup(
     name='mcycle',
-    version='1.0.1',
-    description='1D sizing and analysis of thermodynamic power cycles',
+    version=meta['version'],
+    description=meta['description'],
     long_description=long_description,
-    url='https://github.com/momargoh/MCycle',
-    author='Momar Hughes',
-    author_email='momar.hughes@unsw.edu.au',
-    license='Apache-2.0',
+    url=meta['url'],
+    author=meta['author'],
+    author_email=meta['author_email'],
+    license=meta['license'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -95,18 +101,23 @@ setup(
         'Topic :: Scientific/Engineering :: Chemistry',
         'Topic :: Scientific/Engineering :: Physics',
     ],
-    keywords=
-    'thermodynamics organic Rankine cycle power cycle evaporator expander condenser compressor heat exchanger heater cooler',
+    keywords=meta['keywords'],
     packages=find_packages(),
     install_requires=['numpy', 'scipy', 'matplotlib', 'Cython', 'CoolProp'],
     dependency_links=['https://github.com/CoolProp/CoolProp.git'],
     extras_require={},
     python_requires='>=3',
-    package_data={'mcycle': ['*.pxd', '*.pyx']},
     include_package_data=True,
+    package_data={
+        'mcycle': ['*.pxd', '*.pyx'],
+        'mcycle/*': ['*.pxd', '*.pyx'],
+        'mcycle/*/*': ['*.pxd', '*.pyx'],
+        'mcycle/*/*/*': ['*.pxd', '*.pyx']
+    },
     data_files=[],
     entry_points={},
     cmdclass=cmdclass,
     include_dirs=include_dirs,
     ext_modules=ext_modules,
+    zip_safe=False,
 )
