@@ -56,12 +56,14 @@ compiler_directives = {
 
 def scanForExtension(directory, extension, files=[]):
     "Find all files with extension in directory and any subdirectories, modified from https://github.com/cython/cython/wiki/PackageHierarchy"
+    length = len(extension)
     for f in os.listdir(directory):
         path = os.path.join(directory, f)
         if os.path.isfile(path) and path.endswith(extension):
-            files.append(path[:-2])
+            files.append(path[:-length])
         elif os.path.isdir(path):
             scanForExtension(path, extension, files)
+    print(files)
     return files
 
 
@@ -69,7 +71,7 @@ if USE_CYTHON:
     pyx_exts = scanForExtension("mcycle", ".pyx")
     for ext in pyx_exts:
         ext_modules += cythonize(
-            "mcycle/*.pyx", compiler_directives=compiler_directives)
+            "{}.pyx".format(ext), compiler_directives=compiler_directives)
     cmdclass.update({'build_ext': build_ext})
 else:
     c_exts = scanForExtension("mcycle", ".c")
