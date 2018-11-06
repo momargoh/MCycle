@@ -1,5 +1,5 @@
-from ..DEFAULTS cimport getUnits
-from .. import DEFAULTS 
+from .. import DEFAULTS
+from ..DEFAULTS import getUnits
 from ..logger import log
 from .mcabstractbase cimport MCAB, MCAttr
 from .flowstate cimport FlowState

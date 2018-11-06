@@ -1,6 +1,6 @@
 from .mcabstractbase cimport MCAttr
 from .flowstate cimport FlowState
-from ..DEFAULTS cimport COOLPROP_EOS
+from ..DEFAULTS import COOLPROP_EOS
 from ..logger import log
 import CoolProp as CP
 from math import nan, isnan

@@ -22,6 +22,13 @@ class TestDEFAULTS(unittest.TestCase):
     def test_getUnits_power(self):
         self.assertEqual(mc.getUnits("power"), "W")
 
+    def test_changing_default(self):
+        mc.DEFAULTS.TOLREL = 4  #updateDefaults({'TOLREL': 4})
+        print(mc.DEFAULTS.TOLREL)
+        config = mc.Config()
+        print(config.dpPortSf)
+        self.assertEqual(config.tolRel, 4)
+
 
 if __name__ == "__main__":
     unittest.main()

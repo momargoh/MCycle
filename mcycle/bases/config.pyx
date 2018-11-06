@@ -1,7 +1,7 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from ..DEFAULTS cimport TOLABS, TOLREL, GRAVITY, _GITHUB_SOURCE_URL
 from .. import DEFAULTS
 import copy
+from math import nan, isnan
 
 
 cdef dict _inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "evenPlatesWf": MCAttr(bool,"none"), "dpFWf": MCAttr(bool,"none"),
@@ -10,10 +10,10 @@ cdef dict _inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "non
                "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "methods": MCAttr(dict, "none"),
                         "name": MCAttr(str, "none")}
 cdef dict _properties = {"_tolRel_p": MCAttr(float,"none"),
-               "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float,"none")}
+               "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float, "none")}
         
 cdef class Config(MCAB):
-    """General configuration parameters containing parameters pertaining to Cycles and Components. It is recommended to pass the same Config object to all Components in a Cycle.
+    """General configuration parameters containing parameters pertaining to Cycles and Components.
 
 Attributes
 -----------
@@ -85,15 +85,18 @@ _tolAbs_x : float, optional
                  bint dpHeadWf=True,
                  bint dpHeadSf=True,
                  bint dpPortWf=True,
-                 bint dpPortSf=True,
-                 double dpPortInFactor=DEFAULTS.DP_PORT_IN_FACTOR,
-                 double dpPortOutFactor=DEFAULTS.DP_PORT_OUT_FACTOR,
-                 double g=GRAVITY,
-                 str tolAttr="h",
-                 double tolAbs=TOLABS,
-                 double tolRel=TOLREL,
+                 bint dpPortSf=None,
+                 double dpPortInFactor=nan,
+                 double dpPortOutFactor=nan,
+                 unsigned short maxWalls = 200,
+                 double gravity=nan,
+                 str tolAttr='',
+                 double tolAbs=nan,
+                 double tolRel=nan,
                  double divT=DEFAULTS.DIV_T,
                  double divX=DEFAULTS.DIV_X,
+                 unsigned short maxIterComponent=0,
+                 unsigned short maxIterCycle=0,
                  dict methods=DEFAULTS.METHODS,
                  str name="Config instance"):
         # Cycle config parameters
@@ -109,24 +112,46 @@ _tolAbs_x : float, optional
         self.dpHeadSf = dpHeadSf
         self.dpPortWf = dpPortWf
         self.dpPortSf = dpPortSf
+        if isnan(dpPortInFactor):
+            dpPortInFactor = DEFAULTS.DP_PORT_IN_FACTOR
         self.dpPortInFactor = dpPortInFactor
+        if isnan(dpPortInFactor):
+            dpPortOutFactor = DEFAULTS.DP_PORT_OUT_FACTOR
         self.dpPortOutFactor = dpPortOutFactor
+        if maxWalls == 0:
+            maxWalls = DEFAULTS.MAX_WALLS
+        self.maxWalls = maxWalls
         # general config parameters
-        self.g = g
+        if isnan(gravity):
+            gravity = DEFAULTS.GRAVITY
+        self.gravity = gravity
         # tolerances
+        if tolAttr == '':
+            tolAttr = DEFAULTS.TOLATTR
         self.tolAttr = tolAttr
+        if isnan(tolAbs):
+            tolAbs = DEFAULTS.TOLABS
         self.tolAbs = tolAbs
+        if isnan(tolRel):
+            tolRel = DEFAULTS.TOLREL
         self.tolRel = tolRel
         self.divT = divT
         assert divX <= 1
         self.divX = divX
+        #iteration
+        if maxIterComponent == 0:
+            maxIterComponent = DEFAULTS.MAXITER_COMPONENT
+        self.maxIterComponent = maxIterComponent
+        if maxIterCycle == 0:
+            maxIterCycle = DEFAULTS.MAXITER_CYCLE
+        self.maxIterCycle = maxIterCycle
         # methods
         self.methods = copy.deepcopy(methods)
         #
-        self._tolRel_p = TOLREL
-        self._tolRel_T = TOLREL
-        self._tolRel_h = TOLREL
-        self._tolRel_rho = TOLREL
+        self._tolRel_p = tolRel
+        self._tolRel_T = tolRel
+        self._tolRel_h = tolRel
+        self._tolRel_rho = tolRel
         self.name = name
         self._inputs = _inputs
         self._properties = _properties
@@ -268,7 +293,7 @@ args : tuple
                 else:
                     return ret
             else:
-                raise ValueError("Methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, _GITHUB_SOURCE_URL))
+                raise ValueError("Methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, DEFAULTS._GITHUB_SOURCE_URL))
         except:
             raise
             

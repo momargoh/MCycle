@@ -3,7 +3,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS cimport TOLABS_X
+from ...DEFAULTS import TOLABS_X
 from ...logger import log
 from .hxunit_basic cimport HxUnitBasic
 import CoolProp as CP

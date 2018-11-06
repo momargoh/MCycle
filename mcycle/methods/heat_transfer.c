@@ -1375,41 +1375,9 @@ static PyObject *__Pyx_ImportModule(const char *name);
 /* TypeImport.proto */
 static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name, size_t size, int strict);
 
-/* VoidPtrImport.proto */
-static int __Pyx_ImportVoidPtr(PyObject *module, const char *name, void **p, const char *sig);
-
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-
-/* Module declarations from 'mcycle.DEFAULTS' */
-static double *__pyx_vp_6mcycle_8DEFAULTS_TOLABS = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_TOLABS (*__pyx_vp_6mcycle_8DEFAULTS_TOLABS)
-static double *__pyx_vp_6mcycle_8DEFAULTS_TOLREL = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_TOLREL (*__pyx_vp_6mcycle_8DEFAULTS_TOLREL)
-static double *__pyx_vp_6mcycle_8DEFAULTS_TOLABS_X = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_TOLABS_X (*__pyx_vp_6mcycle_8DEFAULTS_TOLABS_X)
-static int *__pyx_vp_6mcycle_8DEFAULTS_MAXITER_CYCLE = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_MAXITER_CYCLE (*__pyx_vp_6mcycle_8DEFAULTS_MAXITER_CYCLE)
-static int *__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_MAXITER_COMPONENT (*__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT)
-static int *__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_MAX_WALLS (*__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS)
-static double *__pyx_vp_6mcycle_8DEFAULTS_GRAVITY = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_GRAVITY (*__pyx_vp_6mcycle_8DEFAULTS_GRAVITY)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_COOLPROP_EOS (*__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_MPL_BACKEND (*__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_dimensionUnits (*__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS_dimensionsEquiv = 0;
-#define __pyx_v_6mcycle_8DEFAULTS_dimensionsEquiv (*__pyx_vp_6mcycle_8DEFAULTS_dimensionsEquiv)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS__GITHUB_SOURCE_URL = 0;
-#define __pyx_v_6mcycle_8DEFAULTS__GITHUB_SOURCE_URL (*__pyx_vp_6mcycle_8DEFAULTS__GITHUB_SOURCE_URL)
-static PyObject **__pyx_vp_6mcycle_8DEFAULTS__HOSTED_DOCS_URL = 0;
-#define __pyx_v_6mcycle_8DEFAULTS__HOSTED_DOCS_URL (*__pyx_vp_6mcycle_8DEFAULTS__HOSTED_DOCS_URL)
-static PyObject *(*__pyx_f_6mcycle_8DEFAULTS_getUnits)(PyObject *, int __pyx_skip_dispatch); /*proto*/
 
 /* Module declarations from 'mcycle.bases.mcabstractbase' */
 static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = 0;
@@ -1526,11 +1494,13 @@ static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_kwargs[] = "kwargs";
 static const char __pyx_k_p_star[] = "p_star";
+static const char __pyx_k_GRAVITY[] = "GRAVITY";
 static const char __pyx_k_counter[] = "counter";
 static const char __pyx_k_flowOut[] = "flowOut";
 static const char __pyx_k_radians[] = "radians";
 static const char __pyx_k_warning[] = "warning";
 static const char __pyx_k_CoolProp[] = "CoolProp";
+static const char __pyx_k_DEFAULTS[] = "DEFAULTS";
 static const char __pyx_k_parallel[] = "parallel";
 static const char __pyx_k_vertical[] = "vertical";
 static const char __pyx_k_warnings[] = "warnings";
@@ -1577,6 +1547,7 @@ static PyObject *__pyx_n_s_Bo;
 static PyObject *__pyx_n_s_CP;
 static PyObject *__pyx_n_s_Co;
 static PyObject *__pyx_n_s_CoolProp;
+static PyObject *__pyx_n_s_DEFAULTS;
 static PyObject *__pyx_n_s_De;
 static PyObject *__pyx_n_s_Dh;
 static PyObject *__pyx_n_s_F;
@@ -1584,6 +1555,7 @@ static PyObject *__pyx_n_s_Fcb;
 static PyObject *__pyx_n_s_Fnb;
 static PyObject *__pyx_n_s_Fr;
 static PyObject *__pyx_n_s_G;
+static PyObject *__pyx_n_s_GRAVITY;
 static PyObject *__pyx_n_s_GeomHxPlateCorrChevron;
 static PyObject *__pyx_n_s_GeomHxPlateFinOffset;
 static PyObject *__pyx_n_s_GeomHxPlateSmooth;
@@ -10095,9 +10067,10 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
   double __pyx_t_6;
   int __pyx_t_7;
   double __pyx_t_8;
-  double __pyx_t_9;
-  int __pyx_t_10;
-  struct __pyx_opt_args_6mcycle_7methods_13heat_transfer_dittusBoelter_sp_h __pyx_t_11;
+  PyObject *__pyx_t_9 = NULL;
+  double __pyx_t_10;
+  int __pyx_t_11;
+  struct __pyx_opt_args_6mcycle_7methods_13heat_transfer_dittusBoelter_sp_h __pyx_t_12;
   __Pyx_RefNannySetupContext("gungorWinterton_tpEvap_h", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
@@ -10430,13 +10403,29 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
  *     #
  *     cdef double S = 1 + 3000*Bo_eq**0.86
  */
-  __pyx_t_6 = pow(__pyx_v_G, 2.0);
-  __pyx_t_8 = ((pow(((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_liq->__pyx_base.__pyx_vtab)->rho(__pyx_v_liq, 0), 2.0) * __pyx_v_6mcycle_8DEFAULTS_GRAVITY) * __pyx_v_Dh);
-  if (unlikely(__pyx_t_8 == 0)) {
-    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 579, __pyx_L1_error)
-  }
-  __pyx_v_Fr_l = (__pyx_t_6 / __pyx_t_8);
+  __pyx_t_1 = PyFloat_FromDouble(pow(__pyx_v_G, 2.0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = PyFloat_FromDouble(pow(((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_liq->__pyx_base.__pyx_vtab)->rho(__pyx_v_liq, 0), 2.0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_GRAVITY); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_9 = PyNumber_Multiply(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_Dh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 579, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_Fr_l = __pyx_t_6;
 
   /* "mcycle/methods/heat_transfer.pyx":581
  *     cdef double Fr_l = G**2 / (liq.rho()**2 * GRAVITY * Dh)
@@ -10454,18 +10443,18 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
  *     cdef double S2 = 1
  *     cdef double F2 = 1
  */
-  __pyx_t_8 = (1.0 - __pyx_v_x_avg);
-  if (unlikely(__pyx_t_8 == 0)) {
+  __pyx_t_6 = (1.0 - __pyx_v_x_avg);
+  if (unlikely(__pyx_t_6 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
     __PYX_ERR(0, 582, __pyx_L1_error)
   }
-  __pyx_t_6 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_liq->__pyx_base.__pyx_vtab)->rho(__pyx_v_liq, 0);
-  __pyx_t_9 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_vap->__pyx_base.__pyx_vtab)->rho(__pyx_v_vap, 0);
-  if (unlikely(__pyx_t_9 == 0)) {
+  __pyx_t_8 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_liq->__pyx_base.__pyx_vtab)->rho(__pyx_v_liq, 0);
+  __pyx_t_10 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_vap->__pyx_base.__pyx_vtab)->rho(__pyx_v_vap, 0);
+  if (unlikely(__pyx_t_10 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
     __PYX_ERR(0, 582, __pyx_L1_error)
   }
-  __pyx_v_F = ((1.12 * pow((__pyx_v_x_avg / __pyx_t_8), 0.75)) * pow((__pyx_t_6 / __pyx_t_9), 0.41));
+  __pyx_v_F = ((1.12 * pow((__pyx_v_x_avg / __pyx_t_6), 0.75)) * pow((__pyx_t_8 / __pyx_t_10), 0.41));
 
   /* "mcycle/methods/heat_transfer.pyx":583
  *     cdef double S = 1 + 3000*Bo_eq**0.86
@@ -10499,8 +10488,8 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
     goto __pyx_L7_bool_binop_done;
   }
   __pyx_t_3 = (__pyx_v_vertical == Py_False);
-  __pyx_t_10 = (__pyx_t_3 != 0);
-  __pyx_t_5 = __pyx_t_10;
+  __pyx_t_11 = (__pyx_t_3 != 0);
+  __pyx_t_5 = __pyx_t_11;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_5) {
 
@@ -10538,20 +10527,20 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
  *     cdef h_tp = h_spl*(S*S2 + F*F2)
  *     return {"h":h_tp}
  */
-  __pyx_t_11.__pyx_n = 1;
-  __pyx_t_11.geom2 = __pyx_v_geom2;
-  __pyx_t_1 = __pyx_f_6mcycle_7methods_13heat_transfer_dittusBoelter_sp_h(__pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_N, __pyx_v_geom, __pyx_v_L, __pyx_v_W, 0, &__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 588, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(__pyx_t_1 == Py_None)) {
+  __pyx_t_12.__pyx_n = 1;
+  __pyx_t_12.geom2 = __pyx_v_geom2;
+  __pyx_t_2 = __pyx_f_6mcycle_7methods_13heat_transfer_dittusBoelter_sp_h(__pyx_v_flowIn, __pyx_v_flowOut, __pyx_v_N, __pyx_v_geom, __pyx_v_L, __pyx_v_W, 0, &__pyx_t_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (unlikely(__pyx_t_2 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 588, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_t_1, __pyx_n_u_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_t_2, __pyx_n_u_h); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 588, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 588, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_h_spl = __pyx_t_9;
+  __pyx_v_h_spl = __pyx_t_10;
 
   /* "mcycle/methods/heat_transfer.pyx":589
  *         F2 = Fr_l**0.5
@@ -10593,6 +10582,7 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_gungorWinterton_tpEvap
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_9);
   __Pyx_AddTraceback("mcycle.methods.heat_transfer.gungorWinterton_tpEvap_h", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -11479,7 +11469,7 @@ static PyObject *__pyx_pf_6mcycle_7methods_13heat_transfer_28shah_tpEvap_h(CYTHO
   __pyx_t_1 = PyNumber_Power(__pyx_t_2, __pyx_int_2, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_6mcycle_8DEFAULTS_GRAVITY); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_GRAVITY); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 618, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
@@ -14458,6 +14448,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_CP, __pyx_k_CP, sizeof(__pyx_k_CP), 0, 0, 1, 1},
   {&__pyx_n_s_Co, __pyx_k_Co, sizeof(__pyx_k_Co), 0, 0, 1, 1},
   {&__pyx_n_s_CoolProp, __pyx_k_CoolProp, sizeof(__pyx_k_CoolProp), 0, 0, 1, 1},
+  {&__pyx_n_s_DEFAULTS, __pyx_k_DEFAULTS, sizeof(__pyx_k_DEFAULTS), 0, 0, 1, 1},
   {&__pyx_n_s_De, __pyx_k_De, sizeof(__pyx_k_De), 0, 0, 1, 1},
   {&__pyx_n_s_Dh, __pyx_k_Dh, sizeof(__pyx_k_Dh), 0, 0, 1, 1},
   {&__pyx_n_s_F, __pyx_k_F, sizeof(__pyx_k_F), 0, 0, 1, 1},
@@ -14465,6 +14456,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Fnb, __pyx_k_Fnb, sizeof(__pyx_k_Fnb), 0, 0, 1, 1},
   {&__pyx_n_s_Fr, __pyx_k_Fr, sizeof(__pyx_k_Fr), 0, 0, 1, 1},
   {&__pyx_n_s_G, __pyx_k_G, sizeof(__pyx_k_G), 0, 0, 1, 1},
+  {&__pyx_n_s_GRAVITY, __pyx_k_GRAVITY, sizeof(__pyx_k_GRAVITY), 0, 0, 1, 1},
   {&__pyx_n_s_GeomHxPlateCorrChevron, __pyx_k_GeomHxPlateCorrChevron, sizeof(__pyx_k_GeomHxPlateCorrChevron), 0, 0, 1, 1},
   {&__pyx_n_s_GeomHxPlateFinOffset, __pyx_k_GeomHxPlateFinOffset, sizeof(__pyx_k_GeomHxPlateFinOffset), 0, 0, 1, 1},
   {&__pyx_n_s_GeomHxPlateSmooth, __pyx_k_GeomHxPlateSmooth, sizeof(__pyx_k_GeomHxPlateSmooth), 0, 0, 1, 1},
@@ -14799,7 +14791,6 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
 {
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannyDeclarations
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m && __pyx_m == __pyx_pyinit_module) return 0;
@@ -14899,26 +14890,32 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
   __pyx_ptype_6mcycle_5bases_4geom_Geom = __Pyx_ImportType("mcycle.bases.geom", "Geom", sizeof(struct __pyx_obj_6mcycle_5bases_4geom_Geom), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_4geom_Geom)) __PYX_ERR(3, 3, __pyx_L1_error)
   __pyx_vtabptr_6mcycle_5bases_4geom_Geom = (struct __pyx_vtabstruct_6mcycle_5bases_4geom_Geom*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_4geom_Geom->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_4geom_Geom)) __PYX_ERR(3, 3, __pyx_L1_error)
   /*--- Variable import code ---*/
-  __pyx_t_1 = __Pyx_ImportModule("mcycle.DEFAULTS"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "TOLABS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_TOLABS, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "TOLREL", (void **)&__pyx_vp_6mcycle_8DEFAULTS_TOLREL, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "TOLABS_X", (void **)&__pyx_vp_6mcycle_8DEFAULTS_TOLABS_X, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAXITER_CYCLE", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAXITER_CYCLE, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAXITER_COMPONENT", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAXITER_COMPONENT, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "MAX_WALLS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MAX_WALLS, "int") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "GRAVITY", (void **)&__pyx_vp_6mcycle_8DEFAULTS_GRAVITY, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "COOLPROP_EOS", (void **)&__pyx_vp_6mcycle_8DEFAULTS_COOLPROP_EOS, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "MPL_BACKEND", (void **)&__pyx_vp_6mcycle_8DEFAULTS_MPL_BACKEND, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "dimensionUnits", (void **)&__pyx_vp_6mcycle_8DEFAULTS_dimensionUnits, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "dimensionsEquiv", (void **)&__pyx_vp_6mcycle_8DEFAULTS_dimensionsEquiv, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "_GITHUB_SOURCE_URL", (void **)&__pyx_vp_6mcycle_8DEFAULTS__GITHUB_SOURCE_URL, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "_HOSTED_DOCS_URL", (void **)&__pyx_vp_6mcycle_8DEFAULTS__HOSTED_DOCS_URL, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  Py_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   /*--- Function import code ---*/
   /*--- Execution code ---*/
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
+
+  /* "mcycle/methods/heat_transfer.pyx":59
+ * --------
+ * """
+ * from ..DEFAULTS import GRAVITY             # <<<<<<<<<<<<<<
+ * from ..bases.flowstate cimport FlowState
+ * from ..bases.geom cimport Geom
+ */
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_GRAVITY);
+  __Pyx_GIVEREF(__pyx_n_s_GRAVITY);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_GRAVITY);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_DEFAULTS, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_GRAVITY); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GRAVITY, __pyx_t_1) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":62
  * from ..bases.flowstate cimport FlowState
@@ -14932,14 +14929,14 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
   __Pyx_INCREF(__pyx_n_s_geometries);
   __Pyx_GIVEREF(__pyx_n_s_geometries);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_geometries);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_, __pyx_t_2, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_, __pyx_t_2, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_geometries); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_geometries); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_gms, __pyx_t_2) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":63
  * from ..bases.geom cimport Geom
@@ -14948,60 +14945,60 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  * from warnings import warn
  * import numpy as np
  */
-  __pyx_t_3 = PyList_New(7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = PyList_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_nan);
   __Pyx_GIVEREF(__pyx_n_s_nan);
-  PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_nan);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_nan);
   __Pyx_INCREF(__pyx_n_s_sin);
   __Pyx_GIVEREF(__pyx_n_s_sin);
-  PyList_SET_ITEM(__pyx_t_3, 1, __pyx_n_s_sin);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_sin);
   __Pyx_INCREF(__pyx_n_s_cos);
   __Pyx_GIVEREF(__pyx_n_s_cos);
-  PyList_SET_ITEM(__pyx_t_3, 2, __pyx_n_s_cos);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_cos);
   __Pyx_INCREF(__pyx_n_s_pi);
   __Pyx_GIVEREF(__pyx_n_s_pi);
-  PyList_SET_ITEM(__pyx_t_3, 3, __pyx_n_s_pi);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_n_s_pi);
   __Pyx_INCREF(__pyx_n_s_log);
   __Pyx_GIVEREF(__pyx_n_s_log);
-  PyList_SET_ITEM(__pyx_t_3, 4, __pyx_n_s_log);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_n_s_log);
   __Pyx_INCREF(__pyx_n_s_exp);
   __Pyx_GIVEREF(__pyx_n_s_exp);
-  PyList_SET_ITEM(__pyx_t_3, 5, __pyx_n_s_exp);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_exp);
   __Pyx_INCREF(__pyx_n_s_isnan);
   __Pyx_GIVEREF(__pyx_n_s_isnan);
-  PyList_SET_ITEM(__pyx_t_3, 6, __pyx_n_s_isnan);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, __pyx_t_3, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_n_s_isnan);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_nan, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_sin); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sin, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cos, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_pi); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pi, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_log, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_exp, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_isnan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_isnan, __pyx_t_3) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_nan, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_sin); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sin, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_cos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cos, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_pi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pi, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_log); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_log, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_exp, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_isnan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_isnan, __pyx_t_1) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":64
@@ -15016,14 +15013,14 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
   __Pyx_INCREF(__pyx_n_s_warn);
   __Pyx_GIVEREF(__pyx_n_s_warn);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_warn);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 64, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_warnings, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_warn); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_warn); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_warn, __pyx_t_2) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":65
  * from math import nan, sin, cos, pi, log, exp, isnan
@@ -15032,10 +15029,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  * import CoolProp as CP
  * 
  */
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_3) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":66
  * from warnings import warn
@@ -15044,10 +15041,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  * 
  * 
  */
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_CoolProp, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CP, __pyx_t_3) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_CoolProp, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CP, __pyx_t_1) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":375
  * 
@@ -15056,10 +15053,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  *     """Single-phase, friction, valid for GeomDuctCircular, GeomHxPlateSmooth. [Techo1965]_ R. Techo, R. R. Tickner, and R. E. James, "An Accurate Equation for the Computation of the Friction Factor for Smooth Pipes from the Reynolds Number," J. Appl. Mech. (32): 443, 1965.
  * 
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_19techo_sp_f, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_techo_sp_f, __pyx_t_3) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_19techo_sp_f, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 375, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_techo_sp_f, __pyx_t_1) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":423
  *     return {"h": h}
@@ -15068,10 +15065,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  *                   flowOut=None,
  *                   N=None,
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_23shah_sp_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 423, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_sp_h, __pyx_t_3) < 0) __PYX_ERR(0, 423, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_23shah_sp_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_sp_h, __pyx_t_1) < 0) __PYX_ERR(0, 423, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":592
  *     return {"h":h_tp}
@@ -15080,10 +15077,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  *                         flowOut=None,
  *                         N=None,
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_29shah_tpEvap_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 592, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_tpEvap_h, __pyx_t_3) < 0) __PYX_ERR(0, 592, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_29shah_tpEvap_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 592, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_tpEvap_h, __pyx_t_1) < 0) __PYX_ERR(0, 592, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":643
  * 
@@ -15092,10 +15089,10 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  *                         flowOut,
  *                         Dh,
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_31chen_tpEvap_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 643, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chen_tpEvap_h, __pyx_t_3) < 0) __PYX_ERR(0, 643, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_31chen_tpEvap_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_chen_tpEvap_h, __pyx_t_1) < 0) __PYX_ERR(0, 643, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":694
  * 
@@ -15104,20 +15101,20 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
  *                            flowOut,
  *                            Dh,
  */
-  __pyx_t_3 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_33shah_tpCond_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 694, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_tpCond_h, __pyx_t_3) < 0) __PYX_ERR(0, 694, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_7methods_13heat_transfer_33shah_tpCond_h, NULL, __pyx_n_s_mcycle_methods_heat_transfer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 694, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_shah_tpCond_h, __pyx_t_1) < 0) __PYX_ERR(0, 694, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/methods/heat_transfer.pyx":1
  * """A selection of single-phase and 2-phase heat transfer relations.             # <<<<<<<<<<<<<<
  * 
  * Parameters
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_3) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -15125,7 +15122,6 @@ static int __pyx_pymod_exec_heat_transfer(PyObject *__pyx_pyinit_module)
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init mcycle.methods.heat_transfer", 0, __pyx_lineno, __pyx_filename);
@@ -17694,55 +17690,6 @@ bad:
     Py_XDECREF(py_module);
     Py_XDECREF(result);
     return NULL;
-}
-#endif
-
-/* VoidPtrImport */
-              #ifndef __PYX_HAVE_RT_ImportVoidPtr
-#define __PYX_HAVE_RT_ImportVoidPtr
-static int __Pyx_ImportVoidPtr(PyObject *module, const char *name, void **p, const char *sig) {
-    PyObject *d = 0;
-    PyObject *cobj = 0;
-    d = PyObject_GetAttrString(module, (char *)"__pyx_capi__");
-    if (!d)
-        goto bad;
-    cobj = PyDict_GetItemString(d, name);
-    if (!cobj) {
-        PyErr_Format(PyExc_ImportError,
-            "%.200s does not export expected C variable %.200s",
-                PyModule_GetName(module), name);
-        goto bad;
-    }
-#if PY_VERSION_HEX >= 0x02070000
-    if (!PyCapsule_IsValid(cobj, sig)) {
-        PyErr_Format(PyExc_TypeError,
-            "C variable %.200s.%.200s has wrong signature (expected %.500s, got %.500s)",
-             PyModule_GetName(module), name, sig, PyCapsule_GetName(cobj));
-        goto bad;
-    }
-    *p = PyCapsule_GetPointer(cobj, sig);
-#else
-    {const char *desc, *s1, *s2;
-    desc = (const char *)PyCObject_GetDesc(cobj);
-    if (!desc)
-        goto bad;
-    s1 = desc; s2 = sig;
-    while (*s1 != '\0' && *s1 == *s2) { s1++; s2++; }
-    if (*s1 != *s2) {
-        PyErr_Format(PyExc_TypeError,
-            "C variable %.200s.%.200s has wrong signature (expected %.500s, got %.500s)",
-             PyModule_GetName(module), name, sig, desc);
-        goto bad;
-    }
-    *p = PyCObject_AsVoidPtr(cobj);}
-#endif
-    if (!(*p))
-        goto bad;
-    Py_DECREF(d);
-    return 0;
-bad:
-    Py_XDECREF(d);
-    return -1;
 }
 #endif
 

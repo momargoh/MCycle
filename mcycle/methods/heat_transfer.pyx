@@ -56,7 +56,7 @@ dpF: float
 Library
 --------
 """
-from ..DEFAULTS cimport GRAVITY
+from ..DEFAULTS import GRAVITY
 from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from .. import geometries as gms

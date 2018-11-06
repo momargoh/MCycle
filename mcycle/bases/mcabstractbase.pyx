@@ -1,5 +1,5 @@
-from ..DEFAULTS cimport getUnits
 from .. import DEFAULTS
+from ..DEFAULTS import getUnits
 
 cdef class MCAttr:
     """Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.

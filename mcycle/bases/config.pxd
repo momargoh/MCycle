@@ -8,19 +8,22 @@ cdef class Config(MCAB):
     cpdef public bint dpFWf
     cpdef public bint dpFSf
     cpdef public bint dpAccWf
-    cpdef public  bint dpAccSf
+    cpdef public bint dpAccSf
     cpdef public bint dpHeadWf
     cpdef public bint dpHeadSf
     cpdef public bint dpPortWf
     cpdef public bint dpPortSf
     cpdef public double dpPortInFactor
     cpdef public double dpPortOutFactor
-    cpdef public double g
+    cpdef public unsigned short maxWalls
+    cpdef public double gravity
     cpdef public str tolAttr
     cpdef public double tolAbs
     cpdef public double tolRel
     cpdef public double divT
     cpdef public double divX
+    cpdef public unsigned short maxIterComponent
+    cpdef public unsigned short maxIterCycle
     cpdef public dict methods
     cpdef public double _tolRel_p 
     cpdef public double _tolRel_T 

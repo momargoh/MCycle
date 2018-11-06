@@ -3,7 +3,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS cimport TOLABS_X, TOLREL, TOLABS, MAXITER_COMPONENT
+from ...DEFAULTS import TOLABS_X
 from ...methods.heat_transfer cimport lmtd
 from ...logger import log
 from warnings import warn
@@ -287,7 +287,7 @@ kwargs : optional
 
     cpdef public double QWf(self):
         """float: Heat transfer to the working fluid [W]."""
-        if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > TOLABS:
+        if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > self.config.tolAbs:
             return (self.flowsOut[0].h() - self.flowsIn[0].h()
                     ) * self._mWf() * self._effFactorWf()
         else:
@@ -295,7 +295,7 @@ kwargs : optional
 
     cpdef public double QSf(self):
         """float: Heat transfer to the secondary fluid [W]."""
-        if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > TOLABS:
+        if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > self.config.tolAbs:
             return (self.flowsOut[1].h() - self.flowsIn[1].h()
                     ) * self._mSf() * self._effFactorSf()
         else:
@@ -306,9 +306,10 @@ kwargs : optional
         cdef str err_msg
         cdef double QWf = self.QWf()
         cdef double QSf = self.QSf()
-        if abs(QWf) < TOLABS and abs(QSf) < TOLABS:
+        cdef double tolAbs = self.config.tolAbs
+        if abs(QWf) < tolAbs and abs(QSf) < tolAbs:
             return 0
-        elif abs((QWf + QSf) / QWf) < TOLREL:
+        elif abs((QWf + QSf) / QWf) < self.config.tolRel:
             return QWf
         else:
             err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
@@ -369,10 +370,10 @@ kwargs : optional
             diff = abs(self.Q() - q) / self.Q()
 
             count += 1
-            if count > MAXITER_COMPONENT:
+            if count > self.config.maxIterComponent:
                 raise StopIteration(
                     """{} iterations without {} converging: diff={}>tol={}""".
-                    format(MAXITER_COMPONENT, "h", diff,
+                    format(self.config.maxIterComponent, "h", diff,
                            self.config._tolRel_h))
         #return self.flowsOut[0]
 

@@ -10,8 +10,8 @@ from .__meta__ import version as __version__
 from .logger import *
 updateLogger()
 from . import DEFAULTS
-DEFAULTS.updateDefaults()
-from .DEFAULTS import getUnits, timeThis, updateDefaults
+DEFAULTS.checkDefaults()
+from .DEFAULTS import getUnits, timeThis, checkDefaults
 from . import bases
 from .bases import *
 from .components import *

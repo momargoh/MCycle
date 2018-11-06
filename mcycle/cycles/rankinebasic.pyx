@@ -1,6 +1,5 @@
-from ..DEFAULTS cimport MAXITER_CYCLE, COOLPROP_EOS #, PLOT_DIR, PLOT_FORMAT, PLOT_DPI, 
 from .. import DEFAULTS
-from ..DEFAULTS import getPlotDir
+from ..DEFAULTS import getPlotDir, COOLPROP_EOS
 from ..logger import log
 from ..bases.config cimport Config
 from ..bases.cycle cimport Cycle
@@ -23,6 +22,7 @@ cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "QIn()": MCAttr(floa
                 "effThermal()": MCAttr(float, "none"), "effExergy()": MCAttr(float, "none"),
                 "IComp()": MCAttr(float, "power"), "IEvap()": MCAttr(float, "power"),
                 "IExp()": MCAttr(float, "power"), "ICond()": MCAttr(float, "power")}
+
 cdef class RankineBasic(Cycle):
     """Defines all cycle components and design parameters for a basic four-stage (steam/organic) Rankine cycle.
 
@@ -849,8 +849,8 @@ kwargs : optional
                 diffRel = diffAbs / getattr(self.state6, self.config.tolAttr)()
             self.set_state6(state6new)
             count += 1
-            if count > MAXITER_CYCLE:
-                msg = """{0} iterations without {1} converging: diffRel={2}>tol={3}""".format(MAXITER_CYCLE, self.config.tolAttr,
+            if count > self.config.maxIterCycle:
+                msg = """{0} iterations without {1} converging: diffRel={2}>tol={3}""".format(self.config.maxIterCycle, self.config.tolAttr,
                                                                                               diffRel, self.config.tolRel)
                 log("error", msg)
                 raise StopIteration(msg)
@@ -941,10 +941,10 @@ unitiseCond : bool
                             self.config.tolAttr)())  # TODO proper tolerancing
                 state1_old = self.comp.flowsOut[0]
                 count += 1
-                if count > MAXITER_CYCLE:
+                if count > self.config.maxIterCycle:
                     raise StopIteration(
                         """{0} iterations without {1} compressor converging: diff={2}>tol={3}""".
-                        format(MAXITER_CYCLE, self.config.tolAttr, diff,
+                        format(self.config.maxIterCycle, self.config.tolAttr, diff,
                                self.config.tolAbs))
             self.comp.size()
             self.set_state1(self.comp.flowsOut[0])
@@ -1000,10 +1000,10 @@ unitiseCond : bool
                     getattr(state4_old, self.config.tolAttr)())
                 state4_old = self.exp.flowsOut[0]
                 count += 1
-                if count > MAXITER_CYCLE:
+                if count > self.config.maxIterCycle:
                     raise StopIteration(
                         """{0} iterations without {1} expander converging: diff={2}>tol={3}""".
-                        format(MAXITER_CYCLE, self.config.tolAttr, diff,
+                        format(self.config.maxIterCycle, self.config.tolAttr, diff,
                                self.config.tolAbs))
             self.exp.size()
             self.set_state4(self.exp.flowsOut[0])
@@ -1035,10 +1035,10 @@ unitiseCond : bool
                 state6_old, self.config.tolAttr)()
             state6_old = self._state6().copy({})
             cycle_count += 1
-            if count > MAXITER_CYCLE:
+            if count > self.config.maxIterCycle:
                 raise StopIteration(
                     """{0} iterations without {1} cycle converging: diff={2}>tol={3}""".
-                    format(MAXITER_CYCLE, self.config.tolAttr, diff,
+                    format(self.config.maxIterCycle, self.config.tolAttr, diff,
                            self.config.tolAbs))
 
 

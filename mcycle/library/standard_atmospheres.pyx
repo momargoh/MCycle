@@ -1,27 +1,26 @@
 """Compute FlowState properties in standard atmospheres.
 """
 from ..bases.flowstate cimport FlowState
-from ..DEFAULTS cimport COOLPROP_EOS
-from math import nan
-from numpy import exp
+from ..DEFAULTS import COOLPROP_EOS
+from math import nan, exp
 import CoolProp as CP
 
 
-cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double g, double R):
+cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):
     cdef double T=nan
     cdef double p=nan
     if lapseRate != 0:
         T = TStagBase + lapseRate * (altitude - altitudeBase)
-        p = pStagBase * (T / TStagBase)**(-g / lapseRate / R)
+        p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
     else:
         T = TStagBase
-        p = pStagBase * exp(-g / R / TStagBase * (altitude - altitudeBase))
+        p = pStagBase * exp(-gravity / R / TStagBase * (altitude - altitudeBase))
     return p, T
 
 cpdef FlowState isa(double altitude,
                     double pStag=101325.,
                     double TStag=288.15,
-                    double g=9.80665,
+                    double gravity=9.80665,
                     double R=287.058,
                     str fluidCP="Air",
                     int phaseCP=-1):
@@ -53,11 +52,11 @@ R : float, optional
     while i < len(refAltitude) - 1:
         if altitude <= refAltitude[i + 1]:
             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
-                                         refAltitude[i], _pStag, _TStag, g, R)
+                                         refAltitude[i], _pStag, _TStag, gravity, R)
             break
         else:
             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],
-                                         refAltitude[i], _pStag, _TStag, g, R)
+                                         refAltitude[i], _pStag, _TStag, gravity, R)
             i += 1
     try:
         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,

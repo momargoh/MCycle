@@ -1,6 +1,6 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from ..DEFAULTS cimport TOLABS_X, COOLPROP_EOS
 from .. import DEFAULTS
+from ..DEFAULTS import TOLABS_X
 from math import nan, isnan
 import CoolProp as CP
 import numpy as np
@@ -81,8 +81,8 @@ import CoolProp
         cdef str f
         cdef list fSplit
         if "&" not in fluid:
-            self._state = CP.AbstractState(COOLPROP_EOS, fluid)
-            #self._state.change_EOS(0, COOLPROP_EOS)
+            self._state = CP.AbstractState(DEFAULTS.COOLPROP_EOS, fluid)
+            #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
         else:
             assert 0 <= phaseCP < 8, "phaseCP (given: {}) must be specified for mixtures.".format(phaseCP)
             fluidSplit = fluid.split("&")
@@ -94,8 +94,8 @@ import CoolProp
                 fluidString += "&" + fSplit[0]
                 moleFractions.append(float(fSplit[1]))
             fluidString = fluidString[1:]  # remove inital "&"
-            self._state = CP.AbstractState(COOLPROP_EOS, fluidString)
-            #self._state.change_EOS(0, COOLPROP_EOS)
+            self._state = CP.AbstractState(DEFAULTS.COOLPROP_EOS, fluidString)
+            #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
             self._state.set_mole_fractions(moleFractions)
             self._state.specify_phase(phaseCP)
             self._state.build_phase_envelope("")

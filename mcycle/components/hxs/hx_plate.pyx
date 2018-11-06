@@ -1,4 +1,3 @@
-from ...DEFAULTS cimport TOLABS, MAXITER_COMPONENT, MAX_WALLS
 from .hxunit_basic cimport HxUnitBasic
 from .hx_basicplanar cimport HxBasicPlanar
 from .hxunit_plate cimport HxUnitPlate

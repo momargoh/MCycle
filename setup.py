@@ -63,7 +63,6 @@ def scanForExtension(directory, extension, files=[]):
             files.append(path[:-length])
         elif os.path.isdir(path):
             scanForExtension(path, extension, files)
-    print(files)
     return files
 
 

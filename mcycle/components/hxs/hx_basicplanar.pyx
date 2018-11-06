@@ -1,4 +1,3 @@
-from ...DEFAULTS cimport TOLABS
 from .hx_basic cimport HxBasic
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
 from ...bases.config cimport Config
@@ -173,7 +172,7 @@ kwargs : optional
         cdef size_t i
         for i in range(len(self._units)):#unit in self._units:
             unit = self._units[i]
-            if abs(unit.Q()) > TOLABS:
+            if abs(unit.Q()) > self.config.tolAbs:
                 unit.sizeUnits('L', unitsBounds)
                 L += unit.L
         self.L = L
