@@ -3,9 +3,9 @@ from CoolProp import AbstractState
 
 cdef class FlowState(MCAB):
     cpdef public str fluid
-    cdef public int phaseCP
+    cdef public short phaseCP
     cpdef public double m
-    cdef public int _inputPairCP
+    cdef public unsigned short _inputPairCP
     cdef public double _input1
     cdef public double _input2
     #cpdef AbstractState _state
@@ -30,8 +30,24 @@ cdef class FlowState(MCAB):
     cpdef public double TMin(self)
 
     cpdef public str phase(self)
-    
 
-    
-    
+cdef dict validInputPairs
+cdef dict _validInputPairs
 
+cdef class FlowStatePoly(FlowState):
+    cpdef public RefData refData
+    cdef dict _c
+    cdef str _inputProperty
+    cdef double _inputValue
+    cdef void _findAndSetInputProperty(self)
+    cdef bint _validateInputs(self) except? False
+    cpdef public void populate_c(self)
+    
+cdef class RefData:
+    cpdef public str fluid
+    cpdef public unsigned short deg
+    cpdef public double p
+    cpdef public dict data
+    cpdef public short phaseCP
+    cpdef public void populateData(self) except *
+    
