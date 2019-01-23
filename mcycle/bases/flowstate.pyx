@@ -74,6 +74,7 @@ import CoolProp
         self._inputs = _inputs
         self._properties = _properties
         self._state = None
+        #self._canBuildPhaseEnvelope = True
 
         # determine if pure or mixture
         cdef list fluidSplit
@@ -81,10 +82,10 @@ import CoolProp
         cdef list moleFractions
         cdef str f, msg
         cdef list fSplit
-        if "&" not in fluid:
+        if "&" not in fluid: # is a pure or pseudo-pure fluid
             self._state = CP.AbstractState(DEFAULTS.COOLPROP_EOS, fluid)
             #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
-        else:
+        else: # is a mixture
             if not 0 <= phaseCP < 8:
                 msg = "phaseCP (given: {}) must be specified for mixtures.".format(phaseCP)
                 log("error", msg)
@@ -102,10 +103,19 @@ import CoolProp
             #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
             self._state.set_mole_fractions(moleFractions)
             self._state.specify_phase(phaseCP)
-            self._state.build_phase_envelope("")
+            if DEFAULTS.TRY_BUILD_PHASE_ENVELOPE:
+                try:
+                    self._state.build_phase_envelope("")
+                except:
+                    log("warning", "CoolProp could not build phase envelope for {}".format(fluid))
+                    self._canBuildPhaseEnvelope = False
         if inputPairCP != 0 and not isnan(input1) and not isnan(input2):
             self._state.update(inputPairCP, input1, input2)
 
+    cdef public bint isMixture(self):
+        "bool: True if fluid is a mixture, False if fluid is pure or pseudo-pure."
+        return '&' in self.fluid
+    
     def __eq__(self, other):
         cdef list inputValues = list(self._inputValues())
         cdef list other_inputValues = list(other._inputValues())
@@ -149,8 +159,9 @@ inputPairCP : int, optional
 input1, input2 : double
     Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to None.
         """
-        if "&" in self.fluid:
-            self._state.build_phase_envelope("")
+        if self.isMixture():
+            if DEFAULTS.TRY_BUILD_PHASE_ENVELOPE and self._canBuildPhaseEnvelope:
+                self._state.build_phase_envelope("")
         self._state.update(inputPairCP, input1, input2)
         self._inputPairCP = inputPairCP
         self._input1 = input1

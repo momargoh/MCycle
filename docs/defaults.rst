@@ -3,6 +3,9 @@ MCycle Defaults
 
 Attributes
 -----------
+.. attribute:: mcycle.DEFAULTS.TOLATTR
+
+  str : FlowState attribute for checking convergence of component and cycle functions. Defaults to 'h'.
 .. attribute:: mcycle.DEFAULTS.TOLABS
 
   double : General absolute tolerance used for convergence of component and cycle functions. Defaults to 1e-7.
@@ -12,6 +15,12 @@ Attributes
 .. attribute:: mcycle.DEFAULTS.TOLABS_X
 
   double : Absolute tolerance used for the quality of fluids, particularly determining if a fluid is a saturated liquid or vapour. Defaults to 1e-10.
+.. attribute:: mcycle.DEFAULTS.DIV_T
+
+  double : Increment of temperature for unitisation processes [K]; lower value = higher accuracy. Defaults to 5.
+.. attribute:: mcycle.DEFAULTS.DIV_X
+
+  double : Increment of quality for unitisation processes [-]; lower value = higher accuracy. Defaults to 0.1.
 .. attribute:: mcycle.DEFAULTS.MAXITER_CYCLE
 
   int : Maximum iterations for convergence of **run** and **size** methods of Cycle objects. Defaults to 50.
@@ -21,12 +30,9 @@ Attributes
 .. attribute:: mcycle.DEFAULTS.MAX_WALLS
 
   int : Maximum number of walls for a Component (eg; heat exchangers). Defaults to 200.
-.. attribute:: mcycle.DEFAULTS.RUN_BRACKET_MIN_H
+.. attribute:: mcycle.DEFAULTS.TRY_BUILD_PHASE_ENVELOPE
 
-  double : Lower bound of relative bounds for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.001.
-.. attribute:: mcycle.DEFAULTS.RUN_BRACKET_MAX_H
-
-  double : Upper bound of relative bounds for specific enthalpy (h) used in **run** methods. Must be in range (0, 1). Defaults to 0.9.
+  bool : Get CoolProp to always try to build the phase envelope for mixtures. May slow computations if CoolProp repeatedly fails to do so. Defaults to True.
 .. attribute:: mcycle.DEFAULTS.GRAVITY
 
   double : Vertical cceleration due to gravity. Defaults to 9.80665 [m/s^2].

@@ -10,6 +10,8 @@ cdef class FlowState(MCAB):
     cdef public double _input2
     #cpdef AbstractState _state
     cpdef public _state
+    cdef bint _canBuildPhaseEnvelope
+    cdef public bint isMixture(self)
     cpdef public void updateState(self, int inputPairCP, double input1, double input2)
     cpdef public FlowState copyState(self, int inputPairCP, double input1, double input2)
     cpdef public double T(self)
