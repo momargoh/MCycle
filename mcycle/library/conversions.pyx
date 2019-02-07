@@ -1,4 +1,4 @@
-"""A brief collection of useful, MATLAB-style unit conversions."""
+"""A brief collection of useful, MATLAB-style unit conversions. Largely from `<https://www.unitconverters.net/>`_."""
 
 # -----------------------------------------------------------------
 # Time
@@ -140,13 +140,54 @@ cpdef double nmi2mi(double value):
 # Volume
 # -----------------------------------------------------------------
 
-cpdef double galUS2m3(double value):
+
+cpdef public double m32L(double value):
+    "float: volume: m^3 to litres."
+    return value * 1000
+
+cpdef public double m32galUS(double value):
+    "float: volume: m^3 to gallons (US)."
+    return value * 264.17217686
+
+cpdef public double m32galImp(double value):
+    "float: volume: m^3 to gallons (imperial)."
+    return value * 219.9692483
+
+cpdef public double L2m3(double value):
+    "float: volume: litres to m^3."
+    return value / 1000
+
+cpdef public double L2galUS(double value):
+    "float: volume: litres to gallons (US)."
+    return value * 0.2641721769
+
+cpdef public double L2galImp(double value):
+    "float: volume: litres to gallons (imperial)."
+    return value * 0.2199692483
+
+cpdef public double galUS2m3(double value):
     "float: volume: Gallons (US) to m^3."
     return value * 0.00378541
 
-cpdef double galImp2m3(double value):
+cpdef public double galUS2L(double value):
+    "float: volume: Gallons (US) to litres."
+    return value * 3.78541
+
+cpdef public double galUS2galImp(double value):
+    "float: volume: Gallons (US) to gallons (imperial)."
+    return value * 0.8326737922
+
+cpdef public double galImp2m3(double value):
     "float: volume: Gallons (imperial) to m^3."
     return value * 0.00454609
+
+cpdef public double galImp2L(double value):
+    "float: volume: Gallons (imperial) to litres."
+    return value * 4.54609
+
+cpdef public double galImp2galUS(double value):
+    "float: volume: Gallons (imperial) to gallons (US)."
+    return value * 1.2009504915
 
 # -----------------------------------------------------------------
 # Speed
