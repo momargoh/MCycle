@@ -59,6 +59,7 @@ Library
 from ..DEFAULTS import GRAVITY
 from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
+from ..components.hxs.flowconfig cimport HxFlowConfig
 from .. import geometries as gms
 from math import nan, sin, cos, pi, log, exp, isnan
 from warnings import warn
@@ -76,7 +77,7 @@ cdef str _assertGeomErrMsg(Geom geom, str method_name):
 
 
 # -----------------------------------------------------------------
-# useful functions
+# General functions
 # -----------------------------------------------------------------
 
 cpdef public double htc(double Nu, double k, double charLength) except *:
@@ -92,7 +93,7 @@ cpdef public double dpf(double f, double G, double L, double Dh, double rho, int
 
 
 # -----------------------------------------------------------------
-# heat exchangers
+# General heat exchange functions
 # -----------------------------------------------------------------
 
 cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, str flowSense) except *:
@@ -108,9 +109,11 @@ cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, s
         dT1 = TOut2 - TOut1
         dT2 = TIn2 - TIn1
     else:
-        raise ValueError("lmtd flowSense not valid/supported (given: {})".format(flowSense))
-    ans = (dT1 - dT2) / np.log(dT1 / dT2)
-    if np.isnan(ans):
+        msg = "lmtd flowSense not valid/supported (given: {})".format(flowSense)
+        log("error", msg)
+        raise ValueError(msg)
+    ans = (dT1 - dT2) / log(dT1 / dT2)
+    if isnan(ans):
         msg = "lmtd found non-valid flow temperatures: TIn1={}, TOut1={}, TIn2={}, TOut2={}".format(TIn1, TOut1, TIn2, TOut2)
         log("warning", msg)
         warn(msg)
@@ -118,16 +121,19 @@ cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, s
     
 
 # -----------------------------------------------------------------
-# single-phase relations, plate exchangers
+# Chevron-type corrugated plate heat exchangers
+# single-phase relations
 # -----------------------------------------------------------------
 
 cpdef dict chisholmWannairachchi_sp(FlowState flowIn,
-                                        FlowState flowOut,
-                                        int N,
-                                        Geom geom,
-                                        double L,
-                                        double W,
-                                        Geom geom2=None):
+                                    FlowState flowOut,
+                                    int N,
+                                    Geom geom,
+                                    double L,
+                                    double W,
+                                    HxFlowConfig flowConfig,
+                                    bint is_wf=True,
+                                    Geom geom2=None):
     """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Chisholm1992]_ Chisholm D. Wanniarachchi, A. S. Maldistribution in single-pass mixed-channel plate heat exchangers. ASME, 1992, 201, 95-99.
 
 Returns
@@ -151,12 +157,14 @@ dict of float : {"h", "f", "dpF"}
     return {"h": h, "f": f, "dpF": dpF}
 
 cpdef dict savostinTikhonov_sp(FlowState flowIn,
-                                   FlowState flowOut,
-                                   int N,
-                                   Geom geom,
-                                   double L,
-                                   double W,
-                                   Geom geom2=None):
+                               FlowState flowOut,
+                               int N,
+                               Geom geom,
+                               double L,
+                               double W,
+                               HxFlowConfig flowConfig,
+                               bint is_wf=True,
+                               Geom geom2=None):
     """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Savostin1970]_ Savostin, A. F. & Tikhonov, A. M. Investigation of the Characteristics of Plate Type Heating Surfaces Thermal Engineering, 1970, 17, 113-117.
 
 Data collected for: air
@@ -196,12 +204,14 @@ dict of float : {"h", "f", "dpF"}
     return {"h": h, "f": f, "dpF": dpF}
 
 cpdef dict muleyManglik_sp(FlowState flowIn,
-                               FlowState flowOut,
-                               int N,
-                               Geom geom,
-                               double L,
-                               double W,
-                               Geom geom2=None):
+                           FlowState flowOut,
+                           int N,
+                           Geom geom,
+                           double L,
+                           double W,
+                           HxFlowConfig flowConfig,
+                           bint is_wf=True,
+                           Geom geom2=None):
     """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Muley1999]_ Muley, A. and Manglik, R. M., Experimental Study of Turbulent Flow Heat Transfer and Pressure Drop in a Plate Heat Exchanger with Chevron Plates, Journal of Heat Transfer, vol. 121, no. 1, pp. 110–117, 1999.
 
 Data collected for: steam, 30<=beta<=60, 1<=phi<=1.5
@@ -232,12 +242,14 @@ dict of float : {"h", "f", "dpF"}
 
 
 cpdef dict yanLin_tpEvap(FlowState flowIn,
-                                 FlowState flowOut,
-                                 int N,
-                                 Geom geom,
-                                 double L,
-                                 double W,
-                                 Geom geom2=None):
+                         FlowState flowOut,
+                         int N,
+                         Geom geom,
+                         double L,
+                         double W,
+                         HxFlowConfig flowConfig,
+                         bint is_wf=True,
+                         Geom geom2=None):
     """Two-phase evaporation, heat and friction, valid for GeomHxPlateCorrChevron. [Yan1999]_ Yan, Y.-Y. & Lin, T.-F. Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger Journal of Heat Transfer Engineering, 1999, 121, 118-127. `doi:10.1115/1.2825924 <http://doi.org/10.1115/1.2825924>`_
 
 Data collected for: R134a, beta=60deg, 2000<Re<8000.
@@ -277,12 +289,14 @@ dict of float : {"h", "f", "dpF"}
 
 
 cpdef dict hanLeeKim_tpCond(FlowState flowIn,
-                                       FlowState flowOut,
-                                       int N,
-                                       Geom geom,
-                                       double L,
-                                       double W,
-                                       Geom geom2=None):
+                            FlowState flowOut,
+                            int N,
+                            Geom geom,
+                            double L,
+                            double W,
+                            HxFlowConfig flowConfig,
+                            bint is_wf=True,
+                            Geom geom2=None):
     r"""Two-phase condensation, heat and friction, valid for GeomHxPlateCorrChevron.Data collected for: R410A and R22, with beta = 45, 35, 20deg. [Han2003]_ Han, D.-H.; Lee, K.-J. & Kim, Y.-H. The Characteristics of Condensation in Brazed Plate Heat Exchangers with Different Chevron Angles Korean Physical Society, 2003, 43, 66-73.
 
 Returns
@@ -325,13 +339,15 @@ dict of float : {"h", "f", "dpF"}
 
 
 cpdef dict manglikBergles_offset_sp(FlowState flowIn,
-                                          FlowState flowOut,
-                                          int N,
-                                          Geom geom,
-                                          double L,
-                                          double W,
-                                          Geom geom2=None):
-    """Single-phase and two-phase (evaporation and condensation), heat and friction, valid for GeomHxPlateFinOffset. [Manglik1995]_ Manglik and Bergles, Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger, Experimental Thermal and Fluid Science, Elsevier, 1995, 10, pp. 171-180. `doi:10.1016/0894-1777(94)00096-q <http://doi.org/10.1016/0894-1777(94)00096-q>`_.
+                                    FlowState flowOut,
+                                    int N,
+                                    Geom geom,
+                                    double L,
+                                    double W,
+                                    HxFlowConfig flowConfig,
+                                    bint is_wf=True,
+                                    Geom geom2=None):
+    """Single-phase and two-phase (evaporation and condensation), heat and friction, valid for GeomHxPlateFinOffset. [Manglik1995]_ Manglik and Bergles, Heat transfer and pressure drop correlations for the rectangular offset strip fin compact heat exchanger, Experimental Thermal and Fluid Science, Elsevier, 1995, 10, pp. 171-180. `doi:10.1016/0894-1777(94)00096-Q <http://doi.org/10.1016/0894-1777(94)00096-Q>`_.
 
 Returns
 -------
@@ -361,7 +377,9 @@ dict of float : {"h", "f", "dpF"}
     cdef double j = 0.6522 * (Re**-0.5403) * (alpha**-0.1541) * (delta**0.1499) * (
         gamma**-0.0678) * (1 + 5.269e-5 * (Re**1.340) * (alpha**0.504) *
                            (delta**0.456) * (gamma**-1.055))**0.1
-    cdef double h = j * avg.cp() * G / (avg.Pr()**(2 / 3))
+    #cdef double h = j * avg.cp() * G / (avg.Pr()**(2 / 3))
+    cdef double Nu = j*Re*(avg.Pr()**(1 / 3))
+    cdef double h = htc(Nu, avg.k(), Dh)
     # dpF = dpf(f, G, geom.l, Dh, avg.rho())
     cdef double dpF = dpf(f, G, L, Dh, avg.rho(), 1)
     return {"h": h, "f": f, "dpF": dpF}
@@ -396,6 +414,8 @@ cpdef dict dittusBoelter_sp_h(FlowState flowIn,
                               Geom geom,
                               double L,
                               double W,
+                              HxFlowConfig flowConfig,
+                              bint is_wf=True,
                               Geom geom2=None):
     """Single-phase, heat, valid for GeomDuctCircular, GeomHxPlateSmooth. [Kakaç1998]_ Kakaç, S. & Liu, H. Heat exchangers : selection, rating, and thermal design, CRC Press, 1998.
 
@@ -420,13 +440,15 @@ dict of float : {"h"}
     h = htc(Nu, avg.k(), De)
     return {"h": h}
 
-def shah_sp_h(flowIn=None,
-                  flowOut=None,
-                  N=None,
-                  geom=None,
-                  L=None,
-                  W=None,
-                  **kwargs):
+def shah_sp_h(flowIn,
+              flowOut,
+              N,
+              geom,
+              L,
+              W,
+              HxFlowConfig flowConfig,
+              bint is_wf=True,
+              **kwargs):
     """Single-phase, heat, valid for GeomDuctCircular, GeomHxPlateSmooth. [Kakaç1998]_ Kakaç, S. & Liu, H. Heat exchangers : selection, rating, and thermal design, CRC Press, 1998.
 
 Returns
@@ -456,12 +478,14 @@ dict of float : {"h"}
 
 
 cpdef dict gnielinski_sp(FlowState flowIn,
-                             FlowState flowOut,
-                             int N,
-                             Geom geom,
-                             double L,
-                             double W,
-                             Geom geom2=None):
+                         FlowState flowOut,
+                         int N,
+                         Geom geom,
+                         double L,
+                         double W,
+                         HxFlowConfig flowConfig,
+                         bint is_wf=True,
+                         Geom geom2=None):
     """Single-phase, heat and friction, valid for GeomDuctCircular, GeomHxPlateSmooth. [Gnielinski1976]_ V. Gnielinski, "New Equations for Heat and Mass Transfer in Turbulent Pipe and Channel Flow," Int. Chem. Eng., (16): 359-368, 1976.
 
 Returns
@@ -546,8 +570,9 @@ cpdef dict gungorWinterton_tpEvap_h(FlowState flowIn,
                                     Geom geom,
                                     double L,
                                     double W,
-                                    Geom geom2=None,
-                                    vertical=False):
+                                    HxFlowConfig flowConfig,
+                                    bint is_wf=True,
+                                    Geom geom2=None):
     r"""Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Gungor1987]_ K. E. Gungor and R. H. S. Winterton, “Simplified general correlation for saturated flow boiling and comparison with data,” Chemical Engineering Research and Design, vol. 65, no. 2, pp. 148-–156, 1987. As cited  in [Zhou2013]_ Z. Zhou, X. Fang , D. Li , "Evaluation of Correlations of Flow Boiling Heat Transfer of R22 in Horizontal Channels,"The Scientific World Journal, vol. 2013, Article ID 458797, 14 pages, doi:10.1155/2013/458797
 
 Returns
@@ -557,7 +582,11 @@ dict of float : {"h"}
     assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
         geom, "gungorWinterton_tpEvap_h")
     cdef double Dh, De, Ac, As
-    
+    cdef bint vertical
+    if is_wf:
+        vertical = flowConfig.verticalWf
+    else:
+        vertical = flowConfig.verticalSf        
     if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
         Dh = 2 * geom.b  # *W/(geom.b+W)
         De = Dh
@@ -589,14 +618,15 @@ dict of float : {"h"}
     cdef h_tp = h_spl*(S*S2 + F*F2)
     return {"h":h_tp}
 
-def shah_tpEvap_h(flowIn=None,
-                        flowOut=None,
-                        N=None,
-                        geom=None,
-                        L=None,
-                        W=None,
-                        vertical=False,
-                        **kwargs):
+def shah_tpEvap_h(flowIn,
+                  flowOut,
+                  N,
+                  geom,
+                  L,
+                  W,
+                  HxFlowConfig flowConfig,
+                  bint is_wf=True,
+                  **kwargs):
     """Two-phase evporation, heat, valid for GeomDuctCircular, GeomHxPlateSmooth. [Shah1976]_ Shah, M. M. A new correlation for heat transfer during boiling flow through pipes Ashrae Trans., 1976, 82, 66-86.
 
 Returns
@@ -605,6 +635,11 @@ dict of float : {"h"}
     """
     assert type(geom) in [gms.GeomHxPlateSmooth], _assertGeomErrMsg(
         geom, "shah_tpEvap_h")
+    cdef bint vertical
+    if is_wf:
+        vertical = flowConfig.verticalWf
+    else:
+        vertical = flowConfig.verticalSf 
     if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
         Dh = 2 * geom.b  # *W/(geom.b+W)
         De = Dh

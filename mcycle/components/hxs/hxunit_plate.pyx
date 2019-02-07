@@ -5,6 +5,7 @@ from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ...methods import heat_transfer as ht
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
+from .flowconfig cimport HxFlowConfig
 from warnings import warn
 from math import nan
 import CoolProp as CP
@@ -12,7 +13,7 @@ import numpy as np
 import scipy.optimize as opt
 
 cdef str method
-cdef dict _inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"), 
@@ -25,8 +26,8 @@ cdef class HxUnitPlate(HxUnitBasicPlanar):
 
 Parameters
 ----------
-flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
+flowConfig : HxFlowConfig, optional
+    Flow configuration/arrangement information. See :meth:`mcycle.bases.component.HxFlowConfig`.
 NPlate : int, optional
     Number of parallel plates [-]. Defaults to 3.
 RfWf : float, optional
@@ -83,7 +84,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counter",
+                 HxFlowConfig flowConfig=HxFlowConfig(),
                  int NPlate=3,
                  double RfWf=0,
                  double RfSf=0,
@@ -106,8 +107,7 @@ kwargs : optional
                  str name="HxUnitPlateCorrugated instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
-        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
-        super().__init__(flowSense, -1, -1, NPlate, nan, nan, RfWf, RfSf,
+        super().__init__(flowConfig, -1, -1, NPlate, nan, nan, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
@@ -155,7 +155,10 @@ kwargs : optional
             N=self._NWf(),
             geom=self.geomPlateWf,
             L=self.L,
-            W=self.W)["h"]
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=False,
+            geom2=self.geomPlateSf)["h"]
 
     cpdef public double _hSf(self):
         """float: Heat transfer coefficient of a secondary fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -168,7 +171,10 @@ kwargs : optional
             N=self._NSf(),
             geom=self.geomPlateSf,
             L=self.L,
-            W=self.W)["h"]
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=True,
+            geom2=self.geomPlateSf)["h"]
 
     cpdef public double _fWf(self):
         """float: Fanning friction factor of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -181,7 +187,10 @@ kwargs : optional
             N=self._NWf(),
             geom=self.geomPlateWf,
             L=self.L,
-            W=self.W)["f"]
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=True,
+            geom2=self.geomPlateSf)["f"]
 
     cpdef public double _fSf(self):
         """float: Fanning friction factor of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -194,7 +203,10 @@ kwargs : optional
             N=self._NSf(),
             geom=self.geomPlateSf,
             L=self.L,
-            W=self.W)["f"]
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=False,
+            geom2=self.geomPlateSf)["f"]
 
     cpdef public double _dpFWf(self):
         """float: Frictional pressure drop of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -207,12 +219,24 @@ kwargs : optional
             N=self._NWf(),
             geom=self.geomPlateWf,
             L=self.L,
-            W=self.W)["dpF"]
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=False,
+            geom2=self.geomPlateSf)["dpF"]
 
     cpdef public double _dpFSf(self):
         """float: Frictional pressure drop of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__, (self.geomPlateSf.__class__.__name__, "friction", self.phaseSf(), "sf"))
-        return getattr(ht, method)(flowIn=self.flowsIn[1], flowOut=self.flowsOut[1], N=self._NSf(), geom=self.geomPlateSf, L=self.L, W=self.W)["dpF"]
+        return getattr(ht, method)(
+            flowIn=self.flowsIn[1],
+            flowOut=self.flowsOut[1],
+            N=self._NSf(),
+            geom=self.geomPlateSf,
+            L=self.L,
+            W=self.W,
+            flowConfig=self.flowConfig,
+            is_wf=False,
+            geom2=self.geomPlateWf)["dpF"]
 
     cpdef public double U(self):
         """float: Overall heat transfer coefficient of the unit [W/m^2.K]."""

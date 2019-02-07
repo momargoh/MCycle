@@ -5,7 +5,7 @@ import CoolProp as CP
 
 class TestHxUnitPlateCorrChevron(unittest.TestCase):
     hxUnit = mc.HxUnitPlate(
-        flowSense="counter",
+        flowConfig=mc.HxFlowConfig("counter", "1", True, True),
         NPlate=23,
         RfWf=0,
         RfSf=0,

@@ -85,7 +85,7 @@ _tolAbs_x : float, optional
                  bint dpHeadWf=True,
                  bint dpHeadSf=True,
                  bint dpPortWf=True,
-                 bint dpPortSf=None,
+                 bint dpPortSf=True,
                  double dpPortInFactor=nan,
                  double dpPortOutFactor=nan,
                  unsigned short maxWalls = 200,

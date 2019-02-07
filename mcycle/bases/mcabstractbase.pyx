@@ -28,21 +28,12 @@ name : str, optional
     Descriptive name for the class instance. Defaults to "".
     """
     
-    def __init__(self):
+    def __cinit__(self):
         self._inputs = {}
         self._properties = {}
-        #self.name = "" 
 
     cpdef public list _inputKeys(self):
-        return list(self._inputs.keys())
-    """
-        cdef list ilist = []
-        cdef str k
-        for k, v in self._inputs.items():
-            ilist.append(k)
-        return ilist
-    """
-    
+        return list(self._inputs.keys())    
 
     cpdef public list _inputValues(self):
         cdef list ilist = []
@@ -72,7 +63,7 @@ Parameters
 -----------
 kwargs : dict
     Dictionary of attributes and their updated value."""
-        copy = self.__class__(*self._inputValues())
+        cdef MCAB copy = self.__class__(*self._inputValues())
         if kwargs != {}:
             copy.update(kwargs)
         return copy

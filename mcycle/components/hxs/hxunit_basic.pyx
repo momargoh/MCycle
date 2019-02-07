@@ -6,13 +6,14 @@ from ...bases.solidmaterial cimport SolidMaterial
 from ...DEFAULTS import TOLABS_X
 from ...methods.heat_transfer cimport lmtd
 from ...logger import log
+from .flowconfig cimport HxFlowConfig
 from warnings import warn
 from math import nan
 import CoolProp as CP
 import numpy as np
 import scipy.optimize as opt
 
-cdef dict _inputs = {"flowSense": MCAttr(str, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
                         "NWall": MCAttr(int, "none"), "hWf": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
                         "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "A": MCAttr(float, "area"),
@@ -30,8 +31,8 @@ cdef class HxUnitBasic(Component22):
 
 Parameters
 ----------
-flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
+flowConfig : HxFlowConfig, optional
+    Flow configuration/arrangement information. See :meth:`mcycle.bases.component.HxFlowConfig`.
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -87,7 +88,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counter",
+                 HxFlowConfig flowConfig=HxFlowConfig(),
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -111,10 +112,9 @@ kwargs : optional
                  str name="HxUnitBasic instance",
                  str  notes="No notes/model info.",
                  Config config=Config()):
-        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)        
         super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, None, sizeAttr,
                          sizeBounds, [], [0, 0], name, notes, config)
-        self.flowSense = flowSense
+        self.flowConfig = flowConfig
         self.NWf = NWf
         self.NSf = NSf
         self.NWall = NWall
@@ -333,7 +333,7 @@ kwargs : optional
 
     cpdef public double lmtd(self):
         """float: Log-mean temperature difference [K]."""
-        return lmtd(self.flowsIn[0].T(), self.flowsOut[0].T(), self.flowsIn[1].T(), self.flowsOut[1].T(), self.flowSense)
+        return lmtd(self.flowsIn[0].T(), self.flowsOut[0].T(), self.flowsIn[1].T(), self.flowsOut[1].T(), self.flowConfig.sense)
 
     cdef public double Q_lmtd(self):
         """float: Absolute value of heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""

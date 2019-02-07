@@ -6,6 +6,7 @@ from ...bases.solidmaterial cimport SolidMaterial
 from ...DEFAULTS import TOLABS_X
 from ...logger import log
 from .hxunit_basic cimport HxUnitBasic
+from .flowconfig cimport HxFlowConfig
 import CoolProp as CP
 from warnings import warn
 from math import nan
@@ -13,7 +14,7 @@ import numpy as np
 cimport numpy as np
 import scipy.optimize as opt
 
-cdef dict _inputs = {"flowSense": MCAttr(str, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
                         "NWall": MCAttr(int, "none"), "hWf_liq": MCAttr(float, "htc"), "hWf_tp": MCAttr(float, "htc"),
                         "hWf_vap": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
@@ -32,8 +33,8 @@ cdef class HxBasic(Component22):
 
 Parameters
 ----------
-flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
+flowConfig : HxFlowConfig, optional
+    Flow configuration/arrangement information. See :meth:`mcycle.bases.component.HxFlowConfig`.
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -97,7 +98,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counter",
+                 HxFlowConfig flowConfig=HxFlowConfig(),
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -127,8 +128,7 @@ kwargs : optional
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitBasic):
-        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
-        self.flowSense = flowSense
+        self.flowConfig = flowConfig
         self.NWf = NWf
         self.NSf = NSf
         self.NWall = NWall
@@ -264,11 +264,11 @@ kwargs : optional
                 ifbool = False
         #if all(self._units[i].flowsIn[0] == self._units[i - 1].flowsOut[0] for i in range(1, len(self._units))):
         if ifbool:
-            if "counter" in self.flowSense.lower() and all(
+            if self.flowConfig.sense == "counter" and all(
                     self._units[i].flowsOut[1] == self._units[i - 1].flowsIn[1]
                     for i in range(1, len(self._units))):
                 return True
-            elif "parallel" in self.flowSense.lower() and all(
+            elif self.flowConfig.sense == "parallel" and all(
                     self._units[i].flowsIn[1] == self._units[i - 1].flowsOut[1]
                     for i in range(1, len(self._units))):
                 return True
@@ -284,20 +284,20 @@ kwargs : optional
 
     cdef public tuple _unitArgsLiq(self):
         """Arguments passed to single-phase liquid HxUnits in unitise()."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall,
                 self.hWf_liq, self.hSf, self.RfWf, self.RfSf, self.wall,
                 self.tWall, nan, self.ARatioWf, self.ARatioSf,
                 self.ARatioWall, self.effThermal)
 
     cdef public tuple _unitArgsTp(self):
         """Arguments passed to two-phase HxUnits in unitise()."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall, self.hWf_tp,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_tp,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
                 self.ARatioWf, self.ARatioSf, self.ARatioWall, self.effThermal)
 
     cdef public tuple _unitArgsVap(self):
         """Arguments passed to single-phase vapour HxUnits in unitise()."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall, self.hWf_vap,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_vap,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
                 self.ARatioWf, self.ARatioSf, self.ARatioWall, self.effThermal)
 
@@ -333,9 +333,9 @@ kwargs : optional
         cdef FlowState wf_i, wf_i1, sf_i, sf_i1
         cdef HxUnitBasic unit
         cdef double[:] hWf_unit, hSf_unit
-        if self.flowSense == "counter":
+        if self.flowConfig.sense == "counter":
             flowSense = 0
-        elif self.flowSense == "parallel":
+        elif self.flowConfig.sense == "parallel":
             flowSense = 1
         if isEvap:
             wfX0_obj = inWf

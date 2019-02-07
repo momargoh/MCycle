@@ -13,6 +13,7 @@ __pycache__/
 
 # C extensions
 *.so
+*.cpython-36m-x86_64-linux-gnu.so
 
 # Distribution / packaging
 .pypirc

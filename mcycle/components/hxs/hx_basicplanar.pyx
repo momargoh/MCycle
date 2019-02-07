@@ -1,5 +1,6 @@
 from .hx_basic cimport HxBasic
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
+from .flowconfig cimport HxFlowConfig
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
@@ -8,7 +9,7 @@ import CoolProp as CP
 from math import nan
 import scipy.optimize as opt
 
-cdef dict _inputs = {"flowSense": MCAttr(str, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
                         "NWall": MCAttr(int, "none"), "hWf_liq": MCAttr(float, "htc"), "hWf_tp": MCAttr(float, "htc"),
                         "hWf_vap": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
@@ -26,8 +27,8 @@ cdef class HxBasicPlanar(HxBasic):
 
 Parameters
 ----------
-flowSense : str, optional
-    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
+flowConfig : HxFlowConfig, optional
+    Flow configuration/arrangement information. See :meth:`mcycle.bases.component.HxFlowConfig`.
 NWf : int, optional
     Number of parallel working fluid channels [-]. Defaults to 1.
 NSf : int, optional
@@ -93,7 +94,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 str flowSense="counter",
+                 HxFlowConfig flowConfig=HxFlowConfig(),
                  int NWf=1,
                  int NSf=1,
                  int NWall=1,
@@ -124,10 +125,9 @@ kwargs : optional
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitBasicPlanar):
-        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         self.L = L
         self.W = W
-        super().__init__(flowSense, NWf, NSf, NWall, hWf_liq, hWf_tp, hWf_vap,
+        super().__init__(flowConfig, NWf, NSf, NWall, hWf_liq, hWf_tp, hWf_vap,
                          hSf, RfWf, RfSf, wall, tWall, L * W, ARatioWf,
                          ARatioSf, ARatioWall, effThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
@@ -144,21 +144,21 @@ kwargs : optional
 
     cdef public tuple _unitArgsLiq(self):
         """Arguments passed to HxUnits in the liquid region."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall, self.hWf_liq,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_liq,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, None,
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioWall,
                 self.effThermal)
 
     cdef public tuple _unitArgsTp(self):
         """Arguments passed to HxUnits in the two-phase region."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall, self.hWf_tp,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_tp,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, None,
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioWall,
                 self.effThermal)
 
     cdef public tuple _unitArgsVap(self):
         """Arguments passed to HxUnits in the vapour region."""
-        return (self.flowSense, self.NWf, self.NSf, self.NWall, self.hWf_vap,
+        return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_vap,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, None,
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioWall,
                 self.effThermal)

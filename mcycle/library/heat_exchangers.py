@@ -5,21 +5,23 @@ from .. import geometries as gms
 from . import materials as mats
 
 
-def alfaLaval_AC30EQ(flowSense="counter",
-                     flowInWf=None,
-                     flowInSf=None,
-                     flowOutWf=None,
-                     flowOutSf=None,
-                     ambient=None,
-                     sizeAttr="NPlate",
-                     sizeBounds=[3, 100],
-                     sizeUnitsBounds=[1e-5, 10.],
-                     name="HxPlate instance",
-                     config=Config(),
-                     kwargs={}):
+def alfaLaval_AC30EQ(
+        flowConfig=cps.hxs.HxFlowConfig(
+            sense="counter", passes="1", verticalWf=True, verticalSf=True),
+        flowInWf=None,
+        flowInSf=None,
+        flowOutWf=None,
+        flowOutSf=None,
+        ambient=None,
+        sizeAttr="NPlate",
+        sizeBounds=[3, 100],
+        sizeUnitsBounds=[1e-5, 10.],
+        name="HxPlate instance",
+        config=Config(),
+        kwargs={}):
     """Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf"""
     hx = cps.HxPlate(
-        flowSense=flowSense,
+        flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,
@@ -56,21 +58,23 @@ def alfaLaval_AC30EQ(flowSense="counter",
     return hx
 
 
-def alfaLaval_CBXP27(flowSense="counter",
-                     flowInWf=None,
-                     flowInSf=None,
-                     flowOutWf=None,
-                     flowOutSf=None,
-                     ambient=None,
-                     sizeAttr="NPlate",
-                     sizeBounds=[3, 100],
-                     sizeUnitsBounds=[1e-5, 10.],
-                     name="HxPlate instance",
-                     config=Config(),
-                     kwargs={}):
+def alfaLaval_CBXP27(
+        flowConfig=cps.hxs.HxFlowConfig(
+            sense="counter", passes="1", verticalWf=True, verticalSf=True),
+        flowInWf=None,
+        flowInSf=None,
+        flowOutWf=None,
+        flowOutSf=None,
+        ambient=None,
+        sizeAttr="NPlate",
+        sizeBounds=[3, 100],
+        sizeUnitsBounds=[1e-5, 10.],
+        name="HxPlate instance",
+        config=Config(),
+        kwargs={}):
     """Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf"""
     hx = cps.HxPlate(
-        flowSense=flowSense,
+        flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,

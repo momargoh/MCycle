@@ -4,7 +4,8 @@ import CoolProp as CP
 
 
 class TestHxUnitBasic(unittest.TestCase):
-    hxUnit = mc.HxUnitBasic(flowSense="counter")
+    hxUnit = mc.HxUnitBasic(
+        flowConfig=mc.HxFlowConfig("counter", "1", True, True))
 
     def test_phaseWf_tpEvap_with_x_0(self):
         flowInWf = mc.FlowState("R123", -1, -1, CP.PQ_INPUTS, 1000000., 0)

@@ -35,31 +35,32 @@ class TestFlowState(unittest.TestCase):
 
     def test_RefData_error_len_data(self):
         with self.assertRaises(ValueError):
-            refData = mc.RefData("air", 2, 101325., {
-                'T': [200, 250, 300, 350, 400],
-                'h': [0.1, 0.1, 0.1],
-                'rho': [0.1, 0.1, 0.1],
-                's': [0.1, 0.1, 0.1],
-                'visc': [0.1, 0.1, 0.1],
-                'k': [0.1, 0.1, 0.1],
-                'cp': [0.1, 0.1, 0.1],
-                'Pr': [0.1, 0.1, 0.1]
-            })
+            mc.RefData(
+                "air", 2, 101325., {
+                    'T': [200, 250, 300, 350, 400],
+                    'h': [0.1, 0.1, 0.1],
+                    'rho': [0.1, 0.1, 0.1],
+                    's': [0.1, 0.1, 0.1],
+                    'visc': [0.1, 0.1, 0.1],
+                    'k': [0.1, 0.1, 0.1],
+                    'cp': [0.1, 0.1, 0.1]
+                })
 
     def test_FlowStatePoly(self):
-        refData = mc.RefData("air", 2, 101325.,
-                             {'T': [200, 250, 300, 350, 400]})
+        refData = mc.RefData("air", 2, 101325., {
+            'T': [200, 250, 300, 350, 400]
+        })
         flow = mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 101325., 293.15)
         self.assertAlmostEqual(flow.rho() - 1.205, 0, 3)
         self.assertAlmostEqual(flow.cp() / 1000 - 1.006, 0, 3)
         self.assertAlmostEqual(flow.k() - 0.0257, 0, 3)
 
     def test_FlowStatePoly_error_pressure(self):
-        refData = mc.RefData("air", 2, 101325.,
-                             {'T': [200, 250, 300, 350, 400]})
+        refData = mc.RefData("air", 2, 101325., {
+            'T': [200, 250, 300, 350, 400]
+        })
         with self.assertRaises(ValueError):
-            flow = mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 201325.,
-                                    293.15)
+            mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 201325., 293.15)
 
 
 if __name__ == "__main__":

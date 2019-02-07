@@ -10,7 +10,32 @@ CHANGELOG
 
 - The latest version of MCycle will be uploaded to PyPI once the cross-platform build requirements are sorted (looking into using skbuild).
 - It is planned to be able to choose alternative thermodynamic properties backends (such as `thermo <https://pypi.org/project/thermo/>`_)
+- Error checking for HxFlowConfig
   
+[1.0.2] - 16/01/2019
+------------------------
+
+Added
+*******
+
+- ``library.conversions`` significantly expanded and reorganised. A couple of functions have has slight name changes.
+- ``DEFAULTS.TRY_BUILD_PHASE_ENVELOPE``: whether CoolProp should always try to build the phase envelope for mixtures
+
+Changed
+********
+
+- ``flowSense`` attribute of heat exchangers expanded to HxFlowConfig class, which now stores more info: sense, passes, vertical or horizontal
+
+Deprecated
+***********
+
+Removed
+*********
+
+- ``Pr`` data key removed from ``RefData.data`` attribute as it's not an explicit property
+
+Fixed
+******
 
 [1.0.1] - 04/09/2018
 ------------------------
@@ -18,7 +43,7 @@ CHANGELOG
 Added
 *******
 
-- components.general for non-specific/non-realistic components. Currently just contains FixedOut
+- 
 
 Changed
 ********

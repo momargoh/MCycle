@@ -351,20 +351,20 @@ kwargs : optional
             pass
 
     cpdef public FlowState _source1(self):
-        if self.evap.flowSense == "counter":
+        if self.evap.flowConfig.sense == "counter":
             return self._sourceOut()
-        elif self.evap.flowSense == "parallel":
+        elif self.evap.flowConfig.sense == "parallel":
             return self._sourceIn()
         else:
             return None
 
     cpdef public FlowState _source20(self):
         cdef double h
-        if self.evap.flowSense == "counter":
+        if self.evap.flowConfig.sense == "counter":
             h = self._source1().h() + self._mWf() * self.evap._effFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._effFactorSf()
-        elif self.evap.flowSense == "parallel":
+        elif self.evap.flowConfig.sense == "parallel":
             h = self._source1().h() - self._mWf() * self.evap._effFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._effFactorSf()
@@ -374,11 +374,11 @@ kwargs : optional
 
     cpdef public FlowState _source21(self):
         cdef double h
-        if self.evap.flowSense == "counter":
+        if self.evap.flowConfig.sense == "counter":
             h = self._source1().h() + self._mWf() * self.evap._effFactorSf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._effFactorSf()
-        elif self.evap.flowSense.lower() == "parallel":
+        elif self.evap.flowConfig.sense == "parallel":
             h = self._source1().h() - self._mWf() * self.evap._effFactorWf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._effFactorSf()
@@ -387,9 +387,9 @@ kwargs : optional
         return self._sourceIn().copyState(CP.HmassP_INPUTS, h, self._sourceIn().p())
 
     cpdef public FlowState _source3(self):
-        if self.evap.flowSense == "counter":
+        if self.evap.flowConfig.sense == "counter":
             return self._sourceIn()
-        elif self.evap.flowSense == "parallel":
+        elif self.evap.flowConfig.sense == "parallel":
             return self._sourceOut()
         else:
             return None
@@ -463,28 +463,28 @@ kwargs : optional
         self.cond.flowsOut[1] = obj
 
     cpdef public FlowState _sink4(self):
-        if self.cond.flowSense == "counter":
+        if self.cond.flowConfig.sense == "counter":
             return self._sinkOut()
-        elif self.cond.flowSense == "parallel":
+        elif self.cond.flowConfig.sense == "parallel":
             return self._sinkIn()
         else:
             return None
         
     cpdef public FlowState _sink6(self):
-        if self.cond.flowSense == "counter":
+        if self.cond.flowConfig.sense == "counter":
             return self._sinkIn()
-        elif self.cond.flowSense == "parallel":
+        elif self.cond.flowConfig.sense == "parallel":
             return self._sinkOut()
         else:
             return None
     
     cpdef public FlowState _sink50(self):
         cdef double h
-        if self.cond.flowSense == "counter":
+        if self.cond.flowConfig.sense == "counter":
             h = self._sink4().h() - self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._effFactorSf()
-        elif self.cond.flowSense == "parallel":
+        elif self.cond.flowConfig.sense == "parallel":
             h = self._sink4().h() + self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._effFactorSf()
@@ -494,11 +494,11 @@ kwargs : optional
 
     cpdef public FlowState _sink51(self):
         cdef double h
-        if self.cond.flowSense == "counter":
+        if self.cond.flowConfig.sense == "counter":
             h = self._sink4().h() - self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._effFactorSf()
-        elif self.cond.flowSense == "parallel":
+        elif self.cond.flowConfig.sense == "parallel":
             h = self._sink4().h() + self._mWf() * self.cond._effFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._effFactorSf()
@@ -679,7 +679,7 @@ kwargs : optional
     cpdef public double _pptdEvap(self):
         """float: Pinch-point temperature difference of evaporator"""
         if issubclass(type(self.evap), HxBasic):
-            if self.evap.flowSense == "counter":
+            if self.evap.flowConfig.sense == "counter":
                 if self._state1() and self._state20() and self._source1() and self._source20():
                     return min(self._source20().T() - self._state20().T(),
                                self._source1().T() - self._state1().T())
@@ -687,8 +687,8 @@ kwargs : optional
                 else:
                     warn("run() or size() has not been executed")
             else:
-                warn("pptdEvap is not a valid for flowSense = {}".format(
-                    type(self.evap.flowSense)))
+                warn("pptdEvap is not a valid for flowConfig.sense = {}".format(
+                    type(self.evap.flowConfig.sense)))
         else:
             warn("pptdEvap is not a valid attribute for a {} evaporator".
                  format(type(self.evap)))
@@ -750,7 +750,7 @@ kwargs : optional
     def pptdCond(self):
         """float: Pinch-point temperature difference of condenser"""
         if issubclass(type(self.cond), HxBasic):
-            if self.cond.flowSense == "counter":
+            if self.cond.flowConfig.sense == "counter":
 
                 if self.state4 and self.state51 and self.sink4 and self.sink51:
                     return min(self.state51.T() - self.sink51.T(),
@@ -759,8 +759,8 @@ kwargs : optional
                 else:
                     print("run() or size() has not been executed")
             else:
-                print("pptdEvap is not a valid for flowSense = {0}".format(
-                    type(self.evap.flowSense)))
+                print("pptdEvap is not a valid for flowConfig.sense = {0}".format(
+                    type(self.evap.flowConfig.sense)))
         else:
             print("pptdEvap is not a valid attribute for a {0} condenser".
                   format(type(self.cond)))
@@ -1153,7 +1153,7 @@ marker : str, optional
                            self.source1], [self.state20, self.source20],
                           [self.state21,
                            self.source21], [self.state3, self.source3]]
-            if self.evap.flowSense == "counter":
+            if self.evap.flowConfig.sense == "counter":
                 if self.source20.h() < self.source1.h():
                     plotSource.remove([self.state20, self.source20])
                 if self.source21.h() > self.source3.h():
@@ -1170,7 +1170,7 @@ marker : str, optional
         if issubclass(type(self.cond), HxBasic):
             plotSink = [[self.state6, self.sink6], [self.state50, self.sink50],
                         [self.state51, self.sink51], [self.state4, self.sink4]]
-            if self.cond.flowSense == "counter":
+            if self.cond.flowConfig.sense == "counter":
                 if self.sink51.h() > self.sink4.h():
                     plotSink.remove([self.state51, self.sink51])
                 if self.sink50.h() < self.sink6.h():

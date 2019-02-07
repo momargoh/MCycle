@@ -30,5 +30,4 @@ cdef class Component11(Component):
 
 
 cdef class Component22(Component):
-
     cpdef public double _mSf(self)

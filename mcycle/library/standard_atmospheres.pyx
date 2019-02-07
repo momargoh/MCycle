@@ -34,21 +34,21 @@ altitude : float
 pStag : float, optional
     Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.
 TStag : float, optional
-    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 101325.
+    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.
 g : float, optional
     Acceleration due to gravity [m/s^2]. Assumed to be constant. Defaults to 9.80665.
 R : float, optional
-    Specific gas constant of air [J/Kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.
+    Specific gas constant of air [J/kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.
 """
     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
         altitude)
     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
         altitude)
-    cdef list refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
-    cdef list refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+    cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+    cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
     cdef double _pStag = pStag
     cdef double _TStag = TStag
-    cdef int i = 0
+    cdef size_t i = 0
     while i < len(refAltitude) - 1:
         if altitude <= refAltitude[i + 1]:
             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],

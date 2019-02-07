@@ -3,9 +3,10 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.solidmaterial cimport SolidMaterial
 from .hxunit_basic cimport HxUnitBasic
+from .flowconfig cimport HxFlowConfig
 
 cdef class HxBasic(Component22):
-    cpdef public str flowSense
+    cpdef public HxFlowConfig flowConfig
     cpdef public int NWf
     cpdef public int NSf
     cpdef public int NWall

@@ -69,7 +69,7 @@ Parameters
 -----------
 kwargs : dict
     Dictionary of attributes and their updated value."""
-        copy = self.__class__(*self._inputValues())
+        cdef MCAB copy = self.__class__(*self._inputValues())
         if kwargs != {}:
             copy.update(kwargs)
         try: # copy _units if relevant
@@ -499,7 +499,7 @@ kwargs : optional
                  str sizeAttr="",
                  list sizeBounds=[],
                  list sizeUnitsBounds=[],
-                 runBounds = [nan, nan],
+                 list runBounds = [nan, nan],
                  str name="Component22 instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
@@ -546,4 +546,3 @@ kwargs : optional
         for flow in [self.flowInSf, self.flowOutSf]:
             if flow is not None:
                 flow.m = value
-

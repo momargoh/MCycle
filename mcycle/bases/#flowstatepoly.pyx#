@@ -6,7 +6,7 @@ import CoolProp as CP
 from math import nan, isnan
 import numpy as np
 
-cdef dict _inputs = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
+cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
                 "_inputPairCP": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
                         "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
 cdef dict _properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
@@ -60,7 +60,7 @@ Examples
     def __init__(self,
                   RefData refData,
                   double m=nan,
-                  int inputPairCP=0,
+                  unsigned short inputPairCP=0,
                   double input1=nan,
                   double input2=nan,
                   str name="FlowStatePoly instance"):
@@ -76,7 +76,7 @@ Examples
         self._inputProperty = ''
         self._inputValue = nan
         self._validateInputs()
-        self._inputs = _inputs
+        self._inputs = _inputsPoly
         self._properties = _properties
 
         
@@ -294,10 +294,10 @@ phaseCP : int, optional
 
     def __init__(self,
                   str fluid,
-                  int deg,
+                  unsigned short deg,
                   double p,
                   dict data,
-                  int phaseCP=-1):
+                  short phaseCP=-1):
         self.fluid = fluid
         self.phaseCP = phaseCP
         self.deg = deg

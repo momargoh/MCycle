@@ -1,31 +1,28 @@
 from .hxunit_basic cimport HxUnitBasic
 from .hx_basicplanar cimport HxBasicPlanar
 from .hxunit_plate cimport HxUnitPlate
-from .flowconfig cimport HxFlowConfig
 from ...bases.config cimport Config
 from ...bases.component cimport Component22
 from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...logger import log
 from warnings import warn
 from math import nan, isnan, pi
 import scipy.optimize as opt
 import CoolProp as CP
 
-cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs = {"flowSense": MCAttr(str, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
-cdef str msg
 
-cdef class HxPlate(HxBasicPlanar):
+cdef class HxPlateFin(HxBasicPlanar):
     r"""Characterises a basic plate heat exchanger consisting of alternating working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.
 
 Parameters
 ----------
-flowConfig : HxFlowConfig, optional
-    Flow configuration/arrangement information. See :meth:`mcycle.bases.component.HxFlowConfig`.
+flowSense : str, optional
+    Relative direction of the working and secondary flows. May be either "counter" or "parallel". Defaults to "counter".
 RfWf : float, optional
     Thermal resistance due to fouling on the working fluid side. Defaults to 0.
 RfSf : float, optional
@@ -86,7 +83,7 @@ sizeBounds : float or list of float, optional
 sizeUnitsBounds : float or list of float, optional
     Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
-    Description of object. Defaults to "HxPlate instance".
+    Description of object. Defaults to "HxPlateFin instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
@@ -96,7 +93,7 @@ kwargs : optional
     """
 
     def __init__(self,
-                 HxFlowConfig flowConfig=HxFlowConfig(),
+                 str flowSense="counter",
                  int NPlate=3,
                  double RfWf=0,
                  double RfSf=0,
@@ -126,10 +123,11 @@ kwargs : optional
                  list sizeBounds=[3, 100],
                  list sizeUnitsBounds=[1e-5, 10.],
                  runBounds=[nan, nan],
-                 str name="HxPlate instance",
+                 str name="HxBasic instance",
                  str notes="No notes/model info.",
                  Config config=Config(),
                  _unitClass=HxUnitPlate):
+        assert flowSense != "counter" or flowSense != "parallel", "{} is not a valid value for flowSense; must be 'counter' or 'parallel'.".format(flowSense)
         self.geomPlateWf = geomPlateWf
         self.geomPlateSf = geomPlateSf
         self.DPortWf = DPortWf
@@ -139,7 +137,7 @@ kwargs : optional
         self.coeffs_LPlate = coeffs_LPlate
         self.coeffs_WPlate = coeffs_WPlate
         self.coeffs_weight = coeffs_weight
-        super().__init__(flowConfig, -1, -1, NPlate, nan, nan, nan, nan,
+        super().__init__(flowSense, -1, -1, NPlate, nan, nan, nan, nan,
                          RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
                          ARatioPlate, effThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
@@ -150,7 +148,7 @@ kwargs : optional
 
     cdef public tuple _unitArgsLiq(self):
         """Arguments passed to HxUnits in the liquid region."""
-        return (self.flowConfig, self.NPlate, self.RfWf, self.RfSf, self.plate,
+        return (self.flowSense, self.NPlate, self.RfWf, self.RfSf, self.plate,
                 self.tPlate, self.geomPlateWf, self.geomPlateSf, self.L,
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioPlate,
                 self.effThermal)
@@ -274,16 +272,16 @@ kwargs : optional
     cpdef public double dpHeadWf(self):
         """float: Static head pressure drop of the working fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards."""
         if self.isEvap():
-            return self.flowsOut[0].rho() * self.config.gravity * self._LVertPortWf()
+            return self.flowsOut[0].rho() * self.config.g * self._LVertPortWf()
         else:
-            return -self.flowsOut[0].rho() * self.config.gravity * self._LVertPortWf()
+            return -self.flowsOut[0].rho() * self.config.g * self._LVertPortWf()
 
     cpdef public double dpHeadSf(self):
         """float: Static head pressure drop of the secondary fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards."""
         if self.isEvap():
-            return -self.flowsOut[1].rho() * self.config.gravity * self._LVertPortSf()
+            return -self.flowsOut[1].rho() * self.config.g * self._LVertPortSf()
         else:
-            return self.flowsOut[1].rho() * self.config.gravity * self._LVertPortSf()
+            return self.flowsOut[1].rho() * self.config.g * self._LVertPortSf()
 
     cpdef public double dpWf(self):
         """float: Total pressure drop of the working fluid [Pa]."""
@@ -383,7 +381,7 @@ unitsBounds : float or list of float, optional
                 self.unitise()
                 self.NWall = self.size_NPlate()
             else:
-                super(HxPlate, self)._size(attr, bounds, unitsBounds)
+                super(HxPlateFin, self)._size(attr, bounds, unitsBounds)
         except AssertionError as err:
             raise err
         except:
