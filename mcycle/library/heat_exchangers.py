@@ -38,7 +38,7 @@ def alfaLaval_AC30EQ(
         DPortSf=0.0125,
         coeffs_LPlate=[0.056, 1],
         coeffs_WPlate=[0, 1],
-        coeffs_weight=[
+        coeffs_mass=[
             1. / (0.325 * 0.095 * 0.424e-3), 0.09 / (0.325 * 0.095 * 0.424e-3)
         ],
         effThermal=1.0,
@@ -91,7 +91,7 @@ def alfaLaval_CBXP27(
         DPortSf=0.0315,
         coeffs_LPlate=[0.060, 1],
         coeffs_WPlate=[0, 1],
-        coeffs_weight=[
+        coeffs_mass=[
             2. / (0.310 * 0.111 * 0.95e-3), 0.13 / (0.310 * 0.111 * 0.95e-3)
         ],
         effThermal=1.0,

@@ -14,7 +14,7 @@ from math import nan, isnan, pi
 import scipy.optimize as opt
 import CoolProp as CP
 
-cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_weight": MCAttr(list, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "DPortWf": MCAttr(float, "none"), "DPortSf": MCAttr(float, "none"), "LVertPortWf": MCAttr(float, "none"), "LVertPortSf": MCAttr(float, "none"), "coeffs_LPlate": MCAttr(list, "none"), "coeffs_WPlate": MCAttr(list, "none"),"coeffs_mass": MCAttr(list, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
 cdef str msg
@@ -58,11 +58,11 @@ coeffs_LPlate : list of float, optional
     Coefficients to calculate the total plate length from the length of the heat transfer area. LPlate = sum(coeffs_LPlate[i] * L**i). Defaults to [0, 1].
 coeffs_WPlate : list of float, optional
     Coefficients to calculate the total plate width from the width of the heat transfer area. wPlate = sum(coeffs_WPlate[i] * W**i). Defaults to [0, 1].
-coeffs_weight : list of float, optional
-    Coefficients to calculate the total weight of the plates from the number of plates and the plate volume.::
-        weight = sum(coeffs_weight[i] * NPlates**i)*(LPlate*WPlate*tPlate).
+coeffs_mass : list of float, optional
+    Coefficients to calculate the total mass of the plates from the number of plates and the plate volume.::
+        mass = sum(coeffs_mass[i] * NPlates**i)*(LPlate*WPlate*tPlate).
 
-    If None, the weight is approximated from the plate geometry. Defaults to None.
+    If None, the mass is approximated from the plate geometry. Defaults to None.
 effThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
@@ -115,7 +115,7 @@ kwargs : optional
                  double LVertPortSf=nan,
                  list coeffs_LPlate=[0, 1],
                  list coeffs_WPlate=[0, 1],
-                 list coeffs_weight=[],
+                 list coeffs_mass=[],
                  double effThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -138,7 +138,7 @@ kwargs : optional
         self.LVertPortSf = LVertPortSf
         self.coeffs_LPlate = coeffs_LPlate
         self.coeffs_WPlate = coeffs_WPlate
-        self.coeffs_weight = coeffs_weight
+        self.coeffs_mass = coeffs_mass
         super().__init__(flowConfig, -1, -1, NPlate, nan, nan, nan, nan,
                          RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
                          ARatioPlate, effThermal, flowInWf, flowInSf,
@@ -166,7 +166,7 @@ kwargs : optional
     cpdef public void update(self, dict kwargs):
         """Update (multiple) variables using keyword arguments."""
         for key, value in kwargs.items():
-            if key not in ["DPortWf", "DPortSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_weight"]:
+            if key not in ["DPortWf", "DPortSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_mass"]:
                 super(HxBasicPlanar, self).update({key: value})
             else:
                 super(Component22, self).update({key: value})
@@ -311,15 +311,15 @@ kwargs : optional
             dp += self.dpPortSf()
         return dp
 
-    cpdef public double weight(self):
-        """float: Approximate total weight of the heat exchanger plates [Kg], calculated as either
+    cpdef public double mass(self):
+        """float: Approximate total mass of the heat exchanger plates [Kg], calculated as either
 
-    - sum(coeffs_weight[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_weight is defined,
+    - sum(coeffs_mass[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_mass is defined,
     - or (LPlate*WPlate - 2(0.25*pi*DPortWf**2 + 0.25*pi*DPortSf**2))*tPlate*plate.rho*NPlate.
         """
-        cdef double weightPerVol
+        cdef double massPerVol
         cdef int i
-        if self.coeffs_weight == []:
+        if self.coeffs_mass == []:
             if self.coeffs_LPlate == [0, 1]:
                 return (self.L * self.WPlate()) * self.tWall * self.wall.rho * self.NWall
             else:
@@ -328,10 +328,10 @@ kwargs : optional
                 (0.25 * pi * self.DPortWf**2 + 0.25 * pi * self.DPortSf**
                  2)) * self.tWall * self.wall.rho * self.NWall
         else:
-            weightPerVol = 0.
-            for i in range(len(self.coeffs_weight)):
-                weightPerVol += self.coeffs_weight[i] * self.NWall**i
-            return weightPerVol * self.LPlate() * self.WPlate() * self.tWall
+            massPerVol = 0.
+            for i in range(len(self.coeffs_mass)):
+                massPerVol += self.coeffs_mass[i] * self.NWall**i
+            return massPerVol * self.LPlate() * self.WPlate() * self.tWall
 
     cpdef public int size_NPlate(self) except *:
         """int: size for NPlate that requires L to be closest to self.L"""

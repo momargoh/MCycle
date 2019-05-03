@@ -339,8 +339,8 @@ kwargs : optional
         """float: Absolute value of heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""
         return self.U() * self._A() * self.lmtd()
 
-    cpdef public double weight(self):
-        """float: Estimate of weight [Kg], based purely on wall properties."""
+    cpdef public double mass(self):
+        """float: Estimate of mass [Kg], based purely on wall properties."""
         return self._A() * self.ARatioWall * self.tWall * self.wall.rho * self.NWall
 
     cpdef public void run(self):

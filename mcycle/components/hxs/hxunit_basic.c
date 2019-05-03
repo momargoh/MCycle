@@ -1258,7 +1258,7 @@ struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic {
   double (*Q_lmtd)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *);
   double (*U)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
   double (*lmtd)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
-  double (*weight)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
+  double (*mass)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch);
   double (*_f_sizeHxUnitBasic)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, double, PyObject *);
 };
 static struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_vtabptr_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic;
@@ -1726,7 +1726,7 @@ int __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic__NSf(struct _
 double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_U(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_lmtd(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_Q_lmtd(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto*/
-double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_mass(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 void __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_run(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic__f_sizeHxUnitBasic(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, double __pyx_v_value, PyObject *__pyx_v_attr); /* proto*/
 void __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_sizeUnits(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds, int __pyx_skip_dispatch); /* proto*/
@@ -1831,6 +1831,7 @@ static const char __pyx_k_dpWf[] = "dpWf";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_lmtd[] = "lmtd";
 static const char __pyx_k_main[] = "__main__";
+static const char __pyx_k_mass[] = "mass";
 static const char __pyx_k_math[] = "math";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_none[] = "none";
@@ -1875,7 +1876,6 @@ static const char __pyx_k_satVap[] = "satVap";
 static const char __pyx_k_tpCond[] = "tpCond";
 static const char __pyx_k_tpEvap[] = "tpEvap";
 static const char __pyx_k_update[] = "update";
-static const char __pyx_k_weight[] = "weight";
 static const char __pyx_k_fouling[] = "fouling";
 static const char __pyx_k_phaseSf[] = "phaseSf";
 static const char __pyx_k_phaseWf[] = "phaseWf";
@@ -2048,6 +2048,7 @@ static PyObject *__pyx_n_s_logger;
 static PyObject *__pyx_n_u_mSf;
 static PyObject *__pyx_n_u_mWf;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_mass;
 static PyObject *__pyx_kp_u_mass_time;
 static PyObject *__pyx_n_s_math;
 static PyObject *__pyx_n_s_mcycle_components_hxs_hxunit_bas;
@@ -2112,7 +2113,6 @@ static PyObject *__pyx_n_s_wall;
 static PyObject *__pyx_n_u_wall;
 static PyObject *__pyx_n_s_warn;
 static PyObject *__pyx_n_s_warnings;
-static PyObject *__pyx_n_s_weight;
 static PyObject *__pyx_n_s_wrap;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_xtol;
@@ -2135,7 +2135,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_30_NSf(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_32U(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_34lmtd(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36weight(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36mass(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_38run(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_40sizeUnits(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_bounds); /* proto */
 static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_1N___get__(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self); /* proto */
@@ -8620,7 +8620,7 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_Q_lmtd(str
  *         """float: Absolute value of heat transfer rate to the working fluid [W] as calculated using the log-mean temperature difference method."""
  *         return self.U() * self._A() * self.lmtd()             # <<<<<<<<<<<<<<
  * 
- *     cpdef public double weight(self):
+ *     cpdef public double mass(self):
  */
   __pyx_r = ((((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->U(__pyx_v_self, 0) * ((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->_A(__pyx_v_self, 0)) * ((struct __pyx_vtabstruct_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->lmtd(__pyx_v_self, 0));
   goto __pyx_L0;
@@ -8642,13 +8642,13 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_Q_lmtd(str
 /* "mcycle/components/hxs/hxunit_basic.pyx":342
  *         return self.U() * self._A() * self.lmtd()
  * 
- *     cpdef public double weight(self):             # <<<<<<<<<<<<<<
- *         """float: Estimate of weight [Kg], based purely on wall properties."""
+ *     cpdef public double mass(self):             # <<<<<<<<<<<<<<
+ *         """float: Estimate of mass [Kg], based purely on wall properties."""
  *         return self._A() * self.ARatioWall * self.tWall * self.wall.rho * self.NWall
  */
 
-static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37weight(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37mass(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_mass(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self, int __pyx_skip_dispatch) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8656,14 +8656,14 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(str
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   double __pyx_t_5;
-  __Pyx_RefNannySetupContext("weight", 0);
+  __Pyx_RefNannySetupContext("mass", 0);
   /* Check if called by wrapper */
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_weight); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_mass); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37weight)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37mass)) {
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -8693,8 +8693,8 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(str
   }
 
   /* "mcycle/components/hxs/hxunit_basic.pyx":344
- *     cpdef public double weight(self):
- *         """float: Estimate of weight [Kg], based purely on wall properties."""
+ *     cpdef public double mass(self):
+ *         """float: Estimate of mass [Kg], based purely on wall properties."""
  *         return self._A() * self.ARatioWall * self.tWall * self.wall.rho * self.NWall             # <<<<<<<<<<<<<<
  * 
  *     cpdef public void run(self):
@@ -8705,8 +8705,8 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(str
   /* "mcycle/components/hxs/hxunit_basic.pyx":342
  *         return self.U() * self._A() * self.lmtd()
  * 
- *     cpdef public double weight(self):             # <<<<<<<<<<<<<<
- *         """float: Estimate of weight [Kg], based purely on wall properties."""
+ *     cpdef public double mass(self):             # <<<<<<<<<<<<<<
+ *         """float: Estimate of mass [Kg], based purely on wall properties."""
  *         return self._A() * self.ARatioWall * self.tWall * self.wall.rho * self.NWall
  */
 
@@ -8716,7 +8716,7 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(str
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("mcycle.components.hxs.hxunit_basic.HxUnitBasic.weight", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("mcycle.components.hxs.hxunit_basic.HxUnitBasic.mass", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -8724,26 +8724,26 @@ double __pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(str
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37weight(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36weight[] = "HxUnitBasic.weight(self) -> double\nfloat: Estimate of weight [Kg], based purely on wall properties.";
-static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37weight(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37mass(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36mass[] = "HxUnitBasic.mass(self) -> double\nfloat: Estimate of mass [Kg], based purely on wall properties.";
+static PyObject *__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37mass(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("weight (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36weight(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("mass (wrapper)", 0);
+  __pyx_r = __pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36mass(((struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36weight(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36mass(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("weight", 0);
+  __Pyx_RefNannySetupContext("mass", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_mass(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8752,7 +8752,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.components.hxs.hxunit_basic.HxUnitBasic.weight", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.components.hxs.hxunit_basic.HxUnitBasic.mass", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -14542,7 +14542,7 @@ static PyMethodDef __pyx_methods_6mcycle_10components_3hxs_12hxunit_basic_HxUnit
   {"_NSf", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_31_NSf, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_30_NSf},
   {"U", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_33U, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_32U},
   {"lmtd", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_35lmtd, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_34lmtd},
-  {"weight", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37weight, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36weight},
+  {"mass", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_37mass, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_36mass},
   {"run", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_39run, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_38run},
   {"sizeUnits", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_41sizeUnits, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_40sizeUnits},
   {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_43__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_42__reduce_cython__},
@@ -14857,6 +14857,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_mSf, __pyx_k_mSf, sizeof(__pyx_k_mSf), 0, 1, 0, 1},
   {&__pyx_n_u_mWf, __pyx_k_mWf, sizeof(__pyx_k_mWf), 0, 1, 0, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_mass, __pyx_k_mass, sizeof(__pyx_k_mass), 0, 0, 1, 1},
   {&__pyx_kp_u_mass_time, __pyx_k_mass_time, sizeof(__pyx_k_mass_time), 0, 1, 0, 0},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
   {&__pyx_n_s_mcycle_components_hxs_hxunit_bas, __pyx_k_mcycle_components_hxs_hxunit_bas, sizeof(__pyx_k_mcycle_components_hxs_hxunit_bas), 0, 0, 1, 1},
@@ -14921,7 +14922,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_wall, __pyx_k_wall, sizeof(__pyx_k_wall), 0, 1, 0, 1},
   {&__pyx_n_s_warn, __pyx_k_warn, sizeof(__pyx_k_warn), 0, 0, 1, 1},
   {&__pyx_n_s_warnings, __pyx_k_warnings, sizeof(__pyx_k_warnings), 0, 0, 1, 1},
-  {&__pyx_n_s_weight, __pyx_k_weight, sizeof(__pyx_k_weight), 0, 0, 1, 1},
   {&__pyx_n_s_wrap, __pyx_k_wrap, sizeof(__pyx_k_wrap), 0, 0, 1, 1},
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
   {&__pyx_n_s_xtol, __pyx_k_xtol, sizeof(__pyx_k_xtol), 0, 0, 1, 1},
@@ -15109,7 +15109,7 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.Q_lmtd = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_Q_lmtd;
   __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.U = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_U;
   __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.lmtd = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_lmtd;
-  __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.weight = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_weight;
+  __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.mass = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, int __pyx_skip_dispatch))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic_mass;
   __pyx_vtable_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic._f_sizeHxUnitBasic = (double (*)(struct __pyx_obj_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic *, double, PyObject *))__pyx_f_6mcycle_10components_3hxs_12hxunit_basic_11HxUnitBasic__f_sizeHxUnitBasic;
   __pyx_type_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic.tp_base = __pyx_ptype_6mcycle_5bases_9component_Component22;
   if (PyType_Ready(&__pyx_type_6mcycle_10components_3hxs_12hxunit_basic_HxUnitBasic) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
