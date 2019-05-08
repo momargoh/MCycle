@@ -74,28 +74,28 @@ METHODS = {
         "vap": "manglikBergles_offset_sp"
     },
     'HxPlateSmoothHeatWf': {
-        "sp": "gnielinski_sp",
-        "liq": "gnielinski_sp",
-        "vap": "gnielinski_sp",
-        "tpEvap": "shah_tpEvap",
-        "tpCond": "shah_tpCond"
+        "sp": "shibani_sp_h",
+        "liq": "shibani_sp_h",
+        "vap": "shibani_sp_h",
+        "tpEvap": "huang_tpEvap_h",
+        "tpCond": ""
     },
     'HxPlateSmoothFrictionWf': {
-        "sp": "gnielinski_sp",
-        "liq": "gnielinski_sp",
-        "vap": "gnielinski_sp",
+        "sp": "rothfus_sp_f",
+        "liq": "rothfus_sp_f",
+        "vap": "rothfus_sp_f",
         "tpEvap": '',
         "tpCond": ''
     },
     'HxPlateSmoothHeatSf': {
-        "sp": "gnielinski_sp",
-        "liq": "gnielinski_sp",
-        "vap": "gnielinski_sp"
+        "sp": "shibani_sp_h",
+        "liq": "shibani_sp_h",
+        "vap": "shibani_sp_h"
     },
     'HxPlateSmoothFrictionSf': {
-        "sp": "gnielinski_sp",
-        "liq": "gnielinski_sp",
-        "vap": "gnielinski_sp"
+        "sp": "rothfus_sp_f",
+        "liq": "rothfus_sp_f",
+        "vap": "rothfus_sp_f"
     }
 }
 

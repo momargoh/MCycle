@@ -61,7 +61,7 @@ from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from ..components.hxs.flowconfig cimport HxFlowConfig
 from .. import geometries as gms
-from math import nan, sin, cos, pi, log, exp, isnan
+from math import nan, sin, cos, pi, log, log10, exp, isnan
 from warnings import warn
 import numpy as np
 import CoolProp as CP
@@ -386,6 +386,117 @@ dict of float : {"h", "f", "dpF"}
 
 
 # -----------------------------------------------------------------
+# single-phase relations, smooth parallel plates
+# -----------------------------------------------------------------
+
+cpdef dict shibani_sp_h(FlowState flowIn,
+                                    FlowState flowOut,
+                                    int N,
+                                    Geom geom,
+                                    double L,
+                                    double W,
+                                    HxFlowConfig flowConfig,
+                                    bint is_wf=True,
+                                    Geom geom2=None):
+    """Single-phase , heat, valid for GeomHxPlateSmootht. [Shibani1977]_ Shibani and Ozisik, "A solution to heat transfer in turbulent flow between parallel plates", International Journal of Heat and Mass Transfer, vol. 20-5, pp 565--573, 1977, Elsevier.
+
+Returns
+-------
+dict of float : {"h"}
+    """
+    assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
+        geom, "shibani_sp_h")
+    cdef double De = 2*geom.b() # equivalent diameter
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / (geom.b * W)
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Re = G * De / avg.visc()
+    cdef double Pr = avg.Pr()
+    cdef double Nu = 0
+    if Pr < 1:
+        Nu = 8.3 + 0.02*Re**0.82*Pr**(0.52+0.0096/(0.02+Pr))
+    else:
+        Nu = 12 + 0.03*Re**(0.88-0.24/(3.6+Pr))*Pr**(0.33+0.5*exp(-0.6*Pr))
+    cdef double h = htc(Nu, avg.k(), De)
+    return {"h": h}
+
+cpdef dict rothfus_sp_f(FlowState flowIn,
+                                    FlowState flowOut,
+                                    int N,
+                                    Geom geom,
+                                    double L,
+                                    double W,
+                                    HxFlowConfig flowConfig,
+                                    bint is_wf=True,
+                                    Geom geom2=None):
+    """Single-phase , friction, valid for GeomHxPlateSmootht. [Rothfus1957]_ Rothfus, R. R., Archer, D. H., Klimas, I. C., & Sikchi, K. G. (1957). Simplified flow calculations for tubes and parallel plates. AIChE Journal, 3(2), pp 208--212.
+
+This correlation comes from data fitting Fig. 4 for the turbulent region, giving the curve: f = 10**(-0.206771314*log10(Re)-1.296108505). For Re<3000, the viscous region relation is used: f = 24/Re. The transitional region, for now, will be treated as the turbulent region.
+
+Returns
+-------
+dict of float : {"f", "dpF"}
+    """
+    assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
+        geom, "shibani_sp_h")
+    cdef double De = 2*geom.b() # equivalent diameter
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / (geom.b * W)
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Re = G * De / avg.visc()
+    cdef double f = 0
+    if Re < 3000:
+        f = 24/Re
+    else:
+        f = 10**(-0.206771314*log10(Re)-1.296108505)
+    cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
+    return {"f": f, "dpF": dpF}
+    
+
+# -----------------------------------------------------------------
+# Two-phase relations, smooth parallel plates
+# -----------------------------------------------------------------
+
+cpdef dict huang_tpEvap_h(FlowState flowIn,
+                         FlowState flowOut,
+                         int N,
+                         Geom geom,
+                         double L,
+                         double W,
+                         HxFlowConfig flowConfig,
+                         bint is_wf=True,
+                         Geom geom2=None):
+    """Two-phase evaporation, heat, valid for GeomHxPlateSmooth. [Huang2012]_ Huang, Y. P., Huang, J., Ma, J., Wang, Y. L., Wang, J. F., & Wang, Q. W. (2012). Single and Two-Phase Heat Transfer Enhancement Using Longitudinal Vortex Generator in Narrow Rectangular Channel. In An Overview of Heat Transfer Phenomena. IntechOpen,`doi:10.5772/53713 <http://doi.org/10.5772/53713>`_
+
+Returns
+-------
+dict of float : {"h"}
+    """
+    assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
+        geom, "huang_tpEvap_h")
+    cdef double b = geom.b()
+    cdef double Dh = 2 * b
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / (b * W)
+    cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    #cdef double G_eq = G * (1 - x_avg + x_avg * (liq.rho() / vap.rho())**0.5)
+    cdef double Re = G * Dh / avg.visc()
+    #cdef double Re_eq = G_eq * Dh / avg.visc()
+    cdef double q = m_channel * (flowOut.h() - flowIn.h()) / (W * L)
+    cdef double Bo = abs(q / G / (vap.h() - liq.h()))
+    cdef double h = 1.40*Re*Bo**0.349*avg.k()/Dh
+    return {"h": h}
+
+
+# -----------------------------------------------------------------
 # single-phase relations, circular smooth ducts
 # -----------------------------------------------------------------
 
@@ -492,7 +603,7 @@ Returns
 -------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) in [gms.GeomHxPlateSmooth], _assertGeomErrMsg(
+    assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
         geom, "gnielinski_sp")
     cdef double Dh, De, Ac
     if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
