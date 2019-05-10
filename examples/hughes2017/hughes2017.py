@@ -66,12 +66,12 @@ config.update({
     'dpPort': False,
     'dpHead': False
 })
-config.set_method("chisholmWannairachchi_sp", ["GeomHxPlateCorrChevron"],
+config.set_method("chisholmWannairachchi_sp", ["GeomHxPlateCorrugatedChevron"],
                   ["all"], ["all-sp"], ["wf"])
-config.set_method("yanLin_tpEvap", ["GeomHxPlateCorrChevron"], ["all"],
+config.set_method("yanLin_tpEvap", ["GeomHxPlateCorrugatedChevron"], ["all"],
                   ["tpEvap"], ["wf"])
-config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"], ["all"],
-                  ["all-sp"], ["sf"])
+config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrugatedChevron"],
+                  ["all"], ["all-sp"], ["sf"])
 print("  - created configuration object")
 cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                         subcool, config)

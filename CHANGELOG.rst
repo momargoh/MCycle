@@ -11,6 +11,30 @@ CHANGELOG
 - The latest version of MCycle will be uploaded to PyPI once the cross-platform build requirements are sorted (looking into using skbuild).
 - It is planned to be able to choose alternative thermodynamic properties backends (such as `thermo <https://pypi.org/project/thermo/>`_)
 - Error checking for HxFlowConfig
+
+Added
+*******
+
+- ``HxPlateFin`` and ``HxPlateCorrugated`` (later is renaming of ``HxPlate``)
+- ``GeomHxPlateFinStraight`` and ``GeomHxPlateFinOffset`` added to ``geometries``.
+- heat transfer methods added for HxPlateFin geometries
+
+Changed
+********
+
+- ``HxPlate`` renamed to ``HxPlateFinCorrugated``
+- ``geomPlateWf`` and ``geomPlateSf`` attributes of ``HxPlate`` and ``HxUnitPlate`` renamed to ``geomWf`` and ``geomSf``.
+
+Deprecated
+***********
+
+Removed
+*********
+
+- ``Pr`` data key removed from ``RefData.data`` attribute as it's not an explicit property
+
+Fixed
+******
   
 [1.0.2] - 16/01/2019
 ------------------------

@@ -3,19 +3,19 @@ import mcycle as mc
 import CoolProp as CP
 
 
-class TestHxPlateCorrChevron(unittest.TestCase):
+class TestHxPlateCorrugatedChevron(unittest.TestCase):
     config = mc.Config()
     config.update({'dpAcc': False, 'dpPort': False, 'dpHead': False})
-    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
+    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrugatedChevron"],
                       ["all"], ["all"], ["sf"])
-    hx = mc.HxPlate(
+    hx = mc.HxPlateCorrugated(
         flowConfig=mc.HxFlowConfig("counter", "1", True, True),
         RfWf=0,
         RfSf=0,
         plate=mc.library.stainlessSteel_316(573.15),
         tPlate=0.424e-3,
-        geomPlateWf=mc.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomPlateSf=mc.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
         DPortWf=0.0125,
@@ -49,7 +49,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
         self.hx.update({
             'L': 269e-3,
             'NPlate': 23,
-            'geomPlateWf.b': 1.096e-3,
+            'geomWf.b': 1.096e-3,
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'L', 'sizeBounds': [0.005, 0.5]})
@@ -63,32 +63,29 @@ class TestHxPlateCorrChevron(unittest.TestCase):
         self.hx.update({
             'L': 0.268278920236407,
             'NPlate': 23,
-            'geomPlateWf.b': 1.096e-3,
+            'geomWf.b': 1.096e-3,
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'W', 'sizeBounds': [50e-3, 500e-3]})
         self.hx._size('', [], [])
         self.assertAlmostEqual(abs(self.hx.W - 95e-3) / 95e-3, 0, 4)
 
-    def test_1_size_geomPlateWf_b(self):
+    def test_1_size_geomWf_b(self):
         self.hx.update({
             'L': 0.268278920236407,
             'NPlate': 23,
-            'geomPlateWf.b': 0,
+            'geomWf.b': 0,
             'W': 95e-3
         })
-        self.hx.update({
-            'sizeAttr': 'geomPlateWf.b',
-            'sizeBounds': [0.1e-3, 10e-3]
-        })
+        self.hx.update({'sizeAttr': 'geomWf.b', 'sizeBounds': [0.1e-3, 10e-3]})
         self.hx._size('', [], [])
-        self.assertAlmostEqual(abs(self.hx.geomPlateWf.b - 1.096e-3), 0, 4)
+        self.assertAlmostEqual(abs(self.hx.geomWf.b - 1.096e-3), 0, 4)
 
     def test_1_size_NPlate(self):
         self.hx.update({
             'L': 0.268278920236407,
             'NPlate': 23,
-            'geomPlateWf.b': 1.096e-3,
+            'geomWf.b': 1.096e-3,
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'NPlate', 'sizeBounds': [10, 50]})
@@ -110,7 +107,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
         self.hx.update({
             'L': 0.269,
             'NPlate': 5,
-            'geomPlateWf.b': 1.096e-3,
+            'geomWf.b': 1.096e-3,
             'W': 95e-3,
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,
@@ -131,7 +128,7 @@ class TestHxPlateCorrChevron(unittest.TestCase):
         self.hx.update({
             'L': 0.1,
             'NPlate': 3,
-            'geomPlateWf.b': 1.096e-3,
+            'geomWf.b': 1.096e-3,
             'W': 95e-3,
             'flowInWf': flowInWf,
             'flowInSf': flowInSf,

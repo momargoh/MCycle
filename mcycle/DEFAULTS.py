@@ -25,26 +25,26 @@ PRINT_FORMAT_FLOAT = '{: .4e}'
 RST_HEADINGS = ['=', '-', '^', '"']
 
 METHODS = {
-    'HxPlateCorrChevronHeatWf': {
+    'HxPlateCorrugatedChevronHeatWf': {
         "sp": "chisholmWannairachchi_sp",
         "liq": "chisholmWannairachchi_sp",
         "vap": "chisholmWannairachchi_sp",
         "tpEvap": "yanLin_tpEvap",
         "tpCond": "hanLeeKim_tpCond"
     },
-    'HxPlateCorrChevronFrictionWf': {
+    'HxPlateCorrugatedChevronFrictionWf': {
         "sp": "chisholmWannairachchi_sp",
         "liq": "chisholmWannairachchi_sp",
         "vap": "chisholmWannairachchi_sp",
         "tpEvap": "yanLin_tpEvap",
         "tpCond": "hanLeeKim_tpCond"
     },
-    'HxPlateCorrChevronHeatSf': {
+    'HxPlateCorrugatedChevronHeatSf': {
         "sp": "chisholmWannairachchi_sp",
         "liq": "chisholmWannairachchi_sp",
         "vap": "chisholmWannairachchi_sp"
     },
-    'HxPlateCorrChevronFrictionSf': {
+    'HxPlateCorrugatedChevronFrictionSf': {
         "sp": "chisholmWannairachchi_sp",
         "liq": "chisholmWannairachchi_sp",
         "vap": "chisholmWannairachchi_sp"

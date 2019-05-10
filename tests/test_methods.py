@@ -27,8 +27,8 @@ class TestMethods(unittest.TestCase):
 
             mc.add_method(custom_method, "fail_submodule")
 
-    def test_Methods_lookupMethod_HxPlateCorrChevron_using_args(self):
-        self.methods['GeomHxPlateCorrChevronHeatWf'] = {
+    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_using_args(self):
+        self.methods['GeomHxPlateCorrugatedChevronHeatWf'] = {
             "sp": "chisholmWannairachchi_sp",
             "liq": "chisholmWannairachchi_sp",
             "vap": "chisholmWannairachchi_sp",
@@ -37,25 +37,27 @@ class TestMethods(unittest.TestCase):
         }
         self.assertEqual(
             self.configTest.lookupMethod(
-                "HxPlate", ("GeomHxPlateCorrChevron", "heat", "tpEvap", "wf")),
+                "HxPlate",
+                ("GeomHxPlateCorrugatedChevron", "heat", "tpEvap", "wf")),
             "yanLin_tpEvap")
 
     #"""
-    def test_Methods_lookupMethod_HxPlateCorrChevron_Error_method_is_None(
+    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_Error_method_is_None(
             self):
-        self.configTest.set_method('', ['GeomHxPlateCorrChevron'],
+        self.configTest.set_method('', ['GeomHxPlateCorrugatedChevron'],
                                    ['friction'], ['all'], ['wf'])
         with self.assertRaises(ValueError):
             self.configTest.lookupMethod(
-                "HxPlate", ("GeomHxPlateCorrChevron", "friction", "sp", "wf"))
+                "HxPlate",
+                ("GeomHxPlateCorrugatedChevron", "friction", "sp", "wf"))
 
-    def test_Methods_lookupMethod_HxPlateCorrChevron_Error_wrong_number_args(
+    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_Error_wrong_number_args(
             self):
-        self.configTest.set_method('', ['GeomHxPlateCorrChevron'],
+        self.configTest.set_method('', ['GeomHxPlateCorrugatedChevron'],
                                    ['friction'], ['all'], ['wf'])
         with self.assertRaises(IndexError):
             self.configTest.lookupMethod(
-                "HxPlate", ("GeomHxPlateCorrChevron", "friction", "sp"))
+                "HxPlate", ("GeomHxPlateCorrugatedChevron", "friction", "sp"))
 
     #"""
 

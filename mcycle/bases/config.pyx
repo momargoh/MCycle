@@ -256,7 +256,7 @@ args : tuple
         cdef tuple listKwargs, listGeomHxPlate, listTransfer, listPhase ,listFlows
         cdef str geom, transfer, flow, phase, lookup_dict, ret
         try:
-            if cls in ["HxPlate","HxUnitPlate"]:
+            if cls in ["HxPlate","HxUnitPlate", "HxPlateCorrugated", "HxPlateFin"]:
                 """args must be in the form (geom, transfer, phase, flow)."""
                 listKwargs = ("geom", "transfer", "phase", "flow")
                 if len(args) == 4:
@@ -266,7 +266,7 @@ args : tuple
                         "lookup() of {} requires 4 args in the order: {}, (given: {} args)".
                         format(cls, listKwargs, len(args)))
 
-                listGeomHxPlate = ("GeomHxPlateCorrChevron",
+                listGeomHxPlate = ("GeomHxPlateCorrugatedChevron",
                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
                 listTransfer = ("heat", "friction")
                 listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')

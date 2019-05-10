@@ -134,13 +134,13 @@ cpdef dict chisholmWannairachchi_sp(FlowState flowIn,
                                     HxFlowConfig flowConfig,
                                     bint is_wf=True,
                                     Geom geom2=None):
-    """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Chisholm1992]_ Chisholm D. Wanniarachchi, A. S. Maldistribution in single-pass mixed-channel plate heat exchangers. ASME, 1992, 201, 95-99.
+    """Single phase, heat and friction, valid for GeomHxPlateCorrugatedChevron. [Chisholm1992]_ Chisholm D. Wanniarachchi, A. S. Maldistribution in single-pass mixed-channel plate heat exchangers. ASME, 1992, 201, 95-99.
 
 Returns
 -------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) == gms.GeomHxPlateCorrChevron, _assertGeomErrMsg(
+    assert type(geom) == gms.GeomHxPlateCorrugatedChevron, _assertGeomErrMsg(
         geom, "chisholmWannairachchi_sp")
     cdef double Dh = 2 * geom.b / geom.phi
     cdef double m_channel = flowIn.m / N
@@ -165,7 +165,7 @@ cpdef dict savostinTikhonov_sp(FlowState flowIn,
                                HxFlowConfig flowConfig,
                                bint is_wf=True,
                                Geom geom2=None):
-    """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Savostin1970]_ Savostin, A. F. & Tikhonov, A. M. Investigation of the Characteristics of Plate Type Heating Surfaces Thermal Engineering, 1970, 17, 113-117.
+    """Single phase, heat and friction, valid for GeomHxPlateCorrugatedChevron. [Savostin1970]_ Savostin, A. F. & Tikhonov, A. M. Investigation of the Characteristics of Plate Type Heating Surfaces Thermal Engineering, 1970, 17, 113-117.
 
 Data collected for: air
 
@@ -173,7 +173,7 @@ Returns
 -------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) == gms.GeomHxPlateCorrChevron, _assertGeomErrMsg(
+    assert type(geom) == gms.GeomHxPlateCorrugatedChevron, _assertGeomErrMsg(
         geom, "savostinTikhonov_sp")
     cdef double Dh = 2 * geom.b / geom.phi
     cdef double psi = 2 * np.radians(geom.beta)
@@ -212,7 +212,7 @@ cpdef dict muleyManglik_sp(FlowState flowIn,
                            HxFlowConfig flowConfig,
                            bint is_wf=True,
                            Geom geom2=None):
-    """Single phase, heat and friction, valid for GeomHxPlateCorrChevron. [Muley1999]_ Muley, A. and Manglik, R. M., Experimental Study of Turbulent Flow Heat Transfer and Pressure Drop in a Plate Heat Exchanger with Chevron Plates, Journal of Heat Transfer, vol. 121, no. 1, pp. 110–117, 1999.
+    """Single phase, heat and friction, valid for GeomHxPlateCorrugatedChevron. [Muley1999]_ Muley, A. and Manglik, R. M., Experimental Study of Turbulent Flow Heat Transfer and Pressure Drop in a Plate Heat Exchanger with Chevron Plates, Journal of Heat Transfer, vol. 121, no. 1, pp. 110–117, 1999.
 
 Data collected for: steam, 30<=beta<=60, 1<=phi<=1.5
 
@@ -220,7 +220,7 @@ Returns
 -------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) == gms.GeomHxPlateCorrChevron, _assertGeomErrMsg(
+    assert type(geom) == gms.GeomHxPlateCorrugatedChevron, _assertGeomErrMsg(
         geom, "muleyManglik_sp")
     cdef double Dh = 2 * geom.b / geom.phi
     cdef double m_channel = flowIn.m / N
@@ -250,7 +250,7 @@ cpdef dict yanLin_tpEvap(FlowState flowIn,
                          HxFlowConfig flowConfig,
                          bint is_wf=True,
                          Geom geom2=None):
-    """Two-phase evaporation, heat and friction, valid for GeomHxPlateCorrChevron. [Yan1999]_ Yan, Y.-Y. & Lin, T.-F. Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger Journal of Heat Transfer Engineering, 1999, 121, 118-127. `doi:10.1115/1.2825924 <http://doi.org/10.1115/1.2825924>`_
+    """Two-phase evaporation, heat and friction, valid for GeomHxPlateCorrugatedChevron. [Yan1999]_ Yan, Y.-Y. & Lin, T.-F. Evaporation Heat Transfer and Pressure Drop of Refrigerant R-134a in a Plate Heat Exchanger Journal of Heat Transfer Engineering, 1999, 121, 118-127. `doi:10.1115/1.2825924 <http://doi.org/10.1115/1.2825924>`_
 
 Data collected for: R134a, beta=60deg, 2000<Re<8000.
 
@@ -258,7 +258,7 @@ Returns
 -------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) == gms.GeomHxPlateCorrChevron, _assertGeomErrMsg(
+    assert type(geom) == gms.GeomHxPlateCorrugatedChevron, _assertGeomErrMsg(
         geom, "yanLin_tpEvap")
     cdef double Dh = 2 * geom.b / geom.phi
     cdef double m_channel = flowIn.m / N
@@ -297,13 +297,13 @@ cpdef dict hanLeeKim_tpCond(FlowState flowIn,
                             HxFlowConfig flowConfig,
                             bint is_wf=True,
                             Geom geom2=None):
-    r"""Two-phase condensation, heat and friction, valid for GeomHxPlateCorrChevron.Data collected for: R410A and R22, with beta = 45, 35, 20deg. [Han2003]_ Han, D.-H.; Lee, K.-J. & Kim, Y.-H. The Characteristics of Condensation in Brazed Plate Heat Exchangers with Different Chevron Angles Korean Physical Society, 2003, 43, 66-73.
+    r"""Two-phase condensation, heat and friction, valid for GeomHxPlateCorrugatedChevron.Data collected for: R410A and R22, with beta = 45, 35, 20deg. [Han2003]_ Han, D.-H.; Lee, K.-J. & Kim, Y.-H. The Characteristics of Condensation in Brazed Plate Heat Exchangers with Different Chevron Angles Korean Physical Society, 2003, 43, 66-73.
 
 Returns
 --------
 dict of float : {"h", "f", "dpF"}
     """
-    assert type(geom) == gms.GeomHxPlateCorrChevron, _assertGeomErrMsg(
+    assert type(geom) == gms.GeomHxPlateCorrugatedChevron, _assertGeomErrMsg(
         geom, "hanLeeKim_tpCond")
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())

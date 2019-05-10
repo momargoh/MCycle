@@ -16,19 +16,19 @@ def alfaLaval_AC30EQ(
         sizeAttr="NPlate",
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
-        name="HxPlate instance",
+        name="HxPlateCorrugated instance",
         config=Config(),
         kwargs={}):
     """Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf"""
-    hx = cps.HxPlate(
+    hx = cps.HxPlateCorrugated(
         flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,
         plate=mats.stainlessSteel_316(),
         tPlate=0.424e-3,
-        geomPlateWf=gms.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomPlateSf=gms.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=gms.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=gms.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
         ARatioWf=1,
@@ -69,19 +69,19 @@ def alfaLaval_CBXP27(
         sizeAttr="NPlate",
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
-        name="HxPlate instance",
+        name="HxPlateCorurgated instance",
         config=Config(),
         kwargs={}):
     """Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf"""
-    hx = cps.HxPlate(
+    hx = cps.HxPlateCorrugated(
         flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,
         plate=mats.stainlessSteel_316(),
         tPlate=0.95e-3,
-        geomPlateWf=gms.GeomHxPlateCorrChevron(1.45e-3, 60, 10e-3, 1.117),
-        geomPlateSf=gms.GeomHxPlateCorrChevron(1.45e-3, 60, 10e-3, 1.117),
+        geomWf=gms.GeomHxPlateCorrugatedChevron(1.45e-3, 60, 10e-3, 1.117),
+        geomSf=gms.GeomHxPlateCorrugatedChevron(1.45e-3, 60, 10e-3, 1.117),
         L=250e-3,
         W=111e-3,
         ARatioWf=1,

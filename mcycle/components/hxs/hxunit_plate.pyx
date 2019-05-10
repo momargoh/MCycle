@@ -14,7 +14,7 @@ import scipy.optimize as opt
 
 cdef str method
 cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
-                        "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomPlateWf": MCAttr(Geom, "none"), "geomPlateSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
+                        "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomWf": MCAttr(Geom, "none"), "geomSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"), 
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
@@ -90,8 +90,8 @@ kwargs : optional
                  double RfSf=0,
                  SolidMaterial plate=None,
                  double tPlate=float("nan"),
-                 Geom geomPlateWf=None,
-                 Geom geomPlateSf=None,
+                 Geom geomWf=None,
+                 Geom geomSf=None,
                  double L=float("nan"),
                  double W=float("nan"),
                  double ARatioWf=1,
@@ -104,15 +104,15 @@ kwargs : optional
                  FlowState flowOutSf=None,
                  str sizeAttr="L",
                  list sizeBounds=[1e-5, 10.0],
-                 str name="HxUnitPlateCorrugated instance",
+                 str name="HxUnitPlate instance",
                  str notes="No notes/model info.",
                  Config config=Config()):
         super().__init__(flowConfig, -1, -1, NPlate, nan, nan, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
                          effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
-        self.geomPlateWf = geomPlateWf
-        self.geomPlateSf = geomPlateSf
+        self.geomWf = geomWf
+        self.geomSf = geomSf
         self._inputs = _inputs
         self._properties = _properties
         
@@ -147,96 +147,96 @@ kwargs : optional
     cpdef public double _hWf(self):
         """float: Heat transfer coefficient of a working fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomPlateWf.__class__.__name__, "heat",
+                                            (self.geomWf.__class__.__name__, "heat",
                                              self.phaseWf(), "wf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
-            geom=self.geomPlateWf,
+            geom=self.geomWf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=False,
-            geom2=self.geomPlateSf)["h"]
+            geom2=self.geomSf)["h"]
 
     cpdef public double _hSf(self):
         """float: Heat transfer coefficient of a secondary fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomPlateSf.__class__.__name__, "heat",
+                                            (self.geomSf.__class__.__name__, "heat",
                                              self.phaseSf(), "sf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),
-            geom=self.geomPlateSf,
+            geom=self.geomSf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=True,
-            geom2=self.geomPlateSf)["h"]
+            geom2=self.geomSf)["h"]
 
     cpdef public double _fWf(self):
         """float: Fanning friction factor of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomPlateWf.__class__.__name__,
+                                            (self.geomWf.__class__.__name__,
                                             "friction", self.phaseWf(), "wf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
-            geom=self.geomPlateWf,
+            geom=self.geomWf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=True,
-            geom2=self.geomPlateSf)["f"]
+            geom2=self.geomSf)["f"]
 
     cpdef public double _fSf(self):
         """float: Fanning friction factor of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomPlateSf.__class__.__name__,
+                                            (self.geomSf.__class__.__name__,
                                              "friction", self.phaseSf(), "sf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),
-            geom=self.geomPlateSf,
+            geom=self.geomSf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=False,
-            geom2=self.geomPlateSf)["f"]
+            geom2=self.geomSf)["f"]
 
     cpdef public double _dpFWf(self):
         """float: Frictional pressure drop of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
         method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomPlateWf.__class__.__name__,
+                                            (self.geomWf.__class__.__name__,
                                              "friction", self.phaseWf(), "wf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
-            geom=self.geomPlateWf,
+            geom=self.geomWf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=False,
-            geom2=self.geomPlateSf)["dpF"]
+            geom2=self.geomSf)["dpF"]
 
     cpdef public double _dpFSf(self):
         """float: Frictional pressure drop of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__, (self.geomPlateSf.__class__.__name__, "friction", self.phaseSf(), "sf"))
+        method = self.config.lookupMethod(self.__class__.__name__, (self.geomSf.__class__.__name__, "friction", self.phaseSf(), "sf"))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),
-            geom=self.geomPlateSf,
+            geom=self.geomSf,
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=False,
-            geom2=self.geomPlateWf)["dpF"]
+            geom2=self.geomWf)["dpF"]
 
     cpdef public double U(self):
         """float: Overall heat transfer coefficient of the unit [W/m^2.K]."""
@@ -305,8 +305,6 @@ bounds : float or list of float, optional
                         except Exception as exc:
                             warn('Could not find solution in boundss {} or {}.'.format([a, 2*r-a], [b, 2*r-b]))
                             raise exc
-            elif len(bounds) == 1:
-                sizedValue = opt.newton(self._f_sizeUnitsHxUnitPlate, bounds[0], tol=tol, args=(attr))
             else:
                 raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue})
@@ -320,19 +318,19 @@ bounds : float or list of float, optional
 
 
     @property
-    def geomPlate(self):
-        if self.geomPlateSf is self.geomPlateWf:
-            return self.geomPlateWf
+    def geom(self):
+        if self.geomSf is self.geomWf:
+            return self.geomWf
         else:
             warn(
-                "geomPlate is not valid: geomPlateWf and geomPlateSf are different objects"
+                "geom is not valid: geomWf and geomSf are different objects"
             )
             pass
 
-    @geomPlate.setter
-    def geomPlate(self, obj):
-        self.geomPlateWf = obj
-        self.geomPlateSf = obj
+    @geom.setter
+    def geom(self, obj):
+        self.geomWf = obj
+        self.geomSf = obj
     @property
     def plate(self):
         """alias of self.wall."""

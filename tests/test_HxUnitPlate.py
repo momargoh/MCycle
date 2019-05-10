@@ -11,8 +11,8 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         RfSf=0,
         plate=mc.library.materials.stainlessSteel_316(573.15),
         tPlate=0.424e-3,
-        geomPlateWf=mc.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomPlateSf=mc.GeomHxPlateCorrChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
         ARatioWf=1,
@@ -20,8 +20,9 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         ARatioPlate=1,
         effThermal=1.0,
         config=mc.Config())
-    hxUnit.config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrChevron"],
-                             ["all"], ["all"], ["sf"])
+    hxUnit.config.set_method("savostinTikhonov_sp",
+                             ["GeomHxPlateCorrugatedChevron"], ["all"],
+                             ["all"], ["sf"])
 
     def test_size_liq(self):
         flowInWf = mc.FlowState("R123", -1, 0.34307814292524513, CP.PT_INPUTS,
@@ -47,12 +48,12 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(self.hxUnit.W, 95e-3, 7)
         self.hxUnit.update({
-            'sizeAttr': 'geomPlateWf.b',
+            'sizeAttr': 'geomWf.b',
             'sizeBounds': [0.1e-3, 10e-3]
         })
         self.hxUnit.sizeUnits('', [])
         self.assertAlmostEqual(
-            abs(self.hxUnit.geomPlateWf.b - 1.096e-3) / 1.096e-3, 0, 2)
+            abs(self.hxUnit.geomWf.b - 1.096e-3) / 1.096e-3, 0, 2)
         #
         self.assertAlmostEqual(
             abs(self.hxUnit._dpFWf() - 7200.2135758720115) /
