@@ -25,78 +25,156 @@ PRINT_FORMAT_FLOAT = '{: .4e}'
 RST_HEADINGS = ['=', '-', '^', '"']
 
 METHODS = {
-    'HxPlateCorrugatedChevronHeatWf': {
-        "sp": "chisholmWannairachchi_sp",
-        "liq": "chisholmWannairachchi_sp",
-        "vap": "chisholmWannairachchi_sp",
-        "tpEvap": "yanLin_tpEvap",
-        "tpCond": "hanLeeKim_tpCond"
+    'GeomHxPlateCorrugatedChevron': {
+        'heat': {
+            'wf': {
+                "sp": "chisholmWannairachchi_sp",
+                "liq": "chisholmWannairachchi_sp",
+                "vap": "chisholmWannairachchi_sp",
+                "tpEvap": "yanLin_tpEvap",
+                "tpCond": "hanLeeKim_tpCond"
+            },
+            'sf': {
+                "sp": "chisholmWannairachchi_sp",
+                "liq": "chisholmWannairachchi_sp",
+                "vap": "chisholmWannairachchi_sp"
+            }
+        },
+        'friction': {
+            'wf': {
+                "sp": "chisholmWannairachchi_sp",
+                "liq": "chisholmWannairachchi_sp",
+                "vap": "chisholmWannairachchi_sp",
+                "tpEvap": "yanLin_tpEvap",
+                "tpCond": "hanLeeKim_tpCond"
+            },
+            'sf': {
+                "sp": "chisholmWannairachchi_sp",
+                "liq": "chisholmWannairachchi_sp",
+                "vap": "chisholmWannairachchi_sp"
+            }
+        }
     },
-    'HxPlateCorrugatedChevronFrictionWf': {
-        "sp": "chisholmWannairachchi_sp",
-        "liq": "chisholmWannairachchi_sp",
-        "vap": "chisholmWannairachchi_sp",
-        "tpEvap": "yanLin_tpEvap",
-        "tpCond": "hanLeeKim_tpCond"
+    'GeomHxPlateFinStraight': {
+        'heat': {
+            'wf': {
+                "sp": "petukhovPopov_sp_h",
+                "liq": "petukhovPopov_sp_h",
+                "vap": "petukhovPopov_sp_h",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "petukhovPopov_sp_h",
+                "liq": "petukhovPopov_sp_h",
+                "vap": "petukhovPopov_sp_h"
+            }
+        },
+        'friction': {
+            'wf': {
+                "sp": "bhattiShah_sp_f",
+                "liq": "bhattiShah_sp_f",
+                "vap": "bhattiShah_sp_f",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "bhattiShah_sp_f",
+                "liq": "bhattiShah_sp_f",
+                "vap": "bhattiShah_sp_f"
+            }
+        }
     },
-    'HxPlateCorrugatedChevronHeatSf': {
-        "sp": "chisholmWannairachchi_sp",
-        "liq": "chisholmWannairachchi_sp",
-        "vap": "chisholmWannairachchi_sp"
+    'GeomHxPlateFinOffset': {
+        'heat': {
+            'wf': {
+                "sp": "manglikBergles_offset_sp",
+                "liq": "manglikBergles_offset_sp",
+                "vap": "manglikBergles_offset_sp",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "manglikBergles_offset_sp",
+                "liq": "manglikBergles_offset_sp",
+                "vap": "manglikBergles_offset_sp"
+            }
+        },
+        'friction': {
+            'wf': {
+                "sp": "manglikBergles_offset_sp",
+                "liq": "manglikBergles_offset_sp",
+                "vap": "manglikBergles_offset_sp",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "manglikBergles_offset_sp",
+                "liq": "manglikBergles_offset_sp",
+                "vap": "manglikBergles_offset_sp"
+            }
+        }
     },
-    'HxPlateCorrugatedChevronFrictionSf': {
-        "sp": "chisholmWannairachchi_sp",
-        "liq": "chisholmWannairachchi_sp",
-        "vap": "chisholmWannairachchi_sp"
+    'GeomHxPlateSmooth': {
+        'heat': {
+            'wf': {
+                "sp": "shibani_sp_h",
+                "liq": "shibani_sp_h",
+                "vap": "shibani_sp_h",
+                "tpEvap": "huang_tpEvap_h",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "shibani_sp_h",
+                "liq": "shibani_sp_h",
+                "vap": "shibani_sp_h"
+            }
+        },
+        'friction': {
+            'wf': {
+                "sp": "rothfus_sp_f",
+                "liq": "rothfus_sp_f",
+                "vap": "rothfus_sp_f",
+                "tpEvap": '',
+                "tpCond": ''
+            },
+            'sf': {
+                "sp": "rothfus_sp_f",
+                "liq": "rothfus_sp_f",
+                "vap": "rothfus_sp_f"
+            }
+        }
     },
-    'HxPlateFinOffsetHeatWf': {
-        "sp": "manglikBergles_offset_sp",
-        "liq": "manglikBergles_offset_sp",
-        "vap": "manglikBergles_offset_sp",
-        "tpEvap": "",
-        "tpCond": ""
+    'Geom Name Here': {
+        'heat': {
+            'wf': {
+                "sp": "",
+                "liq": "",
+                "vap": "",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "",
+                "liq": "",
+                "vap": ""
+            }
+        },
+        'friction': {
+            'wf': {
+                "sp": "",
+                "liq": "",
+                "vap": "",
+                "tpEvap": "",
+                "tpCond": ""
+            },
+            'sf': {
+                "sp": "",
+                "liq": "",
+                "vap": ""
+            }
+        }
     },
-    'HxPlateFinOffsetFrictionWf': {
-        "sp": "manglikBergles_offset_sp",
-        "liq": "manglikBergles_offset_sp",
-        "vap": "manglikBergles_offset_sp",
-        "tpEvap": "",
-        "tpCond": ""
-    },
-    'HxPlateFinOffsetHeatSf': {
-        "sp": "manglikBergles_offset_sp",
-        "liq": "manglikBergles_offset_sp",
-        "vap": "manglikBergles_offset_sp"
-    },
-    'HxPlateFinOffsetFrictionSf': {
-        "sp": "manglikBergles_offset_sp",
-        "liq": "manglikBergles_offset_sp",
-        "vap": "manglikBergles_offset_sp"
-    },
-    'HxPlateSmoothHeatWf': {
-        "sp": "shibani_sp_h",
-        "liq": "shibani_sp_h",
-        "vap": "shibani_sp_h",
-        "tpEvap": "huang_tpEvap_h",
-        "tpCond": ""
-    },
-    'HxPlateSmoothFrictionWf': {
-        "sp": "rothfus_sp_f",
-        "liq": "rothfus_sp_f",
-        "vap": "rothfus_sp_f",
-        "tpEvap": '',
-        "tpCond": ''
-    },
-    'HxPlateSmoothHeatSf': {
-        "sp": "shibani_sp_h",
-        "liq": "shibani_sp_h",
-        "vap": "shibani_sp_h"
-    },
-    'HxPlateSmoothFrictionSf': {
-        "sp": "rothfus_sp_f",
-        "liq": "rothfus_sp_f",
-        "vap": "rothfus_sp_f"
-    }
 }
 
 _GITHUB_SOURCE_URL = 'https://github.com/momargoh/MCycle'

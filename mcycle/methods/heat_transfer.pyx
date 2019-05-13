@@ -406,7 +406,7 @@ dict of float : {"h"}
     """
     assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
         geom, "shibani_sp_h")
-    cdef double De = 2*geom.b() # equivalent diameter
+    cdef double De = 2*geom.b # equivalent diameter
     cdef double m_channel = flowIn.m / N
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
@@ -441,7 +441,7 @@ dict of float : {"f", "dpF"}
     """
     assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
         geom, "shibani_sp_h")
-    cdef double De = 2*geom.b() # equivalent diameter
+    cdef double De = 2*geom.b # equivalent diameter
     cdef double m_channel = flowIn.m / N
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
@@ -478,7 +478,7 @@ dict of float : {"h"}
     """
     assert type(geom) == gms.GeomHxPlateSmooth, _assertGeomErrMsg(
         geom, "huang_tpEvap_h")
-    cdef double b = geom.b()
+    cdef double b = geom.b
     cdef double Dh = 2 * b
     cdef double m_channel = flowIn.m / N
     cdef double G = m_channel / (b * W)
@@ -501,23 +501,129 @@ dict of float : {"h"}
 # -----------------------------------------------------------------
 
 
-def techo_sp_f(flowIn, flowOut, Dh, Ac, L, N=1):
-    """Single-phase, friction, valid for GeomDuctCircular, GeomHxPlateSmooth. [Techo1965]_ R. Techo, R. R. Tickner, and R. E. James, "An Accurate Equation for the Computation of the Friction Factor for Smooth Pipes from the Reynolds Number," J. Appl. Mech. (32): 443, 1965.
+
+cpdef dict gnielinski_sp(FlowState flowIn,
+                         FlowState flowOut,
+                         int N,
+                         Geom geom,
+                         double L,
+                         double W,
+                         HxFlowConfig flowConfig,
+                         bint is_wf=True,
+                         Geom geom2=None):
+    """Single-phase, heat and friction, valid for GeomDuctCircular, GeomHxPlateSmooth. [Gnielinski1976]_ V. Gnielinski, "New Equations for Heat and Mass Transfer in Turbulent Pipe and Channel Flow," Int. Chem. Eng., (16): 359-368, 1976.
 
 Returns
 -------
-dict of float : {"f", "dpF"}
+dict of float : {"h", "f", "dpF"}
     """
-    m_channel = flowIn.m / N
-    G = m_channel / Ac
-    p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
-    Re = G * Dh / avg.visc()
-    f = (0.86859 * np.log(Re / (1.964 * np.log(Re) - 3.8215)))**-2
-    dpF = dpf(f, G, L, Dh, avg.rho(), 1)
+    assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
+        geom, "gnielinski_sp")
+    cdef double Dh, De, Ac
+    if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
+        Dh = 2 * geom.b  # *W/(geom.b+W)
+        De = Dh
+        Ac = geom.b * W
+    elif type(geom) is gms.GeomHxPlateFinStraight:
+        a = geom.s/2
+        b = geom.h()/2
+        Dh = 4*a*b/(a+b)
+        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        Ac = geom.h() * geom.s * W/(geom.s + geom.t)
+                      
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / Ac
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Re = G * Dh / avg.visc()
+    cdef double f = (1.58 * np.log(Re) - 3.28)**-2
+    cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
+    cdef double Pr = avg.Pr()
+    cdef double Nu
+    if Pr >= 0.5 and Pr <= 1.5 and Re >= 2300 and Re <= 5e6:
+        Nu = 0.0214 * (Re**0.8 - 100) * Pr**0.4
+    elif Pr >= 1.5 and Pr <= 500 and Re >= 3e3 and Re <= 1e6:
+        Nu = 0.012 * (Re**0.87 - 280) * Pr**0.4
+    else:
+        Nu = f / 2 * (Re - 1000) * Pr / (1 + 12.7 * np.sqrt(f / 2) *
+                                         (Pr**(2 / 3) - 1))
+    cdef double h = htc(Nu, avg.k(), De)
+    return {"h": h, "f": f, "dpF": dpF}
+
+cpdef dict bhattiShah_sp_f(FlowState flowIn,
+                              FlowState flowOut,
+                              int N,
+                              Geom geom,
+                              double L,
+                              double W,
+                              HxFlowConfig flowConfig,
+                              bint is_wf=True,
+                              Geom geom2=None):
+    """Single-phase, friction, valid for GeomHxPlateFinStraight, taken from Shah 2003 Fundamentals of Heat Exchanger Design.
+
+Returns
+-------
+    dict of float : {'f', 'dpF'}
+"""
+    assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
+        geom, "bhattiShah_sp_f")
+    cdef double Dh, Dl, Ac, a, b
+    if type(geom) is gms.GeomHxPlateFinStraight:
+        a = geom.s/2
+        b = geom.h()/2
+        Dh = 4*a*b/(a+b)
+        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        Ac = geom.h() * geom.s * W/(geom.s + geom.t)
+
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / Ac
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Pr = avg.Pr()
+    cdef double Re_De = G * De / avg.visc()
+    cdef double f = 0.00128 + 0.1143*Re_De**-0.311
+    cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
     return {"f": f, "dpF": dpF}
 
+cpdef dict petukhovPopov_sp_h(FlowState flowIn,
+                              FlowState flowOut,
+                              int N,
+                              Geom geom,
+                              double L,
+                              double W,
+                              HxFlowConfig flowConfig,
+                              bint is_wf=True,
+                              Geom geom2=None):
+    """Single-phase, heat, valid for GeomHxPlateFinStraight, taken from Shah 2003 Fundamentals of Heat Exchanger Design, using Bhatti & Shah relation for the friction factor.
+
+Returns
+-------
+dict of float : {"h"}
+"""
+    assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
+        geom, "petukhovPopov_sp_h")
+    cdef double Dh, Dl, Ac, a, b
+    if type(geom) is gms.GeomHxPlateFinStraight:
+        a = geom.s/2
+        b = geom.h()/2
+        Dh = 4*a*b/(a+b)
+        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        Ac = geom.h() * geom.s * W/(geom.s + geom.t)
+
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / Ac
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Pr = avg.Pr()
+    cdef double Re_Dh = G * Dh / avg.visc()
+    cdef double Re_De = G * De / avg.visc()
+    cdef double f = 0.00128 + 0.1143*Re_De**-0.311
+    cdef double Nu = (f/2*Re_Dh*Pr)/(1.07+900/Re_Dh-0.63/(1+10*Pr)+12.7*(f/2)**0.5*(Pr**(2./3)-1))
+    cdef double h = htc(Nu, avg.k(), Dh)
+    return {"h": h}
 
 cpdef dict dittusBoelter_sp_h(FlowState flowIn,
                               FlowState flowOut,
@@ -534,21 +640,28 @@ Returns
 -------
 dict of float : {"h"}
 """
-    assert type(geom) in [gms.GeomHxPlateSmooth], _assertGeomErrMsg(
+    assert type(geom) in [gms.GeomHxPlateFinStraight, gms.GeomHxPlateSmooth], _assertGeomErrMsg(
         geom, "dittusBoelter_sp_h")
-    if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
+    cdef double Dh, De, Ac, a, b
+    if type(geom) is gms.GeomHxPlateSmooth:
         Dh = 2 * geom.b  # *W/(geom.b+W)
         De = Dh
         Ac = geom.b * W
+    elif type(geom) is gms.GeomHxPlateFinStraight:
+        a = geom.s/2
+        b = geom.h()/2
+        Dh = 4*a*b/(a+b)
+        De = Dh
+        Ac = geom.h() * geom.s * W/(geom.s + geom.t)
 
-    m_channel = flowIn.m / N
-    G = m_channel / Ac
-    p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
-    Re = G * Dh / avg.visc()
-    Nu = 0.023 * Re**0.8 * avg.Pr()**0.4
-    h = htc(Nu, avg.k(), De)
+    cdef double m_channel = flowIn.m / N
+    cdef double G = m_channel / Ac
+    cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+    cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef double Re = G * Dh / avg.visc()
+    cdef double Nu = 0.023 * Re**0.8 * avg.Pr()**0.4
+    cdef double h = htc(Nu, avg.k(), De)
     return {"h": h}
 
 def shah_sp_h(flowIn,
@@ -587,52 +700,40 @@ dict of float : {"h"}
     h = htc(Nu, avg.k(), De)
     return {"h": h}
 
-
-cpdef dict gnielinski_sp(FlowState flowIn,
-                         FlowState flowOut,
-                         int N,
-                         Geom geom,
-                         double L,
-                         double W,
-                         HxFlowConfig flowConfig,
-                         bint is_wf=True,
-                         Geom geom2=None):
-    """Single-phase, heat and friction, valid for GeomDuctCircular, GeomHxPlateSmooth. [Gnielinski1976]_ V. Gnielinski, "New Equations for Heat and Mass Transfer in Turbulent Pipe and Channel Flow," Int. Chem. Eng., (16): 359-368, 1976.
+cpdef dict techo_sp_f(FlowState flowIn,
+                              FlowState flowOut,
+                              int N,
+                              Geom geom,
+                              double L,
+                              double W,
+                              HxFlowConfig flowConfig,
+                              bint is_wf=True,
+                              Geom geom2=None):
+    """Single-phase, friction, valid for GeomDuctCircular, GeomHxPlateFinStraight. [Techo1965]_ R. Techo, R. R. Tickner, and R. E. James, "An Accurate Equation for the Computation of the Friction Factor for Smooth Pipes from the Reynolds Number," J. Appl. Mech. (32): 443, 1965.
 
 Returns
 -------
-dict of float : {"h", "f", "dpF"}
+dict of float : {"f", "dpF"}
     """
-    assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
-        geom, "gnielinski_sp")
-    cdef double Dh, De, Ac
-    if type(geom) in [gms.GeomHxPlateSmooth, gms.GeomHxPlateSmooth]:
-        Dh = 2 * geom.b  # *W/(geom.b+W)
-        De = Dh
-        Ac = geom.b * W
-                      
+    assert type(geom) == gms.GeomHxPlateFinStraight, _assertGeomErrMsg(
+        geom, "techo_sp_f")
+    cdef double Dh, Dl, Ac, a, b
+    if type(geom) is gms.GeomHxPlateFinStraight:
+        a = geom.s/2
+        b = geom.h()/2
+        Dh = 4*a*b/(a+b)
+        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        Ac = geom.h() * geom.s* W/(geom.s + geom.t)
+        
     cdef double m_channel = flowIn.m / N
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef double T_avg = 0.5 * (flowIn.T() + flowOut.T())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    # avg = flowIn.copyState(CP.PT_INPUTS, p_avg, T_avg)
     cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
-    cdef double Re = G * Dh / avg.visc()
-    cdef double f = (1.58 * np.log(Re) - 3.28)**-2
-    cdef double dpF = dpf(f, G, L, Dh, avg.rho(), 1)
-    cdef double Pr = avg.Pr()
-    cdef double Nu
-    if Pr >= 0.5 and Pr <= 1.5 and Re >= 2300 and Re <= 5e6:
-        Nu = 0.0214 * (Re**0.8 - 100) * Pr**0.4
-    elif Pr >= 1.5 and Pr <= 500 and Re >= 3e3 and Re <= 1e6:
-        Nu = 0.012 * (Re**0.87 - 280) * Pr**0.4
-    else:
-        Nu = f / 2 * (Re - 1000) * Pr / (1 + 12.7 * np.sqrt(f / 2) *
-                                         (Pr**(2 / 3) - 1))
-    cdef double h = htc(Nu, avg.k(), De)
-    return {"h": h, "f": f, "dpF": dpF}
-
+    cdef double Re = G * De / avg.visc()
+    cdef double f = (0.86859 * np.log(Re / (1.964 * np.log(Re) - 3.8215)))**-2
+    cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
+    return {"f": f, "dpF": dpF}
 
 # -----------------------------------------------------------------
 # 2-phase boiling relations, circular smooth ducts

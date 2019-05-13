@@ -266,7 +266,7 @@ args : tuple
                         "lookup() of {} requires 4 args in the order: {}, (given: {} args)".
                         format(cls, listKwargs, len(args)))
 
-                listGeomHxPlate = ("GeomHxPlateCorrugatedChevron",
+                listGeomHxPlate = ("GeomHxPlateCorrugatedChevron", "GeomHxPlateFinStraight",
                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
                 listTransfer = ("heat", "friction")
                 listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')
@@ -283,13 +283,11 @@ args : tuple
                     phase = "".join(phase[0:2].lower() + phase[2:].title())
                 assert phase in listPhase, "'phase' arg must be in listPhase ({} given)".format(
                     listPhase, phase)
-                lookup_dict = geom.strip(
-                    "Geom") + transfer.title() + flow.title()
-                ret = self.methods[lookup_dict][phase]
+                ret = self.methods[geom][transfer][flow.lower()][phase]
                 if ret == '' or ret is None:
                     raise ValueError(
-                        "Method for {} phase of {} not found (found dict: {})".format(
-                            phase, lookup_dict, self.methods[lookup_dict]))
+                        "Method for geom:{}, transfer:{}, phase:{} not found (found dict: {})".format(
+                            geom, transfer, phase, self.methods[geom][transfer][flow.lower()][phase]))
                 else:
                     return ret
             else:
@@ -330,11 +328,9 @@ flows : list of str
             phases = ["tpEvap", "tpCond"]
 
         for geom in geoms:
-            geom = geom.strip("Geom")
             for transfer in transfers:
                 for phase in phases:
                     for flow in flows:
-                        lookup_dict = geom + transfer.title() + flow.title()
-                        self.methods[lookup_dict][phase] = method
+                        self.methods[geom][transfer][flow.lower()][phase] = method
 
 
