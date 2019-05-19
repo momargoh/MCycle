@@ -16,14 +16,16 @@ Added
 *******
 
 - ``HxPlateFin`` and ``HxPlateCorrugated`` (later is renaming of ``HxPlate``)
+
 - ``GeomHxPlateFinStraight`` and ``GeomHxPlateFinOffset`` added to ``geometries``.
 - heat transfer methods added for HxPlateFin geometries
 
 Changed
 ********
 
-- ``HxPlate`` renamed to ``HxPlateFinCorrugated``
+- ``HxPlate`` renamed to ``HxPlateCorrugated``, new ``HxPlate`` is now a superclass of ``HxPlateFin`` and ``HxPlateCorrugated`` .
 - ``geomPlateWf`` and ``geomPlateSf`` attributes of ``HxPlate`` and ``HxUnitPlate`` renamed to ``geomWf`` and ``geomSf``.
+- METHODS dictionary changed to a more nested structure
 
 Deprecated
 ***********
@@ -31,7 +33,6 @@ Deprecated
 Removed
 *********
 
-- ``Pr`` data key removed from ``RefData.data`` attribute as it's not an explicit property
 
 Fixed
 ******

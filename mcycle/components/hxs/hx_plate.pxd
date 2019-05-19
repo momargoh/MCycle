@@ -6,6 +6,7 @@ cdef class HxPlate(HxBasicPlanar):
     cpdef public Geom geomWf
     cpdef public Geom geomSf
     cpdef public double mass(self)
+    cpdef public double depth(self)
     cpdef public double dpFWf(self)
     cpdef public double dpFSf(self)
     cpdef public double dpAccWf(self)

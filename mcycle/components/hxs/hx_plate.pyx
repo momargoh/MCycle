@@ -235,7 +235,10 @@ kwargs : optional
     cpdef public double mass(self):
         """float: Approximate total mass of the heat exchanger plates and fins [kg].
         """
-        return self.wall.rho*self.W*self.L * (self.NWall*self.tPlate + self.NWf*self.geomWf.areaPerWidth() + self.NSf*self.geomSf.areaPerWidth())
+        return self.wall.rho*self.W*self.L * (self.NWall*self.tPlate + self._NWf()*self.geomWf.areaPerWidth() + self._NSf()*self.geomSf.areaPerWidth())
+
+    cpdef public double depth(self):
+        return self.NPlate*self.tPlate+self._NWf()*self.geomWf.b+self._NSf()*self.geomSf.b
 
     cpdef public int size_NPlate(self) except *:
         """int: size for NPlate that requires L to be closest to self.L"""

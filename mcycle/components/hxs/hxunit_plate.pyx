@@ -4,6 +4,7 @@ from ...bases.geom cimport Geom
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ...methods import heat_transfer as ht
+from ...geometries.geom_hxplate cimport GeomHxPlateCorrugatedChevron, GeomHxPlateFinOffset, GeomHxPlateFinStraight, GeomHxPlateSmooth
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
 from .flowconfig cimport HxFlowConfig
 from warnings import warn
@@ -246,6 +247,44 @@ kwargs : optional
             self.NWall - 2) / self.wall.k() / self.ARatioWall
         return (RWf + RSf + RPlate)**-1
 
+    cdef double Re(self, int flowId=0):
+        cdef Geom geom
+        cdef int N
+        if flowId == 0:
+            geom = self.geomWf
+            N = self._NWf()
+        else:
+            geom = self.geomSf
+            N = self._NSf()
+        cdef FlowState flowIn = self.flowsIn[flowId]
+        cdef FlowState flowOut = self.flowsOut[flowId]
+        cdef double Dh, Ac, a, b
+        if type(geom) in [GeomHxPlateCorrugatedChevron]:
+            Dh = 2 * geom.b
+            Ac = geom.b * self.W
+        elif type(geom) in [GeomHxPlateSmooth]:
+            Dh = 2 * geom.b
+            Ac = geom.b * self.W
+        elif type(geom) in [GeomHxPlateFinStraight, GeomHxPlateFinOffset]:
+            a = geom.s/2
+            b = geom.h()/2
+            Dh = 4*a*b/(a+b)
+            Dh = Dh*(2./3+11/24*a/b*(2-a/b))
+            Ac = geom.h() * geom.s * self.W/(geom.s + geom.t)
+        cdef double m_channel = flowIn.m / N
+        cdef double G = m_channel / Ac
+        cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
+        cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
+        cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+        return G * Dh / avg.visc()
+    
+
+    cpdef public double ReWf(self):
+        return self.Re(0)
+    
+    cpdef public double ReSf(self):
+        return self.Re(1)
+    
     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr):
         self.update({attr: value})
         return self.Q() - self.Q_lmtd()

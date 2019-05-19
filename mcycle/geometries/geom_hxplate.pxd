@@ -13,10 +13,13 @@ cdef class GeomHxPlateFinStraight(Geom):
     #    
     cpdef public double h(self)
     cpdef public void set_h(self, value)
+    cpdef public double alpha(self)
+    cpdef public double gamma(self)
     cpdef public double areaPerWidth(self)
     
 cdef class GeomHxPlateFinOffset(GeomHxPlateFinStraight):
     cpdef public double l
+    cpdef public double delta(self)
 
 cdef class GeomHxPlateRough(Geom):
     cpdef public double b

@@ -77,6 +77,14 @@ t : float
             self.t = self.b - value
         else:
             warn("Cannot set h, given b={}, t={}, one must set to -1".format(self.b, self.t))
+    
+    cpdef public double alpha(self):
+        """float: alpha = s/h"""
+        return self.s / self.h()
+    
+    cpdef public double gamma(self):
+        """float: gamma = t/s"""
+        return self.t / self.s
 
     cpdef public double areaPerWidth(self):
         return (self.s + self.b)/(self.s/self.t + 1)
@@ -131,6 +139,10 @@ Bibtex::
         self.validClasses = ("HxPlate", "HxUnitPlate")
         self._inputs = _inputsHxPlateFinOffset
         self._properties = _propertiesHxPlateFinOffset
+    
+    cpdef public double delta(self):
+        """float: delta = t/l"""
+        return self.t / self.l
 
             
 cdef dict _inputsHxPlateRough = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}

@@ -13,6 +13,10 @@ cdef class HxUnitPlate(HxUnitBasicPlanar):
     cpdef public double U(self)
     cpdef public Geom geomWf
     cpdef public Geom geomSf
+    
+    cdef double Re(self, int flowId=*)
+    cpdef public double ReSf(self)
+    cpdef public double ReWf(self)
 
     cpdef double _f_sizeUnitsHxUnitPlate(self, double value, str attr)
     
