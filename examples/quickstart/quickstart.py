@@ -13,7 +13,7 @@ print("Begin quickstart example...")
 print("Set MCycle defaults...")
 mc.DEFAULTS.PLOT_DIR = ""
 mc.DEFAULTS.PLOT_DPI = 200
-mc.DEFAULTS.updateDefaults()
+mc.DEFAULTS.checkDefaults()
 print("defaults done.")
 
 print("Begin Rankine cycle setup...")
