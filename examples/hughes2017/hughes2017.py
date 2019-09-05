@@ -17,7 +17,7 @@ print("Set MCycle defaults and formatting...")
 mc.DEFAULTS.PLOT_DIR = 'plots'
 mc.DEFAULTS.PLOT_FORMAT = "png"  # change to "jpg" if preferred
 mc.DEFAULTS.PLOT_DPI = 600
-mc.updateDefaults()
+mc.checkDefaults()
 # custom formatting for matplotlib
 mpl.rc("lines", lw=2.0)
 mpl.rc("lines", markersize=2)
@@ -73,6 +73,7 @@ config.set_method("yanLin_tpEvap", ["GeomHxPlateCorrugatedChevron"], ["all"],
 config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrugatedChevron"],
                   ["all"], ["all-sp"], ["sf"])
 print("  - created configuration object")
+#evap.update({'config': config})
 cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                         subcool, config)
 cycle.update({
@@ -82,7 +83,7 @@ cycle.update({
     #'sinkIn': sinkIn,
     #'sinkDead': sinkDead
 })
-
+cycle.setAll_config(config)
 print("  - created cycle")
 print("setup done.")
 
@@ -180,12 +181,12 @@ def run_pptd():
     cycle.superheat = 0.  # K
     p_vals = [5, 10, 20, 25]  # bar
     pptd_vals = [np.logspace(1, np.log10(200), 40)] * len(p_vals)  # K
-    plot_eff, plot_NPlate, plot_weight, plot_dpWf = [], [], [], []
+    plot_eff, plot_NPlate, plot_mass, plot_dpWf = [], [], [], []
     #
     for i in range(len(p_vals)):
         plot_eff.append([])
         plot_NPlate.append([])
-        plot_weight.append([])
+        plot_mass.append([])
         plot_dpWf.append([])
         cycle.update({'pEvap': p_vals[i] * 10**5})
         NPlateLowerBound = 3
@@ -199,7 +200,7 @@ def run_pptd():
                              [NPlateLowerBound, cycle.evap.sizeBounds[1]], [])
             plot_eff[i].append(cycle.effExergy())
             plot_NPlate[i].append(cycle.evap.NPlate)
-            plot_weight[i].append(cycle.evap.weight())
+            plot_mass[i].append(cycle.evap.mass())
             plot_dpWf[i].append(cycle.evap.dpWf() / (10**5))
             NPlateLowerBound = max(3, cycle.evap.NPlate - 2)
     #
@@ -259,17 +260,17 @@ def run_pptd():
     mn, mx = ax1.get_ylim()
     vol = mc.library.alfaLaval_AC30EQ().LPlate() * mc.library.alfaLaval_AC30EQ(
     ).WPlate() * mc.library.alfaLaval_AC30EQ().tPlate
-    c0 = cycle.evap.coeffs_weight[0] * vol
-    c1 = cycle.evap.coeffs_weight[1] * vol
+    c0 = cycle.evap.coeffs_mass[0] * vol
+    c1 = cycle.evap.coeffs_mass[1] * vol
     ax2.set_ylim(mn * c1 + c0, mx * c1 + c0)
-    ax2.set_ylabel('empty weight [Kg]')
+    ax2.set_ylabel('empty mass [Kg]')
     plt.savefig(
         "./{}/hughes2017_pptd_NPlate.{}".format(mc.DEFAULTS.PLOT_DIR,
                                                 mc.DEFAULTS.PLOT_FORMAT),
         dpi=mc.DEFAULTS.PLOT_DPI,
         bbox_inches='tight')
     # plt.show()
-    print("  - N and weight v pptd")
+    print("  - N and mass v pptd")
     print("Pinch-point temperature difference analysis done.")
 
 
@@ -379,8 +380,8 @@ def run_mass():
 
 
 if __name__ == "__main__":
-    run_plot()
-    run_superheat()
-    run_pptd()
+    #run_plot()
+    #run_superheat()
+    #run_pptd()
     run_pressure()
     run_mass()

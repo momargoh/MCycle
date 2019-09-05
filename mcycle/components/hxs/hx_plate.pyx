@@ -175,13 +175,17 @@ kwargs : optional
         return dp
 
     cpdef public double dpFSf(self):
-        """float: Frcitional pressure drop of the secondary fluid [Pa]."""
+        """float: Frictional pressure drop of the secondary fluid [Pa]."""
         cdef double dp = 0
         cdef HxUnitPlate unit
         cdef size_t i
         for i in range(len(self._units)):#unit in self._units:
             unit = self._units[i]
-            dp += unit._dpFSf()
+            #dp += unit._dpFSf()
+            add = unit._dpFSf()
+            dp += add
+            #print("adding: ", add)
+        #print("dpSf = ", dp)
         return dp
 
     cpdef public double dpAccWf(self):

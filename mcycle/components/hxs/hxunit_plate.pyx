@@ -222,7 +222,7 @@ kwargs : optional
             L=self.L,
             W=self.W,
             flowConfig=self.flowConfig,
-            is_wf=False,
+            is_wf=True,
             geom2=self.geomSf)["dpF"]
 
     cpdef public double _dpFSf(self):

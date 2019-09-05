@@ -568,12 +568,12 @@ Returns
 """
     assert type(geom) in [gms.GeomHxPlateFinStraight], _assertGeomErrMsg(
         geom, "bhattiShah_sp_f")
-    cdef double Dh, Dl, Ac, a, b
+    cdef double Dh, De, Ac, a, b
     if type(geom) is gms.GeomHxPlateFinStraight:
         a = geom.s/2
         b = geom.h()/2
         Dh = 4*a*b/(a+b)
-        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        De = Dh#*(2./3+11/24*a/b*(2-a/b))
         Ac = geom.h() * geom.s * W/(geom.s + geom.t)
 
     cdef double m_channel = flowIn.m / N
@@ -585,6 +585,7 @@ Returns
     cdef double Re_De = G * De / avg.visc()
     cdef double f = 0.00128 + 0.1143*Re_De**-0.311
     cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
+    #print("f={},dpF={}, Ac={}, De={}, Re_De={}, G={}".format(f, dpF, Ac, De, Re_De, G))
     return {"f": f, "dpF": dpF}
 
 cpdef dict petukhovPopov_sp_h(FlowState flowIn,
@@ -609,7 +610,7 @@ dict of float : {"h"}
         a = geom.s/2
         b = geom.h()/2
         Dh = 4*a*b/(a+b)
-        De = Dh*(2./3+11/24*a/b*(2-a/b))
+        De = Dh#*(2./3+11/24*a/b*(2-a/b))
         Ac = geom.h() * geom.s * W/(geom.s + geom.t)
 
     cdef double m_channel = flowIn.m / N
