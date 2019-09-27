@@ -1098,40 +1098,18 @@ marker : str, optional
         yvalsSource = []
         xvalsSink = []
         yvalsSink = []
-        xvalsSat = []
-        yvalsSat = []
         if graph == 'Ts':
             x = "s"
             y = "T"
             xlabel = 's [J/kg.K]'
             ylabel = 'T [K]'
             title = title
-            Tcrit = self.wf.TCrit()
-            Tmin = self.wf.TMin()
-            xvalsSat2, yvalsSat2 = [], []
-            for T in np.linspace(Tmin, Tcrit, 100, False):
-                xvalsSat.append(self.wf.copyState(CP.QT_INPUTS, 0, T).s())
-                yvalsSat.append(T)
-                xvalsSat2.append(self.wf.copyState(CP.QT_INPUTS, 1, T).s())
-                yvalsSat2.append(T)
-            xvalsSat = xvalsSat + list(reversed(xvalsSat2))
-            yvalsSat = yvalsSat + list(reversed(yvalsSat2))
         elif graph == 'ph':
             x = "h"
             y = "p"
             xlabel = 'h [J/kg]'
             ylabel = 'p [Pa]'
             title = title
-            pcrit = self.wf.pCrit()
-            pmin = self.wf.pMin()
-            xvalsSat2, yvalsSat2 = [], []
-            for p in np.linspace(pmin, pcrit, 100, False):
-                xvalsSat.append(self.wf.copyState(CP.PQ_INPUTS, p, 0).h())
-                yvalsSat.append(p)
-                xvalsSat2.append(self.wf.copyState(CP.PQ_INPUTS, p, 1).h())
-                yvalsSat2.append(p)
-            xvalsSat = xvalsSat + list(reversed(xvalsSat2))
-            yvalsSat = yvalsSat + list(reversed(yvalsSat2))
         #
         plotStates = []
         for key in self._cycleStateKeys:
@@ -1213,7 +1191,8 @@ marker : str, optional
             linestyle=linestyle,
             marker=marker)
         if satCurve is True:
-            plt.plot(xvalsSat, yvalsSat, 'g--')
+            sc = saturationCurve(self.wf.fluid)
+            plt.plot(sc[x], sc[y], 'g--')
         #
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
