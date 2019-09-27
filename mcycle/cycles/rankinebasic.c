@@ -2152,7 +2152,7 @@ static const char __pyx_k_config[] = "config";
 static const char __pyx_k_dpComp[] = "_dpComp";
 static const char __pyx_k_figure[] = "figure";
 static const char __pyx_k_format[] = "format";
-static const char __pyx_k_h_J_Kg[] = "h [J/Kg]";
+static const char __pyx_k_h_J_kg[] = "h [J/kg]";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_logger[] = "logger";
 static const char __pyx_k_marker[] = "marker";
@@ -2205,7 +2205,7 @@ static const char __pyx_k_pptdEvap[] = "_pptdEvap";
 static const char __pyx_k_pressure[] = "pressure";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_reversed[] = "reversed";
-static const char __pyx_k_s_J_Kg_K[] = "s [J/Kg.K]";
+static const char __pyx_k_s_J_kg_K[] = "s [J/kg.K]";
 static const char __pyx_k_satCurve[] = "satCurve";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_sink50_2[] = "sink50";
@@ -2473,7 +2473,7 @@ static PyObject *__pyx_n_s_graph;
 static PyObject *__pyx_n_s_grid;
 static PyObject *__pyx_n_s_h;
 static PyObject *__pyx_n_u_h;
-static PyObject *__pyx_kp_u_h_J_Kg;
+static PyObject *__pyx_kp_u_h_J_kg;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_u_info;
 static PyObject *__pyx_n_s_init;
@@ -2546,7 +2546,7 @@ static PyObject *__pyx_n_s_run;
 static PyObject *__pyx_kp_u_run_or_size_has_not_been_execute;
 static PyObject *__pyx_n_s_s;
 static PyObject *__pyx_n_u_s;
-static PyObject *__pyx_kp_u_s_J_Kg_K;
+static PyObject *__pyx_kp_u_s_J_kg_K;
 static PyObject *__pyx_n_s_satCurve;
 static PyObject *__pyx_n_s_savefig;
 static PyObject *__pyx_n_s_savefig_dpi;
@@ -4237,7 +4237,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_4_mWf(st
  * 
  *     @property
  *     def mWf(self):             # <<<<<<<<<<<<<<
- *         """float: Alias of wf.m; mass flow rate of the working fluid [Kg/s]."""
+ *         """float: Alias of wf.m; mass flow rate of the working fluid [kg/s]."""
  *         return self.wf.m
  */
 
@@ -4262,7 +4262,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_3mWf___g
 
   /* "mcycle/cycles/rankinebasic.pyx":129
  *     def mWf(self):
- *         """float: Alias of wf.m; mass flow rate of the working fluid [Kg/s]."""
+ *         """float: Alias of wf.m; mass flow rate of the working fluid [kg/s]."""
  *         return self.wf.m             # <<<<<<<<<<<<<<
  * 
  *     @mWf.setter
@@ -4278,7 +4278,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_3mWf___g
  * 
  *     @property
  *     def mWf(self):             # <<<<<<<<<<<<<<
- *         """float: Alias of wf.m; mass flow rate of the working fluid [Kg/s]."""
+ *         """float: Alias of wf.m; mass flow rate of the working fluid [kg/s]."""
  *         return self.wf.m
  */
 
@@ -28888,7 +28888,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
  *         if graph == 'Ts':
  *             x = "s"             # <<<<<<<<<<<<<<
  *             y = "T"
- *             xlabel = 's [J/Kg.K]'
+ *             xlabel = 's [J/kg.K]'
  */
     __Pyx_INCREF(__pyx_n_u_s);
     __pyx_v_x = __pyx_n_u_s;
@@ -28897,7 +28897,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
  *         if graph == 'Ts':
  *             x = "s"
  *             y = "T"             # <<<<<<<<<<<<<<
- *             xlabel = 's [J/Kg.K]'
+ *             xlabel = 's [J/kg.K]'
  *             ylabel = 'T [K]'
  */
     __Pyx_INCREF(__pyx_n_u_T);
@@ -28906,16 +28906,16 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
     /* "mcycle/cycles/rankinebasic.pyx":1106
  *             x = "s"
  *             y = "T"
- *             xlabel = 's [J/Kg.K]'             # <<<<<<<<<<<<<<
+ *             xlabel = 's [J/kg.K]'             # <<<<<<<<<<<<<<
  *             ylabel = 'T [K]'
  *             title = title
  */
-    __Pyx_INCREF(__pyx_kp_u_s_J_Kg_K);
-    __Pyx_DECREF_SET(__pyx_v_xlabel, __pyx_kp_u_s_J_Kg_K);
+    __Pyx_INCREF(__pyx_kp_u_s_J_kg_K);
+    __Pyx_DECREF_SET(__pyx_v_xlabel, __pyx_kp_u_s_J_kg_K);
 
     /* "mcycle/cycles/rankinebasic.pyx":1107
  *             y = "T"
- *             xlabel = 's [J/Kg.K]'
+ *             xlabel = 's [J/kg.K]'
  *             ylabel = 'T [K]'             # <<<<<<<<<<<<<<
  *             title = title
  *             Tcrit = self.wf.TCrit()
@@ -28924,7 +28924,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
     __Pyx_DECREF_SET(__pyx_v_ylabel, __pyx_kp_u_T_K);
 
     /* "mcycle/cycles/rankinebasic.pyx":1108
- *             xlabel = 's [J/Kg.K]'
+ *             xlabel = 's [J/kg.K]'
  *             ylabel = 'T [K]'
  *             title = title             # <<<<<<<<<<<<<<
  *             Tcrit = self.wf.TCrit()
@@ -29216,7 +29216,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
  *         elif graph == 'ph':
  *             x = "h"             # <<<<<<<<<<<<<<
  *             y = "p"
- *             xlabel = 'h [J/Kg]'
+ *             xlabel = 'h [J/kg]'
  */
     __Pyx_INCREF(__pyx_n_u_h);
     __pyx_v_x = __pyx_n_u_h;
@@ -29225,7 +29225,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
  *         elif graph == 'ph':
  *             x = "h"
  *             y = "p"             # <<<<<<<<<<<<<<
- *             xlabel = 'h [J/Kg]'
+ *             xlabel = 'h [J/kg]'
  *             ylabel = 'p [Pa]'
  */
     __Pyx_INCREF(__pyx_n_u_p);
@@ -29234,16 +29234,16 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
     /* "mcycle/cycles/rankinebasic.pyx":1122
  *             x = "h"
  *             y = "p"
- *             xlabel = 'h [J/Kg]'             # <<<<<<<<<<<<<<
+ *             xlabel = 'h [J/kg]'             # <<<<<<<<<<<<<<
  *             ylabel = 'p [Pa]'
  *             title = title
  */
-    __Pyx_INCREF(__pyx_kp_u_h_J_Kg);
-    __Pyx_DECREF_SET(__pyx_v_xlabel, __pyx_kp_u_h_J_Kg);
+    __Pyx_INCREF(__pyx_kp_u_h_J_kg);
+    __Pyx_DECREF_SET(__pyx_v_xlabel, __pyx_kp_u_h_J_kg);
 
     /* "mcycle/cycles/rankinebasic.pyx":1123
  *             y = "p"
- *             xlabel = 'h [J/Kg]'
+ *             xlabel = 'h [J/kg]'
  *             ylabel = 'p [Pa]'             # <<<<<<<<<<<<<<
  *             title = title
  *             pcrit = self.wf.pCrit()
@@ -29252,7 +29252,7 @@ static PyObject *__pyx_pf_6mcycle_6cycles_12rankinebasic_12RankineBasic_130plot(
     __Pyx_DECREF_SET(__pyx_v_ylabel, __pyx_kp_u_p_Pa);
 
     /* "mcycle/cycles/rankinebasic.pyx":1124
- *             xlabel = 'h [J/Kg]'
+ *             xlabel = 'h [J/kg]'
  *             ylabel = 'p [Pa]'
  *             title = title             # <<<<<<<<<<<<<<
  *             pcrit = self.wf.pCrit()
@@ -34720,7 +34720,7 @@ static PyMethodDef __pyx_methods_6mcycle_6cycles_12rankinebasic_RankineBasic[] =
 };
 
 static struct PyGetSetDef __pyx_getsets_6mcycle_6cycles_12rankinebasic_RankineBasic[] = {
-  {(char *)"mWf", __pyx_getprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_mWf, __pyx_setprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_mWf, (char *)"float: Alias of wf.m; mass flow rate of the working fluid [Kg/s].", 0},
+  {(char *)"mWf", __pyx_getprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_mWf, __pyx_setprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_mWf, (char *)"float: Alias of wf.m; mass flow rate of the working fluid [kg/s].", 0},
   {(char *)"TCond", __pyx_getprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_TCond, __pyx_setprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_TCond, (char *)"float: Evaporation temperature of the working fluid in the compressor [K].", 0},
   {(char *)"TEvap", __pyx_getprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_TEvap, __pyx_setprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_TEvap, (char *)"float: Evaporation temperature of the working fluid in the evaporator [K].", 0},
   {(char *)"dpComp", __pyx_getprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_dpComp, __pyx_setprop_6mcycle_6cycles_12rankinebasic_12RankineBasic_dpComp, (char *)"float: Pressure increase across the compressor [Pa].", 0},
@@ -34992,7 +34992,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_grid, __pyx_k_grid, sizeof(__pyx_k_grid), 0, 0, 1, 1},
   {&__pyx_n_s_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 0, 1, 1},
   {&__pyx_n_u_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 1, 0, 1},
-  {&__pyx_kp_u_h_J_Kg, __pyx_k_h_J_Kg, sizeof(__pyx_k_h_J_Kg), 0, 1, 0, 0},
+  {&__pyx_kp_u_h_J_kg, __pyx_k_h_J_kg, sizeof(__pyx_k_h_J_kg), 0, 1, 0, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_u_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 1, 0, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
@@ -35065,7 +35065,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_run_or_size_has_not_been_execute, __pyx_k_run_or_size_has_not_been_execute, sizeof(__pyx_k_run_or_size_has_not_been_execute), 0, 1, 0, 0},
   {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {&__pyx_n_u_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 1, 0, 1},
-  {&__pyx_kp_u_s_J_Kg_K, __pyx_k_s_J_Kg_K, sizeof(__pyx_k_s_J_Kg_K), 0, 1, 0, 0},
+  {&__pyx_kp_u_s_J_kg_K, __pyx_k_s_J_kg_K, sizeof(__pyx_k_s_J_kg_K), 0, 1, 0, 0},
   {&__pyx_n_s_satCurve, __pyx_k_satCurve, sizeof(__pyx_k_satCurve), 0, 0, 1, 1},
   {&__pyx_n_s_savefig, __pyx_k_savefig, sizeof(__pyx_k_savefig), 0, 0, 1, 1},
   {&__pyx_n_s_savefig_dpi, __pyx_k_savefig_dpi, sizeof(__pyx_k_savefig_dpi), 0, 0, 1, 1},

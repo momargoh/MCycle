@@ -125,7 +125,7 @@ kwargs : optional
     
     @property
     def mWf(self):
-        """float: Alias of wf.m; mass flow rate of the working fluid [Kg/s]."""
+        """float: Alias of wf.m; mass flow rate of the working fluid [kg/s]."""
         return self.wf.m
 
     @mWf.setter
@@ -1103,7 +1103,7 @@ marker : str, optional
         if graph == 'Ts':
             x = "s"
             y = "T"
-            xlabel = 's [J/Kg.K]'
+            xlabel = 's [J/kg.K]'
             ylabel = 'T [K]'
             title = title
             Tcrit = self.wf.TCrit()
@@ -1119,7 +1119,7 @@ marker : str, optional
         elif graph == 'ph':
             x = "h"
             y = "p"
-            xlabel = 'h [J/Kg]'
+            xlabel = 'h [J/kg]'
             ylabel = 'p [Pa]'
             title = title
             pcrit = self.wf.pCrit()

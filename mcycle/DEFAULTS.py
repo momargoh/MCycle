@@ -187,7 +187,7 @@ dimensionUnits = {
     "energy": "J",
     "force": "N",
     "length": "m",
-    "mass": "Kg",
+    "mass": "kg",
     "power": "W",
     "pressure": "Pa",
     "temperature": "K",
