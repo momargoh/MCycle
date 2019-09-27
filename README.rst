@@ -33,6 +33,8 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 * ``run`` : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
+All thermodynamic fluid properties are computed using CoolProp. The latest list of available pure and pseudo-pure fluids can be found here: `link <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_. Mixtures are also supported, though due to their complexity, may only be defined by pressure/quality, temperature/quality or pressure/temperature. See here for more info about mixtures: `link <http://www.coolprop.org/fluid_properties/Mixtures.html>`_. CoolProp can also use `REFPROP <https://www.nist.gov/srd/refprop>`_ as its backend, so if you may also use any REFPROP fluids if you have a licence.
+
 The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_.
 
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following `publication <https://doi.org/10.21105/joss.00710>`_.
@@ -84,6 +86,11 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 .. readme-link-marker
    
 .. _section-README-quickstart:
+
+Fluids
+===========
+
+MCycle uses 
 
 Quick start
 ===========
