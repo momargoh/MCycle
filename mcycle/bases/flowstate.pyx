@@ -256,7 +256,8 @@ name : str, optional
     
     cpdef public double pCrit(self):
         r"""double: Critical pressure [Pa]."""
-        return CP.CoolProp.PropsSI("pCrit", self.fluid)
+        #return CP.CoolProp.PropsSI("pcrit", self.fluid)
+        return self._state.p_critical()
     
     cpdef public double pMin(self):
         r"""double: Minimum pressure [Pa]."""
@@ -264,7 +265,8 @@ name : str, optional
     
     cpdef public double TCrit(self):
         r"""double: Critical temperture [K]."""
-        return CP.CoolProp.PropsSI("Tcrit", self.fluid)
+        #return CP.CoolProp.PropsSI("Tcrit", self.fluid)
+        return self._state.T_critical()
     
     cpdef public double TMin(self):
         r"""double: Minimum temperture [K]."""
