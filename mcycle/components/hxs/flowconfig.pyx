@@ -1,5 +1,6 @@
 from ...logger import log
 from ...bases.mcabstractbase cimport MCAB, MCAttr
+from ...constants import *
 
 
 cdef dict _inputs = {"sense": MCAttr(str, "none"), "passes": MCAttr(str, "none"), "verticalWf": MCAttr(bool, "none"), "verticalSf": MCAttr(bool, "none")}
@@ -10,30 +11,29 @@ cdef class HxFlowConfig(MCAB):
 
 Parameters
 ----------
-sense : str
-    General sense of the flows: 'counter', 'parallel' or 'cross'. Defaults to 'counter'.
-passes : str
-    Number/arrangement of flow passes. Currently only a single-pass arrangement is supported. Defaults to '1'.
+sense : unsigned char
+    General sense of the flows: COUNTERFLOW, PARALLELFLOW or CROSSFLOW. Defaults to COUNTERFLOW.
+passes : unsigned int
+    Number of flow passes. Currently only a single-pass arrangement is supported. Defaults to 1.
+arrangement : str
+    Flow arrangement, currently an unused variable. Defaults to ''.
 verticalWf : bint
     Working fluid flow is vertical. Defaults to True.
 verticalSf : bint
     Secondary fluid flow is vertical. Defaults to True.
     """
 
-    def __cinit__(self,
-                  str sense="counter",
-                  str passes="1",
+    def __init__(self,
+                  unsigned char sense=COUNTERFLOW,
+                  unsigned int passes=1,
+                  str arrangement='',
                   bint verticalWf=True,
-                  bint verticalSf=True):
+                  bint verticalSf=True,
+                  str name="HxFlowConfig instance"):
+        super().__init__(name=name, _inputs=_inputs, _properties=_properties)
         # TODO implement more error checking
-        if sense != "counter" and sense != "parallel":
-            msg = "{} is not a valid value for sense; must be 'counter' or 'parallel'.".format(sense)
-            log("error", msg)
-            raise ValueError(msg)
         self.sense = sense
         self.passes = passes
+        self.arrangement = arrangement
         self.verticalWf = verticalWf
         self.verticalSf = verticalSf
-        self._inputs = _inputs
-        self._properties = _properties
-        self.name = "HxFlowConfig instance"

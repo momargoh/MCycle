@@ -1,5 +1,6 @@
 """A brief library of commercial component designs."""
 from ..bases import Config
+from ..constants import *
 from .. import components as cps
 from .. import geometries as gms
 from . import materials as mats
@@ -7,7 +8,7 @@ from . import materials as mats
 
 def alfaLaval_AC30EQ(
         flowConfig=cps.hxs.HxFlowConfig(
-            sense="counter", passes="1", verticalWf=True, verticalSf=True),
+            sense=COUNTERFLOW, passes=1, verticalWf=True, verticalSf=True),
         flowInWf=None,
         flowInSf=None,
         flowOutWf=None,
@@ -17,7 +18,6 @@ def alfaLaval_AC30EQ(
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
         name="HxPlateCorrugated instance",
-        config=Config(),
         kwargs={}):
     """Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf"""
     hx = cps.HxPlateCorrugated(
@@ -41,7 +41,7 @@ def alfaLaval_AC30EQ(
         coeffs_mass=[
             1. / (0.325 * 0.095 * 0.424e-3), 0.09 / (0.325 * 0.095 * 0.424e-3)
         ],
-        effThermal=1.0,
+        efficiencyThermal=1.0,
         flowInWf=flowInWf,
         flowInSf=flowInSf,
         flowOutWf=flowOutWf,
@@ -52,15 +52,15 @@ def alfaLaval_AC30EQ(
         sizeUnitsBounds=sizeUnitsBounds,
         name=name,
         notes=
-        "Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf",
-        config=config)
+        "Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf"
+    )
     hx.update(kwargs)
     return hx
 
 
 def alfaLaval_CBXP27(
         flowConfig=cps.hxs.HxFlowConfig(
-            sense="counter", passes="1", verticalWf=True, verticalSf=True),
+            sense=COUNTERFLOW, passes=1, verticalWf=True, verticalSf=True),
         flowInWf=None,
         flowInSf=None,
         flowOutWf=None,
@@ -69,8 +69,7 @@ def alfaLaval_CBXP27(
         sizeAttr="NPlate",
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
-        name="HxPlateCorurgated instance",
-        config=Config(),
+        name="HxPlateCorrugated instance",
         kwargs={}):
     """Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf"""
     hx = cps.HxPlateCorrugated(
@@ -94,7 +93,7 @@ def alfaLaval_CBXP27(
         coeffs_mass=[
             2. / (0.310 * 0.111 * 0.95e-3), 0.13 / (0.310 * 0.111 * 0.95e-3)
         ],
-        effThermal=1.0,
+        efficiencyThermal=1.0,
         flowInWf=flowInWf,
         flowInSf=flowInSf,
         flowOutWf=flowOutWf,
@@ -105,7 +104,7 @@ def alfaLaval_CBXP27(
         sizeUnitsBounds=sizeUnitsBounds,
         name=name,
         notes=
-        "Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf",
-        config=config)
+        "Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf"
+    )
     hx.update(kwargs)
     return hx

@@ -2,9 +2,10 @@ from ...bases.component cimport Component11
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
-import CoolProp as CP
+from ...constants import *
+from ...logger import log
 
-cdef dict _inputs = {"pRatio": MCAttr(float, "none"), "effIsentropic": MCAttr(float, "none"),
+cdef dict _inputs = {"pRatio": MCAttr(float, "none"), "efficiencyIsentropic": MCAttr(float, "none"),
                 "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
                 "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
@@ -18,7 +19,7 @@ Parameters
 ----------
 pRatio : float
     Pressure increase ratio [-].
-effIsentropic : float, optional
+efficiencyIsentropic : float, optional
     Isentropic efficiency [-]. Defaults to 1.
 flowIn : FlowState, optional
     Incoming FlowState. Defaults to None.
@@ -46,7 +47,7 @@ kwargs : optional
 
     def __init__(self,
                  double pRatio,
-                 double effIsentropic=1.0,
+                 double efficiencyIsentropic=1.0,
                  FlowState flowIn=None,
                  FlowState flowOut=None,
                  FlowState ambient=None,
@@ -55,11 +56,11 @@ kwargs : optional
                  list sizeUnitsBounds=[],
                  str name="ExpBasic instance",
                  str notes="No notes/model info.",
-                 Config config=Config()):
-        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], name, notes,
+                 Config config=None):
+        super().__init__(flowIn, flowOut, ambient, sizeAttr, sizeBounds, sizeUnitsBounds, [0, 0], [0, 0], name, notes,
                          config)
         self.pRatio = pRatio
-        self.effIsentropic = effIsentropic
+        self.efficiencyIsentropic = efficiencyIsentropic
         self._inputs = _inputs
         self._properties = _properties
 
@@ -67,53 +68,38 @@ kwargs : optional
         """float: Power output [W]."""
         return (self.flowsIn[0].h() - self.flowsOut[0].h()) * self._m()
 
-    cpdef public void run(self):
+    cpdef public void run(self) except *:
         """Compute for the outgoing working fluid FlowState from component attributes."""
-        cdef FlowState flowOut_s = self.flowsIn[0].copyState(CP.PSmass_INPUTS, self.flowsIn[0].p() /
+        cdef FlowState flowOut_s = self.flowsIn[0].copyUpdateState(PSmass_INPUTS, self.flowsIn[0].p() /
                                                     self.pRatio, self.flowsIn[0].s())
-        cdef double hOut = self.flowsIn[0].h() - self.effIsentropic * (self.flowsIn[0].h() - flowOut_s.h())
-        self.flowsOut[0] = self.flowsIn[0].copyState(CP.HmassP_INPUTS, hOut,
+        cdef double hOut = self.flowsIn[0].h() - self.efficiencyIsentropic * (self.flowsIn[0].h() - flowOut_s.h())
+        self.flowsOut[0] = self.flowsIn[0].copyUpdateState(HmassP_INPUTS, hOut,
                                         self.flowsIn[0].p() / self.pRatio)
 
-    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
+    cpdef public void size(self) except *:
         """Solve for the value of the nominated attribute required to achieve the defined outgoing FlowState.
-
-Parameters
-------------
-sizeAttr : string, optional
-    Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef FlowState flowOut_s
-        if attr == '':
-            attr = self.sizeAttr
-        if bounds == []:
-            bounds = self.sizeBounds
-        if unitsBounds == []:
-            unitsBounds = self.sizeUnitsBounds
+        cdef str attr = self.sizeAttr
         try:
             if attr == "pRatio":
                 self.pRatio = self.flowsIn[0].p() / self.flowsOut[0].p()
-            elif attr == "effIsentropic":
+            elif attr == "efficiencyIsentropic":
                 assert (self.flowsIn[0].p() / self.flowsOut[0].p() - self.pRatio
                         ) / self.pRatio < self.config._tolRel_p
-                flowOut_s = self.flowsIn[0].copyState(CP.PSmass_INPUTS, self.flowsOut[0].p(),
+                flowOut_s = self.flowsIn[0].copyUpdateState(PSmass_INPUTS, self.flowsOut[0].p(),
                                              self.flowsIn[0].s())
-                self.effIsentropic = (self.flowsIn[0].h() - self.flowsOut[0].h()) / (
+                self.efficiencyIsentropic = (self.flowsIn[0].h() - self.flowsOut[0].h()) / (
                     self.flowsIn[0].h() - flowOut_s.h())
             else:
-                super(ExpBasic, self)._size(attr, bounds)
+                super(ExpBasic, self).size()
         except AssertionError as err:
+            log('error', 'ExpBasic.size(): pRatio appears to be incorrect', err)
             raise err
-        except:
-            raise StopIteration(
-                "Warning: {}.size({},{},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bounds, unitsBounds))
+        except Exception as exc:
+            msg = 'ExpBasic.size(): failed to converge.'
+            log('error', msg, exc)
+            raise exc
         
     @property
     def pIn(self):

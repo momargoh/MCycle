@@ -14,9 +14,9 @@ The first section of the script imports the required modules and sets up the def
     >>> import matplotlib as mpl
     >>> import matplotlib.pyplot as plt
 
-    >>> mc.DEFAULTS.PLOT_DIR = 'plots'
-    >>> mc.DEFAULTS.PLOT_FORMAT = "png"  # change to "jpg" if preferred
-    >>> mc.DEFAULTS.PLOT_DPI = 600
+    >>> mc.defaults.PLOT_DIR = 'plots'
+    >>> mc.defaults.PLOT_FORMAT = "png"  # change to "jpg" if preferred
+    >>> mc.defaults.PLOT_DPI = 600
     >>> mc.updateDefaults()plots_folder = "plots"
     
     >>> mpl.rc("lines", lw=2.0)

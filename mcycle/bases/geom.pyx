@@ -1,5 +1,5 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from .. import DEFAULTS
+from .. import defaults
 
 cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}
 cdef dict _properties = {}
@@ -41,7 +41,7 @@ propertyKeys : list, optional
 name : str, optional
     Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
         """
         cdef str output, prop
         cdef tuple i
@@ -51,7 +51,7 @@ rstHeading : int, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
 
         hasSummaryList = []
         for k, v in self._inputs.items():

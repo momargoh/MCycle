@@ -7,9 +7,9 @@ from .flowconfig cimport HxFlowConfig
 
 cdef class HxBasic(Component22):
     cpdef public HxFlowConfig flowConfig
-    cpdef public int NWf
-    cpdef public int NSf
-    cpdef public int NWall
+    cpdef public unsigned int NWf
+    cpdef public unsigned int NSf
+    cpdef public unsigned int NWall
     cpdef public double hWf_liq
     cpdef public double hWf_tp
     cpdef public double hWf_vap
@@ -22,7 +22,7 @@ cdef class HxBasic(Component22):
     cpdef public double ARatioWf
     cpdef public double ARatioSf
     cpdef public double ARatioWall
-    cpdef public double effThermal
+    cpdef public double efficiencyThermal
     cpdef public list _units
     cpdef public _unitClass
 
@@ -30,17 +30,17 @@ cdef class HxBasic(Component22):
     cpdef public double _A(self)
     cpdef public double _hWf(self)
     cpdef public double _hSf(self)
-    cpdef public int _NWf(self)
-    cpdef public int _NSf(self)
+    cpdef public unsigned int _NWf(self)
+    cpdef public unsigned int _NSf(self)
     cpdef public double dpWf(self)
     cpdef public double dpSf(self)
-    cpdef public double _effFactorWf(self)
-    cpdef public double _effFactorSf(self)
+    cpdef public double _efficiencyFactorWf(self)
+    cpdef public double _efficiencyFactorSf(self)
     cdef public double _QWf(self)
     cdef public double _QSf(self)
     cpdef public double Q(self)
     #cpdef public double Q(self)
-    cpdef public double weight(self)
+    cpdef public double mass(self)
 
     cpdef public void unitise(self)
     cdef public tuple _unitArgsLiq(self)
@@ -48,5 +48,5 @@ cdef class HxBasic(Component22):
     cdef public tuple _unitArgsVap(self)
     cdef bint _checkContinuous(self)
 
-    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBounds)
+    cpdef double _f_sizeHxBasic(self, double value, str attr)
     

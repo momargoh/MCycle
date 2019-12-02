@@ -9,8 +9,10 @@ cdef class Component(MCAB):
     cpdef public FlowState ambient
     cpdef public str sizeAttr
     cpdef public list sizeBounds
+    cpdef public str sizeUnitsAttr
     cpdef public list sizeUnitsBounds
-    cpdef public double[2] runBounds
+    cpdef public list runBounds
+    cpdef public list runUnitsBounds
     cpdef public str notes
     cpdef public Config config
     cdef public bint hasInAndOut(self, int flowIndex)
@@ -19,10 +21,10 @@ cdef class Component(MCAB):
     #cpdef _update(self, list kwargs)
     cpdef public void clearWfFlows(self)
     cpdef public void clearAllFlows(self)
-    cpdef public void run(self)
+    cpdef public void run(self) except *
     cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str sizeAttr, list sizeBounds, list sizeUnitsBounds)
-    cpdef public void _size(self, str attr, list bounds, list boundsUnits) except *
-    cpdef public void sizeUnits(self, str attr, list bounds) except *
+    cpdef public void size(self) except *
+    cpdef public void sizeUnits(self) except *
     
 
 cdef class Component11(Component):

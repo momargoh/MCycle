@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "mcycle.library.standard_atmospheres",
+        "name": "mcycle.utils.standard_atmospheres",
         "sources": [
-            "mcycle/library/standard_atmospheres.pyx"
+            "mcycle/utils/standard_atmospheres.pyx"
         ]
     },
-    "module_name": "mcycle.library.standard_atmospheres"
+    "module_name": "mcycle.utils.standard_atmospheres"
 }
 END: Cython Metadata */
 
@@ -574,8 +574,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__mcycle__library__standard_atmospheres
-#define __PYX_HAVE_API__mcycle__library__standard_atmospheres
+#define __PYX_HAVE__mcycle__utils__standard_atmospheres
+#define __PYX_HAVE_API__mcycle__utils__standard_atmospheres
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -780,205 +780,10 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "mcycle/library/standard_atmospheres.pyx",
-  "stringsource",
-  "mcycle/bases/mcabstractbase.pxd",
-  "mcycle/bases/flowstate.pxd",
+  "mcycle/utils/standard_atmospheres.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr;
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB;
-struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState;
-struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly;
-struct __pyx_obj_6mcycle_5bases_9flowstate_RefData;
-struct __pyx_opt_args_6mcycle_7library_20standard_atmospheres_isa;
-
-/* "mcycle/library/standard_atmospheres.pyx":20
- *     return p, T
- * 
- * cpdef FlowState isa(double altitude,             # <<<<<<<<<<<<<<
- *                     double pStag=101325.,
- *                     double TStag=288.15,
- */
-struct __pyx_opt_args_6mcycle_7library_20standard_atmospheres_isa {
-  int __pyx_n;
-  double pStag;
-  double TStag;
-  double gravity;
-  double R;
-  PyObject *fluidCP;
-  int phaseCP;
-};
-
-/* "mcabstractbase.pxd":1
- * cdef class MCAttr:             # <<<<<<<<<<<<<<
- *     cdef public cls
- *     cdef public str dimension
- */
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr {
-  PyObject_HEAD
-  PyObject *cls;
-  PyObject *dimension;
-};
-
-
-/* "mcabstractbase.pxd":5
- *     cdef public str dimension
- * 
- * cdef class MCAB:             # <<<<<<<<<<<<<<
- *     cpdef public dict _inputs
- *     cpdef public dict _properties
- */
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB {
-  PyObject_HEAD
-  struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_vtab;
-  PyObject *_inputs;
-  PyObject *_properties;
-  PyObject *name;
-  PyObject *itup;
-  PyObject *ilist;
-};
-
-
-/* "bases/flowstate.pxd":4
- * from CoolProp import AbstractState
- * 
- * cdef class FlowState(MCAB):             # <<<<<<<<<<<<<<
- *     cpdef public str fluid
- *     cdef public short phaseCP
- */
-struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
-  PyObject *fluid;
-  short phaseCP;
-  double m;
-  unsigned short _inputPairCP;
-  double _input1;
-  double _input2;
-  PyObject *_state;
-  int _canBuildPhaseEnvelope;
-};
-
-
-/* "bases/flowstate.pxd":39
- * cdef dict _validInputPairs
- * 
- * cdef class FlowStatePoly(FlowState):             # <<<<<<<<<<<<<<
- *     cpdef public RefData refData
- *     cdef dict _c
- */
-struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly {
-  struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState __pyx_base;
-  struct __pyx_obj_6mcycle_5bases_9flowstate_RefData *refData;
-  PyObject *_c;
-  PyObject *_inputProperty;
-  double _inputValue;
-};
-
-
-/* "bases/flowstate.pxd":48
- *     cpdef public void populate_c(self)
- * 
- * cdef class RefData:             # <<<<<<<<<<<<<<
- *     cpdef public str fluid
- *     cpdef public unsigned short deg
- */
-struct __pyx_obj_6mcycle_5bases_9flowstate_RefData {
-  PyObject_HEAD
-  struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *__pyx_vtab;
-  PyObject *fluid;
-  unsigned short deg;
-  double p;
-  PyObject *data;
-  short phaseCP;
-};
-
-
-
-/* "mcabstractbase.pxd":5
- *     cdef public str dimension
- * 
- * cdef class MCAB:             # <<<<<<<<<<<<<<
- *     cpdef public dict _inputs
- *     cpdef public dict _properties
- */
-
-struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB {
-  PyObject *(*_inputKeys)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_inputValues)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_propertyKeys)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_propertyValues)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *(*_copy)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch);
-  void (*update)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch);
-  PyObject *(*formatAttrForSummary)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, PyObject *);
-};
-static struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB;
-
-
-/* "bases/flowstate.pxd":4
- * from CoolProp import AbstractState
- * 
- * cdef class FlowState(MCAB):             # <<<<<<<<<<<<<<
- *     cpdef public str fluid
- *     cdef public short phaseCP
- */
-
-struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState {
-  struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB __pyx_base;
-  int (*isMixture)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *);
-  void (*updateState)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int, double, double, int __pyx_skip_dispatch);
-  struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *(*copyState)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int, double, double, int __pyx_skip_dispatch);
-  double (*T)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*p)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*rho)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*v)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*h)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*s)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*x)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*visc)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*k)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*cp)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*Pr)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*V)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*pCrit)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*pMin)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*TCrit)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  double (*TMin)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-  PyObject *(*phase)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, int __pyx_skip_dispatch);
-};
-static struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *__pyx_vtabptr_6mcycle_5bases_9flowstate_FlowState;
-
-
-/* "bases/flowstate.pxd":39
- * cdef dict _validInputPairs
- * 
- * cdef class FlowStatePoly(FlowState):             # <<<<<<<<<<<<<<
- *     cpdef public RefData refData
- *     cdef dict _c
- */
-
-struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowStatePoly {
-  struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState __pyx_base;
-  void (*_findAndSetInputProperty)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly *);
-  int (*_validateInputs)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly *);
-  void (*populate_c)(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly *, int __pyx_skip_dispatch);
-};
-static struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowStatePoly *__pyx_vtabptr_6mcycle_5bases_9flowstate_FlowStatePoly;
-
-
-/* "bases/flowstate.pxd":48
- *     cpdef public void populate_c(self)
- * 
- * cdef class RefData:             # <<<<<<<<<<<<<<
- *     cpdef public str fluid
- *     cpdef public unsigned short deg
- */
-
-struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData {
-  void (*populateData)(struct __pyx_obj_6mcycle_5bases_9flowstate_RefData *, int __pyx_skip_dispatch);
-};
-static struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *__pyx_vtabptr_6mcycle_5bases_9flowstate_RefData;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -1054,6 +859,18 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* RaiseDoubleKeywords.proto */
+static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
+
+/* ParseKeywords.proto */
+static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
+    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
+    const char* function_name);
+
 /* GetModuleGlobalName.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
 
@@ -1090,8 +907,42 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 /* PyObjectCallOneArg.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
-/* IncludeStringH.proto */
-#include <string.h>
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, long intval, int inplace);
+#else
+#define __Pyx_PyInt_AddObjC(op1, op2, intval, inplace)\
+    (inplace ? PyNumber_InPlaceAdd(op1, op2) : PyNumber_Add(op1, op2))
+#endif
+
+/* GetItemInt.proto */
+#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
+               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
+#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
+    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              int wraparound, int boundscheck);
+static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
+                                                     int is_list, int wraparound, int boundscheck);
+
+/* ObjectGetItem.proto */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key);
+#else
+#define __Pyx_PyObject_GetItem(obj, key)  PyObject_GetItem(obj, key)
+#endif
 
 /* RaiseTooManyValuesToUnpack.proto */
 static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
@@ -1099,8 +950,11 @@ static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
 /* RaiseNeedMoreValuesToUnpack.proto */
 static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
 
-/* RaiseNoneIterError.proto */
-static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+/* UnpackItemEndCheck.proto */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
 
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
@@ -1122,6 +976,14 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
 #else
 #define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
 #define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
+#endif
+
+/* PyErrExceptionMatches.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
 #endif
 
 /* GetException.proto */
@@ -1160,26 +1022,13 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 /* RaiseException.proto */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
-/* RaiseDoubleKeywords.proto */
-static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
-
-/* ParseKeywords.proto */
-static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
-    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
-    const char* function_name);
-
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
-/* ArgTypeTest.proto */
-#define __Pyx_ArgTypeTest(obj, type, none_allowed, name, exact)\
-    ((likely((Py_TYPE(obj) == type) | (none_allowed && (obj == Py_None)))) ? 1 :\
-        __Pyx__ArgTypeTest(obj, type, name, exact))
-static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
-
-/* GetVTable.proto */
-static void* __Pyx_GetVtable(PyObject *dict);
+/* SwapException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#else
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
+#endif
 
 /* Import.proto */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
@@ -1214,19 +1063,13 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
-
-/* CIntFromPy.proto */
-static CYTHON_INLINE size_t __Pyx_PyInt_As_size_t(PyObject *);
-
-/* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* FastTypeChecks.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -1244,207 +1087,345 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
 
-/* PyIdentifierFromString.proto */
-#if !defined(__Pyx_PyIdentifier_FromString)
-#if PY_MAJOR_VERSION < 3
-  #define __Pyx_PyIdentifier_FromString(s) PyString_FromString(s)
-#else
-  #define __Pyx_PyIdentifier_FromString(s) PyUnicode_FromString(s)
-#endif
-#endif
-
-/* ModuleImport.proto */
-static PyObject *__Pyx_ImportModule(const char *name);
-
-/* TypeImport.proto */
-static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name, size_t size, int strict);
-
-/* VoidPtrImport.proto */
-static int __Pyx_ImportVoidPtr(PyObject *module, const char *name, void **p, const char *sig);
-
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'mcycle.bases.mcabstractbase' */
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = 0;
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB = 0;
+/* Module declarations from 'mcycle.utils.standard_atmospheres' */
+#define __Pyx_MODULE_NAME "mcycle.utils.standard_atmospheres"
+extern int __pyx_module_is_main_mcycle__utils__standard_atmospheres;
+int __pyx_module_is_main_mcycle__utils__standard_atmospheres = 0;
 
-/* Module declarations from 'mcycle.bases.flowstate' */
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_9flowstate_FlowState = 0;
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_9flowstate_FlowStatePoly = 0;
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_9flowstate_RefData = 0;
-static PyObject **__pyx_vp_6mcycle_5bases_9flowstate_validInputPairs = 0;
-#define __pyx_v_6mcycle_5bases_9flowstate_validInputPairs (*__pyx_vp_6mcycle_5bases_9flowstate_validInputPairs)
-static PyObject **__pyx_vp_6mcycle_5bases_9flowstate__validInputPairs = 0;
-#define __pyx_v_6mcycle_5bases_9flowstate__validInputPairs (*__pyx_vp_6mcycle_5bases_9flowstate__validInputPairs)
-
-/* Module declarations from 'mcycle.library.standard_atmospheres' */
-static PyObject *__pyx_f_6mcycle_7library_20standard_atmospheres_isaPropsFromBase(double, double, double, double, double, double, double); /*proto*/
-static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7library_20standard_atmospheres_isa(double, int __pyx_skip_dispatch, struct __pyx_opt_args_6mcycle_7library_20standard_atmospheres_isa *__pyx_optional_args); /*proto*/
-static CYTHON_INLINE PyObject *__Pyx_carray_to_py_double(double *, Py_ssize_t); /*proto*/
-static CYTHON_INLINE PyObject *__Pyx_carray_to_tuple_double(double *, Py_ssize_t); /*proto*/
-#define __Pyx_MODULE_NAME "mcycle.library.standard_atmospheres"
-extern int __pyx_module_is_main_mcycle__library__standard_atmospheres;
-int __pyx_module_is_main_mcycle__library__standard_atmospheres = 0;
-
-/* Implementation of 'mcycle.library.standard_atmospheres' */
+/* Implementation of 'mcycle.utils.standard_atmospheres' */
 static PyObject *__pyx_builtin_ValueError;
-static PyObject *__pyx_builtin_range;
 static const char __pyx_k_R[] = "R";
-static const char __pyx_k_CP[] = "CP";
+static const char __pyx_k_T[] = "T";
+static const char __pyx_k_c[] = "c";
+static const char __pyx_k_i[] = "i";
+static const char __pyx_k_p[] = "p";
+static const char __pyx_k__2[] = "";
 static const char __pyx_k_Air[] = "Air";
+static const char __pyx_k_atm[] = "atm";
+static const char __pyx_k_exc[] = "exc";
 static const char __pyx_k_exp[] = "exp";
+static const char __pyx_k_isa[] = "isa";
+static const char __pyx_k_log[] = "log";
+static const char __pyx_k_msg[] = "msg";
 static const char __pyx_k_nan[] = "nan";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_math[] = "math";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_TStag[] = "TStag";
+static const char __pyx_k_error[] = "error";
 static const char __pyx_k_pStag[] = "pStag";
-static const char __pyx_k_range[] = "range";
 static const char __pyx_k_format[] = "format";
 static const char __pyx_k_import[] = "__import__";
-static const char __pyx_k_fluidCP[] = "fluidCP";
+static const char __pyx_k_logger[] = "logger";
+static const char __pyx_k_TStag_2[] = "_TStag";
 static const char __pyx_k_gravity[] = "gravity";
-static const char __pyx_k_phaseCP[] = "phaseCP";
-static const char __pyx_k_CoolProp[] = "CoolProp";
-static const char __pyx_k_DEFAULTS[] = "DEFAULTS";
+static const char __pyx_k_pStag_2[] = "_pStag";
 static const char __pyx_k_altitude[] = "altitude";
+static const char __pyx_k_FlowState[] = "FlowState";
 static const char __pyx_k_PT_INPUTS[] = "PT_INPUTS";
+static const char __pyx_k_TStagBase[] = "TStagBase";
+static const char __pyx_k_constants[] = "constants";
+static const char __pyx_k_lapseRate[] = "lapseRate";
+static const char __pyx_k_pStagBase[] = "pStagBase";
 static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
-static const char __pyx_k_COOLPROP_EOS[] = "COOLPROP_EOS";
+static const char __pyx_k_refAltitude[] = "refAltitude";
+static const char __pyx_k_updateState[] = "updateState";
+static const char __pyx_k_altitudeBase[] = "altitudeBase";
+static const char __pyx_k_refLapseRate[] = "refLapseRate";
+static const char __pyx_k_bases_flowstate[] = "bases.flowstate";
+static const char __pyx_k_isaPropsFromBase[] = "isaPropsFromBase";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Altitude_must_be_below_86_000_m[] = "Altitude must be below 86,000 [m] (given: {})";
 static const char __pyx_k_Compute_FlowState_properties_in[] = "Compute FlowState properties in standard atmospheres.\n";
 static const char __pyx_k_Altitude_must_be_above_610_m_giv[] = "Altitude must be above -610 [m] (given: {})";
-static const char __pyx_k_Was_not_able_to_produce_FlowStat[] = "Was not able to produce FlowState from computed pStag={}, TStag={}";
+static const char __pyx_k_ISA_was_not_able_to_produce_Flow[] = "ISA was not able to produce FlowState from computed pStag={}, TStag={}";
+static const char __pyx_k_mcycle_utils_standard_atmosphere[] = "mcycle/utils/standard_atmospheres.pyx";
+static const char __pyx_k_mcycle_utils_standard_atmosphere_2[] = "mcycle.utils.standard_atmospheres";
 static PyObject *__pyx_n_u_Air;
 static PyObject *__pyx_kp_u_Altitude_must_be_above_610_m_giv;
 static PyObject *__pyx_kp_u_Altitude_must_be_below_86_000_m;
-static PyObject *__pyx_n_s_COOLPROP_EOS;
-static PyObject *__pyx_n_s_CP;
-static PyObject *__pyx_n_s_CoolProp;
-static PyObject *__pyx_n_s_DEFAULTS;
+static PyObject *__pyx_n_s_FlowState;
+static PyObject *__pyx_kp_u_ISA_was_not_able_to_produce_Flow;
 static PyObject *__pyx_n_s_PT_INPUTS;
 static PyObject *__pyx_n_s_R;
+static PyObject *__pyx_n_s_T;
 static PyObject *__pyx_n_s_TStag;
+static PyObject *__pyx_n_s_TStagBase;
+static PyObject *__pyx_n_s_TStag_2;
 static PyObject *__pyx_n_s_ValueError;
-static PyObject *__pyx_kp_u_Was_not_able_to_produce_FlowStat;
+static PyObject *__pyx_n_s__2;
 static PyObject *__pyx_n_s_altitude;
+static PyObject *__pyx_n_s_altitudeBase;
+static PyObject *__pyx_n_s_atm;
+static PyObject *__pyx_n_s_bases_flowstate;
+static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_constants;
+static PyObject *__pyx_n_u_error;
+static PyObject *__pyx_n_s_exc;
 static PyObject *__pyx_n_s_exp;
-static PyObject *__pyx_n_s_fluidCP;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_gravity;
+static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_isa;
+static PyObject *__pyx_n_s_isaPropsFromBase;
+static PyObject *__pyx_n_s_lapseRate;
+static PyObject *__pyx_n_s_log;
+static PyObject *__pyx_n_s_logger;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_math;
+static PyObject *__pyx_kp_s_mcycle_utils_standard_atmosphere;
+static PyObject *__pyx_n_s_mcycle_utils_standard_atmosphere_2;
+static PyObject *__pyx_n_s_msg;
 static PyObject *__pyx_n_s_nan;
+static PyObject *__pyx_n_s_p;
 static PyObject *__pyx_n_s_pStag;
-static PyObject *__pyx_n_s_phaseCP;
-static PyObject *__pyx_n_s_pyx_vtable;
-static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_n_s_pStagBase;
+static PyObject *__pyx_n_s_pStag_2;
+static PyObject *__pyx_n_s_refAltitude;
+static PyObject *__pyx_n_s_refLapseRate;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_6mcycle_7library_20standard_atmospheres_isa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_altitude, double __pyx_v_pStag, double __pyx_v_TStag, double __pyx_v_gravity, double __pyx_v_R, PyObject *__pyx_v_fluidCP, int __pyx_v_phaseCP); /* proto */
+static PyObject *__pyx_n_s_updateState;
+static PyObject *__pyx_pf_6mcycle_5utils_20standard_atmospheres_isaPropsFromBase(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_altitude, PyObject *__pyx_v_lapseRate, PyObject *__pyx_v_altitudeBase, PyObject *__pyx_v_pStagBase, PyObject *__pyx_v_TStagBase); /* proto */
+static PyObject *__pyx_pf_6mcycle_5utils_20standard_atmospheres_2isa(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_altitude, PyObject *__pyx_v_pStag, PyObject *__pyx_v_TStag); /* proto */
+static PyObject *__pyx_float_0_001;
+static PyObject *__pyx_float_0_0028;
+static PyObject *__pyx_float_287_05;
+static PyObject *__pyx_float_288_15;
+static PyObject *__pyx_float_101325_;
+static PyObject *__pyx_float_9_80665;
+static PyObject *__pyx_float_neg_0_002;
+static PyObject *__pyx_float_neg_0_0028;
+static PyObject *__pyx_float_neg_0_0065;
 static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_1;
+static PyObject *__pyx_int_11000;
+static PyObject *__pyx_int_20000;
+static PyObject *__pyx_int_32000;
+static PyObject *__pyx_int_47000;
+static PyObject *__pyx_int_51000;
+static PyObject *__pyx_int_71000;
+static PyObject *__pyx_int_86000;
+static PyObject *__pyx_int_neg_610;
+static PyObject *__pyx_tuple_;
+static PyObject *__pyx_tuple__3;
+static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_codeobj__4;
+static PyObject *__pyx_codeobj__6;
 /* Late includes */
 
-/* "mcycle/library/standard_atmospheres.pyx":9
+/* "mcycle/utils/standard_atmospheres.pyx":12
  * 
  * 
- * cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):             # <<<<<<<<<<<<<<
- *     cdef double T=nan
- *     cdef double p=nan
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):             # <<<<<<<<<<<<<<
+ *     T = nan
+ *     p = nan
  */
 
-static PyObject *__pyx_f_6mcycle_7library_20standard_atmospheres_isaPropsFromBase(double __pyx_v_altitude, double __pyx_v_lapseRate, double __pyx_v_altitudeBase, double __pyx_v_pStagBase, double __pyx_v_TStagBase, double __pyx_v_gravity, double __pyx_v_R) {
-  double __pyx_v_T;
-  double __pyx_v_p;
+/* Python wrapper */
+static PyObject *__pyx_pw_6mcycle_5utils_20standard_atmospheres_1isaPropsFromBase(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_5utils_20standard_atmospheres_isaPropsFromBase[] = "isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase)";
+static PyMethodDef __pyx_mdef_6mcycle_5utils_20standard_atmospheres_1isaPropsFromBase = {"isaPropsFromBase", (PyCFunction)__pyx_pw_6mcycle_5utils_20standard_atmospheres_1isaPropsFromBase, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_5utils_20standard_atmospheres_isaPropsFromBase};
+static PyObject *__pyx_pw_6mcycle_5utils_20standard_atmospheres_1isaPropsFromBase(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_altitude = 0;
+  PyObject *__pyx_v_lapseRate = 0;
+  PyObject *__pyx_v_altitudeBase = 0;
+  PyObject *__pyx_v_pStagBase = 0;
+  PyObject *__pyx_v_TStagBase = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("isaPropsFromBase (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_altitude,&__pyx_n_s_lapseRate,&__pyx_n_s_altitudeBase,&__pyx_n_s_pStagBase,&__pyx_n_s_TStagBase,0};
+    PyObject* values[5] = {0,0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_altitude)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lapseRate)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("isaPropsFromBase", 1, 5, 5, 1); __PYX_ERR(0, 12, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_altitudeBase)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("isaPropsFromBase", 1, 5, 5, 2); __PYX_ERR(0, 12, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pStagBase)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("isaPropsFromBase", 1, 5, 5, 3); __PYX_ERR(0, 12, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TStagBase)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("isaPropsFromBase", 1, 5, 5, 4); __PYX_ERR(0, 12, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "isaPropsFromBase") < 0)) __PYX_ERR(0, 12, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+      values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+    }
+    __pyx_v_altitude = values[0];
+    __pyx_v_lapseRate = values[1];
+    __pyx_v_altitudeBase = values[2];
+    __pyx_v_pStagBase = values[3];
+    __pyx_v_TStagBase = values[4];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("isaPropsFromBase", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 12, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("mcycle.utils.standard_atmospheres.isaPropsFromBase", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6mcycle_5utils_20standard_atmospheres_isaPropsFromBase(__pyx_self, __pyx_v_altitude, __pyx_v_lapseRate, __pyx_v_altitudeBase, __pyx_v_pStagBase, __pyx_v_TStagBase);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6mcycle_5utils_20standard_atmospheres_isaPropsFromBase(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_altitude, PyObject *__pyx_v_lapseRate, PyObject *__pyx_v_altitudeBase, PyObject *__pyx_v_pStagBase, PyObject *__pyx_v_TStagBase) {
+  PyObject *__pyx_v_T = NULL;
+  PyObject *__pyx_v_p = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  double __pyx_t_2;
-  int __pyx_t_3;
-  double __pyx_t_4;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("isaPropsFromBase", 0);
 
-  /* "mcycle/library/standard_atmospheres.pyx":10
+  /* "mcycle/utils/standard_atmospheres.pyx":13
  * 
- * cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):
- *     cdef double T=nan             # <<<<<<<<<<<<<<
- *     cdef double p=nan
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):
+ *     T = nan             # <<<<<<<<<<<<<<
+ *     p = nan
  *     if lapseRate != 0:
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_T = __pyx_t_2;
+  __pyx_v_T = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":11
- * cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):
- *     cdef double T=nan
- *     cdef double p=nan             # <<<<<<<<<<<<<<
+  /* "mcycle/utils/standard_atmospheres.pyx":14
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):
+ *     T = nan
+ *     p = nan             # <<<<<<<<<<<<<<
  *     if lapseRate != 0:
  *         T = TStagBase + lapseRate * (altitude - altitudeBase)
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_p = __pyx_t_2;
+  __pyx_v_p = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":12
- *     cdef double T=nan
- *     cdef double p=nan
+  /* "mcycle/utils/standard_atmospheres.pyx":15
+ *     T = nan
+ *     p = nan
  *     if lapseRate != 0:             # <<<<<<<<<<<<<<
  *         T = TStagBase + lapseRate * (altitude - altitudeBase)
  *         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
  */
-  __pyx_t_3 = ((__pyx_v_lapseRate != 0.0) != 0);
-  if (__pyx_t_3) {
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_lapseRate, __pyx_int_0, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_2) {
 
-    /* "mcycle/library/standard_atmospheres.pyx":13
- *     cdef double p=nan
+    /* "mcycle/utils/standard_atmospheres.pyx":16
+ *     p = nan
  *     if lapseRate != 0:
  *         T = TStagBase + lapseRate * (altitude - altitudeBase)             # <<<<<<<<<<<<<<
  *         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
  *     else:
  */
-    __pyx_v_T = (__pyx_v_TStagBase + (__pyx_v_lapseRate * (__pyx_v_altitude - __pyx_v_altitudeBase)));
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_altitude, __pyx_v_altitudeBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = PyNumber_Multiply(__pyx_v_lapseRate, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyNumber_Add(__pyx_v_TStagBase, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF_SET(__pyx_v_T, __pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "mcycle/library/standard_atmospheres.pyx":14
+    /* "mcycle/utils/standard_atmospheres.pyx":17
  *     if lapseRate != 0:
  *         T = TStagBase + lapseRate * (altitude - altitudeBase)
  *         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)             # <<<<<<<<<<<<<<
  *     else:
  *         T = TStagBase
  */
-    if (unlikely(__pyx_v_TStagBase == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 14, __pyx_L1_error)
-    }
-    __pyx_t_2 = (-__pyx_v_gravity);
-    if (unlikely(__pyx_v_lapseRate == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 14, __pyx_L1_error)
-    }
-    __pyx_t_4 = (__pyx_t_2 / __pyx_v_lapseRate);
-    if (unlikely(__pyx_v_R == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 14, __pyx_L1_error)
-    }
-    __pyx_v_p = (__pyx_v_pStagBase * pow((__pyx_v_T / __pyx_v_TStagBase), (__pyx_t_4 / __pyx_v_R)));
+    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_T, __pyx_v_TStagBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_gravity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyNumber_Negative(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_v_lapseRate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_R); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyNumber_Power(__pyx_t_1, __pyx_t_5, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyNumber_Multiply(__pyx_v_pStagBase, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF_SET(__pyx_v_p, __pyx_t_5);
+    __pyx_t_5 = 0;
 
-    /* "mcycle/library/standard_atmospheres.pyx":12
- *     cdef double T=nan
- *     cdef double p=nan
+    /* "mcycle/utils/standard_atmospheres.pyx":15
+ *     T = nan
+ *     p = nan
  *     if lapseRate != 0:             # <<<<<<<<<<<<<<
  *         T = TStagBase + lapseRate * (altitude - altitudeBase)
  *         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
@@ -1452,857 +1433,189 @@ static PyObject *__pyx_f_6mcycle_7library_20standard_atmospheres_isaPropsFromBas
     goto __pyx_L3;
   }
 
-  /* "mcycle/library/standard_atmospheres.pyx":16
+  /* "mcycle/utils/standard_atmospheres.pyx":19
  *         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
  *     else:
  *         T = TStagBase             # <<<<<<<<<<<<<<
- *         p = pStagBase * exp(-gravity / R / TStagBase * (altitude - altitudeBase))
- *     return p, T
+ *         p = pStagBase * exp(-gravity / R / TStagBase *
+ *                             (altitude - altitudeBase))
  */
   /*else*/ {
-    __pyx_v_T = __pyx_v_TStagBase;
+    __Pyx_INCREF(__pyx_v_TStagBase);
+    __Pyx_DECREF_SET(__pyx_v_T, __pyx_v_TStagBase);
 
-    /* "mcycle/library/standard_atmospheres.pyx":17
+    /* "mcycle/utils/standard_atmospheres.pyx":20
  *     else:
  *         T = TStagBase
- *         p = pStagBase * exp(-gravity / R / TStagBase * (altitude - altitudeBase))             # <<<<<<<<<<<<<<
+ *         p = pStagBase * exp(-gravity / R / TStagBase *             # <<<<<<<<<<<<<<
+ *                             (altitude - altitudeBase))
+ *     return p, T
+ */
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_gravity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_R); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_6, __pyx_v_TStagBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+
+    /* "mcycle/utils/standard_atmospheres.pyx":21
+ *         T = TStagBase
+ *         p = pStagBase * exp(-gravity / R / TStagBase *
+ *                             (altitude - altitudeBase))             # <<<<<<<<<<<<<<
  *     return p, T
  * 
  */
-    __pyx_t_1 = PyFloat_FromDouble(__pyx_v_pStagBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_exp); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_Subtract(__pyx_v_altitude, __pyx_v_altitudeBase); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_4 = (-__pyx_v_gravity);
-    if (unlikely(__pyx_v_R == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 17, __pyx_L1_error)
-    }
-    __pyx_t_2 = (__pyx_t_4 / __pyx_v_R);
-    if (unlikely(__pyx_v_TStagBase == 0)) {
-      PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 17, __pyx_L1_error)
-    }
-    __pyx_t_7 = PyFloat_FromDouble(((__pyx_t_2 / __pyx_v_TStagBase) * (__pyx_v_altitude - __pyx_v_altitudeBase))); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_6);
-      if (likely(__pyx_t_8)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-        __Pyx_INCREF(__pyx_t_8);
+
+    /* "mcycle/utils/standard_atmospheres.pyx":20
+ *     else:
+ *         T = TStagBase
+ *         p = pStagBase * exp(-gravity / R / TStagBase *             # <<<<<<<<<<<<<<
+ *                             (altitude - altitudeBase))
+ *     return p, T
+ */
+    __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_6, function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
       }
     }
-    if (!__pyx_t_8) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    if (!__pyx_t_6) {
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
       #if CYTHON_FAST_PYCALL
-      if (PyFunction_Check(__pyx_t_6)) {
-        PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_7};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (PyFunction_Check(__pyx_t_4)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_3};
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
-      if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
-        PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_7};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_3};
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
-        __Pyx_GIVEREF(__pyx_t_7);
-        PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_7);
-        __pyx_t_7 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 17, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_3);
+        __pyx_t_3 = 0;
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
     }
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = PyNumber_Multiply(__pyx_v_pStagBase, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_6); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 17, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_v_p = __pyx_t_2;
+    __Pyx_DECREF_SET(__pyx_v_p, __pyx_t_4);
+    __pyx_t_4 = 0;
   }
   __pyx_L3:;
 
-  /* "mcycle/library/standard_atmospheres.pyx":18
- *         T = TStagBase
- *         p = pStagBase * exp(-gravity / R / TStagBase * (altitude - altitudeBase))
+  /* "mcycle/utils/standard_atmospheres.pyx":22
+ *         p = pStagBase * exp(-gravity / R / TStagBase *
+ *                             (altitude - altitudeBase))
  *     return p, T             # <<<<<<<<<<<<<<
  * 
- * cpdef FlowState isa(double altitude,
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_p); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_T); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_5);
-  __pyx_t_6 = 0;
-  __pyx_t_5 = 0;
-  __pyx_r = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_INCREF(__pyx_v_p);
+  __Pyx_GIVEREF(__pyx_v_p);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_p);
+  __Pyx_INCREF(__pyx_v_T);
+  __Pyx_GIVEREF(__pyx_v_T);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_T);
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":9
+  /* "mcycle/utils/standard_atmospheres.pyx":12
  * 
  * 
- * cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):             # <<<<<<<<<<<<<<
- *     cdef double T=nan
- *     cdef double p=nan
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):             # <<<<<<<<<<<<<<
+ *     T = nan
+ *     p = nan
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("mcycle.library.standard_atmospheres.isaPropsFromBase", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
+  __Pyx_AddTraceback("mcycle.utils.standard_atmospheres.isaPropsFromBase", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_T);
+  __Pyx_XDECREF(__pyx_v_p);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "mcycle/library/standard_atmospheres.pyx":20
- *     return p, T
+/* "mcycle/utils/standard_atmospheres.pyx":25
  * 
- * cpdef FlowState isa(double altitude,             # <<<<<<<<<<<<<<
- *                     double pStag=101325.,
- *                     double TStag=288.15,
- */
-
-static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_f_6mcycle_7library_20standard_atmospheres_isa(double __pyx_v_altitude, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_6mcycle_7library_20standard_atmospheres_isa *__pyx_optional_args) {
-  double __pyx_v_pStag = ((double)101325.);
-  double __pyx_v_TStag = ((double)288.15);
-  double __pyx_v_gravity = ((double)9.80665);
-  double __pyx_v_R = ((double)287.058);
-  PyObject *__pyx_v_fluidCP = ((PyObject*)__pyx_n_u_Air);
-  int __pyx_v_phaseCP = ((int)-1);
-  double __pyx_v_refLapseRate[7];
-  double __pyx_v_refAltitude[8];
-  double __pyx_v__pStag;
-  double __pyx_v__TStag;
-  size_t __pyx_v_i;
-  struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  double __pyx_t_6[7];
-  double __pyx_t_7[8];
-  Py_ssize_t __pyx_t_8;
-  int __pyx_t_9;
-  double __pyx_t_10;
-  double __pyx_t_11;
-  PyObject *__pyx_t_12 = NULL;
-  PyObject *__pyx_t_13 = NULL;
-  PyObject *__pyx_t_14 = NULL;
-  PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
-  PyObject *__pyx_t_17 = NULL;
-  int __pyx_t_18;
-  PyObject *__pyx_t_19 = NULL;
-  __Pyx_RefNannySetupContext("isa", 0);
-  if (__pyx_optional_args) {
-    if (__pyx_optional_args->__pyx_n > 0) {
-      __pyx_v_pStag = __pyx_optional_args->pStag;
-      if (__pyx_optional_args->__pyx_n > 1) {
-        __pyx_v_TStag = __pyx_optional_args->TStag;
-        if (__pyx_optional_args->__pyx_n > 2) {
-          __pyx_v_gravity = __pyx_optional_args->gravity;
-          if (__pyx_optional_args->__pyx_n > 3) {
-            __pyx_v_R = __pyx_optional_args->R;
-            if (__pyx_optional_args->__pyx_n > 4) {
-              __pyx_v_fluidCP = __pyx_optional_args->fluidCP;
-              if (__pyx_optional_args->__pyx_n > 5) {
-                __pyx_v_phaseCP = __pyx_optional_args->phaseCP;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  /* "mcycle/library/standard_atmospheres.pyx":43
- *     Specific gas constant of air [J/kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.
- * """
- *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(             # <<<<<<<<<<<<<<
- *         altitude)
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
- */
-  #ifndef CYTHON_WITHOUT_ASSERTIONS
-  if (unlikely(!Py_OptimizeFlag)) {
-    if (unlikely(!((__pyx_v_altitude >= -610.0) != 0))) {
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_above_610_m_giv, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-
-      /* "mcycle/library/standard_atmospheres.pyx":44
- * """
- *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
- *         altitude)             # <<<<<<<<<<<<<<
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
- *         altitude)
- */
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_altitude); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_4)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_4);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_2, function);
-        }
-      }
-      if (!__pyx_t_4) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __Pyx_GOTREF(__pyx_t_1);
-      } else {
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
-          __Pyx_GIVEREF(__pyx_t_3);
-          PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_3);
-          __pyx_t_3 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        }
-      }
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-      /* "mcycle/library/standard_atmospheres.pyx":43
- *     Specific gas constant of air [J/kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.
- * """
- *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(             # <<<<<<<<<<<<<<
- *         altitude)
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
- */
-      __pyx_t_2 = PyTuple_Pack(1, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      PyErr_SetObject(PyExc_AssertionError, __pyx_t_2);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 43, __pyx_L1_error)
-    }
-  }
-  #endif
-
-  /* "mcycle/library/standard_atmospheres.pyx":45
- *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
- *         altitude)
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(             # <<<<<<<<<<<<<<
- *         altitude)
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
- */
-  #ifndef CYTHON_WITHOUT_ASSERTIONS
-  if (unlikely(!Py_OptimizeFlag)) {
-    if (unlikely(!((__pyx_v_altitude <= 86000.0) != 0))) {
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_below_86_000_m, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-
-      /* "mcycle/library/standard_atmospheres.pyx":46
- *         altitude)
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
- *         altitude)             # <<<<<<<<<<<<<<
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
- *     cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
- */
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_altitude); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
-        if (likely(__pyx_t_3)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-          __Pyx_INCREF(__pyx_t_3);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_1, function);
-        }
-      }
-      if (!__pyx_t_3) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
-      } else {
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        } else
-        #endif
-        {
-          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
-          __Pyx_GIVEREF(__pyx_t_5);
-          PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_5);
-          __pyx_t_5 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        }
-      }
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-      /* "mcycle/library/standard_atmospheres.pyx":45
- *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
- *         altitude)
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(             # <<<<<<<<<<<<<<
- *         altitude)
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
- */
-      __pyx_t_1 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      PyErr_SetObject(PyExc_AssertionError, __pyx_t_1);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 45, __pyx_L1_error)
-    }
-  }
-  #endif
-
-  /* "mcycle/library/standard_atmospheres.pyx":47
- *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
- *         altitude)
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]             # <<<<<<<<<<<<<<
- *     cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
- *     cdef double _pStag = pStag
- */
-  __pyx_t_6[0] = -0.0065;
-  __pyx_t_6[1] = 0.0;
-  __pyx_t_6[2] = 0.001;
-  __pyx_t_6[3] = 0.0028;
-  __pyx_t_6[4] = 0.0;
-  __pyx_t_6[5] = -0.0028;
-  __pyx_t_6[6] = -0.002;
-  memcpy(&(__pyx_v_refLapseRate[0]), __pyx_t_6, sizeof(__pyx_v_refLapseRate[0]) * (7));
-
-  /* "mcycle/library/standard_atmospheres.pyx":48
- *         altitude)
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
- *     cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]             # <<<<<<<<<<<<<<
- *     cdef double _pStag = pStag
- *     cdef double _TStag = TStag
- */
-  __pyx_t_7[0] = 0.0;
-  __pyx_t_7[1] = 11000.0;
-  __pyx_t_7[2] = 20000.0;
-  __pyx_t_7[3] = 32000.0;
-  __pyx_t_7[4] = 47000.0;
-  __pyx_t_7[5] = 51000.0;
-  __pyx_t_7[6] = 71000.0;
-  __pyx_t_7[7] = 86000.0;
-  memcpy(&(__pyx_v_refAltitude[0]), __pyx_t_7, sizeof(__pyx_v_refAltitude[0]) * (8));
-
-  /* "mcycle/library/standard_atmospheres.pyx":49
- *     cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
- *     cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
- *     cdef double _pStag = pStag             # <<<<<<<<<<<<<<
- *     cdef double _TStag = TStag
- *     cdef size_t i = 0
- */
-  __pyx_v__pStag = __pyx_v_pStag;
-
-  /* "mcycle/library/standard_atmospheres.pyx":50
- *     cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
- *     cdef double _pStag = pStag
- *     cdef double _TStag = TStag             # <<<<<<<<<<<<<<
- *     cdef size_t i = 0
- *     while i < len(refAltitude) - 1:
- */
-  __pyx_v__TStag = __pyx_v_TStag;
-
-  /* "mcycle/library/standard_atmospheres.pyx":51
- *     cdef double _pStag = pStag
- *     cdef double _TStag = TStag
- *     cdef size_t i = 0             # <<<<<<<<<<<<<<
- *     while i < len(refAltitude) - 1:
- *         if altitude <= refAltitude[i + 1]:
- */
-  __pyx_v_i = 0;
-
-  /* "mcycle/library/standard_atmospheres.pyx":52
- *     cdef double _TStag = TStag
- *     cdef size_t i = 0
- *     while i < len(refAltitude) - 1:             # <<<<<<<<<<<<<<
- *         if altitude <= refAltitude[i + 1]:
- *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
- */
-  while (1) {
-    __pyx_t_1 = __Pyx_carray_to_py_double(__pyx_v_refAltitude, 8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_9 = ((__pyx_v_i < (__pyx_t_8 - 1)) != 0);
-    if (!__pyx_t_9) break;
-
-    /* "mcycle/library/standard_atmospheres.pyx":53
- *     cdef size_t i = 0
- *     while i < len(refAltitude) - 1:
- *         if altitude <= refAltitude[i + 1]:             # <<<<<<<<<<<<<<
- *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- */
-    __pyx_t_9 = ((__pyx_v_altitude <= (__pyx_v_refAltitude[(__pyx_v_i + 1)])) != 0);
-    if (__pyx_t_9) {
-
-      /* "mcycle/library/standard_atmospheres.pyx":54
- *     while i < len(refAltitude) - 1:
- *         if altitude <= refAltitude[i + 1]:
- *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],             # <<<<<<<<<<<<<<
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             break
- */
-      __pyx_t_1 = __pyx_f_6mcycle_7library_20standard_atmospheres_isaPropsFromBase(__pyx_v_altitude, (__pyx_v_refLapseRate[__pyx_v_i]), (__pyx_v_refAltitude[__pyx_v_i]), __pyx_v__pStag, __pyx_v__TStag, __pyx_v_gravity, __pyx_v_R); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (likely(__pyx_t_1 != Py_None)) {
-        PyObject* sequence = __pyx_t_1;
-        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-        if (unlikely(size != 2)) {
-          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
-          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 54, __pyx_L1_error)
-        }
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
-        __pyx_t_4 = PyTuple_GET_ITEM(sequence, 1); 
-        __Pyx_INCREF(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_4);
-        #else
-        __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        #endif
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      } else {
-        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 54, __pyx_L1_error)
-      }
-      __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_v__pStag = __pyx_t_10;
-      __pyx_v__TStag = __pyx_t_11;
-
-      /* "mcycle/library/standard_atmospheres.pyx":56
- *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             break             # <<<<<<<<<<<<<<
- *         else:
- *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],
- */
-      goto __pyx_L4_break;
-
-      /* "mcycle/library/standard_atmospheres.pyx":53
- *     cdef size_t i = 0
- *     while i < len(refAltitude) - 1:
- *         if altitude <= refAltitude[i + 1]:             # <<<<<<<<<<<<<<
- *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- */
-    }
-
-    /* "mcycle/library/standard_atmospheres.pyx":58
- *             break
- *         else:
- *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],             # <<<<<<<<<<<<<<
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1
- */
-    /*else*/ {
-
-      /* "mcycle/library/standard_atmospheres.pyx":59
- *         else:
- *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)             # <<<<<<<<<<<<<<
- *             i += 1
- *     try:
- */
-      __pyx_t_1 = __pyx_f_6mcycle_7library_20standard_atmospheres_isaPropsFromBase((__pyx_v_refAltitude[(__pyx_v_i + 1)]), (__pyx_v_refLapseRate[__pyx_v_i]), (__pyx_v_refAltitude[__pyx_v_i]), __pyx_v__pStag, __pyx_v__TStag, __pyx_v_gravity, __pyx_v_R); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (likely(__pyx_t_1 != Py_None)) {
-        PyObject* sequence = __pyx_t_1;
-        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-        if (unlikely(size != 2)) {
-          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
-          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 58, __pyx_L1_error)
-        }
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
-        __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1); 
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_2);
-        #else
-        __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        #endif
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      } else {
-        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 58, __pyx_L1_error)
-      }
-
-      /* "mcycle/library/standard_atmospheres.pyx":58
- *             break
- *         else:
- *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],             # <<<<<<<<<<<<<<
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1
- */
-      __pyx_t_11 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_11 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_v__pStag = __pyx_t_11;
-      __pyx_v__TStag = __pyx_t_10;
-
-      /* "mcycle/library/standard_atmospheres.pyx":60
- *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1             # <<<<<<<<<<<<<<
- *     try:
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- */
-      __pyx_v_i = (__pyx_v_i + 1);
-    }
-  }
-  __pyx_L4_break:;
-
-  /* "mcycle/library/standard_atmospheres.pyx":61
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1
- *     try:             # <<<<<<<<<<<<<<
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- *                          _TStag)
- */
-  {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    __Pyx_ExceptionSave(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
-    __Pyx_XGOTREF(__pyx_t_12);
-    __Pyx_XGOTREF(__pyx_t_13);
-    __Pyx_XGOTREF(__pyx_t_14);
-    /*try:*/ {
-
-      /* "mcycle/library/standard_atmospheres.pyx":62
- *             i += 1
- *     try:
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,             # <<<<<<<<<<<<<<
- *                          _TStag)
- *     except:
- */
-      __Pyx_XDECREF(((PyObject *)__pyx_r));
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_phaseCP); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_CP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_PT_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v__pStag); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_2);
-
-      /* "mcycle/library/standard_atmospheres.pyx":63
- *     try:
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- *                          _TStag)             # <<<<<<<<<<<<<<
- *     except:
- *         raise ValueError(
- */
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v__TStag); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_5);
-
-      /* "mcycle/library/standard_atmospheres.pyx":62
- *             i += 1
- *     try:
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,             # <<<<<<<<<<<<<<
- *                          _TStag)
- *     except:
- */
-      __pyx_t_3 = PyTuple_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx_v_fluidCP);
-      __Pyx_GIVEREF(__pyx_v_fluidCP);
-      PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_fluidCP);
-      __Pyx_GIVEREF(__pyx_t_1);
-      PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
-      __Pyx_INCREF(__pyx_int_0);
-      __Pyx_GIVEREF(__pyx_int_0);
-      PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_int_0);
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_2);
-      PyTuple_SET_ITEM(__pyx_t_3, 4, __pyx_t_2);
-      __Pyx_GIVEREF(__pyx_t_5);
-      PyTuple_SET_ITEM(__pyx_t_3, 5, __pyx_t_5);
-      __pyx_t_1 = 0;
-      __pyx_t_4 = 0;
-      __pyx_t_2 = 0;
-      __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState), __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L6_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_r = ((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)__pyx_t_5);
-      __pyx_t_5 = 0;
-      goto __pyx_L10_try_return;
-
-      /* "mcycle/library/standard_atmospheres.pyx":61
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1
- *     try:             # <<<<<<<<<<<<<<
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- *                          _TStag)
- */
-    }
-    __pyx_L6_error:;
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-    /* "mcycle/library/standard_atmospheres.pyx":64
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- *                          _TStag)
- *     except:             # <<<<<<<<<<<<<<
- *         raise ValueError(
- *             "Was not able to produce FlowState from computed pStag={}, TStag={}".
- */
-    /*except:*/ {
-      __Pyx_AddTraceback("mcycle.library.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_3, &__pyx_t_2) < 0) __PYX_ERR(0, 64, __pyx_L8_except_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_GOTREF(__pyx_t_2);
-
-      /* "mcycle/library/standard_atmospheres.pyx":66
- *     except:
- *         raise ValueError(
- *             "Was not able to produce FlowState from computed pStag={}, TStag={}".             # <<<<<<<<<<<<<<
- *             format(_pStag, _TStag))
- */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Was_not_able_to_produce_FlowStat, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L8_except_error)
-      __Pyx_GOTREF(__pyx_t_1);
-
-      /* "mcycle/library/standard_atmospheres.pyx":67
- *         raise ValueError(
- *             "Was not able to produce FlowState from computed pStag={}, TStag={}".
- *             format(_pStag, _TStag))             # <<<<<<<<<<<<<<
- */
-      __pyx_t_15 = PyFloat_FromDouble(__pyx_v__pStag); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-      __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_16 = PyFloat_FromDouble(__pyx_v__TStag); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-      __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_17 = NULL;
-      __pyx_t_18 = 0;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
-        __pyx_t_17 = PyMethod_GET_SELF(__pyx_t_1);
-        if (likely(__pyx_t_17)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-          __Pyx_INCREF(__pyx_t_17);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_1, function);
-          __pyx_t_18 = 1;
-        }
-      }
-      #if CYTHON_FAST_PYCALL
-      if (PyFunction_Check(__pyx_t_1)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_15, __pyx_t_16};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-        __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      } else
-      #endif
-      #if CYTHON_FAST_PYCCALL
-      if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_17, __pyx_t_15, __pyx_t_16};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_18, 2+__pyx_t_18); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-        __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      } else
-      #endif
-      {
-        __pyx_t_19 = PyTuple_New(2+__pyx_t_18); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-        __Pyx_GOTREF(__pyx_t_19);
-        if (__pyx_t_17) {
-          __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_19, 0, __pyx_t_17); __pyx_t_17 = NULL;
-        }
-        __Pyx_GIVEREF(__pyx_t_15);
-        PyTuple_SET_ITEM(__pyx_t_19, 0+__pyx_t_18, __pyx_t_15);
-        __Pyx_GIVEREF(__pyx_t_16);
-        PyTuple_SET_ITEM(__pyx_t_19, 1+__pyx_t_18, __pyx_t_16);
-        __pyx_t_15 = 0;
-        __pyx_t_16 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_19, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L8_except_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-      }
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-      /* "mcycle/library/standard_atmospheres.pyx":65
- *                          _TStag)
- *     except:
- *         raise ValueError(             # <<<<<<<<<<<<<<
- *             "Was not able to produce FlowState from computed pStag={}, TStag={}".
- *             format(_pStag, _TStag))
- */
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L8_except_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __PYX_ERR(0, 65, __pyx_L8_except_error)
-    }
-    __pyx_L8_except_error:;
-
-    /* "mcycle/library/standard_atmospheres.pyx":61
- *                                          refAltitude[i], _pStag, _TStag, gravity, R)
- *             i += 1
- *     try:             # <<<<<<<<<<<<<<
- *         return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
- *                          _TStag)
- */
-    __Pyx_XGIVEREF(__pyx_t_12);
-    __Pyx_XGIVEREF(__pyx_t_13);
-    __Pyx_XGIVEREF(__pyx_t_14);
-    __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
-    goto __pyx_L1_error;
-    __pyx_L10_try_return:;
-    __Pyx_XGIVEREF(__pyx_t_12);
-    __Pyx_XGIVEREF(__pyx_t_13);
-    __Pyx_XGIVEREF(__pyx_t_14);
-    __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
-    goto __pyx_L0;
-  }
-
-  /* "mcycle/library/standard_atmospheres.pyx":20
- *     return p, T
  * 
- * cpdef FlowState isa(double altitude,             # <<<<<<<<<<<<<<
- *                     double pStag=101325.,
- *                     double TStag=288.15,
+ * def isa(altitude, pStag=101325., TStag=288.15):             # <<<<<<<<<<<<<<
+ *     """FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.
+ * 
  */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_XDECREF(__pyx_t_17);
-  __Pyx_XDECREF(__pyx_t_19);
-  __Pyx_AddTraceback("mcycle.library.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XGIVEREF((PyObject *)__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_7library_20standard_atmospheres_isa[] = "isa(double altitude, double pStag=101325., double TStag=288.15, double gravity=9.80665, double R=287.058, unicode fluidCP=u'Air', int phaseCP=-1) -> FlowState\nFlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.\n\n\nParameters\n-----------\naltitude : float\n    Geopotential altitude [m].\npStag : float, optional\n    Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.\nTStag : float, optional\n    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.\ng : float, optional\n    Acceleration due to gravity [m/s^2]. Assumed to be constant. Defaults to 9.80665.\nR : float, optional\n    Specific gas constant of air [J/kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.\n";
-static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  double __pyx_v_altitude;
-  double __pyx_v_pStag;
-  double __pyx_v_TStag;
-  double __pyx_v_gravity;
-  double __pyx_v_R;
-  PyObject *__pyx_v_fluidCP = 0;
-  int __pyx_v_phaseCP;
+static PyObject *__pyx_pw_6mcycle_5utils_20standard_atmospheres_3isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_5utils_20standard_atmospheres_2isa[] = "isa(altitude, pStag=101325., TStag=288.15)\nFlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.\n\n\nParameters\n-----------\naltitude : float\n    Geopotential altitude [m].\npStag : float, optional\n    Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.\nTStag : float, optional\n    Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.\n";
+static PyMethodDef __pyx_mdef_6mcycle_5utils_20standard_atmospheres_3isa = {"isa", (PyCFunction)__pyx_pw_6mcycle_5utils_20standard_atmospheres_3isa, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_5utils_20standard_atmospheres_2isa};
+static PyObject *__pyx_pw_6mcycle_5utils_20standard_atmospheres_3isa(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_altitude = 0;
+  PyObject *__pyx_v_pStag = 0;
+  PyObject *__pyx_v_TStag = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("isa (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_altitude,&__pyx_n_s_pStag,&__pyx_n_s_TStag,&__pyx_n_s_gravity,&__pyx_n_s_R,&__pyx_n_s_fluidCP,&__pyx_n_s_phaseCP,0};
-    PyObject* values[7] = {0,0,0,0,0,0,0};
-    values[5] = ((PyObject*)__pyx_n_u_Air);
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_altitude,&__pyx_n_s_pStag,&__pyx_n_s_TStag,0};
+    PyObject* values[3] = {0,0,0};
+    values[1] = ((PyObject *)__pyx_float_101325_);
+    values[2] = ((PyObject *)__pyx_float_288_15);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
-        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
-        CYTHON_FALLTHROUGH;
-        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
-        CYTHON_FALLTHROUGH;
-        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
-        CYTHON_FALLTHROUGH;
-        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-        CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
@@ -2329,44 +1642,12 @@ static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject 
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TStag);
           if (value) { values[2] = value; kw_args--; }
         }
-        CYTHON_FALLTHROUGH;
-        case  3:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_gravity);
-          if (value) { values[3] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case  4:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R);
-          if (value) { values[4] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case  5:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fluidCP);
-          if (value) { values[5] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case  6:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_phaseCP);
-          if (value) { values[6] = value; kw_args--; }
-        }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "isa") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "isa") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
-        CYTHON_FALLTHROUGH;
-        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
-        CYTHON_FALLTHROUGH;
-        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
-        CYTHON_FALLTHROUGH;
-        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
-        CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
@@ -2376,300 +1657,1069 @@ static PyObject *__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa(PyObject 
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_altitude = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_altitude == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L3_error)
-    if (values[1]) {
-      __pyx_v_pStag = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_pStag == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L3_error)
-    } else {
-      __pyx_v_pStag = ((double)101325.);
-    }
-    if (values[2]) {
-      __pyx_v_TStag = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_TStag == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 22, __pyx_L3_error)
-    } else {
-      __pyx_v_TStag = ((double)288.15);
-    }
-    if (values[3]) {
-      __pyx_v_gravity = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_gravity == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L3_error)
-    } else {
-      __pyx_v_gravity = ((double)9.80665);
-    }
-    if (values[4]) {
-      __pyx_v_R = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_R == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L3_error)
-    } else {
-      __pyx_v_R = ((double)287.058);
-    }
-    __pyx_v_fluidCP = ((PyObject*)values[5]);
-    if (values[6]) {
-      __pyx_v_phaseCP = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_phaseCP == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 26, __pyx_L3_error)
-    } else {
-      __pyx_v_phaseCP = ((int)-1);
-    }
+    __pyx_v_altitude = values[0];
+    __pyx_v_pStag = values[1];
+    __pyx_v_TStag = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("isa", 0, 1, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("isa", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mcycle.library.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.utils.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fluidCP), (&PyUnicode_Type), 1, "fluidCP", 1))) __PYX_ERR(0, 25, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_7library_20standard_atmospheres_isa(__pyx_self, __pyx_v_altitude, __pyx_v_pStag, __pyx_v_TStag, __pyx_v_gravity, __pyx_v_R, __pyx_v_fluidCP, __pyx_v_phaseCP);
+  __pyx_r = __pyx_pf_6mcycle_5utils_20standard_atmospheres_2isa(__pyx_self, __pyx_v_altitude, __pyx_v_pStag, __pyx_v_TStag);
 
   /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_7library_20standard_atmospheres_isa(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_altitude, double __pyx_v_pStag, double __pyx_v_TStag, double __pyx_v_gravity, double __pyx_v_R, PyObject *__pyx_v_fluidCP, int __pyx_v_phaseCP) {
+static PyObject *__pyx_pf_6mcycle_5utils_20standard_atmospheres_2isa(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_altitude, PyObject *__pyx_v_pStag, PyObject *__pyx_v_TStag) {
+  PyObject *__pyx_v_refLapseRate = NULL;
+  PyObject *__pyx_v_refAltitude = NULL;
+  PyObject *__pyx_v_atm = NULL;
+  PyObject *__pyx_v__pStag = NULL;
+  PyObject *__pyx_v__TStag = NULL;
+  PyObject *__pyx_v_i = NULL;
+  PyObject *__pyx_v_exc = NULL;
+  PyObject *__pyx_v_msg = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_6mcycle_7library_20standard_atmospheres_isa __pyx_t_2;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  Py_ssize_t __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *(*__pyx_t_10)(PyObject *);
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  int __pyx_t_15;
+  char const *__pyx_t_16;
+  PyObject *__pyx_t_17 = NULL;
+  PyObject *__pyx_t_18 = NULL;
+  PyObject *__pyx_t_19 = NULL;
+  PyObject *__pyx_t_20 = NULL;
+  PyObject *__pyx_t_21 = NULL;
+  PyObject *__pyx_t_22 = NULL;
   __Pyx_RefNannySetupContext("isa", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2.__pyx_n = 6;
-  __pyx_t_2.pStag = __pyx_v_pStag;
-  __pyx_t_2.TStag = __pyx_v_TStag;
-  __pyx_t_2.gravity = __pyx_v_gravity;
-  __pyx_t_2.R = __pyx_v_R;
-  __pyx_t_2.fluidCP = __pyx_v_fluidCP;
-  __pyx_t_2.phaseCP = __pyx_v_phaseCP;
-  __pyx_t_1 = ((PyObject *)__pyx_f_6mcycle_7library_20standard_atmospheres_isa(__pyx_v_altitude, 0, &__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+
+  /* "mcycle/utils/standard_atmospheres.pyx":38
+ *     Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.
+ * """
+ *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(             # <<<<<<<<<<<<<<
+ *         altitude)
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
+ */
+  #ifndef CYTHON_WITHOUT_ASSERTIONS
+  if (unlikely(!Py_OptimizeFlag)) {
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_altitude, __pyx_int_neg_610, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (unlikely(!__pyx_t_2)) {
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_above_610_m_giv, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+
+      /* "mcycle/utils/standard_atmospheres.pyx":39
+ * """
+ *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
+ *         altitude)             # <<<<<<<<<<<<<<
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
+ *         altitude)
+ */
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+        }
+      }
+      if (!__pyx_t_4) {
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_altitude); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_3)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_altitude};
+          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_GOTREF(__pyx_t_1);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_altitude};
+          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_GOTREF(__pyx_t_1);
+        } else
+        #endif
+        {
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
+          __Pyx_INCREF(__pyx_v_altitude);
+          __Pyx_GIVEREF(__pyx_v_altitude);
+          PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_altitude);
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":38
+ *     Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.
+ * """
+ *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(             # <<<<<<<<<<<<<<
+ *         altitude)
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
+ */
+      __pyx_t_3 = PyTuple_Pack(1, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      PyErr_SetObject(PyExc_AssertionError, __pyx_t_3);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __PYX_ERR(0, 38, __pyx_L1_error)
+    }
+  }
+  #endif
+
+  /* "mcycle/utils/standard_atmospheres.pyx":40
+ *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
+ *         altitude)
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(             # <<<<<<<<<<<<<<
+ *         altitude)
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ */
+  #ifndef CYTHON_WITHOUT_ASSERTIONS
+  if (unlikely(!Py_OptimizeFlag)) {
+    __pyx_t_3 = PyObject_RichCompare(__pyx_v_altitude, __pyx_int_86000, Py_LE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_2)) {
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Altitude_must_be_below_86_000_m, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+
+      /* "mcycle/utils/standard_atmospheres.pyx":41
+ *         altitude)
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
+ *         altitude)             # <<<<<<<<<<<<<<
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+ */
+      __pyx_t_5 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+        __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_1);
+        if (likely(__pyx_t_5)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_5);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_1, function);
+        }
+      }
+      if (!__pyx_t_5) {
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_altitude); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_altitude};
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_altitude};
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+        } else
+        #endif
+        {
+          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
+          __Pyx_INCREF(__pyx_v_altitude);
+          __Pyx_GIVEREF(__pyx_v_altitude);
+          PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_altitude);
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":40
+ *     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
+ *         altitude)
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(             # <<<<<<<<<<<<<<
+ *         altitude)
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ */
+      __pyx_t_1 = PyTuple_Pack(1, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      PyErr_SetObject(PyExc_AssertionError, __pyx_t_1);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __PYX_ERR(0, 40, __pyx_L1_error)
+    }
+  }
+  #endif
+
+  /* "mcycle/utils/standard_atmospheres.pyx":42
+ *     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
+ *         altitude)
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]             # <<<<<<<<<<<<<<
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+ *     atm = FlowState('Air')
+ */
+  __pyx_t_1 = PyList_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
+  __Pyx_INCREF(__pyx_float_neg_0_0065);
+  __Pyx_GIVEREF(__pyx_float_neg_0_0065);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_float_neg_0_0065);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_int_0);
+  __Pyx_INCREF(__pyx_float_0_001);
+  __Pyx_GIVEREF(__pyx_float_0_001);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_float_0_001);
+  __Pyx_INCREF(__pyx_float_0_0028);
+  __Pyx_GIVEREF(__pyx_float_0_0028);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_float_0_0028);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_0);
+  __Pyx_INCREF(__pyx_float_neg_0_0028);
+  __Pyx_GIVEREF(__pyx_float_neg_0_0028);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_float_neg_0_0028);
+  __Pyx_INCREF(__pyx_float_neg_0_002);
+  __Pyx_GIVEREF(__pyx_float_neg_0_002);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_float_neg_0_002);
+  __pyx_v_refLapseRate = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
-  goto __pyx_L0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":43
+ *         altitude)
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]             # <<<<<<<<<<<<<<
+ *     atm = FlowState('Air')
+ *     _pStag = pStag
+ */
+  __pyx_t_1 = PyList_New(8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_0);
+  __Pyx_INCREF(__pyx_int_11000);
+  __Pyx_GIVEREF(__pyx_int_11000);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_int_11000);
+  __Pyx_INCREF(__pyx_int_20000);
+  __Pyx_GIVEREF(__pyx_int_20000);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_int_20000);
+  __Pyx_INCREF(__pyx_int_32000);
+  __Pyx_GIVEREF(__pyx_int_32000);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_int_32000);
+  __Pyx_INCREF(__pyx_int_47000);
+  __Pyx_GIVEREF(__pyx_int_47000);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_47000);
+  __Pyx_INCREF(__pyx_int_51000);
+  __Pyx_GIVEREF(__pyx_int_51000);
+  PyList_SET_ITEM(__pyx_t_1, 5, __pyx_int_51000);
+  __Pyx_INCREF(__pyx_int_71000);
+  __Pyx_GIVEREF(__pyx_int_71000);
+  PyList_SET_ITEM(__pyx_t_1, 6, __pyx_int_71000);
+  __Pyx_INCREF(__pyx_int_86000);
+  __Pyx_GIVEREF(__pyx_int_86000);
+  PyList_SET_ITEM(__pyx_t_1, 7, __pyx_int_86000);
+  __pyx_v_refAltitude = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":44
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+ *     atm = FlowState('Air')             # <<<<<<<<<<<<<<
+ *     _pStag = pStag
+ *     _TStag = TStag
+ */
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_FlowState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_atm = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":45
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+ *     atm = FlowState('Air')
+ *     _pStag = pStag             # <<<<<<<<<<<<<<
+ *     _TStag = TStag
+ *     i = 0
+ */
+  __Pyx_INCREF(__pyx_v_pStag);
+  __pyx_v__pStag = __pyx_v_pStag;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":46
+ *     atm = FlowState('Air')
+ *     _pStag = pStag
+ *     _TStag = TStag             # <<<<<<<<<<<<<<
+ *     i = 0
+ *     while i < len(refAltitude) - 1:
+ */
+  __Pyx_INCREF(__pyx_v_TStag);
+  __pyx_v__TStag = __pyx_v_TStag;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":47
+ *     _pStag = pStag
+ *     _TStag = TStag
+ *     i = 0             # <<<<<<<<<<<<<<
+ *     while i < len(refAltitude) - 1:
+ *         if altitude <= refAltitude[i + 1]:
+ */
+  __Pyx_INCREF(__pyx_int_0);
+  __pyx_v_i = __pyx_int_0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":48
+ *     _TStag = TStag
+ *     i = 0
+ *     while i < len(refAltitude) - 1:             # <<<<<<<<<<<<<<
+ *         if altitude <= refAltitude[i + 1]:
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
+ */
+  while (1) {
+    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_refAltitude); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 48, __pyx_L1_error)
+    __pyx_t_3 = PyInt_FromSsize_t((__pyx_t_6 - 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_i, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!__pyx_t_2) break;
+
+    /* "mcycle/utils/standard_atmospheres.pyx":49
+ *     i = 0
+ *     while i < len(refAltitude) - 1:
+ *         if altitude <= refAltitude[i + 1]:             # <<<<<<<<<<<<<<
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
+ *                                               refAltitude[i], _pStag, _TStag)
+ */
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_refAltitude, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_altitude, __pyx_t_3, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (__pyx_t_2) {
+
+      /* "mcycle/utils/standard_atmospheres.pyx":50
+ *     while i < len(refAltitude) - 1:
+ *         if altitude <= refAltitude[i + 1]:
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],             # <<<<<<<<<<<<<<
+ *                                               refAltitude[i], _pStag, _TStag)
+ *             break
+ */
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_isaPropsFromBase); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_refLapseRate, __pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+
+      /* "mcycle/utils/standard_atmospheres.pyx":51
+ *         if altitude <= refAltitude[i + 1]:
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
+ *                                               refAltitude[i], _pStag, _TStag)             # <<<<<<<<<<<<<<
+ *             break
+ *         else:
+ */
+      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_refAltitude, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_7 = NULL;
+      __pyx_t_8 = 0;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+          __pyx_t_8 = 1;
+        }
+      }
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[6] = {__pyx_t_7, __pyx_v_altitude, __pyx_t_4, __pyx_t_5, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[6] = {__pyx_t_7, __pyx_v_altitude, __pyx_t_4, __pyx_t_5, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_9 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        if (__pyx_t_7) {
+          __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
+        }
+        __Pyx_INCREF(__pyx_v_altitude);
+        __Pyx_GIVEREF(__pyx_v_altitude);
+        PyTuple_SET_ITEM(__pyx_t_9, 0+__pyx_t_8, __pyx_v_altitude);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_4);
+        __Pyx_GIVEREF(__pyx_t_5);
+        PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_5);
+        __Pyx_INCREF(__pyx_v__pStag);
+        __Pyx_GIVEREF(__pyx_v__pStag);
+        PyTuple_SET_ITEM(__pyx_t_9, 3+__pyx_t_8, __pyx_v__pStag);
+        __Pyx_INCREF(__pyx_v__TStag);
+        __Pyx_GIVEREF(__pyx_v__TStag);
+        PyTuple_SET_ITEM(__pyx_t_9, 4+__pyx_t_8, __pyx_v__TStag);
+        __pyx_t_4 = 0;
+        __pyx_t_5 = 0;
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
+        PyObject* sequence = __pyx_t_1;
+        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+        if (unlikely(size != 2)) {
+          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          __PYX_ERR(0, 50, __pyx_L1_error)
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_9 = PyTuple_GET_ITEM(sequence, 1); 
+        } else {
+          __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_9 = PyList_GET_ITEM(sequence, 1); 
+        }
+        __Pyx_INCREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_9);
+        #else
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        #endif
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 50, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_10 = Py_TYPE(__pyx_t_5)->tp_iternext;
+        index = 0; __pyx_t_3 = __pyx_t_10(__pyx_t_5); if (unlikely(!__pyx_t_3)) goto __pyx_L6_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_3);
+        index = 1; __pyx_t_9 = __pyx_t_10(__pyx_t_5); if (unlikely(!__pyx_t_9)) goto __pyx_L6_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_9);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_5), 2) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
+        __pyx_t_10 = NULL;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        goto __pyx_L7_unpacking_done;
+        __pyx_L6_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_10 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        __PYX_ERR(0, 50, __pyx_L1_error)
+        __pyx_L7_unpacking_done:;
+      }
+
+      /* "mcycle/utils/standard_atmospheres.pyx":50
+ *     while i < len(refAltitude) - 1:
+ *         if altitude <= refAltitude[i + 1]:
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],             # <<<<<<<<<<<<<<
+ *                                               refAltitude[i], _pStag, _TStag)
+ *             break
+ */
+      __Pyx_DECREF_SET(__pyx_v__pStag, __pyx_t_3);
+      __pyx_t_3 = 0;
+      __Pyx_DECREF_SET(__pyx_v__TStag, __pyx_t_9);
+      __pyx_t_9 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":52
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
+ *                                               refAltitude[i], _pStag, _TStag)
+ *             break             # <<<<<<<<<<<<<<
+ *         else:
+ *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],
+ */
+      goto __pyx_L4_break;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":49
+ *     i = 0
+ *     while i < len(refAltitude) - 1:
+ *         if altitude <= refAltitude[i + 1]:             # <<<<<<<<<<<<<<
+ *             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
+ *                                               refAltitude[i], _pStag, _TStag)
+ */
+    }
+
+    /* "mcycle/utils/standard_atmospheres.pyx":54
+ *             break
+ *         else:
+ *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],             # <<<<<<<<<<<<<<
+ *                                               refLapseRate[i], refAltitude[i],
+ *                                               _pStag, _TStag)
+ */
+    /*else*/ {
+      __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_isaPropsFromBase); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 54, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_refAltitude, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 54, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":55
+ *         else:
+ *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],
+ *                                               refLapseRate[i], refAltitude[i],             # <<<<<<<<<<<<<<
+ *                                               _pStag, _TStag)
+ *             i += 1
+ */
+      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_refLapseRate, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_refAltitude, __pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+
+      /* "mcycle/utils/standard_atmospheres.pyx":56
+ *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],
+ *                                               refLapseRate[i], refAltitude[i],
+ *                                               _pStag, _TStag)             # <<<<<<<<<<<<<<
+ *             i += 1
+ *     try:
+ */
+      __pyx_t_7 = NULL;
+      __pyx_t_8 = 0;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_9);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_9, function);
+          __pyx_t_8 = 1;
+        }
+      }
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_9)) {
+        PyObject *__pyx_temp[6] = {__pyx_t_7, __pyx_t_5, __pyx_t_3, __pyx_t_4, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
+        PyObject *__pyx_temp[6] = {__pyx_t_7, __pyx_t_5, __pyx_t_3, __pyx_t_4, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 5+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_11 = PyTuple_New(5+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        if (__pyx_t_7) {
+          __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_7); __pyx_t_7 = NULL;
+        }
+        __Pyx_GIVEREF(__pyx_t_5);
+        PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_8, __pyx_t_5);
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_8, __pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyTuple_SET_ITEM(__pyx_t_11, 2+__pyx_t_8, __pyx_t_4);
+        __Pyx_INCREF(__pyx_v__pStag);
+        __Pyx_GIVEREF(__pyx_v__pStag);
+        PyTuple_SET_ITEM(__pyx_t_11, 3+__pyx_t_8, __pyx_v__pStag);
+        __Pyx_INCREF(__pyx_v__TStag);
+        __Pyx_GIVEREF(__pyx_v__TStag);
+        PyTuple_SET_ITEM(__pyx_t_11, 4+__pyx_t_8, __pyx_v__TStag);
+        __pyx_t_5 = 0;
+        __pyx_t_3 = 0;
+        __pyx_t_4 = 0;
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
+        PyObject* sequence = __pyx_t_1;
+        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+        if (unlikely(size != 2)) {
+          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+          __PYX_ERR(0, 54, __pyx_L1_error)
+        }
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        if (likely(PyTuple_CheckExact(sequence))) {
+          __pyx_t_9 = PyTuple_GET_ITEM(sequence, 0); 
+          __pyx_t_11 = PyTuple_GET_ITEM(sequence, 1); 
+        } else {
+          __pyx_t_9 = PyList_GET_ITEM(sequence, 0); 
+          __pyx_t_11 = PyList_GET_ITEM(sequence, 1); 
+        }
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(__pyx_t_11);
+        #else
+        __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        #endif
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      } else {
+        Py_ssize_t index = -1;
+        __pyx_t_4 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_10 = Py_TYPE(__pyx_t_4)->tp_iternext;
+        index = 0; __pyx_t_9 = __pyx_t_10(__pyx_t_4); if (unlikely(!__pyx_t_9)) goto __pyx_L8_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_9);
+        index = 1; __pyx_t_11 = __pyx_t_10(__pyx_t_4); if (unlikely(!__pyx_t_11)) goto __pyx_L8_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_11);
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_4), 2) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_t_10 = NULL;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        goto __pyx_L9_unpacking_done;
+        __pyx_L8_unpacking_failed:;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_10 = NULL;
+        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+        __PYX_ERR(0, 54, __pyx_L1_error)
+        __pyx_L9_unpacking_done:;
+      }
+
+      /* "mcycle/utils/standard_atmospheres.pyx":54
+ *             break
+ *         else:
+ *             _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],             # <<<<<<<<<<<<<<
+ *                                               refLapseRate[i], refAltitude[i],
+ *                                               _pStag, _TStag)
+ */
+      __Pyx_DECREF_SET(__pyx_v__pStag, __pyx_t_9);
+      __pyx_t_9 = 0;
+      __Pyx_DECREF_SET(__pyx_v__TStag, __pyx_t_11);
+      __pyx_t_11 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":57
+ *                                               refLapseRate[i], refAltitude[i],
+ *                                               _pStag, _TStag)
+ *             i += 1             # <<<<<<<<<<<<<<
+ *     try:
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ */
+      __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_v_i, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF_SET(__pyx_v_i, __pyx_t_1);
+      __pyx_t_1 = 0;
+    }
+  }
+  __pyx_L4_break:;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":58
+ *                                               _pStag, _TStag)
+ *             i += 1
+ *     try:             # <<<<<<<<<<<<<<
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm
+ */
+  {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ExceptionSave(&__pyx_t_12, &__pyx_t_13, &__pyx_t_14);
+    __Pyx_XGOTREF(__pyx_t_12);
+    __Pyx_XGOTREF(__pyx_t_13);
+    __Pyx_XGOTREF(__pyx_t_14);
+    /*try:*/ {
+
+      /* "mcycle/utils/standard_atmospheres.pyx":59
+ *             i += 1
+ *     try:
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)             # <<<<<<<<<<<<<<
+ *         return atm
+ *     except Exception as exc:
+ */
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_atm, __pyx_n_s_updateState); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 59, __pyx_L10_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_c); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L10_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_PT_INPUTS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L10_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_9 = NULL;
+      __pyx_t_8 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
+        __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_11);
+        if (likely(__pyx_t_9)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
+          __Pyx_INCREF(__pyx_t_9);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_11, function);
+          __pyx_t_8 = 1;
+        }
+      }
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_11)) {
+        PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_4, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L10_error)
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
+        PyObject *__pyx_temp[4] = {__pyx_t_9, __pyx_t_4, __pyx_v__pStag, __pyx_v__TStag};
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L10_error)
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_3 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L10_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        if (__pyx_t_9) {
+          __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9); __pyx_t_9 = NULL;
+        }
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_8, __pyx_t_4);
+        __Pyx_INCREF(__pyx_v__pStag);
+        __Pyx_GIVEREF(__pyx_v__pStag);
+        PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_8, __pyx_v__pStag);
+        __Pyx_INCREF(__pyx_v__TStag);
+        __Pyx_GIVEREF(__pyx_v__TStag);
+        PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_8, __pyx_v__TStag);
+        __pyx_t_4 = 0;
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L10_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":60
+ *     try:
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm             # <<<<<<<<<<<<<<
+ *     except Exception as exc:
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_atm);
+      __pyx_r = __pyx_v_atm;
+      goto __pyx_L14_try_return;
+
+      /* "mcycle/utils/standard_atmospheres.pyx":58
+ *                                               _pStag, _TStag)
+ *             i += 1
+ *     try:             # <<<<<<<<<<<<<<
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm
+ */
+    }
+    __pyx_L10_error:;
+    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "mcycle/utils/standard_atmospheres.pyx":61
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm
+ *     except Exception as exc:             # <<<<<<<<<<<<<<
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+ *             _pStag, _TStag)
+ */
+    __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
+    if (__pyx_t_8) {
+      __Pyx_AddTraceback("mcycle.utils.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_11, &__pyx_t_3) < 0) __PYX_ERR(0, 61, __pyx_L12_except_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_11);
+      __pyx_v_exc = __pyx_t_11;
+      /*try:*/ {
+
+        /* "mcycle/utils/standard_atmospheres.pyx":62
+ *         return atm
+ *     except Exception as exc:
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(             # <<<<<<<<<<<<<<
+ *             _pStag, _TStag)
+ *         log('error', msg, exc)
+ */
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_ISA_was_not_able_to_produce_Flow, __pyx_n_s_format); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L21_error)
+        __Pyx_GOTREF(__pyx_t_9);
+
+        /* "mcycle/utils/standard_atmospheres.pyx":63
+ *     except Exception as exc:
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+ *             _pStag, _TStag)             # <<<<<<<<<<<<<<
+ *         log('error', msg, exc)
+ *         raise ValueError(msg)
+ */
+        __pyx_t_5 = NULL;
+        __pyx_t_8 = 0;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_9);
+          if (likely(__pyx_t_5)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+            __Pyx_INCREF(__pyx_t_5);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_9, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_9)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v__pStag, __pyx_v__TStag};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L21_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
+          PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v__pStag, __pyx_v__TStag};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L21_error)
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        {
+          __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L21_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          if (__pyx_t_5) {
+            __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
+          }
+          __Pyx_INCREF(__pyx_v__pStag);
+          __Pyx_GIVEREF(__pyx_v__pStag);
+          PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_8, __pyx_v__pStag);
+          __Pyx_INCREF(__pyx_v__TStag);
+          __Pyx_GIVEREF(__pyx_v__TStag);
+          PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_v__TStag);
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L21_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_v_msg = __pyx_t_4;
+        __pyx_t_4 = 0;
+
+        /* "mcycle/utils/standard_atmospheres.pyx":64
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+ *             _pStag, _TStag)
+ *         log('error', msg, exc)             # <<<<<<<<<<<<<<
+ *         raise ValueError(msg)
+ */
+        __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L21_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_7 = NULL;
+        __pyx_t_8 = 0;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
+          __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_9);
+          if (likely(__pyx_t_7)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+            __Pyx_INCREF(__pyx_t_7);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_9, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_9)) {
+          PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L21_error)
+          __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
+          PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_n_u_error, __pyx_v_msg, __pyx_v_exc};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L21_error)
+          __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+          __Pyx_GOTREF(__pyx_t_4);
+        } else
+        #endif
+        {
+          __pyx_t_5 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 64, __pyx_L21_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          if (__pyx_t_7) {
+            __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
+          }
+          __Pyx_INCREF(__pyx_n_u_error);
+          __Pyx_GIVEREF(__pyx_n_u_error);
+          PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_8, __pyx_n_u_error);
+          __Pyx_INCREF(__pyx_v_msg);
+          __Pyx_GIVEREF(__pyx_v_msg);
+          PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_v_msg);
+          __Pyx_INCREF(__pyx_v_exc);
+          __Pyx_GIVEREF(__pyx_v_exc);
+          PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_8, __pyx_v_exc);
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L21_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+        /* "mcycle/utils/standard_atmospheres.pyx":65
+ *             _pStag, _TStag)
+ *         log('error', msg, exc)
+ *         raise ValueError(msg)             # <<<<<<<<<<<<<<
+ */
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_v_msg); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L21_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __PYX_ERR(0, 65, __pyx_L21_error)
+      }
+
+      /* "mcycle/utils/standard_atmospheres.pyx":61
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm
+ *     except Exception as exc:             # <<<<<<<<<<<<<<
+ *         msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+ *             _pStag, _TStag)
+ */
+      /*finally:*/ {
+        __pyx_L21_error:;
+        /*exception exit:*/{
+          __Pyx_PyThreadState_declare
+          __Pyx_PyThreadState_assign
+          __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
+          __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (PY_MAJOR_VERSION >= 3) __Pyx_ExceptionSwap(&__pyx_t_20, &__pyx_t_21, &__pyx_t_22);
+          if ((PY_MAJOR_VERSION < 3) || unlikely(__Pyx_GetException(&__pyx_t_17, &__pyx_t_18, &__pyx_t_19) < 0)) __Pyx_ErrFetch(&__pyx_t_17, &__pyx_t_18, &__pyx_t_19);
+          __Pyx_XGOTREF(__pyx_t_17);
+          __Pyx_XGOTREF(__pyx_t_18);
+          __Pyx_XGOTREF(__pyx_t_19);
+          __Pyx_XGOTREF(__pyx_t_20);
+          __Pyx_XGOTREF(__pyx_t_21);
+          __Pyx_XGOTREF(__pyx_t_22);
+          __pyx_t_8 = __pyx_lineno; __pyx_t_15 = __pyx_clineno; __pyx_t_16 = __pyx_filename;
+          {
+            __Pyx_DECREF(__pyx_v_exc);
+            __pyx_v_exc = NULL;
+          }
+          if (PY_MAJOR_VERSION >= 3) {
+            __Pyx_XGIVEREF(__pyx_t_20);
+            __Pyx_XGIVEREF(__pyx_t_21);
+            __Pyx_XGIVEREF(__pyx_t_22);
+            __Pyx_ExceptionReset(__pyx_t_20, __pyx_t_21, __pyx_t_22);
+          }
+          __Pyx_XGIVEREF(__pyx_t_17);
+          __Pyx_XGIVEREF(__pyx_t_18);
+          __Pyx_XGIVEREF(__pyx_t_19);
+          __Pyx_ErrRestore(__pyx_t_17, __pyx_t_18, __pyx_t_19);
+          __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0; __pyx_t_22 = 0;
+          __pyx_lineno = __pyx_t_8; __pyx_clineno = __pyx_t_15; __pyx_filename = __pyx_t_16;
+          goto __pyx_L12_except_error;
+        }
+      }
+    }
+    goto __pyx_L12_except_error;
+    __pyx_L12_except_error:;
+
+    /* "mcycle/utils/standard_atmospheres.pyx":58
+ *                                               _pStag, _TStag)
+ *             i += 1
+ *     try:             # <<<<<<<<<<<<<<
+ *         atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+ *         return atm
+ */
+    __Pyx_XGIVEREF(__pyx_t_12);
+    __Pyx_XGIVEREF(__pyx_t_13);
+    __Pyx_XGIVEREF(__pyx_t_14);
+    __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+    goto __pyx_L1_error;
+    __pyx_L14_try_return:;
+    __Pyx_XGIVEREF(__pyx_t_12);
+    __Pyx_XGIVEREF(__pyx_t_13);
+    __Pyx_XGIVEREF(__pyx_t_14);
+    __Pyx_ExceptionReset(__pyx_t_12, __pyx_t_13, __pyx_t_14);
+    goto __pyx_L0;
+  }
+
+  /* "mcycle/utils/standard_atmospheres.pyx":25
+ * 
+ * 
+ * def isa(altitude, pStag=101325., TStag=288.15):             # <<<<<<<<<<<<<<
+ *     """FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.
+ * 
+ */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.library.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_AddTraceback("mcycle.utils.standard_atmospheres.isa", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "carray.to_py":112
- * 
- * @cname("__Pyx_carray_to_py_double")
- * cdef inline list __Pyx_carray_to_py_double(base_type *v, Py_ssize_t length):             # <<<<<<<<<<<<<<
- *     cdef size_t i
- *     cdef object value
- */
-
-static CYTHON_INLINE PyObject *__Pyx_carray_to_py_double(double *__pyx_v_v, Py_ssize_t __pyx_v_length) {
-  size_t __pyx_v_i;
-  PyObject *__pyx_v_value = 0;
-  PyObject *__pyx_v_l = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  size_t __pyx_t_2;
-  size_t __pyx_t_3;
-  size_t __pyx_t_4;
-  __Pyx_RefNannySetupContext("__Pyx_carray_to_py_double", 0);
-
-  /* "carray.to_py":115
- *     cdef size_t i
- *     cdef object value
- *     l = PyList_New(length)             # <<<<<<<<<<<<<<
- *     for i in range(<size_t>length):
- *         value = v[i]
- */
-  __pyx_t_1 = PyList_New(__pyx_v_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 115, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_l = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "carray.to_py":116
- *     cdef object value
- *     l = PyList_New(length)
- *     for i in range(<size_t>length):             # <<<<<<<<<<<<<<
- *         value = v[i]
- *         Py_INCREF(value)
- */
-  __pyx_t_2 = ((size_t)__pyx_v_length);
-  __pyx_t_3 = __pyx_t_2;
-  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_i = __pyx_t_4;
-
-    /* "carray.to_py":117
- *     l = PyList_New(length)
- *     for i in range(<size_t>length):
- *         value = v[i]             # <<<<<<<<<<<<<<
- *         Py_INCREF(value)
- *         PyList_SET_ITEM(l, i, value)
- */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_v[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 117, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_1);
-    __pyx_t_1 = 0;
-
-    /* "carray.to_py":118
- *     for i in range(<size_t>length):
- *         value = v[i]
- *         Py_INCREF(value)             # <<<<<<<<<<<<<<
- *         PyList_SET_ITEM(l, i, value)
- *     return l
- */
-    Py_INCREF(__pyx_v_value);
-
-    /* "carray.to_py":119
- *         value = v[i]
- *         Py_INCREF(value)
- *         PyList_SET_ITEM(l, i, value)             # <<<<<<<<<<<<<<
- *     return l
- * 
- */
-    PyList_SET_ITEM(__pyx_v_l, __pyx_v_i, __pyx_v_value);
-  }
-
-  /* "carray.to_py":120
- *         Py_INCREF(value)
- *         PyList_SET_ITEM(l, i, value)
- *     return l             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_l);
-  __pyx_r = __pyx_v_l;
-  goto __pyx_L0;
-
-  /* "carray.to_py":112
- * 
- * @cname("__Pyx_carray_to_py_double")
- * cdef inline list __Pyx_carray_to_py_double(base_type *v, Py_ssize_t length):             # <<<<<<<<<<<<<<
- *     cdef size_t i
- *     cdef object value
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("carray.to_py.__Pyx_carray_to_py_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_value);
-  __Pyx_XDECREF(__pyx_v_l);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "carray.to_py":124
- * 
- * @cname("__Pyx_carray_to_tuple_double")
- * cdef inline tuple __Pyx_carray_to_tuple_double(base_type *v, Py_ssize_t length):             # <<<<<<<<<<<<<<
- *     cdef size_t i
- *     cdef object value
- */
-
-static CYTHON_INLINE PyObject *__Pyx_carray_to_tuple_double(double *__pyx_v_v, Py_ssize_t __pyx_v_length) {
-  size_t __pyx_v_i;
-  PyObject *__pyx_v_value = 0;
-  PyObject *__pyx_v_t = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  size_t __pyx_t_2;
-  size_t __pyx_t_3;
-  size_t __pyx_t_4;
-  __Pyx_RefNannySetupContext("__Pyx_carray_to_tuple_double", 0);
-
-  /* "carray.to_py":127
- *     cdef size_t i
- *     cdef object value
- *     t = PyTuple_New(length)             # <<<<<<<<<<<<<<
- *     for i in range(<size_t>length):
- *         value = v[i]
- */
-  __pyx_t_1 = PyTuple_New(__pyx_v_length); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 127, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_t = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "carray.to_py":128
- *     cdef object value
- *     t = PyTuple_New(length)
- *     for i in range(<size_t>length):             # <<<<<<<<<<<<<<
- *         value = v[i]
- *         Py_INCREF(value)
- */
-  __pyx_t_2 = ((size_t)__pyx_v_length);
-  __pyx_t_3 = __pyx_t_2;
-  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
-    __pyx_v_i = __pyx_t_4;
-
-    /* "carray.to_py":129
- *     t = PyTuple_New(length)
- *     for i in range(<size_t>length):
- *         value = v[i]             # <<<<<<<<<<<<<<
- *         Py_INCREF(value)
- *         PyTuple_SET_ITEM(t, i, value)
- */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_v[__pyx_v_i])); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 129, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_1);
-    __pyx_t_1 = 0;
-
-    /* "carray.to_py":130
- *     for i in range(<size_t>length):
- *         value = v[i]
- *         Py_INCREF(value)             # <<<<<<<<<<<<<<
- *         PyTuple_SET_ITEM(t, i, value)
- *     return t
- */
-    Py_INCREF(__pyx_v_value);
-
-    /* "carray.to_py":131
- *         value = v[i]
- *         Py_INCREF(value)
- *         PyTuple_SET_ITEM(t, i, value)             # <<<<<<<<<<<<<<
- *     return t
- */
-    PyTuple_SET_ITEM(__pyx_v_t, __pyx_v_i, __pyx_v_value);
-  }
-
-  /* "carray.to_py":132
- *         Py_INCREF(value)
- *         PyTuple_SET_ITEM(t, i, value)
- *     return t             # <<<<<<<<<<<<<<
- */
-  __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_t);
-  __pyx_r = __pyx_v_t;
-  goto __pyx_L0;
-
-  /* "carray.to_py":124
- * 
- * @cname("__Pyx_carray_to_tuple_double")
- * cdef inline tuple __Pyx_carray_to_tuple_double(base_type *v, Py_ssize_t length):             # <<<<<<<<<<<<<<
- *     cdef size_t i
- *     cdef object value
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("carray.to_py.__Pyx_carray_to_tuple_double", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_value);
-  __Pyx_XDECREF(__pyx_v_t);
+  __Pyx_XDECREF(__pyx_v_refLapseRate);
+  __Pyx_XDECREF(__pyx_v_refAltitude);
+  __Pyx_XDECREF(__pyx_v_atm);
+  __Pyx_XDECREF(__pyx_v__pStag);
+  __Pyx_XDECREF(__pyx_v__TStag);
+  __Pyx_XDECREF(__pyx_v_i);
+  __Pyx_XDECREF(__pyx_v_exc);
+  __Pyx_XDECREF(__pyx_v_msg);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
 static PyMethodDef __pyx_methods[] = {
-  {"isa", (PyCFunction)__pyx_pw_6mcycle_7library_20standard_atmospheres_1isa, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_7library_20standard_atmospheres_isa},
   {0, 0, 0, 0}
 };
 
@@ -2709,35 +2759,53 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_Air, __pyx_k_Air, sizeof(__pyx_k_Air), 0, 1, 0, 1},
   {&__pyx_kp_u_Altitude_must_be_above_610_m_giv, __pyx_k_Altitude_must_be_above_610_m_giv, sizeof(__pyx_k_Altitude_must_be_above_610_m_giv), 0, 1, 0, 0},
   {&__pyx_kp_u_Altitude_must_be_below_86_000_m, __pyx_k_Altitude_must_be_below_86_000_m, sizeof(__pyx_k_Altitude_must_be_below_86_000_m), 0, 1, 0, 0},
-  {&__pyx_n_s_COOLPROP_EOS, __pyx_k_COOLPROP_EOS, sizeof(__pyx_k_COOLPROP_EOS), 0, 0, 1, 1},
-  {&__pyx_n_s_CP, __pyx_k_CP, sizeof(__pyx_k_CP), 0, 0, 1, 1},
-  {&__pyx_n_s_CoolProp, __pyx_k_CoolProp, sizeof(__pyx_k_CoolProp), 0, 0, 1, 1},
-  {&__pyx_n_s_DEFAULTS, __pyx_k_DEFAULTS, sizeof(__pyx_k_DEFAULTS), 0, 0, 1, 1},
+  {&__pyx_n_s_FlowState, __pyx_k_FlowState, sizeof(__pyx_k_FlowState), 0, 0, 1, 1},
+  {&__pyx_kp_u_ISA_was_not_able_to_produce_Flow, __pyx_k_ISA_was_not_able_to_produce_Flow, sizeof(__pyx_k_ISA_was_not_able_to_produce_Flow), 0, 1, 0, 0},
   {&__pyx_n_s_PT_INPUTS, __pyx_k_PT_INPUTS, sizeof(__pyx_k_PT_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_R, __pyx_k_R, sizeof(__pyx_k_R), 0, 0, 1, 1},
+  {&__pyx_n_s_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 1, 1},
   {&__pyx_n_s_TStag, __pyx_k_TStag, sizeof(__pyx_k_TStag), 0, 0, 1, 1},
+  {&__pyx_n_s_TStagBase, __pyx_k_TStagBase, sizeof(__pyx_k_TStagBase), 0, 0, 1, 1},
+  {&__pyx_n_s_TStag_2, __pyx_k_TStag_2, sizeof(__pyx_k_TStag_2), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-  {&__pyx_kp_u_Was_not_able_to_produce_FlowStat, __pyx_k_Was_not_able_to_produce_FlowStat, sizeof(__pyx_k_Was_not_able_to_produce_FlowStat), 0, 1, 0, 0},
+  {&__pyx_n_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 1},
   {&__pyx_n_s_altitude, __pyx_k_altitude, sizeof(__pyx_k_altitude), 0, 0, 1, 1},
+  {&__pyx_n_s_altitudeBase, __pyx_k_altitudeBase, sizeof(__pyx_k_altitudeBase), 0, 0, 1, 1},
+  {&__pyx_n_s_atm, __pyx_k_atm, sizeof(__pyx_k_atm), 0, 0, 1, 1},
+  {&__pyx_n_s_bases_flowstate, __pyx_k_bases_flowstate, sizeof(__pyx_k_bases_flowstate), 0, 0, 1, 1},
+  {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_constants, __pyx_k_constants, sizeof(__pyx_k_constants), 0, 0, 1, 1},
+  {&__pyx_n_u_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 1, 0, 1},
+  {&__pyx_n_s_exc, __pyx_k_exc, sizeof(__pyx_k_exc), 0, 0, 1, 1},
   {&__pyx_n_s_exp, __pyx_k_exp, sizeof(__pyx_k_exp), 0, 0, 1, 1},
-  {&__pyx_n_s_fluidCP, __pyx_k_fluidCP, sizeof(__pyx_k_fluidCP), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_gravity, __pyx_k_gravity, sizeof(__pyx_k_gravity), 0, 0, 1, 1},
+  {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_isa, __pyx_k_isa, sizeof(__pyx_k_isa), 0, 0, 1, 1},
+  {&__pyx_n_s_isaPropsFromBase, __pyx_k_isaPropsFromBase, sizeof(__pyx_k_isaPropsFromBase), 0, 0, 1, 1},
+  {&__pyx_n_s_lapseRate, __pyx_k_lapseRate, sizeof(__pyx_k_lapseRate), 0, 0, 1, 1},
+  {&__pyx_n_s_log, __pyx_k_log, sizeof(__pyx_k_log), 0, 0, 1, 1},
+  {&__pyx_n_s_logger, __pyx_k_logger, sizeof(__pyx_k_logger), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
+  {&__pyx_kp_s_mcycle_utils_standard_atmosphere, __pyx_k_mcycle_utils_standard_atmosphere, sizeof(__pyx_k_mcycle_utils_standard_atmosphere), 0, 0, 1, 0},
+  {&__pyx_n_s_mcycle_utils_standard_atmosphere_2, __pyx_k_mcycle_utils_standard_atmosphere_2, sizeof(__pyx_k_mcycle_utils_standard_atmosphere_2), 0, 0, 1, 1},
+  {&__pyx_n_s_msg, __pyx_k_msg, sizeof(__pyx_k_msg), 0, 0, 1, 1},
   {&__pyx_n_s_nan, __pyx_k_nan, sizeof(__pyx_k_nan), 0, 0, 1, 1},
+  {&__pyx_n_s_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 0, 1, 1},
   {&__pyx_n_s_pStag, __pyx_k_pStag, sizeof(__pyx_k_pStag), 0, 0, 1, 1},
-  {&__pyx_n_s_phaseCP, __pyx_k_phaseCP, sizeof(__pyx_k_phaseCP), 0, 0, 1, 1},
-  {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
-  {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+  {&__pyx_n_s_pStagBase, __pyx_k_pStagBase, sizeof(__pyx_k_pStagBase), 0, 0, 1, 1},
+  {&__pyx_n_s_pStag_2, __pyx_k_pStag_2, sizeof(__pyx_k_pStag_2), 0, 0, 1, 1},
+  {&__pyx_n_s_refAltitude, __pyx_k_refAltitude, sizeof(__pyx_k_refAltitude), 0, 0, 1, 1},
+  {&__pyx_n_s_refLapseRate, __pyx_k_refLapseRate, sizeof(__pyx_k_refLapseRate), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_updateState, __pyx_k_updateState, sizeof(__pyx_k_updateState), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 65, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 116, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2746,13 +2814,69 @@ static int __Pyx_InitCachedBuiltins(void) {
 static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
+
+  /* "mcycle/utils/standard_atmospheres.pyx":44
+ *     refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+ *     refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+ *     atm = FlowState('Air')             # <<<<<<<<<<<<<<
+ *     _pStag = pStag
+ *     _TStag = TStag
+ */
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_u_Air); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+
+  /* "mcycle/utils/standard_atmospheres.pyx":12
+ * 
+ * 
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):             # <<<<<<<<<<<<<<
+ *     T = nan
+ *     p = nan
+ */
+  __pyx_tuple__3 = PyTuple_Pack(7, __pyx_n_s_altitude, __pyx_n_s_lapseRate, __pyx_n_s_altitudeBase, __pyx_n_s_pStagBase, __pyx_n_s_TStagBase, __pyx_n_s_T, __pyx_n_s_p); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(5, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_mcycle_utils_standard_atmosphere, __pyx_n_s_isaPropsFromBase, 12, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 12, __pyx_L1_error)
+
+  /* "mcycle/utils/standard_atmospheres.pyx":25
+ * 
+ * 
+ * def isa(altitude, pStag=101325., TStag=288.15):             # <<<<<<<<<<<<<<
+ *     """FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.
+ * 
+ */
+  __pyx_tuple__5 = PyTuple_Pack(11, __pyx_n_s_altitude, __pyx_n_s_pStag, __pyx_n_s_TStag, __pyx_n_s_refLapseRate, __pyx_n_s_refAltitude, __pyx_n_s_atm, __pyx_n_s_pStag_2, __pyx_n_s_TStag_2, __pyx_n_s_i, __pyx_n_s_exc, __pyx_n_s_msg); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_mcycle_utils_standard_atmosphere, __pyx_n_s_isa, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_float_0_001 = PyFloat_FromDouble(0.001); if (unlikely(!__pyx_float_0_001)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_0_0028 = PyFloat_FromDouble(0.0028); if (unlikely(!__pyx_float_0_0028)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_287_05 = PyFloat_FromDouble(287.05); if (unlikely(!__pyx_float_287_05)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_288_15 = PyFloat_FromDouble(288.15); if (unlikely(!__pyx_float_288_15)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_101325_ = PyFloat_FromDouble(101325.); if (unlikely(!__pyx_float_101325_)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_9_80665 = PyFloat_FromDouble(9.80665); if (unlikely(!__pyx_float_9_80665)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_neg_0_002 = PyFloat_FromDouble(-0.002); if (unlikely(!__pyx_float_neg_0_002)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_neg_0_0028 = PyFloat_FromDouble(-0.0028); if (unlikely(!__pyx_float_neg_0_0028)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_float_neg_0_0065 = PyFloat_FromDouble(-0.0065); if (unlikely(!__pyx_float_neg_0_0065)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_11000 = PyInt_FromLong(11000L); if (unlikely(!__pyx_int_11000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_20000 = PyInt_FromLong(20000L); if (unlikely(!__pyx_int_20000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_32000 = PyInt_FromLong(32000L); if (unlikely(!__pyx_int_32000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_47000 = PyInt_FromLong(47000L); if (unlikely(!__pyx_int_47000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_51000 = PyInt_FromLong(51000L); if (unlikely(!__pyx_int_51000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_71000 = PyInt_FromLong(71000L); if (unlikely(!__pyx_int_71000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_86000 = PyInt_FromLong(86000L); if (unlikely(!__pyx_int_86000)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_neg_610 = PyInt_FromLong(-610); if (unlikely(!__pyx_int_neg_610)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2802,37 +2926,16 @@ static int __Pyx_modinit_type_import_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = __Pyx_ImportType("mcycle.bases.mcabstractbase", "MCAttr", sizeof(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB = __Pyx_ImportType("mcycle.bases.mcabstractbase", "MCAB", sizeof(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB)) __PYX_ERR(2, 5, __pyx_L1_error)
-  __pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB = (struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB)) __PYX_ERR(2, 5, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_9flowstate_FlowState = __Pyx_ImportType("mcycle.bases.flowstate", "FlowState", sizeof(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9flowstate_FlowState)) __PYX_ERR(3, 4, __pyx_L1_error)
-  __pyx_vtabptr_6mcycle_5bases_9flowstate_FlowState = (struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9flowstate_FlowState->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9flowstate_FlowState)) __PYX_ERR(3, 4, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_9flowstate_FlowStatePoly = __Pyx_ImportType("mcycle.bases.flowstate", "FlowStatePoly", sizeof(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowStatePoly), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9flowstate_FlowStatePoly)) __PYX_ERR(3, 39, __pyx_L1_error)
-  __pyx_vtabptr_6mcycle_5bases_9flowstate_FlowStatePoly = (struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowStatePoly*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9flowstate_FlowStatePoly->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9flowstate_FlowStatePoly)) __PYX_ERR(3, 39, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_9flowstate_RefData = __Pyx_ImportType("mcycle.bases.flowstate", "RefData", sizeof(struct __pyx_obj_6mcycle_5bases_9flowstate_RefData), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_9flowstate_RefData)) __PYX_ERR(3, 48, __pyx_L1_error)
-  __pyx_vtabptr_6mcycle_5bases_9flowstate_RefData = (struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData*)__Pyx_GetVtable(__pyx_ptype_6mcycle_5bases_9flowstate_RefData->tp_dict); if (unlikely(!__pyx_vtabptr_6mcycle_5bases_9flowstate_RefData)) __PYX_ERR(3, 48, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
-  __pyx_L1_error:;
-  __Pyx_RefNannyFinishContext();
-  return -1;
 }
 
 static int __Pyx_modinit_variable_import_code(void) {
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__Pyx_modinit_variable_import_code", 0);
   /*--- Variable import code ---*/
-  __pyx_t_1 = __Pyx_ImportModule("mcycle.bases.flowstate"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "validInputPairs", (void **)&__pyx_vp_6mcycle_5bases_9flowstate_validInputPairs, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportVoidPtr(__pyx_t_1, "_validInputPairs", (void **)&__pyx_vp_6mcycle_5bases_9flowstate__validInputPairs, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  Py_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_RefNannyFinishContext();
-  return -1;
 }
 
 static int __Pyx_modinit_function_import_code(void) {
@@ -2989,14 +3092,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_mcycle__library__standard_atmospheres) {
+  if (__pyx_module_is_main_mcycle__utils__standard_atmospheres) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "mcycle.library.standard_atmospheres")) {
-      if (unlikely(PyDict_SetItemString(modules, "mcycle.library.standard_atmospheres", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "mcycle.utils.standard_atmospheres")) {
+      if (unlikely(PyDict_SetItemString(modules, "mcycle.utils.standard_atmospheres", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3009,43 +3112,85 @@ if (!__Pyx_RefNanny) {
   (void)__Pyx_modinit_variable_export_code();
   (void)__Pyx_modinit_function_export_code();
   (void)__Pyx_modinit_type_init_code();
-  if (unlikely(__Pyx_modinit_type_import_code() != 0)) goto __pyx_L1_error;
-  if (unlikely(__Pyx_modinit_variable_import_code() != 0)) goto __pyx_L1_error;
+  (void)__Pyx_modinit_type_import_code();
+  (void)__Pyx_modinit_variable_import_code();
   (void)__Pyx_modinit_function_import_code();
   /*--- Execution code ---*/
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "mcycle/library/standard_atmospheres.pyx":4
+  /* "mcycle/utils/standard_atmospheres.pyx":3
+ * """Compute FlowState properties in standard atmospheres.
  * """
- * from ..bases.flowstate cimport FlowState
- * from ..DEFAULTS import COOLPROP_EOS             # <<<<<<<<<<<<<<
- * from math import nan, exp
- * import CoolProp as CP
+ * from ..bases.flowstate import FlowState             # <<<<<<<<<<<<<<
+ * from .. import constants as c
+ * from ..logger import log
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_COOLPROP_EOS);
-  __Pyx_GIVEREF(__pyx_n_s_COOLPROP_EOS);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_COOLPROP_EOS);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_DEFAULTS, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s_FlowState);
+  __Pyx_GIVEREF(__pyx_n_s_FlowState);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_FlowState);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_bases_flowstate, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_COOLPROP_EOS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_FlowState); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_COOLPROP_EOS, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FlowState, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":5
- * from ..bases.flowstate cimport FlowState
- * from ..DEFAULTS import COOLPROP_EOS
- * from math import nan, exp             # <<<<<<<<<<<<<<
- * import CoolProp as CP
+  /* "mcycle/utils/standard_atmospheres.pyx":4
+ * """
+ * from ..bases.flowstate import FlowState
+ * from .. import constants as c             # <<<<<<<<<<<<<<
+ * from ..logger import log
+ * from math import nan, exp
+ */
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_s_constants);
+  __Pyx_GIVEREF(__pyx_n_s_constants);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_constants);
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s__2, __pyx_t_2, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_constants); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_c, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":5
+ * from ..bases.flowstate import FlowState
+ * from .. import constants as c
+ * from ..logger import log             # <<<<<<<<<<<<<<
+ * from math import nan, exp
  * 
  */
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_log);
+  __Pyx_GIVEREF(__pyx_n_s_log);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_log);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_logger, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_log); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_log, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":6
+ * from .. import constants as c
+ * from ..logger import log
+ * from math import nan, exp             # <<<<<<<<<<<<<<
+ * 
+ * gravity = 9.80665
+ */
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_nan);
   __Pyx_GIVEREF(__pyx_n_s_nan);
@@ -3053,48 +3198,70 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_exp);
   __Pyx_GIVEREF(__pyx_n_s_exp);
   PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_exp);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_math, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_nan, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_nan, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_exp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_exp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_exp, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_exp, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":6
- * from ..DEFAULTS import COOLPROP_EOS
+  /* "mcycle/utils/standard_atmospheres.pyx":8
  * from math import nan, exp
- * import CoolProp as CP             # <<<<<<<<<<<<<<
+ * 
+ * gravity = 9.80665             # <<<<<<<<<<<<<<
+ * R = 287.05
+ * 
+ */
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_gravity, __pyx_float_9_80665) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+
+  /* "mcycle/utils/standard_atmospheres.pyx":9
+ * 
+ * gravity = 9.80665
+ * R = 287.05             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_CoolProp, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_R, __pyx_float_287_05) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+
+  /* "mcycle/utils/standard_atmospheres.pyx":12
+ * 
+ * 
+ * def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):             # <<<<<<<<<<<<<<
+ *     T = nan
+ *     p = nan
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5utils_20standard_atmospheres_1isaPropsFromBase, NULL, __pyx_n_s_mcycle_utils_standard_atmosphere_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CP, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_isaPropsFromBase, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/library/standard_atmospheres.pyx":1
+  /* "mcycle/utils/standard_atmospheres.pyx":25
+ * 
+ * 
+ * def isa(altitude, pStag=101325., TStag=288.15):             # <<<<<<<<<<<<<<
+ *     """FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.
+ * 
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5utils_20standard_atmospheres_3isa, NULL, __pyx_n_s_mcycle_utils_standard_atmosphere_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_isa, __pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "mcycle/utils/standard_atmospheres.pyx":1
  * """Compute FlowState properties in standard atmospheres.             # <<<<<<<<<<<<<<
  * """
- * from ..bases.flowstate cimport FlowState
+ * from ..bases.flowstate import FlowState
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "carray.to_py":124
- * 
- * @cname("__Pyx_carray_to_tuple_double")
- * cdef inline tuple __Pyx_carray_to_tuple_double(base_type *v, Py_ssize_t length):             # <<<<<<<<<<<<<<
- *     cdef size_t i
- *     cdef object value
- */
 
   /*--- Wrapped vars code ---*/
 
@@ -3104,11 +3271,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init mcycle.library.standard_atmospheres", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init mcycle.utils.standard_atmospheres", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init mcycle.library.standard_atmospheres");
+    PyErr_SetString(PyExc_ImportError, "init mcycle.utils.standard_atmospheres");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3165,6 +3332,148 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* RaiseDoubleKeywords */
+static void __Pyx_RaiseDoubleKeywordsError(
+    const char* func_name,
+    PyObject* kw_name)
+{
+    PyErr_Format(PyExc_TypeError,
+        #if PY_MAJOR_VERSION >= 3
+        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
+        #else
+        "%s() got multiple values for keyword argument '%s'", func_name,
+        PyString_AsString(kw_name));
+        #endif
+}
+
+/* ParseKeywords */
+static int __Pyx_ParseOptionalKeywords(
+    PyObject *kwds,
+    PyObject **argnames[],
+    PyObject *kwds2,
+    PyObject *values[],
+    Py_ssize_t num_pos_args,
+    const char* function_name)
+{
+    PyObject *key = 0, *value = 0;
+    Py_ssize_t pos = 0;
+    PyObject*** name;
+    PyObject*** first_kw_arg = argnames + num_pos_args;
+    while (PyDict_Next(kwds, &pos, &key, &value)) {
+        name = first_kw_arg;
+        while (*name && (**name != key)) name++;
+        if (*name) {
+            values[name-argnames] = value;
+            continue;
+        }
+        name = first_kw_arg;
+        #if PY_MAJOR_VERSION < 3
+        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
+            while (*name) {
+                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
+                        && _PyString_Eq(**name, key)) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    if ((**argname == key) || (
+                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
+                             && _PyString_Eq(**argname, key))) {
+                        goto arg_passed_twice;
+                    }
+                    argname++;
+                }
+            }
+        } else
+        #endif
+        if (likely(PyUnicode_Check(key))) {
+            while (*name) {
+                int cmp = (**name == key) ? 0 :
+                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
+                #endif
+                    PyUnicode_Compare(**name, key);
+                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                if (cmp == 0) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    int cmp = (**argname == key) ? 0 :
+                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
+                    #endif
+                        PyUnicode_Compare(**argname, key);
+                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                    if (cmp == 0) goto arg_passed_twice;
+                    argname++;
+                }
+            }
+        } else
+            goto invalid_keyword_type;
+        if (kwds2) {
+            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
+        } else {
+            goto invalid_keyword;
+        }
+    }
+    return 0;
+arg_passed_twice:
+    __Pyx_RaiseDoubleKeywordsError(function_name, key);
+    goto bad;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    goto bad;
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+bad:
+    return -1;
 }
 
 /* GetModuleGlobalName */
@@ -3417,6 +3726,244 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
 }
 #endif
 
+/* PyIntBinop */
+    #if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_AddObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, CYTHON_UNUSED int inplace) {
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            x = (long)((unsigned long)a + b);
+            if (likely((x^a) >= 0 || (x^b) >= 0))
+                return PyInt_FromLong(x);
+            return PyLong_Type.tp_as_number->nb_add(op1, op2);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_add(op1, op2);
+            }
+        }
+                x = a + b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla + llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+            double result;
+            PyFPE_START_PROTECT("add", return NULL)
+            result = ((double)a) + (double)b;
+            PyFPE_END_PROTECT(result)
+            return PyFloat_FromDouble(result);
+    }
+    return (inplace ? PyNumber_InPlaceAdd : PyNumber_Add)(op1, op2);
+}
+#endif
+
+/* GetItemInt */
+    static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
+    PyObject *r;
+    if (!j) return NULL;
+    r = PyObject_GetItem(o, j);
+    Py_DECREF(j);
+    return r;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyList_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely((0 <= wrapped_i) & (wrapped_i < PyList_GET_SIZE(o)))) {
+        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
+                                                              CYTHON_NCP_UNUSED int wraparound,
+                                                              CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    Py_ssize_t wrapped_i = i;
+    if (wraparound & unlikely(i < 0)) {
+        wrapped_i += PyTuple_GET_SIZE(o);
+    }
+    if ((!boundscheck) || likely((0 <= wrapped_i) & (wrapped_i < PyTuple_GET_SIZE(o)))) {
+        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
+        Py_INCREF(r);
+        return r;
+    }
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+#else
+    return PySequence_GetItem(o, i);
+#endif
+}
+static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
+                                                     CYTHON_NCP_UNUSED int wraparound,
+                                                     CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
+        if ((!boundscheck) || (likely((n >= 0) & (n < PyList_GET_SIZE(o))))) {
+            PyObject *r = PyList_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    }
+    else if (PyTuple_CheckExact(o)) {
+        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
+        if ((!boundscheck) || likely((n >= 0) & (n < PyTuple_GET_SIZE(o)))) {
+            PyObject *r = PyTuple_GET_ITEM(o, n);
+            Py_INCREF(r);
+            return r;
+        }
+    } else {
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return NULL;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_item(o, i);
+        }
+    }
+#else
+    if (is_list || PySequence_Check(o)) {
+        return PySequence_GetItem(o, i);
+    }
+#endif
+    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+}
+
+/* ObjectGetItem */
+    #if CYTHON_USE_TYPE_SLOTS
+static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
+    PyObject *runerr;
+    Py_ssize_t key_value;
+    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
+    if (unlikely(!(m && m->sq_item))) {
+        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
+        return NULL;
+    }
+    key_value = __Pyx_PyIndex_AsSsize_t(index);
+    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
+        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
+    }
+    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
+        PyErr_Clear();
+        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
+    }
+    return NULL;
+}
+static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
+    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(m && m->mp_subscript)) {
+        return m->mp_subscript(obj, key);
+    }
+    return __Pyx_PyObject_GetIndex(obj, key);
+}
+#endif
+
 /* RaiseTooManyValuesToUnpack */
     static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
     PyErr_Format(PyExc_ValueError,
@@ -3430,9 +3977,51 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
                  index, (index == 1) ? "" : "s");
 }
 
-/* RaiseNoneIterError */
-    static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+/* IterFinish */
+    static CYTHON_INLINE int __Pyx_IterFinish(void) {
+#if CYTHON_FAST_THREAD_STATE
+    PyThreadState *tstate = __Pyx_PyThreadState_Current;
+    PyObject* exc_type = tstate->curexc_type;
+    if (unlikely(exc_type)) {
+        if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) {
+            PyObject *exc_value, *exc_tb;
+            exc_value = tstate->curexc_value;
+            exc_tb = tstate->curexc_traceback;
+            tstate->curexc_type = 0;
+            tstate->curexc_value = 0;
+            tstate->curexc_traceback = 0;
+            Py_DECREF(exc_type);
+            Py_XDECREF(exc_value);
+            Py_XDECREF(exc_tb);
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#else
+    if (unlikely(PyErr_Occurred())) {
+        if (likely(PyErr_ExceptionMatches(PyExc_StopIteration))) {
+            PyErr_Clear();
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+#endif
+}
+
+/* UnpackItemEndCheck */
+    static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
+    if (unlikely(retval)) {
+        Py_DECREF(retval);
+        __Pyx_RaiseTooManyValuesError(expected);
+        return -1;
+    } else {
+        return __Pyx_IterFinish();
+    }
+    return 0;
 }
 
 /* SaveResetException */
@@ -3471,6 +4060,31 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
     Py_XDECREF(tmp_type);
     Py_XDECREF(tmp_value);
     Py_XDECREF(tmp_tb);
+}
+#endif
+
+/* PyErrExceptionMatches */
+    #if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
 }
 #endif
 
@@ -3727,188 +4341,39 @@ bad:
 }
 #endif
 
-/* RaiseDoubleKeywords */
-      static void __Pyx_RaiseDoubleKeywordsError(
-    const char* func_name,
-    PyObject* kw_name)
-{
-    PyErr_Format(PyExc_TypeError,
-        #if PY_MAJOR_VERSION >= 3
-        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
-        #else
-        "%s() got multiple values for keyword argument '%s'", func_name,
-        PyString_AsString(kw_name));
-        #endif
-}
-
-/* ParseKeywords */
-      static int __Pyx_ParseOptionalKeywords(
-    PyObject *kwds,
-    PyObject **argnames[],
-    PyObject *kwds2,
-    PyObject *values[],
-    Py_ssize_t num_pos_args,
-    const char* function_name)
-{
-    PyObject *key = 0, *value = 0;
-    Py_ssize_t pos = 0;
-    PyObject*** name;
-    PyObject*** first_kw_arg = argnames + num_pos_args;
-    while (PyDict_Next(kwds, &pos, &key, &value)) {
-        name = first_kw_arg;
-        while (*name && (**name != key)) name++;
-        if (*name) {
-            values[name-argnames] = value;
-            continue;
-        }
-        name = first_kw_arg;
-        #if PY_MAJOR_VERSION < 3
-        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
-            while (*name) {
-                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
-                        && _PyString_Eq(**name, key)) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    if ((**argname == key) || (
-                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
-                             && _PyString_Eq(**argname, key))) {
-                        goto arg_passed_twice;
-                    }
-                    argname++;
-                }
-            }
-        } else
-        #endif
-        if (likely(PyUnicode_Check(key))) {
-            while (*name) {
-                int cmp = (**name == key) ? 0 :
-                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
-                #endif
-                    PyUnicode_Compare(**name, key);
-                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                if (cmp == 0) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    int cmp = (**argname == key) ? 0 :
-                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
-                    #endif
-                        PyUnicode_Compare(**argname, key);
-                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                    if (cmp == 0) goto arg_passed_twice;
-                    argname++;
-                }
-            }
-        } else
-            goto invalid_keyword_type;
-        if (kwds2) {
-            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
-        } else {
-            goto invalid_keyword;
-        }
-    }
-    return 0;
-arg_passed_twice:
-    __Pyx_RaiseDoubleKeywordsError(function_name, key);
-    goto bad;
-invalid_keyword_type:
-    PyErr_Format(PyExc_TypeError,
-        "%.200s() keywords must be strings", function_name);
-    goto bad;
-invalid_keyword:
-    PyErr_Format(PyExc_TypeError,
-    #if PY_MAJOR_VERSION < 3
-        "%.200s() got an unexpected keyword argument '%.200s'",
-        function_name, PyString_AsString(key));
+/* SwapException */
+      #if CYTHON_FAST_THREAD_STATE
+static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    #if PY_VERSION_HEX >= 0x030700A3
+    tmp_type = tstate->exc_state.exc_type;
+    tmp_value = tstate->exc_state.exc_value;
+    tmp_tb = tstate->exc_state.exc_traceback;
+    tstate->exc_state.exc_type = *type;
+    tstate->exc_state.exc_value = *value;
+    tstate->exc_state.exc_traceback = *tb;
     #else
-        "%s() got an unexpected keyword argument '%U'",
-        function_name, key);
+    tmp_type = tstate->exc_type;
+    tmp_value = tstate->exc_value;
+    tmp_tb = tstate->exc_traceback;
+    tstate->exc_type = *type;
+    tstate->exc_value = *value;
+    tstate->exc_traceback = *tb;
     #endif
-bad:
-    return -1;
+    *type = tmp_type;
+    *value = tmp_value;
+    *tb = tmp_tb;
 }
-
-/* RaiseArgTupleInvalid */
-      static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
-}
-
-/* ArgTypeTest */
-      static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
-{
-    if (unlikely(!type)) {
-        PyErr_SetString(PyExc_SystemError, "Missing type object");
-        return 0;
-    }
-    else if (exact) {
-        #if PY_MAJOR_VERSION == 2
-        if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
-        #endif
-    }
-    else {
-        if (likely(__Pyx_TypeCheck(obj, type))) return 1;
-    }
-    PyErr_Format(PyExc_TypeError,
-        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
-        name, type->tp_name, Py_TYPE(obj)->tp_name);
-    return 0;
-}
-
-/* GetVTable */
-      static void* __Pyx_GetVtable(PyObject *dict) {
-    void* ptr;
-    PyObject *ob = PyObject_GetItem(dict, __pyx_n_s_pyx_vtable);
-    if (!ob)
-        goto bad;
-#if PY_VERSION_HEX >= 0x02070000
-    ptr = PyCapsule_GetPointer(ob, 0);
 #else
-    ptr = PyCObject_AsVoidPtr(ob);
-#endif
-    if (!ptr && !PyErr_Occurred())
-        PyErr_SetString(PyExc_RuntimeError, "invalid vtable found for imported type");
-    Py_DECREF(ob);
-    return ptr;
-bad:
-    Py_XDECREF(ob);
-    return NULL;
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb) {
+    PyObject *tmp_type, *tmp_value, *tmp_tb;
+    PyErr_GetExcInfo(&tmp_type, &tmp_value, &tmp_tb);
+    PyErr_SetExcInfo(*type, *value, *tb);
+    *type = tmp_type;
+    *value = tmp_value;
+    *tb = tmp_tb;
 }
+#endif
 
 /* Import */
       static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
@@ -4194,6 +4659,37 @@ bad:
     Py_XDECREF(py_frame);
 }
 
+/* CIntToPy */
+      static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+    const long neg_one = (long) -1, const_zero = (long) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+    }
+}
+
 /* CIntFromPyVerify */
       #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
     __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
@@ -4216,35 +4712,193 @@ bad:
         return (target_type) value;\
     }
 
-/* CIntToPy */
-      static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
-    const int neg_one = (int) -1, const_zero = (int) 0;
+/* CIntFromPy */
+      static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
+    const long neg_one = (long) -1, const_zero = (long) 0;
     const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(long) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (long) val;
+        }
+    } else
 #endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
+                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
+                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
+                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (long) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(long) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (long) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(long) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            long val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (long) -1;
         }
     } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
+        long val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (long) -1;
+        val = __Pyx_PyInt_As_long(tmp);
+        Py_DECREF(tmp);
+        return val;
     }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to long");
+    return (long) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to long");
+    return (long) -1;
 }
 
 /* CIntFromPy */
@@ -4436,415 +5090,6 @@ raise_neg_overflow:
     return (int) -1;
 }
 
-/* CIntFromPy */
-      static CYTHON_INLINE size_t __Pyx_PyInt_As_size_t(PyObject *x) {
-    const size_t neg_one = (size_t) -1, const_zero = (size_t) 0;
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if (sizeof(size_t) < sizeof(long)) {
-            __PYX_VERIFY_RETURN_INT(size_t, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (size_t) val;
-        }
-    } else
-#endif
-    if (likely(PyLong_Check(x))) {
-        if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (size_t) 0;
-                case  1: __PYX_VERIFY_RETURN_INT(size_t, digit, digits[0])
-                case 2:
-                    if (8 * sizeof(size_t) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) >= 2 * PyLong_SHIFT) {
-                            return (size_t) (((((size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(size_t) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) >= 3 * PyLong_SHIFT) {
-                            return (size_t) (((((((size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(size_t) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) >= 4 * PyLong_SHIFT) {
-                            return (size_t) (((((((((size_t)digits[3]) << PyLong_SHIFT) | (size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0]));
-                        }
-                    }
-                    break;
-            }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON
-            if (unlikely(Py_SIZE(x) < 0)) {
-                goto raise_neg_overflow;
-            }
-#else
-            {
-                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-                if (unlikely(result < 0))
-                    return (size_t) -1;
-                if (unlikely(result == 1))
-                    goto raise_neg_overflow;
-            }
-#endif
-            if (sizeof(size_t) <= sizeof(unsigned long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(size_t, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(size_t) <= sizeof(unsigned PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(size_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-            }
-        } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (size_t) 0;
-                case -1: __PYX_VERIFY_RETURN_INT(size_t, sdigit, (sdigit) (-(sdigit)digits[0]))
-                case  1: __PYX_VERIFY_RETURN_INT(size_t,  digit, +digits[0])
-                case -2:
-                    if (8 * sizeof(size_t) - 1 > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 2 * PyLong_SHIFT) {
-                            return (size_t) (((size_t)-1)*(((((size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if (8 * sizeof(size_t) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 2 * PyLong_SHIFT) {
-                            return (size_t) ((((((size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if (8 * sizeof(size_t) - 1 > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 3 * PyLong_SHIFT) {
-                            return (size_t) (((size_t)-1)*(((((((size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(size_t) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 3 * PyLong_SHIFT) {
-                            return (size_t) ((((((((size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if (8 * sizeof(size_t) - 1 > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 4 * PyLong_SHIFT) {
-                            return (size_t) (((size_t)-1)*(((((((((size_t)digits[3]) << PyLong_SHIFT) | (size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(size_t) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(size_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(size_t) - 1 > 4 * PyLong_SHIFT) {
-                            return (size_t) ((((((((((size_t)digits[3]) << PyLong_SHIFT) | (size_t)digits[2]) << PyLong_SHIFT) | (size_t)digits[1]) << PyLong_SHIFT) | (size_t)digits[0])));
-                        }
-                    }
-                    break;
-            }
-#endif
-            if (sizeof(size_t) <= sizeof(long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(size_t, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(size_t) <= sizeof(PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(size_t, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-            }
-        }
-        {
-#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
-            PyErr_SetString(PyExc_RuntimeError,
-                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
-#else
-            size_t val;
-            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
- #if PY_MAJOR_VERSION < 3
-            if (likely(v) && !PyLong_Check(v)) {
-                PyObject *tmp = v;
-                v = PyNumber_Long(tmp);
-                Py_DECREF(tmp);
-            }
- #endif
-            if (likely(v)) {
-                int one = 1; int is_little = (int)*(unsigned char *)&one;
-                unsigned char *bytes = (unsigned char *)&val;
-                int ret = _PyLong_AsByteArray((PyLongObject *)v,
-                                              bytes, sizeof(val),
-                                              is_little, !is_unsigned);
-                Py_DECREF(v);
-                if (likely(!ret))
-                    return val;
-            }
-#endif
-            return (size_t) -1;
-        }
-    } else {
-        size_t val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (size_t) -1;
-        val = __Pyx_PyInt_As_size_t(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to size_t");
-    return (size_t) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to size_t");
-    return (size_t) -1;
-}
-
-/* CIntToPy */
-      static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
-    const long neg_one = (long) -1, const_zero = (long) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
-}
-
-/* CIntFromPy */
-      static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
-    const long neg_one = (long) -1, const_zero = (long) 0;
-    const int is_unsigned = neg_one > const_zero;
-#if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_Check(x))) {
-        if (sizeof(long) < sizeof(long)) {
-            __PYX_VERIFY_RETURN_INT(long, long, PyInt_AS_LONG(x))
-        } else {
-            long val = PyInt_AS_LONG(x);
-            if (is_unsigned && unlikely(val < 0)) {
-                goto raise_neg_overflow;
-            }
-            return (long) val;
-        }
-    } else
-#endif
-    if (likely(PyLong_Check(x))) {
-        if (is_unsigned) {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case  1: __PYX_VERIFY_RETURN_INT(long, digit, digits[0])
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 2 * PyLong_SHIFT) {
-                            return (long) (((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 3 * PyLong_SHIFT) {
-                            return (long) (((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) >= 4 * PyLong_SHIFT) {
-                            return (long) (((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0]));
-                        }
-                    }
-                    break;
-            }
-#endif
-#if CYTHON_COMPILING_IN_CPYTHON
-            if (unlikely(Py_SIZE(x) < 0)) {
-                goto raise_neg_overflow;
-            }
-#else
-            {
-                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
-                if (unlikely(result < 0))
-                    return (long) -1;
-                if (unlikely(result == 1))
-                    goto raise_neg_overflow;
-            }
-#endif
-            if (sizeof(long) <= sizeof(unsigned long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned long, PyLong_AsUnsignedLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
-#endif
-            }
-        } else {
-#if CYTHON_USE_PYLONG_INTERNALS
-            const digit* digits = ((PyLongObject*)x)->ob_digit;
-            switch (Py_SIZE(x)) {
-                case  0: return (long) 0;
-                case -1: __PYX_VERIFY_RETURN_INT(long, sdigit, (sdigit) (-(sdigit)digits[0]))
-                case  1: __PYX_VERIFY_RETURN_INT(long,  digit, +digits[0])
-                case -2:
-                    if (8 * sizeof(long) - 1 > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 2:
-                    if (8 * sizeof(long) > 1 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                            return (long) ((((((long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -3:
-                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 3:
-                    if (8 * sizeof(long) > 2 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                            return (long) ((((((((long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case -4:
-                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) (((long)-1)*(((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-                case 4:
-                    if (8 * sizeof(long) > 3 * PyLong_SHIFT) {
-                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
-                            __PYX_VERIFY_RETURN_INT(long, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
-                        } else if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
-                            return (long) ((((((((((long)digits[3]) << PyLong_SHIFT) | (long)digits[2]) << PyLong_SHIFT) | (long)digits[1]) << PyLong_SHIFT) | (long)digits[0])));
-                        }
-                    }
-                    break;
-            }
-#endif
-            if (sizeof(long) <= sizeof(long)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, long, PyLong_AsLong(x))
-#ifdef HAVE_LONG_LONG
-            } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-                __PYX_VERIFY_RETURN_INT_EXC(long, PY_LONG_LONG, PyLong_AsLongLong(x))
-#endif
-            }
-        }
-        {
-#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
-            PyErr_SetString(PyExc_RuntimeError,
-                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
-#else
-            long val;
-            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
- #if PY_MAJOR_VERSION < 3
-            if (likely(v) && !PyLong_Check(v)) {
-                PyObject *tmp = v;
-                v = PyNumber_Long(tmp);
-                Py_DECREF(tmp);
-            }
- #endif
-            if (likely(v)) {
-                int one = 1; int is_little = (int)*(unsigned char *)&one;
-                unsigned char *bytes = (unsigned char *)&val;
-                int ret = _PyLong_AsByteArray((PyLongObject *)v,
-                                              bytes, sizeof(val),
-                                              is_little, !is_unsigned);
-                Py_DECREF(v);
-                if (likely(!ret))
-                    return val;
-            }
-#endif
-            return (long) -1;
-        }
-    } else {
-        long val;
-        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
-        if (!tmp) return (long) -1;
-        val = __Pyx_PyInt_As_long(tmp);
-        Py_DECREF(tmp);
-        return val;
-    }
-raise_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "value too large to convert to long");
-    return (long) -1;
-raise_neg_overflow:
-    PyErr_SetString(PyExc_OverflowError,
-        "can't convert negative value to long");
-    return (long) -1;
-}
-
 /* FastTypeChecks */
       #if CYTHON_COMPILING_IN_CPYTHON
 static int __Pyx_InBases(PyTypeObject *a, PyTypeObject *b) {
@@ -4960,138 +5205,6 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
     }
     return 0;
 }
-
-/* ModuleImport */
-      #ifndef __PYX_HAVE_RT_ImportModule
-#define __PYX_HAVE_RT_ImportModule
-static PyObject *__Pyx_ImportModule(const char *name) {
-    PyObject *py_name = 0;
-    PyObject *py_module = 0;
-    py_name = __Pyx_PyIdentifier_FromString(name);
-    if (!py_name)
-        goto bad;
-    py_module = PyImport_Import(py_name);
-    Py_DECREF(py_name);
-    return py_module;
-bad:
-    Py_XDECREF(py_name);
-    return 0;
-}
-#endif
-
-/* TypeImport */
-      #ifndef __PYX_HAVE_RT_ImportType
-#define __PYX_HAVE_RT_ImportType
-static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name,
-    size_t size, int strict)
-{
-    PyObject *py_module = 0;
-    PyObject *result = 0;
-    PyObject *py_name = 0;
-    char warning[200];
-    Py_ssize_t basicsize;
-#ifdef Py_LIMITED_API
-    PyObject *py_basicsize;
-#endif
-    py_module = __Pyx_ImportModule(module_name);
-    if (!py_module)
-        goto bad;
-    py_name = __Pyx_PyIdentifier_FromString(class_name);
-    if (!py_name)
-        goto bad;
-    result = PyObject_GetAttr(py_module, py_name);
-    Py_DECREF(py_name);
-    py_name = 0;
-    Py_DECREF(py_module);
-    py_module = 0;
-    if (!result)
-        goto bad;
-    if (!PyType_Check(result)) {
-        PyErr_Format(PyExc_TypeError,
-            "%.200s.%.200s is not a type object",
-            module_name, class_name);
-        goto bad;
-    }
-#ifndef Py_LIMITED_API
-    basicsize = ((PyTypeObject *)result)->tp_basicsize;
-#else
-    py_basicsize = PyObject_GetAttrString(result, "__basicsize__");
-    if (!py_basicsize)
-        goto bad;
-    basicsize = PyLong_AsSsize_t(py_basicsize);
-    Py_DECREF(py_basicsize);
-    py_basicsize = 0;
-    if (basicsize == (Py_ssize_t)-1 && PyErr_Occurred())
-        goto bad;
-#endif
-    if (!strict && (size_t)basicsize > size) {
-        PyOS_snprintf(warning, sizeof(warning),
-            "%s.%s size changed, may indicate binary incompatibility. Expected %zd, got %zd",
-            module_name, class_name, basicsize, size);
-        if (PyErr_WarnEx(NULL, warning, 0) < 0) goto bad;
-    }
-    else if ((size_t)basicsize != size) {
-        PyErr_Format(PyExc_ValueError,
-            "%.200s.%.200s has the wrong size, try recompiling. Expected %zd, got %zd",
-            module_name, class_name, basicsize, size);
-        goto bad;
-    }
-    return (PyTypeObject *)result;
-bad:
-    Py_XDECREF(py_module);
-    Py_XDECREF(result);
-    return NULL;
-}
-#endif
-
-/* VoidPtrImport */
-      #ifndef __PYX_HAVE_RT_ImportVoidPtr
-#define __PYX_HAVE_RT_ImportVoidPtr
-static int __Pyx_ImportVoidPtr(PyObject *module, const char *name, void **p, const char *sig) {
-    PyObject *d = 0;
-    PyObject *cobj = 0;
-    d = PyObject_GetAttrString(module, (char *)"__pyx_capi__");
-    if (!d)
-        goto bad;
-    cobj = PyDict_GetItemString(d, name);
-    if (!cobj) {
-        PyErr_Format(PyExc_ImportError,
-            "%.200s does not export expected C variable %.200s",
-                PyModule_GetName(module), name);
-        goto bad;
-    }
-#if PY_VERSION_HEX >= 0x02070000
-    if (!PyCapsule_IsValid(cobj, sig)) {
-        PyErr_Format(PyExc_TypeError,
-            "C variable %.200s.%.200s has wrong signature (expected %.500s, got %.500s)",
-             PyModule_GetName(module), name, sig, PyCapsule_GetName(cobj));
-        goto bad;
-    }
-    *p = PyCapsule_GetPointer(cobj, sig);
-#else
-    {const char *desc, *s1, *s2;
-    desc = (const char *)PyCObject_GetDesc(cobj);
-    if (!desc)
-        goto bad;
-    s1 = desc; s2 = sig;
-    while (*s1 != '\0' && *s1 == *s2) { s1++; s2++; }
-    if (*s1 != *s2) {
-        PyErr_Format(PyExc_TypeError,
-            "C variable %.200s.%.200s has wrong signature (expected %.500s, got %.500s)",
-             PyModule_GetName(module), name, sig, desc);
-        goto bad;
-    }
-    *p = PyCObject_AsVoidPtr(cobj);}
-#endif
-    if (!(*p))
-        goto bad;
-    Py_DECREF(d);
-    return 0;
-bad:
-    Py_XDECREF(d);
-    return -1;
-}
-#endif
 
 /* InitStrings */
       static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {

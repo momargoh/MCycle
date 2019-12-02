@@ -2,7 +2,7 @@ from .mcabstractbase cimport MCAB, MCAttr
 from .component cimport Component
 from .config cimport Config
 from .flowstate cimport FlowState
-from .. import DEFAULTS
+from .. import defaults
 from ..logger import log
 
 
@@ -25,10 +25,12 @@ config : Config, optional
     def __init__(self,
                  tuple _componentKeys,
                  tuple _cycleStateKeys,
-                 Config config=Config(),
+                 Config config=None,
                  str name="Cycle"):
         self._componentKeys = _componentKeys
         self._cycleStateKeys = _cycleStateKeys
+        if config is None:
+            config = defaults.CONFIG
         self.config = config
         self._inputs = _inputs
         self._properties = _properties
@@ -89,14 +91,14 @@ config : Config, optional
         for cmpnt in self._componentObjs():
             cmpnt.update(kwargs)
             
-    cpdef public void run(self):
+    cpdef public void run(self) except *:
         """Abstract method: Compute all state FlowStates from initial FlowState and set component characteristics.
 
 This function must be overridden by subclasses.
         """
         pass
 
-    cpdef public void size(self):
+    cpdef public void size(self) except *:
         """Abstract method: Sets all cycle states from design parameters and executes size() for each component.
 
 .. note: If dpEvap or dpCond is True in self.config, pressure drops will be applied, modifying the original design states.
@@ -144,7 +146,7 @@ componentKwargs : dict, optional
 name : str, optional
     Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RST_HEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RST_HEADINGS. Defaults to 0.
         """
         cdef int index
         cdef tuple i
@@ -155,7 +157,7 @@ rstHeading : int, optional
         output += """
 {}
 working fluid: {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
 
         cdef list hasSummaryList = []
         for k, v in self._inputs.items():
@@ -174,7 +176,7 @@ working fluid: {}
             output += """
 Properties
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1] * 10)
+""".format(defaults.RST_HEADINGS[rstHeading + 1] * 10)
             for k in propertyKeys:
                 try:
                     if k in self._propertyKeys():
@@ -241,9 +243,9 @@ Properties
                 output += """
 Cycle FlowStates
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1]*16)
+""".format(defaults.RST_HEADINGS[rstHeading + 1]*16)
                 table = ""
-                flowPropValsStr = [list(map(lambda x: DEFAULTS.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
+                flowPropValsStr = [list(map(lambda x: defaults.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
                 max_lens = [len(max(li, key=len)) for li in flowPropValsStr]
                 str_formats = ["{:<%s}" % max_lens[x] for x in range(len(max_lens))]
                 table_header0 = " {} |"*len(flowPropVals)
@@ -253,7 +255,7 @@ Cycle FlowStates
                 table_header = table_header.format("    ", *flowKeys)
                 table += table_header
                 for x in range(len(flowPropVals[0])):
-                    table_row = "|{}|" + " {} |".format(DEFAULTS.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
+                    table_row = "|{}|" + " {} |".format(defaults.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
 """
                     vals = [l[x] for l in flowPropVals]
                     table_row = table_row.format(flowPropKeys[x], *vals)

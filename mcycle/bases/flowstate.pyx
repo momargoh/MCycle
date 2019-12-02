@@ -1,14 +1,14 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from .. import DEFAULTS
-from ..DEFAULTS import TOLABS_X
+from .. import defaults
+from ..constants import *
 from ..logger import log
 from math import nan, isnan
 import CoolProp as CP
 import numpy as np
 
-cdef dict _inputs = {"fluid": MCAttr(str, "none"), "phaseCP": MCAttr(int, "none"),
-                "m": MCAttr(float, "mass/time"), "_inputPairCP": MCAttr(int, "none"),
-                        "_input1": MCAttr(float, "none"), "_input2": MCAttr(float, "none"), "name": MCAttr(str,"none")}
+cdef dict _inputs = {"fluid": MCAttr(str, "none"), 
+                "m": MCAttr(float, "mass/time"), "_inputPair": MCAttr(int, "none"),
+                        "_input1": MCAttr(float, "none"), "_input2": MCAttr(float, "none"), "_iphase": MCAttr(int, "none"), "eos": MCAttr(str,"none"), "name": MCAttr(str,"none")}
 cdef dict _properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
                 "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
                 "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
@@ -21,35 +21,34 @@ cdef class FlowState(MCAB):
 Parameters
 ----------
 fluid : str
-    Description of fluid passed to CoolProp.
+    Fluid name passed to CoolProp (see `CoolProp list of fluids <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_ and/or `REFPROP list of fluids <https://www.nist.gov/srd/refprop>`_ for available fluids).
 
     - "fluid_name" for pure fluid. Eg, "air", "water", "CO2" *or*
 
-    - "fluid0[mole_fraction0]&fluid1[mole_fraction1]&..." for mixtures. Eg, "CO2[0.5]&CO[0.5]".
+    - "fluid_name0[mole_fraction0]&fluid_name1[mole_fraction1]&..." for mixtures. Eg, "CO2[0.5]&CO[0.5]".
 
-    .. note:: CoolProp's mixture routines often raise errors; using mixtures should be avoided.
+m : float, optional
+    Mass flow rate [kg/s]. Defaults to nan.
 
-phaseCP : int, optional
-    Coolprop key for phase. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_. Eg, CoolProp.iphase_gas. Defaults to -1.
-    .. note:: In MCycle, both -1 and 8 can be used for iphase_not_imposed
-
-m : double, optional
-    Mass flow rate [Kg/s]. Defaults to nan.
-
-inputPairCP : int, optional
-    CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).
+inputPair : int, optional
+    CoolProp input pair key (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg. HmassP_INPUTS, PT_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).
 
 input1, input2 : double, optional
-    Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to nan.
+    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.
+
+iphase : int, optional
+    Coolprop key for imposed phase (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg, ``PHASE_GAS``. Defaults to ``PHASE_NOT_IMPOSED``.
+
+eos : str, optional
+    CoolProp EOS backend, must be 'HEOS' or 'REFPROP'. If empty, defaults to ``mcycle.defaults.COOLPROP_EOS``. Defaults to ''.
 
 name : str, optional
     Descriptive name of instance. Defaults to "FlowState instance".
 
 Examples
 ----------
-import mcycle
-import CoolProp
->>> air = FlowState("air",-1,1.0,CoolProp.PT_INPUTS,101325,293.15)
+import mcycle as mc
+>>> air = mc.FlowState("Air",1.0,mc.PT_INPUTS,101325,293.15)
 >>> air.rho()
 1.2045751824931508
 >>> air.cp()
@@ -58,36 +57,40 @@ import CoolProp
         
     def __init__(self,
                  str fluid,
-                 short phaseCP=-1,
                  double m=nan,
-                 unsigned short inputPairCP=0,
+                 unsigned char inputPair=0,
                  double input1=nan,
                  double input2=nan,
+                 unsigned short iphase=PHASE_NOT_IMPOSED,
+                 str eos='',
                  str name="FlowState instance"):
         self.fluid = fluid
-        self.phaseCP = phaseCP
         self.m = m
-        self._inputPairCP = inputPairCP
+        self._inputPair = inputPair
         self._input1 = input1
         self._input2 = input2
+        self._iphase = iphase
         self.name = name
         self._inputs = _inputs
         self._properties = _properties
+        if eos == '':
+            eos = defaults.COOLPROP_EOS
+        self.eos = eos
         self._state = None
         #self._canBuildPhaseEnvelope = True
 
         # determine if pure or mixture
-        cdef list fluidSplit
-        cdef str fluidString
-        cdef list moleFractions
-        cdef str f, msg
-        cdef list fSplit
+        cdef list fluidSplit, fSplit, moleFractions
+        cdef str fluidString, f, msg
+        #cdef list moleFractions
+        #cdef str f, msg
+        #cdef list fSplit
         if "&" not in fluid: # is a pure or pseudo-pure fluid
-            self._state = CP.AbstractState(DEFAULTS.COOLPROP_EOS, fluid)
-            #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
+            self._state = CP.AbstractState(eos, fluid)
+            #self._state.change_EOS(0, defaults.COOLPROP_EOS)
         else: # is a mixture
-            if not 0 <= phaseCP < 8:
-                msg = "phaseCP (given: {}) must be specified for mixtures.".format(phaseCP)
+            if not 0 <= iphase < 8:
+                msg = "iphase (given: {}) must be specified for mixtures.".format(iphase)
                 log("error", msg)
                 raise ValueError(msg)
             fluidSplit = fluid.split("&")
@@ -99,18 +102,19 @@ import CoolProp
                 fluidString += "&" + fSplit[0]
                 moleFractions.append(float(fSplit[1]))
             fluidString = fluidString[1:]  # remove inital "&"
-            self._state = CP.AbstractState(DEFAULTS.COOLPROP_EOS, fluidString)
-            #self._state.change_EOS(0, DEFAULTS.COOLPROP_EOS)
+            self._state = CP.AbstractState(eos, fluidString)
+            #self._state.change_EOS(0, defaults.COOLPROP_EOS)
             self._state.set_mole_fractions(moleFractions)
-            self._state.specify_phase(phaseCP)
-            if DEFAULTS.TRY_BUILD_PHASE_ENVELOPE:
+            self._state.specify_phase(iphase)
+            if defaults.TRY_BUILD_PHASE_ENVELOPE:
                 try:
                     self._state.build_phase_envelope("")
                 except:
                     log("warning", "CoolProp could not build phase envelope for {}".format(fluid))
                     self._canBuildPhaseEnvelope = False
-        if inputPairCP != 0 and not isnan(input1) and not isnan(input2):
-            self._state.update(inputPairCP, input1, input2)
+        if inputPair != 0 and not isnan(input1) and not isnan(input2):
+            self._state.update(inputPair, input1, input2)
+            #self._iphase = PHASE_NOT_IMPOSED #removed any initially imposed phase
 
     cdef public bint isMixture(self):
         "bool: True if fluid is a mixture, False if fluid is pure or pseudo-pure."
@@ -131,41 +135,43 @@ import CoolProp
         else:
             return False
 
-    cpdef public FlowState copyState(self, int inputPairCP, double input1, double input2):
+    cpdef FlowState copyUpdateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=PHASE_NOT_IMPOSED):
         """Creates a new copy of a FlowState object. As a shortcut, args can be passed to update the object copy (see update()).
 
 Parameters
 ----------
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to None.
 
 input1, input2 : double, optional
-    Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to None.
+    Repective values of inputs corresponding to inputPair [in SI units]. Both default to None.
         """
-        if inputPairCP == 0 or isnan(input1) or isnan(input2):
+        if inputPair == 0 or isnan(input1) or isnan(input2):
             return FlowState(*self._inputValues())
         else:
-            return FlowState(self.fluid, self.phaseCP, self.m,
-                             inputPairCP, input1, input2, self.name)
+            return FlowState(self.fluid, self.m,
+                             inputPair, input1, input2, iphase, self.eos, self.name)
 
-    cpdef public void updateState(self, int inputPairCP, double input1, double input2):
+    cpdef void updateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=PHASE_NOT_IMPOSED) except *:
         """Calls CoolProp's AbstractState.update function.
 
 Parameters
 ----------
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS.
 
 input1, input2 : double
-    Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to None.
+    Repective values of inputs corresponding to inputPair [in SI units]. Both default to None.
         """
         if self.isMixture():
-            if DEFAULTS.TRY_BUILD_PHASE_ENVELOPE and self._canBuildPhaseEnvelope:
+            if defaults.TRY_BUILD_PHASE_ENVELOPE and self._canBuildPhaseEnvelope:
                 self._state.build_phase_envelope("")
-        self._state.update(inputPairCP, input1, input2)
-        self._inputPairCP = inputPairCP
+        self._state.specify_phase(iphase)
+        self._state.update(inputPair, input1, input2)
+        self._inputPair = inputPair
         self._input1 = input1
         self._input2 = input2
+        self._iphase = iphase
 
     def summary(self, bint printSummary=True, str name='', int rstHeading=0):
         """Returns (and prints) a summary of FlowState properties.
@@ -183,7 +189,7 @@ name : str, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
         for k, v in self._properties.items():
             output += self.formatAttrForSummary({k: v}, [])
         if printSummary:
@@ -231,9 +237,11 @@ name : str, optional
 
 .. note:: Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp's routines."""
         cdef FlowState liq, vap
-        if self._state.Q() < 1.+TOLABS_X and self._state.Q() > -TOLABS_X:
-            liq = self.copyState(CP.PQ_INPUTS, self.p(), 0)
-            vap = self.copyState(CP.PQ_INPUTS, self.p(), 1)
+        #cdef double x = self._state.Q()
+        #if x < 1.+defaults.TOLABS_X and x > -defaults.TOLABS_X:
+        if self.phase() == PHASE_TWOPHASE:
+            liq = self.copyUpdateState(PQ_INPUTS, self.p(), 0)
+            vap = self.copyUpdateState(PQ_INPUTS, self.p(), 1)
             return liq._state.cpmass() + self._state.Q() * (vap._state.cpmass() - liq._state.cpmass())
         else:
             return self._state.cpmass()
@@ -243,9 +251,10 @@ name : str, optional
 
 .. note:: Linear interpolation in 2-phase region is used due to non-continuities in  CoolProp's routines."""
         cdef FlowState liq, vap
-        if self._state.Q() < 1.+TOLABS_X and self._state.Q() > -TOLABS_X:
-            liq = self.copyState(CP.PQ_INPUTS, self.p(), 0)
-            vap = self.copyState(CP.PQ_INPUTS, self.p(), 1)
+        if self.phase() == PHASE_TWOPHASE:
+        #if self._state.Q() < 1.+defaults.TOLABS_X and self._state.Q() > -defaults.TOLABS_X:
+            liq = self.copyUpdateState(CP.PQ_INPUTS, self.p(), 0)
+            vap = self.copyUpdateState(CP.PQ_INPUTS, self.p(), 1)
             return liq._state.Prandtl() + self._state.Q() * (vap._state.Prandtl() - liq._state.Prandtl())
         else:
             return self._state.Prandtl()
@@ -261,7 +270,11 @@ name : str, optional
     
     cpdef public double pMin(self):
         r"""double: Minimum pressure [Pa]."""
-        return CP.CoolProp.PropsSI("pmin", self.fluid)
+        return CP.CoolProp.PropsSI("pmin", "{}::{}".format(self.eos, self.fluid))
+    
+    cpdef public double pMax(self):
+        r"""double: Maximum pressure [Pa]."""
+        return self._state.pmax()
     
     cpdef public double TCrit(self):
         r"""double: Critical temperture [K]."""
@@ -270,26 +283,80 @@ name : str, optional
     
     cpdef public double TMin(self):
         r"""double: Minimum temperture [K]."""
-        return CP.CoolProp.PropsSI("Tmin", self.fluid)
+        return self._state.Tmin() #CP.CoolProp.PropsSI("Tmin", self.fluid)
     
-    cpdef public str phase(self):
+    cpdef public double TMax(self):
+        r"""double: Maximum temperture [K]."""
+        return self._state.Tmax()
+    
+    cpdef public unsigned char phase(self):
         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region."""
         cdef FlowState liq
-        if -TOLABS_X < self.x() < TOLABS_X:
-            return "satLiq"
-        elif 1 - TOLABS_X < self.x() < 1 + TOLABS_X:
-            return "satVap"
-        elif 0 < self.x() < 1:
-            return "tp"
-        elif self.x() == -1:
-            liq = self.copyState(CP.PQ_INPUTS, self.p(), 0)
-            if self.h() < liq.h():
-                return "liq"
+        cdef unsigned short phase
+        cdef double tolabs_x = defaults.TOLABS_X
+        cdef double x = self._state.Q()
+        cdef double pcrit, Tcrit, p, T
+        if self.eos == 'HEOS':
+            phase = self._state.phase()
+            if phase == PHASE_TWOPHASE:
+                if -tolabs_x < x < tolabs_x:
+                    phase = PHASE_SATURATED_LIQUID
+                if 1 - tolabs_x < x < 1 + tolabs_x:
+                    phase = PHASE_SATURATED_VAPOUR
+            return phase
+        else: #eos=='REFPROP'
+            pcrit = self._state.p_critical()
+            Tcrit = self._state.T_critical()
+            p = self._state.p()
+            T = self._state.T()
+            if -tolabs_x < x < tolabs_x:
+                phase = PHASE_SATURATED_LIQUID
+            elif 1 - tolabs_x < x < 1 + tolabs_x:
+                phase = PHASE_SATURATED_VAPOUR
+            elif 0 < x < 1:
+                phase = PHASE_TWOPHASE
+            elif x == 999:
+                pcrit = self._state.p_critical()
+                Tcrit = self._state.T_critical()
+                p = self._state.p()
+                T = self._state.T()
+                if p == pcrit and T == Tcrit:
+                    phase = PHASE_CRITICAL_POINT
+                elif p > pcrit and T > Tcrit:
+                    phase = PHASE_SUPERCRITICAL
+                else:
+                    phase = PHASE_UNKNOWN
+            elif x == 998:
+                pcrit = self._state.p_critical()
+                Tcrit = self._state.T_critical()
+                p = self._state.p()
+                T = self._state.T()
+                if p < pcrit and T > Tcrit:
+                    phase = PHASE_SUPERCRITICAL_GAS
+                elif p < pcrit and T < Tcrit:
+                    phase = PHASE_VAPOUR
+                else:
+                    phase = PHASE_UNKNOWN
+            elif x == -998:
+                pcrit = self._state.p_critical()
+                Tcrit = self._state.T_critical()
+                p = self._state.p()
+                T = self._state.T()
+                if p > pcrit and T < Tcrit:
+                    phase = PHASE_SUPERCRITICAL_LIQUID
+                elif p < pcrit and T < Tcrit:
+                    phase = PHASE_LIQUID
+                else:
+                    phase = PHASE_UNKNOWN
+            elif x < 0:
+                phase = PHASE_LIQUID
+            elif x > 1:
+                phase = PHASE_VAPOUR
             else:
-                return "vap"
-        else:
-            raise ValueError(
-                "Non-valid quality encountered, x={}".format(self.x()))
+                msg = "FlowState.phase() could not determine phase."
+                log('warning', msg)
+                phase = PHASE_UNKNOWN
+            return phase
 
         
 #-----------------------------------------
@@ -298,8 +365,8 @@ name : str, optional
 
         
 cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
-                "_inputPairCP": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
-                        "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
+                "_inputPair": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
+                        "_input2": MCAttr(float, "none"), "eos": MCAttr(str, "none"), "name": MCAttr(str, "none")}
 cdef dict _propertiesPoly = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
                 "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
                 "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
@@ -323,11 +390,11 @@ refData : RefData
 m : double, optional
     Mass flow rate [Kg/s]. Defaults to nan.
 
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to INPUT_PAIR_INVALID == 0.
 
-    .. note:: Only certain inputPairCP values are valid.
-        As FlowStatePoly only supports constant pressure flows, one input variable must be a pressure. Thus, only the following inputPairCP values are valid:
+    .. note:: Only certain inputPair values are valid.
+        As FlowStatePoly only supports constant pressure flows, one input variable must be a pressure. Thus, only the following inputPair values are valid:
 
         - CoolProp.PT_INPUTS == 9
         - CoolProp.DmassP_INPUTS == 18
@@ -335,7 +402,7 @@ inputPairCP : int, optional
         - CoolProp.PSmass_INPUTS == 22
 
 input1,input2 : double, optional
-    Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to nan.
+    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.
 
 
 Examples
@@ -351,17 +418,22 @@ Examples
     def __init__(self,
                   RefData refData,
                   double m=nan,
-                  unsigned short inputPairCP=0,
+                  unsigned char inputPair=0,
                   double input1=nan,
                   double input2=nan,
+                  unsigned short iphase=PHASE_NOT_IMPOSED,
+                 str eos='',
                   str name="FlowStatePoly instance"):
         self.refData = refData
         self.fluid = refData.fluid
-        self.phaseCP = refData.phaseCP
         self.m = m
-        self._inputPairCP = inputPairCP
+        self._iphase = refData._iphase
+        self._inputPair = inputPair
         self._input1 = input1
         self._input2 = input2
+        if eos == '':
+            eos = defaults.COOLPROP_EOS
+        self.eos = eos
         self.name = name
         self._c = {}
         self._inputProperty = ''
@@ -371,47 +443,47 @@ Examples
         self._properties = _propertiesPoly
 
         
-    cpdef public FlowState copyState(self, int inputPairCP, double input1, double input2):
+    cpdef FlowState copyUpdateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=PHASE_NOT_IMPOSED):
         """Creates a new copy of a FlowState object. As a shortcut, args can be passed to update the object copy (see update()).
 
 Parameters
 ----------
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to None.
 
 input1, input2 : double, optional
-    Repective values of inputs corresponding to inputPairCP [in SI units]. Both default to None.
+    Repective values of inputs corresponding to inputPair [in SI units]. Both default to None.
         """
-        if inputPairCP == 0 or isnan(input1) or isnan(input2):
+        if inputPair == 0 or isnan(input1) or isnan(input2):
             return FlowStatePoly(*self._inputValues())
         else:
-            return FlowStatePoly(self.refData, self.m, inputPairCP, input1, input2)
+            return FlowStatePoly(self.refData, self.m, inputPair, input1, input2, self.eos)
       
-    cpdef public void updateState(self, int inputPairCP, double input1, double input2):
+    cpdef void updateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=PHASE_NOT_IMPOSED) except *:
         """void: Calls CoolProp's AbstractState.update function.
 
 Parameters
 ----------
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS.
 
 input1,input2 : double
-    Repective values of inputs corresponding to inputPairCP [in SI units]. One input must be equal to the pressure of refData. Both default to None.
+    Repective values of inputs corresponding to inputPair [in SI units]. One input must be equal to the pressure of refData. Both default to None.
 """
-        self._inputPairCP = inputPairCP
+        self._inputPair = inputPair
         self._input1 = input1
         self._input2 = input2
         self._validateInputs()
 
     cdef void _findAndSetInputProperty(self):
         """str : Return string of input property that is not pressure."""
-        self._inputProperty = list(_validInputPairs.keys())[list(_validInputPairs.values()).index(self._inputPairCP)]
+        self._inputProperty = list(_validInputPairs.keys())[list(_validInputPairs.values()).index(self._inputPair)]
     
     cdef bint _validateInputs(self) except? False:
         """bint: Validate inputs and call _findAndSetInputProperty."""
-        if self._inputPairCP != -1:
-            if self._inputPairCP in _validInputPairs.values():
-                if self._inputPairCP is CP.PT_INPUTS or self._inputPairCP is CP.PSmass_INPUTS:
+        if self._inputPair != -1:
+            if self._inputPair in _validInputPairs.values():
+                if self._inputPair is CP.PT_INPUTS or self._inputPair is CP.PSmass_INPUTS:
                     if self._input1 == self.refData.p:
                         self._inputValue = self._input2
                         self._findAndSetInputProperty()
@@ -434,7 +506,7 @@ input1,input2 : double
             else:
                 raise ValueError(
                     """{0} is not a valid input pair for FlowStatePoly
-                Select from PT_INPUTS=9, DmassP_INPUTS=18, HmassP_INPUTS=20, PSmass_INPUTS=22""".format(self._inputPairCP))
+                Select from PT_INPUTS=9, DmassP_INPUTS=18, HmassP_INPUTS=20, PSmass_INPUTS=22""".format(self._inputPair))
         else:
             return False
 
@@ -532,18 +604,18 @@ input1,input2 : double
         log("warning", "FlowStatePoly, minimum temperature is not defined for mixtures")
         return nan
 
-    cpdef public str phase(self):
+    cpdef public unsigned char phase(self):
         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
         cdef double liq_h = 0
         try:
             liq_h = CP.CoolProp.PropsSI("HMASS", "P", self.refData.p, "Q", 0,
-                                        self.refData.fluid)
+                                        "{}::{}".format(self.eos, self.refData.fluid))
             if self.h() < liq_h:
-                return "liq"
+                return PHASE_LIQUID
             else:
-                return "vap"
+                return PHASE_VAPOUR
         except ValueError:
-            return "sp"
+            return PHASE_UNKNOWN
 
 
 #-----------------------------------------
@@ -585,7 +657,7 @@ data : dict
 
     A complete map must be provided or if only temperature values are provided, MCycle will attempt to populate the data using CoolProp.
 
-phaseCP : int, optional
+iphase : int, optional
     Coolprop key for phase. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_. Eg, CoolProp.iphase_gas. Defaults to -1.
     """
 
@@ -594,9 +666,13 @@ phaseCP : int, optional
                   unsigned short deg,
                   double p,
                   dict data,
-                  short phaseCP=-1):
+                  short iphase=PHASE_NOT_IMPOSED,
+                  str eos=''):
         self.fluid = fluid
-        self.phaseCP = phaseCP
+        self._iphase = iphase
+        if eos == '':
+            eos = defaults.COOLPROP_EOS
+        self.eos = eos
         self.deg = deg
         self.p = p
         if data['T'] == []:
@@ -630,7 +706,7 @@ phaseCP : int, optional
         cdef double T
         cdef FlowState f
         for T in self.data['T']:
-            f = FlowState(self.fluid, self.phaseCP, nan,
-                          CP.PT_INPUTS, self.p, T)
+            f = FlowState(self.fluid, nan,
+                          PT_INPUTS, self.p, T, self._iphase, self.eos)
             for prop in other_props:
                 self.data[prop].append(getattr(f, prop)())

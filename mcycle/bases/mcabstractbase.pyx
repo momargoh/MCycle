@@ -1,5 +1,5 @@
-from .. import DEFAULTS
-from ..DEFAULTS import getUnits
+from .. import defaults
+from ..defaults import getUnits
 
 cdef class MCAttr:
     """Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.
@@ -20,17 +20,18 @@ cdef class MCAB:
 
 Attributes
 -----------
+name : str, optional
+    Descriptive name for the class instance. Defaults to "".
 _inputs : dict
     Dictionary of input parameter data in the form {key: MCAttr(...)}.
 _properties : dict
     Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().
-name : str, optional
-    Descriptive name for the class instance. Defaults to "".
     """
-    
-    def __cinit__(self):
-        self._inputs = {}
-        self._properties = {}
+
+    def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):
+        self.name = name
+        self._inputs = _inputs
+        self._properties = _properties
 
     cpdef public list _inputKeys(self):
         return list(self._inputs.keys())    
@@ -56,26 +57,21 @@ name : str, optional
                 ilist.append(ilistVal)
         return ilist
 
-    cpdef public MCAB _copy(self, dict kwargs):
-        """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
+    cpdef public MCAB copy(self):
+        """Return a new copy of an object."""
+        cdef MCAB copy = self.__class__(*self._inputValues())
+        return copy
+
+    cpdef public MCAB copyUpdate(self, dict kwargs):
+        """Create a new copy of an object then update it using kwargs (as dict).
 
 Parameters
 -----------
 kwargs : dict
     Dictionary of attributes and their updated value."""
         cdef MCAB copy = self.__class__(*self._inputValues())
-        if kwargs != {}:
-            copy.update(kwargs)
+        copy.update(kwargs)
         return copy
-    
-    def copy(self, dict kwargs={}):
-        """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
-
-Parameters
------------
-kwargs : dict, optional
-    Dictionary of attributes and their updated value."""
-        return self._copy(kwargs)
     
     cpdef public void update(self, dict kwargs):
         """Update (multiple) class variables from a dictionary of keyword arguments.
@@ -132,7 +128,7 @@ hasSummaryList : list
                     units = " [" + units + "]"
                 if type(attrVal) is float:
                     fcnOutput = """{} = {}{}
-""".format(key, DEFAULTS.PRINT_FORMAT_FLOAT, units).format(attrVal)
+""".format(key, defaults.PRINT_FORMAT_FLOAT, units).format(attrVal)
 
                 else:
                     fcnOutput = """{} = {}{}

@@ -1,8 +1,9 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from .. import DEFAULTS
+from .config cimport Config
+from .. import defaults
 import numpy as np
 
-cdef dict _inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none"), "deg": MCAttr(int, "none"), "T": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none")}
+cdef dict _inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none"), "deg": MCAttr(int, "none"), "T": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties = {"k()": MCAttr(float, "conductivity") }
 cdef list propertiesList = ['k']
 
@@ -31,7 +32,8 @@ kwargs : optional
                  int deg=-1,
                  double T=298.15,
                  str name="SolidMaterial instance",
-                 str notes="No material notes."):
+                 str notes="No material notes.",
+                 Config config=None):
         self.rho = rho
         self.data = {'T': data['T'], 'k': []} 
         self.deg = deg
@@ -50,7 +52,9 @@ kwargs : optional
         self.T = T
         self.name = name
         self.notes = notes
-        #self.config = config
+        if config is None:
+            config = defaults.CONFIG
+        self.config = config
         self._inputs = _inputs
         self._properties = _properties
 
@@ -101,7 +105,7 @@ propertyKeys : list, optional
 
     Defaults to "all".
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
         """
         cdef str output, prop
         cdef tuple i
@@ -111,7 +115,7 @@ rstHeading : int, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
 
         hasSummaryList = []
         for k, v in self._inputs.items():

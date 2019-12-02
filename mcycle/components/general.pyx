@@ -3,10 +3,10 @@ from ..bases.config cimport Config
 from ..bases.flowstate cimport FlowState
 from ..bases.mcabstractbase cimport MCAttr
 from ..logger import log
+from ..constants import *
 from math import nan, isnan
-import CoolProp as CP
 
-cdef dict _inputsFixedOut = {"inputPairCP": MCAttr(int, "none"), "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputsFixedOut = {"inputPair": MCAttr(int, "none"), "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _propertiesFixedOut = {"m": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "dp()": MCAttr( "pressure")}
 
 cdef class FixedOut(Component11):
@@ -14,7 +14,7 @@ cdef class FixedOut(Component11):
 
 Parameters
 -----------
-inputPairCP : int, optional
+inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).
 
 input1, input2 : double, optional
@@ -35,32 +35,32 @@ flowOut : FlowState, optional
     """
     
     def __init__(self,
-                 inputPairCP,
+                 inputPair,
                  double input1,
                  double input2,
                  FlowState flowIn=None,
                  str name="FixedOut instance",
                  str  notes="No notes/model info.",
-                 Config config=Config()):
+                 Config config=None):
         super().__init__(flowIn, None, name=name, notes=notes, config=config)
-        self.inputPairCP = inputPairCP
+        self.inputPair = inputPair
         self.input1 = input1
         self.input2 = input2
         self._inputs = _inputsFixedOut
         self._properties = _propertiesFixedOut
         self.run()
 
-    cpdef public void run(self):
+    cpdef public void run(self) except *:
         """Compute outgoing FlowState from component attributes."""
-        if self.inputPairCP == CP.INPUT_PAIR_INVALID or isnan(self.input1) or isnan(self.input2):
-            msg = "FixedOut.run(): inputPairCP, input1 and input2 attributes must all be defined (given: inputPairCP={}, input1={}, input2={})".format(self.inputPairCP, self.input1, self.input2)
+        if self.inputPair == INPUT_PAIR_INVALID or isnan(self.input1) or isnan(self.input2):
+            msg = "FixedOut.run(): inputPair, input1 and input2 attributes must all be defined (given: inputPair={}, input1={}, input2={})".format(self.inputPair, self.input1, self.input2)
             log("error", msg)
             raise ValueError(msg)
         else:
             self.flowsOut[0] = self.flowsIn[0].copyState(self.inputPairCP, self.input1, self.input2)
 
-    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
-        log("info", "FixedOut component cannot be sized, hence _size() method is skipped")
+    cpdef public void size(self) except *:
+        log("info", "FixedOut component cannot be sized, hence size() method is skipped")
         pass
     
     cpdef public double Q(self):

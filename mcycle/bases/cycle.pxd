@@ -9,8 +9,8 @@ cdef class Cycle(MCAB):
 
     cdef public list _cycleStateObjs(self)
     cdef public list _componentObjs(self)
-    cpdef public void run(self)
-    cpdef public void size(self)
+    cpdef public void run(self) except *
+    cpdef public void size(self) except *
     cpdef public void update(self, dict kwargs)
     cpdef public void clearWf_flows(self)
     cpdef public void clearAll_flows(self)

@@ -8,13 +8,13 @@ from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
+from ...constants import *
 from ...logger import log
 from warnings import warn
 from math import nan, isnan, pi
 import scipy.optimize as opt
-import CoolProp as CP
 
-cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomWf": MCAttr(Geom, "none"), "geomSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomWf": MCAttr(Geom, "none"), "geomSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"), "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), 'runUnitsBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "A": MCAttr( "area"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
 cdef str msg
@@ -50,7 +50,7 @@ ARatioSf : float, optional
     Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
 ARatioPlate : float, optional
     Multiplier for the heat transfer surface area of the plate [-]. Defaults to 1.
-effThermal : float, optional
+efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
     Incoming FlowState of the working fluid. Defaults to None.
@@ -84,7 +84,7 @@ kwargs : optional
 
     def __init__(self,
                  HxFlowConfig flowConfig=HxFlowConfig(),
-                 int NPlate=3,
+                 unsigned int NPlate=3,
                  double RfWf=0,
                  double RfSf=0,
                  SolidMaterial plate=None,
@@ -96,7 +96,7 @@ kwargs : optional
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioPlate=1,
-                 double effThermal=1.0,
+                 double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
                  FlowState flowOutWf=None,
@@ -106,15 +106,16 @@ kwargs : optional
                  list sizeBounds=[3, 100],
                  list sizeUnitsBounds=[1e-5, 10.],
                  runBounds=[nan, nan],
+                 runUnitsBounds=[nan, nan],
                  str name="HxPlate instance",
                  str notes="No notes/model info.",
-                 Config config=Config(),
+                 Config config=None,
                  _unitClass=HxUnitPlate):
-        super().__init__(flowConfig, -1, -1, NPlate, nan, nan, nan, nan,
+        super().__init__(flowConfig, 0, 0, NPlate, nan, nan, nan, nan,
                          RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
-                         ARatioPlate, effThermal, flowInWf, flowInSf,
+                         ARatioPlate, efficiencyThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
-                         sizeBounds, sizeUnitsBounds, runBounds, name, notes, config, _unitClass)
+                         sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config, _unitClass)
         self.geomWf = geomWf
         self.geomSf = geomSf
         self._unitClass = HxUnitPlate
@@ -126,7 +127,7 @@ kwargs : optional
         return (self.flowConfig, self.NPlate, self.RfWf, self.RfSf, self.plate,
                 self.tPlate, self.geomWf, self.geomSf, self.L,
                 self.W, self.ARatioWf, self.ARatioSf, self.ARatioPlate,
-                self.effThermal)
+                self.efficiencyThermal)
 
     cdef public tuple _unitArgsTp(self):
         """Arguments passed to HxUnits in the two-phase region."""
@@ -136,7 +137,7 @@ kwargs : optional
         """Arguments passed to HxUnits in the vapour region."""
         return self._unitArgsLiq()
                 
-    cpdef public int _NWf(self):
+    cpdef public unsigned int _NWf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
 
     - if NPlate is odd: NWf = NSf = (NPlate - 1) / 2
@@ -150,7 +151,7 @@ kwargs : optional
             else:
                 return self.NPlate / 2 - 1
 
-    cpdef public int _NSf(self):
+    cpdef public unsigned int _NSf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
 
     - if NPlate is odd: NWf = NSf = (NPlate - 1) / 2
@@ -244,15 +245,16 @@ kwargs : optional
     cpdef public double depth(self):
         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.b+self._NSf()*self.geomSf.b
 
-    cpdef public int size_NPlate(self) except *:
+    cpdef public unsigned int size_NPlate(self) except 0:
         """int: size for NPlate that requires L to be closest to self.L"""
         cdef double diff
-        cdef int NPlate = self.sizeBounds[0]
+        cdef int NPlate = int(self.sizeBounds[0])
+        cdef unsigned int NPlateMax = int(self.sizeBounds[1])
         cdef double L = self.L
         cdef list diff_vals = [nan, nan]
-        while NPlate < self.sizeBounds[1]:
+        while NPlate < NPlateMax:
             self.update({'NWall':NPlate})
-            diff = self.size_L(self.sizeUnitsBounds) - L
+            diff = self.size_L() - L
             diff_vals = [diff_vals[1], diff]
             if diff > 0:
                 NPlate += 1
@@ -260,12 +262,12 @@ kwargs : optional
                 break
         if abs(diff_vals[0]) < abs(diff_vals[1]):
             self.update({'NWall':NPlate-1})
-            self.size_L(self.sizeUnitsBounds)
+            self.size_L()
             return NPlate - 1
         else:
             return NPlate
         
-    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
+    cpdef public void size(self) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
@@ -282,24 +284,17 @@ bounds : float or list of float, optional
 unitsBounds : float or list of float, optional
     Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """
-        if attr == "":
-            attr = self.sizeAttr
-        if bounds == []:
-            bounds = self.sizeBounds
-        if unitsBounds == []:
-            unitsBounds = self.sizeUnitsBounds
+        cdef str attr = self.sizeAttr
         try:
             if attr in ["N", "NPlate"]:
-                self.update({'sizeBounds': bounds, 'sizeUnitsBounds': unitsBounds})
                 self.unitise()
                 self.NWall = self.size_NPlate()
             else:
-                super(HxPlate, self)._size(attr, bounds, unitsBounds)
-        except AssertionError as err:
-            raise err
-        except:
-            raise StopIteration("{}.size({},{},{}) failed to converge.".format(
-                self.__class__.__name__, attr, bounds, unitsBounds))
+                super(HxPlate, self).size()
+        except Exception as exc:
+            msg = 'HxPlate.size(): failed to converge.'
+            log('error', msg, exc)
+            raise exc
 
     @property
     def NWf(self):

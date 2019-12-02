@@ -6,9 +6,9 @@ from .flowconfig cimport HxFlowConfig
 
 cdef class HxUnitBasic(Component22):
     cpdef public HxFlowConfig flowConfig
-    cpdef public int NWf
-    cpdef public int NSf
-    cpdef public int NWall
+    cpdef public unsigned int NWf
+    cpdef public unsigned int NSf
+    cpdef public unsigned int NWall
     cpdef public double hWf
     cpdef public double hSf
     cpdef public double RfWf
@@ -19,20 +19,20 @@ cdef class HxUnitBasic(Component22):
     cpdef public double ARatioWf
     cpdef public double ARatioSf
     cpdef public double ARatioWall
-    cpdef public double effThermal
+    cpdef public double efficiencyThermal
 
     cpdef public bint isEvap(self)
     cpdef public double _A(self)
     cpdef public double _hWf(self)
     cpdef public double _hSf(self)
-    cpdef public int _NWf(self)
-    cpdef public int _NSf(self)
+    cpdef public unsigned int _NWf(self)
+    cpdef public unsigned int _NSf(self)
     cpdef public double dpWf(self)
     cpdef public double dpSf(self)
-    cpdef public double _effFactorWf(self)
-    cpdef public double _effFactorSf(self)
-    cpdef public str phaseWf(self)
-    cpdef public str phaseSf(self)
+    cpdef public double _efficiencyFactorWf(self)
+    cpdef public double _efficiencyFactorSf(self)
+    cpdef public unsigned char phaseWf(self)
+    cpdef public unsigned char phaseSf(self)
     cpdef public double QWf(self)
     cpdef public double QSf(self)
     cpdef public double Q(self)

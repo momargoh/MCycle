@@ -13,4 +13,4 @@ cdef class HxPlate(HxBasicPlanar):
     cpdef public double dpAccSf(self)
     cpdef public double dpHeadWf(self)
     cpdef public double dpHeadSf(self)
-    cpdef public int size_NPlate(self) except *
+    cpdef public unsigned int size_NPlate(self) except 0

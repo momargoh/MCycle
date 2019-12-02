@@ -247,7 +247,7 @@ cpdef double kg2lb(double value):
 
 cpdef double Pa2bar(double value):
     "float: pressure: Pascal to bar."
-    return value * 10**-5
+    return value / 10**5
 
 cpdef double Pa2atm(double value):
     "float: pressure: Pascal to standard atmospheres."

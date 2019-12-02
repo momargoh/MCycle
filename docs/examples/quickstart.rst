@@ -21,16 +21,16 @@ Having correctly installed MCycle from either the source code or pip (:ref:`see 
     >>> import mcycle as mc
     >>> import CoolProp as CP
 
-Next, we change a couple of the MCycle defaults to our liking. The :meth:`updateDefaults() <mcycle.DEFAULTS.updateDefaults>` function should be executed after changing defaults to ensure the new value is valid and to run any required backend functions to register the change.
+Next, we change a couple of the MCycle defaults to our liking. The :meth:`updateDefaults() <mcycle.defaults.updateDefaults>` function should be executed after changing defaults to ensure the new value is valid and to run any required backend functions to register the change.
 
-    >>> mc.DEFAULTS.PLOT_DIR = "" # will not create a new folder for plots
-    >>> mc.DEFAULTS.PLOT_DPI = 200
-    >>> mc.DEFAULTS.updateDefaults()
+    >>> mc.defaults.PLOT_DIR = "" # will not create a new folder for plots
+    >>> mc.defaults.PLOT_DPI = 200
+    >>> mc.defaults.updateDefaults()
 
 Creating flowstates
 -------------------------------------------------------------
 
-To represent the working fluid of the cycle, we must create a :meth:`FlowState object <mcycle.bases.flowstate.FlowState>`. The phase, mass flow rate and initial state conditions do not need to be defined, as they will be set later by the cycle parameters, but for the sake of demonstrating the full constructor, we can assign some arbitrary values. Note that ``phaseCP = -1`` is used when the flow phase does not explicitly need to be defined. FlowState objects will use the CoolProp backend specified by the :meth:`DEFAULTS.COOLPROP_EOS <mcycle.DEFAULTS.COOLPROP_EOS>` attribute, which defaults to ``"HEOS"``.
+To represent the working fluid of the cycle, we must create a :meth:`FlowState object <mcycle.bases.flowstate.FlowState>`. The phase, mass flow rate and initial state conditions do not need to be defined, as they will be set later by the cycle parameters, but for the sake of demonstrating the full constructor, we can assign some arbitrary values. Note that ``phaseCP = -1`` is used when the flow phase does not explicitly need to be defined. FlowState objects will use the CoolProp backend specified by the :meth:`defaults.COOLPROP_EOS <mcycle.defaults.COOLPROP_EOS>` attribute, which defaults to ``"HEOS"``.
 
     >>> wf = mc.FlowState(fluid="R245fa", phaseCP=-1, m=1.0, inputPairCP=CP.PT_INPUTS, input1=mc.atm2Pa(1), input2=298)
 

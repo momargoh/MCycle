@@ -3,11 +3,11 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS import TOLABS_X
+from ... import defaults
 from ...logger import log
 from .hxunit_basic cimport HxUnitBasic
 from .flowconfig cimport HxFlowConfig
-import CoolProp as CP
+from ...constants import *
 from warnings import warn
 from math import nan
 import numpy as np
@@ -23,7 +23,7 @@ cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(i
                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
-                        "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
+                        "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), 'runUnitsBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"),
                 "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
@@ -65,7 +65,7 @@ ARatioSf : float, optional
     Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
 ARatioWall : float, optional
     Multiplier for the heat transfer surface area of the wall [-]. Defaults to 1.
-effThermal : float, optional
+efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
     Incoming FlowState of the working fluid. Defaults to None.
@@ -99,9 +99,9 @@ kwargs : optional
 
     def __init__(self,
                  HxFlowConfig flowConfig=HxFlowConfig(),
-                 int NWf=1,
-                 int NSf=1,
-                 int NWall=1,
+                 unsigned int NWf=1,
+                 unsigned int NSf=1,
+                 unsigned int NWall=1,
                  double hWf_liq=nan,
                  double hWf_tp=nan,
                  double hWf_vap=nan,
@@ -114,7 +114,7 @@ kwargs : optional
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioWall=1,
-                 double effThermal=1.0,
+                 double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
                  FlowState flowOutWf=None,
@@ -124,9 +124,10 @@ kwargs : optional
                  list sizeBounds=[1, 100],
                  list sizeUnitsBounds=[1e-5, 1.],
                  runBounds=[nan, nan],
+                 runUnitsBounds=[nan, nan],
                  str name="HxBasic instance",
                  str notes="No notes/model info.",
-                 Config config=Config(),
+                 Config config=None,
                  _unitClass=HxUnitBasic):
         self.flowConfig = flowConfig
         self.NWf = NWf
@@ -144,9 +145,9 @@ kwargs : optional
         self.ARatioWf = ARatioWf
         self.ARatioSf = ARatioSf
         self.ARatioWall = ARatioWall
-        self.effThermal = effThermal
+        self.efficiencyThermal = efficiencyThermal
         super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, ambient, sizeAttr,
-                         sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
+                         sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config)
         self._units = []
         self._unitClass = _unitClass
         if self.hasInAndOut(0) and self.hasInAndOut(1):
@@ -159,15 +160,14 @@ kwargs : optional
         cdef HxUnitBasic unit
         for key, value in kwargs.items():
             if key not in [
-                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf"] and "sizeBounds" not in key and "sizeUnitsBounds" not in key:
+                    "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf", "sizeBounds", "sizeUnitsBounds", "sizeAttr"]:
                 super(Component22, self).update({key: value})
                 for unit in self._units:
                     unit.update({key: value})
-            elif "sizeUnitsBounds" in key:
+            elif key == "sizeUnitsBounds":
                 super(Component22, self).update({key: value})
                 for unit in self._units:
-                    unit.update({key[:4] + key[9:]
-: value})
+                    unit.update({'sizeBounds': value})
             else:
                 super(Component22, self).update({key: value})
                         
@@ -181,10 +181,10 @@ kwargs : optional
         else:
             return False
 
-    cpdef public int _NWf(self):
+    cpdef public unsigned int _NWf(self):
         return self.NWf
 
-    cpdef public int _NSf(self):
+    cpdef public unsigned int _NSf(self):
         return self.NSf
 
 
@@ -194,17 +194,17 @@ kwargs : optional
     cpdef public double _hSf(self):
         return self.hSf
     
-    cpdef public double _effFactorWf(self):
+    cpdef public double _efficiencyFactorWf(self):
         if self.isEvap():
             return 1
         else:
-            return self.effThermal
+            return self.efficiencyThermal
 
-    cpdef public double _effFactorSf(self):
+    cpdef public double _efficiencyFactorSf(self):
         if not self.isEvap():
             return 1
         else:
-            return self.effThermal
+            return self.efficiencyThermal
 
     cpdef public double dpWf(self):
         return 0
@@ -216,7 +216,7 @@ kwargs : optional
         """float: Heat transfer to the working fluid [W]."""
         if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > self.config.tolAbs:
             return (self.flowsOut[0].h() - self.flowsIn[0].h()
-                    ) * self._mWf() * self._effFactorWf()
+                    ) * self._mWf() * self._efficiencyFactorWf()
         else:
             return 0
 
@@ -224,7 +224,7 @@ kwargs : optional
         """float: Heat transfer to the secondary fluid [W]."""
         if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > self.config.tolAbs:
             return (self.flowsOut[1].h() - self.flowsIn[1].h()
-                    ) * self._mSf() * self._effFactorSf()
+                    ) * self._mSf() * self._efficiencyFactorSf()
         else:
             return 0
 
@@ -239,19 +239,19 @@ kwargs : optional
         elif abs((qWf + qSf) / (qWf)) < self.config.tolRel:
             return qWf
         else:
-            msg = """{}.Q(), QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(self.__class__.__name__,
-            self._effFactorWf(), qWf, self._effFactorSf(), qSf,
-            self.effThermal)
+            msg = """{}.Q(), QWf*{}={},QSf*{}={}. Check efficiencyThermal={} is correct.""".format(self.__class__.__name__,
+            self._efficiencyFactorWf(), qWf, self._efficiencyFactorSf(), qSf,
+            self.efficiencyThermal)
             log("error", msg)
             warn(msg)
             return qWf
 
-    cpdef public double weight(self):
-        """float: Estimate of weight [Kg], based purely on wall properties."""
+    cpdef public double mass(self):
+        """float: Estimate of mass [kg], based purely on wall properties."""
         cdef HxUnitBasic unit
         cdef double w8 = 0
         for unit in self._units:
-            w8 += unit.weight()
+            w8 += unit.mass()
         return w8
 
 
@@ -264,11 +264,11 @@ kwargs : optional
                 ifbool = False
         #if all(self._units[i].flowsIn[0] == self._units[i - 1].flowsOut[0] for i in range(1, len(self._units))):
         if ifbool:
-            if self.flowConfig.sense == "counter" and all(
+            if self.flowConfig.sense == COUNTERFLOW and all(
                     self._units[i].flowsOut[1] == self._units[i - 1].flowsIn[1]
                     for i in range(1, len(self._units))):
                 return True
-            elif self.flowConfig.sense == "parallel" and all(
+            elif self.flowConfig.sense == PARALLELFLOW and all(
                     self._units[i].flowsIn[1] == self._units[i - 1].flowsOut[1]
                     for i in range(1, len(self._units))):
                 return True
@@ -277,7 +277,7 @@ kwargs : optional
         else:
             return False
 
-    cpdef public void run(self):
+    cpdef public void run(self) except *:
         """Abstract method: must be defined by subclasses."""
         pass
 
@@ -287,36 +287,36 @@ kwargs : optional
         return (self.flowConfig, self.NWf, self.NSf, self.NWall,
                 self.hWf_liq, self.hSf, self.RfWf, self.RfSf, self.wall,
                 self.tWall, nan, self.ARatioWf, self.ARatioSf,
-                self.ARatioWall, self.effThermal)
+                self.ARatioWall, self.efficiencyThermal)
 
     cdef public tuple _unitArgsTp(self):
         """Arguments passed to two-phase HxUnits in unitise()."""
         return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_tp,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
-                self.ARatioWf, self.ARatioSf, self.ARatioWall, self.effThermal)
+                self.ARatioWf, self.ARatioSf, self.ARatioWall, self.efficiencyThermal)
 
     cdef public tuple _unitArgsVap(self):
         """Arguments passed to single-phase vapour HxUnits in unitise()."""
         return (self.flowConfig, self.NWf, self.NSf, self.NWall, self.hWf_vap,
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
-                self.ARatioWf, self.ARatioSf, self.ARatioWall, self.effThermal)
+                self.ARatioWf, self.ARatioSf, self.ARatioWall, self.efficiencyThermal)
 
     cpdef public void unitise(self):
         """Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties."""
         self._units = []
         cdef list _units = []
         cdef _unitClass = self._unitClass
-        cdef FlowState inWf = self.flowsIn[0]._copy({})
+        cdef FlowState inWf = self.flowsIn[0].copy()
         cdef double inWf_h = inWf.h()
-        cdef FlowState liqWf = self.flowsIn[0].copyState(CP.PQ_INPUTS, self.flowsIn[0].p(), 0)
+        cdef FlowState liqWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 0)
         cdef double liqWf_h = liqWf.h()
-        cdef FlowState vapWf = self.flowsIn[0].copyState(CP.PQ_INPUTS, self.flowsIn[0].p(), 1)
+        cdef FlowState vapWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 1)
         cdef double vapWf_h = vapWf.h()
-        cdef FlowState outWf = self.flowsOut[0]._copy({})
+        cdef FlowState outWf = self.flowsOut[0].copy()
         cdef double outWf_h = outWf.h()
-        cdef FlowState inSf = self.flowsIn[1]._copy({})
+        cdef FlowState inSf = self.flowsIn[1].copy()
         cdef double inSf_h = inSf.h()
-        cdef FlowState outSf = self.flowsOut[1]._copy({})
+        cdef FlowState outSf = self.flowsOut[1].copy()
         cdef double outSf_h = outSf.h()
         cdef FlowState wfX0_obj = None
         cdef FlowState sfX0_obj = None
@@ -333,9 +333,9 @@ kwargs : optional
         cdef FlowState wf_i, wf_i1, sf_i, sf_i1
         cdef HxUnitBasic unit
         cdef double[:] hWf_unit, hSf_unit
-        if self.flowConfig.sense == "counter":
+        if self.flowConfig.sense == COUNTERFLOW:
             flowSense = 0
-        elif self.flowConfig.sense == "parallel":
+        elif self.flowConfig.sense == PARALLELFLOW:
             flowSense = 1
         if isEvap:
             wfX0_obj = inWf
@@ -363,19 +363,19 @@ kwargs : optional
                 sfX1_key = "flowInSf"
         endFound = False
         # Section A
-        if endFound is False and wfX0_obj.h() < liqWf_h and wfX0_obj.x() < -TOLABS_X:
+        if endFound is False and wfX0_obj.h() < liqWf_h and wfX0_obj.x() < -defaults.TOLABS_X:
             if isEvap:
                 if outWf_h > liqWf_h:
                     wfX1_obj = liqWf
                     if flowSense == 0:
-                        hLiqSf = sfX0_obj.h() + self._mWf() * self._effFactorWf() * (
+                        hLiqSf = sfX0_obj.h() + self._mWf() * self._efficiencyFactorWf() * (
                             liqWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._effFactorSf()
+                        ) / self._mSf() / self._efficiencyFactorSf()
                     elif flowSense == 1:
-                        hLiqSf = sfX0_obj.h() - self._mWf() * self._effFactorWf() * (
+                        hLiqSf = sfX0_obj.h() - self._mWf() * self._efficiencyFactorWf() * (
                             liqWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._effFactorSf()
-                    sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hLiqSf, inSf.p())
+                        ) / self._mSf() / self._efficiencyFactorSf()
+                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hLiqSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = outWf
@@ -387,14 +387,14 @@ kwargs : optional
                 if inWf_h > liqWf_h:
                     wfX1_obj = liqWf
                     if flowSense == 0:
-                        hLiqSf = sfX0_obj.h() + self.mWf * self._effFactorWf() * (
+                        hLiqSf = sfX0_obj.h() + self.mWf * self._efficiencyFactorWf() * (
                             liqWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._effFactorSf()
+                        ) / self.mSf / self._efficiencyFactorSf()
                     elif flowSense == 1:
-                        hLiqSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
+                        hLiqSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
                             liqWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._effFactorSf()
-                    sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hLiqSf, inSf.p())
+                        ) / self.mSf / self._efficiencyFactorSf()
+                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hLiqSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = inWf
@@ -416,11 +416,11 @@ kwargs : optional
             hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
             hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
-                wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
+                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
+                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
+                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
 
-                sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
                 unit = _unitClass(
                     *self._unitArgsLiq(),
                     **{wfX0_key: wf_i},
@@ -442,14 +442,14 @@ kwargs : optional
                 if outWf_h > vapWf_h:
                     wfX1_obj = vapWf
                     if flowSense == 0:
-                        hVapSf = sfX0_obj.h() + self._mWf() * self._effFactorWf() * (
+                        hVapSf = sfX0_obj.h() + self._mWf() * self._efficiencyFactorWf() * (
                             vapWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._effFactorSf()
+                        ) / self._mSf() / self._efficiencyFactorSf()
                     elif flowSense == 1:
-                        hVapSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
+                        hVapSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
                             vapWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._effFactorSf()
-                    sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hVapSf, inSf.p())
+                        ) / self._mSf() / self._efficiencyFactorSf()
+                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hVapSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = outWf
@@ -462,14 +462,14 @@ kwargs : optional
                 if inWf_h > vapWf_h:
                     wfX1_obj = vapWf
                     if flowSense == 0:
-                        hVapSf = sfX0_obj.h() + self.mWf * self._effFactorWf() * (
+                        hVapSf = sfX0_obj.h() + self.mWf * self._efficiencyFactorWf() * (
                             vapWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._effFactorSf()
+                        ) / self.mSf / self._efficiencyFactorSf()
                     elif flowSense == 1:
-                        hVapSf = sfX0_obj.h() - self.mWf * self._effFactorWf() * (
+                        hVapSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
                             vapWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._effFactorSf()
-                    sfX1_obj = inSf.copyState(CP.HmassP_INPUTS, hVapSf, inSf.p())
+                        ) / self.mSf / self._efficiencyFactorSf()
+                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hVapSf, inSf.p())
                 else:
                     endFound = True
                     wfX1_obj = inWf
@@ -491,10 +491,10 @@ kwargs : optional
             hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
             hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
-                wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
-                sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
+                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
+                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
+                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
                 unit = _unitClass(
                     *self._unitArgsTp(),
                     **{wfX0_key: wf_i},
@@ -513,7 +513,7 @@ kwargs : optional
         # Section C
         if endFound is False and (wfX0_obj.h() - vapWf_h
                                   ) / vapWf_h >= self.config._tolRel_h or (
-                                      1 - wfX0_obj.x()) < TOLABS_X:
+                                      1 - wfX0_obj.x()) < defaults.TOLABS_X:
             if isEvap:
                 wfX0_key = "flowInWf"
                 wfX1_obj = outWf
@@ -543,10 +543,10 @@ kwargs : optional
             hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
             hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
             for i in range(N_units - 1):
-                wf_i = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyState(CP.HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i], inSf.p())
-                sf_i1 = inSf.copyState(CP.HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
+                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
+                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
+                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
                 unit = _unitClass(
                     *self._unitArgsVap(),
                     **{wfX0_key: wf_i},
@@ -566,53 +566,34 @@ kwargs : optional
             raise ValueError("HxUnits are not in continuous order")
 
         
-    cpdef double _f_sizeHxBasic(self, double value, str attr, list unitsBounds):
+    cpdef double _f_sizeHxBasic(self, double value, str attr):
         self.update({attr: value})
         A_units = 0.
         for unit in self._units:
-            unit.sizeUnits('A', unitsBounds)
+            unit.sizeUnits()
             A_units += unit.A
         return A_units - self._A()
                 
-    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
+    cpdef public void size(self) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
-
-Parameters
------------
-attr : string, optional
-    Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bounds : float or list of float, optional
-    Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
-
-    - if bounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if bounds=a or [a]: scipy.optimize.newton is used.
-
-unitsBounds : float or list of float, optional
-    Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """
         cdef double hOutSf, A_unitstol
         cdef HxUnitBasic unit
-        if attr == "":
-            attr = self.sizeAttr
-        if bounds == []:
-            bounds = self.sizeBounds
-        if unitsBounds == []:
-            unitsBounds = self.sizeUnitsBounds
+        cdef str attr = self.sizeAttr
         try:
             if attr == "A":
                 self.unitise()
                 A_units = 0.
                 for unit in self._units:
-                    unit.sizeUnits('A', unitsBounds)
+                    unit.sizeUnits()
                     A_units += unit._A()
                 self.A = A_units
                 # return self._A()
             elif attr == "flowOutSf":
                 hOutSf = self.flowsIn[1].h() + (
                     self.flowsIn[0].h() - self.flowsOut[0].h()
-                ) * self._mWf() * self._effFactorWf() / self._mSf() / self._effFactorSf()
-                self.flowsOut[1] = self.flowsIn[1].copyState(CP.HmassP_INPUTS, hOutSf,
+                ) * self._mWf() * self._efficiencyFactorWf() / self._mSf() / self._efficiencyFactorSf()
+                self.flowsOut[1] = self.flowsIn[1].copyUpdateState(HmassP_INPUTS, hOutSf,
                                                     self.flowsIn[1].p())
                 self.unitise()
                 # return self.flowsOut[1]
@@ -625,22 +606,20 @@ unitsBounds : float or list of float, optional
                         self._f_sizeHxBasic,
                         bounds[0],
                         bounds[1],
-                        args=(attr, unitsBounds),
+                        args=(attr),
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
                 elif len(bounds) == 1:
-                    sizedValue = opt.newton(self._f_sizeHxBasic, bounds[0], args=(attr, unitsBounds), tol=tol)
+                    sizedValue = opt.newton(self._f_sizeHxBasic, bounds[0], args=(), tol=tol)
                 else:
-                    raise ValueError("bounds is not valid (given: {})".format(bounds))
+                    raise ValueError("HxBasic.size(): bounds are not valid (given: {})".format(bounds))
                 self.update({attr, sizedValue})
                 #return sizedValue
-        except AssertionError as err:
-            raise err
-        except:
-            raise StopIteration(
-                "Warning: {}.size({},{},{}) failed to converge.".format(
-                    self.__class__.__name__, attr, bounds, unitsBounds))
-
+        except Exception as exc:
+            msg = 'HxBasic.size(): failed to converge.'
+            log('error', msg, exc)
+            raise exc
+        
     @property
     def hWf(self):
         """float: Average of hWf_liq, hWf_tp & hWf_vap.

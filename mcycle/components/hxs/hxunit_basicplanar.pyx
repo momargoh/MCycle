@@ -10,7 +10,7 @@ cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(i
                         "NWall": MCAttr(int, "none"), "hWf": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
-                        "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+                        "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "flowDeadSf": MCAttr(FlowState, "none"),
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
@@ -51,7 +51,7 @@ ARatioSf : float, optional
     Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
 ARatioWall : float, optional
     Multiplier for the heat transfer surface area of the wall [-]. Defaults to 1.
-effThermal : float, optional
+efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
     Incoming FlowState of the working fluid. Defaults to None.
@@ -95,7 +95,7 @@ kwargs : optional
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioWall=1,
-                 double effThermal=1.0,
+                 double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
                  FlowState flowOutWf=None,
@@ -104,12 +104,12 @@ kwargs : optional
                  list sizeBounds=[0.01, 10.0],
                  str name="HxUnitBasic instance",
                  str  notes="No notes/model info.",
-                 Config config=Config()):       
+                 Config config=None):       
         self.L = L
         self.W = W
         super().__init__(flowConfig, NWf, NSf, NWall, hWf, hSf, RfWf, RfSf,
                          wall, tWall, L * W, ARatioWf, ARatioSf, ARatioWall,
-                         effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
+                         efficiencyThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
         
         self._inputs = _inputs
@@ -118,7 +118,7 @@ kwargs : optional
     cpdef public double _A(self):
         return self.L * self.W
 
-    cpdef public void sizeUnits(self, str attr, list bounds) except *:
+    cpdef public void sizeUnits(self) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
@@ -132,23 +132,18 @@ bounds : float or list of float, optional
 
     - if bounds=a or [a]: scipy.optimize.newton is used.
         """
-        if attr is "":
-            attr = self.sizeAttr
-        if bounds is []:
-            bounds = self.sizeBounds
+        cdef str attr = self.sizeAttr
+        cdef list bounds = self.sizeBounds
         try:
             if attr in ["L", "W", "A"]:
                 setattr(self, attr, 1.)
                 setattr(self, attr, self.Q() / self.Q_lmtd())
                 # return getattr(self, attr)
             else:
-                super(HxUnitBasicPlanar, self).sizeUnits(attr, bounds)
-        except AssertionError as err:
-            raise err
+                super(HxUnitBasicPlanar, self).sizeUnits()
         except:
             raise StopIteration(
-                "Warning: {}.size({},{}) failed to converge".format(
-                    self.__class__.__name__, attr, bounds))
+                "HxUnitBasicPlanar.size(): failed to converge".format())
     
     @property
     def A(self):

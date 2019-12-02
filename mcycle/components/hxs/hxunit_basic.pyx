@@ -3,13 +3,12 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...DEFAULTS import TOLABS_X
+from ...constants import *
 from ...methods.heat_transfer cimport lmtd
 from ...logger import log
 from .flowconfig cimport HxFlowConfig
 from warnings import warn
 from math import nan
-import CoolProp as CP
 import numpy as np
 import scipy.optimize as opt
 
@@ -18,7 +17,7 @@ cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(i
                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
                         "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "A": MCAttr(float, "area"),
                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
-                        "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+                        "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
                         "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
@@ -59,7 +58,7 @@ ARatioSf : float, optional
     Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
 ARatioWall : float, optional
     Multiplier for the heat transfer surface area of the wall [-]. Defaults to 1.
-effThermal : float, optional
+efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
     Incoming FlowState of the working fluid. Defaults to None.
@@ -89,9 +88,9 @@ kwargs : optional
 
     def __init__(self,
                  HxFlowConfig flowConfig=HxFlowConfig(),
-                 int NWf=1,
-                 int NSf=1,
-                 int NWall=1,
+                 unsigned int NWf=0,
+                 unsigned int NSf=0,
+                 unsigned int NWall=0,
                  double hWf=nan,
                  double hSf=nan,
                  double RfWf=0,
@@ -102,7 +101,7 @@ kwargs : optional
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioWall=1,
-                 double effThermal=1.0,
+                 double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
                  FlowState flowOutWf=None,
@@ -111,9 +110,9 @@ kwargs : optional
                  list sizeBounds=[0.01, 10.0],
                  str name="HxUnitBasic instance",
                  str  notes="No notes/model info.",
-                 Config config=Config()):
+                 Config config=None):
         super().__init__(flowInWf, flowInSf, flowOutWf, flowOutSf, None, sizeAttr,
-                         sizeBounds, [], [0, 0], name, notes, config)
+                         sizeBounds, [], [0, 0], [0, 0], name, notes, config)
         self.flowConfig = flowConfig
         self.NWf = NWf
         self.NSf = NSf
@@ -128,7 +127,7 @@ kwargs : optional
         self.ARatioWf = ARatioWf
         self.ARatioSf = ARatioSf
         self.ARatioWall = ARatioWall
-        self.effThermal = effThermal
+        self.efficiencyThermal = efficiencyThermal
         self._inputs = _inputs
         self._properties = _properties
 
@@ -147,149 +146,152 @@ kwargs : optional
         else:
             return False
 
-    cpdef public double _effFactorWf(self):
+    cpdef public double _efficiencyFactorWf(self):
         if self.isEvap():
             return 1
         else:
-            return self.effThermal
+            return self.efficiencyThermal
 
-    cpdef public double _effFactorSf(self):
+    cpdef public double _efficiencyFactorSf(self):
         if not self.isEvap():
             return 1
         else:
-            return self.effThermal
+            return self.efficiencyThermal
 
     cpdef public double dpWf(self):
         return 0
     
     cpdef public double dpSf(self):
         return 0
-
-    @property
-    def twoPhaseWf(self):
-        """DEPRECATED bool: Return True if working fluid is in 2-phase region."""
-        if self.hasInAndOut(0):
-            if self.flowsIn[0].x() >= -self.config._tolAbs_x and self.flowsIn[0].x() <= 1 + self.config._tolAbs_x and self.flowsOut[0].x() >= -self.config._tolAbs_x and self.flowsOut[0].x() <= 1 + self.config._tolAbs_x:
-                return True
-            else:
-                return False
-        elif self.isEvap():
-            if self.flowsIn[0].x() >= -self.config._tolAbs_x and self.flowsIn[0].x() < 1:
-                return True
-            else:
-                return False
-        elif not self.isEvap():
-            if self.flowsIn[0].x() > 0 and self.flowsIn[0].x() <= 1 + self.config._tolAbs_x:
-                return True
-            else:
-                return False
     
-    cpdef public str phaseWf(self):
+    cpdef public unsigned char phaseWf(self):
         """str: Identifier of working fluid phase: 'liq': subcooled liquid, 'vap': superheated vapour, 'tpEvap' or 'tpCond': evaporating or condensing in two-phase liq/vapour region."""
-        cdef str flowInPhase, flowOutPhase
+        cdef unsigned char flowInPhase, flowOutPhase
         try:
             flowInPhase = self.flowsIn[0].phase()
             if self.hasInAndOut(0):
                 flowOutPhase = self.flowsOut[0].phase()
-
-                if flowInPhase == "satLiq":
-                    if flowOutPhase == "tp":
-                        return "tpEvap"
-                    elif flowOutPhase == "liq":
-                        return "liq"
+                if flowInPhase == PHASE_SATURATED_LIQUID:
+                    if flowOutPhase == PHASE_TWOPHASE:
+                        return UNITPHASE_TWOPHASE_EVAPORATING
+                    elif flowOutPhase == PHASE_LIQUID:
+                        return UNITPHASE_LIQUID
                     else:
-                        raise ValueError(
-                            "Could not determine phase of WF flow. flowIn={}, flowOut={}".
-                            format(flowInPhase, flowOutPhase))
-                elif flowInPhase == "satVap":
-                    if flowOutPhase == "tp":
-                        return "tpCond"
-                    elif flowOutPhase == "vap":
-                        return "vap"
+                        msg = "phaseWf(): Could not determine unit phase given phases: flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+                        log('error', msg)
+                        raise ValueError(msg)
+                elif flowInPhase == PHASE_SATURATED_VAPOUR:
+                    if flowOutPhase == PHASE_TWOPHASE:
+                        return UNITPHASE_TWOPHASE_CONDENSING
+                    elif flowOutPhase == PHASE_VAPOUR:
+                        return UNITPHASE_GAS
                     else:
-                        raise ValueError(
-                            "could not determine phase of WF flow. flowIn={}, flowOut={}".
-                            format(flowInPhase, flowOutPhase))
-                elif flowInPhase == "tp" and flowOutPhase == "satLiq":
-                    return "tpCond"
-                elif flowInPhase == "tp" and flowOutPhase == "satVap":
-                    return "tpEvap"
-                elif flowInPhase == "tp" and flowOutPhase == "tp":
-                    if self.flowsIn[0].h() < self.flowsOut[0].h():
-                        return "tpEvap"
+                        msg = "phaseWf(): Could not determine unit phase given phases: flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+                        log('error', msg)
+                        raise ValueError(msg)
+                elif flowInPhase == PHASE_TWOPHASE:
+                    if flowOutPhase == PHASE_SATURATED_LIQUID:
+                        return UNITPHASE_TWOPHASE_CONDENSING
+                    elif flowOutPhase == PHASE_SATURATED_VAPOUR:
+                        return UNITPHASE_TWOPHASE_EVAPORATING
+                    elif flowOutPhase == PHASE_TWOPHASE:
+                        if self.flowsIn[0].h() < self.flowsOut[0].h():
+                            return UNITPHASE_TWOPHASE_EVAPORATING
+                        else:
+                            return UNITPHASE_TWOPHASE_CONDENSING
                     else:
-                        return "tpCond"
-                elif flowInPhase == "liq" or flowOutPhase == "liq":
-                    return "liq"
-                elif flowInPhase == "vap" or flowOutPhase == "vap":
-                    return "vap"
+                        msg = "Unit spanning twophase and single states currently unsupported"
+                        log('error', msg)
+                        raise NotImplementedError(msg)
+                elif flowInPhase == PHASE_LIQUID or flowOutPhase == PHASE_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_VAPOUR or flowOutPhase == PHASE_VAPOUR:
+                    return UNITPHASE_GAS
+                elif flowInPhase == PHASE_SUPERCRITICAL_LIQUID or flowOutPhase == PHASE_SUPERCRITICAL_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_SUPERCRITICAL_GAS or flowOutPhase == PHASE_SUPERCRITICAL_GAS:
+                    return UNITPHASE_GAS
                 else:
-                    raise ValueError("Unknown phase")
+                    msg = "phaseWf(): Could not determine unit phase given phases: flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+                    log('error', msg)
+                    raise ValueError(msg)
             else:
-                if flowInPhase == "tp":
+                if flowInPhase == PHASE_TWOPHASE:
                     if self.flowsIn[0].T() < self.flowsIn[1].T():
-                        return "tpEvap"
+                        return UNITPHASE_TWOPHASE_EVAPORATING
                     else:
-                        return "tpCond"
+                        return UNITPHASE_TWOPHASE_CONDENSING
 
-                elif flowInPhase == "satLiq":
+                elif flowInPhase == PHASE_SATURATED_LIQUID:
                     if self.flowsIn[0].T() < self.flowsIn[1].T():
-                        return "tpEvap"
+                        return UNITPHASE_TWOPHASE_EVAPORATING
                     else:
-                        return "liq"
-                elif flowInPhase == "satVap":
+                        return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_SATURATED_VAPOUR:
                     if self.flowsIn[0].T() < self.flowsIn[1].T():
-                        return "vap"
+                        return UNITPHASE_GAS
                     else:
-                        return "tpCond"
+                        return UNITPHASE_TWOPHASE_CONDENSING
 
-                elif flowInPhase == "liq":
-
-                    return "liq"
-                elif flowInPhase == "vap":
-                    return "vap"
+                elif flowInPhase == PHASE_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_VAPOUR:
+                    return UNITPHASE_GAS
+                elif flowInPhase == PHASE_SUPERCRITICAL_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_SUPERCRITICAL_GAS:
+                    return UNITPHASE_GAS
                 else:
-                    raise ValueError("Unknown phase")
+                    msg = "phaseWf(): Could not determine unit phase given phases: flowIn={}, flowOut=None".format(flowInPhase)
+                    log('error', msg)
+                    raise ValueError(msg)
         except Exception as exc:
-            msg = "Could not determine phase of WF flow. flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+            msg = "phaseWf(): Could not determine unit phase."
             log("error", msg, exc)
             raise exc
 
-    cpdef public str phaseSf(self):
+    cpdef public unsigned char phaseSf(self):
         """str: Identifier of secondary fluid phase: 'liq': subcooled liquid, 'vap': superheated vapour, 'sp': unknown single-phase."""
-        cdef str flowInPhase, flowOutPhase
+        cdef unsigned char flowInPhase, flowOutPhase
         try:
             flowInPhase = self.flowsIn[1].phase()
             if self.hasInAndOut(1):
                 flowOutPhase = self.flowsOut[1].phase()
-                if flowInPhase == "liq" or flowOutPhase == "liq":
-                    return "liq"
-                elif flowInPhase == "vap" or flowOutPhase == "vap":
-                    return "vap"
-                elif flowInPhase == "sp" or flowOutPhase == "sp":
-                    return "sp"
+                if flowInPhase == PHASE_LIQUID or flowOutPhase == PHASE_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_VAPOUR or flowOutPhase == PHASE_VAPOUR:
+                    return UNITPHASE_GAS
+                elif flowInPhase == PHASE_SUPERCRITICAL_LIQUID or flowOutPhase == PHASE_SUPERCRITICAL_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_SUPERCRITICAL_GAS or flowOutPhase == PHASE_SUPERCRITICAL_GAS:
+                    return UNITPHASE_GAS
                 else:
-                    raise ValueError("Unknown phase")
+                    msg = "phaseSf(): Could not determine unit phase given phases: flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+                    log('error', msg)
+                    raise ValueError(msg)
             else:
-                if flowInPhase == "liq":
-                    return "liq"
-                elif flowInPhase == "vap":
-                    return "vap"
-                elif flowInPhase == "sp":
-                    return "sp"
+                if flowInPhase == PHASE_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_VAPOUR:
+                    return UNITPHASE_GAS
+                elif flowInPhase == PHASE_SUPERCRITICAL_LIQUID:
+                    return UNITPHASE_LIQUID
+                elif flowInPhase == PHASE_SUPERCRITICAL_GAS:
+                    return UNITPHASE_GAS
                 else:
-                    raise ValueError("Unknown phase")
+                    msg = "phaseSf(): Could not determine unit phase given phases: flowIn={}, flowOut=None".format(flowInPhase)
+                    log('error', msg)
+                    raise ValueError(msg)
         except Exception as exc:
-            msg = "Could not determine phase of WF flow. flowIn={}, flowOut={}".format(flowInPhase, flowOutPhase)
+            msg = "phaseSf(): Could not determine unit phase."
             log("error", msg, exc)
             raise exc
-            
 
     cpdef public double QWf(self):
         """float: Heat transfer to the working fluid [W]."""
         if abs(self.flowsOut[0].h() - self.flowsIn[0].h()) > self.config.tolAbs:
             return (self.flowsOut[0].h() - self.flowsIn[0].h()
-                    ) * self._mWf() * self._effFactorWf()
+                    ) * self._mWf() * self._efficiencyFactorWf()
         else:
             return 0
 
@@ -297,7 +299,7 @@ kwargs : optional
         """float: Heat transfer to the secondary fluid [W]."""
         if abs(self.flowsOut[1].h() - self.flowsIn[1].h()) > self.config.tolAbs:
             return (self.flowsOut[1].h() - self.flowsIn[1].h()
-                    ) * self._mSf() * self._effFactorSf()
+                    ) * self._mSf() * self._efficiencyFactorSf()
         else:
             return 0
 
@@ -312,16 +314,16 @@ kwargs : optional
         elif abs((QWf + QSf) / QWf) < self.config.tolRel:
             return QWf
         else:
-            err_msg = """QWf*{}={},QSf*{}={}. Check effThermal={} is correct.""".format(
-            self._effFactorWf(), QWf, self._effFactorSf(), QSf,
-            self.effThermal)
+            err_msg = """QWf*{}={},QSf*{}={}. Check efficiencyThermal={} is correct.""".format(
+            self._efficiencyFactorWf(), QWf, self._efficiencyFactorSf(), QSf,
+            self.efficiencyThermal)
             warn(err_msg)
             return QWf
 
-    cpdef public int _NWf(self):
+    cpdef public unsigned int _NWf(self):
         return self.NWf
 
-    cpdef public int _NSf(self):
+    cpdef public unsigned  int _NSf(self):
         return self.NSf
 
     cpdef public double U(self):
@@ -348,24 +350,24 @@ kwargs : optional
         # initial guess from e-NTU method
         cdef double eps = 0.8
         cdef double Cmin = min(self.flowsIn[0].cp() * self._mWf(), self.flowsIn[1].cp() * self._mSf())
-        cdef double q = eps * Cmin * (self.flowsIn[1].T() - self.flowsIn[0].T()) * self.effThermal
-        self.flowsOut[0] = self.flowsIn[0].copyState(
-            CP.HmassP_INPUTS, self.flowsIn[0].h() + q / self._mWf(), self.flowsIn[0].p())
-        self.flowsOut[1] = self.flowsIn[1].copyState(
-            CP.HmassP_INPUTS, self.flowsIn[1].h() - self._mWf() * self._effFactorWf() *
+        cdef double q = eps * Cmin * (self.flowsIn[1].T() - self.flowsIn[0].T()) * self.efficiencyThermal
+        self.flowsOut[0] = self.flowsIn[0].copyUpdateState(
+            HmassP_INPUTS, self.flowsIn[0].h() + q / self._mWf(), self.flowsIn[0].p())
+        self.flowsOut[1] = self.flowsIn[1].copyUpdateState(
+            HmassP_INPUTS, self.flowsIn[1].h() - self._mWf() * self._efficiencyFactorWf() *
             (self.flowsOut[0].h() - self.flowsIn[0].h()
-             ) / self._mSf() / self._effFactorSf(), self.flowsIn[1].p())
+             ) / self._mSf() / self._efficiencyFactorSf(), self.flowsIn[1].p())
         cdef double diff = abs(self.Q() - self.Q_lmtd()) / self.Q()
         cdef int count = 0
         while diff > self.config._tolRel_h:
             q = self.Q_lmtd()
-            self.flowsOut[0] = self.flowsIn[0].copyState(
-                CP.HmassP_INPUTS,
-                self.flowsIn[0].h() + q / self._effFactorWf() / self._mWf(),
+            self.flowsOut[0] = self.flowsIn[0].copyUpdateState(
+                HmassP_INPUTS,
+                self.flowsIn[0].h() + q / self._efficiencyFactorWf() / self._mWf(),
                 self.flowsIn[0].p())
-            self.flowsOut[1] = self.flowsIn[1].copyState(
-                CP.HmassP_INPUTS,
-                self.flowsIn[1].h() - q / self._effFactorSf() / self._mSf(),
+            self.flowsOut[1] = self.flowsIn[1].copyUpdateState(
+                HmassP_INPUTS,
+                self.flowsIn[1].h() - q / self._efficiencyFactorSf() / self._mSf(),
                 self.flowsIn[1].p())
             diff = abs(self.Q() - q) / self.Q()
 
@@ -381,7 +383,7 @@ kwargs : optional
         self.update({attr: value})
         return abs(self.Q()) - self.Q_lmtd()
                 
-    cpdef public void sizeUnits(self, str attr, list bounds) except *:
+    cpdef public void sizeUnits(self) except *:
         """Size for the value of the nominated attribute required to achieve the defined outgoing FlowState.
 
 Parameters
@@ -396,10 +398,8 @@ bounds : float or list of float, optional
     - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef double tol, sizedValue
-        if attr == '':
-            attr = self.sizeAttr
-        if bounds == []:
-            bounds = self.sizeBounds
+        cdef str attr = self.sizeAttr
+        cdef double[2] bounds = self.sizeBounds
         try:
             if attr == "A":
                 self.A = 1.

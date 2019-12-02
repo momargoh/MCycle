@@ -73,10 +73,10 @@ cdef class RankineBasic(Cycle):
     cpdef public double PNet(self)
     cpdef public double QIn(self)
     cpdef public double QOut(self)
-    cpdef public double effThermal(self) except *
-    cpdef public double effExergy(self) except *
-    cpdef public double effRecovery(self) except *
-    cpdef public double effGlobal(self) except *
+    cpdef public double efficiencyThermal(self) except *
+    cpdef public double efficiencyExergy(self) except *
+    cpdef public double efficiencyRecovery(self) except *
+    cpdef public double efficiencyGlobal(self) except *
     cpdef public double IEvap(self) except *
     cpdef public double IExp(self) except *
     cpdef public double IComp(self) except *

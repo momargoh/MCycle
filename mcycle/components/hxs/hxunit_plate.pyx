@@ -3,6 +3,7 @@ from ...bases.flowstate cimport FlowState
 from ...bases.geom cimport Geom
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
+from ...constants import *
 from ...methods import heat_transfer as ht
 from ...geometries.geom_hxplate cimport GeomHxPlateCorrugatedChevron, GeomHxPlateFinOffset, GeomHxPlateFinStraight, GeomHxPlateSmooth
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
@@ -16,7 +17,7 @@ import scipy.optimize as opt
 cdef str method
 cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NPlate": MCAttr(int, "none"), "RfWf": MCAttr(float, "fouling"),
                         "RfSf": MCAttr(float, "fouling"), "plate": MCAttr(SolidMaterial, "none"), "tPlate": MCAttr(float, "length"), "geomWf": MCAttr(Geom, "none"), "geomSf": MCAttr(Geom, "none"), "L": MCAttr(float, "length"), "W": MCAttr(float, "length"),
-                        "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+                        "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioPlate": MCAttr(float, "none"), "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"), 
                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
                         "config": MCAttr(Config, "none")}
@@ -56,7 +57,7 @@ phi : float, optional
 pitchCor : float, optional
      Plate corrugation pitch [m] (distance between corrugation 'bumps'). Defaults to nan.
      .. note: Not to be confused with the plate pitch which is usually defined as the sum of the plate channel spacing and one plate thickness.
-effThermal : float, optional
+efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
     Incoming FlowState of the working fluid. Defaults to None.
@@ -98,7 +99,7 @@ kwargs : optional
                  double ARatioWf=1,
                  double ARatioSf=1,
                  double ARatioPlate=1,
-                 double effThermal=1.0,
+                 double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
                  FlowState flowOutWf=None,
@@ -107,17 +108,17 @@ kwargs : optional
                  list sizeBounds=[1e-5, 10.0],
                  str name="HxUnitPlate instance",
                  str notes="No notes/model info.",
-                 Config config=Config()):
-        super().__init__(flowConfig, -1, -1, NPlate, nan, nan, RfWf, RfSf,
+                 Config config=None):
+        super().__init__(flowConfig, 0, 0, NPlate, nan, nan, RfWf, RfSf,
                          plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
-                         effThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
+                         efficiencyThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
         self.geomWf = geomWf
         self.geomSf = geomSf
         self._inputs = _inputs
         self._properties = _properties
         
-    cpdef public int _NWf(self):
+    cpdef public unsigned int _NWf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
 
     - if NPlate is odd: NWf = NSf = (NPlate - 1) / 2
@@ -131,7 +132,7 @@ kwargs : optional
             else:
                 return int(self.NWall / 2 - 1)
 
-    cpdef public int _NSf(self):
+    cpdef public unsigned int _NSf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
 
     - if NPlate is odd: NWf = NSf = (NPlate - 1) / 2
@@ -147,9 +148,10 @@ kwargs : optional
 
     cpdef public double _hWf(self):
         """float: Heat transfer coefficient of a working fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomWf.__class__.__name__, "heat",
-                                             self.phaseWf(), "wf"))
+        cdef str method = self.config.lookupMethod(self.__class__.__name__,
+                                            (self.geomWf.__class__.__name__, TRANSFER_HEAT,
+                                             self.phaseWf(), WORKING_FLUID))
+        #print("HxUnitPlate._hWf(): method={}, phaseWf={}".format(method, self.phaseWf()))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
@@ -163,9 +165,9 @@ kwargs : optional
 
     cpdef public double _hSf(self):
         """float: Heat transfer coefficient of a secondary fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomSf.__class__.__name__, "heat",
-                                             self.phaseSf(), "sf"))
+        cdef str method = self.config.lookupMethod(self.__class__.__name__,
+                                            (self.geomSf.__class__.__name__, TRANSFER_HEAT,
+                                             self.phaseSf(), SECONDARY_FLUID))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
@@ -179,9 +181,9 @@ kwargs : optional
 
     cpdef public double _fWf(self):
         """float: Fanning friction factor of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__,
+        cdef str method = self.config.lookupMethod(self.__class__.__name__,
                                             (self.geomWf.__class__.__name__,
-                                            "friction", self.phaseWf(), "wf"))
+                                            TRANSFER_FRICTION, self.phaseWf(), WORKING_FLUID))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
@@ -195,9 +197,9 @@ kwargs : optional
 
     cpdef public double _fSf(self):
         """float: Fanning friction factor of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__,
+        cdef str method = self.config.lookupMethod(self.__class__.__name__,
                                             (self.geomSf.__class__.__name__,
-                                             "friction", self.phaseSf(), "sf"))
+                                             TRANSFER_FRICTION, self.phaseSf(), SECONDARY_FLUID))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
@@ -211,9 +213,9 @@ kwargs : optional
 
     cpdef public double _dpFWf(self):
         """float: Frictional pressure drop of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__,
+        cdef str method = self.config.lookupMethod(self.__class__.__name__,
                                             (self.geomWf.__class__.__name__,
-                                             "friction", self.phaseWf(), "wf"))
+                                             TRANSFER_FRICTION, self.phaseWf(), WORKING_FLUID))
         return getattr(ht, method)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
@@ -227,7 +229,7 @@ kwargs : optional
 
     cpdef public double _dpFSf(self):
         """float: Frictional pressure drop of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        method = self.config.lookupMethod(self.__class__.__name__, (self.geomSf.__class__.__name__, "friction", self.phaseSf(), "sf"))
+        cdef str method = self.config.lookupMethod(self.__class__.__name__, (self.geomSf.__class__.__name__, TRANSFER_FRICTION, self.phaseSf(), SECONDARY_FLUID))
         return getattr(ht, method)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
@@ -247,9 +249,9 @@ kwargs : optional
             self.NWall - 2) / self.wall.k() / self.ARatioWall
         return (RWf + RSf + RPlate)**-1
 
-    cdef double Re(self, int flowId=0):
+    cdef double Re(self, unsigned int flowId=0):
         cdef Geom geom
-        cdef int N
+        cdef unsigned int N
         if flowId == 0:
             geom = self.geomWf
             N = self._NWf()
@@ -275,7 +277,7 @@ kwargs : optional
         cdef double G = m_channel / Ac
         cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
         cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-        cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+        cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
         return G * Dh / avg.visc()
     
 
@@ -289,7 +291,7 @@ kwargs : optional
         self.update({attr: value})
         return self.Q() - self.Q_lmtd()
     
-    cpdef public void sizeUnits(self, str attr, list bounds) except *:
+    cpdef public void sizeUnits(self) except *:
         """Solves for the value of the nominated component attribute required to return the defined outgoing FlowState.
 
 Parameters
@@ -305,10 +307,8 @@ bounds : float or list of float, optional
         """
         cdef double tol, sizedValue, fa, fb, r
         cdef list boundsOriginal
-        if attr == '':
-            attr = self.sizeAttr
-        if bounds == []:
-            bounds = self.sizeBounds
+        cdef str attr = self.sizeAttr
+        cdef double[2] bounds = self.sizeBounds
         boundsOriginal = bounds
         try:
             tol = self.config.tolAbs + self.config.tolRel * self.Q()

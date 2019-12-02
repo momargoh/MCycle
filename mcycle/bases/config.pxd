@@ -30,6 +30,6 @@ cdef class Config(MCAB):
     cpdef public double _tolRel_h 
     cpdef public double _tolRel_rho
     
-    cpdef public str lookupMethod(self, str cls, tuple args)
-    cpdef void set_method(self, str method, list geoms, list transfers, list phases, list flows)
+    cpdef public str lookupMethod(self, str cls, tuple args)# except *
+    cpdef void set_method(self, str method, str geom, unsigned char transfer, unsigned char unitPhase, unsigned char flow) except *
 

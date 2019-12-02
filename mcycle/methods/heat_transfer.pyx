@@ -56,16 +56,16 @@ dpF: float
 Library
 --------
 """
-from ..DEFAULTS import GRAVITY
+from ..defaults import GRAVITY
+from ..constants import *
 from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from ..components.hxs.flowconfig cimport HxFlowConfig
 from .. import geometries as gms
+#from libc.math cimport NAN
 from math import nan, sin, cos, pi, log, log10, exp, isnan
 from warnings import warn
 import numpy as np
-import CoolProp as CP
-
 
 cdef str _assertGeomErrMsg(Geom geom, str method_name):
     try:
@@ -80,13 +80,13 @@ cdef str _assertGeomErrMsg(Geom geom, str method_name):
 # General functions
 # -----------------------------------------------------------------
 
-cpdef public double htc(double Nu, double k, double charLength) except *:
+cpdef public double htc(double Nu, double k, double charLength) except -1:
     """float: h, heat transfer coefficient [W/m^2.K].
 """
     return Nu * k / charLength
 
 
-cpdef public double dpf(double f, double G, double L, double Dh, double rho, int N) except *:
+cpdef public double dpf(double f, double G, double L, double Dh, double rho, int N) except -1:
     """float: dpF, single-phase pressure drop due to friction [Pa].
 """
     return f * 2 * G**2 * L * N / Dh / rho
@@ -96,23 +96,26 @@ cpdef public double dpf(double f, double G, double L, double Dh, double rho, int
 # General heat exchange functions
 # -----------------------------------------------------------------
 
-cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, str flowSense) except *:
+cpdef public double lmtd(double TIn1, double TOut1, double TIn2, double TOut2, unsigned char flowSense) except -1:
     """float: Log-mean temperature difference [K]."""
     cdef double dT1 = 0
     cdef double dT2 = 0
     cdef double ans
     cdef str msg
-    if flowSense == "counter":
+    if flowSense == COUNTERFLOW:
         dT1 = TIn2 - TOut1
         dT2 = TOut2 - TIn1
-    elif flowSense == "parallel":
+    elif flowSense == PARALLELFLOW:
         dT1 = TOut2 - TOut1
         dT2 = TIn2 - TIn1
     else:
         msg = "lmtd flowSense not valid/supported (given: {})".format(flowSense)
         log("error", msg)
         raise ValueError(msg)
-    ans = (dT1 - dT2) / log(dT1 / dT2)
+    if dT1 - dT2 == 0:
+        ans = dT1
+    else:
+        ans = (dT1 - dT2) / log(dT1 / dT2)
     if isnan(ans):
         msg = "lmtd found non-valid flow temperatures: TIn1={}, TOut1={}, TIn2={}, TOut2={}".format(TIn1, TOut1, TIn2, TOut2)
         log("warning", msg)
@@ -147,7 +150,7 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double T_avg = 0.5 * (flowIn.T() + flowOut.T())
-    cdef FlowState avg = flowIn.copyState(CP.PT_INPUTS, p_avg, T_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(PT_INPUTS, p_avg, T_avg)
     cdef double Re = G * Dh / avg.visc()
     cdef double Nu = 0.72 * Re**0.59 * avg.Pr()**0.4 * geom.phi**0.41 * (geom.beta /
                                                              30)**0.66
@@ -181,7 +184,7 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double T_avg = 0.5 * (flowIn.T() + flowOut.T())
-    cdef FlowState avg = flowIn.copyState(CP.PT_INPUTS, p_avg, T_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(PT_INPUTS, p_avg, T_avg)
     cdef double Re = G * Dh / avg.visc()
     cdef double a1 = 0.22 * (1 + 1.1 * psi**1.5)
     cdef double a2 = 0.53 * (0.58 + 0.42 * np.cos(1.87 * psi))
@@ -227,7 +230,7 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double T_avg = 0.5 * (flowIn.T() + flowOut.T())
-    cdef FlowState avg = flowIn.copyState(CP.PT_INPUTS, p_avg, T_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(PT_INPUTS, p_avg, T_avg)
     cdef double Re = G * Dh / avg.visc()
     cdef double C0 = 90-geom.beta
     cdef double Nu = (0.2668-0.006967*C0+7.244e-5*C0**2)*(20.78-50.94*geom.phi+41.16*geom.phi**2-10.51*geom.phi**3)*Re**(0.728+0.0543*sin(pi*C0/45+3.7))*avg.Pr()**(1./3)
@@ -265,9 +268,9 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_channel / (geom.b * W)
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
-    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    cdef FlowState avg = flowIn.copyUpdateState(PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     cdef double G_eq = G * (1 - x_avg + x_avg * (liq.rho() / vap.rho())**0.5)
     cdef double Re = G * Dh / avg.visc()
     cdef double Re_eq = G_eq * Dh / avg.visc()
@@ -307,9 +310,9 @@ dict of float : {"h", "f", "dpF"}
         geom, "hanLeeKim_tpCond")
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
-    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    cdef FlowState avg = flowIn.copyUpdateState(PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     #
     cdef double beta = np.radians(geom.beta)
     cdef double Dh = 2 * geom.b / geom.phi
@@ -367,7 +370,7 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_fin / (geom.s * geom.h)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * Dh / avg.visc()
     #
     cdef double f = 9.6243 * (Re**-0.7422) * (alpha**-0.1856) * (delta**0.3053) * (
@@ -411,7 +414,7 @@ dict of float : {"h"}
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * De / avg.visc()
     cdef double Pr = avg.Pr()
     cdef double Nu = 0
@@ -446,7 +449,7 @@ dict of float : {"f", "dpF"}
     cdef double G = m_channel / (geom.b * W)
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * De / avg.visc()
     cdef double f = 0
     if Re < 3000:
@@ -484,9 +487,9 @@ dict of float : {"h"}
     cdef double G = m_channel / (b * W)
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
-    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    cdef FlowState avg = flowIn.copyUpdateState(PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     #cdef double G_eq = G * (1 - x_avg + x_avg * (liq.rho() / vap.rho())**0.5)
     cdef double Re = G * Dh / avg.visc()
     #cdef double Re_eq = G_eq * Dh / avg.visc()
@@ -535,7 +538,7 @@ dict of float : {"h", "f", "dpF"}
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * Dh / avg.visc()
     cdef double f = (1.58 * np.log(Re) - 3.28)**-2
     cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
@@ -580,7 +583,7 @@ Returns
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Pr = avg.Pr()
     cdef double Re_De = G * De / avg.visc()
     cdef double f = 0.00128 + 0.1143*Re_De**-0.311
@@ -617,7 +620,7 @@ dict of float : {"h"}
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Pr = avg.Pr()
     cdef double Re_Dh = G * Dh / avg.visc()
     cdef double Re_De = G * De / avg.visc()
@@ -659,7 +662,7 @@ dict of float : {"h"}
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * Dh / avg.visc()
     cdef double Nu = 0.023 * Re**0.8 * avg.Pr()**0.4
     cdef double h = htc(Nu, avg.k(), De)
@@ -695,7 +698,7 @@ dict of float : {"h"}
     G = m_channel / Ac
     p_avg = 0.5 * (flowIn.p() + flowOut.p())
     h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     Re = G * Dh / avg.visc()
     Nu = 0.023 * Re**0.8 * avg.Pr()**n
     h = htc(Nu, avg.k(), De)
@@ -730,7 +733,7 @@ dict of float : {"f", "dpF"}
     cdef double G = m_channel / Ac
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
     cdef double h_avg = 0.5 * (flowIn.h() + flowOut.h())
-    cdef FlowState avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
+    cdef FlowState avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
     cdef double Re = G * De / avg.visc()
     cdef double f = (0.86859 * np.log(Re / (1.964 * np.log(Re) - 3.8215)))**-2
     cdef double dpF = dpf(f, G, L, De, avg.rho(), 1)
@@ -758,9 +761,9 @@ dict of float : {"h"}
         geom, "gungorWinterton_tpEvap_h")
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
-    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    cdef FlowState avg = flowIn.copyUpdateState(PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     #
     cdef double beta = np.radians(geom.beta)
     cdef double Dh = 2 * geom.b / geom.phi
@@ -807,9 +810,9 @@ dict of float : {"h"}
         As = W * L
     cdef double x_avg = 0.5 * (flowIn.x() + flowOut.x())
     cdef double p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    cdef FlowState avg = flowIn.copyState(CP.PQ_INPUTS, p_avg, x_avg)
-    cdef FlowState liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    cdef FlowState vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    cdef FlowState avg = flowIn.copyUpdateState(PQ_INPUTS, p_avg, x_avg)
+    cdef FlowState liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    cdef FlowState vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     #
     cdef double m_channel = flowIn.m / N
     cdef double G = m_channel / Ac
@@ -861,8 +864,8 @@ dict of float : {"h"}
     G = m_channel / Ac
     x_avg = 0.5 * (flowIn.x() + flowOut.x())
     p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
-    vap = flowIn.copyState(CP.PQ_INPUTS, p_avg, 1)
+    liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
+    vap = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 1)
     Fr = G**2 / (liq.rho()**2 * GRAVITY * Dh)
     if Fr > 0.04 or vertical is True:
         K_Fr = 1.
@@ -910,9 +913,9 @@ dict of float : {"h"}
     x = 0.5 * (flowIn.x() + flowOut.x())
     h_avg = 0.5 * (flowIn.h() + flowOut.h())
     p_avg = 0.5 * (flowIn.p() + flowOut.p())
-    avg = flowIn.copyState(CP.HmassP_INPUTS, h_avg, p_avg)
-    liq = flowIn.copyState(CP.PQ_INPUTS, avg.p(), 0)
-    vap = flowIn.copyState(CP.PQ_INPUTS, avg.p(), 1)
+    avg = flowIn.copyUpdateState(HmassP_INPUTS, h_avg, p_avg)
+    liq = flowIn.copyUpdateState(PQ_INPUTS, avg.p(), 0)
+    vap = flowIn.copyUpdateState(PQ_INPUTS, avg.p(), 1)
     X_tt = (1 / x - 1)**0.9 * (vap.rho() / liq.rho())**0.5 * (liq.visc() /
                                                               vap.visc())**0.1
     if (1 / X_tt) <= 0.1:
@@ -958,7 +961,7 @@ dict of float : {"h"}
     assert flowOut.x() >= 0 and flowOut.x() <= 1
     p_avg = 0.5 * (flowIn.p() + flowOut.p())
     x = 0.5 * (flowIn.x() + flowOut.x())
-    liq = flowIn.copyState(CP.PQ_INPUTS, p_avg, 0)
+    liq = flowIn.copyUpdateState(PQ_INPUTS, p_avg, 0)
     h_l = shah_sp_h(liq, liq, Dh, De, Ac, L, N)
     p_star = liq.p() / liq._state().pcrit()
     h = h_l * ((1 - x)**0.8 + (3.8 * x**0.76 * (1 - x)**0.04) / (p_star**0.38))

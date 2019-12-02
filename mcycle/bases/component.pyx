@@ -1,15 +1,17 @@
-from .. import DEFAULTS
-from ..DEFAULTS import getUnits
+from .. import defaults
+from ..constants import *
 from ..logger import log
 from .mcabstractbase cimport MCAB, MCAttr
 from .flowstate cimport FlowState
 from .config cimport Config
 from math import nan
+import scipy.optimize as opt
 
 
-cdef dict _inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time")}
-        
+
+
 cdef class Component(MCAB):
     """Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.
 
@@ -45,39 +47,45 @@ kwargs : optional
                  str sizeAttr='',
                  list sizeBounds=[],
                  list sizeUnitsBounds=[],
-                 runBounds = [nan, nan],
+                 list runBounds =[nan, nan],
+                 list runUnitsBounds =[nan, nan],
                  str name='Component instance',
                  str notes='No notes/model info.',
-                 Config config=Config()):
+                 Config config=None):
+        super().__init__(name, _inputs, _properties)
         self.flowsIn = flowsIn
         self.flowsOut = flowsOut
         self.ambient = ambient
         self.sizeAttr = sizeAttr
         self.sizeBounds = sizeBounds
-        self.runBounds = runBounds
         self.sizeUnitsBounds = sizeUnitsBounds
-        self.name = name
+        self.runBounds = runBounds
+        self.runUnitsBounds = runUnitsBounds
         self.notes = notes
+        if config is None:
+            config = defaults.CONFIG
         self.config = config
-        self._inputs = _inputs
-        self._properties = _properties
     
-    cpdef public MCAB _copy(self, dict kwargs):
-        """Return a new copy of a class object. Kwargs (as dict) are passed to update() as a shortcut of simultaneously copying and updating.
+    cpdef public MCAB copy(self):
+        """Return a new copy of an object."""
+        cdef MCAB copy = self.__class__(*self._inputValues())
+        try: # copy _units if relevant
+            copy._units = []
+            for unit in self._units:
+                copy._units.append(unit._copy())
+        except:
+            pass
+        return copy
+    
+    cpdef public MCAB copyUpdate(self, dict kwargs):
+        """Update (multiple) class variables from a dictionary of keyword arguments.
 
 Parameters
 -----------
 kwargs : dict
-    Dictionary of attributes and their updated value."""
-        cdef MCAB copy = self.__class__(*self._inputValues())
-        if kwargs != {}:
-            copy.update(kwargs)
-        try: # copy _units if relevant
-            copy._units = []
-            for unit in self._units:
-                copy._units.append(unit._copy({}))
-        except:
-            pass
+    Dictionary of attributes and their updated value; kwargs={'key': value}."""
+        cdef MCAB copy = self.copy()
+        copy.update(kwargs)
         return copy
 
     cpdef public void clearWfFlows(self):
@@ -91,7 +99,7 @@ kwargs : dict
         for i in len(self.flowsOut):
             self.flowsOut[i] = None
                 
-    cpdef public void run(self):
+    cpdef public void run(self) except *:
         """Compute the outgoing working fluid FlowState from component attributes."""
         pass
 
@@ -100,35 +108,11 @@ kwargs : dict
         self.run()
         return getattr(self.flowsOut[0], self.config.tolAttr)() - getattr(flowOutTarget, self.config.tolAttr)()
     
-    cpdef public void _size(self, str attr, list bounds, list unitsBounds) except *:
+    cpdef public void size(self) except *:
         """Solve for the value of the nominated component attribute required to return the defined outgoing FlowState.
-
-Parameters
------------
-attr : string, optional
-    Attribute to be sized. If None, self.sizeAttr is used.
-bounds : float or list of float
-    Bracket containing solution of size(). If None, self.sizeBounds is used.
-
-    - if bounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if bounds=a or [a]: scipy.optimize.newton is used.
-unitsBounds : float or list of float
-    Bracket parsed to _units attribute, if relevant, containing solutions of sizeUnits(). If None, self.sizeUnitsBounds is used.
-
-    - if bounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef double tol
         try:
-            import scipy.optimize as opt
-            if attr == '':
-                attr = self.sizeAttr
-            if bounds == []:
-                bounds = self.sizeBounds
-            if unitsBounds == []:
-                unitsBounds = self.sizeUnitsBounds
             flowOutTarget = self.flowsOut[0]._copy({})
 
             tol = self.config.tolAbs + self.config.tolRel * getattr(flowOutTarget, self.config.tolAttr)()
@@ -140,14 +124,14 @@ unitsBounds : float or list of float
                     args=(flowOutTarget, attr, bounds, unitsBounds),
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs,
-                    maxiter=DEFAULTS.MAXITER_COMPONENT)
+                    maxiter=defaults.MAXITER_COMPONENT)
             elif len(bounds) == 1:
                 sizedValue = opt.newton(
                     self._f_sizeComponent,
                     bounds[0],
                     args=(flowOutTarget, attr, bounds, unitsBounds),
                     tol=tol,
-                    maxiter=DEFAULTS.MAXITER_COMPONENT)
+                    maxiter=defaults.MAXITER_COMPONENT)
             else:
                 raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue, 'flowsOut[0]': flowOutTarget})
@@ -155,12 +139,8 @@ unitsBounds : float or list of float
             raise StopIteration("{}.size({},{},{}) failed to converge.".format(
                 self.__class__.__name__, attr, bounds, unitsBounds))
 
-    cpdef public void sizeUnits(self, str attr, list bounds) except *:
+    cpdef public void sizeUnits(self) except *:
         pass
-    
-    def size(self, str attr='', list bounds=[], list unitsBounds=[]):
-        """Alias of _size(), giving default values of attr='', bounds=[], unitsBounds=[]."""
-        self._size(attr, bounds, unitsBounds)
         
     def summary(self,
                 bint printSummary=True,
@@ -191,7 +171,7 @@ flowKeys : list or str, optional
 name : str, optional
     Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.DEFAULTS.RSTHEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
         """
         if name == "":
             name = self.name
@@ -199,7 +179,7 @@ rstHeading : int, optional
         output += """
 {}
 Notes: {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output), self.notes)
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output), self.notes)
 
         hasSummaryList = []
         for k, v in self._inputs.items():
@@ -230,7 +210,7 @@ Notes: {}
             output += """
 {}
 {}
-""".format(outputProperties, DEFAULTS.RST_HEADINGS[rstHeading+1] * len(outputProperties))
+""".format(outputProperties, defaults.RST_HEADINGS[rstHeading+1] * len(outputProperties))
             
             for k in propertyKeys:
                 if k in self._propertyKeys():
@@ -286,9 +266,9 @@ Notes: {}
                 output += """
 FlowStates
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading + 1]*10)
+""".format(defaults.RST_HEADINGS[rstHeading + 1]*10)
                 table = ""
-                flowPropValsStr = [list(map(lambda x: DEFAULTS.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
+                flowPropValsStr = [list(map(lambda x: defaults.PRINT_FORMAT_FLOAT.format(x), li)) for li in flowPropVals]
                 max_lens = [len(max(li, key=len)) for li in flowPropValsStr]
                 str_formats = ["{:<%s}" % max_lens[i] for i in range(len(max_lens))]
                 table_header0 = " {} |"*len(flowPropVals)
@@ -298,7 +278,7 @@ FlowStates
                 table_header = table_header.format("    ", *flowKeys)
                 table += table_header
                 for i in range(len(flowPropVals[0])):
-                    table_row = "|{}|" + " {} |".format(DEFAULTS.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
+                    table_row = "|{}|" + " {} |".format(defaults.PRINT_FORMAT_FLOAT)*len(flowPropVals) + """
 """
                     vals = [l[i] for l in flowPropVals]
                     table_row = table_row.format(flowPropKeys[i], *vals)
@@ -353,7 +333,7 @@ FlowStates
         except:
             raise
 
-cdef dict _inputs11 = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs11 = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties11 = {"m": MCAttr(str, "mass/time")}
         
 cdef class Component11(Component):
@@ -391,13 +371,14 @@ kwargs : optional
                  str sizeAttr="",
                  list sizeBounds=[],
                  list sizeUnitsBounds=[],
-                 runBounds = [nan, nan],
+                 list runBounds = [nan, nan],
+                 list runUnitsBounds = [nan, nan],
                  str name="Component11 instance",
                  str notes="No notes/model info.",
                  config=Config()):
         if flowOut is not None and flowIn is not None:
             assert flowOut.m == flowIn.m, "mass flow rate of flowIn and flowOut must be equal"
-        super().__init__([flowIn], [flowOut], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
+        super().__init__([flowIn], [flowOut], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config)
         self._inputs = _inputs11
         self._properties = _properties11
 
@@ -455,7 +436,7 @@ kwargs : optional
             if flow is not None:
                 flow.m = value
 
-cdef dict _inputs22 = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
+cdef dict _inputs22 = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
 cdef dict _properties22 = {"mWf": MCAttr(float, "mass/time"),"mSf": MCAttr(float, "mass/time")}
         
 cdef class Component22(Component):
@@ -500,9 +481,10 @@ kwargs : optional
                  list sizeBounds=[],
                  list sizeUnitsBounds=[],
                  list runBounds = [nan, nan],
+                 list runUnitsBounds = [nan, nan],
                  str name="Component22 instance",
                  str notes="No notes/model info.",
-                 Config config=Config()):
+                 Config config=None):
         cdef list flows = [[flowInWf, flowOutWf], [flowInSf, flowOutSf]]
         cdef int i
         for i in range(2):
@@ -511,7 +493,7 @@ kwargs : optional
                     1].m, "mass flow rate of flowsIn[{0}] and flowsOut[{0}] must be equal".format(
                         i)
         
-        super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, name, notes, config)
+        super().__init__([flowInWf, flowInSf], [flowOutWf, flowOutSf], ambient, sizeAttr, sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config)
         self._inputs = _inputs22
         self._properties = _properties22
         

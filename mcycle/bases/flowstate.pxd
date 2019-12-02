@@ -1,19 +1,20 @@
 from .mcabstractbase cimport MCAB
-from CoolProp import AbstractState
+#from CoolProp import AbstractState
 
 cdef class FlowState(MCAB):
     cpdef public str fluid
-    cdef public short phaseCP
     cpdef public double m
-    cdef public unsigned short _inputPairCP
+    cdef public unsigned char _inputPair
     cdef public double _input1
     cdef public double _input2
+    cdef public short _iphase
+    cdef public str eos
     #cpdef AbstractState _state
     cpdef public _state
     cdef bint _canBuildPhaseEnvelope
     cdef public bint isMixture(self)
-    cpdef public void updateState(self, int inputPairCP, double input1, double input2)
-    cpdef public FlowState copyState(self, int inputPairCP, double input1, double input2)
+    cpdef public void updateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=*) except *
+    cpdef public FlowState copyUpdateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=*)
     cpdef public double T(self)
     cpdef public double p(self)
     cpdef public double rho(self)
@@ -28,10 +29,12 @@ cdef class FlowState(MCAB):
     cpdef public double V(self)
     cpdef public double pCrit(self)
     cpdef public double pMin(self)
+    cpdef public double pMax(self)
     cpdef public double TCrit(self)
     cpdef public double TMin(self)
+    cpdef public double TMax(self)
 
-    cpdef public str phase(self)
+    cpdef public unsigned char phase(self)
 
 cdef dict validInputPairs
 cdef dict _validInputPairs
@@ -50,6 +53,7 @@ cdef class RefData:
     cpdef public unsigned short deg
     cpdef public double p
     cpdef public dict data
-    cpdef public short phaseCP
+    cpdef public short _iphase
+    cpdef public str eos
     cpdef public void populateData(self) except *
     

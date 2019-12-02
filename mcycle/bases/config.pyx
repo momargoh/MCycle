@@ -1,5 +1,7 @@
 from .mcabstractbase cimport MCAB, MCAttr
-from .. import DEFAULTS
+from .. import defaults
+from ..constants import *
+from ..logger import log
 import copy
 from math import nan, isnan
 
@@ -71,10 +73,10 @@ _tolRel_h : float, optional
 _tolRel_rho : float, optional
     Relative tolerance used in assert statements for determining equivalence of densities. Defaults to 1e-7.
 _tolAbs_x : float, optional
-    Absolute tolerance used for determining whether a FlowState is in the two-phase region. Defaults to mcycle.DEFAULTS.TOLABS_X
+    Absolute tolerance used for determining whether a FlowState is in the two-phase region. Defaults to mcycle.defaults.TOLABS_X
 """
 
-    def __init__(self,
+    def __cinit__(self,
                  bint dpEvap=False,
                  bint dpCond=False,
                  bint evenPlatesWf=False,
@@ -88,17 +90,18 @@ _tolAbs_x : float, optional
                  bint dpPortSf=True,
                  double dpPortInFactor=nan,
                  double dpPortOutFactor=nan,
-                 unsigned short maxWalls = 200,
+                 unsigned short maxWalls = 0,
                  double gravity=nan,
                  str tolAttr='',
                  double tolAbs=nan,
                  double tolRel=nan,
-                 double divT=DEFAULTS.DIV_T,
-                 double divX=DEFAULTS.DIV_X,
+                 double divT=nan,
+                 double divX=nan,
                  unsigned short maxIterComponent=0,
                  unsigned short maxIterCycle=0,
-                 dict methods=DEFAULTS.METHODS,
+                 dict methods={},
                  str name="Config instance"):
+        super().__init__(name, _inputs, _properties)
         # Cycle config parameters
         self.dpEvap = dpEvap
         self.dpCond = dpCond
@@ -113,48 +116,51 @@ _tolAbs_x : float, optional
         self.dpPortWf = dpPortWf
         self.dpPortSf = dpPortSf
         if isnan(dpPortInFactor):
-            dpPortInFactor = DEFAULTS.DP_PORT_IN_FACTOR
+            dpPortInFactor = defaults.DP_PORT_IN_FACTOR
         self.dpPortInFactor = dpPortInFactor
         if isnan(dpPortInFactor):
-            dpPortOutFactor = DEFAULTS.DP_PORT_OUT_FACTOR
+            dpPortOutFactor = defaults.DP_PORT_OUT_FACTOR
         self.dpPortOutFactor = dpPortOutFactor
         if maxWalls == 0:
-            maxWalls = DEFAULTS.MAX_WALLS
+            maxWalls = defaults.MAX_WALLS
         self.maxWalls = maxWalls
         # general config parameters
         if isnan(gravity):
-            gravity = DEFAULTS.GRAVITY
+            gravity = defaults.GRAVITY
         self.gravity = gravity
         # tolerances
         if tolAttr == '':
-            tolAttr = DEFAULTS.TOLATTR
+            tolAttr = defaults.TOLATTR
         self.tolAttr = tolAttr
         if isnan(tolAbs):
-            tolAbs = DEFAULTS.TOLABS
+            tolAbs = defaults.TOLABS
         self.tolAbs = tolAbs
         if isnan(tolRel):
-            tolRel = DEFAULTS.TOLREL
+            tolRel = defaults.TOLREL
         self.tolRel = tolRel
+        if isnan(divT):
+            divT = defaults.DIV_T
         self.divT = divT
+        if isnan(divX):
+            divX = defaults.DIV_X
         assert divX <= 1
         self.divX = divX
         #iteration
         if maxIterComponent == 0:
-            maxIterComponent = DEFAULTS.MAXITER_COMPONENT
+            maxIterComponent = defaults.MAXITER_COMPONENT
         self.maxIterComponent = maxIterComponent
         if maxIterCycle == 0:
-            maxIterCycle = DEFAULTS.MAXITER_CYCLE
+            maxIterCycle = defaults.MAXITER_CYCLE
         self.maxIterCycle = maxIterCycle
         # methods
-        self.methods = copy.deepcopy(methods)
+        if methods == {}:
+            methods = copy.deepcopy(defaults.METHODS)
+        self.methods = methods
         #
         self._tolRel_p = tolRel
         self._tolRel_T = tolRel
         self._tolRel_h = tolRel
         self._tolRel_rho = tolRel
-        self.name = name
-        self._inputs = _inputs
-        self._properties = _properties
 
     @property
     def dpF(self):
@@ -232,7 +238,7 @@ name : str, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(DEFAULTS.RST_HEADINGS[rstHeading] * len(output))
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
         for k, v in self._inputs:
             output += self.formatAttrForSummary({k: v}, [])
         if printSummary:
@@ -253,50 +259,71 @@ args : tuple
     - HxPlate or HxUnitPlate: kwargs must be in the form (geom, transfer, phase, flow).
 
         """
-        cdef tuple listKwargs, listGeomHxPlate, listTransfer, listPhase ,listFlows
-        cdef str geom, transfer, flow, phase, lookup_dict, ret
+        cdef tuple listGeom
+        cdef str geom, lookup_dict
+        cdef str ret = ''
+        cdef unsigned char transfer, flow, unitPhase, unitPhaseOrig
         try:
             if cls in ["HxPlate","HxUnitPlate", "HxPlateCorrugated", "HxPlateFin"]:
                 """args must be in the form (geom, transfer, phase, flow)."""
-                listKwargs = ("geom", "transfer", "phase", "flow")
                 if len(args) == 4:
-                    geom, transfer, phase, flow = args
+                    geom, transfer, unitPhase, flow = args
                 else:
-                    raise IndexError(
-                        "lookup() of {} requires 4 args in the order: {}, (given: {} args)".
-                        format(cls, listKwargs, len(args)))
+                    msg = 'lookup(): Class {} requires 4 args in the order: (geom, transfer, unitPhase, flow), (given: {} args)'.format(cls, len(args))
+                    log('error', msg)
+                    raise IndexError(msg)
 
-                listGeomHxPlate = ("GeomHxPlateCorrugatedChevron", "GeomHxPlateFinStraight",
+                listGeom = ("GeomHxPlateCorrugatedChevron", "GeomHxPlateFinStraight",
                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
-                listTransfer = ("heat", "friction")
-                listPhase = ('sp', 'liq', 'vap', 'tpEvap', 'tpCond')
-                listFlows = ("wf", "sf")
-                assert geom in listGeomHxPlate, "'geom' arg must be in {}, ({} given)".format(
-                    listGeomHxPlate, geom)
-                assert flow.lower(
-                ) in listFlows, "'flow' arg must be in {} ({} given)".format(
-                    listFlows, flow)
-                assert transfer.lower(
-                ) in listTransfer, "'transfer' arg must be in {}, ({} given)".format(
-                    listTransfer, transfer)
-                if phase[0:2].lower() == "tp":
-                    phase = "".join(phase[0:2].lower() + phase[2:].title())
-                assert phase in listPhase, "'phase' arg must be in listPhase ({} given)".format(
-                    listPhase, phase)
-                ret = self.methods[geom][transfer][flow.lower()][phase]
-                if ret == '' or ret is None:
-                    raise ValueError(
-                        "Method for geom:{}, transfer:{}, phase:{} not found (found dict: {})".format(
-                            geom, transfer, phase, self.methods[geom][transfer][flow.lower()][phase]))
-                else:
-                    return ret
+                if geom not in listGeom:
+                    msg = "'geom' arg must be in {}, (given: {})".format(listGeom, geom)
+                    log('error', msg)
+                    raise NotImplementedError(msg)
+                unitPhaseOrig = unitPhase
+                if flow == WORKING_FLUID or flow == SECONDARY_FLUID:
+                    
+                    try:
+                        ret = self.methods[geom][transfer][flow][unitPhase]
+                    except:
+                        if unitPhase in [UNITPHASE_TWOPHASE_CONDENSING, UNITPHASE_TWOPHASE_EVAPORATING]:
+                            unitPhase = UNITPHASE_ALL_TWOPHASE
+                        else:
+                            unitPhase = UNITPHASE_ALL_SINGLEPHASE
+                        try:
+                            ret = self.methods[geom][transfer][flow][unitPhase]
+                        except:
+                            try:
+                                ret = self.methods[geom][transfer][flow][UNITPHASE_ALL]
+                            except:
+                                pass
+                if ret == '': #flow not WORKING_FLUID or SECONDARY_FLUID or all trys above failed
+                    unitPhase = unitPhaseOrig
+                    try:
+                        ret = self.methods[geom][transfer][unitPhase]
+                    except:
+                        if unitPhase in [UNITPHASE_TWOPHASE_CONDENSING, UNITPHASE_TWOPHASE_EVAPORATING]:
+                            unitPhase = UNITPHASE_ALL_TWOPHASE
+                        else:
+                            unitPhase = UNITPHASE_ALL_SINGLEPHASE
+                        try:
+                            ret = self.methods[geom][transfer][unitPhase]
+                        except:
+                            try:
+                                ret = self.methods[geom][transfer][UNITPHASE_ALL]
+                            except:
+                                msg = "lookupMethod(): Could not find method for geom:{}, transfer:{}, phase:{}, searched fallbacks.".format(geom, transfer, unitPhaseOrig)
+                                log('error', msg)
+                                raise KeyError(msg)
+                return ret
             else:
-                raise ValueError("Methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, DEFAULTS._GITHUB_SOURCE_URL))
+                msg = "lookupMethod(): methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, SOURCE_URL)
+                log('error', msg)
+                raise NotImplementedError(msg)
         except:
             raise
             
-    cpdef void set_method(self, str method, list geoms, list transfers, list phases, list flows):
-        """Set a method to multiple geometries, transfer types, flows and phases.
+    cpdef void set_method(self, str method, str geom, unsigned char transfer, unsigned char unitPhase, unsigned char flow) except *:
+        """Set the method of a single geometry, transfer type, flow and phase.
 
 Parameters
 -----------
@@ -315,22 +342,34 @@ phases : list of str or str
 flows : list of str
     List of strings of flows to be set for. Must be "wf" and or "sf".
         """
-        cdef str geom, transfer, flow, phase, lookup_dict
-        if transfers == ["all"]:
-            transfers = ["heat", "friction"]
-        if flows == ["all"]:
-            flows = ["wf", "sf"]
-        if phases == ["all"]:
-            phases = ["sp", "liq", "vap", "tpEvap", "tpCond"]
-        if phases == ["all-sp"]:
-            phases = ["sp", "liq", "vap"]
-        if phases == ["all-tp"]:
-            phases = ["tpEvap", "tpCond"]
-
-        for geom in geoms:
-            for transfer in transfers:
-                for phase in phases:
-                    for flow in flows:
-                        self.methods[geom][transfer][flow.lower()][phase] = method
-
+        cdef unsigned char UP
+        cdef list flows
+        if transfer == TRANSFER_ALL:
+            self.set_method(method, geom, TRANSFER_HEAT, unitPhase, flow)
+            self.set_method(method, geom, TRANSFER_FRICTION, unitPhase, flow)
+        else:
+            if flow == FLOW_ALL:
+                flows = [WORKING_FLUID, SECONDARY_FLUID]
+            else:
+                flows = [flow]
+            for fl in flows: #remove equivalent unitphases
+                if fl in self.methods[geom][transfer]:
+                    if unitPhase == UNITPHASE_ALL:
+                        for UP in [UNITPHASE_LIQUID, UNITPHASE_VAPOUR, UNITPHASE_SUPERCRITICAL, UNITPHASE_TWOPHASE_EVAPORATING, UNITPHASE_TWOPHASE_CONDENSING]:
+                            self.methods[geom][transfer][fl].pop(UP, None)
+                    if unitPhase == UNITPHASE_ALL_SINGLEPHASE:
+                        for UP in [UNITPHASE_LIQUID, UNITPHASE_VAPOUR, UNITPHASE_SUPERCRITICAL]:
+                            self.methods[geom][transfer][fl].pop(UP, None)
+                    if unitPhase == UNITPHASE_ALL_TWOPHASE:
+                        for UP in [UNITPHASE_TWOPHASE_EVAPORATING, UNITPHASE_TWOPHASE_CONDENSING]:
+                            self.methods[geom][transfer][fl].pop(UP, None)
+                    if self.methods[geom][transfer][fl] == {}: # remove entire flow dict if empty
+                        self.methods[geom][transfer].pop(fl, None)
+                else:
+                    continue
+            if flow == FLOW_ALL:
+                self.methods[geom][transfer][unitPhase] = method
+            else:
+                self.methods[geom][transfer].setdefault(flow, {})
+                self.methods[geom][transfer][flow][unitPhase] = method
 

@@ -15,17 +15,20 @@ CHANGELOG
 Added
 *******
 
+- ``constants`` module: repeats a bunch of CoolProp constants, eg; input_pairs, phases.
 - ``HxPlateFin`` and ``HxPlateCorrugated`` (later is renaming of ``HxPlate``)
-
 - ``GeomHxPlateFinStraight`` and ``GeomHxPlateFinOffset`` added to ``geometries``.
 - heat transfer methods added for HxPlateFin geometries
 
 Changed
 ********
 
+- ``defaults`` module split into ``defaults`` and ``constants``. Defaults for matplotlib configuration added and ``getPlotDir()`` renamed and slight reworked to ``makePlotDir()``.
 - ``HxPlate`` renamed to ``HxPlateCorrugated``, new ``HxPlate`` is now a superclass of ``HxPlateFin`` and ``HxPlateCorrugated`` .
 - ``geomPlateWf`` and ``geomPlateSf`` attributes of ``HxPlate`` and ``HxUnitPlate`` renamed to ``geomWf`` and ``geomSf``.
 - METHODS dictionary changed to a more nested structure
+- ``timeThis`` decorator renamed to ``timer``
+- efficiency attirbutes/properties renamed to ``efficiency*`` from ``eff*``
 
 Deprecated
 ***********
@@ -44,7 +47,7 @@ Added
 *******
 
 - ``library.conversions`` significantly expanded and reorganised. A couple of functions have has slight name changes.
-- ``DEFAULTS.TRY_BUILD_PHASE_ENVELOPE``: whether CoolProp should always try to build the phase envelope for mixtures
+- ``defaults.TRY_BUILD_PHASE_ENVELOPE``: whether CoolProp should always try to build the phase envelope for mixtures
 
 Changed
 ********

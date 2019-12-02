@@ -2,6 +2,7 @@
 _scikitbuild/
 notes.txt
 *.log
+scraps/
 
 # Docs
 docs/_build

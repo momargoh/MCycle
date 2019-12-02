@@ -1,29 +1,28 @@
 """Compute FlowState properties in standard atmospheres.
 """
-from ..bases.flowstate cimport FlowState
-from ..DEFAULTS import COOLPROP_EOS
+from ..bases.flowstate import FlowState
+from .. import constants as c
+from ..logger import log
 from math import nan, exp
-import CoolProp as CP
+
+gravity = 9.80665
+R = 287.05
 
 
-cdef tuple isaPropsFromBase(double altitude, double lapseRate, double altitudeBase, double pStagBase, double TStagBase, double gravity, double R):
-    cdef double T=nan
-    cdef double p=nan
+def isaPropsFromBase(altitude, lapseRate, altitudeBase, pStagBase, TStagBase):
+    T = nan
+    p = nan
     if lapseRate != 0:
         T = TStagBase + lapseRate * (altitude - altitudeBase)
         p = pStagBase * (T / TStagBase)**(-gravity / lapseRate / R)
     else:
         T = TStagBase
-        p = pStagBase * exp(-gravity / R / TStagBase * (altitude - altitudeBase))
+        p = pStagBase * exp(-gravity / R / TStagBase *
+                            (altitude - altitudeBase))
     return p, T
 
-cpdef FlowState isa(double altitude,
-                    double pStag=101325.,
-                    double TStag=288.15,
-                    double gravity=9.80665,
-                    double R=287.058,
-                    str fluidCP="Air",
-                    int phaseCP=-1):
+
+def isa(altitude, pStag=101325., TStag=288.15):
     """FlowState: Returns FlowState at desired altitude in the International Standard Atmosphere.
 
 
@@ -35,33 +34,32 @@ pStag : float, optional
     Stagnation (absolute) pressure at sea level [Pa]. Defaults to 101325.
 TStag : float, optional
     Stagnation (absolute) temperature at sea level [Pa]. Defaults to 288.15.
-g : float, optional
-    Acceleration due to gravity [m/s^2]. Assumed to be constant. Defaults to 9.80665.
-R : float, optional
-    Specific gas constant of air [J/kg/K]. Assumed to be constant, air is assumed to be dry. Defaults to 287.058.
 """
     assert altitude >= -610, "Altitude must be above -610 [m] (given: {})".format(
         altitude)
     assert altitude <= 86000, "Altitude must be below 86,000 [m] (given: {})".format(
         altitude)
-    cdef double[7] refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
-    cdef double[8] refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
-    cdef double _pStag = pStag
-    cdef double _TStag = TStag
-    cdef size_t i = 0
+    refLapseRate = [-0.0065, 0, 0.001, 0.0028, 0, -0.0028, -0.002]
+    refAltitude = [0, 11000, 20000, 32000, 47000, 51000, 71000, 86000]
+    atm = FlowState('Air')
+    _pStag = pStag
+    _TStag = TStag
+    i = 0
     while i < len(refAltitude) - 1:
         if altitude <= refAltitude[i + 1]:
             _pStag, _TStag = isaPropsFromBase(altitude, refLapseRate[i],
-                                         refAltitude[i], _pStag, _TStag, gravity, R)
+                                              refAltitude[i], _pStag, _TStag)
             break
         else:
-            _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1], refLapseRate[i],
-                                         refAltitude[i], _pStag, _TStag, gravity, R)
+            _pStag, _TStag = isaPropsFromBase(refAltitude[i + 1],
+                                              refLapseRate[i], refAltitude[i],
+                                              _pStag, _TStag)
             i += 1
     try:
-        return FlowState(fluidCP, phaseCP, 0, CP.PT_INPUTS, _pStag,
-                         _TStag)
-    except:
-        raise ValueError(
-            "Was not able to produce FlowState from computed pStag={}, TStag={}".
-            format(_pStag, _TStag))
+        atm.updateState(c.PT_INPUTS, _pStag, _TStag)
+        return atm
+    except Exception as exc:
+        msg = "ISA was not able to produce FlowState from computed pStag={}, TStag={}".format(
+            _pStag, _TStag)
+        log('error', msg, exc)
+        raise ValueError(msg)
