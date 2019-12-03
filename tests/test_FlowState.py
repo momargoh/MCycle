@@ -1,26 +1,26 @@
 import unittest
 import mcycle as mc
-import CoolProp as CP
 
 
 class TestFlowState(unittest.TestCase):
     def test_FlowState(self):
-        flow = mc.FlowState("air", -1, 1.0, CP.PT_INPUTS, 101325., 293.15)
+        flow = mc.FlowState("air", 1.0, mc.PT_INPUTS, 101325., 293.15)
         self.assertAlmostEqual(flow.rho(), 1.205, 3)
         self.assertAlmostEqual(flow.cp() / 1000, 1.006, 3)
         self.assertAlmostEqual(flow.k(), 0.0257, 3)
 
     def test_FlowState_phase(self):
-        flow = mc.FlowState("air", -1, 1.0, CP.PT_INPUTS, 101325., 293.15)
-        self.assertEqual(flow.phase(), "vap")
-        flow = mc.FlowState("water", -1, 1.0, CP.PT_INPUTS, 101325., 293.15)
-        self.assertEqual(flow.phase(), "liq")
-        flow = mc.FlowState("R245fa", -1, 1.0, CP.PQ_INPUTS, 5.e5, 0.4)
-        self.assertEqual(flow.phase(), "tp")
-        flow = mc.FlowState("R245fa", -1, 1.0, CP.PQ_INPUTS, 5.e5, 0)
-        self.assertEqual(flow.phase(), "satLiq")
-        flow = mc.FlowState("R245fa", -1, 1.0, CP.PQ_INPUTS, 5.e5, 1)
-        self.assertEqual(flow.phase(), "satVap")
+        flow = mc.FlowState("air", 1.0, mc.PT_INPUTS, 101325., 293.15)
+        #self.assertEqual(flow.phase(), mc.PHASE_VAPOUR)
+        self.assertEqual(flow.phase(), mc.PHASE_SUPERCRITICAL_GAS)
+        flow = mc.FlowState("water", 1.0, mc.PT_INPUTS, 101325., 293.15)
+        self.assertEqual(flow.phase(), mc.PHASE_LIQUID)
+        flow = mc.FlowState("R245fa", 1.0, mc.PQ_INPUTS, 5.e5, 0.4)
+        self.assertEqual(flow.phase(), mc.PHASE_TWOPHASE)
+        flow = mc.FlowState("R245fa", 1.0, mc.PQ_INPUTS, 5.e5, 0)
+        self.assertEqual(flow.phase(), mc.PHASE_SATURATED_LIQUID)
+        flow = mc.FlowState("R245fa", 1.0, mc.PQ_INPUTS, 5.e5, 1)
+        self.assertEqual(flow.phase(), mc.PHASE_SATURATED_VAPOUR)
 
     def test_RefData_populate_data(self):
         refData = mc.RefData("air", 2, 101325., {'T': [200, 300, 400, 500]})
@@ -50,7 +50,7 @@ class TestFlowState(unittest.TestCase):
         refData = mc.RefData("air", 2, 101325., {
             'T': [200, 250, 300, 350, 400]
         })
-        flow = mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 101325., 293.15)
+        flow = mc.FlowStatePoly(refData, 1.0, mc.PT_INPUTS, 101325., 293.15)
         self.assertAlmostEqual(flow.rho() - 1.205, 0, 3)
         self.assertAlmostEqual(flow.cp() / 1000 - 1.006, 0, 3)
         self.assertAlmostEqual(flow.k() - 0.0257, 0, 3)
@@ -60,7 +60,7 @@ class TestFlowState(unittest.TestCase):
             'T': [200, 250, 300, 350, 400]
         })
         with self.assertRaises(ValueError):
-            mc.FlowStatePoly(refData, 1.0, CP.PT_INPUTS, 201325., 293.15)
+            mc.FlowStatePoly(refData, 1.0, mc.PT_INPUTS, 201325., 293.15)
 
 
 if __name__ == "__main__":

@@ -1,13 +1,12 @@
 import unittest
 import mcycle as mc
-import CoolProp as CP
 
-flow0 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 298.15)
-flow1 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 398.15)
-flow2 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 498.15)
-flow3 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 598.15)
-flow4 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 698.15)
-flow5 = mc.FlowState("air", -1, 2.0, CP.PT_INPUTS, 101325., 798.15)
+flow0 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 298.15)
+flow1 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 398.15)
+flow2 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 498.15)
+flow3 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 598.15)
+flow4 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 698.15)
+flow5 = mc.FlowState("air", 2.0, mc.PT_INPUTS, 101325., 798.15)
 
 
 class ComponentSubClass(mc.bases.Component):

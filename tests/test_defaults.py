@@ -1,9 +1,8 @@
 import unittest
 import mcycle as mc
-import CoolProp as CP
 
 
-class TestDEFAULTS(unittest.TestCase):
+class Testdefaults(unittest.TestCase):
     mc.UNITSEPARATORDENOM = "."
     mc.UNITSEPARATORNUM = "."
 
@@ -23,8 +22,8 @@ class TestDEFAULTS(unittest.TestCase):
         self.assertEqual(mc.getUnits("power"), "W")
 
     def test_changing_default(self):
-        mc.DEFAULTS.TOLREL = 4  #updateDefaults({'TOLREL': 4})
-        print(mc.DEFAULTS.TOLREL)
+        mc.defaults.TOLREL = 4  #updateDefaults({'TOLREL': 4})
+        print(mc.defaults.TOLREL)
         config = mc.Config()
         print(config.dpPortSf)
         self.assertEqual(config.tolRel, 4)

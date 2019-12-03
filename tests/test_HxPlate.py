@@ -1,15 +1,14 @@
 import unittest
 import mcycle as mc
-import CoolProp as CP
 
 
 class TestHxPlateCorrugatedChevron(unittest.TestCase):
     config = mc.Config()
     config.update({'dpAcc': False, 'dpPort': False, 'dpHead': False})
-    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrugatedChevron"],
-                      ["all"], ["all"], ["sf"])
+    config.set_method("savostinTikhonov_sp", "GeomHxPlateCorrugatedChevron",
+                      mc.TRANSFER_ALL, mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
     hx = mc.HxPlateCorrugated(
-        flowConfig=mc.HxFlowConfig("counter", "1", True, True),
+        flowConfig=mc.HxFlowConfig(mc.COUNTERFLOW, 1, '', True, True),
         RfWf=0,
         RfSf=0,
         plate=mc.library.stainlessSteel_316(573.15),
@@ -26,14 +25,14 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
         NPlate=23,
         coeffs_LPlate=[0.056, 1],
         coeffs_WPlate=[0, 1],
-        effThermal=1.0,
+        efficiencyThermal=1.0,
         config=config)
-    flowInWf = mc.FlowState("R123", -1, 0.34307814292524513, CP.PT_INPUTS,
+    flowInWf = mc.FlowState("R123", 0.34307814292524513, mc.PT_INPUTS,
                             1000000., 300.57890653991603)
-    flowOutWf = mc.FlowState("R123", -1, 0.34307814292524513, CP.PT_INPUTS,
+    flowOutWf = mc.FlowState("R123", 0.34307814292524513, mc.PT_INPUTS,
                              1000000., 414.30198149532583)
-    flowInSf = mc.FlowState("Air", -1, 0.09, CP.PT_INPUTS, 111600., 1170.)
-    flowOutSf = mc.FlowState("Air", -1, 0.09, CP.PT_INPUTS, 111600.,
+    flowInSf = mc.FlowState("Air", 0.09, mc.PT_INPUTS, 111600., 1170.)
+    flowOutSf = mc.FlowState("Air", 0.09, mc.PT_INPUTS, 111600.,
                              310.57890653991603)
 
     def test_0_unitise(self):
@@ -53,7 +52,7 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'L', 'sizeBounds': [0.005, 0.5]})
-        self.hx._size('', [], [])
+        self.hx.size()
         self.assertAlmostEqual(abs(self.hx.L - 269e-3) / 269e-3, 0, 2)
         #
         self.assertAlmostEqual(
@@ -67,7 +66,7 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'W', 'sizeBounds': [50e-3, 500e-3]})
-        self.hx._size('', [], [])
+        self.hx.size()
         self.assertAlmostEqual(abs(self.hx.W - 95e-3) / 95e-3, 0, 4)
 
     def test_1_size_geomWf_b(self):
@@ -78,7 +77,7 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'geomWf.b', 'sizeBounds': [0.1e-3, 10e-3]})
-        self.hx._size('', [], [])
+        self.hx.size()
         self.assertAlmostEqual(abs(self.hx.geomWf.b - 1.096e-3), 0, 4)
 
     def test_1_size_NPlate(self):
@@ -89,20 +88,20 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
             'W': 95e-3
         })
         self.hx.update({'sizeAttr': 'NPlate', 'sizeBounds': [10, 50]})
-        self.hx._size('', [], [])
+        self.hx.size()
         self.assertEqual(self.hx.NPlate, 23)
 
     def test_1_size_L_solution_not_in_bounds_Exception(self):
         self.hx.update({'sizeAttr': 'L', 'sizeBounds': [0.5, 5.]})
-        self.hx._size('', [], [])
+        self.hx.size()
         self.assertRaises(Exception)
 
     def test_run1(self):
-        flowInWf = mc.FlowState("R245fa", -1, 2, CP.PT_INPUTS, 2e5, 300.)
-        flowInSf = mc.FlowState("water", -1, 5., CP.PT_INPUTS, 1e5, 600.)
+        flowInWf = mc.FlowState("R245fa", 2, mc.PT_INPUTS, 2e5, 300.)
+        flowInSf = mc.FlowState("water", 5., mc.PT_INPUTS, 1e5, 600.)
 
         hLowerBound = flowInWf.h() * 1.01
-        hUpperBound = flowInWf.copyState(CP.PT_INPUTS, 2e5, 350.).h()
+        hUpperBound = flowInWf.copyUpdateState(mc.PT_INPUTS, 2e5, 350.).h()
 
         self.hx.update({
             'L': 0.269,
@@ -119,11 +118,11 @@ class TestHxPlateCorrugatedChevron(unittest.TestCase):
         self.assertAlmostEqual(self.hx.flowOutWf.T(), 318.22, 2)
 
     def test_run2(self):
-        flowInWf = mc.FlowState("water", -1, 0.1, CP.PT_INPUTS, 1.1e5, 700.)
-        flowInSf = mc.FlowState("water", -1, 0.1, CP.PT_INPUTS, 1e5, 500.)
+        flowInWf = mc.FlowState("water", 0.1, mc.PT_INPUTS, 1.1e5, 700.)
+        flowInSf = mc.FlowState("water", 0.1, mc.PT_INPUTS, 1e5, 500.)
 
         hLowerBound = flowInWf.h() * 0.99
-        hUpperBound = flowInWf.copyState(CP.PT_INPUTS, 1.1e5, 600.).h()
+        hUpperBound = flowInWf.copyUpdateState(mc.PT_INPUTS, 1.1e5, 600.).h()
 
         self.hx.update({
             'L': 0.1,

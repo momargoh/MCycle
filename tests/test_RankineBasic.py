@@ -2,21 +2,20 @@ import unittest
 import mcycle as mc
 from math import nan
 import numpy as np
-import CoolProp as CP
 
 
 class TestRankineBasic(unittest.TestCase):
-    wf = mc.FlowState("R123", -1)
+    wf = mc.FlowState("R123")
     pEvap = 10.e5
     superheat = 30.
     TCond = 300.
     subcool = 0
     comp = mc.CompBasic(nan, 0.7, sizeAttr="pRatio")
-    sourceIn = mc.FlowState("Air", -1, 0.09, CP.PT_INPUTS, 1.116e5, 1170.)
+    sourceIn = mc.FlowState("Air", 0.09, mc.PT_INPUTS, 1.116e5, 1170.)
     evap = mc.library.alfaLaval_AC30EQ()
     evap.update({'sizeAttr': "NPlate", 'plate.T': 573.15})
     exp = mc.ExpBasic(nan, 0.7, sizeAttr="pRatio")
-    sinkIn = mc.FlowState("Air", -1, 0.20, CP.PT_INPUTS, 0.88260e5, 281.65)
+    sinkIn = mc.FlowState("Air", 0.20, mc.PT_INPUTS, 0.88260e5, 281.65)
     sinkAmbient = sinkIn.copy()
     sourceAmbient = sinkIn.copy()
     cond = mc.ClrBasicConstP(nan, 1, sizeAttr="QCool")
@@ -28,8 +27,8 @@ class TestRankineBasic(unittest.TestCase):
         'dpPort': False,
         'dpHead': False
     })
-    config.set_method("savostinTikhonov_sp", ["GeomHxPlateCorrugatedChevron"],
-                      ["all"], ["all"], ["sf"])
+    config.set_method("savostinTikhonov_sp", "GeomHxPlateCorrugatedChevron",
+                      mc.TRANSFER_ALL, mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
     cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                             subcool, config)
     cycle.setAll_config(config)
@@ -79,12 +78,13 @@ class TestRankineBasic(unittest.TestCase):
             "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWf_flows()
-        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
-                                self.cycle.TEvap + 20.).h()
-        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
-                                self.cycle.TEvap + 32.).h()
+        rb0 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
+                                      self.cycle.TEvap + 20.).h()
+        rb1 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
+                                      self.cycle.TEvap + 32.).h()
         self.evap.update({"runBounds": [rb0, rb1]})
-        self.cycle.set_state6(self.wf.copyState(CP.QT_INPUTS, 0, self.TCond))
+        self.cycle.set_state6(
+            self.wf.copyUpdateState(mc.QT_INPUTS, 0, self.TCond))
         self.cycle.run()
         self.assertAlmostEqual(
             abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
@@ -104,12 +104,12 @@ class TestRankineBasic(unittest.TestCase):
             "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWf_flows()
-        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+        rb0 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
                                 self.cycle.TEvap + 20.).h()
-        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
+        rb1 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
                                 self.cycle.TEvap + 32.).h()
         self.evap.update({"runBounds": [rb0, rb1]})
-        self.cycle.set_state6(self.wf.copyState(CP.QT_INPUTS, 0, self.TCond))
+        self.cycle.set_state6(self.wf.copyUpdateState(mc.QT_INPUTS, 0, self.TCond))
         self.cycle.run()
         self.assertAlmostEqual(
             abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
@@ -130,14 +130,14 @@ class TestRankineBasic(unittest.TestCase):
             "cond.QCool": 73582.4417680011
         })
         self.cycle.clearWf_flows()
-        rb0 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
-                                self.cycle.TEvap + 20.).h()
-        rb1 = self.wf.copyState(CP.PT_INPUTS, self.pEvap,
-                                self.cycle.TEvap + 32.).h()
+        rb0 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
+                                      self.cycle.TEvap + 20.).h()
+        rb1 = self.wf.copyUpdateState(mc.PT_INPUTS, self.pEvap,
+                                      self.cycle.TEvap + 32.).h()
         self.evap.update({"runBounds": [rb0, rb1]})
         self.cycle.set_state3(
-            self.wf.copyState(CP.PT_INPUTS, self.cycle.pEvap,
-                              self.cycle.TEvap + 30))
+            self.wf.copyUpdateState(mc.PT_INPUTS, self.cycle.pEvap,
+                                    self.cycle.TEvap + 30))
         self.cycle.run()
         self.assertAlmostEqual(
             abs(self.cycle.state4.T() / 3.6047e+02) - 1, 0, 3)
@@ -155,9 +155,9 @@ class TestRankineBasic(unittest.TestCase):
             savefig=True,
             savefig_name="test_cycle_plot",
             savefig_format="png",
-            savefig_folder="")
+            savefig_folder=".")
         cwd = os.getcwd()
-        os.remove(cwd + "/test_cycle_plot.png")
+        os.remove("./test_cycle_plot.png")
 
 
 if __name__ == "__main__":
