@@ -2,9 +2,12 @@
 MCycle README
 =================
    
+.. warning::
+  MCycle is currently undergoing an overhaul and a new version will be published shortly. I'd consider waiting for the new version to avoid having to rework your scripts later!
+
 .. contents::
 
-About
+Meta
 =========
 
 :Version:
@@ -12,7 +15,7 @@ About
 :Author:
    Momar Hughes
 :Contact:
-   momar.hughes@unsw.edu.au
+   momarhughes@outlook.com
 :Topic:
    Thermodynamic power-cycle sizing and analysis
 :Licence:
@@ -23,9 +26,11 @@ About
    :target: https://doi.org/10.21105/joss.00710
    :alt: JOSS Publication
 .. image:: https://readthedocs.org/projects/mcycle/badge/?version=latest
-   :target: https://mcycle.readthedocs.io/?badge=latest
+   :target: https://mcycle.momarhughes.com/?badge=latest
    :alt: Docs Build Status
 	
+About
+=========
 
 MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynamic heat cycles. Sizing methods are based on empirical and theoretical correlations. Users may analyse cycles consisting of components including heaters, coolers, compressors, expanders and heat exchangers. The two main modes for analysing cycles or components are:
   
@@ -33,9 +38,17 @@ MCycle is a Python3 module for 1-dimensional analysis and sizing of thermodynami
 
 * ``run`` : calculates working fluid cycle flow states/ component outlet flow state based on user-defined characteristics/dimensions of the components.
 
-All thermodynamic fluid properties are computed using CoolProp. The latest list of available pure and pseudo-pure fluids can be found here: `link <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_. Mixtures are also supported, though due to their complexity, may only be defined by pressure/quality, temperature/quality or pressure/temperature. See here for more info about mixtures: `link <http://www.coolprop.org/fluid_properties/Mixtures.html>`_. CoolProp can also use `REFPROP <https://www.nist.gov/srd/refprop>`_ as its backend, so if you may also use any REFPROP fluids if you have a licence.
+Thermodynamic Properties
+=========================
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at `https://mcycle.readthedocs.io <https://mcycle.readthedocs.io>`_.
+All thermodynamic fluid properties are computed using CoolProp. The latest list of available pure and pseudo-pure fluids can be found here: `link <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_. Mixtures are also supported, though due to their complexity, may only be defined by pressure/quality, temperature/quality or pressure/temperature. See here for more info about mixtures: `link <http://www.coolprop.org/fluid_properties/Mixtures.html>`_. CoolProp can also use `REFPROP <https://www.nist.gov/srd/refprop>`_ as its backend, so you may use any REFPROP fluids if you have a licence (see https://github.com/usnistgov/REFPROP-cmake for instructions on installing REFPROP shared library). Your REFPROP `FORTRAN` and `FLUID` folders will need to be added to PATH (and renamed to lowercase `fortran` and `fluid` on Linux & OSX), or you may use the following function to point CoolProp towards your REFPROP build directory (see here for more info about PATH issues http://www.coolprop.org/coolprop/REFPROP.html#path-issues) ::
+
+  mcycle.setupREFPROP(ALTERNATIVE_REFPROP_PATH='/path/to/REFPROP/directory', ALTERNATIVE_REFPROP_LIBRARY_PATH='', ALTERNATIVE_REFPROP_HMX_BNC_PATH='')
+
+Code Source
+=========================
+
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at https://mcycle.momarhughes.com.
 
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following `publication <https://doi.org/10.21105/joss.00710>`_.
 
@@ -87,13 +100,9 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
    
 .. _section-README-quickstart:
 
-Fluids
-===========
-
-MCycle uses 
 
 Quick start
 ===========
 
-Have a look through the `quick start example <https://mcycle.readthedocs.io/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.readthedocs.io/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
+Have a look through the `quick start example <https://mcycle.momarhughes.com/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.momarhughes.com/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
 
