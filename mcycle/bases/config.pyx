@@ -1,6 +1,6 @@
 from .mcabstractbase cimport MCAB, MCAttr
 from .. import defaults
-from ..constants import *
+from .._constants cimport *
 from ..logger import log
 import copy
 from math import nan, isnan

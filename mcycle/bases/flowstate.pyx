@@ -1,6 +1,6 @@
 from .mcabstractbase cimport MCAB, MCAttr
 from .. import defaults
-from ..constants import *
+from .._constants cimport *
 from ..logger import log
 from math import nan, isnan
 import CoolProp as CP

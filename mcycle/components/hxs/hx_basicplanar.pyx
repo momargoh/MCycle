@@ -5,7 +5,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...constants import *
+from ..._constants cimport *
 from ...logger import log
 from math import nan
 import scipy.optimize as opt

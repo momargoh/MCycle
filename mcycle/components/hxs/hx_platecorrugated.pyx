@@ -8,7 +8,7 @@ from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...constants import *
+from ..._constants cimport *
 from ...logger import log
 from warnings import warn
 from math import nan, isnan, pi

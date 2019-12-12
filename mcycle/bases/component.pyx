@@ -1,5 +1,5 @@
 from .. import defaults
-from ..constants import *
+from .._constants cimport *
 from ..logger import log
 from .mcabstractbase cimport MCAB, MCAttr
 from .flowstate cimport FlowState
@@ -72,7 +72,7 @@ kwargs : optional
         try: # copy _units if relevant
             copy._units = []
             for unit in self._units:
-                copy._units.append(unit._copy())
+                copy._units.append(unit.copy())
         except:
             pass
         return copy
@@ -103,8 +103,8 @@ kwargs : dict
         """Compute the outgoing working fluid FlowState from component attributes."""
         pass
 
-    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str attr, list bounds, list unitsBounds):
-        self.update({attr: value, 'sizeBounds': bounds, 'sizeUnitsBounds': unitsBounds})
+    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str attr):
+        self.update({attr: value})
         self.run()
         return getattr(self.flowsOut[0], self.config.tolAttr)() - getattr(flowOutTarget, self.config.tolAttr)()
     
@@ -112,32 +112,22 @@ kwargs : dict
         """Solve for the value of the nominated component attribute required to return the defined outgoing FlowState.
         """
         cdef double tol
+        cdef str attr = self.sizeAttr
         try:
-            flowOutTarget = self.flowsOut[0]._copy({})
+            flowOutTarget = self.flowsOut[0].copy()
 
             tol = self.config.tolAbs + self.config.tolRel * getattr(flowOutTarget, self.config.tolAttr)()
-            if len(bounds) == 2:
-                sizedValue = opt.brentq(
+            sizedValue = opt.brentq(
                     self._f_sizeComponent,
-                    bounds[0],
-                    bounds[1],
-                    args=(flowOutTarget, attr, bounds, unitsBounds),
+                    *self.sizeBounds,
+                    args=(flowOutTarget, attr),
                     rtol=self.config.tolRel,
                     xtol=self.config.tolAbs,
                     maxiter=defaults.MAXITER_COMPONENT)
-            elif len(bounds) == 1:
-                sizedValue = opt.newton(
-                    self._f_sizeComponent,
-                    bounds[0],
-                    args=(flowOutTarget, attr, bounds, unitsBounds),
-                    tol=tol,
-                    maxiter=defaults.MAXITER_COMPONENT)
-            else:
-                raise ValueError("bounds is not valid (given: {})".format(bounds))
             self.update({attr: sizedValue, 'flowsOut[0]': flowOutTarget})
         except:
-            raise StopIteration("{}.size({},{},{}) failed to converge.".format(
-                self.__class__.__name__, attr, bounds, unitsBounds))
+            raise StopIteration("{}.size() failed to converge.".format(
+                self.__class__.__name__))
 
     cpdef public void sizeUnits(self) except *:
         pass

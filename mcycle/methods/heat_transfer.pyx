@@ -57,7 +57,7 @@ Library
 --------
 """
 from ..defaults import GRAVITY
-from ..constants import *
+from .._constants cimport *
 from ..bases.flowstate cimport FlowState
 from ..bases.geom cimport Geom
 from ..components.hxs.flowconfig cimport HxFlowConfig

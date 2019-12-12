@@ -3,7 +3,7 @@ from ...bases.flowstate cimport FlowState
 from ...bases.geom cimport Geom
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...constants import *
+from ..._constants cimport *
 from ...methods import heat_transfer as ht
 from ...geometries.geom_hxplate cimport GeomHxPlateCorrugatedChevron, GeomHxPlateFinOffset, GeomHxPlateFinStraight, GeomHxPlateSmooth
 from .hxunit_basicplanar cimport HxUnitBasicPlanar

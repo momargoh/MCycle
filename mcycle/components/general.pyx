@@ -3,7 +3,7 @@ from ..bases.config cimport Config
 from ..bases.flowstate cimport FlowState
 from ..bases.mcabstractbase cimport MCAttr
 from ..logger import log
-from ..constants import *
+from .._constants cimport *
 from math import nan, isnan
 
 cdef dict _inputsFixedOut = {"inputPair": MCAttr(int, "none"), "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}

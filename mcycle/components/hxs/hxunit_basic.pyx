@@ -3,7 +3,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
-from ...constants import *
+from ..._constants cimport *
 from ...methods.heat_transfer cimport lmtd
 from ...logger import log
 from .flowconfig cimport HxFlowConfig

@@ -7,7 +7,7 @@ from ... import defaults
 from ...logger import log
 from .hxunit_basic cimport HxUnitBasic
 from .flowconfig cimport HxFlowConfig
-from ...constants import *
+from ..._constants cimport *
 from warnings import warn
 from math import nan
 import numpy as np
@@ -601,18 +601,12 @@ kwargs : optional
                 self.unitise()
 
                 tol = self.config.tolAbs + self.config.tolRel * abs(self.Q())
-                if len(bounds) == 2:
-                    sizedValue = opt.brentq(
+                sizedValue = opt.brentq(
                         self._f_sizeHxBasic,
-                        bounds[0],
-                        bounds[1],
+                        *self.sizeBounds,
                         args=(attr),
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(bounds) == 1:
-                    sizedValue = opt.newton(self._f_sizeHxBasic, bounds[0], args=(), tol=tol)
-                else:
-                    raise ValueError("HxBasic.size(): bounds are not valid (given: {})".format(bounds))
                 self.update({attr, sizedValue})
                 #return sizedValue
         except Exception as exc:

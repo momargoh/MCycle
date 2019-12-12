@@ -1,3 +1,7 @@
+# Generated files
+mcycle/_constants.pxd
+mcycle/constants.py
+
 # Development files
 _scikitbuild/
 notes.txt

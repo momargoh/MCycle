@@ -2,7 +2,7 @@ from ...bases.component cimport Component11
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
-from ...constants import *
+from ..._constants cimport *
 from ...logger import log
 
 cdef dict _inputs = {"QCool": MCAttr(float, "power"), "efficiencyThermal": MCAttr(float, "none"),

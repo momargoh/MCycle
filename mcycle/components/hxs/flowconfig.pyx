@@ -1,6 +1,6 @@
 from ...logger import log
 from ...bases.mcabstractbase cimport MCAB, MCAttr
-from ...constants import *
+from ..._constants cimport *
 
 
 cdef dict _inputs = {"sense": MCAttr(str, "none"), "passes": MCAttr(str, "none"), "verticalWf": MCAttr(bool, "none"), "verticalSf": MCAttr(bool, "none")}

@@ -1200,7 +1200,7 @@ struct __pyx_vtabstruct_6mcycle_5bases_9component_Component {
   void (*clearWfFlows)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
   void (*clearAllFlows)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
   void (*run)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
-  double (*_f_sizeComponent)(struct __pyx_obj_6mcycle_5bases_9component_Component *, double, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch);
+  double (*_f_sizeComponent)(struct __pyx_obj_6mcycle_5bases_9component_Component *, double, struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *, PyObject *, int __pyx_skip_dispatch);
   void (*size)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
   void (*sizeUnits)(struct __pyx_obj_6mcycle_5bases_9component_Component *, int __pyx_skip_dispatch);
 };

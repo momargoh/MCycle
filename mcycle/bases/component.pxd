@@ -22,7 +22,7 @@ cdef class Component(MCAB):
     cpdef public void clearWfFlows(self)
     cpdef public void clearAllFlows(self)
     cpdef public void run(self) except *
-    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str sizeAttr, list sizeBounds, list sizeUnitsBounds)
+    cpdef double _f_sizeComponent(self, double value, FlowState flowOutTarget, str attr)
     cpdef public void size(self) except *
     cpdef public void sizeUnits(self) except *
     

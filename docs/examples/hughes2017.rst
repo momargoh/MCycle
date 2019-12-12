@@ -67,7 +67,7 @@ Assuming the engine is travelling at 100knots at an altitude of 3000ft, the ambi
 
 The dead state/ ambient properties of the source and sink are at this same pressure and temperature.::
 
-    >>> sinkAmbient = sinkIn._copy({})
+    >>> sinkAmbient = sinkIn.copy()
     >>> sourceAmbient = mc.FlowState(sourceFluid, CP.iphase_gas, -1, CP.PT_INPUTS, 0.88260e5, 281.65)
 
 

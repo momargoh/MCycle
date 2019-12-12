@@ -1,5 +1,5 @@
 from .. import defaults
-from ..constants import *
+from .._constants cimport *
 from ..logger import log
 from ..bases.config cimport Config
 from ..bases.cycle cimport Cycle
@@ -353,7 +353,7 @@ kwargs : optional
     cpdef public FlowState _source1(self):
         if self.evap.flowConfig.sense == COUNTERFLOW:
             return self._sourceOut()
-        elif self.evap.flowConfig.sense == PARALLEL:
+        elif self.evap.flowConfig.sense == PARALLELFLOW:
             return self._sourceIn()
         else:
             return None
@@ -364,7 +364,7 @@ kwargs : optional
             h = self._source1().h() + self._mWf() * self.evap._efficiencyFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._efficiencyFactorSf()
-        elif self.evap.flowConfig.sense == PARALLEL:
+        elif self.evap.flowConfig.sense == PARALLELFLOW:
             h = self._source1().h() - self._mWf() * self.evap._efficiencyFactorWf() * (
                 self._state20().h() - self._state1().h()
             ) / self._source1().m / self.evap._efficiencyFactorSf()
@@ -378,7 +378,7 @@ kwargs : optional
             h = self._source1().h() + self._mWf() * self.evap._efficiencyFactorSf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._efficiencyFactorSf()
-        elif self.evap.flowConfig.sense == PARALLEL:
+        elif self.evap.flowConfig.sense == PARALLELFLOW:
             h = self._source1().h() - self._mWf() * self.evap._efficiencyFactorWf() * (
                 self._state21().h() - self._state1().h()
             ) / self._sourceIn().m / self.evap._efficiencyFactorSf()
@@ -389,7 +389,7 @@ kwargs : optional
     cpdef public FlowState _source3(self):
         if self.evap.flowConfig.sense == COUNTERFLOW:
             return self._sourceIn()
-        elif self.evap.flowConfig.sense == PARALLEL:
+        elif self.evap.flowConfig.sense == PARALLELFLOW:
             return self._sourceOut()
         else:
             return None
@@ -465,7 +465,7 @@ kwargs : optional
     cpdef public FlowState _sink4(self):
         if self.cond.flowConfig.sense == COUNTERFLOW:
             return self._sinkOut()
-        elif self.cond.flowConfig.sense == PARALLEL:
+        elif self.cond.flowConfig.sense == PARALLELFLOW:
             return self._sinkIn()
         else:
             return None
@@ -473,7 +473,7 @@ kwargs : optional
     cpdef public FlowState _sink6(self):
         if self.cond.flowConfig.sense == COUNTERFLOW:
             return self._sinkIn()
-        elif self.cond.flowConfig.sense == PARALLEL:
+        elif self.cond.flowConfig.sense == PARALLELFLOW:
             return self._sinkOut()
         else:
             return None
@@ -484,7 +484,7 @@ kwargs : optional
             h = self._sink4().h() - self._mWf() * self.cond._efficiencyFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._efficiencyFactorSf()
-        elif self.cond.flowConfig.sense == PARALLEL:
+        elif self.cond.flowConfig.sense == PARALLELFLOW:
             h = self._sink4().h() + self._mWf() * self.cond._efficiencyFactorWf() * (
                 self._state4().h() - self._state50().h()
             ) / self._sink4().m / self.cond._efficiencyFactorSf()
@@ -498,7 +498,7 @@ kwargs : optional
             h = self._sink4().h() - self._mWf() * self.cond._efficiencyFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._efficiencyFactorSf()
-        elif self.cond.flowConfig.sense == PARALLEL:
+        elif self.cond.flowConfig.sense == PARALLELFLOW:
             h = self._sink4().h() + self._mWf() * self.cond._efficiencyFactorWf() * (
                 self._state4().h() - self._state51().h()
             ) / self._sink4().m / self.cond._efficiencyFactorSf()

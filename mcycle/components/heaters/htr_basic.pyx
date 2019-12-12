@@ -3,7 +3,7 @@ from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...logger import log
-from ...constants import *
+from ..._constants cimport *
 
 cdef dict _inputs = {"QHeat": MCAttr(float, "power"), "efficiencyThermal": MCAttr(float, "none"),
                         "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
@@ -157,12 +157,12 @@ kwargs : optional
                 self.m = (
                     self.flowsOut[0].h() - self.flowsIn[0].h()) / self.efficiencyThermal / self.QHeat
             else:
-                super(ClrBasic, self).size()
+                super(HtrBasic, self).size()
         except AssertionError as err:
-            log('error', 'ClrBasicConstP.size(): flowOut.p != flowIn.p', err)
+            log('error', 'HtrBasicConstP.size(): flowOut.p != flowIn.p', err)
             raise err
         except Exception as exc:
-            msg = 'ClrBasicConstP.size(): failed to converge.'.format(self.__class__.__name__)
+            msg = 'HtrBasicConstP.size(): failed to converge.'.format(self.__class__.__name__)
             log('error', msg, exc)
             raise exc
 
