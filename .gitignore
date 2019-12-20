@@ -1,7 +1,3 @@
-# Generated files
-mcycle/_constants.pxd
-mcycle/constants.py
-
 # Development files
 _scikitbuild/
 notes.txt
@@ -43,6 +39,9 @@ MANIFEST
 # Emacs
 *~
 .#*
+
+# Visual Studio Code
+*workspace
 
 # Installer logs
 pip-log.txt
