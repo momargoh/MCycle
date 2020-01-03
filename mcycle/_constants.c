@@ -960,6 +960,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
 /* Module declarations from 'mcycle._constants' */
+__PYX_EXTERN_C DL_EXPORT(double) TOLABS_X;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) INPUT_PAIR_INVALID;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) QT_INPUTS;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) PQ_INPUTS;
@@ -1059,6 +1060,7 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_DOCS_URL[] = "DOCS_URL";
 static const char __pyx_k_FLOW_ALL[] = "FLOW_ALL";
+static const char __pyx_k_TOLABS_X[] = "TOLABS_X";
 static const char __pyx_k_pyx_capi[] = "__pyx_capi__";
 static const char __pyx_k_CROSSFLOW[] = "CROSSFLOW";
 static const char __pyx_k_FLOW_NONE[] = "FLOW_NONE";
@@ -1210,6 +1212,7 @@ static PyObject *__pyx_n_s_SmassT_INPUTS;
 static PyObject *__pyx_n_s_SmassUmass_INPUTS;
 static PyObject *__pyx_n_s_SmolarT_INPUTS;
 static PyObject *__pyx_n_s_SmolarUmolar_INPUTS;
+static PyObject *__pyx_n_s_TOLABS_X;
 static PyObject *__pyx_n_s_TRANSFER_ALL;
 static PyObject *__pyx_n_s_TRANSFER_FRICTION;
 static PyObject *__pyx_n_s_TRANSFER_HEAT;
@@ -1248,6 +1251,7 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_pyx_capi;
 static PyObject *__pyx_n_s_test;
 /* Late includes */
+double TOLABS_X;
 unsigned char INPUT_PAIR_INVALID;
 unsigned char QT_INPUTS;
 unsigned char PQ_INPUTS;
@@ -1435,6 +1439,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_SmassUmass_INPUTS, __pyx_k_SmassUmass_INPUTS, sizeof(__pyx_k_SmassUmass_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_SmolarT_INPUTS, __pyx_k_SmolarT_INPUTS, sizeof(__pyx_k_SmolarT_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_SmolarUmolar_INPUTS, __pyx_k_SmolarUmolar_INPUTS, sizeof(__pyx_k_SmolarUmolar_INPUTS), 0, 0, 1, 1},
+  {&__pyx_n_s_TOLABS_X, __pyx_k_TOLABS_X, sizeof(__pyx_k_TOLABS_X), 0, 0, 1, 1},
   {&__pyx_n_s_TRANSFER_ALL, __pyx_k_TRANSFER_ALL, sizeof(__pyx_k_TRANSFER_ALL), 0, 0, 1, 1},
   {&__pyx_n_s_TRANSFER_FRICTION, __pyx_k_TRANSFER_FRICTION, sizeof(__pyx_k_TRANSFER_FRICTION), 0, 0, 1, 1},
   {&__pyx_n_s_TRANSFER_HEAT, __pyx_k_TRANSFER_HEAT, sizeof(__pyx_k_TRANSFER_HEAT), 0, 0, 1, 1},
@@ -1514,6 +1519,7 @@ static int __Pyx_modinit_variable_export_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_variable_export_code", 0);
   /*--- Variable export code ---*/
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_TOLABS_X, (void *)&TOLABS_X, "double") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_INPUT_PAIR_INVALID, (void *)&INPUT_PAIR_INVALID, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_QT_INPUTS, (void *)&QT_INPUTS, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_PQ_INPUTS, (void *)&PQ_INPUTS, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -1825,6 +1831,15 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "mcycle/_constants.pyx":2
+ * # Tolerances
+ * cdef public double TOLABS_X = 1e-10             # <<<<<<<<<<<<<<
+ * # CoolProp input_pairs
+ * cdef public unsigned char INPUT_PAIR_INVALID = 0
+ */
+  TOLABS_X = 1e-10;
+
+  /* "mcycle/_constants.pyx":4
+ * cdef public double TOLABS_X = 1e-10
  * # CoolProp input_pairs
  * cdef public unsigned char INPUT_PAIR_INVALID = 0             # <<<<<<<<<<<<<<
  * cdef public unsigned char QT_INPUTS = 1
@@ -1832,7 +1847,7 @@ if (!__Pyx_RefNanny) {
  */
   INPUT_PAIR_INVALID = 0;
 
-  /* "mcycle/_constants.pyx":3
+  /* "mcycle/_constants.pyx":5
  * # CoolProp input_pairs
  * cdef public unsigned char INPUT_PAIR_INVALID = 0
  * cdef public unsigned char QT_INPUTS = 1             # <<<<<<<<<<<<<<
@@ -1841,7 +1856,7 @@ if (!__Pyx_RefNanny) {
  */
   QT_INPUTS = 1;
 
-  /* "mcycle/_constants.pyx":4
+  /* "mcycle/_constants.pyx":6
  * cdef public unsigned char INPUT_PAIR_INVALID = 0
  * cdef public unsigned char QT_INPUTS = 1
  * cdef public unsigned char PQ_INPUTS = 2             # <<<<<<<<<<<<<<
@@ -1850,7 +1865,7 @@ if (!__Pyx_RefNanny) {
  */
   PQ_INPUTS = 2;
 
-  /* "mcycle/_constants.pyx":5
+  /* "mcycle/_constants.pyx":7
  * cdef public unsigned char QT_INPUTS = 1
  * cdef public unsigned char PQ_INPUTS = 2
  * cdef public unsigned char QSmolar_INPUTS = 3             # <<<<<<<<<<<<<<
@@ -1859,7 +1874,7 @@ if (!__Pyx_RefNanny) {
  */
   QSmolar_INPUTS = 3;
 
-  /* "mcycle/_constants.pyx":6
+  /* "mcycle/_constants.pyx":8
  * cdef public unsigned char PQ_INPUTS = 2
  * cdef public unsigned char QSmolar_INPUTS = 3
  * cdef public unsigned char QSmass_INPUTS = 4             # <<<<<<<<<<<<<<
@@ -1868,7 +1883,7 @@ if (!__Pyx_RefNanny) {
  */
   QSmass_INPUTS = 4;
 
-  /* "mcycle/_constants.pyx":7
+  /* "mcycle/_constants.pyx":9
  * cdef public unsigned char QSmolar_INPUTS = 3
  * cdef public unsigned char QSmass_INPUTS = 4
  * cdef public unsigned char HmolarQ_INPUTS = 5             # <<<<<<<<<<<<<<
@@ -1877,7 +1892,7 @@ if (!__Pyx_RefNanny) {
  */
   HmolarQ_INPUTS = 5;
 
-  /* "mcycle/_constants.pyx":8
+  /* "mcycle/_constants.pyx":10
  * cdef public unsigned char QSmass_INPUTS = 4
  * cdef public unsigned char HmolarQ_INPUTS = 5
  * cdef public unsigned char HmassQ_INPUTS = 6             # <<<<<<<<<<<<<<
@@ -1886,7 +1901,7 @@ if (!__Pyx_RefNanny) {
  */
   HmassQ_INPUTS = 6;
 
-  /* "mcycle/_constants.pyx":9
+  /* "mcycle/_constants.pyx":11
  * cdef public unsigned char HmolarQ_INPUTS = 5
  * cdef public unsigned char HmassQ_INPUTS = 6
  * cdef public unsigned char DmolarQ_INPUTS = 7             # <<<<<<<<<<<<<<
@@ -1895,7 +1910,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarQ_INPUTS = 7;
 
-  /* "mcycle/_constants.pyx":10
+  /* "mcycle/_constants.pyx":12
  * cdef public unsigned char HmassQ_INPUTS = 6
  * cdef public unsigned char DmolarQ_INPUTS = 7
  * cdef public unsigned char DmassQ_INPUTS = 8             # <<<<<<<<<<<<<<
@@ -1904,7 +1919,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassQ_INPUTS = 8;
 
-  /* "mcycle/_constants.pyx":11
+  /* "mcycle/_constants.pyx":13
  * cdef public unsigned char DmolarQ_INPUTS = 7
  * cdef public unsigned char DmassQ_INPUTS = 8
  * cdef public unsigned char PT_INPUTS = 9             # <<<<<<<<<<<<<<
@@ -1913,7 +1928,7 @@ if (!__Pyx_RefNanny) {
  */
   PT_INPUTS = 9;
 
-  /* "mcycle/_constants.pyx":12
+  /* "mcycle/_constants.pyx":14
  * cdef public unsigned char DmassQ_INPUTS = 8
  * cdef public unsigned char PT_INPUTS = 9
  * cdef public unsigned char DmassT_INPUTS = 10             # <<<<<<<<<<<<<<
@@ -1922,7 +1937,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassT_INPUTS = 10;
 
-  /* "mcycle/_constants.pyx":13
+  /* "mcycle/_constants.pyx":15
  * cdef public unsigned char PT_INPUTS = 9
  * cdef public unsigned char DmassT_INPUTS = 10
  * cdef public unsigned char DmolarT_INPUTS = 11             # <<<<<<<<<<<<<<
@@ -1931,7 +1946,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarT_INPUTS = 11;
 
-  /* "mcycle/_constants.pyx":14
+  /* "mcycle/_constants.pyx":16
  * cdef public unsigned char DmassT_INPUTS = 10
  * cdef public unsigned char DmolarT_INPUTS = 11
  * cdef public unsigned char HmolarT_INPUTS = 12             # <<<<<<<<<<<<<<
@@ -1940,7 +1955,7 @@ if (!__Pyx_RefNanny) {
  */
   HmolarT_INPUTS = 12;
 
-  /* "mcycle/_constants.pyx":15
+  /* "mcycle/_constants.pyx":17
  * cdef public unsigned char DmolarT_INPUTS = 11
  * cdef public unsigned char HmolarT_INPUTS = 12
  * cdef public unsigned char HmassT_INPUTS = 13             # <<<<<<<<<<<<<<
@@ -1949,7 +1964,7 @@ if (!__Pyx_RefNanny) {
  */
   HmassT_INPUTS = 13;
 
-  /* "mcycle/_constants.pyx":16
+  /* "mcycle/_constants.pyx":18
  * cdef public unsigned char HmolarT_INPUTS = 12
  * cdef public unsigned char HmassT_INPUTS = 13
  * cdef public unsigned char SmolarT_INPUTS = 14             # <<<<<<<<<<<<<<
@@ -1958,7 +1973,7 @@ if (!__Pyx_RefNanny) {
  */
   SmolarT_INPUTS = 14;
 
-  /* "mcycle/_constants.pyx":17
+  /* "mcycle/_constants.pyx":19
  * cdef public unsigned char HmassT_INPUTS = 13
  * cdef public unsigned char SmolarT_INPUTS = 14
  * cdef public unsigned char SmassT_INPUTS = 15             # <<<<<<<<<<<<<<
@@ -1967,7 +1982,7 @@ if (!__Pyx_RefNanny) {
  */
   SmassT_INPUTS = 15;
 
-  /* "mcycle/_constants.pyx":18
+  /* "mcycle/_constants.pyx":20
  * cdef public unsigned char SmolarT_INPUTS = 14
  * cdef public unsigned char SmassT_INPUTS = 15
  * cdef public unsigned char TUmolar_INPUTS = 16             # <<<<<<<<<<<<<<
@@ -1976,7 +1991,7 @@ if (!__Pyx_RefNanny) {
  */
   TUmolar_INPUTS = 16;
 
-  /* "mcycle/_constants.pyx":19
+  /* "mcycle/_constants.pyx":21
  * cdef public unsigned char SmassT_INPUTS = 15
  * cdef public unsigned char TUmolar_INPUTS = 16
  * cdef public unsigned char TUmass_INPUTS = 17             # <<<<<<<<<<<<<<
@@ -1985,7 +2000,7 @@ if (!__Pyx_RefNanny) {
  */
   TUmass_INPUTS = 17;
 
-  /* "mcycle/_constants.pyx":20
+  /* "mcycle/_constants.pyx":22
  * cdef public unsigned char TUmolar_INPUTS = 16
  * cdef public unsigned char TUmass_INPUTS = 17
  * cdef public unsigned char DmassP_INPUTS = 18             # <<<<<<<<<<<<<<
@@ -1994,7 +2009,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassP_INPUTS = 18;
 
-  /* "mcycle/_constants.pyx":21
+  /* "mcycle/_constants.pyx":23
  * cdef public unsigned char TUmass_INPUTS = 17
  * cdef public unsigned char DmassP_INPUTS = 18
  * cdef public unsigned char DmolarP_INPUTS = 19             # <<<<<<<<<<<<<<
@@ -2003,7 +2018,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarP_INPUTS = 19;
 
-  /* "mcycle/_constants.pyx":22
+  /* "mcycle/_constants.pyx":24
  * cdef public unsigned char DmassP_INPUTS = 18
  * cdef public unsigned char DmolarP_INPUTS = 19
  * cdef public unsigned char HmassP_INPUTS = 20             # <<<<<<<<<<<<<<
@@ -2012,7 +2027,7 @@ if (!__Pyx_RefNanny) {
  */
   HmassP_INPUTS = 20;
 
-  /* "mcycle/_constants.pyx":23
+  /* "mcycle/_constants.pyx":25
  * cdef public unsigned char DmolarP_INPUTS = 19
  * cdef public unsigned char HmassP_INPUTS = 20
  * cdef public unsigned char HmolarP_INPUTS = 21             # <<<<<<<<<<<<<<
@@ -2021,7 +2036,7 @@ if (!__Pyx_RefNanny) {
  */
   HmolarP_INPUTS = 21;
 
-  /* "mcycle/_constants.pyx":24
+  /* "mcycle/_constants.pyx":26
  * cdef public unsigned char HmassP_INPUTS = 20
  * cdef public unsigned char HmolarP_INPUTS = 21
  * cdef public unsigned char PSmass_INPUTS = 22             # <<<<<<<<<<<<<<
@@ -2030,7 +2045,7 @@ if (!__Pyx_RefNanny) {
  */
   PSmass_INPUTS = 22;
 
-  /* "mcycle/_constants.pyx":25
+  /* "mcycle/_constants.pyx":27
  * cdef public unsigned char HmolarP_INPUTS = 21
  * cdef public unsigned char PSmass_INPUTS = 22
  * cdef public unsigned char PSmolar_INPUTS = 23             # <<<<<<<<<<<<<<
@@ -2039,7 +2054,7 @@ if (!__Pyx_RefNanny) {
  */
   PSmolar_INPUTS = 23;
 
-  /* "mcycle/_constants.pyx":26
+  /* "mcycle/_constants.pyx":28
  * cdef public unsigned char PSmass_INPUTS = 22
  * cdef public unsigned char PSmolar_INPUTS = 23
  * cdef public unsigned char PUmass_INPUTS = 24             # <<<<<<<<<<<<<<
@@ -2048,7 +2063,7 @@ if (!__Pyx_RefNanny) {
  */
   PUmass_INPUTS = 24;
 
-  /* "mcycle/_constants.pyx":27
+  /* "mcycle/_constants.pyx":29
  * cdef public unsigned char PSmolar_INPUTS = 23
  * cdef public unsigned char PUmass_INPUTS = 24
  * cdef public unsigned char PUmolar_INPUTS = 25             # <<<<<<<<<<<<<<
@@ -2057,7 +2072,7 @@ if (!__Pyx_RefNanny) {
  */
   PUmolar_INPUTS = 25;
 
-  /* "mcycle/_constants.pyx":28
+  /* "mcycle/_constants.pyx":30
  * cdef public unsigned char PUmass_INPUTS = 24
  * cdef public unsigned char PUmolar_INPUTS = 25
  * cdef public unsigned char HmassSmass_INPUTS = 26             # <<<<<<<<<<<<<<
@@ -2066,7 +2081,7 @@ if (!__Pyx_RefNanny) {
  */
   HmassSmass_INPUTS = 26;
 
-  /* "mcycle/_constants.pyx":29
+  /* "mcycle/_constants.pyx":31
  * cdef public unsigned char PUmolar_INPUTS = 25
  * cdef public unsigned char HmassSmass_INPUTS = 26
  * cdef public unsigned char HmolarSmolar_INPUTS = 27             # <<<<<<<<<<<<<<
@@ -2075,7 +2090,7 @@ if (!__Pyx_RefNanny) {
  */
   HmolarSmolar_INPUTS = 27;
 
-  /* "mcycle/_constants.pyx":30
+  /* "mcycle/_constants.pyx":32
  * cdef public unsigned char HmassSmass_INPUTS = 26
  * cdef public unsigned char HmolarSmolar_INPUTS = 27
  * cdef public unsigned char SmassUmass_INPUTS = 28             # <<<<<<<<<<<<<<
@@ -2084,7 +2099,7 @@ if (!__Pyx_RefNanny) {
  */
   SmassUmass_INPUTS = 28;
 
-  /* "mcycle/_constants.pyx":31
+  /* "mcycle/_constants.pyx":33
  * cdef public unsigned char HmolarSmolar_INPUTS = 27
  * cdef public unsigned char SmassUmass_INPUTS = 28
  * cdef public unsigned char SmolarUmolar_INPUTS = 29             # <<<<<<<<<<<<<<
@@ -2093,7 +2108,7 @@ if (!__Pyx_RefNanny) {
  */
   SmolarUmolar_INPUTS = 29;
 
-  /* "mcycle/_constants.pyx":32
+  /* "mcycle/_constants.pyx":34
  * cdef public unsigned char SmassUmass_INPUTS = 28
  * cdef public unsigned char SmolarUmolar_INPUTS = 29
  * cdef public unsigned char DmassHmass_INPUTS = 30             # <<<<<<<<<<<<<<
@@ -2102,7 +2117,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassHmass_INPUTS = 30;
 
-  /* "mcycle/_constants.pyx":33
+  /* "mcycle/_constants.pyx":35
  * cdef public unsigned char SmolarUmolar_INPUTS = 29
  * cdef public unsigned char DmassHmass_INPUTS = 30
  * cdef public unsigned char DmolarHmolar_INPUTS = 31             # <<<<<<<<<<<<<<
@@ -2111,7 +2126,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarHmolar_INPUTS = 31;
 
-  /* "mcycle/_constants.pyx":34
+  /* "mcycle/_constants.pyx":36
  * cdef public unsigned char DmassHmass_INPUTS = 30
  * cdef public unsigned char DmolarHmolar_INPUTS = 31
  * cdef public unsigned char DmassSmass_INPUTS = 32             # <<<<<<<<<<<<<<
@@ -2120,7 +2135,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassSmass_INPUTS = 32;
 
-  /* "mcycle/_constants.pyx":35
+  /* "mcycle/_constants.pyx":37
  * cdef public unsigned char DmolarHmolar_INPUTS = 31
  * cdef public unsigned char DmassSmass_INPUTS = 32
  * cdef public unsigned char DmolarSmolar_INPUTS = 33             # <<<<<<<<<<<<<<
@@ -2129,7 +2144,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarSmolar_INPUTS = 33;
 
-  /* "mcycle/_constants.pyx":36
+  /* "mcycle/_constants.pyx":38
  * cdef public unsigned char DmassSmass_INPUTS = 32
  * cdef public unsigned char DmolarSmolar_INPUTS = 33
  * cdef public unsigned char DmassUmass_INPUTS = 34             # <<<<<<<<<<<<<<
@@ -2138,7 +2153,7 @@ if (!__Pyx_RefNanny) {
  */
   DmassUmass_INPUTS = 34;
 
-  /* "mcycle/_constants.pyx":37
+  /* "mcycle/_constants.pyx":39
  * cdef public unsigned char DmolarSmolar_INPUTS = 33
  * cdef public unsigned char DmassUmass_INPUTS = 34
  * cdef public unsigned char DmolarUmolar_INPUTS = 35             # <<<<<<<<<<<<<<
@@ -2147,7 +2162,7 @@ if (!__Pyx_RefNanny) {
  */
   DmolarUmolar_INPUTS = 35;
 
-  /* "mcycle/_constants.pyx":39
+  /* "mcycle/_constants.pyx":41
  * cdef public unsigned char DmolarUmolar_INPUTS = 35
  * # CoolProp imposed phases
  * cdef public unsigned char iphase_liquid = 0             # <<<<<<<<<<<<<<
@@ -2156,7 +2171,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_liquid = 0;
 
-  /* "mcycle/_constants.pyx":40
+  /* "mcycle/_constants.pyx":42
  * # CoolProp imposed phases
  * cdef public unsigned char iphase_liquid = 0
  * cdef public unsigned char iphase_supercritical = 1             # <<<<<<<<<<<<<<
@@ -2165,7 +2180,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_supercritical = 1;
 
-  /* "mcycle/_constants.pyx":41
+  /* "mcycle/_constants.pyx":43
  * cdef public unsigned char iphase_liquid = 0
  * cdef public unsigned char iphase_supercritical = 1
  * cdef public unsigned char iphase_supercritical_gas = 2             # <<<<<<<<<<<<<<
@@ -2174,7 +2189,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_supercritical_gas = 2;
 
-  /* "mcycle/_constants.pyx":42
+  /* "mcycle/_constants.pyx":44
  * cdef public unsigned char iphase_supercritical = 1
  * cdef public unsigned char iphase_supercritical_gas = 2
  * cdef public unsigned char iphase_supercritical_liquid = 3             # <<<<<<<<<<<<<<
@@ -2183,7 +2198,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_supercritical_liquid = 3;
 
-  /* "mcycle/_constants.pyx":43
+  /* "mcycle/_constants.pyx":45
  * cdef public unsigned char iphase_supercritical_gas = 2
  * cdef public unsigned char iphase_supercritical_liquid = 3
  * cdef public unsigned char iphase_critical_point = 4             # <<<<<<<<<<<<<<
@@ -2192,7 +2207,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_critical_point = 4;
 
-  /* "mcycle/_constants.pyx":44
+  /* "mcycle/_constants.pyx":46
  * cdef public unsigned char iphase_supercritical_liquid = 3
  * cdef public unsigned char iphase_critical_point = 4
  * cdef public unsigned char iphase_gas = 5             # <<<<<<<<<<<<<<
@@ -2201,7 +2216,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_gas = 5;
 
-  /* "mcycle/_constants.pyx":45
+  /* "mcycle/_constants.pyx":47
  * cdef public unsigned char iphase_critical_point = 4
  * cdef public unsigned char iphase_gas = 5
  * cdef public unsigned char iphase_twophase = 6             # <<<<<<<<<<<<<<
@@ -2210,7 +2225,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_twophase = 6;
 
-  /* "mcycle/_constants.pyx":46
+  /* "mcycle/_constants.pyx":48
  * cdef public unsigned char iphase_gas = 5
  * cdef public unsigned char iphase_twophase = 6
  * cdef public unsigned char iphase_unknown = 7             # <<<<<<<<<<<<<<
@@ -2219,7 +2234,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_unknown = 7;
 
-  /* "mcycle/_constants.pyx":47
+  /* "mcycle/_constants.pyx":49
  * cdef public unsigned char iphase_twophase = 6
  * cdef public unsigned char iphase_unknown = 7
  * cdef public unsigned char iphase_not_imposed = 8             # <<<<<<<<<<<<<<
@@ -2228,7 +2243,7 @@ if (!__Pyx_RefNanny) {
  */
   iphase_not_imposed = 8;
 
-  /* "mcycle/_constants.pyx":49
+  /* "mcycle/_constants.pyx":51
  * cdef public unsigned char iphase_not_imposed = 8
  * # MCycle phases
  * cdef public unsigned char PHASE_LIQUID = 0             # <<<<<<<<<<<<<<
@@ -2237,7 +2252,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_LIQUID = 0;
 
-  /* "mcycle/_constants.pyx":50
+  /* "mcycle/_constants.pyx":52
  * # MCycle phases
  * cdef public unsigned char PHASE_LIQUID = 0
  * cdef public unsigned char PHASE_SUPERCRITICAL = 1             # <<<<<<<<<<<<<<
@@ -2246,7 +2261,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SUPERCRITICAL = 1;
 
-  /* "mcycle/_constants.pyx":51
+  /* "mcycle/_constants.pyx":53
  * cdef public unsigned char PHASE_LIQUID = 0
  * cdef public unsigned char PHASE_SUPERCRITICAL = 1
  * cdef public unsigned char PHASE_SUPERCRITICAL_GAS = 2             # <<<<<<<<<<<<<<
@@ -2255,7 +2270,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SUPERCRITICAL_GAS = 2;
 
-  /* "mcycle/_constants.pyx":52
+  /* "mcycle/_constants.pyx":54
  * cdef public unsigned char PHASE_SUPERCRITICAL = 1
  * cdef public unsigned char PHASE_SUPERCRITICAL_GAS = 2
  * cdef public unsigned char PHASE_SUPERCRITICAL_LIQUID = 3             # <<<<<<<<<<<<<<
@@ -2264,7 +2279,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SUPERCRITICAL_LIQUID = 3;
 
-  /* "mcycle/_constants.pyx":53
+  /* "mcycle/_constants.pyx":55
  * cdef public unsigned char PHASE_SUPERCRITICAL_GAS = 2
  * cdef public unsigned char PHASE_SUPERCRITICAL_LIQUID = 3
  * cdef public unsigned char PHASE_CRITICAL_POINT = 4             # <<<<<<<<<<<<<<
@@ -2273,7 +2288,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_CRITICAL_POINT = 4;
 
-  /* "mcycle/_constants.pyx":54
+  /* "mcycle/_constants.pyx":56
  * cdef public unsigned char PHASE_SUPERCRITICAL_LIQUID = 3
  * cdef public unsigned char PHASE_CRITICAL_POINT = 4
  * cdef public unsigned char PHASE_VAPOUR = 5             # <<<<<<<<<<<<<<
@@ -2282,7 +2297,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_VAPOUR = 5;
 
-  /* "mcycle/_constants.pyx":55
+  /* "mcycle/_constants.pyx":57
  * cdef public unsigned char PHASE_CRITICAL_POINT = 4
  * cdef public unsigned char PHASE_VAPOUR = 5
  * cdef public unsigned char PHASE_VAPOR = 5             # <<<<<<<<<<<<<<
@@ -2291,7 +2306,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_VAPOR = 5;
 
-  /* "mcycle/_constants.pyx":56
+  /* "mcycle/_constants.pyx":58
  * cdef public unsigned char PHASE_VAPOUR = 5
  * cdef public unsigned char PHASE_VAPOR = 5
  * cdef public unsigned char PHASE_GAS = 5             # <<<<<<<<<<<<<<
@@ -2300,7 +2315,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_GAS = 5;
 
-  /* "mcycle/_constants.pyx":57
+  /* "mcycle/_constants.pyx":59
  * cdef public unsigned char PHASE_VAPOR = 5
  * cdef public unsigned char PHASE_GAS = 5
  * cdef public unsigned char PHASE_TWOPHASE = 6             # <<<<<<<<<<<<<<
@@ -2309,7 +2324,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_TWOPHASE = 6;
 
-  /* "mcycle/_constants.pyx":58
+  /* "mcycle/_constants.pyx":60
  * cdef public unsigned char PHASE_GAS = 5
  * cdef public unsigned char PHASE_TWOPHASE = 6
  * cdef public unsigned char PHASE_UNKNOWN = 7             # <<<<<<<<<<<<<<
@@ -2318,7 +2333,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_UNKNOWN = 7;
 
-  /* "mcycle/_constants.pyx":59
+  /* "mcycle/_constants.pyx":61
  * cdef public unsigned char PHASE_TWOPHASE = 6
  * cdef public unsigned char PHASE_UNKNOWN = 7
  * cdef public unsigned char PHASE_NOT_IMPOSED = 8             # <<<<<<<<<<<<<<
@@ -2327,7 +2342,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_NOT_IMPOSED = 8;
 
-  /* "mcycle/_constants.pyx":60
+  /* "mcycle/_constants.pyx":62
  * cdef public unsigned char PHASE_UNKNOWN = 7
  * cdef public unsigned char PHASE_NOT_IMPOSED = 8
  * cdef public unsigned char PHASE_SATURATED_LIQUID = 9             # <<<<<<<<<<<<<<
@@ -2336,7 +2351,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SATURATED_LIQUID = 9;
 
-  /* "mcycle/_constants.pyx":61
+  /* "mcycle/_constants.pyx":63
  * cdef public unsigned char PHASE_NOT_IMPOSED = 8
  * cdef public unsigned char PHASE_SATURATED_LIQUID = 9
  * cdef public unsigned char PHASE_SATURATED_VAPOUR = 10             # <<<<<<<<<<<<<<
@@ -2345,7 +2360,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SATURATED_VAPOUR = 10;
 
-  /* "mcycle/_constants.pyx":62
+  /* "mcycle/_constants.pyx":64
  * cdef public unsigned char PHASE_SATURATED_LIQUID = 9
  * cdef public unsigned char PHASE_SATURATED_VAPOUR = 10
  * cdef public unsigned char PHASE_SATURATED_VAPOR = 10             # <<<<<<<<<<<<<<
@@ -2354,7 +2369,7 @@ if (!__Pyx_RefNanny) {
  */
   PHASE_SATURATED_VAPOR = 10;
 
-  /* "mcycle/_constants.pyx":64
+  /* "mcycle/_constants.pyx":66
  * cdef public unsigned char PHASE_SATURATED_VAPOR = 10
  * # Unit Phases
  * cdef public unsigned char UNITPHASE_NONE = 0             # <<<<<<<<<<<<<<
@@ -2363,7 +2378,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_NONE = 0;
 
-  /* "mcycle/_constants.pyx":65
+  /* "mcycle/_constants.pyx":67
  * # Unit Phases
  * cdef public unsigned char UNITPHASE_NONE = 0
  * cdef public unsigned char UNITPHASE_ALL = 1             # <<<<<<<<<<<<<<
@@ -2372,7 +2387,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_ALL = 1;
 
-  /* "mcycle/_constants.pyx":66
+  /* "mcycle/_constants.pyx":68
  * cdef public unsigned char UNITPHASE_NONE = 0
  * cdef public unsigned char UNITPHASE_ALL = 1
  * cdef public unsigned char UNITPHASE_LIQUID = 2             # <<<<<<<<<<<<<<
@@ -2381,7 +2396,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_LIQUID = 2;
 
-  /* "mcycle/_constants.pyx":67
+  /* "mcycle/_constants.pyx":69
  * cdef public unsigned char UNITPHASE_ALL = 1
  * cdef public unsigned char UNITPHASE_LIQUID = 2
  * cdef public unsigned char UNITPHASE_VAPOUR = 3             # <<<<<<<<<<<<<<
@@ -2390,7 +2405,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_VAPOUR = 3;
 
-  /* "mcycle/_constants.pyx":68
+  /* "mcycle/_constants.pyx":70
  * cdef public unsigned char UNITPHASE_LIQUID = 2
  * cdef public unsigned char UNITPHASE_VAPOUR = 3
  * cdef public unsigned char UNITPHASE_VAPOR = 3             # <<<<<<<<<<<<<<
@@ -2399,7 +2414,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_VAPOR = 3;
 
-  /* "mcycle/_constants.pyx":69
+  /* "mcycle/_constants.pyx":71
  * cdef public unsigned char UNITPHASE_VAPOUR = 3
  * cdef public unsigned char UNITPHASE_VAPOR = 3
  * cdef public unsigned char UNITPHASE_GAS = 3             # <<<<<<<<<<<<<<
@@ -2408,7 +2423,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_GAS = 3;
 
-  /* "mcycle/_constants.pyx":70
+  /* "mcycle/_constants.pyx":72
  * cdef public unsigned char UNITPHASE_VAPOR = 3
  * cdef public unsigned char UNITPHASE_GAS = 3
  * cdef public unsigned char UNITPHASE_TWOPHASE_EVAPORATING = 4             # <<<<<<<<<<<<<<
@@ -2417,7 +2432,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_TWOPHASE_EVAPORATING = 4;
 
-  /* "mcycle/_constants.pyx":71
+  /* "mcycle/_constants.pyx":73
  * cdef public unsigned char UNITPHASE_GAS = 3
  * cdef public unsigned char UNITPHASE_TWOPHASE_EVAPORATING = 4
  * cdef public unsigned char UNITPHASE_TP_EVAP = 4             # <<<<<<<<<<<<<<
@@ -2426,7 +2441,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_TP_EVAP = 4;
 
-  /* "mcycle/_constants.pyx":72
+  /* "mcycle/_constants.pyx":74
  * cdef public unsigned char UNITPHASE_TWOPHASE_EVAPORATING = 4
  * cdef public unsigned char UNITPHASE_TP_EVAP = 4
  * cdef public unsigned char UNITPHASE_TWOPHASE_CONDENSING = 5             # <<<<<<<<<<<<<<
@@ -2435,7 +2450,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_TWOPHASE_CONDENSING = 5;
 
-  /* "mcycle/_constants.pyx":73
+  /* "mcycle/_constants.pyx":75
  * cdef public unsigned char UNITPHASE_TP_EVAP = 4
  * cdef public unsigned char UNITPHASE_TWOPHASE_CONDENSING = 5
  * cdef public unsigned char UNITPHASE_TP_COND = 5             # <<<<<<<<<<<<<<
@@ -2444,7 +2459,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_TP_COND = 5;
 
-  /* "mcycle/_constants.pyx":74
+  /* "mcycle/_constants.pyx":76
  * cdef public unsigned char UNITPHASE_TWOPHASE_CONDENSING = 5
  * cdef public unsigned char UNITPHASE_TP_COND = 5
  * cdef public unsigned char UNITPHASE_SUPERCRITICAL = 6             # <<<<<<<<<<<<<<
@@ -2453,7 +2468,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_SUPERCRITICAL = 6;
 
-  /* "mcycle/_constants.pyx":75
+  /* "mcycle/_constants.pyx":77
  * cdef public unsigned char UNITPHASE_TP_COND = 5
  * cdef public unsigned char UNITPHASE_SUPERCRITICAL = 6
  * cdef public unsigned char UNITPHASE_ALL_SINGLEPHASE = 7             # <<<<<<<<<<<<<<
@@ -2462,7 +2477,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_ALL_SINGLEPHASE = 7;
 
-  /* "mcycle/_constants.pyx":76
+  /* "mcycle/_constants.pyx":78
  * cdef public unsigned char UNITPHASE_SUPERCRITICAL = 6
  * cdef public unsigned char UNITPHASE_ALL_SINGLEPHASE = 7
  * cdef public unsigned char UNITPHASE_ALL_SP = 7             # <<<<<<<<<<<<<<
@@ -2471,7 +2486,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_ALL_SP = 7;
 
-  /* "mcycle/_constants.pyx":77
+  /* "mcycle/_constants.pyx":79
  * cdef public unsigned char UNITPHASE_ALL_SINGLEPHASE = 7
  * cdef public unsigned char UNITPHASE_ALL_SP = 7
  * cdef public unsigned char UNITPHASE_ALL_TWOPHASE = 8             # <<<<<<<<<<<<<<
@@ -2480,7 +2495,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_ALL_TWOPHASE = 8;
 
-  /* "mcycle/_constants.pyx":78
+  /* "mcycle/_constants.pyx":80
  * cdef public unsigned char UNITPHASE_ALL_SP = 7
  * cdef public unsigned char UNITPHASE_ALL_TWOPHASE = 8
  * cdef public unsigned char UNITPHASE_ALL_TP = 8             # <<<<<<<<<<<<<<
@@ -2489,7 +2504,7 @@ if (!__Pyx_RefNanny) {
  */
   UNITPHASE_ALL_TP = 8;
 
-  /* "mcycle/_constants.pyx":80
+  /* "mcycle/_constants.pyx":82
  * cdef public unsigned char UNITPHASE_ALL_TP = 8
  * # Transfer mechanisms
  * cdef public unsigned char TRANSFER_NONE = 0             # <<<<<<<<<<<<<<
@@ -2498,7 +2513,7 @@ if (!__Pyx_RefNanny) {
  */
   TRANSFER_NONE = 0;
 
-  /* "mcycle/_constants.pyx":81
+  /* "mcycle/_constants.pyx":83
  * # Transfer mechanisms
  * cdef public unsigned char TRANSFER_NONE = 0
  * cdef public unsigned char TRANSFER_ALL = 1             # <<<<<<<<<<<<<<
@@ -2507,7 +2522,7 @@ if (!__Pyx_RefNanny) {
  */
   TRANSFER_ALL = 1;
 
-  /* "mcycle/_constants.pyx":82
+  /* "mcycle/_constants.pyx":84
  * cdef public unsigned char TRANSFER_NONE = 0
  * cdef public unsigned char TRANSFER_ALL = 1
  * cdef public unsigned char TRANSFER_HEAT = 2             # <<<<<<<<<<<<<<
@@ -2516,7 +2531,7 @@ if (!__Pyx_RefNanny) {
  */
   TRANSFER_HEAT = 2;
 
-  /* "mcycle/_constants.pyx":83
+  /* "mcycle/_constants.pyx":85
  * cdef public unsigned char TRANSFER_ALL = 1
  * cdef public unsigned char TRANSFER_HEAT = 2
  * cdef public unsigned char TRANSFER_FRICTION = 3             # <<<<<<<<<<<<<<
@@ -2525,7 +2540,7 @@ if (!__Pyx_RefNanny) {
  */
   TRANSFER_FRICTION = 3;
 
-  /* "mcycle/_constants.pyx":85
+  /* "mcycle/_constants.pyx":87
  * cdef public unsigned char TRANSFER_FRICTION = 3
  * # Flows
  * cdef public unsigned char FLOW_NONE = 0             # <<<<<<<<<<<<<<
@@ -2534,7 +2549,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOW_NONE = 0;
 
-  /* "mcycle/_constants.pyx":86
+  /* "mcycle/_constants.pyx":88
  * # Flows
  * cdef public unsigned char FLOW_NONE = 0
  * cdef public unsigned char FLOW_ALL = 1             # <<<<<<<<<<<<<<
@@ -2543,7 +2558,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOW_ALL = 1;
 
-  /* "mcycle/_constants.pyx":87
+  /* "mcycle/_constants.pyx":89
  * cdef public unsigned char FLOW_NONE = 0
  * cdef public unsigned char FLOW_ALL = 1
  * cdef public unsigned char WORKING_FLUID = 2             # <<<<<<<<<<<<<<
@@ -2552,7 +2567,7 @@ if (!__Pyx_RefNanny) {
  */
   WORKING_FLUID = 2;
 
-  /* "mcycle/_constants.pyx":88
+  /* "mcycle/_constants.pyx":90
  * cdef public unsigned char FLOW_ALL = 1
  * cdef public unsigned char WORKING_FLUID = 2
  * cdef public unsigned char FLOW_PRIMARY = 2             # <<<<<<<<<<<<<<
@@ -2561,7 +2576,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOW_PRIMARY = 2;
 
-  /* "mcycle/_constants.pyx":89
+  /* "mcycle/_constants.pyx":91
  * cdef public unsigned char WORKING_FLUID = 2
  * cdef public unsigned char FLOW_PRIMARY = 2
  * cdef public unsigned char SECONDARY_FLUID = 3             # <<<<<<<<<<<<<<
@@ -2570,7 +2585,7 @@ if (!__Pyx_RefNanny) {
  */
   SECONDARY_FLUID = 3;
 
-  /* "mcycle/_constants.pyx":90
+  /* "mcycle/_constants.pyx":92
  * cdef public unsigned char FLOW_PRIMARY = 2
  * cdef public unsigned char SECONDARY_FLUID = 3
  * cdef public unsigned char FLOW_SECONDARY = 3             # <<<<<<<<<<<<<<
@@ -2579,7 +2594,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOW_SECONDARY = 3;
 
-  /* "mcycle/_constants.pyx":92
+  /* "mcycle/_constants.pyx":94
  * cdef public unsigned char FLOW_SECONDARY = 3
  * # HxFlowConfig
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0             # <<<<<<<<<<<<<<
@@ -2588,7 +2603,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOWSENSE_UNDEFINED = 0;
 
-  /* "mcycle/_constants.pyx":93
+  /* "mcycle/_constants.pyx":95
  * # HxFlowConfig
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
  * cdef public unsigned char COUNTERFLOW = 1             # <<<<<<<<<<<<<<
@@ -2597,7 +2612,7 @@ if (!__Pyx_RefNanny) {
  */
   COUNTERFLOW = 1;
 
-  /* "mcycle/_constants.pyx":94
+  /* "mcycle/_constants.pyx":96
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
  * cdef public unsigned char COUNTERFLOW = 1
  * cdef public unsigned char PARALLELFLOW = 2             # <<<<<<<<<<<<<<
@@ -2606,7 +2621,7 @@ if (!__Pyx_RefNanny) {
  */
   PARALLELFLOW = 2;
 
-  /* "mcycle/_constants.pyx":95
+  /* "mcycle/_constants.pyx":97
  * cdef public unsigned char COUNTERFLOW = 1
  * cdef public unsigned char PARALLELFLOW = 2
  * cdef public unsigned char CROSSFLOW = 3             # <<<<<<<<<<<<<<
@@ -2615,7 +2630,7 @@ if (!__Pyx_RefNanny) {
  */
   CROSSFLOW = 3;
 
-  /* "mcycle/_constants.pyx":97
+  /* "mcycle/_constants.pyx":99
  * cdef public unsigned char CROSSFLOW = 3
  * # MCycle
  * cdef public str SOURCE_URL = 'https://github.com/momargoh/MCycle'             # <<<<<<<<<<<<<<
@@ -2626,7 +2641,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF_SET(SOURCE_URL, __pyx_kp_u_https_github_com_momargoh_MCycle);
   __Pyx_GIVEREF(__pyx_kp_u_https_github_com_momargoh_MCycle);
 
-  /* "mcycle/_constants.pyx":98
+  /* "mcycle/_constants.pyx":100
  * # MCycle
  * cdef public str SOURCE_URL = 'https://github.com/momargoh/MCycle'
  * cdef public str DOCS_URL = 'https://mcycle.momarhughes.com'             # <<<<<<<<<<<<<<
@@ -2637,9 +2652,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_kp_u_https_mcycle_momarhughes_com);
 
   /* "mcycle/_constants.pyx":1
- * # CoolProp input_pairs             # <<<<<<<<<<<<<<
- * cdef public unsigned char INPUT_PAIR_INVALID = 0
- * cdef public unsigned char QT_INPUTS = 1
+ * # Tolerances             # <<<<<<<<<<<<<<
+ * cdef public double TOLABS_X = 1e-10
+ * # CoolProp input_pairs
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

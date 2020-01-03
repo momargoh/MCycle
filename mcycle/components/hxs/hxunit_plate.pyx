@@ -148,11 +148,7 @@ kwargs : optional
 
     cpdef public double _hWf(self):
         """float: Heat transfer coefficient of a working fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomWf.__class__.__name__, TRANSFER_HEAT,
-                                             self.phaseWf(), WORKING_FLUID))
-        #print("HxUnitPlate._hWf(): method={}, phaseWf={}".format(method, self.phaseWf()))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodHeatWf)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
@@ -165,10 +161,7 @@ kwargs : optional
 
     cpdef public double _hSf(self):
         """float: Heat transfer coefficient of a secondary fluid channel [W/m^2.K]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomSf.__class__.__name__, TRANSFER_HEAT,
-                                             self.phaseSf(), SECONDARY_FLUID))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodHeatSf)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),
@@ -181,10 +174,7 @@ kwargs : optional
 
     cpdef public double _fWf(self):
         """float: Fanning friction factor of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomWf.__class__.__name__,
-                                            TRANSFER_FRICTION, self.phaseWf(), WORKING_FLUID))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodFrictionWf)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
@@ -197,10 +187,7 @@ kwargs : optional
 
     cpdef public double _fSf(self):
         """float: Fanning friction factor of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomSf.__class__.__name__,
-                                             TRANSFER_FRICTION, self.phaseSf(), SECONDARY_FLUID))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodFrictionSf)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),
@@ -213,10 +200,7 @@ kwargs : optional
 
     cpdef public double _dpFWf(self):
         """float: Frictional pressure drop of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__,
-                                            (self.geomWf.__class__.__name__,
-                                             TRANSFER_FRICTION, self.phaseWf(), WORKING_FLUID))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodFrictionWf)(
             flowIn=self.flowsIn[0],
             flowOut=self.flowsOut[0],
             N=self._NWf(),
@@ -229,8 +213,7 @@ kwargs : optional
 
     cpdef public double _dpFSf(self):
         """float: Frictional pressure drop of a secondary fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
-        cdef str method = self.config.lookupMethod(self.__class__.__name__, (self.geomSf.__class__.__name__, TRANSFER_FRICTION, self.phaseSf(), SECONDARY_FLUID))
-        return getattr(ht, method)(
+        return getattr(ht, self._methodFrictionSf)(
             flowIn=self.flowsIn[1],
             flowOut=self.flowsOut[1],
             N=self._NSf(),

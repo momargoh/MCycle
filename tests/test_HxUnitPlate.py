@@ -22,6 +22,13 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
     hxUnit.config.set_method("savostinTikhonov_sp",
                              "GeomHxPlateCorrugatedChevron", mc.TRANSFER_ALL,
                              mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
+    hxUnit.config.set_method("chisholmWannairachchi_sp",
+                             "GeomHxPlateCorrugatedChevron", mc.TRANSFER_ALL,
+                             mc.UNITPHASE_ALL, mc.WORKING_FLUID)
+    hxUnit._methodHeatWf = "chisholmWannairachchi_sp"
+    hxUnit._methodFrictionWf = "chisholmWannairachchi_sp"
+    hxUnit._methodHeatSf = "savostinTikhonov_sp"
+    hxUnit._methodFrictionSf = "savostinTikhonov_sp"
 
     def test_size_liq(self):
         flowInWf = mc.FlowState("R123", 0.34307814292524513, mc.PT_INPUTS,
@@ -38,6 +45,8 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutWf': flowOutWf,
             'flowOutSf': flowOutSf
         })
+        self.hxUnit._methodHeatWf = "chisholmWannairachchi_sp"
+        self.hxUnit._methodFrictionWf = "chisholmWannairachchi_sp"
 
         self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.005, 0.5]})
         self.hxUnit.sizeUnits()
@@ -73,6 +82,8 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutWf': flowOutWf,
             'flowOutSf': flowOutSf
         })
+        self.hxUnit._methodHeatWf = "yanLin_tpEvap"
+        self.hxUnit._methodFrictionWf = "yanLin_tpEvap"
         #
         self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.001, 0.5]})
         self.hxUnit.sizeUnits()
@@ -98,6 +109,8 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
             'flowOutWf': flowOutWf,
             'flowOutSf': flowOutSf
         })
+        self.hxUnit._methodHeatWf = "chisholmWannairachchi_sp"
+        self.hxUnit._methodFrictionWf = "chisholmWannairachchi_sp"
         #
         self.hxUnit.update({'sizeAttr': 'L', 'sizeBounds': [0.0001, 0.5]})
         self.hxUnit.sizeUnits()

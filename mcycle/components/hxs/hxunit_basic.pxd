@@ -20,6 +20,12 @@ cdef class HxUnitBasic(Component22):
     cpdef public double ARatioSf
     cpdef public double ARatioWall
     cpdef public double efficiencyThermal
+    cpdef public unsigned char _unitPhaseWf
+    cpdef public unsigned char _unitPhaseSf
+    cdef public str _methodHeatWf
+    cdef public str _methodHeatSf
+    cdef public str _methodFrictionWf
+    cdef public str _methodFrictionSf
 
     cpdef public bint isEvap(self)
     cpdef public double _A(self)

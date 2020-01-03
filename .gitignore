@@ -41,7 +41,7 @@ MANIFEST
 .#*
 
 # Visual Studio Code
-*workspace
+*.code-workspace
 
 # Installer logs
 pip-log.txt

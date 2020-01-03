@@ -18,6 +18,7 @@
   #define DL_IMPORT(_T) _T
 #endif
 
+__PYX_EXTERN_C double TOLABS_X;
 __PYX_EXTERN_C unsigned char INPUT_PAIR_INVALID;
 __PYX_EXTERN_C unsigned char QT_INPUTS;
 __PYX_EXTERN_C unsigned char PQ_INPUTS;

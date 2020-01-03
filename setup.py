@@ -123,7 +123,7 @@ if USE_CYTHON:
     pyx_exts = scanForExtension("mcycle", ".pyx")
     for ext in pyx_exts:
         ext_modules += cythonize(
-            "{}.pyx".format(ext), compiler_directives=compiler_directives)
+            "{}.pyx".format(ext), nthreads=4, compiler_directives=compiler_directives)
     cmdclass.update({'build_ext': build_ext})
 else:
     c_exts = scanForExtension("mcycle", ".c")

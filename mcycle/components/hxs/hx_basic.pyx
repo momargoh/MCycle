@@ -150,8 +150,6 @@ kwargs : optional
                          sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config)
         self._units = []
         self._unitClass = _unitClass
-        if self.hasInAndOut(0) and self.hasInAndOut(1):
-            pass  # self._unitise()
         self._inputs = _inputs
         self._properties = _properties
         
@@ -301,269 +299,204 @@ kwargs : optional
                 self.hSf, self.RfWf, self.RfSf, self.wall, self.tWall, nan,
                 self.ARatioWf, self.ARatioSf, self.ARatioWall, self.efficiencyThermal)
 
+    cdef public void _unitiseExtra(self):
+        pass
+
     cpdef public void unitise(self):
         """Divides the Hx into HxUnits according to divT and divX defined in the configuration parameters, for calculating accurate heat transfer properties."""
         self._units = []
-        cdef list _units = []
-        cdef _unitClass = self._unitClass
-        cdef FlowState inWf = self.flowsIn[0].copy()
-        cdef double inWf_h = inWf.h()
-        cdef FlowState liqWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 0)
-        cdef double liqWf_h = liqWf.h()
-        cdef FlowState vapWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 1)
-        cdef double vapWf_h = vapWf.h()
-        cdef FlowState outWf = self.flowsOut[0].copy()
-        cdef double outWf_h = outWf.h()
-        cdef FlowState inSf = self.flowsIn[1].copy()
-        cdef double inSf_h = inSf.h()
-        cdef FlowState outSf = self.flowsOut[1].copy()
-        cdef double outSf_h = outSf.h()
-        cdef FlowState wfX0_obj = None
-        cdef FlowState sfX0_obj = None
-        cdef FlowState wfX1_obj = None
-        cdef FlowState sfX1_obj = None
-        cdef str wfX0_key = ""
-        cdef str sfX0_key = ""
-        cdef str wfX1_key = ""
-        cdef str sfX1_key = ""
-        cdef bint endFound, isEvap = self.isEvap()
-        cdef double hLiqSf = nan
-        cdef double hVapSf = nan
-        cdef size_t i, N_units, flowSense
-        cdef FlowState wf_i, wf_i1, sf_i, sf_i1
-        cdef HxUnitBasic unit
-        cdef double[:] hWf_unit, hSf_unit
-        if self.flowConfig.sense == COUNTERFLOW:
-            flowSense = 0
-        elif self.flowConfig.sense == PARALLELFLOW:
-            flowSense = 1
+        _unitClass = self._unitClass
+        cdef:
+            list _units = []
+            FlowState inWf = self.flowsIn[0].copy()
+            FlowState outWf = self.flowsOut[0].copy()
+            FlowState inSf = self.flowsIn[1].copy()
+            FlowState outSf = self.flowsOut[1].copy()
+            FlowState liqWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 0)
+            FlowState vapWf = self.flowsIn[0].copyUpdateState(PQ_INPUTS, self.flowsIn[0].p(), 1)
+            FlowState leftWf = None
+            FlowState leftSf = None
+            FlowState rightWf = None
+            FlowState rightSf = None
+            FlowState endLeftWf = None
+            FlowState endLeftSf = None
+            FlowState endRightWf = None
+            FlowState endRightSf = None
+            FlowState leftNodeWf, rightNodeWf, leftNodeSf, rightNodeSf
+            double liqWf_h = liqWf.h()
+            double vapWf_h = vapWf.h()
+            double pWf = self.flowsIn[0].p()
+            double pSf = self.flowsIn[1].p()
+            double mWf = self._mWf()
+            double mSf = self._mSf()
+            double effWf = self._efficiencyFactorWf()
+            double effSf = self._efficiencyFactorSf()
+            double senseFactorSf, hFactorSf, hRightSf, endLeftWf_h, endRightWf_h, endLeftSf_h, endRightSf_h
+            double[:] hNodesWf, hNodesSf
+            unsigned int i, nodesSection, nodesTotal = 0
+            unsigned char sense = self.flowConfig.sense
+            bint endFound = False 
+            bint skipSection = False
+            bint isEvap = self.isEvap()
+            str leftKeyWf, rightKeyWf, leftKeySf, rightKeySf
+        # Assign flow ends
         if isEvap:
-            wfX0_obj = inWf
-            wfX0_key = "flowInWf"
-            wfX1_key = "flowOutWf"
-            if flowSense == 0:
-                sfX0_obj = outSf
-                sfX0_key = "flowOutSf"
-                sfX1_key = "flowInSf"
-            elif flowSense == 1:
-                sfX0_obj = inSf
-                sfX0_key = "flowInSf"
-                sfX1_key = "flowOutSf"
+            leftWf = inWf
+            endLeftWf = inWf
+            endRightWf = outWf
+            leftKeyWf = "flowInWf"
+            rightKeyWf = "flowOutWf"
+            if sense == PARALLELFLOW:
+                leftSf = inSf
+                endLeftSf = inSf
+                endRightSf = outSf
+                senseFactorSf = -1
+                leftKeySf = "flowInSf"
+                rightKeySf = "flowOutSf"
+            else:
+                leftSf = outSf
+                endLeftSf = outSf
+                endRightSf = inSf
+                senseFactorSf = 1
+                leftKeySf = "flowOutSf"
+                rightKeySf = "flowInSf"
         else:
-            wfX0_obj = outWf
-            wfX0_key = "flowOutWf"
-            wfX1_key = "flowInWf"
-            if flowSense == 0:
-                sfX0_obj = inSf
-                sfX0_key = "flowInSf"
-                sfX1_key = "flowOutSf"
-            elif flowSense == 1:
-                sfX0_obj = outSf
-                sfX0_key = "flowOutSf"
-                sfX1_key = "flowInSf"
-        endFound = False
-        # Section A
-        if endFound is False and wfX0_obj.h() < liqWf_h and wfX0_obj.x() < -defaults.TOLABS_X:
-            if isEvap:
-                if outWf_h > liqWf_h:
-                    wfX1_obj = liqWf
-                    if flowSense == 0:
-                        hLiqSf = sfX0_obj.h() + self._mWf() * self._efficiencyFactorWf() * (
-                            liqWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._efficiencyFactorSf()
-                    elif flowSense == 1:
-                        hLiqSf = sfX0_obj.h() - self._mWf() * self._efficiencyFactorWf() * (
-                            liqWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._efficiencyFactorSf()
-                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hLiqSf, inSf.p())
-                else:
-                    endFound = True
-                    wfX1_obj = outWf
-                    if flowSense == 0:
-                        sfX1_obj = inSf
-                    elif flowSense == 1:
-                        sfX1_obj = outSf
-            else:  # not isEvap
-                if inWf_h > liqWf_h:
-                    wfX1_obj = liqWf
-                    if flowSense == 0:
-                        hLiqSf = sfX0_obj.h() + self.mWf * self._efficiencyFactorWf() * (
-                            liqWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._efficiencyFactorSf()
-                    elif flowSense == 1:
-                        hLiqSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
-                            liqWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._efficiencyFactorSf()
-                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hLiqSf, inSf.p())
-                else:
-                    endFound = True
-                    wfX1_obj = inWf
-                    if flowSense == 0:
-                        sfX1_obj = outSf
-                    elif flowSense == 1:
-                        sfX1_obj = inSf
-        else:
-            wfX0_key = ""
-            # wfX1_key = None
-        #
-        if wfX0_key != "":
-            assert (
-                wfX1_obj.h() - wfX0_obj.h()
-            ) > 0, "Subcooled region: {}, h={} lower enthalpy than {}, h={}".format(
-                wfX1_key, wfX1_obj.h(), wfX0_key, wfX0_obj.h())
-            N_units = int(
-                np.ceil((wfX1_obj.T() - wfX0_obj.T()) / self.config.divT)) + 1
-            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
-            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
-            for i in range(N_units - 1):
-                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
+            leftWf = outWf
+            endLeftWf = outWf
+            endRightWf = inWf
+            leftKeyWf = "flowOutWf"
+            rightKeyWf = "flowInWf"
+            if sense == PARALLELFLOW:
+                leftSf = outSf
+                endLeftSf = outSf
+                endRightSf = inSf
+                senseFactorSf = -1
+                leftKeySf = "flowOutSf"
+                rightKeySf = "flowInSf"
+            else:
+                leftSf = inSf
+                endLeftSf = inSf
+                endRightSf = outSf
+                senseFactorSf = 1
+                leftKeySf = "flowInSf"
+                rightKeySf = "flowOutSf"
+        hFactorSf = senseFactorSf * mWf * effWf / mSf / effSf
+        endLeftWf_h = endLeftWf.h()
+        endLeftSf_h = endLeftSf.h()
+        endRightWf_h = endRightWf.h()
+        endRightSf_h = endRightSf.h()
 
-                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+        # Section A
+        #if not endFound and leftWf.phase() == PHASE_LIQUID:
+        if not endFound and endLeftWf_h < liqWf_h and endLeftWf.x() < TOLABS_X:
+            skipSection = False
+            if endRightWf_h > liqWf_h:
+                rightWf = liqWf
+                hRightSf = leftSf.h() + hFactorSf * (liqWf_h - leftWf.h())
+                rightSf = inSf.copyUpdateState(HmassP_INPUTS, hRightSf, pSf)
+            else:
+                endFound = True
+                rightWf = endRightWf
+                rightSf = endRightSf
+        else:
+            skipSection = True
+        #
+        if not skipSection:
+            nodesSection = int(np.ceil((rightWf.T() - leftWf.T()) / self.config.divT)) + 1
+            hNodesWf = np.linspace(leftWf.h(), rightWf.h(), nodesSection, True)
+            hNodesSf = np.linspace(leftSf.h(), rightSf.h(), nodesSection, True)
+            for i in range(nodesSection - 1):
+                leftNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i], pWf)
+                leftNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i], pSf)
+                rightNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i+1], pWf)
+                rightNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i+1], pSf)
                 unit = _unitClass(
                     *self._unitArgsLiq(),
-                    **{wfX0_key: wf_i},
-                    **{wfX1_key: wf_i1},
-                    **{sfX0_key: sf_i},
-                    **{sfX1_key: sf_i1},
+                    **{leftKeyWf: leftNodeWf},
+                    **{rightKeyWf: rightNodeWf},
+                    **{leftKeySf: leftNodeSf},
+                    **{rightKeySf: rightNodeSf},
                     sizeBounds=self.sizeUnitsBounds,
-                    config=self.config)
-                if isEvap:
-                    _units.append(unit)
-                else:
-                    _units.insert(0, unit)
-            wfX0_obj = wfX1_obj
-            sfX0_obj = sfX1_obj
+                    config=self.config) 
+                _units.append(unit)   
+            nodesTotal += nodesSection-1
+            leftWf = rightWf
+            leftSf = rightSf
         # Section B
-        if endFound is False and wfX0_obj.h() < vapWf_h:
-            if isEvap:
-                wfX0_key = "flowInWf"
-                if outWf_h > vapWf_h:
-                    wfX1_obj = vapWf
-                    if flowSense == 0:
-                        hVapSf = sfX0_obj.h() + self._mWf() * self._efficiencyFactorWf() * (
-                            vapWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._efficiencyFactorSf()
-                    elif flowSense == 1:
-                        hVapSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
-                            vapWf_h - wfX0_obj.h()
-                        ) / self._mSf() / self._efficiencyFactorSf()
-                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hVapSf, inSf.p())
-                else:
-                    endFound = True
-                    wfX1_obj = outWf
-                    if flowSense == 0:
-                        sfX1_obj = inSf
-                    elif flowSense == 1:
-                        sfX1_obj = outSf
-            else:  # not isEvap
-                wfX0_key = "flowOutWf"
-                if inWf_h > vapWf_h:
-                    wfX1_obj = vapWf
-                    if flowSense == 0:
-                        hVapSf = sfX0_obj.h() + self.mWf * self._efficiencyFactorWf() * (
-                            vapWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._efficiencyFactorSf()
-                    elif flowSense == 1:
-                        hVapSf = sfX0_obj.h() - self.mWf * self._efficiencyFactorWf() * (
-                            vapWf_h - wfX0_obj.h()
-                        ) / self.mSf / self._efficiencyFactorSf()
-                    sfX1_obj = inSf.copyUpdateState(HmassP_INPUTS, hVapSf, inSf.p())
-                else:
-                    endFound = True
-                    wfX1_obj = inWf
-                    if flowSense == 0:
-                        sfX1_obj = outSf
-                    elif flowSense == 1:
-                        sfX1_obj = inSf
+        #if not endFound and leftWf.phase() in [PHASE_SATURATED LIQUID, PHASE_TWOPHASE]:
+        if not endFound and leftWf.h() < vapWf_h:
+            skipSection = False
+            if endRightWf_h > vapWf_h:
+                rightWf = vapWf
+                hRightSf = leftSf.h() + hFactorSf * (vapWf_h - leftWf.h())
+                rightSf = inSf.copyUpdateState(HmassP_INPUTS, hRightSf, pSf)
+            else:
+                endFound = True
+                rightWf = endRightWf
+                rightSf = endRightSf
         else:
-            wfX0_key = ""
-            # wfX1_key = None
+            skipSection = True
         #
-                 
-        if wfX0_key != "":
-            assert (wfX1_obj.x() - wfX0_obj.x()
-                    ) > 0, "Two-phase region: {}, x={} lower quality than {}, x={}".format(
-                        wfX1_key,wfX1_obj.x(), wfX0_key,wfX0_obj.x())
-            N_units = int(
-                np.ceil((wfX1_obj.x() - wfX0_obj.x()) / self.config.divX)) + 1
-            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
-            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
-            for i in range(N_units - 1):
-                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
-                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+        if not skipSection:
+            nodesSection = int(np.ceil((rightWf.x() - leftWf.x()) / self.config.divX)) + 1
+            hNodesWf = np.linspace(leftWf.h(), rightWf.h(), nodesSection, True)
+            hNodesSf = np.linspace(leftSf.h(), rightSf.h(), nodesSection, True)
+            for i in range(nodesSection - 1):
+                leftNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i], pWf)
+                leftNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i], pSf)
+                rightNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i+1], pWf)
+                rightNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i+1], pSf)
                 unit = _unitClass(
                     *self._unitArgsTp(),
-                    **{wfX0_key: wf_i},
-                    **{wfX1_key: wf_i1},
-                    **{sfX0_key: sf_i},
-                    **{sfX1_key: sf_i1},
+                    **{leftKeyWf: leftNodeWf},
+                    **{rightKeyWf: rightNodeWf},
+                    **{leftKeySf: leftNodeSf},
+                    **{rightKeySf: rightNodeSf},
                     sizeBounds=self.sizeUnitsBounds,
-                    config=self.config)
-                if isEvap:
-                    _units.append(unit)
-                else:
-                    _units.insert(0, unit)
-            wfX0_obj = wfX1_obj
-            sfX0_obj = sfX1_obj
-
+                    config=self.config)  
+                _units.append(unit)   
+            nodesTotal += nodesSection-1
+            leftWf = rightWf
+            leftSf = rightSf
         # Section C
-        if endFound is False and (wfX0_obj.h() - vapWf_h
-                                  ) / vapWf_h >= self.config._tolRel_h or (
-                                      1 - wfX0_obj.x()) < defaults.TOLABS_X:
-            if isEvap:
-                wfX0_key = "flowInWf"
-                wfX1_obj = outWf
-                if flowSense == 0:
-                    sfX1_obj = inSf
-                elif flowSense == 1:
-                    sfX1_obj = outSf
-            else:  # not isEvap
-                wfX0_key = "flowOutWf"
-                wfX1_obj = inWf
-                if flowSense == 0:
-                    sfX1_obj = outSf
-                elif flowSense == 1:
-                    sfX1_obj = inSf
+        #if endFound is False and leftWf.phase() in [PHASE_SATURATED VAPOUR, PHASE_GAS, PHASE_SUPERCRITICAL_GAS]:
+        if not endFound:# and (leftWf.h() - vapWf_h) / vapWf_h >= self.config._tolRel_h or (1 - leftWf.x()) < TOLABS_X:
+            skipSection = False
+            endFound = True
+            rightWf = endRightWf
+            rightSf = endRightSf
         else:
-            wfX0_key = ""
-            # wfX1_key = None
-        #
-        if wfX0_key != "" and (wfX1_obj.h() - vapWf_h
-                                     ) / vapWf_h >= self.config._tolRel_h:
-            assert (
-                (wfX1_obj.h() - wfX0_obj.h())
-            ) / wfX0_obj.h() > self.config._tolRel_h, "Superheated region: {}, h={} lower enthalpy than {}, h={}".format(
-                wfX1_key, wfX1_obj.h(), wfX0_key, wfX0_obj.h())
-            N_units = int(
-                np.ceil((wfX1_obj.T() - wfX0_obj.T()) / self.config.divT)) + 1
-            hWf_unit = np.linspace(wfX0_obj.h(), wfX1_obj.h(), N_units, True)
-            hSf_unit = np.linspace(sfX0_obj.h(), sfX1_obj.h(), N_units, True)
-            for i in range(N_units - 1):
-                wf_i = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i], inWf.p())
-                wf_i1 = inWf.copyUpdateState(HmassP_INPUTS, hWf_unit[i + 1], inWf.p())
-                sf_i = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i], inSf.p())
-                sf_i1 = inSf.copyUpdateState(HmassP_INPUTS, hSf_unit[i + 1], inSf.p())
+            skipSection = True
+        if not skipSection:# and (endRightWf.h() - vapWf_h) / vapWf_h >= self.config._tolRel_h:
+            nodesSection = int(np.ceil((rightWf.T() - leftWf.T()) / self.config.divT)) + 1
+            hNodesWf = np.linspace(leftWf.h(), rightWf.h(), nodesSection, True)
+            hNodesSf = np.linspace(leftSf.h(), rightSf.h(), nodesSection, True)
+            for i in range(nodesSection - 1):
+                leftNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i], pWf)
+                leftNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i], pSf)
+                rightNodeWf = inWf.copyUpdateState(HmassP_INPUTS, hNodesWf[i+1], pWf)
+                rightNodeSf = inSf.copyUpdateState(HmassP_INPUTS, hNodesSf[i+1], pSf)
                 unit = _unitClass(
                     *self._unitArgsVap(),
-                    **{wfX0_key: wf_i},
-                    **{wfX1_key: wf_i1},
-                    **{sfX0_key: sf_i},
-                    **{sfX1_key: sf_i1},
+                    **{leftKeyWf: leftNodeWf},
+                    **{rightKeyWf: rightNodeWf},
+                    **{leftKeySf: leftNodeSf},
+                    **{rightKeySf: rightNodeSf},
                     sizeBounds=self.sizeUnitsBounds,
-                    config=self.config)
-                if isEvap:
-                    _units.append(unit)
-                else:
-                    _units.insert(0, unit)
-        if self._checkContinuous():
-            self._units = _units
+                    config=self.config)  
+                _units.append(unit)       
+            nodesTotal += nodesSection - 1
+        if nodesTotal == 0:
+            msg = "HxBasic.unitise(): Entire HX has been skipped, check phases of the working fluid; must not be supercritical liquid or at supercritical point"
+            log('error', msg)
+            raise ValueError(msg)
         else:
-            log("critical", "HxUnits are not in continuous order")
-            raise ValueError("HxUnits are not in continuous order")
+            if isEvap:
+                self._units = _units
+            else:
+                _units.reverse()
+                self._units = _units
+            self._unitiseExtra()
 
         
     cpdef double _f_sizeHxBasic(self, double value, str attr):

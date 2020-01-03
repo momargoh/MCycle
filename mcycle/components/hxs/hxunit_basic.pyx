@@ -131,6 +131,13 @@ kwargs : optional
         self._inputs = _inputs
         self._properties = _properties
 
+        self._unitPhaseWf = UNITPHASE_NONE
+        self._unitPhaseSf = UNITPHASE_NONE
+        self._methodHeatWf = ''
+        self._methodHeatSf = ''
+        self._methodFrictionWf = ''
+        self._methodFrictionSf = ''
+
     
     cpdef public double _A(self):
         return self.A

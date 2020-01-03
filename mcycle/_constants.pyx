@@ -1,3 +1,5 @@
+# Tolerances
+cdef public double TOLABS_X = 1e-10
 # CoolProp input_pairs
 cdef public unsigned char INPUT_PAIR_INVALID = 0
 cdef public unsigned char QT_INPUTS = 1

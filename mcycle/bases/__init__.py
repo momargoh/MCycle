@@ -5,3 +5,4 @@ from .cycle import Cycle
 from .flowstate import FlowState, FlowStatePoly, RefData
 from .geom import Geom
 from .solidmaterial import SolidMaterial
+from .utils import *

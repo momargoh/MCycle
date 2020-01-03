@@ -24,7 +24,7 @@ cdef class HxBasic(Component22):
     cpdef public double ARatioWall
     cpdef public double efficiencyThermal
     cpdef public list _units
-    cpdef public _unitClass
+    cdef public _unitClass
 
     cpdef public bint isEvap(self)
     cpdef public double _A(self)
@@ -43,6 +43,7 @@ cdef class HxBasic(Component22):
     cpdef public double mass(self)
 
     cpdef public void unitise(self)
+    cdef public void _unitiseExtra(self)
     cdef public tuple _unitArgsLiq(self)
     cdef public tuple _unitArgsTp(self)
     cdef public tuple _unitArgsVap(self)

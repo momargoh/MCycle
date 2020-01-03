@@ -8,6 +8,7 @@ from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
 from ...bases.mcabstractbase cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
+from ...bases.utils cimport *
 from ..._constants cimport *
 from ...logger import log
 from warnings import warn
@@ -136,6 +137,25 @@ kwargs : optional
     cdef public tuple _unitArgsVap(self):
         """Arguments passed to HxUnits in the vapour region."""
         return self._unitArgsLiq()
+
+    cdef public void _unitiseExtra(self):
+        cdef:
+            unsigned int i, NUnits=len(self._units)
+            unsigned char unitPhaseWf, unitPhaseSf
+            str clsName = self.__class__.__name__
+            str geomWf = self.geomWf.__class__.__name__
+            str geomSf = self.geomSf.__class__.__name__
+        for i in range(NUnits):
+            unitPhaseWf = get_unitPhase(self._units[i].flowsIn[0], self._units[i].flowsOut[0])
+            unitPhaseSf = get_unitPhase(self._units[i].flowsIn[1], self._units[i].flowsOut[1])
+            self._units[i]._unitPhaseWf = unitPhaseWf
+            self._units[i]._unitPhaseSf = unitPhaseSf
+            self._units[i]._methodHeatWf = self.config.lookupMethod(clsName, (geomWf, TRANSFER_HEAT, unitPhaseWf, WORKING_FLUID))
+            self._units[i]._methodHeatSf = self.config.lookupMethod(clsName, (geomSf, TRANSFER_HEAT, unitPhaseSf, SECONDARY_FLUID))
+            self._units[i]._methodFrictionWf = self.config.lookupMethod(clsName, (geomWf, TRANSFER_FRICTION, unitPhaseWf, WORKING_FLUID))
+            self._units[i]._methodFrictionSf = self.config.lookupMethod(clsName, (geomSf, TRANSFER_FRICTION, unitPhaseSf, SECONDARY_FLUID))
+        
+            #print(unitPhaseWf, unitPhaseSf,self._units[i]._methodHeatWf, self._units[i]._methodHeatSf, self._units[i]._methodFrictionWf, self._units[i]._methodFrictionSf)
                 
     cpdef public unsigned int _NWf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.

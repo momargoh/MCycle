@@ -315,6 +315,8 @@ args : tuple
                                 log('error', msg)
                                 raise KeyError(msg)
                 return ret
+            if cls in ["HxBasic","HxBasicPlanar"]:
+                return None
             else:
                 msg = "lookupMethod(): methods for {} class are not yet defined. Consider raising an issue at {}".format(cls, SOURCE_URL)
                 log('error', msg)
