@@ -189,7 +189,8 @@ name : str, optional
         output = r"{} summary".format(name)
         output += """
 {}
-""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
+eos = {}
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
         for k, v in self._properties.items():
             output += self.formatAttrForSummary({k: v}, [])
         if printSummary:
@@ -363,10 +364,14 @@ name : str, optional
 # Start of FlowStatePoly
 #-----------------------------------------
 
-        
+"""        
 cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
                 "_inputPair": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
-                        "_input2": MCAttr(float, "none"), "eos": MCAttr(str, "none"), "name": MCAttr(str, "none")}
+                         "_input2": MCAttr(float, "none"), "_iphase": MCAttr(int, 'none'), "eos": MCAttr(str, "none"), "name": MCAttr(str, "none")}
+"""
+cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
+                "_inputPair": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
+                         "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
 cdef dict _propertiesPoly = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
                 "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
                 "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
@@ -416,24 +421,24 @@ Examples
     """
 
     def __init__(self,
-                  RefData refData,
-                  double m=nan,
-                  unsigned char inputPair=0,
-                  double input1=nan,
-                  double input2=nan,
-                  unsigned short iphase=PHASE_NOT_IMPOSED,
-                 str eos='',
-                  str name="FlowStatePoly instance"):
+                 RefData refData,
+                 double m=nan,
+                 unsigned char inputPair=0,
+                 double input1=nan,
+                 double input2=nan,
+                 #unsigned short iphase=PHASE_NOT_IMPOSED,
+                 #str eos='',
+                 str name="FlowStatePoly instance"):
         self.refData = refData
         self.fluid = refData.fluid
         self.m = m
-        self._iphase = refData._iphase
         self._inputPair = inputPair
         self._input1 = input1
         self._input2 = input2
-        if eos == '':
-            eos = defaults.COOLPROP_EOS
-        self.eos = eos
+        """if eos == '':
+            eos = defaults.COOLPROP_EOS"""
+        self._iphase = refData._iphase
+        self.eos = refData.eos
         self.name = name
         self._c = {}
         self._inputProperty = ''
@@ -457,7 +462,7 @@ input1, input2 : double, optional
         if inputPair == 0 or isnan(input1) or isnan(input2):
             return FlowStatePoly(*self._inputValues())
         else:
-            return FlowStatePoly(self.refData, self.m, inputPair, input1, input2, self.eos)
+            return FlowStatePoly(self.refData, self.m, inputPair, input1, input2)#, iphase, self.eos)
       
     cpdef void updateState(self, unsigned char inputPair, double input1, double input2, unsigned short iphase=PHASE_NOT_IMPOSED) except *:
         """void: Calls CoolProp's AbstractState.update function.
@@ -606,16 +611,18 @@ input1,input2 : double
 
     cpdef public unsigned char phase(self):
         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
-        cdef double liq_h = 0
+        return self.refData._iphase
+        """cdef double liq_h = 0
         try:
             liq_h = CP.CoolProp.PropsSI("HMASS", "P", self.refData.p, "Q", 0,
-                                        "{}::{}".format(self.eos, self.refData.fluid))
+                                        "{}::{}".format(self.refData.eos, self.refData.fluid))
             if self.h() < liq_h:
                 return PHASE_LIQUID
             else:
                 return PHASE_VAPOUR
-        except ValueError:
-            return PHASE_UNKNOWN
+        except ValueError as exc:
+            log("warning", "FlowStatePoly.phase() could not calculate phase.", exc)
+            return PHASE_UNKNOWN"""
 
 
 #-----------------------------------------
