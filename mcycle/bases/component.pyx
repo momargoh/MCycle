@@ -175,7 +175,7 @@ Notes: {}
         for k, v in self._inputs.items():
             if k in [
                     "flowsIn", "flowsOut", "flowIn", "flowOut", "flowInWf",
-                    "flowOutWf", "flowInSf", "flowOutSf"
+                    "flowOutWf", "flowInSf", "flowOutSf", "ambient"
             ]:
                 pass
             elif k in ["sizeAttr", "sizeBounds", "sizeUnitsBounds", 'runBounds']:
@@ -183,7 +183,7 @@ Notes: {}
             elif k in ["name", "notes", "config"]:
                 pass
             else:
-                output += self.formatAttrForSummary({k: v}, hasSummaryList)
+                output += self.formatAttrForSummary(k, hasSummaryList)
         #
         for i in hasSummaryList:
             obj = getattr(self, i)
@@ -204,7 +204,7 @@ Notes: {}
             
             for k in propertyKeys:
                 if k in self._propertyKeys():
-                    output += self.formatAttrForSummary({k: self._properties[k]}, [])
+                    output += self.formatAttrForSummary(k, [])
                 else:
                     output += k + """: property not found,
 """

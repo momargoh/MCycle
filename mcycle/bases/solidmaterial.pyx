@@ -129,7 +129,7 @@ rstHeading : int, optional
             elif k in ["name", "notes", "config"]:
                 pass
             else:
-                output += self.formatAttrForSummary({k: v}, hasSummaryList)
+                output += self.formatAttrForSummary(k, hasSummaryList)
         #
         for i in hasSummaryList:
             output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
@@ -143,8 +143,7 @@ rstHeading : int, optional
 """
             for k in propertyKeys:
                 if k in self._propertyKeys():
-                    output += self.formatAttrForSummary({k:
-                        self._properties[k]}, [])
+                    output += self.formatAttrForSummary(k, [])
                 else:
                     output += k + """: property not found,
 """

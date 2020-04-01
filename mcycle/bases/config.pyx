@@ -240,7 +240,8 @@ name : str, optional
 {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output))
         for k, v in self._inputs:
-            output += self.formatAttrForSummary({k: v}, [])
+            output += """{} = {}
+""".format(k, getattr(self, k))
         if printSummary:
             print(output)
         return output

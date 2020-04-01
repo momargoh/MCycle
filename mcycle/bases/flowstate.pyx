@@ -192,7 +192,7 @@ name : str, optional
 eos = {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
         for k, v in self._properties.items():
-            output += self.formatAttrForSummary({k: v}, [])
+            output += self.formatAttrForSummary(k, [])
         if printSummary:
             print(output)
         return output

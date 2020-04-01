@@ -15,6 +15,6 @@ cdef class MCAB:
     cpdef public MCAB copyUpdate(self, dict kwargs)
     cpdef public void update(self, dict kwargs)
     
-    cdef public str formatAttrForSummary(self, dict attr, list hasSummaryList)
+    cdef public str formatAttrForSummary(self, str attr, list hasSummaryList)
     cdef tuple itup
     cdef list ilist

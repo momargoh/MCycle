@@ -122,6 +122,171 @@ METHODS = {
     },
 }
 
+DIMENSIONS = {
+    'A': {
+        '': 'length^2'
+    },
+    'ARatio': {
+        '': ''
+    },
+    'arrangement': {
+        '': ''
+    },
+    'b': {
+        '': 'length'
+    },
+    'beta': {
+        '': 'angle'
+    },
+    'cp': {
+        '': '"energy/mass-temperature'
+    },
+    'D': {
+        '': 'length'
+    },
+    'data': {
+        '': ''
+    },
+    'deg': {
+        '': ''
+    },
+    'dp': {
+        '': 'pressure'
+    },
+    'dpAcc': {
+        '': 'pressure'
+    },
+    'dpF': {
+        '': 'pressure'
+    },
+    'dpPort': {
+        '': 'pressure'
+    },
+    'efficiencyExergy': {
+        '': ''
+    },
+    'efficiencyIsentropic': {
+        '': ''
+    },
+    'efficiencyThermal': {
+        '': ''
+    },
+    'eos': {
+        '': ''
+    },
+    'fluid': {
+        '': ''
+    },
+    'h': {
+        '': 'power/area-temperature',
+        'GeomHxPlateFinStraight': 'length',
+        'GeomHxPlateFinOffset': 'length',
+        'FlowState': 'energy/mass',
+        'FlowStatePoly': 'energy/mass'
+    },
+    'I': {
+        '': 'energy'
+    },
+    '_iphase': {
+        '': ''
+    },
+    'isEvap': {
+        '': ''
+    },
+    'k': {
+        '': 'power/length-temperature'
+    },
+    'l': {
+        '': 'length'
+    },
+    'L': {
+        '': 'length'
+    },
+    'm': {
+        '': 'mass/time'
+    },
+    'N': {
+        '': ''
+    },
+    'name': {
+        '': ''
+    },
+    'p': {
+        '': 'pressure'
+    },
+    'passes': {
+        '': ''
+    },
+    'phi': {
+        '': ''
+    },
+    'P': {
+        '': 'power'
+    },
+    'pitchCorr': {
+        '': 'length'
+    },
+    'Pr': {
+        '': ''
+    },
+    'pRatio': {
+        '': ''
+    },
+    'Q': {
+        '': 'power'
+    },
+    'QCool': {
+        '': 'power'
+    },
+    'QHeat': {
+        '': 'power'
+    },
+    'Rf': {
+        '': 'fouling'
+    },
+    'rho': {
+        '': 'density'
+    },
+    'roughness': {
+        '': 'length/length'
+    },
+    's': {
+        '': 'energy/mass-temperature',
+        'GeomHxPlateFinStraight': 'length',
+        'GeomHxPlateFinOffset': 'length'
+    },
+    'sense': {
+        '': ''
+    },
+    'subcool': {
+        '': 'temperature'
+    },
+    'superheat': {
+        '': 'temperature'
+    },
+    't': {
+        '': 'length'
+    },
+    'T': {
+        '': 'temperature'
+    },
+    'vertical': {
+        '': ''
+    },
+    'V': {
+        '': 'length^3/time'
+    },
+    'visc': {
+        '': 'force-time/area'
+    },
+    'W': {
+        '': 'length'
+    },
+    'x': {
+        '': ''
+    },
+}
+
 
 def setupREFPROP(ALTERNATIVE_REFPROP_PATH='',
                  ALTERNATIVE_REFPROP_LIBRARY_PATH='',
@@ -159,7 +324,7 @@ def makePlotDir(plotDir='default'):
 
 
 dimensionUnits = {
-    "none": "",
+    "": "",
     "angle": "deg",
     "area": "m^2",
     "energy": "J",
@@ -182,6 +347,30 @@ dimensionsEquiv = {
     "density": "mass/volume",
 }  #: dict of str : Equivalents for composite dimensions.
 
+attributeSuffixes = [
+    'Wf', 'Sf', 'Wall', 'Plate', 'Port', 'Acc', 'Head', 'F', 'Vert', 'In',
+    'Out', 'Net', 'Evap', 'Exp', 'Cond', 'Comp'
+]
+
+
+def getDimensions(attribute, class_name=''):
+    if attribute.startswith('coeffs_'):
+        return ''
+    for suffix in attributeSuffixes:
+        if suffix in attribute:
+            attribute = attribute.split(suffix)[0]
+    try:
+        dimension_lookup = DIMENSIONS[attribute]
+        if class_name in dimension_lookup:
+            return dimension_lookup[class_name]
+        else:
+            return dimension_lookup['']
+    except Exception as exc:
+        log('debug',
+            'defaults.getDimensions: did not find dimensions for "{}". Consider raising an issue on Github.'.
+            format(attribute), exc)
+        return ''
+
 
 def _formatUnits(dimensions, separator):
     dimList = dimensions.split("-")
@@ -197,7 +386,7 @@ def _formatUnits(dimensions, separator):
 
 def getUnits(dimension):
     """str : Returns units for desired dimension (eg. "length"), a composite dimension (eg. "power/length-temperature") or an equivalent dimension (eg. "density")."""
-    if dimension == "none":
+    if dimension == "":
         return dimensionUnits[dimension]
     else:
         if dimension in dimensionsEquiv:
@@ -205,7 +394,7 @@ def getUnits(dimension):
         dimSplit = dimension.split("/")
         assert len(
             dimSplit
-        ) <= 2, "Unit type may not contain more than one divide symbol '/'"
+        ) <= 2, "Dimension may not contain more than one divide symbol '/'"
         output = _formatUnits(dimSplit[0], UNITS_SEPARATOR_NUMERATOR)
         if len(dimSplit) == 2:
             output += "/" + _formatUnits(dimSplit[1],

@@ -5717,7 +5717,7 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_name, int __pyx_v_rstHeading) {
   PyObject *__pyx_v_output = 0;
   PyObject *__pyx_v_k = NULL;
-  PyObject *__pyx_v_v = NULL;
+  CYTHON_UNUSED PyObject *__pyx_v_v = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5827,7 +5827,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
  * eos = {}
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)             # <<<<<<<<<<<<<<
  *         for k, v in self._properties.items():
- *             output += self.formatAttrForSummary({k: v}, [])
+ *             output += self.formatAttrForSummary(k, [])
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_eos_2, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -5916,7 +5916,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
  * eos = {}
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
  *         for k, v in self._properties.items():             # <<<<<<<<<<<<<<
- *             output += self.formatAttrForSummary({k: v}, [])
+ *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:
  */
   __pyx_t_7 = 0;
@@ -5943,30 +5943,27 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
     /* "mcycle/bases/flowstate.pyx":195
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
  *         for k, v in self._properties.items():
- *             output += self.formatAttrForSummary({k: v}, [])             # <<<<<<<<<<<<<<
+ *             output += self.formatAttrForSummary(k, [])             # <<<<<<<<<<<<<<
  *         if printSummary:
  *             print(output)
  */
-    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_v_k))||((__pyx_v_k) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_k)->tp_name), 0))) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (PyDict_SetItem(__pyx_t_6, __pyx_v_k, __pyx_v_v) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.formatAttrForSummary(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject*)__pyx_v_k), ((PyObject*)__pyx_t_6)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.formatAttrForSummary(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject*)__pyx_t_6), ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 195, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_output, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_output, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __Pyx_DECREF_SET(__pyx_v_output, ((PyObject*)__pyx_t_3));
-    __pyx_t_3 = 0;
+    __Pyx_DECREF_SET(__pyx_v_output, ((PyObject*)__pyx_t_6));
+    __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/bases/flowstate.pyx":196
  *         for k, v in self._properties.items():
- *             output += self.formatAttrForSummary({k: v}, [])
+ *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:             # <<<<<<<<<<<<<<
  *             print(output)
  *         return output
@@ -5975,7 +5972,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   if (__pyx_t_2) {
 
     /* "mcycle/bases/flowstate.pyx":197
- *             output += self.formatAttrForSummary({k: v}, [])
+ *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:
  *             print(output)             # <<<<<<<<<<<<<<
  *         return output
@@ -5987,7 +5984,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
 
     /* "mcycle/bases/flowstate.pyx":196
  *         for k, v in self._properties.items():
- *             output += self.formatAttrForSummary({k: v}, [])
+ *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:             # <<<<<<<<<<<<<<
  *             print(output)
  *         return output

@@ -1,5 +1,5 @@
 from .. import defaults
-from ..defaults import getUnits
+from ..defaults import getUnitsFormatted, getDimensions
 
 cdef class MCAttr:
     """Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.
@@ -99,8 +99,8 @@ kwargs : dict
                     key_attr[int(key_split[1])] = value
             else:
                 setattr(self, key, value)
-       
-    cdef public str formatAttrForSummary(self, dict attr, list hasSummaryList):
+              
+    cdef public str formatAttrForSummary(self, str attr, list hasSummaryList):
         """str: Formats dictionary of attribute name and MCAttr object (as found in _inputs) to be used in summary().
 
 Parameters
@@ -110,33 +110,32 @@ attr : dict
 hasSummaryList : list
     List to append attributes that themselves have the method 'summary'. Defaults to [] (which is not accessible outside function).
         """
-        cdef str key, units
-        [(key)] = attr.keys()
+        cdef str dimensions, units
         try:
-            if key.endswith("()"):
-                attrVal = getattr(self,key.strip("()"))()
+            if attr.endswith("()"):
+                attr = attr.strip("()")
+                attrVal = getattr(self, attr)()
             else:
-                attrVal = getattr(self, key)
+                attrVal = getattr(self, attr)
             if hasattr(attrVal, "summary"):
-                hasSummaryList.append(key)
+                hasSummaryList.append(attr)
                 return ""
             else:
-                units = getUnits(attr[key].dimension)
-                if units == "":
-                    units = ""
-                else:
-                    units = " [" + units + "]"
+                dimensions = getDimensions(attr, self.__class__.__name__)
+                units = getUnitsFormatted(dimensions)
                 if type(attrVal) is float:
                     fcnOutput = """{} = {}{}
-""".format(key, defaults.PRINT_FORMAT_FLOAT, units).format(attrVal)
+""".format(attr, defaults.PRINT_FORMAT_FLOAT, units).format(attrVal)
 
                 else:
                     fcnOutput = """{} = {}{}
-""".format(key, attrVal, units)
+""".format(attr, attrVal, units)
                 return fcnOutput
         except AttributeError:
             return """{} not yet defined
-""".format(key)
+""".format(attr)
+        except KeyError as exc:
+            return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
         except Exception as inst:
             return """Attribute "{}" not found: {}
-""".format(key, inst)
+""".format(attr, inst)

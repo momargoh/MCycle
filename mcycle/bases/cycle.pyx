@@ -166,7 +166,7 @@ working fluid: {}
             elif k in ["config"]:
                 pass
             else:
-                output += self.formatAttrForSummary({k: v}, hasSummaryList)
+                output += self.formatAttrForSummary(k, hasSummaryList)
         #
         if propertyKeys == 'all':
             propertyKeys = self._propertyKeys()
@@ -181,10 +181,10 @@ Properties
                 try:
                     if k in self._propertyKeys():
                         o = self.formatAttrForSummary(
-                            {k: self._properties[k]}, [])
+                            k, [])
                     elif k+"()" in self._propertyKeys():
                         o = self.formatAttrForSummary(
-                            {k+"()": self._properties[k+"()"]}, [])
+                            k+"()", [])
                     else:
                         o = k + """: property not found
 """

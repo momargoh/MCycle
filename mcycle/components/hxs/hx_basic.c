@@ -3232,7 +3232,6 @@ static const char __pyx_k_unitClass[] = "_unitClass";
 static const char __pyx_k_ARatioWall[] = "ARatioWall";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_effThermal[] = "effThermal";
 static const char __pyx_k_flowConfig[] = "flowConfig";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
@@ -3391,10 +3390,10 @@ static PyObject *__pyx_kp_u_dpSf_2;
 static PyObject *__pyx_n_s_dpWf;
 static PyObject *__pyx_kp_u_dpWf_2;
 static PyObject *__pyx_n_s_dtype_is_object;
-static PyObject *__pyx_n_u_effThermal;
 static PyObject *__pyx_n_s_efficiencyFactorSf;
 static PyObject *__pyx_n_s_efficiencyFactorWf;
 static PyObject *__pyx_n_s_efficiencyThermal;
+static PyObject *__pyx_n_u_efficiencyThermal;
 static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
@@ -33827,10 +33826,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dpWf, __pyx_k_dpWf, sizeof(__pyx_k_dpWf), 0, 0, 1, 1},
   {&__pyx_kp_u_dpWf_2, __pyx_k_dpWf_2, sizeof(__pyx_k_dpWf_2), 0, 1, 0, 0},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
-  {&__pyx_n_u_effThermal, __pyx_k_effThermal, sizeof(__pyx_k_effThermal), 0, 1, 0, 1},
   {&__pyx_n_s_efficiencyFactorSf, __pyx_k_efficiencyFactorSf, sizeof(__pyx_k_efficiencyFactorSf), 0, 0, 1, 1},
   {&__pyx_n_s_efficiencyFactorWf, __pyx_k_efficiencyFactorWf, sizeof(__pyx_k_efficiencyFactorWf), 0, 0, 1, 1},
   {&__pyx_n_s_efficiencyThermal, __pyx_k_efficiencyThermal, sizeof(__pyx_k_efficiencyThermal), 0, 0, 1, 1},
+  {&__pyx_n_u_efficiencyThermal, __pyx_k_efficiencyThermal, sizeof(__pyx_k_efficiencyThermal), 0, 1, 0, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
@@ -35229,7 +35228,7 @@ if (!__Pyx_RefNanny) {
  *                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
  *                         "A": MCAttr(float, "area"),             # <<<<<<<<<<<<<<
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
- *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+ *                         "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  */
   __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -35249,7 +35248,7 @@ if (!__Pyx_RefNanny) {
  *                         "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
  *                         "A": MCAttr(float, "area"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),             # <<<<<<<<<<<<<<
- *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+ *                         "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
  */
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
@@ -35295,7 +35294,7 @@ if (!__Pyx_RefNanny) {
   /* "mcycle/components/hxs/hx_basic.pyx":23
  *                         "A": MCAttr(float, "area"),
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
- *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),             # <<<<<<<<<<<<<<
+ *                         "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),             # <<<<<<<<<<<<<<
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
  *                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
  */
@@ -35310,7 +35309,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_effThermal, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_efficiencyThermal, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -35341,7 +35340,7 @@ if (!__Pyx_RefNanny) {
 
   /* "mcycle/components/hxs/hx_basic.pyx":24
  *                         "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
- *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+ *                         "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),             # <<<<<<<<<<<<<<
  *                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), 'runUnitsBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
@@ -35387,7 +35386,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "mcycle/components/hxs/hx_basic.pyx":25
- *                         "effThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
+ *                         "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
  *                         "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  "ambient": MCAttr(FlowState, "none"),
  *                         "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),             # <<<<<<<<<<<<<<
  *                         "sizeUnitsBounds": MCAttr(list, "none"), 'runBounds': MCAttr(list, 'none'), 'runUnitsBounds': MCAttr(list, 'none'), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
