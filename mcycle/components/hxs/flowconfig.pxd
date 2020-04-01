@@ -1,6 +1,6 @@
-from ...bases.mcabstractbase cimport MCAB
+from ...bases.abc cimport ABC
 
-cdef class HxFlowConfig(MCAB):
+cdef class HxFlowConfig(ABC):
     cdef public unsigned char sense
     cdef public unsigned int passes
     cdef public str arrangement

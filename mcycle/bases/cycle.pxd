@@ -1,8 +1,8 @@
-from .mcabstractbase cimport MCAB
+from .abc cimport ABC
 from .config cimport Config
 from .flowstate cimport FlowState
 
-cdef class Cycle(MCAB):
+cdef class Cycle(ABC):
     cdef public tuple _componentKeys
     cdef public tuple _cycleStateKeys
     cdef public Config config

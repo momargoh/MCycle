@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "mcycle.bases.mcabstractbase",
+        "name": "mcycle.bases.abc",
         "sources": [
-            "mcycle/bases/mcabstractbase.pyx"
+            "mcycle/bases/abc.pyx"
         ]
     },
-    "module_name": "mcycle.bases.mcabstractbase"
+    "module_name": "mcycle.bases.abc"
 }
 END: Cython Metadata */
 
@@ -574,8 +574,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__mcycle__bases__mcabstractbase
-#define __PYX_HAVE_API__mcycle__bases__mcabstractbase
+#define __PYX_HAVE__mcycle__bases__abc
+#define __PYX_HAVE_API__mcycle__bases__abc
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -781,36 +781,36 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "stringsource",
-  "mcycle/bases/mcabstractbase.pyx",
-  "mcycle/bases/mcabstractbase.pxd",
+  "mcycle/bases/abc.pyx",
+  "mcycle/bases/abc.pxd",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr;
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB;
+struct __pyx_obj_6mcycle_5bases_3abc_MCAttr;
+struct __pyx_obj_6mcycle_5bases_3abc_ABC;
 
-/* "mcycle/bases/mcabstractbase.pxd":1
+/* "mcycle/bases/abc.pxd":1
  * cdef class MCAttr:             # <<<<<<<<<<<<<<
  *     cdef public cls
  *     cdef public str dimension
  */
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr {
+struct __pyx_obj_6mcycle_5bases_3abc_MCAttr {
   PyObject_HEAD
   PyObject *cls;
   PyObject *dimension;
 };
 
 
-/* "mcycle/bases/mcabstractbase.pxd":5
+/* "mcycle/bases/abc.pxd":5
  *     cdef public str dimension
  * 
- * cdef class MCAB:             # <<<<<<<<<<<<<<
+ * cdef class ABC:             # <<<<<<<<<<<<<<
  *     cdef public dict _inputs
  *     cdef public dict _properties
  */
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB {
+struct __pyx_obj_6mcycle_5bases_3abc_ABC {
   PyObject_HEAD
-  struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_vtab;
+  struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *__pyx_vtab;
   PyObject *_inputs;
   PyObject *_properties;
   PyObject *name;
@@ -820,25 +820,25 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB {
 
 
 
-/* "mcycle/bases/mcabstractbase.pyx":18
+/* "mcycle/bases/abc.pyx":18
  *         self.dimension = dimension
  * 
- * cdef class MCAB:             # <<<<<<<<<<<<<<
- *     """Abstract base class for all MCycle classes.
+ * cdef class ABC:             # <<<<<<<<<<<<<<
+ *     """Abstract Base Class for all MCycle classes.
  * 
  */
 
-struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB {
-  PyObject *(*_inputKeys)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_inputValues)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_propertyKeys)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  PyObject *(*_propertyValues)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *(*copy)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch);
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *(*copyUpdate)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch);
-  void (*update)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch);
-  PyObject *(*formatAttrForSummary)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, PyObject *);
+struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC {
+  PyObject *(*_inputKeys)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
+  PyObject *(*_inputValues)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
+  PyObject *(*_propertyKeys)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
+  PyObject *(*_propertyValues)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*copy)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*copyUpdate)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, int __pyx_skip_dispatch);
+  void (*update)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, int __pyx_skip_dispatch);
+  PyObject *(*formatAttrForSummary)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, PyObject *);
 };
-static struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB;
+static struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *__pyx_vtabptr_6mcycle_5bases_3abc_ABC;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -1281,28 +1281,28 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copy(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copyUpdate(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch); /* proto*/
-void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch); /* proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_hasSummaryList); /* proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__inputKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__inputValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__propertyKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__propertyValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_f_6mcycle_5bases_3abc_3ABC_copy(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_f_6mcycle_5bases_3abc_3ABC_copyUpdate(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch); /* proto*/
+void __pyx_f_6mcycle_5bases_3abc_3ABC_update(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch); /* proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC_formatAttrForSummary(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_hasSummaryList); /* proto*/
 
-/* Module declarations from 'mcycle.bases.mcabstractbase' */
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = 0;
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB = 0;
-static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__set_state(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *); /*proto*/
-#define __Pyx_MODULE_NAME "mcycle.bases.mcabstractbase"
-extern int __pyx_module_is_main_mcycle__bases__mcabstractbase;
-int __pyx_module_is_main_mcycle__bases__mcabstractbase = 0;
+/* Module declarations from 'mcycle.bases.abc' */
+static PyTypeObject *__pyx_ptype_6mcycle_5bases_3abc_MCAttr = 0;
+static PyTypeObject *__pyx_ptype_6mcycle_5bases_3abc_ABC = 0;
+static PyObject *__pyx_f_6mcycle_5bases_3abc___pyx_unpickle_ABC__set_state(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *); /*proto*/
+#define __Pyx_MODULE_NAME "mcycle.bases.abc"
+extern int __pyx_module_is_main_mcycle__bases__abc;
+int __pyx_module_is_main_mcycle__bases__abc = 0;
 
-/* Implementation of 'mcycle.bases.mcabstractbase' */
+/* Implementation of 'mcycle.bases.abc' */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_AttributeError;
 static PyObject *__pyx_builtin_KeyError;
-static const char __pyx_k__3[] = "";
+static const char __pyx_k__5[] = "";
 static const char __pyx_k__6[] = "()";
 static const char __pyx_k__7[] = ".";
 static const char __pyx_k__8[] = "[";
@@ -1355,12 +1355,12 @@ static const char __pyx_k_propertyValues[] = "_propertyValues";
 static const char __pyx_k_not_yet_defined[] = "{} not yet defined\n";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_mcycle_bases_abc[] = "mcycle.bases.abc";
+static const char __pyx_k_pyx_unpickle_ABC[] = "__pyx_unpickle_ABC";
 static const char __pyx_k_getUnitsFormatted[] = "getUnitsFormatted";
-static const char __pyx_k_pyx_unpickle_MCAB[] = "__pyx_unpickle_MCAB";
 static const char __pyx_k_PRINT_FORMAT_FLOAT[] = "PRINT_FORMAT_FLOAT";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Attribute_not_found[] = "Attribute \"{}\" not found: {}\n";
-static const char __pyx_k_mcycle_bases_mcabstractbase[] = "mcycle.bases.mcabstractbase";
 static const char __pyx_k_dimensions_not_defined_in_defau[] = "{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x32[] = "Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
@@ -1372,8 +1372,8 @@ static PyObject *__pyx_n_s_PRINT_FORMAT_FLOAT;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_kp_u__10;
-static PyObject *__pyx_n_s__3;
-static PyObject *__pyx_kp_u__3;
+static PyObject *__pyx_n_s__5;
+static PyObject *__pyx_kp_u__5;
 static PyObject *__pyx_kp_u__6;
 static PyObject *__pyx_kp_u__7;
 static PyObject *__pyx_kp_u__8;
@@ -1398,7 +1398,7 @@ static PyObject *__pyx_n_s_inputs;
 static PyObject *__pyx_n_s_items;
 static PyObject *__pyx_n_s_keys;
 static PyObject *__pyx_n_s_main;
-static PyObject *__pyx_n_s_mcycle_bases_mcabstractbase;
+static PyObject *__pyx_n_s_mcycle_bases_abc;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
 static PyObject *__pyx_n_s_new;
@@ -1414,7 +1414,7 @@ static PyObject *__pyx_n_s_pyx_checksum;
 static PyObject *__pyx_n_s_pyx_result;
 static PyObject *__pyx_n_s_pyx_state;
 static PyObject *__pyx_n_s_pyx_type;
-static PyObject *__pyx_n_s_pyx_unpickle_MCAB;
+static PyObject *__pyx_n_s_pyx_unpickle_ABC;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
@@ -1427,50 +1427,50 @@ static PyObject *__pyx_n_s_strip;
 static PyObject *__pyx_n_u_summary;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_update;
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_cls, PyObject *__pyx_v_dimension); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v__inputs, PyObject *__pyx_v__properties, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_10copy(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cython__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cython__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAttr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAB(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr___cinit__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_cls, PyObject *__pyx_v_dimension); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls___get__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension___get__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC___init__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v__inputs, PyObject *__pyx_v__properties, PyObject *__pyx_v_name, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_2_inputKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_4_inputValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_6_propertyKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_8_propertyValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_10copy(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_12copyUpdate(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_14update(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_4name___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_16__reduce_cython__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_18__setstate_cython__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_3abc___pyx_unpickle_ABC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_6mcycle_5bases_3abc_MCAttr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_6mcycle_5bases_3abc_ABC(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_keys = {0, &__pyx_n_s_keys, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyList_Type_remove = {0, &__pyx_n_s_remove, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyUnicode_Type_strip = {0, &__pyx_n_s_strip, 0, 0, 0};
 static PyObject *__pyx_int_52857372;
+static PyObject *__pyx_k__3;
 static PyObject *__pyx_k__4;
-static PyObject *__pyx_k__5;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_codeobj__12;
 /* Late includes */
 
-/* "mcycle/bases/mcabstractbase.pyx":14
+/* "mcycle/bases/abc.pyx":14
  *     Dimensions of the attribute, eg. 'length/time'. Defaults to 'none'.
  * """
  *     def __cinit__(self, cls, str dimension='none'):             # <<<<<<<<<<<<<<
@@ -1479,8 +1479,8 @@ static PyObject *__pyx_codeobj__12;
  */
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_cls = 0;
   PyObject *__pyx_v_dimension = 0;
   int __pyx_r;
@@ -1532,12 +1532,12 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_1__cinit__(PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 14, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAttr.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.MCAttr.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dimension), (&PyUnicode_Type), 1, "dimension", 1))) __PYX_ERR(1, 14, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self), __pyx_v_cls, __pyx_v_dimension);
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr___cinit__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self), __pyx_v_cls, __pyx_v_dimension);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1548,12 +1548,12 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_1__cinit__(PyObject 
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_cls, PyObject *__pyx_v_dimension) {
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr___cinit__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_cls, PyObject *__pyx_v_dimension) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "mcycle/bases/mcabstractbase.pyx":15
+  /* "mcycle/bases/abc.pyx":15
  * """
  *     def __cinit__(self, cls, str dimension='none'):
  *         self.cls = cls #: definition of cls             # <<<<<<<<<<<<<<
@@ -1566,12 +1566,12 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __p
   __Pyx_DECREF(__pyx_v_self->cls);
   __pyx_v_self->cls = __pyx_v_cls;
 
-  /* "mcycle/bases/mcabstractbase.pyx":16
+  /* "mcycle/bases/abc.pyx":16
  *     def __cinit__(self, cls, str dimension='none'):
  *         self.cls = cls #: definition of cls
  *         self.dimension = dimension             # <<<<<<<<<<<<<<
  * 
- * cdef class MCAB:
+ * cdef class ABC:
  */
   __Pyx_INCREF(__pyx_v_dimension);
   __Pyx_GIVEREF(__pyx_v_dimension);
@@ -1579,7 +1579,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __p
   __Pyx_DECREF(__pyx_v_self->dimension);
   __pyx_v_self->dimension = __pyx_v_dimension;
 
-  /* "mcycle/bases/mcabstractbase.pyx":14
+  /* "mcycle/bases/abc.pyx":14
  *     Dimensions of the attribute, eg. 'length/time'. Defaults to 'none'.
  * """
  *     def __cinit__(self, cls, str dimension='none'):             # <<<<<<<<<<<<<<
@@ -1593,7 +1593,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __p
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pxd":2
+/* "mcycle/bases/abc.pxd":2
  * cdef class MCAttr:
  *     cdef public cls             # <<<<<<<<<<<<<<
  *     cdef public str dimension
@@ -1601,19 +1601,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr___cinit__(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls___get__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls___get__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls___get__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -1630,19 +1630,19 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls___get__(s
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_2__set__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_2__set__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
@@ -1659,19 +1659,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_2__set__(struct
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_4__del__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_4__del__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self) {
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_3cls_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -1687,28 +1687,28 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_4__del__(struct
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pxd":3
+/* "mcycle/bases/abc.pxd":3
  * cdef class MCAttr:
  *     cdef public cls
  *     cdef public str dimension             # <<<<<<<<<<<<<<
  * 
- * cdef class MCAB:
+ * cdef class ABC:
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension___get__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension___get__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension___get__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -1725,19 +1725,19 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension___g
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_2__set__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_2__set__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1756,7 +1756,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_2__set__(
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAttr.dimension.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.MCAttr.dimension.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -1764,19 +1764,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_2__set__(
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_4__del__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_4__del__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self) {
+static int __pyx_pf_6mcycle_5bases_3abc_6MCAttr_9dimension_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -1799,20 +1799,20 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_4__del__(
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cython__[] = "MCAttr.__reduce_cython__(self)";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_6MCAttr_2__reduce_cython__[] = "MCAttr.__reduce_cython__(self)";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cython__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_2__reduce_cython__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1839,7 +1839,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cyth
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAttr.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.MCAttr.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -1854,20 +1854,20 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cyth
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cython__[] = "MCAttr.__setstate_cython__(self, __pyx_state)";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_6MCAttr_4__setstate_cython__[] = "MCAttr.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_6MCAttr_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cython__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_6MCAttr_4__setstate_cython__(((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_6MCAttr_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1894,27 +1894,27 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cy
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAttr.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.MCAttr.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":31
+/* "mcycle/bases/abc.pyx":31
  *     """
  * 
- *     def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):             # <<<<<<<<<<<<<<
+ *     def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):             # <<<<<<<<<<<<<<
  *         self.name = name
  *         self._inputs = _inputs
  */
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_name = 0;
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v__inputs = 0;
   PyObject *__pyx_v__properties = 0;
+  PyObject *__pyx_v_name = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
@@ -1922,11 +1922,11 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__
   __pyx_v_kwargs = PyDict_New(); if (unlikely(!__pyx_v_kwargs)) return -1;
   __Pyx_GOTREF(__pyx_v_kwargs);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_name,&__pyx_n_s_inputs,&__pyx_n_s_properties,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_inputs,&__pyx_n_s_properties,&__pyx_n_s_name,0};
     PyObject* values[3] = {0,0,0};
-    values[0] = ((PyObject*)__pyx_kp_u__3);
+    values[0] = __pyx_k__3;
     values[1] = __pyx_k__4;
-    values[2] = __pyx_k__5;
+    values[2] = ((PyObject*)__pyx_kp_u__5);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
@@ -1944,19 +1944,19 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__
       switch (pos_args) {
         case  0:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inputs);
           if (value) { values[0] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_inputs);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_properties);
           if (value) { values[1] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_properties);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name);
           if (value) { values[2] = value; kw_args--; }
         }
       }
@@ -1975,23 +1975,23 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_name = ((PyObject*)values[0]);
-    __pyx_v__inputs = ((PyObject*)values[1]);
-    __pyx_v__properties = ((PyObject*)values[2]);
+    __pyx_v__inputs = ((PyObject*)values[0]);
+    __pyx_v__properties = ((PyObject*)values[1]);
+    __pyx_v_name = ((PyObject*)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 31, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(1, 31, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v__inputs), (&PyDict_Type), 1, "_inputs", 1))) __PYX_ERR(1, 31, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v__properties), (&PyDict_Type), 1, "_properties", 1))) __PYX_ERR(1, 31, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), __pyx_v_name, __pyx_v__inputs, __pyx_v__properties, __pyx_v_kwargs);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(1, 31, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC___init__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), __pyx_v__inputs, __pyx_v__properties, __pyx_v_name, __pyx_v_kwargs);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2003,14 +2003,14 @@ static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__(PyObject *__
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v__inputs, PyObject *__pyx_v__properties, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC___init__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v__inputs, PyObject *__pyx_v__properties, PyObject *__pyx_v_name, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "mcycle/bases/mcabstractbase.pyx":32
+  /* "mcycle/bases/abc.pyx":32
  * 
- *     def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):
+ *     def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):
  *         self.name = name             # <<<<<<<<<<<<<<
  *         self._inputs = _inputs
  *         self._properties = _properties
@@ -2021,8 +2021,8 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_
   __Pyx_DECREF(__pyx_v_self->name);
   __pyx_v_self->name = __pyx_v_name;
 
-  /* "mcycle/bases/mcabstractbase.pyx":33
- *     def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):
+  /* "mcycle/bases/abc.pyx":33
+ *     def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):
  *         self.name = name
  *         self._inputs = _inputs             # <<<<<<<<<<<<<<
  *         self._properties = _properties
@@ -2034,7 +2034,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_
   __Pyx_DECREF(__pyx_v_self->_inputs);
   __pyx_v_self->_inputs = __pyx_v__inputs;
 
-  /* "mcycle/bases/mcabstractbase.pyx":34
+  /* "mcycle/bases/abc.pyx":34
  *         self.name = name
  *         self._inputs = _inputs
  *         self._properties = _properties             # <<<<<<<<<<<<<<
@@ -2047,10 +2047,10 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_
   __Pyx_DECREF(__pyx_v_self->_properties);
   __pyx_v_self->_properties = __pyx_v__properties;
 
-  /* "mcycle/bases/mcabstractbase.pyx":31
+  /* "mcycle/bases/abc.pyx":31
  *     """
  * 
- *     def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):             # <<<<<<<<<<<<<<
+ *     def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):             # <<<<<<<<<<<<<<
  *         self.name = name
  *         self._inputs = _inputs
  */
@@ -2061,7 +2061,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":36
+/* "mcycle/bases/abc.pyx":36
  *         self._properties = _properties
  * 
  *     cpdef public list _inputKeys(self):             # <<<<<<<<<<<<<<
@@ -2069,8 +2069,8 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB___init__(struct __pyx_
  * 
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__inputKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2084,7 +2084,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_inputKeys); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_3_inputKeys)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_3_inputKeys)) {
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2114,7 +2114,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":37
+  /* "mcycle/bases/abc.pyx":37
  * 
  *     cpdef public list _inputKeys(self):
  *         return list(self._inputs.keys())             # <<<<<<<<<<<<<<
@@ -2135,7 +2135,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":36
+  /* "mcycle/bases/abc.pyx":36
  *         self._properties = _properties
  * 
  *     cpdef public list _inputKeys(self):             # <<<<<<<<<<<<<<
@@ -2149,7 +2149,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._inputKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._inputKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2158,26 +2158,26 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(struct __pyx_
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys[] = "MCAB._inputKeys(self) -> list";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_2_inputKeys[] = "ABC._inputKeys(self) -> list";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_3_inputKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_inputKeys (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_2_inputKeys(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_2_inputKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_inputKeys", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6mcycle_5bases_3abc_3ABC__inputKeys(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2186,7 +2186,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(stru
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._inputKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._inputKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2194,7 +2194,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(stru
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":39
+/* "mcycle/bases/abc.pyx":39
  *         return list(self._inputs.keys())
  * 
  *     cpdef public list _inputValues(self):             # <<<<<<<<<<<<<<
@@ -2202,8 +2202,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys(stru
  *         cdef str k
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__inputValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_v_ilist = 0;
   PyObject *__pyx_v_k = 0;
   CYTHON_UNUSED PyObject *__pyx_v_v = NULL;
@@ -2225,7 +2225,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_inputValues); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_5_inputValues)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_5_inputValues)) {
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2255,7 +2255,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":40
+  /* "mcycle/bases/abc.pyx":40
  * 
  *     cpdef public list _inputValues(self):
  *         cdef list ilist = []             # <<<<<<<<<<<<<<
@@ -2267,7 +2267,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
   __pyx_v_ilist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":42
+  /* "mcycle/bases/abc.pyx":42
  *         cdef list ilist = []
  *         cdef str k
  *         for k, v in self._inputs.items():             # <<<<<<<<<<<<<<
@@ -2296,7 +2296,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
     __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "mcycle/bases/mcabstractbase.pyx":43
+    /* "mcycle/bases/abc.pyx":43
  *         cdef str k
  *         for k, v in self._inputs.items():
  *             ilist.append(getattr(self, k))             # <<<<<<<<<<<<<<
@@ -2310,7 +2310,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":44
+  /* "mcycle/bases/abc.pyx":44
  *         for k, v in self._inputs.items():
  *             ilist.append(getattr(self, k))
  *         return ilist             # <<<<<<<<<<<<<<
@@ -2322,7 +2322,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
   __pyx_r = __pyx_v_ilist;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":39
+  /* "mcycle/bases/abc.pyx":39
  *         return list(self._inputs.keys())
  * 
  *     cpdef public list _inputValues(self):             # <<<<<<<<<<<<<<
@@ -2336,7 +2336,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._inputValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._inputValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_ilist);
@@ -2348,26 +2348,26 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(struct __py
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues[] = "MCAB._inputValues(self) -> list";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_4_inputValues[] = "ABC._inputValues(self) -> list";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_5_inputValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_inputValues (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_4_inputValues(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_4_inputValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_inputValues", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6mcycle_5bases_3abc_3ABC__inputValues(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2376,7 +2376,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(st
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._inputValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._inputValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2384,7 +2384,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(st
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":46
+/* "mcycle/bases/abc.pyx":46
  *         return ilist
  * 
  *     cpdef public list _propertyKeys(self):             # <<<<<<<<<<<<<<
@@ -2392,8 +2392,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues(st
  * 
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__propertyKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2407,7 +2407,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __p
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_propertyKeys); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 46, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_propertyKeys)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_7_propertyKeys)) {
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2437,7 +2437,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __p
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":47
+  /* "mcycle/bases/abc.pyx":47
  * 
  *     cpdef public list _propertyKeys(self):
  *         return list(self._properties.keys())             # <<<<<<<<<<<<<<
@@ -2458,7 +2458,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __p
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":46
+  /* "mcycle/bases/abc.pyx":46
  *         return ilist
  * 
  *     cpdef public list _propertyKeys(self):             # <<<<<<<<<<<<<<
@@ -2472,7 +2472,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __p
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._propertyKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._propertyKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2481,26 +2481,26 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(struct __p
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys[] = "MCAB._propertyKeys(self) -> list";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_6_propertyKeys[] = "ABC._propertyKeys(self) -> list";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_7_propertyKeys(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_propertyKeys (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_6_propertyKeys(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_6_propertyKeys(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_propertyKeys", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 46, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6mcycle_5bases_3abc_3ABC__propertyKeys(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2509,7 +2509,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._propertyKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._propertyKeys", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2517,7 +2517,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(s
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":49
+/* "mcycle/bases/abc.pyx":49
  *         return list(self._properties.keys())
  * 
  *     cpdef public list _propertyValues(self):             # <<<<<<<<<<<<<<
@@ -2525,8 +2525,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys(s
  *         cdef str k
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC__propertyValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch) {
   PyObject *__pyx_v_ilist = 0;
   PyObject *__pyx_v_k = 0;
   CYTHON_UNUSED PyObject *__pyx_v_v = NULL;
@@ -2550,7 +2550,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_propertyValues); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_9_propertyValues)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_9_propertyValues)) {
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2580,7 +2580,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":50
+  /* "mcycle/bases/abc.pyx":50
  * 
  *     cpdef public list _propertyValues(self):
  *         cdef list ilist = []             # <<<<<<<<<<<<<<
@@ -2592,7 +2592,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
   __pyx_v_ilist = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":52
+  /* "mcycle/bases/abc.pyx":52
  *         cdef list ilist = []
  *         cdef str k
  *         for k, v in self._properties.items():             # <<<<<<<<<<<<<<
@@ -2621,7 +2621,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
     __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "mcycle/bases/mcabstractbase.pyx":53
+    /* "mcycle/bases/abc.pyx":53
  *         cdef str k
  *         for k, v in self._properties.items():
  *             if k.endswith("()"):             # <<<<<<<<<<<<<<
@@ -2635,7 +2635,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
     __pyx_t_9 = __Pyx_PyUnicode_Tailmatch(__pyx_v_k, __pyx_kp_u__6, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 53, __pyx_L1_error)
     if ((__pyx_t_9 != 0)) {
 
-      /* "mcycle/bases/mcabstractbase.pyx":54
+      /* "mcycle/bases/abc.pyx":54
  *         for k, v in self._properties.items():
  *             if k.endswith("()"):
  *                 ilist.append(getattr(self, k.strip("()"))())             # <<<<<<<<<<<<<<
@@ -2668,7 +2668,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
       __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_ilist, __pyx_t_3); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(1, 54, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":53
+      /* "mcycle/bases/abc.pyx":53
  *         cdef str k
  *         for k, v in self._properties.items():
  *             if k.endswith("()"):             # <<<<<<<<<<<<<<
@@ -2678,7 +2678,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
       goto __pyx_L5;
     }
 
-    /* "mcycle/bases/mcabstractbase.pyx":56
+    /* "mcycle/bases/abc.pyx":56
  *                 ilist.append(getattr(self, k.strip("()"))())
  *             else:
  *                 ilistVal = getattr(self, k)             # <<<<<<<<<<<<<<
@@ -2691,7 +2691,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
       __Pyx_XDECREF_SET(__pyx_v_ilistVal, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":57
+      /* "mcycle/bases/abc.pyx":57
  *             else:
  *                 ilistVal = getattr(self, k)
  *                 ilist.append(ilistVal)             # <<<<<<<<<<<<<<
@@ -2704,19 +2704,19 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":58
+  /* "mcycle/bases/abc.pyx":58
  *                 ilistVal = getattr(self, k)
  *                 ilist.append(ilistVal)
  *         return ilist             # <<<<<<<<<<<<<<
  * 
- *     cpdef public MCAB copy(self):
+ *     cpdef public ABC copy(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_ilist);
   __pyx_r = __pyx_v_ilist;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":49
+  /* "mcycle/bases/abc.pyx":49
  *         return list(self._properties.keys())
  * 
  *     cpdef public list _propertyValues(self):             # <<<<<<<<<<<<<<
@@ -2730,7 +2730,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._propertyValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._propertyValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_ilist);
@@ -2743,26 +2743,26 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(struct _
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues[] = "MCAB._propertyValues(self) -> list";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_8_propertyValues[] = "ABC._propertyValues(self) -> list";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_9_propertyValues(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_propertyValues (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_8_propertyValues(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_8_propertyValues(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("_propertyValues", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6mcycle_5bases_3abc_3ABC__propertyValues(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2771,7 +2771,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._propertyValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._propertyValues", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2779,18 +2779,18 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":60
+/* "mcycle/bases/abc.pyx":60
  *         return ilist
  * 
- *     cpdef public MCAB copy(self):             # <<<<<<<<<<<<<<
+ *     cpdef public ABC copy(self):             # <<<<<<<<<<<<<<
  *         """Return a new copy of an object."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())
+ *         cdef ABC copy = self.__class__(*self._inputValues())
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copy(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, int __pyx_skip_dispatch) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_copy = 0;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_r = NULL;
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_f_6mcycle_5bases_3abc_3ABC_copy(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, int __pyx_skip_dispatch) {
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_copy = 0;
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -2803,7 +2803,7 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11copy)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_11copy)) {
       __Pyx_XDECREF(((PyObject *)__pyx_r));
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2824,8 +2824,8 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB))))) __PYX_ERR(1, 60, __pyx_L1_error)
-      __pyx_r = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_t_2);
+      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_3abc_ABC))))) __PYX_ERR(1, 60, __pyx_L1_error)
+      __pyx_r = ((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       goto __pyx_L0;
@@ -2833,16 +2833,16 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":62
- *     cpdef public MCAB copy(self):
+  /* "mcycle/bases/abc.pyx":62
+ *     cpdef public ABC copy(self):
  *         """Return a new copy of an object."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())             # <<<<<<<<<<<<<<
+ *         cdef ABC copy = self.__class__(*self._inputValues())             # <<<<<<<<<<<<<<
  *         return copy
  * 
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self->__pyx_vtab)->_inputValues(__pyx_v_self, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *)__pyx_v_self->__pyx_vtab)->_inputValues(__pyx_v_self, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PySequence_Tuple(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -2851,28 +2851,28 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB))))) __PYX_ERR(1, 62, __pyx_L1_error)
-  __pyx_v_copy = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_t_2);
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_3abc_ABC))))) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_v_copy = ((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":63
+  /* "mcycle/bases/abc.pyx":63
  *         """Return a new copy of an object."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())
+ *         cdef ABC copy = self.__class__(*self._inputValues())
  *         return copy             # <<<<<<<<<<<<<<
  * 
- *     cpdef public MCAB copyUpdate(self, dict kwargs):
+ *     cpdef public ABC copyUpdate(self, dict kwargs):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
   __Pyx_INCREF(((PyObject *)__pyx_v_copy));
   __pyx_r = __pyx_v_copy;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":60
+  /* "mcycle/bases/abc.pyx":60
  *         return ilist
  * 
- *     cpdef public MCAB copy(self):             # <<<<<<<<<<<<<<
+ *     cpdef public ABC copy(self):             # <<<<<<<<<<<<<<
  *         """Return a new copy of an object."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())
+ *         cdef ABC copy = self.__class__(*self._inputValues())
  */
 
   /* function exit code */
@@ -2881,7 +2881,7 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_copy);
@@ -2891,26 +2891,26 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_10copy[] = "MCAB.copy(self) -> MCAB\nReturn a new copy of an object.";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_10copy[] = "ABC.copy(self) -> ABC\nReturn a new copy of an object.";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_11copy(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copy (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_10copy(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_10copy(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_10copy(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_10copy(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copy", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copy(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_6mcycle_5bases_3abc_3ABC_copy(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2919,7 +2919,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_10copy(struct __
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.copy", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2927,18 +2927,18 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_10copy(struct __
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":65
+/* "mcycle/bases/abc.pyx":65
  *         return copy
  * 
- *     cpdef public MCAB copyUpdate(self, dict kwargs):             # <<<<<<<<<<<<<<
+ *     cpdef public ABC copyUpdate(self, dict kwargs):             # <<<<<<<<<<<<<<
  *         """Create a new copy of an object then update it using kwargs (as dict).
  * 
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
-struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copyUpdate(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_copy = 0;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_r = NULL;
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
+struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_f_6mcycle_5bases_3abc_3ABC_copyUpdate(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch) {
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_copy = 0;
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -2952,7 +2952,7 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copyUpdate); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 65, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_13copyUpdate)) {
       __Pyx_XDECREF(((PyObject *)__pyx_r));
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -2998,8 +2998,8 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
         }
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB))))) __PYX_ERR(1, 65, __pyx_L1_error)
-      __pyx_r = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_t_2);
+      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_3abc_ABC))))) __PYX_ERR(1, 65, __pyx_L1_error)
+      __pyx_r = ((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       goto __pyx_L0;
@@ -3007,16 +3007,16 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":72
+  /* "mcycle/bases/abc.pyx":72
  * kwargs : dict
  *     Dictionary of attributes and their updated value."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())             # <<<<<<<<<<<<<<
+ *         cdef ABC copy = self.__class__(*self._inputValues())             # <<<<<<<<<<<<<<
  *         copy.update(kwargs)
  *         return copy
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self->__pyx_vtab)->_inputValues(__pyx_v_self, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 72, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *)__pyx_v_self->__pyx_vtab)->_inputValues(__pyx_v_self, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PySequence_Tuple(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3025,21 +3025,21 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB))))) __PYX_ERR(1, 72, __pyx_L1_error)
-  __pyx_v_copy = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_t_2);
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_6mcycle_5bases_3abc_ABC))))) __PYX_ERR(1, 72, __pyx_L1_error)
+  __pyx_v_copy = ((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":73
+  /* "mcycle/bases/abc.pyx":73
  *     Dictionary of attributes and their updated value."""
- *         cdef MCAB copy = self.__class__(*self._inputValues())
+ *         cdef ABC copy = self.__class__(*self._inputValues())
  *         copy.update(kwargs)             # <<<<<<<<<<<<<<
  *         return copy
  * 
  */
-  ((struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_copy->__pyx_vtab)->update(__pyx_v_copy, __pyx_v_kwargs, 0);
+  ((struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *)__pyx_v_copy->__pyx_vtab)->update(__pyx_v_copy, __pyx_v_kwargs, 0);
 
-  /* "mcycle/bases/mcabstractbase.pyx":74
- *         cdef MCAB copy = self.__class__(*self._inputValues())
+  /* "mcycle/bases/abc.pyx":74
+ *         cdef ABC copy = self.__class__(*self._inputValues())
  *         copy.update(kwargs)
  *         return copy             # <<<<<<<<<<<<<<
  * 
@@ -3050,10 +3050,10 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   __pyx_r = __pyx_v_copy;
   goto __pyx_L0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":65
+  /* "mcycle/bases/abc.pyx":65
  *         return copy
  * 
- *     cpdef public MCAB copyUpdate(self, dict kwargs):             # <<<<<<<<<<<<<<
+ *     cpdef public ABC copyUpdate(self, dict kwargs):             # <<<<<<<<<<<<<<
  *         """Create a new copy of an object then update it using kwargs (as dict).
  * 
  */
@@ -3065,7 +3065,7 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.copyUpdate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.copyUpdate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_copy);
@@ -3075,14 +3075,14 @@ struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_f_6mcycle_5bases_14
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate[] = "MCAB.copyUpdate(self, dict kwargs) -> MCAB\nCreate a new copy of an object then update it using kwargs (as dict).\n\nParameters\n-----------\nkwargs : dict\n    Dictionary of attributes and their updated value.";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_12copyUpdate[] = "ABC.copyUpdate(self, dict kwargs) -> ABC\nCreate a new copy of an object then update it using kwargs (as dict).\n\nParameters\n-----------\nkwargs : dict\n    Dictionary of attributes and their updated value.";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_13copyUpdate(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("copyUpdate (wrapper)", 0);
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) __PYX_ERR(1, 65, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject*)__pyx_v_kwargs));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_12copyUpdate(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject*)__pyx_v_kwargs));
 
   /* function exit code */
   goto __pyx_L0;
@@ -3093,13 +3093,13 @@ static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate(PyO
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_12copyUpdate(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("copyUpdate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copyUpdate(__pyx_v_self, __pyx_v_kwargs, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 65, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_6mcycle_5bases_3abc_3ABC_copyUpdate(__pyx_v_self, __pyx_v_kwargs, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3108,7 +3108,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(str
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.copyUpdate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.copyUpdate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3116,7 +3116,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(str
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":76
+/* "mcycle/bases/abc.pyx":76
  *         return copy
  * 
  *     cpdef public void update(self, dict kwargs):             # <<<<<<<<<<<<<<
@@ -3124,8 +3124,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate(str
  * 
  */
 
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
-void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
+void __pyx_f_6mcycle_5bases_3abc_3ABC_update(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs, int __pyx_skip_dispatch) {
   PyObject *__pyx_v_key = 0;
   PyObject *__pyx_v_key_split = 0;
   PyObject *__pyx_v_value = NULL;
@@ -3153,7 +3153,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_15update)) {
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3205,7 +3205,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":85
+  /* "mcycle/bases/abc.pyx":85
  *         cdef str key
  *         cdef list key_split
  *         for key, value in kwargs.items():             # <<<<<<<<<<<<<<
@@ -3234,7 +3234,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "mcycle/bases/mcabstractbase.pyx":86
+    /* "mcycle/bases/abc.pyx":86
  *         cdef list key_split
  *         for key, value in kwargs.items():
  *             if "." in key:             # <<<<<<<<<<<<<<
@@ -3249,7 +3249,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
     __pyx_t_11 = (__pyx_t_10 != 0);
     if (__pyx_t_11) {
 
-      /* "mcycle/bases/mcabstractbase.pyx":87
+      /* "mcycle/bases/abc.pyx":87
  *         for key, value in kwargs.items():
  *             if "." in key:
  *                 key_split = key.split(".", 1)             # <<<<<<<<<<<<<<
@@ -3265,7 +3265,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __Pyx_XDECREF_SET(__pyx_v_key_split, ((PyObject*)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":88
+      /* "mcycle/bases/abc.pyx":88
  *             if "." in key:
  *                 key_split = key.split(".", 1)
  *                 key_attr = getattr(self, key_split[0])             # <<<<<<<<<<<<<<
@@ -3284,7 +3284,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __Pyx_XDECREF_SET(__pyx_v_key_attr, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":89
+      /* "mcycle/bases/abc.pyx":89
  *                 key_split = key.split(".", 1)
  *                 key_attr = getattr(self, key_split[0])
  *                 key_attr.update({key_split[1]: value})             # <<<<<<<<<<<<<<
@@ -3348,7 +3348,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":86
+      /* "mcycle/bases/abc.pyx":86
  *         cdef list key_split
  *         for key, value in kwargs.items():
  *             if "." in key:             # <<<<<<<<<<<<<<
@@ -3358,7 +3358,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       goto __pyx_L5;
     }
 
-    /* "mcycle/bases/mcabstractbase.pyx":90
+    /* "mcycle/bases/abc.pyx":90
  *                 key_attr = getattr(self, key_split[0])
  *                 key_attr.update({key_split[1]: value})
  *             elif '[' in key and ']' in key:             # <<<<<<<<<<<<<<
@@ -3386,7 +3386,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_11) {
 
-      /* "mcycle/bases/mcabstractbase.pyx":91
+      /* "mcycle/bases/abc.pyx":91
  *                 key_attr.update({key_split[1]: value})
  *             elif '[' in key and ']' in key:
  *                 key = key.replace('[',']')             # <<<<<<<<<<<<<<
@@ -3402,7 +3402,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __Pyx_DECREF_SET(__pyx_v_key, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":92
+      /* "mcycle/bases/abc.pyx":92
  *             elif '[' in key and ']' in key:
  *                 key = key.replace('[',']')
  *                 key_split = key.split(']')             # <<<<<<<<<<<<<<
@@ -3418,18 +3418,18 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __Pyx_XDECREF_SET(__pyx_v_key_split, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":93
+      /* "mcycle/bases/abc.pyx":93
  *                 key = key.replace('[',']')
  *                 key_split = key.split(']')
  *                 key_split.remove('')             # <<<<<<<<<<<<<<
  *                 if len(key_split) > 2:
  *                     key_attr = getattr(self, key_split[0])[int(key_split[1])]
  */
-      __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_remove, __pyx_v_key_split, __pyx_kp_u__3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 93, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_remove, __pyx_v_key_split, __pyx_kp_u__5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 93, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "mcycle/bases/mcabstractbase.pyx":94
+      /* "mcycle/bases/abc.pyx":94
  *                 key_split = key.split(']')
  *                 key_split.remove('')
  *                 if len(key_split) > 2:             # <<<<<<<<<<<<<<
@@ -3444,7 +3444,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       __pyx_t_11 = ((__pyx_t_14 > 2) != 0);
       if (__pyx_t_11) {
 
-        /* "mcycle/bases/mcabstractbase.pyx":95
+        /* "mcycle/bases/abc.pyx":95
  *                 key_split.remove('')
  *                 if len(key_split) > 2:
  *                     key_attr = getattr(self, key_split[0])[int(key_split[1])]             # <<<<<<<<<<<<<<
@@ -3473,7 +3473,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
         __Pyx_XDECREF_SET(__pyx_v_key_attr, __pyx_t_12);
         __pyx_t_12 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":96
+        /* "mcycle/bases/abc.pyx":96
  *                 if len(key_split) > 2:
  *                     key_attr = getattr(self, key_split[0])[int(key_split[1])]
  *                     key_attr.update({key_split[2]: value})             # <<<<<<<<<<<<<<
@@ -3537,7 +3537,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":94
+        /* "mcycle/bases/abc.pyx":94
  *                 key_split = key.split(']')
  *                 key_split.remove('')
  *                 if len(key_split) > 2:             # <<<<<<<<<<<<<<
@@ -3547,7 +3547,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
         goto __pyx_L8;
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":98
+      /* "mcycle/bases/abc.pyx":98
  *                     key_attr.update({key_split[2]: value})
  *                 else:
  *                     key_attr = getattr(self, key_split[0])             # <<<<<<<<<<<<<<
@@ -3567,7 +3567,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
         __Pyx_XDECREF_SET(__pyx_v_key_attr, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":99
+        /* "mcycle/bases/abc.pyx":99
  *                 else:
  *                     key_attr = getattr(self, key_split[0])
  *                     key_attr[int(key_split[1])] = value             # <<<<<<<<<<<<<<
@@ -3585,7 +3585,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       }
       __pyx_L8:;
 
-      /* "mcycle/bases/mcabstractbase.pyx":90
+      /* "mcycle/bases/abc.pyx":90
  *                 key_attr = getattr(self, key_split[0])
  *                 key_attr.update({key_split[1]: value})
  *             elif '[' in key and ']' in key:             # <<<<<<<<<<<<<<
@@ -3595,7 +3595,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
       goto __pyx_L5;
     }
 
-    /* "mcycle/bases/mcabstractbase.pyx":101
+    /* "mcycle/bases/abc.pyx":101
  *                     key_attr[int(key_split[1])] = value
  *             else:
  *                 setattr(self, key, value)             # <<<<<<<<<<<<<<
@@ -3609,7 +3609,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":76
+  /* "mcycle/bases/abc.pyx":76
  *         return copy
  * 
  *     cpdef public void update(self, dict kwargs):             # <<<<<<<<<<<<<<
@@ -3626,7 +3626,7 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_WriteUnraisable("mcycle.bases.mcabstractbase.MCAB.update", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("mcycle.bases.abc.ABC.update", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_key);
   __Pyx_XDECREF(__pyx_v_key_split);
@@ -3636,14 +3636,14 @@ void __pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(struct __pyx_obj_6mcyc
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_14update[] = "MCAB.update(self, dict kwargs) -> void\nUpdate (multiple) class variables from a dictionary of keyword arguments.\n\nParameters\n-----------\nkwargs : dict\n    Dictionary of attributes and their updated value; kwargs={'key': value}.";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_14update[] = "ABC.update(self, dict kwargs) -> void\nUpdate (multiple) class variables from a dictionary of keyword arguments.\n\nParameters\n-----------\nkwargs : dict\n    Dictionary of attributes and their updated value; kwargs={'key': value}.";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_15update(PyObject *__pyx_v_self, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("update (wrapper)", 0);
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) __PYX_ERR(1, 76, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject*)__pyx_v_kwargs));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_14update(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject*)__pyx_v_kwargs));
 
   /* function exit code */
   goto __pyx_L0;
@@ -3654,13 +3654,13 @@ static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update(PyObjec
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_14update(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("update", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update(__pyx_v_self, __pyx_v_kwargs, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 76, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_6mcycle_5bases_3abc_3ABC_update(__pyx_v_self, __pyx_v_kwargs, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3669,7 +3669,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(struct 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.update", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.update", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3677,7 +3677,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(struct 
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pyx":103
+/* "mcycle/bases/abc.pyx":103
  *                 setattr(self, key, value)
  * 
  *     cdef public str formatAttrForSummary(self, str attr, list hasSummaryList):             # <<<<<<<<<<<<<<
@@ -3685,7 +3685,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_14update(struct 
  * 
  */
 
-PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_hasSummaryList) {
+PyObject *__pyx_f_6mcycle_5bases_3abc_3ABC_formatAttrForSummary(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_attr, PyObject *__pyx_v_hasSummaryList) {
   PyObject *__pyx_v_dimensions = 0;
   PyObject *__pyx_v_units = 0;
   PyObject *__pyx_v_attrVal = NULL;
@@ -3721,7 +3721,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
   __Pyx_RefNannySetupContext("formatAttrForSummary", 0);
   __Pyx_INCREF(__pyx_v_attr);
 
-  /* "mcycle/bases/mcabstractbase.pyx":114
+  /* "mcycle/bases/abc.pyx":114
  *         """
  *         cdef str dimensions, units
  *         try:             # <<<<<<<<<<<<<<
@@ -3737,7 +3737,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "mcycle/bases/mcabstractbase.pyx":115
+      /* "mcycle/bases/abc.pyx":115
  *         cdef str dimensions, units
  *         try:
  *             if attr.endswith("()"):             # <<<<<<<<<<<<<<
@@ -3751,7 +3751,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       __pyx_t_4 = __Pyx_PyUnicode_Tailmatch(__pyx_v_attr, __pyx_kp_u__6, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 115, __pyx_L3_error)
       if ((__pyx_t_4 != 0)) {
 
-        /* "mcycle/bases/mcabstractbase.pyx":116
+        /* "mcycle/bases/abc.pyx":116
  *         try:
  *             if attr.endswith("()"):
  *                 attr = attr.strip("()")             # <<<<<<<<<<<<<<
@@ -3764,7 +3764,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         __Pyx_DECREF_SET(__pyx_v_attr, ((PyObject*)__pyx_t_5));
         __pyx_t_5 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":117
+        /* "mcycle/bases/abc.pyx":117
  *             if attr.endswith("()"):
  *                 attr = attr.strip("()")
  *                 attrVal = getattr(self, attr)()             # <<<<<<<<<<<<<<
@@ -3794,7 +3794,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         __pyx_v_attrVal = __pyx_t_5;
         __pyx_t_5 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":115
+        /* "mcycle/bases/abc.pyx":115
  *         cdef str dimensions, units
  *         try:
  *             if attr.endswith("()"):             # <<<<<<<<<<<<<<
@@ -3804,7 +3804,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         goto __pyx_L9;
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":119
+      /* "mcycle/bases/abc.pyx":119
  *                 attrVal = getattr(self, attr)()
  *             else:
  *                 attrVal = getattr(self, attr)             # <<<<<<<<<<<<<<
@@ -3819,7 +3819,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       }
       __pyx_L9:;
 
-      /* "mcycle/bases/mcabstractbase.pyx":120
+      /* "mcycle/bases/abc.pyx":120
  *             else:
  *                 attrVal = getattr(self, attr)
  *             if hasattr(attrVal, "summary"):             # <<<<<<<<<<<<<<
@@ -3830,7 +3830,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       __pyx_t_8 = (__pyx_t_4 != 0);
       if (__pyx_t_8) {
 
-        /* "mcycle/bases/mcabstractbase.pyx":121
+        /* "mcycle/bases/abc.pyx":121
  *                 attrVal = getattr(self, attr)
  *             if hasattr(attrVal, "summary"):
  *                 hasSummaryList.append(attr)             # <<<<<<<<<<<<<<
@@ -3843,7 +3843,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         }
         __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_hasSummaryList, __pyx_v_attr); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 121, __pyx_L3_error)
 
-        /* "mcycle/bases/mcabstractbase.pyx":122
+        /* "mcycle/bases/abc.pyx":122
  *             if hasattr(attrVal, "summary"):
  *                 hasSummaryList.append(attr)
  *                 return ""             # <<<<<<<<<<<<<<
@@ -3851,11 +3851,11 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  *                 dimensions = getDimensions(attr, self.__class__.__name__)
  */
         __Pyx_XDECREF(__pyx_r);
-        __Pyx_INCREF(__pyx_kp_u__3);
-        __pyx_r = __pyx_kp_u__3;
+        __Pyx_INCREF(__pyx_kp_u__5);
+        __pyx_r = __pyx_kp_u__5;
         goto __pyx_L7_try_return;
 
-        /* "mcycle/bases/mcabstractbase.pyx":120
+        /* "mcycle/bases/abc.pyx":120
  *             else:
  *                 attrVal = getattr(self, attr)
  *             if hasattr(attrVal, "summary"):             # <<<<<<<<<<<<<<
@@ -3864,7 +3864,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":124
+      /* "mcycle/bases/abc.pyx":124
  *                 return ""
  *             else:
  *                 dimensions = getDimensions(attr, self.__class__.__name__)             # <<<<<<<<<<<<<<
@@ -3930,7 +3930,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         __pyx_v_dimensions = ((PyObject*)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":125
+        /* "mcycle/bases/abc.pyx":125
  *             else:
  *                 dimensions = getDimensions(attr, self.__class__.__name__)
  *                 units = getUnitsFormatted(dimensions)             # <<<<<<<<<<<<<<
@@ -3986,7 +3986,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         __pyx_v_units = ((PyObject*)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "mcycle/bases/mcabstractbase.pyx":126
+        /* "mcycle/bases/abc.pyx":126
  *                 dimensions = getDimensions(attr, self.__class__.__name__)
  *                 units = getUnitsFormatted(dimensions)
  *                 if type(attrVal) is float:             # <<<<<<<<<<<<<<
@@ -3997,7 +3997,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         __pyx_t_4 = (__pyx_t_8 != 0);
         if (__pyx_t_4) {
 
-          /* "mcycle/bases/mcabstractbase.pyx":128
+          /* "mcycle/bases/abc.pyx":128
  *                 if type(attrVal) is float:
  *                     fcnOutput = """{} = {}{}
  * """.format(attr, defaults.PRINT_FORMAT_FLOAT, units).format(attrVal)             # <<<<<<<<<<<<<<
@@ -4110,7 +4110,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
           __pyx_v_fcnOutput = __pyx_t_5;
           __pyx_t_5 = 0;
 
-          /* "mcycle/bases/mcabstractbase.pyx":126
+          /* "mcycle/bases/abc.pyx":126
  *                 dimensions = getDimensions(attr, self.__class__.__name__)
  *                 units = getUnitsFormatted(dimensions)
  *                 if type(attrVal) is float:             # <<<<<<<<<<<<<<
@@ -4120,7 +4120,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
           goto __pyx_L11;
         }
 
-        /* "mcycle/bases/mcabstractbase.pyx":132
+        /* "mcycle/bases/abc.pyx":132
  *                 else:
  *                     fcnOutput = """{} = {}{}
  * """.format(attr, attrVal, units)             # <<<<<<<<<<<<<<
@@ -4183,7 +4183,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         }
         __pyx_L11:;
 
-        /* "mcycle/bases/mcabstractbase.pyx":133
+        /* "mcycle/bases/abc.pyx":133
  *                     fcnOutput = """{} = {}{}
  * """.format(attr, attrVal, units)
  *                 return fcnOutput             # <<<<<<<<<<<<<<
@@ -4197,7 +4197,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         goto __pyx_L7_try_return;
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":114
+      /* "mcycle/bases/abc.pyx":114
  *         """
  *         cdef str dimensions, units
  *         try:             # <<<<<<<<<<<<<<
@@ -4213,7 +4213,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "mcycle/bases/mcabstractbase.pyx":134
+    /* "mcycle/bases/abc.pyx":134
  * """.format(attr, attrVal, units)
  *                 return fcnOutput
  *         except AttributeError:             # <<<<<<<<<<<<<<
@@ -4222,13 +4222,13 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_AttributeError);
     if (__pyx_t_11) {
-      __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("mcycle.bases.abc.ABC.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_10, &__pyx_t_6) < 0) __PYX_ERR(1, 134, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "mcycle/bases/mcabstractbase.pyx":135
+      /* "mcycle/bases/abc.pyx":135
  *                 return fcnOutput
  *         except AttributeError:
  *             return """{} not yet defined             # <<<<<<<<<<<<<<
@@ -4237,7 +4237,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
       __Pyx_XDECREF(__pyx_r);
 
-      /* "mcycle/bases/mcabstractbase.pyx":136
+      /* "mcycle/bases/abc.pyx":136
  *         except AttributeError:
  *             return """{} not yet defined
  * """.format(attr)             # <<<<<<<<<<<<<<
@@ -4298,7 +4298,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       goto __pyx_L6_except_return;
     }
 
-    /* "mcycle/bases/mcabstractbase.pyx":137
+    /* "mcycle/bases/abc.pyx":137
  *             return """{} not yet defined
  * """.format(attr)
  *         except KeyError as exc:             # <<<<<<<<<<<<<<
@@ -4307,7 +4307,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
     if (__pyx_t_11) {
-      __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("mcycle.bases.abc.ABC.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_10, &__pyx_t_5) < 0) __PYX_ERR(1, 137, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_10);
@@ -4316,7 +4316,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       __pyx_v_exc = __pyx_t_10;
       /*try:*/ {
 
-        /* "mcycle/bases/mcabstractbase.pyx":138
+        /* "mcycle/bases/abc.pyx":138
  * """.format(attr)
  *         except KeyError as exc:
  *             return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)             # <<<<<<<<<<<<<<
@@ -4378,7 +4378,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         goto __pyx_L18_return;
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":137
+      /* "mcycle/bases/abc.pyx":137
  *             return """{} not yet defined
  * """.format(attr)
  *         except KeyError as exc:             # <<<<<<<<<<<<<<
@@ -4434,7 +4434,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       }
     }
 
-    /* "mcycle/bases/mcabstractbase.pyx":139
+    /* "mcycle/bases/abc.pyx":139
  *         except KeyError as exc:
  *             return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
  *         except Exception as inst:             # <<<<<<<<<<<<<<
@@ -4443,7 +4443,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
     __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_15) {
-      __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("mcycle.bases.abc.ABC.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_10, &__pyx_t_6) < 0) __PYX_ERR(1, 139, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_10);
@@ -4452,7 +4452,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
       __pyx_v_inst = __pyx_t_10;
       /*try:*/ {
 
-        /* "mcycle/bases/mcabstractbase.pyx":140
+        /* "mcycle/bases/abc.pyx":140
  *             return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
  *         except Exception as inst:
  *             return """Attribute "{}" not found: {}             # <<<<<<<<<<<<<<
@@ -4460,7 +4460,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
  */
         __Pyx_XDECREF(__pyx_r);
 
-        /* "mcycle/bases/mcabstractbase.pyx":141
+        /* "mcycle/bases/abc.pyx":141
  *         except Exception as inst:
  *             return """Attribute "{}" not found: {}
  * """.format(attr, inst)             # <<<<<<<<<<<<<<
@@ -4521,7 +4521,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
         goto __pyx_L29_return;
       }
 
-      /* "mcycle/bases/mcabstractbase.pyx":139
+      /* "mcycle/bases/abc.pyx":139
  *         except KeyError as exc:
  *             return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
  *         except Exception as inst:             # <<<<<<<<<<<<<<
@@ -4579,7 +4579,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "mcycle/bases/mcabstractbase.pyx":114
+    /* "mcycle/bases/abc.pyx":114
  *         """
  *         cdef str dimensions, units
  *         try:             # <<<<<<<<<<<<<<
@@ -4605,7 +4605,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
     goto __pyx_L0;
   }
 
-  /* "mcycle/bases/mcabstractbase.pyx":103
+  /* "mcycle/bases/abc.pyx":103
  *                 setattr(self, key, value)
  * 
  *     cdef public str formatAttrForSummary(self, str attr, list hasSummaryList):             # <<<<<<<<<<<<<<
@@ -4622,7 +4622,7 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.formatAttrForSummary", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_dimensions);
@@ -4637,28 +4637,28 @@ PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary(str
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pxd":6
+/* "mcycle/bases/abc.pxd":6
  * 
- * cdef class MCAB:
+ * cdef class ABC:
  *     cdef public dict _inputs             # <<<<<<<<<<<<<<
  *     cdef public dict _properties
  *     cdef public str name
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs___get__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs___get__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -4675,19 +4675,19 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs___get__
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_2__set__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_2__set__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4706,7 +4706,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_2__set__(stru
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._inputs.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._inputs.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4714,19 +4714,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_2__set__(stru
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_4__del__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_4__del__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_7_inputs_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -4742,8 +4742,8 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_4__del__(stru
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pxd":7
- * cdef class MCAB:
+/* "mcycle/bases/abc.pxd":7
+ * cdef class ABC:
  *     cdef public dict _inputs
  *     cdef public dict _properties             # <<<<<<<<<<<<<<
  *     cdef public str name
@@ -4751,19 +4751,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_4__del__(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties___get__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties___get__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -4780,19 +4780,19 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties___
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_2__set__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_2__set__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4811,7 +4811,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_2__set__
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB._properties.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC._properties.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4819,19 +4819,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_2__set__
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_4__del__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_4__del__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_11_properties_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -4847,7 +4847,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_4__del__
   return __pyx_r;
 }
 
-/* "mcycle/bases/mcabstractbase.pxd":8
+/* "mcycle/bases/abc.pxd":8
  *     cdef public dict _inputs
  *     cdef public dict _properties
  *     cdef public str name             # <<<<<<<<<<<<<<
@@ -4856,19 +4856,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_4__del__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_4name_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_4name_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name___get__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_4name___get__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name___get__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_4name___get__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
@@ -4885,19 +4885,19 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name___get__(st
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_2__set__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_2__set__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_2__set__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_2__set__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4916,7 +4916,7 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_2__set__(struct 
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.name.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.name.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4924,19 +4924,19 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_2__set__(struct 
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_5__del__(PyObject *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_4__del__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_4__del__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_4__del__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static int __pyx_pf_6mcycle_5bases_3abc_3ABC_4name_4__del__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
@@ -4959,20 +4959,20 @@ static int __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_4name_4__del__(struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cython__[] = "MCAB.__reduce_cython__(self)";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_16__reduce_cython__[] = "ABC.__reduce_cython__(self)";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_17__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cython__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_16__reduce_cython__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cython__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_16__reduce_cython__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self) {
   int __pyx_v_use_setstate;
   PyObject *__pyx_v_state = NULL;
   PyObject *__pyx_v__dict = NULL;
@@ -5078,7 +5078,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.ilist is not None or self.itup is not None or self.name is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, None), state
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, None), state
  */
   /*else*/ {
     __pyx_t_2 = (__pyx_v_self->_inputs != ((PyObject*)Py_None));
@@ -5121,7 +5121,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.ilist is not None or self.itup is not None or self.name is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, None), state
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, None), state
  *     else:
  */
   __pyx_t_3 = (__pyx_v_use_setstate != 0);
@@ -5130,12 +5130,12 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
     /* "(tree fragment)":11
  *         use_setstate = self._inputs is not None or self._properties is not None or self.ilist is not None or self.itup is not None or self.name is not None
  *     if use_setstate:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, state)
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_MCAB); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_ABC); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -5167,21 +5167,21 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.ilist is not None or self.itup is not None or self.name is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, None), state
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":13
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, None), state
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, None), state
  *     else:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_MCAB__set_state(self, __pyx_state)
+ *     __pyx_unpickle_ABC__set_state(self, __pyx_state)
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_MCAB); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_ABC); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -5218,7 +5218,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_state);
@@ -5230,46 +5230,46 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cytho
 
 /* "(tree fragment)":14
  *     else:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, state)
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_MCAB__set_state(self, __pyx_state)
+ *     __pyx_unpickle_ABC__set_state(self, __pyx_state)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cython__[] = "MCAB.__setstate_cython__(self, __pyx_state)";
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc_3ABC_18__setstate_cython__[] = "ABC.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_3ABC_19__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cython__(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc_3ABC_18__setstate_cython__(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cython__(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc_3ABC_18__setstate_cython__(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, state)
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, state)
  * def __setstate_cython__(self, __pyx_state):
- *     __pyx_unpickle_MCAB__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_ABC__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
   if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6mcycle_5bases_3abc___pyx_unpickle_ABC__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":14
  *     else:
- *         return __pyx_unpickle_MCAB, (type(self), 0x3268a1c, state)
+ *         return __pyx_unpickle_ABC, (type(self), 0x3268a1c, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_unpickle_MCAB__set_state(self, __pyx_state)
+ *     __pyx_unpickle_ABC__set_state(self, __pyx_state)
  */
 
   /* function exit code */
@@ -5277,7 +5277,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cyt
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.MCAB.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.ABC.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5286,22 +5286,22 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cyt
 }
 
 /* "(tree fragment)":1
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB[] = "__pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state)";
-static PyMethodDef __pyx_mdef_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB = {"__pyx_unpickle_MCAB", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB};
-static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_1__pyx_unpickle_ABC(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6mcycle_5bases_3abc___pyx_unpickle_ABC[] = "__pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state)";
+static PyMethodDef __pyx_mdef_6mcycle_5bases_3abc_1__pyx_unpickle_ABC = {"__pyx_unpickle_ABC", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_1__pyx_unpickle_ABC, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6mcycle_5bases_3abc___pyx_unpickle_ABC};
+static PyObject *__pyx_pw_6mcycle_5bases_3abc_1__pyx_unpickle_ABC(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v___pyx_type = 0;
   long __pyx_v___pyx_checksum;
   PyObject *__pyx_v___pyx_state = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__pyx_unpickle_MCAB (wrapper)", 0);
+  __Pyx_RefNannySetupContext("__pyx_unpickle_ABC (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pyx_type,&__pyx_n_s_pyx_checksum,&__pyx_n_s_pyx_state,0};
     PyObject* values[3] = {0,0,0};
@@ -5327,17 +5327,17 @@ static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB(P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_checksum)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_MCAB", 1, 3, 3, 1); __PYX_ERR(0, 1, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_ABC", 1, 3, 3, 1); __PYX_ERR(0, 1, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_state)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_MCAB", 1, 3, 3, 2); __PYX_ERR(0, 1, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_ABC", 1, 3, 3, 2); __PYX_ERR(0, 1, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_unpickle_MCAB") < 0)) __PYX_ERR(0, 1, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_unpickle_ABC") < 0)) __PYX_ERR(0, 1, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -5352,20 +5352,20 @@ static PyObject *__pyx_pw_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_MCAB", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_ABC", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.__pyx_unpickle_MCAB", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.__pyx_unpickle_ABC", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_6mcycle_5bases_3abc___pyx_unpickle_ABC(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6mcycle_5bases_3abc___pyx_unpickle_ABC(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_v___pyx_PickleError = NULL;
   PyObject *__pyx_v___pyx_result = NULL;
   PyObject *__pyx_r = NULL;
@@ -5377,10 +5377,10 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
   int __pyx_t_7;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_MCAB", 0);
+  __Pyx_RefNannySetupContext("__pyx_unpickle_ABC", 0);
 
   /* "(tree fragment)":2
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):
  *     if __pyx_checksum != 0x3268a1c:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
@@ -5389,11 +5389,11 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   if (__pyx_t_1) {
 
     /* "(tree fragment)":3
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
- *     __pyx_result = MCAB.__new__(__pyx_type)
+ *     __pyx_result = ABC.__new__(__pyx_type)
  */
     __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
@@ -5414,7 +5414,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)             # <<<<<<<<<<<<<<
- *     __pyx_result = MCAB.__new__(__pyx_type)
+ *     __pyx_result = ABC.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
     __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
@@ -5474,7 +5474,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
     __PYX_ERR(0, 4, __pyx_L1_error)
 
     /* "(tree fragment)":2
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):
  *     if __pyx_checksum != 0x3268a1c:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
@@ -5484,11 +5484,11 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   /* "(tree fragment)":5
  *         from pickle import PickleError as __pyx_PickleError
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
- *     __pyx_result = MCAB.__new__(__pyx_type)             # <<<<<<<<<<<<<<
+ *     __pyx_result = ABC.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6mcycle_5bases_3abc_ABC), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5538,9 +5538,9 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
 
   /* "(tree fragment)":6
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
- *     __pyx_result = MCAB.__new__(__pyx_type)
+ *     __pyx_result = ABC.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  *     return __pyx_result
  */
   __pyx_t_1 = (__pyx_v___pyx_state != Py_None);
@@ -5548,31 +5548,31 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   if (__pyx_t_7) {
 
     /* "(tree fragment)":7
- *     __pyx_result = MCAB.__new__(__pyx_type)
+ *     __pyx_result = ABC.__new__(__pyx_type)
  *     if __pyx_state is not None:
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)             # <<<<<<<<<<<<<<
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)             # <<<<<<<<<<<<<<
  *     return __pyx_result
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):
  */
     if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(0, 7, __pyx_L1_error)
-    __pyx_t_3 = __pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__set_state(((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_6mcycle_5bases_3abc___pyx_unpickle_ABC__set_state(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":6
  *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x3268a1c = (_inputs, _properties, ilist, itup, name))" % __pyx_checksum)
- *     __pyx_result = MCAB.__new__(__pyx_type)
+ *     __pyx_result = ABC.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  *     return __pyx_result
  */
   }
 
   /* "(tree fragment)":8
  *     if __pyx_state is not None:
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]
  */
   __Pyx_XDECREF(__pyx_r);
@@ -5581,7 +5581,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   goto __pyx_L0;
 
   /* "(tree fragment)":1
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError
  */
@@ -5593,7 +5593,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.__pyx_unpickle_MCAB", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.__pyx_unpickle_ABC", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v___pyx_PickleError);
@@ -5604,14 +5604,14 @@ static PyObject *__pyx_pf_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB(CY
 }
 
 /* "(tree fragment)":9
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  *     return __pyx_result
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
  */
 
-static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__set_state(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_f_6mcycle_5bases_3abc___pyx_unpickle_ABC__set_state(struct __pyx_obj_6mcycle_5bases_3abc_ABC *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5622,11 +5622,11 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
   PyObject *__pyx_t_8 = NULL;
-  __Pyx_RefNannySetupContext("__pyx_unpickle_MCAB__set_state", 0);
+  __Pyx_RefNannySetupContext("__pyx_unpickle_ABC__set_state", 0);
 
   /* "(tree fragment)":10
  *     return __pyx_result
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]             # <<<<<<<<<<<<<<
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[5])
@@ -5693,7 +5693,7 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
   __pyx_t_1 = 0;
 
   /* "(tree fragment)":11
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[5])
@@ -5775,7 +5775,7 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
     /* "(tree fragment)":11
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[5])
@@ -5783,9 +5783,9 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
   }
 
   /* "(tree fragment)":9
- *         __pyx_unpickle_MCAB__set_state(<MCAB> __pyx_result, __pyx_state)
+ *         __pyx_unpickle_ABC__set_state(<ABC> __pyx_result, __pyx_state)
  *     return __pyx_result
- * cdef __pyx_unpickle_MCAB__set_state(MCAB __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
+ * cdef __pyx_unpickle_ABC__set_state(ABC __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.ilist = __pyx_state[2]; __pyx_result.itup = __pyx_state[3]; __pyx_result.name = __pyx_state[4]
  *     if len(__pyx_state) > 5 and hasattr(__pyx_result, '__dict__'):
  */
@@ -5798,7 +5798,7 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("mcycle.bases.mcabstractbase.__pyx_unpickle_MCAB__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.bases.abc.__pyx_unpickle_ABC__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5806,8 +5806,8 @@ static PyObject *__pyx_f_6mcycle_5bases_14mcabstractbase___pyx_unpickle_MCAB__se
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAttr(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *p;
+static PyObject *__pyx_tp_new_6mcycle_5bases_3abc_MCAttr(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -5815,18 +5815,18 @@ static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAttr(PyTypeObjec
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)o);
+  p = ((struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)o);
   p->cls = Py_None; Py_INCREF(Py_None);
   p->dimension = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  if (unlikely(__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_6mcycle_5bases_3abc_6MCAttr_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAttr(PyObject *o) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)o;
+static void __pyx_tp_dealloc_6mcycle_5bases_3abc_MCAttr(PyObject *o) {
+  struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -5838,68 +5838,68 @@ static void __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAttr(PyObject *o)
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_6mcycle_5bases_14mcabstractbase_MCAttr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6mcycle_5bases_3abc_MCAttr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)o;
+  struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)o;
   if (p->cls) {
     e = (*v)(p->cls, a); if (e) return e;
   }
   return 0;
 }
 
-static int __pyx_tp_clear_6mcycle_5bases_14mcabstractbase_MCAttr(PyObject *o) {
+static int __pyx_tp_clear_6mcycle_5bases_3abc_MCAttr(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr *)o;
+  struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *p = (struct __pyx_obj_6mcycle_5bases_3abc_MCAttr *)o;
   tmp = ((PyObject*)p->cls);
   p->cls = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
   return 0;
 }
 
-static PyObject *__pyx_getprop_6mcycle_5bases_14mcabstractbase_6MCAttr_cls(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_5bases_3abc_6MCAttr_cls(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_5bases_14mcabstractbase_6MCAttr_cls(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_5bases_3abc_6MCAttr_cls(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_3__set__(o, v);
+    return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_3__set__(o, v);
   }
   else {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3cls_5__del__(o);
+    return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_3cls_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_6mcycle_5bases_14mcabstractbase_6MCAttr_dimension(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_5bases_3abc_6MCAttr_dimension(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_5bases_14mcabstractbase_6MCAttr_dimension(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_5bases_3abc_6MCAttr_dimension(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_3__set__(o, v);
+    return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_3__set__(o, v);
   }
   else {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_9dimension_5__del__(o);
+    return __pyx_pw_6mcycle_5bases_3abc_6MCAttr_9dimension_5__del__(o);
   }
 }
 
-static PyMethodDef __pyx_methods_6mcycle_5bases_14mcabstractbase_MCAttr[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_3__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_6MCAttr_2__reduce_cython__},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_6MCAttr_5__setstate_cython__, METH_O, __pyx_doc_6mcycle_5bases_14mcabstractbase_6MCAttr_4__setstate_cython__},
+static PyMethodDef __pyx_methods_6mcycle_5bases_3abc_MCAttr[] = {
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_6MCAttr_3__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_6MCAttr_2__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_6MCAttr_5__setstate_cython__, METH_O, __pyx_doc_6mcycle_5bases_3abc_6MCAttr_4__setstate_cython__},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_6mcycle_5bases_14mcabstractbase_MCAttr[] = {
-  {(char *)"cls", __pyx_getprop_6mcycle_5bases_14mcabstractbase_6MCAttr_cls, __pyx_setprop_6mcycle_5bases_14mcabstractbase_6MCAttr_cls, (char *)"cls: object", 0},
-  {(char *)"dimension", __pyx_getprop_6mcycle_5bases_14mcabstractbase_6MCAttr_dimension, __pyx_setprop_6mcycle_5bases_14mcabstractbase_6MCAttr_dimension, (char *)"dimension: unicode", 0},
+static struct PyGetSetDef __pyx_getsets_6mcycle_5bases_3abc_MCAttr[] = {
+  {(char *)"cls", __pyx_getprop_6mcycle_5bases_3abc_6MCAttr_cls, __pyx_setprop_6mcycle_5bases_3abc_6MCAttr_cls, (char *)"cls: object", 0},
+  {(char *)"dimension", __pyx_getprop_6mcycle_5bases_3abc_6MCAttr_dimension, __pyx_setprop_6mcycle_5bases_3abc_6MCAttr_dimension, (char *)"dimension: unicode", 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr = {
+static PyTypeObject __pyx_type_6mcycle_5bases_3abc_MCAttr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mcycle.bases.mcabstractbase.MCAttr", /*tp_name*/
-  sizeof(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAttr), /*tp_basicsize*/
+  "mcycle.bases.abc.MCAttr", /*tp_name*/
+  sizeof(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_dealloc*/
+  __pyx_tp_dealloc_6mcycle_5bases_3abc_MCAttr, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -5921,15 +5921,15 @@ static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   "Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.\n\nAttributes\n-----------\ncls : Python class\n    Python class of attribute.\ndimension : str, optional\n    Dimensions of the attribute, eg. 'length/time'. Defaults to 'none'.\n", /*tp_doc*/
-  __pyx_tp_traverse_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_traverse*/
-  __pyx_tp_clear_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_clear*/
+  __pyx_tp_traverse_6mcycle_5bases_3abc_MCAttr, /*tp_traverse*/
+  __pyx_tp_clear_6mcycle_5bases_3abc_MCAttr, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_methods*/
+  __pyx_methods_6mcycle_5bases_3abc_MCAttr, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_getset*/
+  __pyx_getsets_6mcycle_5bases_3abc_MCAttr, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -5937,7 +5937,7 @@ static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAttr, /*tp_new*/
+  __pyx_tp_new_6mcycle_5bases_3abc_MCAttr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -5951,10 +5951,10 @@ static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr = {
   0, /*tp_finalize*/
   #endif
 };
-static struct __pyx_vtabstruct_6mcycle_5bases_14mcabstractbase_MCAB __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB;
+static struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC __pyx_vtable_6mcycle_5bases_3abc_ABC;
 
-static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAB(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *p;
+static PyObject *__pyx_tp_new_6mcycle_5bases_3abc_ABC(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -5962,8 +5962,8 @@ static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAB(PyTypeObject 
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)o);
-  p->__pyx_vtab = __pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB;
+  p = ((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)o);
+  p->__pyx_vtab = __pyx_vtabptr_6mcycle_5bases_3abc_ABC;
   p->_inputs = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->_properties = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->name = ((PyObject*)Py_None); Py_INCREF(Py_None);
@@ -5972,8 +5972,8 @@ static PyObject *__pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAB(PyTypeObject 
   return o;
 }
 
-static void __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o) {
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)o;
+static void __pyx_tp_dealloc_6mcycle_5bases_3abc_ABC(PyObject *o) {
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *p = (struct __pyx_obj_6mcycle_5bases_3abc_ABC *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -5988,9 +5988,9 @@ static void __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static int __pyx_tp_traverse_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6mcycle_5bases_3abc_ABC(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)o;
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *p = (struct __pyx_obj_6mcycle_5bases_3abc_ABC *)o;
   if (p->_inputs) {
     e = (*v)(p->_inputs, a); if (e) return e;
   }
@@ -6006,9 +6006,9 @@ static int __pyx_tp_traverse_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o, v
   return 0;
 }
 
-static int __pyx_tp_clear_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o) {
+static int __pyx_tp_clear_6mcycle_5bases_3abc_ABC(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *p = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *)o;
+  struct __pyx_obj_6mcycle_5bases_3abc_ABC *p = (struct __pyx_obj_6mcycle_5bases_3abc_ABC *)o;
   tmp = ((PyObject*)p->_inputs);
   p->_inputs = ((PyObject*)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
@@ -6024,71 +6024,71 @@ static int __pyx_tp_clear_6mcycle_5bases_14mcabstractbase_MCAB(PyObject *o) {
   return 0;
 }
 
-static PyObject *__pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB__inputs(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_5bases_3abc_3ABC__inputs(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB__inputs(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_5bases_3abc_3ABC__inputs(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_3__set__(o, v);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_3__set__(o, v);
   }
   else {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_inputs_5__del__(o);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_7_inputs_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB__properties(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_5bases_3abc_3ABC__properties(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB__properties(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_5bases_3abc_3ABC__properties(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_3__set__(o, v);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_3__set__(o, v);
   }
   else {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11_properties_5__del__(o);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_11_properties_5__del__(o);
   }
 }
 
-static PyObject *__pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB_name(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_5bases_3abc_3ABC_name(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB_name(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_5bases_3abc_3ABC_name(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_3__set__(o, v);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_3__set__(o, v);
   }
   else {
-    return __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_4name_5__del__(o);
+    return __pyx_pw_6mcycle_5bases_3abc_3ABC_4name_5__del__(o);
   }
 }
 
-static PyMethodDef __pyx_methods_6mcycle_5bases_14mcabstractbase_MCAB[] = {
-  {"_inputKeys", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_3_inputKeys, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_2_inputKeys},
-  {"_inputValues", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_5_inputValues, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_4_inputValues},
-  {"_propertyKeys", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_7_propertyKeys, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_6_propertyKeys},
-  {"_propertyValues", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_9_propertyValues, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_8_propertyValues},
-  {"copy", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_11copy, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_10copy},
-  {"copyUpdate", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_13copyUpdate, METH_O, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_12copyUpdate},
-  {"update", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_15update, METH_O, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_14update},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_17__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_16__reduce_cython__},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_19__setstate_cython__, METH_O, __pyx_doc_6mcycle_5bases_14mcabstractbase_4MCAB_18__setstate_cython__},
+static PyMethodDef __pyx_methods_6mcycle_5bases_3abc_ABC[] = {
+  {"_inputKeys", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_3_inputKeys, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_2_inputKeys},
+  {"_inputValues", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_5_inputValues, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_4_inputValues},
+  {"_propertyKeys", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_7_propertyKeys, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_6_propertyKeys},
+  {"_propertyValues", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_9_propertyValues, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_8_propertyValues},
+  {"copy", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_11copy, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_10copy},
+  {"copyUpdate", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_13copyUpdate, METH_O, __pyx_doc_6mcycle_5bases_3abc_3ABC_12copyUpdate},
+  {"update", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_15update, METH_O, __pyx_doc_6mcycle_5bases_3abc_3ABC_14update},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_17__reduce_cython__, METH_NOARGS, __pyx_doc_6mcycle_5bases_3abc_3ABC_16__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6mcycle_5bases_3abc_3ABC_19__setstate_cython__, METH_O, __pyx_doc_6mcycle_5bases_3abc_3ABC_18__setstate_cython__},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_6mcycle_5bases_14mcabstractbase_MCAB[] = {
-  {(char *)"_inputs", __pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB__inputs, __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB__inputs, (char *)"_inputs: dict", 0},
-  {(char *)"_properties", __pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB__properties, __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB__properties, (char *)"_properties: dict", 0},
-  {(char *)"name", __pyx_getprop_6mcycle_5bases_14mcabstractbase_4MCAB_name, __pyx_setprop_6mcycle_5bases_14mcabstractbase_4MCAB_name, (char *)"name: unicode", 0},
+static struct PyGetSetDef __pyx_getsets_6mcycle_5bases_3abc_ABC[] = {
+  {(char *)"_inputs", __pyx_getprop_6mcycle_5bases_3abc_3ABC__inputs, __pyx_setprop_6mcycle_5bases_3abc_3ABC__inputs, (char *)"_inputs: dict", 0},
+  {(char *)"_properties", __pyx_getprop_6mcycle_5bases_3abc_3ABC__properties, __pyx_setprop_6mcycle_5bases_3abc_3ABC__properties, (char *)"_properties: dict", 0},
+  {(char *)"name", __pyx_getprop_6mcycle_5bases_3abc_3ABC_name, __pyx_setprop_6mcycle_5bases_3abc_3ABC_name, (char *)"name: unicode", 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAB = {
+static PyTypeObject __pyx_type_6mcycle_5bases_3abc_ABC = {
   PyVarObject_HEAD_INIT(0, 0)
-  "mcycle.bases.mcabstractbase.MCAB", /*tp_name*/
-  sizeof(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB), /*tp_basicsize*/
+  "mcycle.bases.abc.ABC", /*tp_name*/
+  sizeof(struct __pyx_obj_6mcycle_5bases_3abc_ABC), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_dealloc*/
+  __pyx_tp_dealloc_6mcycle_5bases_3abc_ABC, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -6109,24 +6109,24 @@ static PyTypeObject __pyx_type_6mcycle_5bases_14mcabstractbase_MCAB = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "MCAB(unicode name=u'', dict _inputs={}, dict _properties={}, **kwargs)\nAbstract base class for all MCycle classes.\n\nAttributes\n-----------\nname : str, optional\n    Descriptive name for the class instance. Defaults to \"\".\n_inputs : dict\n    Dictionary of input parameter data in the form {key: MCAttr(...)}.\n_properties : dict\n    Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().\n    ", /*tp_doc*/
-  __pyx_tp_traverse_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_traverse*/
-  __pyx_tp_clear_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_clear*/
+  "ABC(dict _inputs={}, dict _properties={}, unicode name=u'', **kwargs)\nAbstract Base Class for all MCycle classes.\n\nAttributes\n-----------\nname : str, optional\n    Descriptive name for the class instance. Defaults to \"\".\n_inputs : dict\n    Dictionary of input parameter data in the form {key: MCAttr(...)}.\n_properties : dict\n    Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().\n    ", /*tp_doc*/
+  __pyx_tp_traverse_6mcycle_5bases_3abc_ABC, /*tp_traverse*/
+  __pyx_tp_clear_6mcycle_5bases_3abc_ABC, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_methods*/
+  __pyx_methods_6mcycle_5bases_3abc_ABC, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_getset*/
+  __pyx_getsets_6mcycle_5bases_3abc_ABC, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
   0, /*tp_descr_set*/
   0, /*tp_dictoffset*/
-  __pyx_pw_6mcycle_5bases_14mcabstractbase_4MCAB_1__init__, /*tp_init*/
+  __pyx_pw_6mcycle_5bases_3abc_3ABC_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_6mcycle_5bases_14mcabstractbase_MCAB, /*tp_new*/
+  __pyx_tp_new_6mcycle_5bases_3abc_ABC, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6148,17 +6148,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_mcabstractbase(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_abc(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_mcabstractbase},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_abc},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "mcabstractbase",
+    "abc",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -6186,8 +6186,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
-  {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
-  {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
+  {&__pyx_n_s__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 0, 1, 1},
+  {&__pyx_kp_u__5, __pyx_k__5, sizeof(__pyx_k__5), 0, 1, 0, 0},
   {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
   {&__pyx_kp_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 0},
   {&__pyx_kp_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 0},
@@ -6212,7 +6212,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_items, __pyx_k_items, sizeof(__pyx_k_items), 0, 0, 1, 1},
   {&__pyx_n_s_keys, __pyx_k_keys, sizeof(__pyx_k_keys), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
-  {&__pyx_n_s_mcycle_bases_mcabstractbase, __pyx_k_mcycle_bases_mcabstractbase, sizeof(__pyx_k_mcycle_bases_mcabstractbase), 0, 0, 1, 1},
+  {&__pyx_n_s_mcycle_bases_abc, __pyx_k_mcycle_bases_abc, sizeof(__pyx_k_mcycle_bases_abc), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
@@ -6228,7 +6228,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pyx_result, __pyx_k_pyx_result, sizeof(__pyx_k_pyx_result), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_state, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_type, __pyx_k_pyx_type, sizeof(__pyx_k_pyx_type), 0, 0, 1, 1},
-  {&__pyx_n_s_pyx_unpickle_MCAB, __pyx_k_pyx_unpickle_MCAB, sizeof(__pyx_k_pyx_unpickle_MCAB), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_unpickle_ABC, __pyx_k_pyx_unpickle_ABC, sizeof(__pyx_k_pyx_unpickle_ABC), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
@@ -6276,14 +6276,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__2);
 
   /* "(tree fragment)":1
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError
  */
   __pyx_tuple__11 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_MCAB, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_ABC, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6338,32 +6338,32 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
-  __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr.tp_dictoffset && __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if (PyType_Ready(&__pyx_type_6mcycle_5bases_3abc_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_type_6mcycle_5bases_3abc_MCAttr.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_3abc_MCAttr.tp_dictoffset && __pyx_type_6mcycle_5bases_3abc_MCAttr.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6mcycle_5bases_3abc_MCAttr.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttrString(__pyx_m, "MCAttr", (PyObject *)&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAttr = &__pyx_type_6mcycle_5bases_14mcabstractbase_MCAttr;
-  __pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB = &__pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB._inputKeys = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputKeys;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB._inputValues = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__inputValues;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB._propertyKeys = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyKeys;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB._propertyValues = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB__propertyValues;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB.copy = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copy;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB.copyUpdate = (struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_copyUpdate;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB.update = (void (*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_update;
-  __pyx_vtable_6mcycle_5bases_14mcabstractbase_MCAB.formatAttrForSummary = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_14mcabstractbase_MCAB *, PyObject *, PyObject *))__pyx_f_6mcycle_5bases_14mcabstractbase_4MCAB_formatAttrForSummary;
-  if (PyType_Ready(&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  __pyx_type_6mcycle_5bases_14mcabstractbase_MCAB.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB.tp_dictoffset && __pyx_type_6mcycle_5bases_14mcabstractbase_MCAB.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_6mcycle_5bases_14mcabstractbase_MCAB.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if (PyObject_SetAttrString(__pyx_m, "MCAttr", (PyObject *)&__pyx_type_6mcycle_5bases_3abc_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_5bases_3abc_MCAttr) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_ptype_6mcycle_5bases_3abc_MCAttr = &__pyx_type_6mcycle_5bases_3abc_MCAttr;
+  __pyx_vtabptr_6mcycle_5bases_3abc_ABC = &__pyx_vtable_6mcycle_5bases_3abc_ABC;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC._inputKeys = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC__inputKeys;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC._inputValues = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC__inputValues;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC._propertyKeys = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC__propertyKeys;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC._propertyValues = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC__propertyValues;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC.copy = (struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC_copy;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC.copyUpdate = (struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC_copyUpdate;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC.update = (void (*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, int __pyx_skip_dispatch))__pyx_f_6mcycle_5bases_3abc_3ABC_update;
+  __pyx_vtable_6mcycle_5bases_3abc_ABC.formatAttrForSummary = (PyObject *(*)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, PyObject *))__pyx_f_6mcycle_5bases_3abc_3ABC_formatAttrForSummary;
+  if (PyType_Ready(&__pyx_type_6mcycle_5bases_3abc_ABC) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
+  __pyx_type_6mcycle_5bases_3abc_ABC.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_3abc_ABC.tp_dictoffset && __pyx_type_6mcycle_5bases_3abc_ABC.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6mcycle_5bases_3abc_ABC.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB.tp_dict, __pyx_vtabptr_6mcycle_5bases_14mcabstractbase_MCAB) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "MCAB", (PyObject *)&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
-  __pyx_ptype_6mcycle_5bases_14mcabstractbase_MCAB = &__pyx_type_6mcycle_5bases_14mcabstractbase_MCAB;
+  if (__Pyx_SetVtable(__pyx_type_6mcycle_5bases_3abc_ABC.tp_dict, __pyx_vtabptr_6mcycle_5bases_3abc_ABC) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "ABC", (PyObject *)&__pyx_type_6mcycle_5bases_3abc_ABC) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6mcycle_5bases_3abc_ABC) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
+  __pyx_ptype_6mcycle_5bases_3abc_ABC = &__pyx_type_6mcycle_5bases_3abc_ABC;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6421,11 +6421,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initmcabstractbase(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initmcabstractbase(void)
+__Pyx_PyMODINIT_FUNC initabc(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initabc(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_mcabstractbase(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_mcabstractbase(void)
+__Pyx_PyMODINIT_FUNC PyInit_abc(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_abc(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -6465,7 +6465,7 @@ bad:
 }
 
 
-static int __pyx_pymod_exec_mcabstractbase(PyObject *__pyx_pyinit_module)
+static int __pyx_pymod_exec_abc(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -6486,7 +6486,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_mcabstractbase(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_abc(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(1, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(1, 1, __pyx_L1_error)
@@ -6522,7 +6522,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("mcabstractbase", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("abc", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -6541,14 +6541,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_mcycle__bases__mcabstractbase) {
+  if (__pyx_module_is_main_mcycle__bases__abc) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "mcycle.bases.mcabstractbase")) {
-      if (unlikely(PyDict_SetItemString(modules, "mcycle.bases.mcabstractbase", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "mcycle.bases.abc")) {
+      if (unlikely(PyDict_SetItemString(modules, "mcycle.bases.abc", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -6569,7 +6569,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "mcycle/bases/mcabstractbase.pyx":1
+  /* "mcycle/bases/abc.pyx":1
  * from .. import defaults             # <<<<<<<<<<<<<<
  * from ..defaults import getUnitsFormatted, getDimensions
  * 
@@ -6579,7 +6579,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_defaults);
   __Pyx_GIVEREF(__pyx_n_s_defaults);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_defaults);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s__3, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s__5, __pyx_t_1, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_defaults); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
@@ -6588,7 +6588,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":2
+  /* "mcycle/bases/abc.pyx":2
  * from .. import defaults
  * from ..defaults import getUnitsFormatted, getDimensions             # <<<<<<<<<<<<<<
  * 
@@ -6615,35 +6615,35 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":31
+  /* "mcycle/bases/abc.pyx":31
  *     """
  * 
- *     def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):             # <<<<<<<<<<<<<<
+ *     def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):             # <<<<<<<<<<<<<<
  *         self.name = name
  *         self._inputs = _inputs
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_k__4 = ((PyObject*)__pyx_t_1);
+  __pyx_k__3 = ((PyObject*)__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_k__5 = ((PyObject*)__pyx_t_1);
+  __pyx_k__4 = ((PyObject*)__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
- * def __pyx_unpickle_MCAB(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ * def __pyx_unpickle_ABC(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0x3268a1c:
  *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5bases_14mcabstractbase_1__pyx_unpickle_MCAB, NULL, __pyx_n_s_mcycle_bases_mcabstractbase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_5bases_3abc_1__pyx_unpickle_ABC, NULL, __pyx_n_s_mcycle_bases_abc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_MCAB, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_ABC, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "mcycle/bases/mcabstractbase.pyx":1
+  /* "mcycle/bases/abc.pyx":1
  * from .. import defaults             # <<<<<<<<<<<<<<
  * from ..defaults import getUnitsFormatted, getDimensions
  * 
@@ -6661,11 +6661,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init mcycle.bases.mcabstractbase", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init mcycle.bases.abc", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init mcycle.bases.mcabstractbase");
+    PyErr_SetString(PyExc_ImportError, "init mcycle.bases.abc");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

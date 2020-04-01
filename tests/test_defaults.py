@@ -16,7 +16,7 @@ class Testdefaults(unittest.TestCase):
         self.assertEqual(mc.getUnits("acceleration"), "m/s^2")
 
     def test_getUnits_none(self):
-        self.assertEqual(mc.getUnits("none"), "")
+        self.assertEqual(mc.getUnits(""), "")
 
     def test_getUnits_power(self):
         self.assertEqual(mc.getUnits("power"), "W")

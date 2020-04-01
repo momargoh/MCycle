@@ -1,4 +1,4 @@
-from .mcabstractbase cimport MCAB, MCAttr
+from .abc cimport ABC, MCAttr
 from .config cimport Config
 from .. import defaults
 import numpy as np
@@ -7,7 +7,7 @@ cdef dict _inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none
 cdef dict _properties = {"k()": MCAttr(float, "conductivity") }
 cdef list propertiesList = ['k']
 
-cdef class SolidMaterial(MCAB):
+cdef class SolidMaterial(ABC):
     """Essential properties for solid component materials.
 
 Attributes
@@ -34,6 +34,7 @@ kwargs : optional
                  str name="SolidMaterial instance",
                  str notes="No material notes.",
                  Config config=None):
+        super().__init__(_inputs, _properties, name)
         self.rho = rho
         self.data = {'T': data['T'], 'k': []} 
         self.deg = deg
@@ -50,13 +51,10 @@ kwargs : optional
         else:
             raise KeyError("Must provide data for k.")
         self.T = T
-        self.name = name
         self.notes = notes
         if config is None:
             config = defaults.CONFIG
         self.config = config
-        self._inputs = _inputs
-        self._properties = _properties
 
     cpdef public void populate_c(self):
         self._c = {}

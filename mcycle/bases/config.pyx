@@ -1,4 +1,4 @@
-from .mcabstractbase cimport MCAB, MCAttr
+from .abc cimport ABC, MCAttr
 from .. import defaults
 from .._constants cimport *
 from ..logger import log
@@ -14,7 +14,7 @@ cdef dict _inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "non
 cdef dict _properties = {"_tolRel_p": MCAttr(float,"none"),
                "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float, "none")}
         
-cdef class Config(MCAB):
+cdef class Config(ABC):
     """General configuration parameters containing parameters pertaining to Cycles and Components.
 
 Attributes
@@ -101,7 +101,7 @@ _tolAbs_x : float, optional
                  unsigned short maxIterCycle=0,
                  dict methods={},
                  str name="Config instance"):
-        super().__init__(name, _inputs, _properties)
+        super().__init__(_inputs, _properties, name)
         # Cycle config parameters
         self.dpEvap = dpEvap
         self.dpCond = dpCond

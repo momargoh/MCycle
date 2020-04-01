@@ -1,7 +1,7 @@
-from .mcabstractbase cimport MCAB
+from .abc cimport ABC
 #from CoolProp import AbstractState
 
-cdef class FlowState(MCAB):
+cdef class FlowState(ABC):
     cpdef public str fluid
     cpdef public double m
     cdef public unsigned char _inputPair

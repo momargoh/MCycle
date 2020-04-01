@@ -1,4 +1,4 @@
-from .mcabstractbase cimport MCAB, MCAttr
+from .abc cimport ABC, MCAttr
 from .component cimport Component
 from .config cimport Config
 from .flowstate cimport FlowState
@@ -9,7 +9,7 @@ from ..logger import log
 cdef dict _inputs = {"_componentKeys": MCAttr(list, "none"), "_cycleStateKeys": MCAttr(list, "none"), "config": MCAttr(str, "none"), "name": MCAttr(str, "none")}
 cdef dict _properties = {}
         
-cdef class Cycle(MCAB):
+cdef class Cycle(ABC):
     r"""Abstract base class for all cycles.
 
 Parameters
@@ -27,14 +27,12 @@ config : Config, optional
                  tuple _cycleStateKeys,
                  Config config=None,
                  str name="Cycle"):
+        super().__init__(_inputs, _properties, name)
         self._componentKeys = _componentKeys
         self._cycleStateKeys = _cycleStateKeys
         if config is None:
             config = defaults.CONFIG
         self.config = config
-        self._inputs = _inputs
-        self._properties = _properties
-        self.name = name
 
     cdef public list _cycleStateObjs(self):
         """List of cycle flow state objects."""

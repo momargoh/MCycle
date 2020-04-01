@@ -1,5 +1,5 @@
 from ..bases.geom cimport Geom
-from ..bases.mcabstractbase cimport MCAttr
+from ..bases.abc cimport MCAttr
 
 cdef dict _inputsHxPlateCorrugatedChevron = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
                 'phi': MCAttr(float, 'none')}

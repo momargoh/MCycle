@@ -1,7 +1,7 @@
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
 from ...bases.geom cimport Geom
-from ...bases.mcabstractbase cimport MCAttr
+from ...bases.abc cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ...methods import heat_transfer as ht
 from .hxunit_plate cimport HxUnitPlate

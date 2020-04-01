@@ -1,7 +1,7 @@
-from .. import defaults
 from .._constants cimport *
+from .. import defaults
 from ..logger import log
-from .mcabstractbase cimport MCAB, MCAttr
+from .abc cimport ABC, MCAttr
 from .flowstate cimport FlowState
 from .config cimport Config
 from math import nan
@@ -12,7 +12,7 @@ cdef dict _inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "
 cdef dict _properties = {"mWf": MCAttr(float, "mass/time")}
 
 
-cdef class Component(MCAB):
+cdef class Component(ABC):
     """Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.
 
 Parameters
@@ -52,7 +52,7 @@ kwargs : optional
                  str name='Component instance',
                  str notes='No notes/model info.',
                  Config config=None):
-        super().__init__(name, _inputs, _properties)
+        super().__init__(_inputs, _properties, name)
         self.flowsIn = flowsIn
         self.flowsOut = flowsOut
         self.ambient = ambient
@@ -66,9 +66,9 @@ kwargs : optional
             config = defaults.CONFIG
         self.config = config
     
-    cpdef public MCAB copy(self):
+    cpdef public ABC copy(self):
         """Return a new copy of an object."""
-        cdef MCAB copy = self.__class__(*self._inputValues())
+        cdef ABC copy = self.__class__(*self._inputValues())
         try: # copy _units if relevant
             copy._units = []
             for unit in self._units:
@@ -77,14 +77,14 @@ kwargs : optional
             pass
         return copy
     
-    cpdef public MCAB copyUpdate(self, dict kwargs):
+    cpdef public ABC copyUpdate(self, dict kwargs):
         """Update (multiple) class variables from a dictionary of keyword arguments.
 
 Parameters
 -----------
 kwargs : dict
     Dictionary of attributes and their updated value; kwargs={'key': value}."""
-        cdef MCAB copy = self.copy()
+        cdef ABC copy = self.copy()
         copy.update(kwargs)
         return copy
 

@@ -15,8 +15,8 @@ dimension : str, optional
         self.cls = cls #: definition of cls
         self.dimension = dimension
         
-cdef class MCAB:
-    """Abstract base class for all MCycle classes.
+cdef class ABC:
+    """Abstract Base Class for all MCycle classes.
 
 Attributes
 -----------
@@ -28,7 +28,7 @@ _properties : dict
     Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().
     """
 
-    def __init__(self, str name='', dict _inputs={}, dict _properties={}, **kwargs):
+    def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):
         self.name = name
         self._inputs = _inputs
         self._properties = _properties
@@ -57,19 +57,19 @@ _properties : dict
                 ilist.append(ilistVal)
         return ilist
 
-    cpdef public MCAB copy(self):
+    cpdef public ABC copy(self):
         """Return a new copy of an object."""
-        cdef MCAB copy = self.__class__(*self._inputValues())
+        cdef ABC copy = self.__class__(*self._inputValues())
         return copy
 
-    cpdef public MCAB copyUpdate(self, dict kwargs):
+    cpdef public ABC copyUpdate(self, dict kwargs):
         """Create a new copy of an object then update it using kwargs (as dict).
 
 Parameters
 -----------
 kwargs : dict
     Dictionary of attributes and their updated value."""
-        cdef MCAB copy = self.__class__(*self._inputValues())
+        cdef ABC copy = self.__class__(*self._inputValues())
         copy.update(kwargs)
         return copy
     

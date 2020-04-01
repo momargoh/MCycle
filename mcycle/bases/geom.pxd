@@ -1,6 +1,6 @@
-from .mcabstractbase cimport MCAB
+from .abc cimport ABC
 
-cdef class Geom(MCAB):
+cdef class Geom(ABC):
     cdef public tuple validClasses
     cdef str cls
     cpdef bint validClass(self, str cls)   

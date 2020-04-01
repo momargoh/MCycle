@@ -2,7 +2,7 @@ cdef class MCAttr:
     cdef public cls
     cdef public str dimension
     
-cdef class MCAB:
+cdef class ABC:
     cdef public dict _inputs
     cdef public dict _properties
     cdef public str name
@@ -11,8 +11,8 @@ cdef class MCAB:
     cpdef public list _propertyKeys(self)
     cpdef public list _propertyValues(self)
 
-    cpdef public MCAB copy(self)
-    cpdef public MCAB copyUpdate(self, dict kwargs)
+    cpdef public ABC copy(self)
+    cpdef public ABC copyUpdate(self, dict kwargs)
     cpdef public void update(self, dict kwargs)
     
     cdef public str formatAttrForSummary(self, str attr, list hasSummaryList)

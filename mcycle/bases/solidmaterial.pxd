@@ -1,7 +1,7 @@
-from .mcabstractbase cimport MCAB
+from .abc cimport ABC
 from .config cimport Config
 
-cdef class SolidMaterial(MCAB):
+cdef class SolidMaterial(ABC):
     cpdef public double rho
     cpdef public dict data
     cdef dict _c

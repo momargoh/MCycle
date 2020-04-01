@@ -1,6 +1,7 @@
-from .mcabstractbase cimport MCAB
 
-cdef class Config(MCAB):
+from .abc cimport ABC
+
+cdef class Config(ABC):
 
     cpdef public bint dpEvap
     cpdef public bint dpCond

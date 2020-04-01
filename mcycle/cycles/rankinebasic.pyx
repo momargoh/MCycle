@@ -5,7 +5,7 @@ from ..bases.config cimport Config
 from ..bases.cycle cimport Cycle
 from ..bases.component cimport Component
 from ..bases.flowstate cimport FlowState
-from ..bases.mcabstractbase cimport MCAttr
+from ..bases.abc cimport MCAttr
 from ..components.hxs.hx_basic cimport HxBasic
 from ..utils.saturation_curves import saturationCurve
 from math import nan, isnan

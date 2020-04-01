@@ -1,7 +1,7 @@
 from ...bases.component cimport Component11
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
-from ...bases.mcabstractbase cimport MCAttr
+from ...bases.abc cimport MCAttr
 from ..._constants cimport *
 from ...logger import log
 

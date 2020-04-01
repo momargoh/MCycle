@@ -1,8 +1,8 @@
-from .mcabstractbase cimport MCAB, MCAttr
+from .abc cimport ABC, MCAttr
 from .config cimport Config
 from .flowstate cimport FlowState
 
-cdef class Component(MCAB):
+cdef class Component(ABC):
 
     cpdef public list flowsIn
     cpdef public list flowsOut

@@ -1,4 +1,4 @@
-from .mcabstractbase import MCAB
+from .abc import ABC
 from .component import Component, Component11, Component22
 from .config import Config
 from .cycle import Cycle

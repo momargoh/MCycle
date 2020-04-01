@@ -3,7 +3,7 @@ from .hxunit_basicplanar cimport HxUnitBasicPlanar
 from .flowconfig cimport HxFlowConfig
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
-from ...bases.mcabstractbase cimport MCAttr
+from ...bases.abc cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ..._constants cimport *
 from ...logger import log

@@ -1,12 +1,12 @@
 from ...logger import log
-from ...bases.mcabstractbase cimport MCAB, MCAttr
+from ...bases.abc cimport ABC, MCAttr
 from ..._constants cimport *
 
 
 cdef dict _inputs = {"sense": MCAttr(str, "none"), "passes": MCAttr(str, "none"), "verticalWf": MCAttr(bool, "none"), "verticalSf": MCAttr(bool, "none")}
 cdef dict _properties = {}
 
-cdef class HxFlowConfig(MCAB):
+cdef class HxFlowConfig(ABC):
     """Small class to store information about the heat exchanger flow configuration/arrangement which can become much more complex than just specifying counter-flow v parallel-flow v cross-flow.
 
 Parameters

@@ -6,7 +6,7 @@ from ...bases.config cimport Config
 from ...bases.component cimport Component22
 from ...bases.geom cimport Geom
 from ...bases.flowstate cimport FlowState
-from ...bases.mcabstractbase cimport MCAttr
+from ...bases.abc cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ...bases.utils cimport *
 from ..._constants cimport *
