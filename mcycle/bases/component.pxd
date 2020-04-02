@@ -1,4 +1,4 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .config cimport Config
 from .flowstate cimport FlowState
 

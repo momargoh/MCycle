@@ -1,16 +1,11 @@
 from ...bases.component cimport Component11
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
-from ...bases.abc cimport MCAttr
 from ..._constants cimport *
 from ...logger import log
 
-cdef dict _inputs = {"pRatio": MCAttr(float, "none"), "efficiencyIsentropic": MCAttr(float, "none"),
-                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
-                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
-                        "config": MCAttr(Config, "none")}
-cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "pIn": MCAttr(float, "pressure"),
-                "pOut": MCAttr(float, "pressure"), "POut()": MCAttr(float, "power")}
+cdef tuple _inputs = ('pRatio', 'efficiencyIsentropic', 'flowIn', 'flowOut', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _properties = ('mWf', 'pIn', 'pOut', 'POut()')
 
 cdef class ExpBasic(Component11):
     r"""Basic expansion defined by a pressure ratio and isentropic efficiency.

@@ -1,4 +1,4 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .. import defaults
 from .._constants cimport *
 from ..logger import log
@@ -6,14 +6,8 @@ from math import nan, isnan
 import CoolProp as CP
 import numpy as np
 
-cdef dict _inputs = {"fluid": MCAttr(str, "none"), 
-                "m": MCAttr(float, "mass/time"), "_inputPair": MCAttr(int, "none"),
-                        "_input1": MCAttr(float, "none"), "_input2": MCAttr(float, "none"), "_iphase": MCAttr(int, "none"), "eos": MCAttr(str,"none"), "name": MCAttr(str,"none")}
-cdef dict _properties = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
-                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
-                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
-                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
-                "x()": MCAttr(float, "none")}
+cdef tuple _inputs = ('fluid', 'm', '_inputPair', '_input1', '_input2', '_iphase', 'eos', 'name')
+cdef tuple _properties = ('T()', 'p()', 'rho()', 'h()', 's()', 'cp()', 'visc()', 'k()', 'Pr()', 'x()')
 
 cdef class FlowState(ABC):
     """FlowState represents the state of a flow at a point by its state properties and a mass flow rate. This class creates a `CoolProp AbstractState <http://www.coolprop.org/apidoc/CoolProp.CoolProp.html>`_ object to store the state properties and uses the routines of CoolProp.
@@ -362,19 +356,8 @@ eos = {}
 # Start of FlowStatePoly
 #-----------------------------------------
 
-"""        
-cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
-                "_inputPair": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
-                         "_input2": MCAttr(float, "none"), "_iphase": MCAttr(int, 'none'), "eos": MCAttr(str, "none"), "name": MCAttr(str, "none")}
-"""
-cdef dict _inputsPoly = {"refData": MCAttr(RefData, "none"), "m": MCAttr(float, "mass/time"),
-                "_inputPair": MCAttr(int, "none"), "_input1": MCAttr(float, "none"),
-                         "_input2": MCAttr(float, "none"), "name": MCAttr(str, "none")}
-cdef dict _propertiesPoly = {"T()": MCAttr(float, "temperature"), "p()": MCAttr(float, "pressure"), "rho()": MCAttr(float, "density"),
-                "h()": MCAttr(float, "energy/mass"), "s()": MCAttr(float, "energy/mass-temperature"),
-                "cp()": MCAttr(float, "energy/mass-temperature"), "visc()": MCAttr(float, "force-time/area"),
-                "k()": MCAttr(float, "power/length-temperature"), "Pr()": MCAttr(float, "none"),
-                "x()": MCAttr(float, "none")}
+cdef tuple _inputsPoly = ('refData', 'm', '_inputPair', '_input1', '_input2', 'name')
+cdef tuple _propertiesPoly = ('T()', 'p()', 'rho()', 'h()', 's()', 'cp()', 'visc()', 'k()', 'Pr()', 'x()')
 
 cdef dict _validInputPairs
 _validInputPairs = {'T': CP.PT_INPUTS, 'rho': CP.DmassP_INPUTS, 'h': CP.HmassP_INPUTS, 's': CP.PSmass_INPUTS}

@@ -1,10 +1,10 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .config cimport Config
 from .. import defaults
 import numpy as np
 
-cdef dict _inputs = {"rho": MCAttr(float, "density"), "data": MCAttr(dict, "none"), "deg": MCAttr(int, "none"), "T": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-cdef dict _properties = {"k()": MCAttr(float, "conductivity") }
+cdef tuple _inputs = ('rho', 'data', 'deg', 'T', 'name', 'notes', 'config')
+cdef tuple _properties = ('k()',)
 cdef list propertiesList = ['k']
 
 cdef class SolidMaterial(ABC):
@@ -133,14 +133,14 @@ rstHeading : int, optional
             output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
         #
         if propertyKeys == 'all':
-            propertyKeys = self._propertyKeys()
+            propertyKeys = self._properties
         if propertyKeys == 'none':
             propertyKeys = []
         if len(propertyKeys) > 0:
             output += """#
 """
             for k in propertyKeys:
-                if k in self._propertyKeys():
+                if k in self._properties:
                     output += self.formatAttrForSummary(k, [])
                 else:
                     output += k + """: property not found,

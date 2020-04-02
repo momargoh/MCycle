@@ -1,9 +1,8 @@
 from ..bases.geom cimport Geom
-from ..bases.abc cimport MCAttr
 
-cdef dict _inputsHxPlateCorrugatedChevron = {'b': MCAttr(float, 'length'), 'beta': MCAttr(float, 'angle'), 'pitchCorr': MCAttr(float, 'length'),
-                'phi': MCAttr(float, 'none')}
-cdef dict _propertiesHxPlateCorrugatedChevron = {}
+cdef tuple _inputsHxPlateCorrugatedChevron = ('b', 'beta', 'pitchCorr', 'phi')
+cdef tuple _propertiesHxPlateCorrugatedChevron = ()
+
 cdef class GeomHxPlateCorrugatedChevron(Geom):
     r"""Geometry of chevron corrugations for a plate heat exchanger.
 
@@ -36,8 +35,8 @@ phi : float
         self._inputs = _inputsHxPlateCorrugatedChevron
         self._properties = _propertiesHxPlateCorrugatedChevron
 
-cdef dict _inputsHxPlateFinStraight = {"s": MCAttr(float, "length"), "b": MCAttr(float, "length"), "t": MCAttr(float, "length")}
-cdef dict _propertiesHxPlateFinStraight = {"h()": MCAttr(float, "length")}
+cdef tuple _inputsHxPlateFinStraight = ('s', 'b', 't')
+cdef tuple _propertiesHxPlateFinStraight = ('h()',)
         
 cdef class GeomHxPlateFinStraight(Geom):
     r"""Geometry of straight fins for a plate heat exchanger.
@@ -89,9 +88,9 @@ t : float
     cpdef public double areaPerWidth(self):
         return (self.s + self.b)/(self.s/self.t + 1)
 
-cdef dict _inputsHxPlateFinOffset = {"s": MCAttr(float, "length"), "b": MCAttr(float, "length"), "t": MCAttr(float, "length"),
-                "l": MCAttr(float, "length")}
-cdef dict _propertiesHxPlateFinOffset = {"h()": MCAttr(float, "length")}
+cdef tuple _inputsHxPlateFinOffset = ('s', 'b', 't', 'l')
+
+cdef tuple _propertiesHxPlateFinOffset = ('h()',)
         
 cdef class GeomHxPlateFinOffset(GeomHxPlateFinStraight):
     r"""Geometry of offset fins for a plate heat exchanger. Refer to Figure 1 in [Manglik1995]_.
@@ -145,8 +144,8 @@ Bibtex::
         return self.t / self.l
 
             
-cdef dict _inputsHxPlateRough = {"b": MCAttr(float, "length"), "roughness": MCAttr(float, "length/length")}
-cdef dict _propertiesHxPlateRough = {}
+cdef tuple _inputsHxPlateRough = ('b', 'roughness')
+cdef tuple _propertiesHxPlateRough = ()
 
 cdef class GeomHxPlateRough(Geom):
     r"""Geometry of heat exchanger plate with a rough surface.
@@ -174,8 +173,8 @@ roughness : float
         return 0
 
         
-cdef dict _inputsHxPlateSmooth = {"b": MCAttr(float, "length")}
-cdef dict _propertiesHxPlateSmooth = {"roughness": MCAttr(float, "length/length")}
+cdef tuple _inputsHxPlateSmooth = ('b',)
+cdef tuple _propertiesHxPlateSmooth = ('roughness',)
 
 cdef class GeomHxPlateSmooth(GeomHxPlateRough):
     """Geometry of smooth heat exchanger plate (roughness factor is always None).

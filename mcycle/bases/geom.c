@@ -783,32 +783,16 @@ static const char *__pyx_f[] = {
   "mcycle/bases/geom.pyx",
   "mcycle/bases/geom.pxd",
   "stringsource",
-  "mcycle/bases/abc.pxd",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_6mcycle_5bases_3abc_MCAttr;
 struct __pyx_obj_6mcycle_5bases_3abc_ABC;
 struct __pyx_obj_6mcycle_5bases_4geom_Geom;
 
 /* "abc.pxd":1
- * cdef class MCAttr:             # <<<<<<<<<<<<<<
- *     cdef public cls
- *     cdef public str dimension
- */
-struct __pyx_obj_6mcycle_5bases_3abc_MCAttr {
-  PyObject_HEAD
-  PyObject *cls;
-  PyObject *dimension;
-};
-
-
-/* "abc.pxd":5
- *     cdef public str dimension
- * 
  * cdef class ABC:             # <<<<<<<<<<<<<<
- *     cdef public dict _inputs
- *     cdef public dict _properties
+ *     cdef public tuple _inputs
+ *     cdef public tuple _properties
  */
 struct __pyx_obj_6mcycle_5bases_3abc_ABC {
   PyObject_HEAD
@@ -836,18 +820,14 @@ struct __pyx_obj_6mcycle_5bases_4geom_Geom {
 
 
 
-/* "abc.pxd":5
- *     cdef public str dimension
- * 
+/* "abc.pxd":1
  * cdef class ABC:             # <<<<<<<<<<<<<<
- *     cdef public dict _inputs
- *     cdef public dict _properties
+ *     cdef public tuple _inputs
+ *     cdef public tuple _properties
  */
 
 struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC {
-  PyObject *(*_inputKeys)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
   PyObject *(*_inputValues)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
-  PyObject *(*_propertyKeys)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
   PyObject *(*_propertyValues)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
   struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*copy)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, int __pyx_skip_dispatch);
   struct __pyx_obj_6mcycle_5bases_3abc_ABC *(*copyUpdate)(struct __pyx_obj_6mcycle_5bases_3abc_ABC *, PyObject *, int __pyx_skip_dispatch);
@@ -858,7 +838,7 @@ static struct __pyx_vtabstruct_6mcycle_5bases_3abc_ABC *__pyx_vtabptr_6mcycle_5b
 
 
 /* "mcycle/bases/geom.pyx":7
- * cdef dict _properties = {}
+ * cdef tuple _properties = ()
  * 
  * cdef class Geom(ABC):             # <<<<<<<<<<<<<<
  *     """Abstract class for geometries."""
@@ -1256,7 +1236,6 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 static int __pyx_f_6mcycle_5bases_4geom_4Geom_validClass(struct __pyx_obj_6mcycle_5bases_4geom_Geom *__pyx_v_self, PyObject *__pyx_v_cls, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from 'mcycle.bases.abc' */
-static PyTypeObject *__pyx_ptype_6mcycle_5bases_3abc_MCAttr = 0;
 static PyTypeObject *__pyx_ptype_6mcycle_5bases_3abc_ABC = 0;
 
 /* Module declarations from 'mcycle.bases.geom' */
@@ -1408,7 +1387,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom___pyx_unpickle_Geom(CYTHON_UNUSED
 static PyObject *__pyx_tp_new_6mcycle_5bases_4geom_Geom(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_226641458;
 static PyObject *__pyx_tuple__4;
-static PyObject *__pyx_codeobj__5;
+static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_codeobj__6;
 /* Late includes */
 
 /* "mcycle/bases/geom.pyx":10
@@ -2146,7 +2126,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "items");
     __PYX_ERR(0, 55, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_self->__pyx_base._inputs, 1, __pyx_n_s_items, (&__pyx_t_9), (&__pyx_t_10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_self->__pyx_base._inputs, 0, __pyx_n_s_items, (&__pyx_t_9), (&__pyx_t_10)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __pyx_t_4 = __pyx_t_3;
@@ -2364,7 +2344,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
  *             output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
  *         #
  *         if propertyKeys == 'all':             # <<<<<<<<<<<<<<
- *             propertyKeys = self._propertyKeys()
+ *             propertyKeys = self._properties
  *         if propertyKeys == 'none':
  */
   __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_propertyKeys, __pyx_n_u_all, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
@@ -2373,12 +2353,12 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
     /* "mcycle/bases/geom.pyx":72
  *         #
  *         if propertyKeys == 'all':
- *             propertyKeys = self._propertyKeys()             # <<<<<<<<<<<<<<
+ *             propertyKeys = self._properties             # <<<<<<<<<<<<<<
  *         if propertyKeys == 'none':
  *             propertyKeys = []
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_6mcycle_5bases_4geom_Geom *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._propertyKeys(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_4 = __pyx_v_self->__pyx_base._properties;
+    __Pyx_INCREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_propertyKeys, __pyx_t_4);
     __pyx_t_4 = 0;
 
@@ -2386,14 +2366,14 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
  *             output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
  *         #
  *         if propertyKeys == 'all':             # <<<<<<<<<<<<<<
- *             propertyKeys = self._propertyKeys()
+ *             propertyKeys = self._properties
  *         if propertyKeys == 'none':
  */
   }
 
   /* "mcycle/bases/geom.pyx":73
  *         if propertyKeys == 'all':
- *             propertyKeys = self._propertyKeys()
+ *             propertyKeys = self._properties
  *         if propertyKeys == 'none':             # <<<<<<<<<<<<<<
  *             propertyKeys = []
  *         if len(propertyKeys) > 0:
@@ -2402,7 +2382,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
   if (__pyx_t_1) {
 
     /* "mcycle/bases/geom.pyx":74
- *             propertyKeys = self._propertyKeys()
+ *             propertyKeys = self._properties
  *         if propertyKeys == 'none':
  *             propertyKeys = []             # <<<<<<<<<<<<<<
  *         if len(propertyKeys) > 0:
@@ -2415,7 +2395,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
 
     /* "mcycle/bases/geom.pyx":73
  *         if propertyKeys == 'all':
- *             propertyKeys = self._propertyKeys()
+ *             propertyKeys = self._properties
  *         if propertyKeys == 'none':             # <<<<<<<<<<<<<<
  *             propertyKeys = []
  *         if len(propertyKeys) > 0:
@@ -2449,7 +2429,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
  *             output += """#
  * """
  *             for k in propertyKeys:             # <<<<<<<<<<<<<<
- *                 if k in self._propertyKeys():
+ *                 if k in self._properties:
  *                     output += self.formatAttrForSummary(k, [])
  */
     if (likely(PyList_CheckExact(__pyx_v_propertyKeys)) || PyTuple_CheckExact(__pyx_v_propertyKeys)) {
@@ -2497,20 +2477,17 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
       /* "mcycle/bases/geom.pyx":79
  * """
  *             for k in propertyKeys:
- *                 if k in self._propertyKeys():             # <<<<<<<<<<<<<<
+ *                 if k in self._properties:             # <<<<<<<<<<<<<<
  *                     output += self.formatAttrForSummary(k, [])
  *                 else:
  */
-      __pyx_t_6 = ((struct __pyx_vtabstruct_6mcycle_5bases_4geom_Geom *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base._propertyKeys(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 79, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_k, __pyx_t_6, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_k, __pyx_v_self->__pyx_base._properties, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
       __pyx_t_2 = (__pyx_t_1 != 0);
       if (__pyx_t_2) {
 
         /* "mcycle/bases/geom.pyx":80
  *             for k in propertyKeys:
- *                 if k in self._propertyKeys():
+ *                 if k in self._properties:
  *                     output += self.formatAttrForSummary(k, [])             # <<<<<<<<<<<<<<
  *                 else:
  *                     output += k + """: property not found,
@@ -2530,7 +2507,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
         /* "mcycle/bases/geom.pyx":79
  * """
  *             for k in propertyKeys:
- *                 if k in self._propertyKeys():             # <<<<<<<<<<<<<<
+ *                 if k in self._properties:             # <<<<<<<<<<<<<<
  *                     output += self.formatAttrForSummary(k, [])
  *                 else:
  */
@@ -2560,7 +2537,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_4geom_4Geom_4summary(struct __pyx_obj_6
  *             output += """#
  * """
  *             for k in propertyKeys:             # <<<<<<<<<<<<<<
- *                 if k in self._propertyKeys():
+ *                 if k in self._properties:
  *                     output += self.formatAttrForSummary(k, [])
  */
     }
@@ -3454,7 +3431,7 @@ static PyObject *__pyx_f_6mcycle_5bases_4geom___pyx_unpickle_Geom__set_state(str
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(2, 10, __pyx_L1_error)
   }
-  if (!(likely(PyDict_CheckExact(PyTuple_GET_ITEM(__pyx_v___pyx_state, 0)))||((PyTuple_GET_ITEM(__pyx_v___pyx_state, 0)) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(PyTuple_GET_ITEM(__pyx_v___pyx_state, 0))->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(PyTuple_GET_ITEM(__pyx_v___pyx_state, 0)))||((PyTuple_GET_ITEM(__pyx_v___pyx_state, 0)) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(PyTuple_GET_ITEM(__pyx_v___pyx_state, 0))->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __pyx_t_1 = PyTuple_GET_ITEM(__pyx_v___pyx_state, 0);
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3466,7 +3443,7 @@ static PyObject *__pyx_f_6mcycle_5bases_4geom___pyx_unpickle_Geom__set_state(str
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(2, 10, __pyx_L1_error)
   }
-  if (!(likely(PyDict_CheckExact(PyTuple_GET_ITEM(__pyx_v___pyx_state, 1)))||((PyTuple_GET_ITEM(__pyx_v___pyx_state, 1)) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(PyTuple_GET_ITEM(__pyx_v___pyx_state, 1))->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(PyTuple_GET_ITEM(__pyx_v___pyx_state, 1)))||((PyTuple_GET_ITEM(__pyx_v___pyx_state, 1)) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(PyTuple_GET_ITEM(__pyx_v___pyx_state, 1))->tp_name), 0))) __PYX_ERR(2, 10, __pyx_L1_error)
   __pyx_t_1 = PyTuple_GET_ITEM(__pyx_v___pyx_state, 1);
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3894,15 +3871,26 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
+  /* "mcycle/bases/geom.pyx":4
+ * from .. import defaults
+ * 
+ * cdef tuple _inputs = ('validClasses',)             # <<<<<<<<<<<<<<
+ * cdef tuple _properties = ()
+ * 
+ */
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_n_u_validClasses); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+
   /* "(tree fragment)":1
  * def __pyx_unpickle_Geom(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     if __pyx_checksum != 0xd824632:
  *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_tuple__4 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(2, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Geom, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Geom, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3982,12 +3970,8 @@ static int __Pyx_modinit_type_import_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_ptype_6mcycle_5bases_3abc_MCAttr = __Pyx_ImportType("mcycle.bases.abc", "MCAttr", sizeof(struct __pyx_obj_6mcycle_5bases_3abc_MCAttr), 1); if (unlikely(!__pyx_ptype_6mcycle_5bases_3abc_MCAttr)) __PYX_ERR(3, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
-  __pyx_L1_error:;
-  __Pyx_RefNannyFinishContext();
-  return -1;
 }
 
 static int __Pyx_modinit_variable_import_code(void) {
@@ -4082,7 +4066,6 @@ static int __pyx_pymod_exec_geom(PyObject *__pyx_pyinit_module)
 {
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannyDeclarations
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m && __pyx_m == __pyx_pyinit_module) return 0;
@@ -4173,7 +4156,7 @@ if (!__Pyx_RefNanny) {
   (void)__Pyx_modinit_variable_export_code();
   (void)__Pyx_modinit_function_export_code();
   if (unlikely(__Pyx_modinit_type_init_code() != 0)) goto __pyx_L1_error;
-  if (unlikely(__Pyx_modinit_type_import_code() != 0)) goto __pyx_L1_error;
+  (void)__Pyx_modinit_type_import_code();
   (void)__Pyx_modinit_variable_import_code();
   (void)__Pyx_modinit_function_import_code();
   /*--- Execution code ---*/
@@ -4182,10 +4165,10 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "mcycle/bases/geom.pyx":2
- * from .abc cimport ABC, MCAttr
+ * from .abc cimport ABC
  * from .. import defaults             # <<<<<<<<<<<<<<
  * 
- * cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}
+ * cdef tuple _inputs = ('validClasses',)
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4204,43 +4187,26 @@ if (!__Pyx_RefNanny) {
   /* "mcycle/bases/geom.pyx":4
  * from .. import defaults
  * 
- * cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}             # <<<<<<<<<<<<<<
- * cdef dict _properties = {}
+ * cdef tuple _inputs = ('validClasses',)             # <<<<<<<<<<<<<<
+ * cdef tuple _properties = ()
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(((PyObject *)(&PyTuple_Type)));
-  __Pyx_GIVEREF(((PyObject *)(&PyTuple_Type)));
-  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PyTuple_Type)));
-  __Pyx_INCREF(__pyx_n_u_none);
-  __Pyx_GIVEREF(__pyx_n_u_none);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_none);
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_3abc_MCAttr), __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_u_validClasses, __pyx_t_3) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_INCREF(__pyx_tuple__4);
   __Pyx_XGOTREF(__pyx_v_6mcycle_5bases_4geom__inputs);
-  __Pyx_DECREF_SET(__pyx_v_6mcycle_5bases_4geom__inputs, ((PyObject*)__pyx_t_2));
-  __Pyx_GIVEREF(__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_6mcycle_5bases_4geom__inputs, __pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
 
   /* "mcycle/bases/geom.pyx":5
  * 
- * cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}
- * cdef dict _properties = {}             # <<<<<<<<<<<<<<
+ * cdef tuple _inputs = ('validClasses',)
+ * cdef tuple _properties = ()             # <<<<<<<<<<<<<<
  * 
  * cdef class Geom(ABC):
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_empty_tuple);
   __Pyx_XGOTREF(__pyx_v_6mcycle_5bases_4geom__properties);
-  __Pyx_DECREF_SET(__pyx_v_6mcycle_5bases_4geom__properties, ((PyObject*)__pyx_t_2));
-  __Pyx_GIVEREF(__pyx_t_2);
-  __pyx_t_2 = 0;
+  __Pyx_DECREF_SET(__pyx_v_6mcycle_5bases_4geom__properties, __pyx_empty_tuple);
+  __Pyx_GIVEREF(__pyx_empty_tuple);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Geom(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -4253,7 +4219,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "mcycle/bases/geom.pyx":1
- * from .abc cimport ABC, MCAttr             # <<<<<<<<<<<<<<
+ * from .abc cimport ABC             # <<<<<<<<<<<<<<
  * from .. import defaults
  * 
  */
@@ -4268,7 +4234,6 @@ if (!__Pyx_RefNanny) {
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init mcycle.bases.geom", 0, __pyx_lineno, __pyx_filename);

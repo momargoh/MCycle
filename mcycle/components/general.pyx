@@ -1,13 +1,12 @@
 from ..bases.component cimport Component11
 from ..bases.config cimport Config
 from ..bases.flowstate cimport FlowState
-from ..bases.abc cimport MCAttr
 from ..logger import log
 from .._constants cimport *
 from math import nan, isnan
 
-cdef dict _inputsFixedOut = {"inputPair": MCAttr(int, "none"), "input1": MCAttr(float, "none"), "input2": MCAttr(float, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-cdef dict _propertiesFixedOut = {"m": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"), "dp()": MCAttr( "pressure")}
+cdef tuple _inputsFixedOut = ('inputPair', 'input1', 'input2', 'name', 'notes', 'config')
+cdef tuple _propertiesFixedOut = ('m', 'Q()', 'dp()')
 
 cdef class FixedOut(Component11):
     r"""Fixed outgoing working fluid flowstate.

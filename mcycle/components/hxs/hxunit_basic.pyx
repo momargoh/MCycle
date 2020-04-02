@@ -1,7 +1,6 @@
 from ...bases.component cimport Component22
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
-from ...bases.abc cimport MCAttr
 from ...bases.solidmaterial cimport SolidMaterial
 from ..._constants cimport *
 from ...methods.heat_transfer cimport lmtd
@@ -12,18 +11,8 @@ from math import nan
 import numpy as np
 import scipy.optimize as opt
 
-cdef dict _inputs = {"flowConfig": MCAttr(HxFlowConfig, "none"), "NWf": MCAttr(int, "none"), "NSf": MCAttr(int, "none"),
-                        "NWall": MCAttr(int, "none"), "hWf": MCAttr(float, "htc"), "hSf": MCAttr(float, "htc"), "RfWf": MCAttr(float, "fouling"),
-                        "RfSf": MCAttr(float, "fouling"), "wall": MCAttr(SolidMaterial, "none"), "tWall": MCAttr(float, "length"),
-                        "RfWf": MCAttr(float, "fouling"), "RfSf": MCAttr(float, "fouling"), "A": MCAttr(float, "area"),
-                        "ARatioWf": MCAttr(float, "none"), "ARatioSf": MCAttr(float, "none"), "ARatioWall": MCAttr(float, "none"),
-                        "efficiencyThermal": MCAttr(float, "none"), "flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"),
-                        "flowOutWf": MCAttr(FlowState, "none"), "flowOutSf": MCAttr(FlowState, "none"),  
-                        "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"),
-                        "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
-                        "config": MCAttr(Config, "none")}
-cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "mSf": MCAttr(float, "mass/time"), "Q()": MCAttr(float, "power"),
-                "dpWf()": MCAttr( "pressure"), "dpSf()": MCAttr( "pressure"), "isEvap()": MCAttr( "none")}
+cdef tuple _inputs = ('flowConfig', 'NWf', 'NSf', 'NWall', 'hWf', 'hSf', 'RfWf', 'RfSf', 'wall', 'tWall', 'A', 'ARatioWf', 'ARatioSf', 'ARatioWall', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'sizeAttr', 'sizeBounds', 'name', 'notes', 'config')
+cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'dpWf()', 'dpSf()', 'isEvap()')
         
 cdef class HxUnitBasic(Component22):
     r"""Characterises a basic heat exchanger unit consisting of working fluid and secondary fluid flows separated by a solid wall with single-phase or multi-phase working fluid but only single-phase secondary fluid.

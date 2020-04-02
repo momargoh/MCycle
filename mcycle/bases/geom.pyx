@@ -1,8 +1,8 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .. import defaults
 
-cdef dict _inputs = {"validClasses": MCAttr(tuple, "none")}
-cdef dict _properties = {}
+cdef tuple _inputs = ('validClasses',)
+cdef tuple _properties = ()
         
 cdef class Geom(ABC):
     """Abstract class for geometries."""
@@ -69,14 +69,14 @@ rstHeading : int, optional
             output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
         #
         if propertyKeys == 'all':
-            propertyKeys = self._propertyKeys()
+            propertyKeys = self._properties
         if propertyKeys == 'none':
             propertyKeys = []
         if len(propertyKeys) > 0:
             output += """#
 """
             for k in propertyKeys:
-                if k in self._propertyKeys():
+                if k in self._properties:
                     output += self.formatAttrForSummary(k, [])
                 else:
                     output += k + """: property not found,

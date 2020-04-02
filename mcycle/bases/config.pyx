@@ -1,4 +1,4 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .. import defaults
 from .._constants cimport *
 from ..logger import log
@@ -6,13 +6,8 @@ import copy
 from math import nan, isnan
 
 
-cdef dict _inputs = {"dpEvap": MCAttr(bool, "none"), "dpCond": MCAttr(bool, "none"), "evenPlatesWf": MCAttr(bool,"none"), "dpFWf": MCAttr(bool,"none"),
-               "dpFSf": MCAttr(bool, "none"), "dpAccWf": MCAttr(bool,"none"), "dpAccSf": MCAttr(bool,"none"), "dpHeadWf": MCAttr(bool,"none"),
-               "dpHeadSf": MCAttr(bool,"none"), "dpPortWf": MCAttr(bool,"none"), "dpPortSf": MCAttr(bool,"none"), "dpPortInFactor": MCAttr(float,"none"), "dpPortOutFactor": MCAttr(float,"none"), "g": MCAttr(float,"acceleration"),
-               "tolAttr": MCAttr(float,"none"), "tolAbs": MCAttr(float,"none"), "tolRel": MCAttr(float,"none"), "divT": MCAttr(float,"temperatures"), "divX": MCAttr(float,"none"), "methods": MCAttr(dict, "none"),
-                        "name": MCAttr(str, "none")}
-cdef dict _properties = {"_tolRel_p": MCAttr(float,"none"),
-               "_tolRel_T": MCAttr(float,"none"), "_tolRel_h": MCAttr(float,"none"), "_tolRel_rho": MCAttr(float, "none")}
+cdef tuple _inputs = ('dpEvap', 'dpCond', 'evenPlatesWf', 'dpFWf', 'dpFSf', 'dpAccWf', 'dpAccSf', 'dpHeadWf', 'dpHeadSf', 'dpPortWf', 'dpPortSf', 'dpPortInFactor', 'dpPortOutFactor', 'g', 'tolAttr', 'tolAbs', 'tolRel', 'divT', 'divX', 'methods', 'name')
+cdef tuple _properties = ('_tolRel_p', '_tolRel_T', '_tolRel_h', '_tolRel_rho')
         
 cdef class Config(ABC):
     """General configuration parameters containing parameters pertaining to Cycles and Components.

@@ -1,10 +1,10 @@
 from ...logger import log
-from ...bases.abc cimport ABC, MCAttr
+from ...bases.abc cimport ABC
 from ..._constants cimport *
 
 
-cdef dict _inputs = {"sense": MCAttr(str, "none"), "passes": MCAttr(str, "none"), "verticalWf": MCAttr(bool, "none"), "verticalSf": MCAttr(bool, "none")}
-cdef dict _properties = {}
+cdef tuple _inputs = ('sense', 'passes', 'verticalWf', 'verticalSf')
+cdef tuple _properties = ()
 
 cdef class HxFlowConfig(ABC):
     """Small class to store information about the heat exchanger flow configuration/arrangement which can become much more complex than just specifying counter-flow v parallel-flow v cross-flow.
@@ -30,7 +30,7 @@ verticalSf : bint
                   bint verticalWf=True,
                   bint verticalSf=True,
                   str name="HxFlowConfig instance"):
-        super().__init__(name=name, _inputs=_inputs, _properties=_properties)
+        super().__init__(_inputs=_inputs, _properties=_properties, name=name)
         # TODO implement more error checking
         self.sense = sense
         self.passes = passes

@@ -1,16 +1,11 @@
 from ...bases.component cimport Component11
 from ...bases.config cimport Config
 from ...bases.flowstate cimport FlowState
-from ...bases.abc cimport MCAttr
 from ..._constants cimport *
 from ...logger import log
 
-cdef dict _inputs = {"QCool": MCAttr(float, "power"), "efficiencyThermal": MCAttr(float, "none"),
-                "flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), 'ambient': MCAttr(FlowState, 'none'), "sizeAttr": MCAttr(str, "none"),
-                "sizeBounds": MCAttr(list, "none"),"sizeUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"),
-                        "config": MCAttr(Config, "none")}
-cdef dict _properties = {"mWf": MCAttr(float, "mass/time"), "dpWf()": MCAttr(float, "pressure"),
-                "dpSf()": MCAttr(float, "pressure")}
+cdef tuple _inputs = ('QCool', 'efficiencyThermal', 'flowIn', 'flowOut', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _properties = ('mWf', 'dpWf()', 'dpSf()')
         
 cdef class ClrBasic(Component11):
     r"""Basic heat removal defined by the cooling power and its thermal efficiency.

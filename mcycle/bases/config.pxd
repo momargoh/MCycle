@@ -1,4 +1,3 @@
-
 from .abc cimport ABC
 
 cdef class Config(ABC):

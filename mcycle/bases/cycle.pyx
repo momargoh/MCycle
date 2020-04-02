@@ -1,4 +1,4 @@
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .component cimport Component
 from .config cimport Config
 from .flowstate cimport FlowState
@@ -6,8 +6,8 @@ from .. import defaults
 from ..logger import log
 
 
-cdef dict _inputs = {"_componentKeys": MCAttr(list, "none"), "_cycleStateKeys": MCAttr(list, "none"), "config": MCAttr(str, "none"), "name": MCAttr(str, "none")}
-cdef dict _properties = {}
+cdef tuple _inputs = ('_componentKeys', '_cycleStateKeys', 'config', 'name')
+cdef tuple _properties = ()
         
 cdef class Cycle(ABC):
     r"""Abstract base class for all cycles.
@@ -167,7 +167,7 @@ working fluid: {}
                 output += self.formatAttrForSummary(k, hasSummaryList)
         #
         if propertyKeys == 'all':
-            propertyKeys = self._propertyKeys()
+            propertyKeys = self._properties
         if propertyKeys == 'none':
             propertyKeys = []
         if len(propertyKeys) > 0:
@@ -177,10 +177,10 @@ Properties
 """.format(defaults.RST_HEADINGS[rstHeading + 1] * 10)
             for k in propertyKeys:
                 try:
-                    if k in self._propertyKeys():
+                    if k in self._properties:
                         o = self.formatAttrForSummary(
                             k, [])
-                    elif k+"()" in self._propertyKeys():
+                    elif k+"()" in self._properties:
                         o = self.formatAttrForSummary(
                             k+"()", [])
                     else:
@@ -224,7 +224,7 @@ Properties
                 try:
                     flowObj = getattr(self, cs)
                     if flowPropKeys == []:
-                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._propertyKeys()]
+                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._properties]
                     flowPropVals.append(flowObj._propertyValues())
                 except AttributeError as exc:
                     log("warning", "{}.summary() could not find flow={}".format(self.__class__.__name__, cs), exc)

@@ -1,20 +1,6 @@
 from .. import defaults
 from ..defaults import getUnitsFormatted, getDimensions
 
-cdef class MCAttr:
-    """Class for storing information about MCycle attributes, currently for use with summary() methods, but could have more future use. Only accessible by Cython code.
-
-Attributes
------------
-cls : Python class
-    Python class of attribute.
-dimension : str, optional
-    Dimensions of the attribute, eg. 'length/time'. Defaults to 'none'.
-"""
-    def __cinit__(self, cls, str dimension='none'):
-        self.cls = cls #: definition of cls
-        self.dimension = dimension
-        
 cdef class ABC:
     """Abstract Base Class for all MCycle classes.
 
@@ -28,34 +14,28 @@ _properties : dict
     Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().
     """
 
-    def __init__(self, dict _inputs={}, dict _properties={}, str name='', **kwargs):
-        self.name = name
+    def __init__(self, tuple _inputs=(), tuple _properties=(), str name='', **kwargs):
         self._inputs = _inputs
         self._properties = _properties
+        self.name = name
 
-    cpdef public list _inputKeys(self):
-        return list(self._inputs.keys())    
 
-    cpdef public list _inputValues(self):
-        cdef list ilist = []
-        cdef str k
-        for k, v in self._inputs.items():
-            ilist.append(getattr(self, k))
-        return ilist
+    cpdef public tuple _inputValues(self):
+        cdef list values = []
+        cdef str i
+        for i in self._inputs:
+            values.append(getattr(self, i))
+        return tuple(values)
 
-    cpdef public list _propertyKeys(self):
-        return list(self._properties.keys())
-
-    cpdef public list _propertyValues(self):
-        cdef list ilist = []
-        cdef str k
-        for k, v in self._properties.items():
-            if k.endswith("()"):
-                ilist.append(getattr(self, k.strip("()"))())
+    cpdef public tuple _propertyValues(self):
+        cdef list values = []
+        cdef str p
+        for p in self._properties:
+            if p.endswith("()"):
+                values.append(getattr(self, p.strip("()"))())
             else:
-                ilistVal = getattr(self, k)
-                ilist.append(ilistVal)
-        return ilist
+                values.append(getattr(self, p))
+        return tuple(values)
 
     cpdef public ABC copy(self):
         """Return a new copy of an object."""

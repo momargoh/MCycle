@@ -1,15 +1,15 @@
 from .._constants cimport *
 from .. import defaults
 from ..logger import log
-from .abc cimport ABC, MCAttr
+from .abc cimport ABC
 from .flowstate cimport FlowState
 from .config cimport Config
 from math import nan
 import scipy.optimize as opt
 
 
-cdef dict _inputs = {"flowsIn": MCAttr(list, "none"), "flowsOut": MCAttr(list, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-cdef dict _properties = {"mWf": MCAttr(float, "mass/time")}
+cdef tuple _inputs = ('flowsIn', 'flowsOut', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _properties = ('mWf',)
 
 
 cdef class Component(ABC):
@@ -192,7 +192,7 @@ Notes: {}
                 printSummary=False, name=i, rstHeading=rstHeading + 1)
         #
         if propertyKeys == 'all':
-            propertyKeys = self._propertyKeys()
+            propertyKeys = self._properties
         if propertyKeys == 'none':
             propertyKeys = []
         if len(propertyKeys) > 0:
@@ -203,7 +203,7 @@ Notes: {}
 """.format(outputProperties, defaults.RST_HEADINGS[rstHeading+1] * len(outputProperties))
             
             for k in propertyKeys:
-                if k in self._propertyKeys():
+                if k in self._properties:
                     output += self.formatAttrForSummary(k, [])
                 else:
                     output += k + """: property not found,
@@ -237,9 +237,9 @@ Notes: {}
                         flowObj = getattr(self, keyList)[int(keyId)]
                     else:
                         flowObj = getattr(self, key)
-                    print("fpk = ", flowPropKeys)
+                    #print("fpk = ", flowPropKeys)
                     if flowPropKeys == []:
-                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._propertyKeys()]
+                        flowPropKeys = [k.replace("()","").ljust(4) for k in flowObj._properties]
                     flowPropVals.append(flowObj._propertyValues())
                 except AttributeError as exc:
                     log("warning", "{}.summary() could not find flow={}".format(self.__class__.__name__, key), exc)
@@ -323,8 +323,8 @@ FlowStates
         except:
             raise
 
-cdef dict _inputs11 = {"flowIn": MCAttr(FlowState, "none"), "flowOut": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-cdef dict _properties11 = {"m": MCAttr(str, "mass/time")}
+cdef tuple _inputs11 = ('flowIn', 'flowOut', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _properties11 = ('m',)
         
 cdef class Component11(Component):
     """Component with 1 incoming and 1 outgoing flow of the working fluid.
@@ -426,8 +426,8 @@ kwargs : optional
             if flow is not None:
                 flow.m = value
 
-cdef dict _inputs22 = {"flowInWf": MCAttr(FlowState, "none"), "flowInSf": MCAttr(FlowState, "none"), "flowOutWf": MCAttr(FlowState, "none"), "flowOutsf": MCAttr(FlowState, "none"), "ambient": MCAttr(FlowState, "none"), "sizeAttr": MCAttr(str, "none"), "sizeBounds": MCAttr(list, "none"), "sizeUnitsBounds": MCAttr(list, "none"), "runBounds": MCAttr(list, "none"), "runUnitsBounds": MCAttr(list, "none"), "name": MCAttr(str, "none"), "notes": MCAttr(str, "none"), "config": MCAttr(Config, "none")}
-cdef dict _properties22 = {"mWf": MCAttr(float, "mass/time"),"mSf": MCAttr(float, "mass/time")}
+cdef tuple _inputs22 = ('flowInWf', 'flowInSf', 'flowOutWf', 'flowOutsf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _properties22 = ('mWf', 'mSf')
         
 cdef class Component22(Component):
     """Component with 2 incoming and 2 outgoing flows of the working fluid and a secondary fluid.
