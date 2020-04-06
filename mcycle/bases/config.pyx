@@ -10,7 +10,7 @@ cdef tuple _inputs = ('dpEvap', 'dpCond', 'evenPlatesWf', 'dpFWf', 'dpFSf', 'dpA
 cdef tuple _properties = ('_tolRel_p', '_tolRel_T', '_tolRel_h', '_tolRel_rho')
         
 cdef class Config(ABC):
-    """General configuration parameters containing parameters pertaining to Cycles and Components.
+    """General configuration parameters containing parameters pertaining to Cycles and Components. Many attributes have a corresponding default value set in :doc:`defaults </defaults>` 
 
 Attributes
 -----------
@@ -18,6 +18,8 @@ dpEvap : bool, optional
     Evaluate pressure drop of working fluid in evaporator. Defaults to False.
 dpCond : bool, optional
     Evaluate pressure drop of working fluid in condenser. Defaults to False.
+evenPlatesWf : bool, optional
+    If there are an even number of plates in a plate heat exchanger, an extra working fluid channel is created rather than an extra secondary fluid channel. Defaults to False.
 dpFWf : bool, optional
     Evaluate frictional pressure drops of working fluid. Defaults to True.
 dpFSf : bool, optional
@@ -34,8 +36,10 @@ dpPortWf : bool, optional
     Evaluate port pressure loss of working fluid. Defaults to True.
 dpPortSf : bool, optional
     Evaluate port pressure loss of secondary fluid. Defaults to True.
-g : float, optional
+gravity : float, optional
     Acceleration due to gravity [m/s^2]. Defaults to 9.81.
+maxWalls : int, optional
+    Max number of walls a solution may have. Defaults to 200.
 tolAttr : string, optional
     FlowState attribute for cycle convergence. Defaults to "h".
 tolAbs : float, optional
@@ -46,16 +50,14 @@ divT : float, optional
     Temperature difference for unitising single-phase flows. Defaults to 5 [K].
 divX : float, optional
     Quality difference for unitising two-phase flows. Defaults to 0.1.
-sizeBounds_L : list of float len==2, optional
-    Bracket for solving lengths (particularly of HxUnits). Defaults to [1e-5, 1e2].
 maxIterCycle : int, optional
-    Max number of iterations for convergence of cycle. Defaults to 50.
-maxWalls : int, optional
-    Max number of walls a solution may have. Defaults to 200.
-evenPlatesWf : bool, optional
-    If there are an even number of plates in a plate heat exchanger, an extra working fluid channel is created rather than an extra secondary fluid channel. Defaults to False.
+    Max number of iterations for convergence of cycle methods. Defaults to 50.
+maxIterComponent : int, optional
+    Max number of iterations for convergence of component methods. Defaults to 50.
 methods : dict, optional
     Dictionary that stores all information about selection of computational methods.
+name : string, optional
+    Description of Config object. Defaults to "Config instance".
 
 Private Attributes
 ------------------
@@ -67,8 +69,6 @@ _tolRel_h : float, optional
     Relative tolerance used in assert statements for determining equivalence of specific enthalpies. Defaults to 1e-7.
 _tolRel_rho : float, optional
     Relative tolerance used in assert statements for determining equivalence of densities. Defaults to 1e-7.
-_tolAbs_x : float, optional
-    Absolute tolerance used for determining whether a FlowState is in the two-phase region. Defaults to mcycle.defaults.TOLABS_X
 """
 
     def __cinit__(self,
@@ -217,20 +217,20 @@ _tolAbs_x : float, optional
         self.dpPortSf = value
 
     
-    def summary(self, bint printSummary=True, str name="", int rstHeading=0):
+    def summary(self, bint printSummary=True, str title="", int rstHeading=0):
         """Returns (and prints) a summary of FlowState properties.
 
 Parameters
 -----------
 printSummary : bool, optional
     If true, the summary string is printed as well as returned. Defaults to True.
-name : str, optional
-    Name of the object, prepended to the summary heading. If None, the class name is used. Defaults to None.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
         """
         cdef str output
-        if name == "":
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == "":
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output))
@@ -243,16 +243,16 @@ name : str, optional
 
     
     cpdef public str lookupMethod(self, str cls, tuple args):
-        """str: Return name of method based on the given class and kwargs.
+        """str: Return name of method based on the given class and args.
 
 Parameters
 ------------
 cls : str
-    Class requiring the method. Can be a subclass of Component.
+    Name of class requiring the method.
 args : tuple
     Additional arguments in tuple.
 
-    - HxPlate or HxUnitPlate: kwargs must be in the form (geom, transfer, phase, flow).
+    - HxPlate or HxUnitPlate: args must be in the form (geom, transfer, phase, flow).
 
         """
         cdef tuple listGeom
@@ -321,24 +321,20 @@ args : tuple
             raise
             
     cpdef void set_method(self, str method, str geom, unsigned char transfer, unsigned char unitPhase, unsigned char flow) except *:
-        """Set the method of a single geometry, transfer type, flow and phase.
+        """Set the method for a single geometry, given the transfer type, unitphase and flow.
 
 Parameters
 -----------
 method : str
     String of method/function name.
-geoms : list of str
-    List of strings of geometry names that method should be set for.
-transfers : list of str
-    List of strings of transfer types to be set for. Must be "heat" and or "friction".
-phases : list of str or str
-    List of strings of phases to be set for. Must be from "sp", "liq", "vap", "tpEvap", "tpCond". The following string inputs are also accepted:
-
-    - "all" : Equivalent to ["sp", "liq", "vap", "tpEvap", "tpCond"]
-    - "all-sp" : Equivalent to ["sp", "liq", "vap"]
-    - "all-tp" : Equivalent to ["tpEvap", "tpCond"]
-flows : list of str
-    List of strings of flows to be set for. Must be "wf" and or "sf".
+geom : str
+    Geometry that method should be set for.
+transfers : str
+    Transfer type to be set for, see :doc:`constants </constants>`.
+phases : str
+    Unitphase to be set for, see :doc:`constants </constants>`.
+flows : str
+    Flow to be set for, see :doc:`constants </constants>`.
         """
         cdef unsigned char UP
         cdef list flows

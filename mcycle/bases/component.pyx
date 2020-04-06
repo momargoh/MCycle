@@ -13,32 +13,33 @@ cdef tuple _properties = ('mWf',)
 
 
 cdef class Component(ABC):
-    """Basic component with incoming and outgoing flows. The first flow in and out (index=0) should be allocated to the working fluid.
+    """Base class for components with incoming and outgoing flows. The first flow in and out (index 0) must be allocated to the working fluid where applicable.
 
 Parameters
 ----------
 flowsIn : list of FlowState
-    Incoming FlowStates. Defaults to None.
+    Incoming FlowStates.
 flowsOut : list of FlowState, optional
     Outgoing FlowStates. Defaults to None.
+ambient : FlowState, optional
+    Ambient conditions surrounding in the component. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to None.
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to None.
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
+runUnitsBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState when ``run()`` method of component units is called. Defaults to [nan, nan]. 
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults "no notes".
 config : Config, optional
-    Configuration parameters. Defaults to default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
-
     
     def __init__(self,
                  list flowsIn,
@@ -67,8 +68,8 @@ kwargs : optional
         self.config = config
     
     cpdef public ABC copy(self):
-        """Return a new copy of an object."""
-        cdef ABC copy = self.__class__(*self._inputValues())
+        """Return a new copy of a Component instance. Overrides :meth:`ABC.copy() <mcycle.bases.abc.ABC.copy>`."""
+        cdef Component copy = self.__class__(*self._inputValues())
         try: # copy _units if relevant
             copy._units = []
             for unit in self._units:
@@ -78,13 +79,13 @@ kwargs : optional
         return copy
     
     cpdef public ABC copyUpdate(self, dict kwargs):
-        """Update (multiple) class variables from a dictionary of keyword arguments.
+        """Create a new copy of an object then update it using kwargs (as dict). Overrides :meth:`ABC.copyUpdate() <mcycle.bases.abc.ABC.copyUpdate>`.
 
 Parameters
 -----------
 kwargs : dict
-    Dictionary of attributes and their updated value; kwargs={'key': value}."""
-        cdef ABC copy = self.copy()
+    Dictionary of attributes and their updated value."""
+        cdef Component copy = self.copy()
         copy.update(kwargs)
         return copy
 
@@ -109,7 +110,7 @@ kwargs : dict
         return getattr(self.flowsOut[0], self.config.tolAttr)() - getattr(flowOutTarget, self.config.tolAttr)()
     
     cpdef public void size(self) except *:
-        """Solve for the value of the nominated component attribute required to return the defined outgoing FlowState.
+        """Solve for the value of the nominated component attribute ``sizeAttr`` required to return the pre-declared outgoing FlowState ``flowOutWf``.
         """
         cdef double tol
         cdef str attr = self.sizeAttr
@@ -136,8 +137,8 @@ kwargs : dict
                 bint printSummary=True,
                 propertyKeys='all',
                 flowKeys='none',
-                str name="",
-                int rstHeading=0):
+                str title="",
+                int rstHeading=0, **kwargs):
         """Returns (and prints) a summary of the component attributes/properties/flows.
 
 Parameters
@@ -158,21 +159,21 @@ flowKeys : list or str, optional
   - 'none': no flows are included.
 
     Defaults to 'none'.
-name : str, optional
-    Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from :meth:`RST_HEADINGS <mcycle.defaults.RST_HEADINGS>`. Defaults to 0.
         """
-        if name == "":
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == "":
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 Notes: {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.notes)
 
         hasSummaryList = []
-        for k, v in self._inputs.items():
+        for k in self._inputs:
             if k in [
                     "flowsIn", "flowsOut", "flowIn", "flowOut", "flowInWf",
                     "flowOutWf", "flowInSf", "flowOutSf", "ambient"
@@ -196,7 +197,7 @@ Notes: {}
         if propertyKeys == 'none':
             propertyKeys = []
         if len(propertyKeys) > 0:
-            outputProperties = r"{} properties".format(name)
+            outputProperties = r"{} properties".format(title)
             output += """
 {}
 {}
@@ -299,6 +300,7 @@ FlowStates
         self.flowsOut[0] = obj
 
     cpdef public double _mWf(self):
+        """Alias for self.flowsIn[0].m"""
         return self.flowsIn[0].m
     
     @property
@@ -313,7 +315,7 @@ FlowStates
                 flow.m = value
                 
     cdef public bint hasInAndOut(self, int flowIndex):
-        """Returns True if inlet and outlet flows have been defined; ie. are not None."""
+        """Returns True if inlet and outlet flows have been declared; ie. are not None."""
         try:
             if type(self.flowsIn[flowIndex]) is FlowState and type(
                     self.flowsOut[flowIndex]) is FlowState:
@@ -335,22 +337,24 @@ flowIn : FlowState
     Incoming FlowState.
 flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
+ambient : FlowState, optional
+    Ambient conditions surrounding in the component. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to None.
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to None.
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
+runUnitsBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState when ``run()`` method of component units is called. Defaults to [nan, nan]. 
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults "no notes".
 config : Config, optional
-    Configuration parameters. Defaults to default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     
@@ -413,6 +417,7 @@ kwargs : optional
         pass
 
     cpdef public double _m(self):
+        """Alias for self.flowsIn[0].m"""
         return self.flowsIn[0].m
     
     @property
@@ -442,22 +447,24 @@ flowOutWf : FlowState, optional
     Outgoing FlowState of the working fluid. Defaults to None.
 flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
+ambient : FlowState, optional
+    Ambient conditions surrounding in the component. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to None.
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to None.
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
+runUnitsBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState when ``run()`` method of component units is called. Defaults to [nan, nan]. 
 name : string, optional
     Description of Component object. Defaults to "Component instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults "no notes".
 config : Config, optional
-    Configuration parameters. Defaults to default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     

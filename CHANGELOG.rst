@@ -5,8 +5,8 @@ CHANGELOG
 .. contents::
    :depth: 2
                
-[Unreleased]
--------------
+[1.1.0] - 06/04/2020
+------------------------------
 
 - The latest version of MCycle will be uploaded to PyPI once the cross-platform build requirements are sorted (looking into using skbuild).
 - It is planned to be able to choose alternative thermodynamic properties backends (such as `thermo <https://pypi.org/project/thermo/>`_)

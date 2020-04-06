@@ -1,6 +1,6 @@
-MCycle Abstract Base Classes
+Abstract Base Class
 =============================
-.. automodule:: mcycle.bases.mcabstractbase
+.. automodule:: mcycle.bases.abc
    :members:
    :private-members:
    :inherited-members:

@@ -21,25 +21,25 @@ Having correctly installed MCycle from either the source code or pip (:ref:`see 
     >>> import mcycle as mc
     >>> import CoolProp as CP
 
-Next, we change a couple of the MCycle defaults to our liking. The :meth:`updateDefaults() <mcycle.defaults.updateDefaults>` function should be executed after changing defaults to ensure the new value is valid and to run any required backend functions to register the change.
+Next, we change a couple of the MCycle defaults to our liking. The :meth:`check() <mcycle.defaults.check>` function should be executed after changing defaults to ensure the new value is valid and to run any required backend functions to register the change.
 
     >>> mc.defaults.PLOT_DIR = "" # will not create a new folder for plots
     >>> mc.defaults.PLOT_DPI = 200
-    >>> mc.defaults.updateDefaults()
+    >>> mc.defaults.check()
 
 Creating flowstates
 -------------------------------------------------------------
 
-To represent the working fluid of the cycle, we must create a :meth:`FlowState object <mcycle.bases.flowstate.FlowState>`. The phase, mass flow rate and initial state conditions do not need to be defined, as they will be set later by the cycle parameters, but for the sake of demonstrating the full constructor, we can assign some arbitrary values. Note that ``phaseCP = -1`` is used when the flow phase does not explicitly need to be defined. FlowState objects will use the CoolProp backend specified by the :meth:`defaults.COOLPROP_EOS <mcycle.defaults.COOLPROP_EOS>` attribute, which defaults to ``"HEOS"``.
+To represent the working fluid of the cycle, we must create a :meth:`FlowState object <mcycle.bases.flowstate.FlowState>`. The mass flow rate and initial state conditions do not need to be defined, as they will be set later by the cycle parameters, but for the sake of demonstrating the full constructor, we can assign some arbitrary values. Note that ``iphase = PHASE_NOT_IMPOSED`` is used when the flow phase does not explicitly need to be defined. FlowState objects will use the CoolProp backend specified by the :meth:`defaults.COOLPROP_EOS <mcycle.defaults.COOLPROP_EOS>` attribute, which defaults to ``"HEOS"``.
 
-    >>> wf = mc.FlowState(fluid="R245fa", phaseCP=-1, m=1.0, inputPairCP=CP.PT_INPUTS, input1=mc.atm2Pa(1), input2=298)
+    >>> wf = mc.FlowState(fluid="R245fa", m=1.0, inputPair=mc.PT_INPUTS, input1=mc.atm2Pa(1), input2=298, iphase=mc.PHASE_NOT_IMPOSED)
 
 Printing flowstate summaries
 ******************************
 
 The :meth:`summary() <mcycle.bases.flowstate.FlowState.summary>` method is quick way to print a customisable summary of a flowstate.
 
-    >>> wf.summary(name='Working fluid')
+    >>> wf.summary(title='Working fluid')
     Working fluid summary
     =====================
     T() = 2.9800e+02 [K]
@@ -59,17 +59,17 @@ Creating components
 
 Before creating the cycle, we must create the individual :meth:`Component objects <mcycle.bases.component>`. An organic Rankine cycle requires an expander, condenser, compressor and evaporator. For this example we will use the most basic models for each component. Again, many of the attributes will be set later by the cycle parameters, including the incoming and outgoing flowstates, but we will assign some of them arbitrary values here for demonstration purposes.
 
-    >>> exp = mc.ExpBasic(pRatio=1, effIsentropic=0.9, sizeAttr="pRatio")
-    >>> cond = mc.ClrBasicConstP(Q=1, effThermal=1.0, sizeAttr="Q")
-    >>> comp = mc.CompBasic(pRatio=1, effIsentropic=0.85, sizeAttr="pRatio")
-    >>> evap = mc.HtrBasicConstP(Q=1, effThermal=1.0, sizeAttr="Q")
+    >>> exp = mc.ExpBasic(pRatio=1, efficiencyIsentropic=0.9, sizeAttr="pRatio")
+    >>> cond = mc.ClrBasicConstP(QCool=1, efficiencyThermal=1.0, sizeAttr="Q")
+    >>> comp = mc.CompBasic(pRatio=1, efficiencyIsentropic=0.85, sizeAttr="pRatio")
+    >>> evap = mc.HtrBasicConstP(QHeat=1, efficiencyThermal=1.0, sizeAttr="Q")
 
 Printing component summaries
 ******************************
 
 The :meth:`summary() <mcycle.bases.component.Component.summary>` method is quick way to print a customisable summary of a component. As the components do not have flowstates yet, we will not include information for any flowstates in the summary.
 
-    >>> exp.summary(propertyKeys='all', flowKeys='all', name="Expander")
+    >>> exp.summary(propertyKeys='all', flowKeys='all', title="Expander")
     Expander summary
     ================
     Notes: No notes/model info.
@@ -95,10 +95,9 @@ The :meth:`summary() <mcycle.bases.component.Component.summary>` method is quick
 Creating cycles
 -------------------------------------------------------------
 
-The :meth:`RankineBasic <mcycle.cycles.rankinebasic.RankineBasic>` object can now be created. We will also define the design cycle parameters which are required by the :meth:`size() <mcycle.cycles.rankinebasic.RankineBasic.size>` method. As the condensing temperature :meth:`TCond() <mcycle.cycles.rankinebasic.RankineBasic.TCond>` is a property computed from the condesing pressure, we define it after constructing the cycle using the :meth:`update() <mcycle.cycles.rankinebasic.RankineBasic.update>` method. We will use the default :meth:`Config <mcycle.bases.config.Config>` object which will then be set for each of the cycle components.
+The :meth:`RankineBasic <mcycle.cycles.rankinebasic.RankineBasic>` object can now be created. We will also define the design cycle parameters which are required by the :meth:`size() <mcycle.cycles.rankinebasic.RankineBasic.size>` method. As the condensing temperature :meth:`TCond() <mcycle.cycles.rankinebasic.RankineBasic.TCond>` is a property computed from the condesing pressure, we define it after constructing the cycle using the :meth:`update() <mcycle.cycles.rankinebasic.RankineBasic.update>` method. We will use the default :meth:`Config <mcycle.defaults.CONFIG>` by not specifying ``config`` in the constructor (we could also set it to the value ``None``).
 
-    >>> config = mc.Config()
-    >>> cycle = mc.RankineBasic(wf=wf, evap=evap, exp=exp, cond=cond, comp=comp, config=config)
+    >>> cycle = mc.RankineBasic(wf=wf, evap=evap, exp=exp, cond=cond, comp=comp, config=None)
     >>> cycle.update({"pEvap": mc.bar2Pa(10), "superheat": 10., "TCond": mc.degC2K(25), "subcool": 5.})
 
 Plotting cycles
@@ -131,7 +130,7 @@ Although plotting the cycle is a great visual representation of the cycle, often
 
 Now, to print the cycle summary, we simply use the :meth:`summary() <mcycle.cycles.rankinebasic.RankineBasic.summary>` method, selecting to print all cycle component and flowstate summaries.
 
-    >>> cycle.summary(printSummary=True, propertyKeys='all', cycleStateKeys='all', componentKeys='all', name="Quick start RankineBasic cycle")
+    >>> cycle.summary(printSummary=True, propertyKeys='all', cycleStateKeys='all', componentKeys='all', title="Quick start RankineBasic cycle")
 
 This prints the following output in rST format::
 
@@ -306,7 +305,7 @@ Finally, we'll use the ``run()`` method to analyse the evaporator at off-design 
 
     >>> newFigFlag = True # append to one figure
 
-Now we can go ahead and run the evaporator. While we could use the cycle :meth:`run() <mcycle.cycles.rankinebasic.RankineBasic.run>` method which runs each of the components, instead we will just run the evaporator and expander. As running the evaporator affects the ``state3`` flowstate which is shared byt he evaporator and expander, we must remember to set it using :meth:`set_state3() <mcycle.cycles.rankinebasic.RankineBasic.set_state3>` which ensures all affected components now have the updated object. Similarly, we must now re-run the expander as its incoming working fluid flowstate has now changed and also use :meth:`set_state4() <mcycle.cycles.rankinebasic.RankineBasic.set_state4>` to ensure the changes are passed on to the condenser. We save ``state3`` and ``effThermal()`` into the storage lists and plot up the results. We will also plot the results into a table for easier viewing of the values.::
+Now we can go ahead and run the evaporator. While we could use the cycle :meth:`run() <mcycle.cycles.rankinebasic.RankineBasic.run>` method which runs each of the components, instead we will just run the evaporator and expander. As running the evaporator affects the ``state3`` flowstate which is shared byt he evaporator and expander, we must remember to set it using :meth:`set_state3() <mcycle.cycles.rankinebasic.RankineBasic.set_state3>` which ensures all affected components now have the updated object. Similarly, we must now re-run the expander as its incoming working fluid flowstate has now changed and also use :meth:`set_state4() <mcycle.cycles.rankinebasic.RankineBasic.set_state4>` to ensure the changes are passed on to the condenser. We save ``state3`` and ``efficiencyThermal()`` into the storage lists and plot up the results. We will also plot the results into a table for easier viewing of the values.::
 
     >>> for Q in Q_vals:
             cycle.evap.Q = Q
@@ -318,7 +317,7 @@ Now we can go ahead and run the evaporator. While we could use the cycle :meth:`
             cycle.set_state4(cycle.exp.flowOutWf)
 
             state3_vals.append(cycle.state3)
-            effThermal_vals.append(cycle.effThermal())
+            effThermal_vals.append(cycle.efficiencyThermal())
             cycle.plot(
                 graph='Ts',  # either 'Ts' or 'ph'
                 title='run',  # graph title
@@ -329,7 +328,7 @@ Now we can go ahead and run the evaporator. While we could use the cycle :meth:`
                 savefig_name='quickstart_run')
             newFigFlag = False
 
-    >>> print("Q/Q_design | state3.T() | state3.x() | effThermal()")
+    >>> print("Q/Q_design | state3.T() | state3.x() | efficiencyThermal")
     >>> for i in range(len(Qfraction_vals)):
             print("{:1.2f} | {:3.2f} | {: 2.2f} | {:1.4f}".format(Qfraction_vals[i], state3_vals[i].T(), state3_vals[i].x(), effThermal_vals[i]))
         
@@ -341,7 +340,7 @@ This produces the following graph and output.
 
 ::
                
-    Q/Q_design | state3.T() | state3.x() | effThermal()
+    Q/Q_design | state3.T() | state3.x() | efficiencyThermal()
     0.80 | 362.90 |  0.73 | 0.1223
     0.84 | 362.90 |  0.80 | 0.1241
     0.88 | 362.90 |  0.87 | 0.1257

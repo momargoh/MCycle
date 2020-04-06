@@ -13,7 +13,7 @@ cdef class SolidMaterial(ABC):
 Attributes
 ----------
 rho : float
-    Mass density [Kg/m^3]
+    Mass density [kg/m^3]
 k : float
     Thermal conductivity [W/m.K]
 name : string, optional
@@ -21,9 +21,7 @@ name : string, optional
 notes : string, optional
     Additional notes on the material. Defaults "no notes".
 config : Config, optional
-    Configuration parameters. Defaults to default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
 """
 
     def __init__(self,
@@ -73,7 +71,7 @@ kwargs : optional
 Parameters
 -----------
 kwargs : dict
-    Dictionary of attributes and their updated value; kwargs={'key': value}."""
+    Dictionary of attributes and their updated value."""
         super(SolidMaterial, self).update(kwargs)
         self.populate_c()
         
@@ -87,7 +85,7 @@ kwargs : dict
     def summary(self,
                 bint printSummary=True,
                 propertyKeys='all',
-                str name="",
+                str title="",
                 int rstHeading=0):
         """Returns (and prints) a summary of the component attributes/properties/flows.
 
@@ -102,21 +100,23 @@ propertyKeys : list, optional
   - 'none': no properties are included.
 
     Defaults to "all".
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
 rstHeading : int, optional
     Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
         """
         cdef str output, prop
         cdef tuple i
         cdef int j
-        if name == "":
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == "":
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output))
 
         hasSummaryList = []
-        for k, v in self._inputs.items():
+        for k in self._inputs:
             if k in [
                     "flowsIn", "flowsOut", "flowIn", "flowOut", "flowInWf",
                     "flowOutWf", "flowInSf", "flowOutSf"

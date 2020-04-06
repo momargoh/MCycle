@@ -41,8 +41,8 @@ name : str, optional
 
 Examples
 ----------
-import mcycle as mc
->>> air = mc.FlowState("Air",1.0,mc.PT_INPUTS,101325,293.15)
+import mcycle
+>>> air = mcycle.FlowState("Air", 1.0, mc.PT_INPUTS, 101325, 293.15)
 >>> air.rho()
 1.2045751824931508
 >>> air.cp()
@@ -165,20 +165,20 @@ input1, input2 : double
         self._input2 = input2
         self._iphase = iphase
 
-    def summary(self, bint printSummary=True, str name='', int rstHeading=0):
+    def summary(self, bint printSummary=True, str title='', int rstHeading=0):
         """Returns (and prints) a summary of FlowState properties.
 
 Parameters
 -----------
 printSummary : bool, optional
     If true, the summary string is printed as well as returned. Defaults to True.
-name : str, optional
-    Name of the object, prepended to the summary heading. If None, the class name is used. Defaults to None.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
         """
         cdef str output
-        if name == '':
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == '':
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 eos = {}
@@ -198,19 +198,19 @@ eos = {}
         return self._state.p()
     
     cpdef public double rho(self):
-        r"""double:  Mass density [Kg/m^3]."""
+        r"""double:  Mass density [kg/m^3]."""
         return self._state.rhomass()
     
     cpdef public double v(self):
-        r"""double:  Specific volume [m^3/Kg]."""
+        r"""double:  Specific volume [m^3/kg]."""
         return 1. / self.rho()
 
     cpdef public double h(self):
-        r"""double:  Specific mass enthalpy [J/Kg]."""
+        r"""double:  Specific mass enthalpy [J/kg]."""
         return self._state.hmass()
     
     cpdef public double s(self):
-        r"""double: Specific mass entropy [J/Kg.K]."""
+        r"""double: Specific mass entropy [J/kg.K]."""
         return self._state.smass()
     
     cpdef public double x(self):
@@ -283,7 +283,7 @@ eos = {}
         return self._state.Tmax()
     
     cpdef public unsigned char phase(self):
-        """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region."""
+        """str: identifier of phase; see :meth:`constants <mcycle.constants>`."""
         cdef FlowState liq
         cdef unsigned short phase
         cdef double tolabs_x = defaults.TOLABS_X
@@ -366,7 +366,7 @@ cdef class FlowStatePoly(FlowState):
     """FlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate. It is an alternative to FlowState that uses polynomial interpolation of a crude constant pressure reference data map to evaluate the state properties, instead of calling them from a CoolProp AbstractState object. This class was created purely to overcome short comings with CoolProp's mixture processes. Apart from creating new objects, FlowStatePoly has been built to be used in exactly the same way as FlowState.
 
 .. note:: FlowStatePoly only supports constant pressure flows and assumes no phase changes occur.
-   It may not be used for the working fluid in a cycle, but may be used as the working fluid in certain constant pressure components.
+   It may not/should not be used for the working fluid in certain cycles, but may be used as the working fluid in certain constant pressure components.
 
 Parameters
 ----------
@@ -374,7 +374,7 @@ refData : RefData
     Constant pressure fluid reference data map.
 
 m : double, optional
-    Mass flow rate [Kg/s]. Defaults to nan.
+    Mass flow rate [kg/s]. Defaults to nan.
 
 inputPair : int, optional
     CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to INPUT_PAIR_INVALID == 0.
@@ -516,21 +516,21 @@ input1,input2 : double
             return np.polyval(self._c['T'], self._inputValue)
 
     cpdef public double h(self):
-        """double: Specific mass enthalpy [J/Kg]."""
+        """double: Specific mass enthalpy [J/kg]."""
         if self.refData.deg == -1:
             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['h'])
         else:
             return np.polyval(self._c['h'], self._inputValue)
 
     cpdef public double rho(self):
-        """double: Mass density [Kg/m^3]."""
+        """double: Mass density [kg/m^3]."""
         if self.refData.deg == -1:
             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['rho'])
         else:
             return np.polyval(self._c['rho'], self._inputValue)
 
     cpdef public double s(self):
-        """double: Specific mass entropy [J/Kg.K]."""
+        """double: Specific mass entropy [J/kg.K]."""
         if self.refData.deg == -1:
             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['s'])
         else:
@@ -591,7 +591,7 @@ input1,input2 : double
         return nan
 
     cpdef public unsigned char phase(self):
-        """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
+        """str: identifier of phase: """
         return self.refData._iphase
         """cdef double liq_h = 0
         try:
@@ -612,7 +612,7 @@ input1,input2 : double
 
 
 cdef class RefData:
-    """cdef class. RefData stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.
+    """Stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.
 
 Parameters
 ----------
@@ -636,17 +636,16 @@ data : dict
     Dictionary of data map values. Data must be given as a list of floats for each of the following keys:
     
     - 'T' : static temperature [K]. Must be provided.
-    - 'h' : specific mass enthalpy [J/Kg]. Optional.
-    - 'rho' : mass density [Kg/m^3]. Optional.
-    - 's' : specific mass entropy [J/Kg.K]. Optional.
+    - 'h' : specific mass enthalpy [J/kg]. Optional.
+    - 'rho' : mass density [kg/m^3]. Optional.
+    - 's' : specific mass entropy [J/kg.K]. Optional.
     - 'visc' : dynamic viscosity [N.s/m^2]. Optional.
     - 'k' : thermal conductivity [W/m.K]. Optional.
     - 'cp' : specific mass heat capacity, const. pressure [J/K]. Optional.
 
     A complete map must be provided or if only temperature values are provided, MCycle will attempt to populate the data using CoolProp.
-
 iphase : int, optional
-    Coolprop key for phase. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_. Eg, CoolProp.iphase_gas. Defaults to -1.
+    Coolprop key for imposed phase (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg, ``PHASE_GAS``. Defaults to ``PHASE_NOT_IMPOSED``.
     """
 
     def __cinit__(self,
@@ -684,7 +683,7 @@ iphase : int, optional
             self.populateData()
 
     cpdef public void populateData(self) except *:
-        """void: Populate property data list from data['T'] using CoolProp."""
+        """void: Try to populate property data list from data['T'] using CoolProp."""
         if self.data['T'] == []:
             raise ValueError("data['T'] must not be empty.")
         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']

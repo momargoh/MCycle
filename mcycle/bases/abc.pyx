@@ -1,24 +1,24 @@
 from .. import defaults
 from ..defaults import getUnitsFormatted, getDimensions
+from ..logger import log
 
 cdef class ABC:
-    """Abstract Base Class for all MCycle classes.
+    """Abstract Base Class.
 
 Attributes
 -----------
+_inputs : tuple of str
+    Tuple of constructor argument names. Eg: ('arg1', 'arg2', 'arg3').
+_properties : tuple of str
+    Tuple of class property/method names (used by ``mcycle.bases.abc.summary``). Include '()' if the property is a Cython/Python class method, otherwise exclude if it is a Python property (uses the ``@property`` decorator). Eg: ('prop1()', 'prop2()', 'prop3()').
 name : str, optional
     Descriptive name for the class instance. Defaults to "".
-_inputs : dict
-    Dictionary of input parameter data in the form {key: MCAttr(...)}.
-_properties : dict
-    Dictionary of class properties data in the form {key: MCAttr(...)}, primarily used in summary().
     """
 
     def __init__(self, tuple _inputs=(), tuple _properties=(), str name='', **kwargs):
         self._inputs = _inputs
         self._properties = _properties
         self.name = name
-
 
     cpdef public tuple _inputValues(self):
         cdef list values = []
@@ -38,7 +38,7 @@ _properties : dict
         return tuple(values)
 
     cpdef public ABC copy(self):
-        """Return a new copy of an object."""
+        """Return a new copy of a class instance."""
         cdef ABC copy = self.__class__(*self._inputValues())
         return copy
 
@@ -59,7 +59,7 @@ kwargs : dict
 Parameters
 -----------
 kwargs : dict
-    Dictionary of attributes and their updated value; kwargs={'key': value}."""
+    Dictionary of attributes and their updated value."""
         cdef str key
         cdef list key_split
         for key, value in kwargs.items():
@@ -81,12 +81,12 @@ kwargs : dict
                 setattr(self, key, value)
               
     cdef public str formatAttrForSummary(self, str attr, list hasSummaryList):
-        """str: Formats dictionary of attribute name and MCAttr object (as found in _inputs) to be used in summary().
+        """str: Formats attribute to be used in summary(): gets value and looks up units.
 
 Parameters
 ------------
-attr : dict
-    Dictionary in the form ('attr name': MCAttr object), as found in _inputs and _properties.
+attr : str
+    String of attribute name as found in _inputs and _properties.
 hasSummaryList : list
     List to append attributes that themselves have the method 'summary'. Defaults to [] (which is not accessible outside function).
         """
@@ -115,7 +115,9 @@ hasSummaryList : list
             return """{} not yet defined
 """.format(attr)
         except KeyError as exc:
-            return """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
+            msg = """{} dimensions not defined in defaults.DIMENSIONS. Consider raising an issue on Github""".format(attr)
+            log("INFO", msg, exc)
+            return msg
         except Exception as inst:
             return """Attribute "{}" not found: {}
 """.format(attr, inst)

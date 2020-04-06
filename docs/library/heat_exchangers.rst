@@ -1,4 +1,4 @@
-Library Heat Exchangers
+Heat Exchangers
 =============================
 .. automodule:: mcycle.library.heat_exchangers
    :members:

@@ -67,20 +67,13 @@ sizeAttr : string, optional
     Default attribute used by size(). Defaults to "N".
 sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1, 100].
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 sizeUnitsBounds : float or list of float, optional
     Bracket passed on to any HxUnits containing solution of size() for the unit. Typically this bounds is used to size for the length of the HxUnit. Defaults to [1e-5, 1.].
 name : string, optional
     Description of object. Defaults to "HxBasicPlanar instance".
 notes : string, optional
-    Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
-config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Additional notes on the component such as model numbers. Defaults to "No notes/model info.".config : Config, optional
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     def __init__(self,

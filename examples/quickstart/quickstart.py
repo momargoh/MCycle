@@ -20,7 +20,7 @@ print("Begin Rankine cycle setup...")
 wf = mc.FlowState(
     fluid="R245fa",
     m=1.0,
-    inputPair=CP.PT_INPUTS,
+    inputPair=mc.PT_INPUTS,
     input1=mc.atm2Pa(1),
     input2=298)
 print("  - created working fluid")
@@ -67,7 +67,7 @@ def cycle_summary():
         propertyKeys='all',
         cycleStateKeys='all',
         componentKeys='all',
-        name="Quick start RankineBasic cycle")
+        title="Quick start RankineBasic cycle")
 
 
 @mc.timer

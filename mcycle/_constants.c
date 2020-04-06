@@ -1043,8 +1043,10 @@ __PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW_NONE;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW_ALL;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) WORKING_FLUID;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW_PRIMARY;
+__PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW1;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) SECONDARY_FLUID;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW_SECONDARY;
+__PYX_EXTERN_C DL_EXPORT(unsigned char) FLOW2;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) FLOWSENSE_UNDEFINED;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) COUNTERFLOW;
 __PYX_EXTERN_C DL_EXPORT(unsigned char) PARALLELFLOW;
@@ -1058,6 +1060,8 @@ int __pyx_module_is_main_mcycle___constants = 0;
 /* Implementation of 'mcycle._constants' */
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_FLOW1[] = "FLOW1";
+static const char __pyx_k_FLOW2[] = "FLOW2";
 static const char __pyx_k_DOCS_URL[] = "DOCS_URL";
 static const char __pyx_k_FLOW_ALL[] = "FLOW_ALL";
 static const char __pyx_k_TOLABS_X[] = "TOLABS_X";
@@ -1168,6 +1172,8 @@ static PyObject *__pyx_n_s_DmolarQ_INPUTS;
 static PyObject *__pyx_n_s_DmolarSmolar_INPUTS;
 static PyObject *__pyx_n_s_DmolarT_INPUTS;
 static PyObject *__pyx_n_s_DmolarUmolar_INPUTS;
+static PyObject *__pyx_n_s_FLOW1;
+static PyObject *__pyx_n_s_FLOW2;
 static PyObject *__pyx_n_s_FLOWSENSE_UNDEFINED;
 static PyObject *__pyx_n_s_FLOW_ALL;
 static PyObject *__pyx_n_s_FLOW_NONE;
@@ -1334,8 +1340,10 @@ unsigned char FLOW_NONE;
 unsigned char FLOW_ALL;
 unsigned char WORKING_FLUID;
 unsigned char FLOW_PRIMARY;
+unsigned char FLOW1;
 unsigned char SECONDARY_FLUID;
 unsigned char FLOW_SECONDARY;
+unsigned char FLOW2;
 unsigned char FLOWSENSE_UNDEFINED;
 unsigned char COUNTERFLOW;
 unsigned char PARALLELFLOW;
@@ -1395,6 +1403,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_DmolarSmolar_INPUTS, __pyx_k_DmolarSmolar_INPUTS, sizeof(__pyx_k_DmolarSmolar_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_DmolarT_INPUTS, __pyx_k_DmolarT_INPUTS, sizeof(__pyx_k_DmolarT_INPUTS), 0, 0, 1, 1},
   {&__pyx_n_s_DmolarUmolar_INPUTS, __pyx_k_DmolarUmolar_INPUTS, sizeof(__pyx_k_DmolarUmolar_INPUTS), 0, 0, 1, 1},
+  {&__pyx_n_s_FLOW1, __pyx_k_FLOW1, sizeof(__pyx_k_FLOW1), 0, 0, 1, 1},
+  {&__pyx_n_s_FLOW2, __pyx_k_FLOW2, sizeof(__pyx_k_FLOW2), 0, 0, 1, 1},
   {&__pyx_n_s_FLOWSENSE_UNDEFINED, __pyx_k_FLOWSENSE_UNDEFINED, sizeof(__pyx_k_FLOWSENSE_UNDEFINED), 0, 0, 1, 1},
   {&__pyx_n_s_FLOW_ALL, __pyx_k_FLOW_ALL, sizeof(__pyx_k_FLOW_ALL), 0, 0, 1, 1},
   {&__pyx_n_s_FLOW_NONE, __pyx_k_FLOW_NONE, sizeof(__pyx_k_FLOW_NONE), 0, 0, 1, 1},
@@ -1602,8 +1612,10 @@ static int __Pyx_modinit_variable_export_code(void) {
   if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOW_ALL, (void *)&FLOW_ALL, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_WORKING_FLUID, (void *)&WORKING_FLUID, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOW_PRIMARY, (void *)&FLOW_PRIMARY, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOW1, (void *)&FLOW1, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_SECONDARY_FLUID, (void *)&SECONDARY_FLUID, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOW_SECONDARY, (void *)&FLOW_SECONDARY, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOW2, (void *)&FLOW2, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_FLOWSENSE_UNDEFINED, (void *)&FLOWSENSE_UNDEFINED, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_COUNTERFLOW, (void *)&COUNTERFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ExportVoidPtr(__pyx_n_s_PARALLELFLOW, (void *)&PARALLELFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -2563,7 +2575,7 @@ if (!__Pyx_RefNanny) {
  * cdef public unsigned char FLOW_ALL = 1
  * cdef public unsigned char WORKING_FLUID = 2             # <<<<<<<<<<<<<<
  * cdef public unsigned char FLOW_PRIMARY = 2
- * cdef public unsigned char SECONDARY_FLUID = 3
+ * cdef public unsigned char FLOW1 = 2
  */
   WORKING_FLUID = 2;
 
@@ -2571,31 +2583,49 @@ if (!__Pyx_RefNanny) {
  * cdef public unsigned char FLOW_ALL = 1
  * cdef public unsigned char WORKING_FLUID = 2
  * cdef public unsigned char FLOW_PRIMARY = 2             # <<<<<<<<<<<<<<
+ * cdef public unsigned char FLOW1 = 2
  * cdef public unsigned char SECONDARY_FLUID = 3
- * cdef public unsigned char FLOW_SECONDARY = 3
  */
   FLOW_PRIMARY = 2;
 
   /* "mcycle/_constants.pyx":91
  * cdef public unsigned char WORKING_FLUID = 2
  * cdef public unsigned char FLOW_PRIMARY = 2
- * cdef public unsigned char SECONDARY_FLUID = 3             # <<<<<<<<<<<<<<
+ * cdef public unsigned char FLOW1 = 2             # <<<<<<<<<<<<<<
+ * cdef public unsigned char SECONDARY_FLUID = 3
  * cdef public unsigned char FLOW_SECONDARY = 3
- * # HxFlowConfig
  */
-  SECONDARY_FLUID = 3;
+  FLOW1 = 2;
 
   /* "mcycle/_constants.pyx":92
  * cdef public unsigned char FLOW_PRIMARY = 2
+ * cdef public unsigned char FLOW1 = 2
+ * cdef public unsigned char SECONDARY_FLUID = 3             # <<<<<<<<<<<<<<
+ * cdef public unsigned char FLOW_SECONDARY = 3
+ * cdef public unsigned char FLOW2 = 3
+ */
+  SECONDARY_FLUID = 3;
+
+  /* "mcycle/_constants.pyx":93
+ * cdef public unsigned char FLOW1 = 2
  * cdef public unsigned char SECONDARY_FLUID = 3
  * cdef public unsigned char FLOW_SECONDARY = 3             # <<<<<<<<<<<<<<
+ * cdef public unsigned char FLOW2 = 3
  * # HxFlowConfig
- * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
  */
   FLOW_SECONDARY = 3;
 
   /* "mcycle/_constants.pyx":94
+ * cdef public unsigned char SECONDARY_FLUID = 3
  * cdef public unsigned char FLOW_SECONDARY = 3
+ * cdef public unsigned char FLOW2 = 3             # <<<<<<<<<<<<<<
+ * # HxFlowConfig
+ * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
+ */
+  FLOW2 = 3;
+
+  /* "mcycle/_constants.pyx":96
+ * cdef public unsigned char FLOW2 = 3
  * # HxFlowConfig
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0             # <<<<<<<<<<<<<<
  * cdef public unsigned char COUNTERFLOW = 1
@@ -2603,7 +2633,7 @@ if (!__Pyx_RefNanny) {
  */
   FLOWSENSE_UNDEFINED = 0;
 
-  /* "mcycle/_constants.pyx":95
+  /* "mcycle/_constants.pyx":97
  * # HxFlowConfig
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
  * cdef public unsigned char COUNTERFLOW = 1             # <<<<<<<<<<<<<<
@@ -2612,7 +2642,7 @@ if (!__Pyx_RefNanny) {
  */
   COUNTERFLOW = 1;
 
-  /* "mcycle/_constants.pyx":96
+  /* "mcycle/_constants.pyx":98
  * cdef public unsigned char FLOWSENSE_UNDEFINED = 0
  * cdef public unsigned char COUNTERFLOW = 1
  * cdef public unsigned char PARALLELFLOW = 2             # <<<<<<<<<<<<<<
@@ -2621,7 +2651,7 @@ if (!__Pyx_RefNanny) {
  */
   PARALLELFLOW = 2;
 
-  /* "mcycle/_constants.pyx":97
+  /* "mcycle/_constants.pyx":99
  * cdef public unsigned char COUNTERFLOW = 1
  * cdef public unsigned char PARALLELFLOW = 2
  * cdef public unsigned char CROSSFLOW = 3             # <<<<<<<<<<<<<<
@@ -2630,7 +2660,7 @@ if (!__Pyx_RefNanny) {
  */
   CROSSFLOW = 3;
 
-  /* "mcycle/_constants.pyx":99
+  /* "mcycle/_constants.pyx":101
  * cdef public unsigned char CROSSFLOW = 3
  * # MCycle
  * cdef public str SOURCE_URL = 'https://github.com/momargoh/MCycle'             # <<<<<<<<<<<<<<
@@ -2641,7 +2671,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF_SET(SOURCE_URL, __pyx_kp_u_https_github_com_momargoh_MCycle);
   __Pyx_GIVEREF(__pyx_kp_u_https_github_com_momargoh_MCycle);
 
-  /* "mcycle/_constants.pyx":100
+  /* "mcycle/_constants.pyx":102
  * # MCycle
  * cdef public str SOURCE_URL = 'https://github.com/momargoh/MCycle'
  * cdef public str DOCS_URL = 'https://mcycle.momarhughes.com'             # <<<<<<<<<<<<<<

@@ -5,7 +5,13 @@ cdef tuple _inputs = ('validClasses',)
 cdef tuple _properties = ()
         
 cdef class Geom(ABC):
-    """Abstract class for geometries."""
+    """Abstract base class for geometries.
+
+Parameters
+-----------
+validClasses : tuple of str
+    Component classes for which geometry is valid.
+"""
 
     def __init__(self, tuple validClasses, str name="Geom instance"):
         super().__init__(_inputs, _properties, name)
@@ -21,7 +27,7 @@ cdef class Geom(ABC):
     def summary(self,
                 printSummary=True,
                 propertyKeys='all',
-                str name="",
+                str title="",
                 int rstHeading=0):
         """Returns (and prints) a summary of the geometry attributes/properties.
 
@@ -29,30 +35,30 @@ Parameters
 -----------
 printSummary : bool, optional
     If true, the summary string is printed as well as returned. Defaults to True.
-propertyKeys : list, optional
+propertyKeys : list or str, optional
     Names of component properties to be included. The following strings are also accepted as inputs:
 
   - 'all': all properties in _properties are included,
   - 'none': no properties are included.
 
     Defaults to 'all'.
-name : str, optional
-    Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RSTHEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from :meth:`RST_HEADINGS <mcycle.defaults.RST_HEADINGS>`. Defaults to 0.
         """
         cdef str output, prop
         cdef tuple i
         cdef int j
-        if name is None:
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == '':
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output))
 
         hasSummaryList = []
-        for k, v in self._inputs.items():
+        for k in self._inputs:
             if k in [
                     "flowsIn", "flowsOut", "flowIn", "flowOut", "flowInWf",
                     "flowOutWf", "flowInSf", "flowOutSf"

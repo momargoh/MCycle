@@ -20,7 +20,7 @@ Dh : float
 f : float
     Fanning friction factor.
 G : float
-    Mass flux [Kg/m^2.s ].
+    Mass flux [kg/m^2.s ].
 geom : Geom
     Main geometry corresponding to the flow.
 geom2 : Geom
@@ -40,7 +40,7 @@ pitchCorr : float
     .. note: Not to be confused with the plate pitch which is usually defined as the sum of the plate channel spacing and one plate thickness.
 
 rho : float
-    Mass density [Kg/m^3].
+    Mass density [kg/m^3].
 W : float
     Width of heat transfer area perpendicular to the flow [m] (plate or pipe width).
 

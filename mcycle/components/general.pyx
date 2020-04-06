@@ -9,7 +9,7 @@ cdef tuple _inputsFixedOut = ('inputPair', 'input1', 'input2', 'name', 'notes', 
 cdef tuple _propertiesFixedOut = ('m', 'Q()', 'dp()')
 
 cdef class FixedOut(Component11):
-    r"""Fixed outgoing working fluid flowstate.
+    r"""Fixed outgoing working fluid FlowState.
 
 Parameters
 -----------
@@ -25,7 +25,7 @@ name : string, optional
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
 
 Properties
 -----------

@@ -3,7 +3,7 @@ Base Classes
 .. toctree::
    :maxdepth: 4
 
-   mcabstractbase
+   abc
    component
    config
    cycle

@@ -1,4 +1,4 @@
-Library Materials
+Materials
 ==================
 .. automodule:: mcycle.library.materials
    :members:

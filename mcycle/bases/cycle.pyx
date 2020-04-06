@@ -10,23 +10,25 @@ cdef tuple _inputs = ('_componentKeys', '_cycleStateKeys', 'config', 'name')
 cdef tuple _properties = ()
         
 cdef class Cycle(ABC):
-    r"""Abstract base class for all cycles.
+    r"""Abstract base class for cycles.
 
 Parameters
 ----------
 _componentKeys : tuple of string
-    Tuple of keywords of the cycle components.
+    Tuple of keywords of the cycle components (in order if applicable to the cycle).
 _cycleStateKeys : tuple of string
-    Tuple of cycle state numbers, eg. ("1", "20", "21", "3" ...).
+    Tuple of cycle state numbers, eg. ("1", "20", "21", "3" ...). Used for :meth:`plot <mcycle.bases.cycle.Cycle.plot>` and :meth:`summary <mcycle.bases.cycle.Cycle.summary>`.
 config : Config, optional
-    Configuration parameters. Defaults to default Config object.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
+name : str, optional
+    Description of Cycle object. Defaults to "Cycle instance".
     """
 
     def __init__(self,
                  tuple _componentKeys,
                  tuple _cycleStateKeys,
                  Config config=None,
-                 str name="Cycle"):
+                 str name="Cycle instance"):
         super().__init__(_inputs, _properties, name)
         self._componentKeys = _componentKeys
         self._cycleStateKeys = _cycleStateKeys
@@ -35,7 +37,7 @@ config : Config, optional
         self.config = config
 
     cdef public list _cycleStateObjs(self):
-        """List of cycle flow state objects."""
+        """List of the cycle FlowState objects listed in _cycleStateKeys."""
         cdef list css = []
         cdef str key
         for key in self._cycleStateKeys:
@@ -45,7 +47,7 @@ config : Config, optional
         return css
 
     cdef public list _componentObjs(self):
-        """Returns a tuple of cycle component objects."""
+        """Returns a tuple of the cycle component objects listed in _componentKeys"""
         cdef list cmpnts = []
         cdef str key
         for key in self._componentKeys:
@@ -53,6 +55,12 @@ config : Config, optional
         return cmpnts
     
     cpdef public void update(self, dict kwargs):
+        """Update (multiple) class variables from a dictionary of keyword arguments.
+
+Parameters
+-----------
+kwargs : dict
+    Dictionary of attributes and their updated value."""
         cdef str key
         cdef list key_split
         cdef dict store = {}
@@ -65,12 +73,14 @@ config : Config, optional
             super(Cycle, self).update(store)
 
     cpdef public void clearWf_flows(self):
+        """Set all working fluid flows (index=0 in flowsIn & flowsOut) to None."""
         cdef Component c
         for c in self._componentObjs():
             c.flowsIn[0] = None
             c.flowsOut[0] = None
             
     cpdef public void clearAll_flows(self):
+        """Set all flows to None."""
         cdef Component c
         cdef size_t i
         for c in self._componentObjs():
@@ -80,19 +90,21 @@ config : Config, optional
                 c.flowsOut[i] = None
 
     cpdef public void setAll_config(self, Config obj):
+        """Set the config object for all cycle components."""
         self.config = obj
         for cmpnt in self._componentObjs():
             cmpnt.update({'config': obj})
             
     cpdef public void updateAll_config(self, dict kwargs):
+        """Update all component config objects using kwargs.
+
+.. note: If all components already use the same config object, this method is not necessary."""
         self.config.update(kwargs)
         for cmpnt in self._componentObjs():
-            cmpnt.update(kwargs)
+            cmpnt.config.update(kwargs)
             
     cpdef public void run(self) except *:
         """Abstract method: Compute all state FlowStates from initial FlowState and set component characteristics.
-
-This function must be overridden by subclasses.
         """
         pass
 
@@ -110,7 +122,7 @@ This function must be overridden by subclasses.
                 componentKeys='all',
                 dict componentKwargs={"flowKeys": 'none',
                                  "propertyKeys": 'none'},
-                str name="",
+                str title="",
                 int rstHeading=0):
         """Returns (and prints) a summary of the component attributes/properties/flows.
 
@@ -118,14 +130,14 @@ Parameters
 -----------
 printSummary : bool, optional
     If true, the summary string is printed as well as returned. Defaults to True.
-propertyKeys : list, optional
+propertyKeys : list or str, optional
     Keys of cycle properties to be included. The following strings are also accepted as inputs:
 
   - 'all': all properties in _properties are included,
   - 'none': no properties are included.
 
     Defaults to 'all'.
-cycleStateKeys : list, optional
+cycleStateKeys : list or str, optional
     Names of cycle flow states to be included. The following strings are also accepted as inputs:
 
   - 'all': all flows are included,
@@ -141,24 +153,24 @@ componentKeys : list, optional
     Defaults to 'all'.
 componentKwargs : dict, optional
     Kwargs to parse to component summaries. Defaults to {"flowKeys":'none', "propertyKeys":'none'}.
-name : str, optional
-    Name of instance used in summary heading. If None, the name property of the instance is used. Defaults to None.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
 rstHeading : int, optional
-    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from mcycle.defaults.RST_HEADINGS. Defaults to 0.
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from :meth:`RST_HEADINGS <mcycle.defaults.RST_HEADINGS>`. Defaults to 0.
         """
         cdef int index
         cdef tuple i
         cdef str key, cs, output
-        if name == "":
-            name = self.name
-        output = r"{} summary".format(name)
+        if title == "":
+            title = self.name
+        output = r"{} summary".format(title)
         output += """
 {}
 working fluid: {}
 """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.wf.fluid)
 
         cdef list hasSummaryList = []
-        for k, v in self._inputs.items():
+        for k in self._inputs:
             if k in self._componentKeys:
                 pass
             elif k in ["config"]:
@@ -205,7 +217,7 @@ Properties
             output += """
 """ + obj.summary(
                 printSummary=False,
-                name=cmpnt,
+                title=cmpnt,
                 rstHeading=rstHeading + 1,
                 **componentKwargs)
         if cycleStateKeys == 'all':
@@ -267,6 +279,6 @@ Cycle FlowStates
 
 
     def plot(self):
-        """Abstract method: Plots the working fluid cycle states and other meaningful cycle properties (such as source and sink properties).
+        """Abstract method: Plot the working fluid cycle states and other meaningful cycle properties (such as source and sink properties).
         """
         pass

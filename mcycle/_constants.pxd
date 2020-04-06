@@ -89,8 +89,10 @@ cdef public unsigned char FLOW_NONE
 cdef public unsigned char FLOW_ALL
 cdef public unsigned char WORKING_FLUID
 cdef public unsigned char FLOW_PRIMARY
+cdef public unsigned char FLOW1
 cdef public unsigned char SECONDARY_FLUID
 cdef public unsigned char FLOW_SECONDARY
+cdef public unsigned char FLOW2
 # HxFlowConfig
 cdef public unsigned char FLOWSENSE_UNDEFINED
 cdef public unsigned char COUNTERFLOW

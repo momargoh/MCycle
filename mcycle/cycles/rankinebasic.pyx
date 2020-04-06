@@ -39,9 +39,9 @@ pCond : float, optional
 subcool : float, optional
     Condenser subcooling [K].
 config : Config, optional
-    Cycle configuration parameters.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
+name : str, optional
+    Description of Cycle object. Defaults to "RankineBasic instance".
     """
 
     def __init__(self,
@@ -91,26 +91,11 @@ kwargs : optional
                     key_attr = getattr(self, key_split[0])
                     key_attr.update({key_split[1]: value})
                 else:
-                    """
-                    store[key] = value
-                    """
                     try:
                         setter = getattr(self, 'set_{}'.format(key))
                         setter(value)
                     except AttributeError:
-                        super(RankineBasic, self).update({key: value}) #setattr(self, key, value)
-        """
-        for key, value in store:
-            try:
-                setter = getattr(self, 'set_{}'.format(key))
-                setter(value)
-            except:
-                super(RankineBasic, self).update({key, value})
-        """
-        """    
-        if store != {}:
-            super(RankineBasic, self).update(store)
-        """
+                        super(RankineBasic, self).update({key: value})
 
     cpdef public double _mWf(self):
         return self.wf.m
@@ -571,12 +556,12 @@ kwargs : optional
         return self.POut() - self.PIn()
 
     cpdef public double efficiencyThermal(self) except *:
-        """float: Cycle thermal efficiencyiciency [-]
+        """float: Cycle thermal efficiency [-]
         efficiencyThermal = PNet/QIn"""
         return self.PNet() / self.QIn()
 
     cpdef public double efficiencyRecovery(self) except *:
-        """float: Exhaust heat recovery efficiencyiciency"""
+        """float: Exhaust heat recovery efficiency"""
         if len(self.evap.flowsIn) == 1:
             log("warning", "efficiencyRecovery() is not valid with {} evaporator".format(type(self.evap)))
             return nan
@@ -588,7 +573,7 @@ kwargs : optional
                 return nan
 
     cpdef public double efficiencyExergy(self) except *:
-        """float: Exergy efficiencyiciency"""
+        """float: Exergy efficiency"""
         if len(self.evap.flowsIn) == 1:
             log("warning", "efficiencyExergy() is not valid with {} evaporator".format(type(self.evap)))
             return nan
@@ -600,7 +585,7 @@ kwargs : optional
                 return nan
 
     cpdef public double efficiencyGlobal(self) except *:
-        """float: Global recovery efficiencyiciency"""
+        """float: Global recovery efficiency"""
         return self.efficiencyThermal() * self.efficiencyExergy()
 
     cpdef public double IComp(self) except *:

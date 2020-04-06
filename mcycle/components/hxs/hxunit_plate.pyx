@@ -62,21 +62,15 @@ flowOutWf : FlowState, optional
 flowOutSf : FlowState, optional
     Outgoing FlowState of the secondary fluid. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to "L".
+    Default attribute used by size(), equal to sizeUnitsBounds of the containing Hx object. Defaults to "L".
 sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1e-5, 10.0].
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
 name : string, optional
     Description of object. Defaults to "HxUnitPlateCorrugated instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     def __init__(self,

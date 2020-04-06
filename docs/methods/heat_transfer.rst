@@ -1,7 +1,7 @@
 Heat Transfer Methods
 ==========================
 .. automodule:: mcycle.methods.heat_transfer
-   :members: htc, chisholmWannairachchi_sp
+   :members: 
    :undoc-members:
    :inherited-members:
    :show-inheritance:

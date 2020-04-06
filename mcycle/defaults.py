@@ -5,7 +5,6 @@ import CoolProp as CP
 TOLATTR = 'h'
 TOLABS = 1e-7
 TOLREL = 1e-7
-TOLABS_X = 1e-10
 DIV_T = 5.
 DIV_X = 0.1
 MAXITER_CYCLE = 50
@@ -336,7 +335,7 @@ dimensionUnits = {
     "temperature": "K",
     "time": "s",
     "volume": "m^3"
-}  #: dict of str : Dimensions and their units.
+}
 
 dimensionsEquiv = {
     "htc": "power/area-temperature",
@@ -345,7 +344,7 @@ dimensionsEquiv = {
     "velocity": "length/time",
     "acceleration": "length/time^2",
     "density": "mass/volume",
-}  #: dict of str : Equivalents for composite dimensions.
+}
 
 attributeSuffixes = [
     'Wf', 'Sf', 'Wall', 'Plate', 'Port', 'Acc', 'Head', 'F', 'Vert', 'In',
@@ -353,7 +352,16 @@ attributeSuffixes = [
 ]
 
 
-def getDimensions(attribute, class_name=''):
+def getDimensions(attribute, className=''):
+    """str : Returns attribute dimensions from DIMENSIONS for a given class
+
+Parameters
+-----------
+attribute : str
+    Class attribute name
+className : str, optional
+    Class name as string. Defaults to ''.
+    """
     if attribute.startswith('coeffs_'):
         return ''
     for suffix in attributeSuffixes:
@@ -361,8 +369,8 @@ def getDimensions(attribute, class_name=''):
             attribute = attribute.split(suffix)[0]
     try:
         dimension_lookup = DIMENSIONS[attribute]
-        if class_name in dimension_lookup:
-            return dimension_lookup[class_name]
+        if className in dimension_lookup:
+            return dimension_lookup[className]
         else:
             return dimension_lookup['']
     except Exception as exc:
@@ -454,7 +462,7 @@ def check():
         print(
             "It is recommended to select UNITS_SEPARATOR_DENOMINATOR from {}, (given: {})".
             format(unitsepdenom, UNITS_SEPARATOR_DENOMINATOR))
-    #"""
+
     if globals()['COOLPROP_EOS'] == "REFPROP":
         try:
             CP.CoolProp.PropsSI("T", "P", 101325, "Q", 0, "REFPROP::Water")
@@ -463,4 +471,3 @@ def check():
             globals()['COOLPROP_EOS'] = "HEOS"
             log('warning', msg, exc)
             warn(msg)
-    #"""

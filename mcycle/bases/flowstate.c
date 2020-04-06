@@ -965,7 +965,7 @@ struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_2_genexpr {
 };
 
 
-/* "mcycle/bases/flowstate.pyx":652
+/* "mcycle/bases/flowstate.pyx":651
  *     """
  * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
@@ -980,7 +980,7 @@ struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__ {
 };
 
 
-/* "mcycle/bases/flowstate.pyx":675
+/* "mcycle/bases/flowstate.pyx":674
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():
  *             if all(data[prop] == [] for prop in other_props):             # <<<<<<<<<<<<<<
@@ -994,7 +994,7 @@ struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr {
 };
 
 
-/* "mcycle/bases/flowstate.pyx":677
+/* "mcycle/bases/flowstate.pyx":676
  *             if all(data[prop] == [] for prop in other_props):
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):             # <<<<<<<<<<<<<<
@@ -1083,7 +1083,7 @@ static struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowStatePoly *__pyx_vt
  * 
  * 
  * cdef class RefData:             # <<<<<<<<<<<<<<
- *     """cdef class. RefData stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.
+ *     """Stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.
  * 
  */
 
@@ -1906,10 +1906,14 @@ static unsigned char *__pyx_vp_6mcycle_10_constants_WORKING_FLUID = 0;
 #define __pyx_v_6mcycle_10_constants_WORKING_FLUID (*__pyx_vp_6mcycle_10_constants_WORKING_FLUID)
 static unsigned char *__pyx_vp_6mcycle_10_constants_FLOW_PRIMARY = 0;
 #define __pyx_v_6mcycle_10_constants_FLOW_PRIMARY (*__pyx_vp_6mcycle_10_constants_FLOW_PRIMARY)
+static unsigned char *__pyx_vp_6mcycle_10_constants_FLOW1 = 0;
+#define __pyx_v_6mcycle_10_constants_FLOW1 (*__pyx_vp_6mcycle_10_constants_FLOW1)
 static unsigned char *__pyx_vp_6mcycle_10_constants_SECONDARY_FLUID = 0;
 #define __pyx_v_6mcycle_10_constants_SECONDARY_FLUID (*__pyx_vp_6mcycle_10_constants_SECONDARY_FLUID)
 static unsigned char *__pyx_vp_6mcycle_10_constants_FLOW_SECONDARY = 0;
 #define __pyx_v_6mcycle_10_constants_FLOW_SECONDARY (*__pyx_vp_6mcycle_10_constants_FLOW_SECONDARY)
+static unsigned char *__pyx_vp_6mcycle_10_constants_FLOW2 = 0;
+#define __pyx_v_6mcycle_10_constants_FLOW2 (*__pyx_vp_6mcycle_10_constants_FLOW2)
 static unsigned char *__pyx_vp_6mcycle_10_constants_FLOWSENSE_UNDEFINED = 0;
 #define __pyx_v_6mcycle_10_constants_FLOWSENSE_UNDEFINED (*__pyx_vp_6mcycle_10_constants_FLOWSENSE_UNDEFINED)
 static unsigned char *__pyx_vp_6mcycle_10_constants_COUNTERFLOW = 0;
@@ -2022,6 +2026,7 @@ static const char __pyx_k_rho_2[] = "rho()";
 static const char __pyx_k_smass[] = "smass";
 static const char __pyx_k_super[] = "super";
 static const char __pyx_k_throw[] = "throw";
+static const char __pyx_k_title[] = "title";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_cpmass[] = "cpmass";
 static const char __pyx_k_format[] = "format";
@@ -2291,6 +2296,7 @@ static PyObject *__pyx_kp_u_summary;
 static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_throw;
+static PyObject *__pyx_n_s_title;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_updateState;
 static PyObject *__pyx_n_s_v;
@@ -2310,7 +2316,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_6__eq___3genexpr(
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_2__eq__(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, PyObject *__pyx_v_other); /* proto */
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_4copyUpdateState(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, unsigned char __pyx_v_inputPair, double __pyx_v_input1, double __pyx_v_input2, unsigned short __pyx_v_iphase); /* proto */
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_6updateState(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, unsigned char __pyx_v_inputPair, double __pyx_v_input1, double __pyx_v_input2, unsigned short __pyx_v_iphase); /* proto */
-static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_name, int __pyx_v_rstHeading); /* proto */
+static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_title, int __pyx_v_rstHeading); /* proto */
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_10T(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_12p(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_14rho(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self); /* proto */
@@ -5468,7 +5474,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_9FlowState_updateState(struct __pyx_obj_6
  *         self._input2 = input2
  *         self._iphase = iphase             # <<<<<<<<<<<<<<
  * 
- *     def summary(self, bint printSummary=True, str name='', int rstHeading=0):
+ *     def summary(self, bint printSummary=True, str title='', int rstHeading=0):
  */
   __pyx_v_self->_iphase = __pyx_v_iphase;
 
@@ -5618,23 +5624,23 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_6updateState(stru
 /* "mcycle/bases/flowstate.pyx":168
  *         self._iphase = iphase
  * 
- *     def summary(self, bint printSummary=True, str name='', int rstHeading=0):             # <<<<<<<<<<<<<<
+ *     def summary(self, bint printSummary=True, str title='', int rstHeading=0):             # <<<<<<<<<<<<<<
  *         """Returns (and prints) a summary of FlowState properties.
  * 
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_8summary[] = "FlowState.summary(self, bool printSummary=True, unicode name=u'', int rstHeading=0)\nReturns (and prints) a summary of FlowState properties.\n\nParameters\n-----------\nprintSummary : bool, optional\n    If true, the summary string is printed as well as returned. Defaults to True.\nname : str, optional\n    Name of the object, prepended to the summary heading. If None, the class name is used. Defaults to None.\n        ";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_8summary[] = "FlowState.summary(self, bool printSummary=True, unicode title=u'', int rstHeading=0)\nReturns (and prints) a summary of FlowState properties.\n\nParameters\n-----------\nprintSummary : bool, optional\n    If true, the summary string is printed as well as returned. Defaults to True.\ntitle : str, optional\n    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.\n        ";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_printSummary;
-  PyObject *__pyx_v_name = 0;
+  PyObject *__pyx_v_title = 0;
   int __pyx_v_rstHeading;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("summary (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_printSummary,&__pyx_n_s_name,&__pyx_n_s_rstHeading,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_printSummary,&__pyx_n_s_title,&__pyx_n_s_rstHeading,0};
     PyObject* values[3] = {0,0,0};
     values[1] = ((PyObject*)__pyx_kp_u_);
     if (unlikely(__pyx_kwds)) {
@@ -5660,7 +5666,7 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_title);
           if (value) { values[1] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
@@ -5690,7 +5696,7 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
     } else {
       __pyx_v_printSummary = ((int)1);
     }
-    __pyx_v_name = ((PyObject*)values[1]);
+    __pyx_v_title = ((PyObject*)values[1]);
     if (values[2]) {
       __pyx_v_rstHeading = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_rstHeading == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L3_error)
     } else {
@@ -5705,8 +5711,8 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_name), (&PyUnicode_Type), 1, "name", 1))) __PYX_ERR(0, 168, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self), __pyx_v_printSummary, __pyx_v_name, __pyx_v_rstHeading);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_title), (&PyUnicode_Type), 1, "title", 1))) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self), __pyx_v_printSummary, __pyx_v_title, __pyx_v_rstHeading);
 
   /* function exit code */
   goto __pyx_L0;
@@ -5717,7 +5723,7 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_name, int __pyx_v_rstHeading) {
+static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_title, int __pyx_v_rstHeading) {
   PyObject *__pyx_v_output = 0;
   PyObject *__pyx_v_k = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_v = NULL;
@@ -5735,44 +5741,44 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   Py_ssize_t __pyx_t_10;
   int __pyx_t_11;
   __Pyx_RefNannySetupContext("summary", 0);
-  __Pyx_INCREF(__pyx_v_name);
+  __Pyx_INCREF(__pyx_v_title);
 
   /* "mcycle/bases/flowstate.pyx":179
  *         """
  *         cdef str output
- *         if name == '':             # <<<<<<<<<<<<<<
- *             name = self.name
- *         output = r"{} summary".format(name)
+ *         if title == '':             # <<<<<<<<<<<<<<
+ *             title = self.name
+ *         output = r"{} summary".format(title)
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_name, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_title, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
     /* "mcycle/bases/flowstate.pyx":180
  *         cdef str output
- *         if name == '':
- *             name = self.name             # <<<<<<<<<<<<<<
- *         output = r"{} summary".format(name)
+ *         if title == '':
+ *             title = self.name             # <<<<<<<<<<<<<<
+ *         output = r"{} summary".format(title)
  *         output += """
  */
     __pyx_t_3 = __pyx_v_self->__pyx_base.name;
     __Pyx_INCREF(__pyx_t_3);
-    __Pyx_DECREF_SET(__pyx_v_name, ((PyObject*)__pyx_t_3));
+    __Pyx_DECREF_SET(__pyx_v_title, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
     /* "mcycle/bases/flowstate.pyx":179
  *         """
  *         cdef str output
- *         if name == '':             # <<<<<<<<<<<<<<
- *             name = self.name
- *         output = r"{} summary".format(name)
+ *         if title == '':             # <<<<<<<<<<<<<<
+ *             title = self.name
+ *         output = r"{} summary".format(title)
  */
   }
 
   /* "mcycle/bases/flowstate.pyx":181
- *         if name == '':
- *             name = self.name
- *         output = r"{} summary".format(name)             # <<<<<<<<<<<<<<
+ *         if title == '':
+ *             title = self.name
+ *         output = r"{} summary".format(title)             # <<<<<<<<<<<<<<
  *         output += """
  * {}
  */
@@ -5789,12 +5795,12 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_title); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_name};
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_title};
       __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
@@ -5802,7 +5808,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_name};
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_title};
       __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_3);
@@ -5812,9 +5818,9 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
       __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
-      __Pyx_INCREF(__pyx_v_name);
-      __Pyx_GIVEREF(__pyx_v_name);
-      PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_name);
+      __Pyx_INCREF(__pyx_v_title);
+      __Pyx_GIVEREF(__pyx_v_title);
+      PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_title);
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5902,8 +5908,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/bases/flowstate.pyx":182
- *             name = self.name
- *         output = r"{} summary".format(name)
+ *             title = self.name
+ *         output = r"{} summary".format(title)
  *         output += """             # <<<<<<<<<<<<<<
  * {}
  * eos = {}
@@ -6009,7 +6015,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   /* "mcycle/bases/flowstate.pyx":168
  *         self._iphase = iphase
  * 
- *     def summary(self, bint printSummary=True, str name='', int rstHeading=0):             # <<<<<<<<<<<<<<
+ *     def summary(self, bint printSummary=True, str title='', int rstHeading=0):             # <<<<<<<<<<<<<<
  *         """Returns (and prints) a summary of FlowState properties.
  * 
  */
@@ -6027,7 +6033,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   __Pyx_XDECREF(__pyx_v_output);
   __Pyx_XDECREF(__pyx_v_k);
   __Pyx_XDECREF(__pyx_v_v);
-  __Pyx_XDECREF(__pyx_v_name);
+  __Pyx_XDECREF(__pyx_v_title);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -6323,7 +6329,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_12p(struct __pyx_
  *         return self._state.p()
  * 
  *     cpdef public double rho(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Mass density [Kg/m^3]."""
+ *         r"""double:  Mass density [kg/m^3]."""
  *         return self._state.rhomass()
  */
 
@@ -6374,7 +6380,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_rho(struct __pyx_obj_6mcycle
 
   /* "mcycle/bases/flowstate.pyx":202
  *     cpdef public double rho(self):
- *         r"""double:  Mass density [Kg/m^3]."""
+ *         r"""double:  Mass density [kg/m^3]."""
  *         return self._state.rhomass()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double v(self):
@@ -6408,7 +6414,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_rho(struct __pyx_obj_6mcycle
  *         return self._state.p()
  * 
  *     cpdef public double rho(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Mass density [Kg/m^3]."""
+ *         r"""double:  Mass density [kg/m^3]."""
  *         return self._state.rhomass()
  */
 
@@ -6427,7 +6433,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_rho(struct __pyx_obj_6mcycle
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_15rho(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_14rho[] = "FlowState.rho(self) -> double\ndouble:  Mass density [Kg/m^3].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_14rho[] = "FlowState.rho(self) -> double\ndouble:  Mass density [kg/m^3].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_15rho(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -6466,7 +6472,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_14rho(struct __py
  *         return self._state.rhomass()
  * 
  *     cpdef public double v(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Specific volume [m^3/Kg]."""
+ *         r"""double:  Specific volume [m^3/kg]."""
  *         return 1. / self.rho()
  */
 
@@ -6517,7 +6523,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_v(struct __pyx_obj_6mcycle_5
 
   /* "mcycle/bases/flowstate.pyx":206
  *     cpdef public double v(self):
- *         r"""double:  Specific volume [m^3/Kg]."""
+ *         r"""double:  Specific volume [m^3/kg]."""
  *         return 1. / self.rho()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double h(self):
@@ -6534,7 +6540,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_v(struct __pyx_obj_6mcycle_5
  *         return self._state.rhomass()
  * 
  *     cpdef public double v(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Specific volume [m^3/Kg]."""
+ *         r"""double:  Specific volume [m^3/kg]."""
  *         return 1. / self.rho()
  */
 
@@ -6553,7 +6559,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_v(struct __pyx_obj_6mcycle_5
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_17v(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_16v[] = "FlowState.v(self) -> double\ndouble:  Specific volume [m^3/Kg].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_16v[] = "FlowState.v(self) -> double\ndouble:  Specific volume [m^3/kg].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_17v(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -6592,7 +6598,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_16v(struct __pyx_
  *         return 1. / self.rho()
  * 
  *     cpdef public double h(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Specific mass enthalpy [J/Kg]."""
+ *         r"""double:  Specific mass enthalpy [J/kg]."""
  *         return self._state.hmass()
  */
 
@@ -6643,7 +6649,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_h(struct __pyx_obj_6mcycle_5
 
   /* "mcycle/bases/flowstate.pyx":210
  *     cpdef public double h(self):
- *         r"""double:  Specific mass enthalpy [J/Kg]."""
+ *         r"""double:  Specific mass enthalpy [J/kg]."""
  *         return self._state.hmass()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double s(self):
@@ -6677,7 +6683,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_h(struct __pyx_obj_6mcycle_5
  *         return 1. / self.rho()
  * 
  *     cpdef public double h(self):             # <<<<<<<<<<<<<<
- *         r"""double:  Specific mass enthalpy [J/Kg]."""
+ *         r"""double:  Specific mass enthalpy [J/kg]."""
  *         return self._state.hmass()
  */
 
@@ -6696,7 +6702,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_h(struct __pyx_obj_6mcycle_5
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_19h(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_18h[] = "FlowState.h(self) -> double\ndouble:  Specific mass enthalpy [J/Kg].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_18h[] = "FlowState.h(self) -> double\ndouble:  Specific mass enthalpy [J/kg].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_19h(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -6735,7 +6741,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_18h(struct __pyx_
  *         return self._state.hmass()
  * 
  *     cpdef public double s(self):             # <<<<<<<<<<<<<<
- *         r"""double: Specific mass entropy [J/Kg.K]."""
+ *         r"""double: Specific mass entropy [J/kg.K]."""
  *         return self._state.smass()
  */
 
@@ -6786,7 +6792,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_s(struct __pyx_obj_6mcycle_5
 
   /* "mcycle/bases/flowstate.pyx":214
  *     cpdef public double s(self):
- *         r"""double: Specific mass entropy [J/Kg.K]."""
+ *         r"""double: Specific mass entropy [J/kg.K]."""
  *         return self._state.smass()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double x(self):
@@ -6820,7 +6826,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_s(struct __pyx_obj_6mcycle_5
  *         return self._state.hmass()
  * 
  *     cpdef public double s(self):             # <<<<<<<<<<<<<<
- *         r"""double: Specific mass entropy [J/Kg.K]."""
+ *         r"""double: Specific mass entropy [J/kg.K]."""
  *         return self._state.smass()
  */
 
@@ -6839,7 +6845,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_9FlowState_s(struct __pyx_obj_6mcycle_5
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_21s(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_20s[] = "FlowState.s(self) -> double\ndouble: Specific mass entropy [J/Kg.K].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_20s[] = "FlowState.s(self) -> double\ndouble: Specific mass entropy [J/kg.K].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_21s(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -8995,7 +9001,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_44TMax(struct __p
  *         return self._state.Tmax()
  * 
  *     cpdef public unsigned char phase(self):             # <<<<<<<<<<<<<<
- *         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region."""
+ *         """str: identifier of phase; see :meth:`constants <mcycle.constants>`."""
  *         cdef FlowState liq
  */
 
@@ -10313,7 +10319,7 @@ unsigned char __pyx_f_6mcycle_5bases_9flowstate_9FlowState_phase(struct __pyx_ob
  *         return self._state.Tmax()
  * 
  *     cpdef public unsigned char phase(self):             # <<<<<<<<<<<<<<
- *         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region."""
+ *         """str: identifier of phase; see :meth:`constants <mcycle.constants>`."""
  *         cdef FlowState liq
  */
 
@@ -10333,7 +10339,7 @@ unsigned char __pyx_f_6mcycle_5bases_9flowstate_9FlowState_phase(struct __pyx_ob
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_47phase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_46phase[] = "FlowState.phase(self) -> unsigned char\nstr: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'satLiq':saturated liquid, 'satVap':saturated vapour, 'tp': two-phase liquid/vapour region.";
+static char __pyx_doc_6mcycle_5bases_9flowstate_9FlowState_46phase[] = "FlowState.phase(self) -> unsigned char\nstr: identifier of phase; see :meth:`constants <mcycle.constants>`.";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_47phase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -13938,7 +13944,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_13FlowStatePoly_10T(struct _
  *             return np.polyval(self._c['T'], self._inputValue)
  * 
  *     cpdef public double h(self):             # <<<<<<<<<<<<<<
- *         """double: Specific mass enthalpy [J/Kg]."""
+ *         """double: Specific mass enthalpy [J/kg]."""
  *         if self.refData.deg == -1:
  */
 
@@ -13994,7 +14000,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_h(struct __pyx_obj_6mcy
 
   /* "mcycle/bases/flowstate.pyx":520
  *     cpdef public double h(self):
- *         """double: Specific mass enthalpy [J/Kg]."""
+ *         """double: Specific mass enthalpy [J/kg]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['h'])
  *         else:
@@ -14003,7 +14009,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_h(struct __pyx_obj_6mcy
   if (__pyx_t_6) {
 
     /* "mcycle/bases/flowstate.pyx":521
- *         """double: Specific mass enthalpy [J/Kg]."""
+ *         """double: Specific mass enthalpy [J/kg]."""
  *         if self.refData.deg == -1:
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['h'])             # <<<<<<<<<<<<<<
  *         else:
@@ -14089,7 +14095,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_h(struct __pyx_obj_6mcy
 
     /* "mcycle/bases/flowstate.pyx":520
  *     cpdef public double h(self):
- *         """double: Specific mass enthalpy [J/Kg]."""
+ *         """double: Specific mass enthalpy [J/kg]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['h'])
  *         else:
@@ -14176,7 +14182,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_h(struct __pyx_obj_6mcy
  *             return np.polyval(self._c['T'], self._inputValue)
  * 
  *     cpdef public double h(self):             # <<<<<<<<<<<<<<
- *         """double: Specific mass enthalpy [J/Kg]."""
+ *         """double: Specific mass enthalpy [J/kg]."""
  *         if self.refData.deg == -1:
  */
 
@@ -14198,7 +14204,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_h(struct __pyx_obj_6mcy
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_13h(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_12h[] = "FlowStatePoly.h(self) -> double\ndouble: Specific mass enthalpy [J/Kg].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_12h[] = "FlowStatePoly.h(self) -> double\ndouble: Specific mass enthalpy [J/kg].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_13h(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -14237,7 +14243,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_13FlowStatePoly_12h(struct _
  *             return np.polyval(self._c['h'], self._inputValue)
  * 
  *     cpdef public double rho(self):             # <<<<<<<<<<<<<<
- *         """double: Mass density [Kg/m^3]."""
+ *         """double: Mass density [kg/m^3]."""
  *         if self.refData.deg == -1:
  */
 
@@ -14293,7 +14299,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_rho(struct __pyx_obj_6m
 
   /* "mcycle/bases/flowstate.pyx":527
  *     cpdef public double rho(self):
- *         """double: Mass density [Kg/m^3]."""
+ *         """double: Mass density [kg/m^3]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['rho'])
  *         else:
@@ -14302,7 +14308,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_rho(struct __pyx_obj_6m
   if (__pyx_t_6) {
 
     /* "mcycle/bases/flowstate.pyx":528
- *         """double: Mass density [Kg/m^3]."""
+ *         """double: Mass density [kg/m^3]."""
  *         if self.refData.deg == -1:
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['rho'])             # <<<<<<<<<<<<<<
  *         else:
@@ -14388,7 +14394,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_rho(struct __pyx_obj_6m
 
     /* "mcycle/bases/flowstate.pyx":527
  *     cpdef public double rho(self):
- *         """double: Mass density [Kg/m^3]."""
+ *         """double: Mass density [kg/m^3]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['rho'])
  *         else:
@@ -14475,7 +14481,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_rho(struct __pyx_obj_6m
  *             return np.polyval(self._c['h'], self._inputValue)
  * 
  *     cpdef public double rho(self):             # <<<<<<<<<<<<<<
- *         """double: Mass density [Kg/m^3]."""
+ *         """double: Mass density [kg/m^3]."""
  *         if self.refData.deg == -1:
  */
 
@@ -14497,7 +14503,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_rho(struct __pyx_obj_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_15rho(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_14rho[] = "FlowStatePoly.rho(self) -> double\ndouble: Mass density [Kg/m^3].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_14rho[] = "FlowStatePoly.rho(self) -> double\ndouble: Mass density [kg/m^3].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_15rho(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -14536,7 +14542,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_13FlowStatePoly_14rho(struct
  *             return np.polyval(self._c['rho'], self._inputValue)
  * 
  *     cpdef public double s(self):             # <<<<<<<<<<<<<<
- *         """double: Specific mass entropy [J/Kg.K]."""
+ *         """double: Specific mass entropy [J/kg.K]."""
  *         if self.refData.deg == -1:
  */
 
@@ -14592,7 +14598,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_s(struct __pyx_obj_6mcy
 
   /* "mcycle/bases/flowstate.pyx":534
  *     cpdef public double s(self):
- *         """double: Specific mass entropy [J/Kg.K]."""
+ *         """double: Specific mass entropy [J/kg.K]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['s'])
  *         else:
@@ -14601,7 +14607,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_s(struct __pyx_obj_6mcy
   if (__pyx_t_6) {
 
     /* "mcycle/bases/flowstate.pyx":535
- *         """double: Specific mass entropy [J/Kg.K]."""
+ *         """double: Specific mass entropy [J/kg.K]."""
  *         if self.refData.deg == -1:
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['s'])             # <<<<<<<<<<<<<<
  *         else:
@@ -14687,7 +14693,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_s(struct __pyx_obj_6mcy
 
     /* "mcycle/bases/flowstate.pyx":534
  *     cpdef public double s(self):
- *         """double: Specific mass entropy [J/Kg.K]."""
+ *         """double: Specific mass entropy [J/kg.K]."""
  *         if self.refData.deg == -1:             # <<<<<<<<<<<<<<
  *             return np.interp(self._inputValue, self.refData.data[self._inputProperty], self.refData.data['s'])
  *         else:
@@ -14774,7 +14780,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_s(struct __pyx_obj_6mcy
  *             return np.polyval(self._c['rho'], self._inputValue)
  * 
  *     cpdef public double s(self):             # <<<<<<<<<<<<<<
- *         """double: Specific mass entropy [J/Kg.K]."""
+ *         """double: Specific mass entropy [J/kg.K]."""
  *         if self.refData.deg == -1:
  */
 
@@ -14796,7 +14802,7 @@ double __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_s(struct __pyx_obj_6mcy
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_17s(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_16s[] = "FlowStatePoly.s(self) -> double\ndouble: Specific mass entropy [J/Kg.K].";
+static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_16s[] = "FlowStatePoly.s(self) -> double\ndouble: Specific mass entropy [J/kg.K].";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_17s(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -16537,7 +16543,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_13FlowStatePoly_34TMin(struc
  *         return nan
  * 
  *     cpdef public unsigned char phase(self):             # <<<<<<<<<<<<<<
- *         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
+ *         """str: identifier of phase: """
  *         return self.refData._iphase
  */
 
@@ -16588,7 +16594,7 @@ unsigned char __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_phase(struct __p
 
   /* "mcycle/bases/flowstate.pyx":595
  *     cpdef public unsigned char phase(self):
- *         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
+ *         """str: identifier of phase: """
  *         return self.refData._iphase             # <<<<<<<<<<<<<<
  *         """cdef double liq_h = 0
  *         try:
@@ -16600,7 +16606,7 @@ unsigned char __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_phase(struct __p
  *         return nan
  * 
  *     cpdef public unsigned char phase(self):             # <<<<<<<<<<<<<<
- *         """str: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase."""
+ *         """str: identifier of phase: """
  *         return self.refData._iphase
  */
 
@@ -16619,7 +16625,7 @@ unsigned char __pyx_f_6mcycle_5bases_9flowstate_13FlowStatePoly_phase(struct __p
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_37phase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_36phase[] = "FlowStatePoly.phase(self) -> unsigned char\nstr: identifier of phase; 'liq':subcooled liquid, 'vap':superheated vapour, 'sp': unknown single-phase.";
+static char __pyx_doc_6mcycle_5bases_9flowstate_13FlowStatePoly_36phase[] = "FlowStatePoly.phase(self) -> unsigned char\nstr: identifier of phase: ";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_13FlowStatePoly_37phase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -17197,7 +17203,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_13FlowStatePoly_40__setstate
   return __pyx_r;
 }
 
-/* "mcycle/bases/flowstate.pyx":652
+/* "mcycle/bases/flowstate.pyx":651
  *     """
  * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
@@ -17249,19 +17255,19 @@ static int __pyx_pw_6mcycle_5bases_9flowstate_7RefData_1__cinit__(PyObject *__py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_deg)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 1); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 1); __PYX_ERR(0, 651, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_p)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 2); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 2); __PYX_ERR(0, 651, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_data)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 3); __PYX_ERR(0, 652, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, 3); __PYX_ERR(0, 651, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -17277,7 +17283,7 @@ static int __pyx_pw_6mcycle_5bases_9flowstate_7RefData_1__cinit__(PyObject *__py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 652, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 651, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -17294,11 +17300,11 @@ static int __pyx_pw_6mcycle_5bases_9flowstate_7RefData_1__cinit__(PyObject *__py
       }
     }
     __pyx_v_fluid = ((PyObject*)values[0]);
-    __pyx_v_deg = __Pyx_PyInt_As_unsigned_short(values[1]); if (unlikely((__pyx_v_deg == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 654, __pyx_L3_error)
-    __pyx_v_p = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_p == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 655, __pyx_L3_error)
+    __pyx_v_deg = __Pyx_PyInt_As_unsigned_short(values[1]); if (unlikely((__pyx_v_deg == (unsigned short)-1) && PyErr_Occurred())) __PYX_ERR(0, 653, __pyx_L3_error)
+    __pyx_v_p = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_p == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 654, __pyx_L3_error)
     __pyx_v_data = ((PyObject*)values[3]);
     if (values[4]) {
-      __pyx_v_iphase = __Pyx_PyInt_As_short(values[4]); if (unlikely((__pyx_v_iphase == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L3_error)
+      __pyx_v_iphase = __Pyx_PyInt_As_short(values[4]); if (unlikely((__pyx_v_iphase == (short)-1) && PyErr_Occurred())) __PYX_ERR(0, 656, __pyx_L3_error)
     } else {
       __pyx_v_iphase = __pyx_k__23;
     }
@@ -17306,15 +17312,15 @@ static int __pyx_pw_6mcycle_5bases_9flowstate_7RefData_1__cinit__(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 652, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 651, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("mcycle.bases.flowstate.RefData.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fluid), (&PyUnicode_Type), 1, "fluid", 1))) __PYX_ERR(0, 653, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_data), (&PyDict_Type), 1, "data", 1))) __PYX_ERR(0, 656, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_eos), (&PyUnicode_Type), 1, "eos", 1))) __PYX_ERR(0, 658, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fluid), (&PyUnicode_Type), 1, "fluid", 1))) __PYX_ERR(0, 652, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_data), (&PyDict_Type), 1, "data", 1))) __PYX_ERR(0, 655, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_eos), (&PyUnicode_Type), 1, "eos", 1))) __PYX_ERR(0, 657, __pyx_L1_error)
   __pyx_r = __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(((struct __pyx_obj_6mcycle_5bases_9flowstate_RefData *)__pyx_v_self), __pyx_v_fluid, __pyx_v_deg, __pyx_v_p, __pyx_v_data, __pyx_v_iphase, __pyx_v_eos);
 
   /* function exit code */
@@ -17327,7 +17333,7 @@ static int __pyx_pw_6mcycle_5bases_9flowstate_7RefData_1__cinit__(PyObject *__py
 }
 static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___2generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "mcycle/bases/flowstate.pyx":675
+/* "mcycle/bases/flowstate.pyx":674
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():
  *             if all(data[prop] == [] for prop in other_props):             # <<<<<<<<<<<<<<
@@ -17344,7 +17350,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___genexpr(
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 675, __pyx_L1_error)
+    __PYX_ERR(0, 674, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17352,7 +17358,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___genexpr(
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___2generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_cinit___locals_genexpr, __pyx_n_s_mcycle_bases_flowstate); if (unlikely(!gen)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___2generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_cinit___locals_genexpr, __pyx_n_s_mcycle_bases_flowstate); if (unlikely(!gen)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -17388,38 +17394,38 @@ static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___2generat
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 675, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props)) { __Pyx_RaiseClosureNameError("other_props"); __PYX_ERR(0, 675, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 674, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props)) { __Pyx_RaiseClosureNameError("other_props"); __PYX_ERR(0, 674, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 675, __pyx_L1_error)
+    __PYX_ERR(0, 674, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 674, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_prop);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_prop, __pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data)) { __Pyx_RaiseClosureNameError("data"); __PYX_ERR(0, 675, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data)) { __Pyx_RaiseClosureNameError("data"); __PYX_ERR(0, 674, __pyx_L1_error) }
     if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 675, __pyx_L1_error)
+      __PYX_ERR(0, 674, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data, __pyx_cur_scope->__pyx_v_prop); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data, __pyx_cur_scope->__pyx_v_prop); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_7 = ((!__pyx_t_6) != 0);
     if (__pyx_t_7) {
@@ -17458,7 +17464,7 @@ static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___2generat
 }
 static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___5generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "mcycle/bases/flowstate.pyx":677
+/* "mcycle/bases/flowstate.pyx":676
  *             if all(data[prop] == [] for prop in other_props):
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):             # <<<<<<<<<<<<<<
@@ -17475,7 +17481,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___3genexpr
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 677, __pyx_L1_error)
+    __PYX_ERR(0, 676, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17483,7 +17489,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___3genexpr
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___5generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_cinit___locals_genexpr, __pyx_n_s_mcycle_bases_flowstate); if (unlikely(!gen)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___5generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_cinit___locals_genexpr, __pyx_n_s_mcycle_bases_flowstate); if (unlikely(!gen)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -17517,33 +17523,33 @@ static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___5generat
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 677, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props)) { __Pyx_RaiseClosureNameError("other_props"); __PYX_ERR(0, 677, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 676, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props)) { __Pyx_RaiseClosureNameError("other_props"); __PYX_ERR(0, 676, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 677, __pyx_L1_error)
+    __PYX_ERR(0, 676, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_other_props; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 676, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_prop);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_prop, __pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data)) { __Pyx_RaiseClosureNameError("data"); __PYX_ERR(0, 677, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data)) { __Pyx_RaiseClosureNameError("data"); __PYX_ERR(0, 676, __pyx_L1_error) }
     if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 677, __pyx_L1_error)
+      __PYX_ERR(0, 676, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data, __pyx_cur_scope->__pyx_v_prop); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_data, __pyx_cur_scope->__pyx_v_prop); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_5 = ((!((__pyx_t_4 == __pyx_cur_scope->__pyx_outer_scope->__pyx_v_lenDataT) != 0)) != 0);
     if (__pyx_t_5) {
@@ -17579,7 +17585,7 @@ static PyObject *__pyx_gb_6mcycle_5bases_9flowstate_7RefData_9__cinit___5generat
   return __pyx_r;
 }
 
-/* "mcycle/bases/flowstate.pyx":652
+/* "mcycle/bases/flowstate.pyx":651
  *     """
  * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
@@ -17606,7 +17612,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 652, __pyx_L1_error)
+    __PYX_ERR(0, 651, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -17615,7 +17621,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_data);
   __Pyx_INCREF(__pyx_v_eos);
 
-  /* "mcycle/bases/flowstate.pyx":659
+  /* "mcycle/bases/flowstate.pyx":658
  *                   short iphase=PHASE_NOT_IMPOSED,
  *                   str eos=''):
  *         self.fluid = fluid             # <<<<<<<<<<<<<<
@@ -17628,7 +17634,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   __Pyx_DECREF(__pyx_v_self->fluid);
   __pyx_v_self->fluid = __pyx_v_fluid;
 
-  /* "mcycle/bases/flowstate.pyx":660
+  /* "mcycle/bases/flowstate.pyx":659
  *                   str eos=''):
  *         self.fluid = fluid
  *         self._iphase = iphase             # <<<<<<<<<<<<<<
@@ -17637,34 +17643,34 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   __pyx_v_self->_iphase = __pyx_v_iphase;
 
-  /* "mcycle/bases/flowstate.pyx":661
+  /* "mcycle/bases/flowstate.pyx":660
  *         self.fluid = fluid
  *         self._iphase = iphase
  *         if eos == '':             # <<<<<<<<<<<<<<
  *             eos = defaults.COOLPROP_EOS
  *         self.eos = eos
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_eos, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 661, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_eos, __pyx_kp_u_, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 660, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "mcycle/bases/flowstate.pyx":662
+    /* "mcycle/bases/flowstate.pyx":661
  *         self._iphase = iphase
  *         if eos == '':
  *             eos = defaults.COOLPROP_EOS             # <<<<<<<<<<<<<<
  *         self.eos = eos
  *         self.deg = deg
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_defaults); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 662, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_defaults); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 661, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_COOLPROP_EOS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 662, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_COOLPROP_EOS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 661, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 662, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 661, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_eos, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":661
+    /* "mcycle/bases/flowstate.pyx":660
  *         self.fluid = fluid
  *         self._iphase = iphase
  *         if eos == '':             # <<<<<<<<<<<<<<
@@ -17673,7 +17679,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   }
 
-  /* "mcycle/bases/flowstate.pyx":663
+  /* "mcycle/bases/flowstate.pyx":662
  *         if eos == '':
  *             eos = defaults.COOLPROP_EOS
  *         self.eos = eos             # <<<<<<<<<<<<<<
@@ -17686,7 +17692,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   __Pyx_DECREF(__pyx_v_self->eos);
   __pyx_v_self->eos = __pyx_v_eos;
 
-  /* "mcycle/bases/flowstate.pyx":664
+  /* "mcycle/bases/flowstate.pyx":663
  *             eos = defaults.COOLPROP_EOS
  *         self.eos = eos
  *         self.deg = deg             # <<<<<<<<<<<<<<
@@ -17695,7 +17701,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   __pyx_v_self->deg = __pyx_v_deg;
 
-  /* "mcycle/bases/flowstate.pyx":665
+  /* "mcycle/bases/flowstate.pyx":664
  *         self.eos = eos
  *         self.deg = deg
  *         self.p = p             # <<<<<<<<<<<<<<
@@ -17704,7 +17710,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   __pyx_v_self->p = __pyx_v_p;
 
-  /* "mcycle/bases/flowstate.pyx":666
+  /* "mcycle/bases/flowstate.pyx":665
  *         self.deg = deg
  *         self.p = p
  *         if data['T'] == []:             # <<<<<<<<<<<<<<
@@ -17713,20 +17719,20 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 666, __pyx_L1_error)
+    __PYX_ERR(0, 665, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 666, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 665, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (unlikely(__pyx_t_2)) {
 
-    /* "mcycle/bases/flowstate.pyx":667
+    /* "mcycle/bases/flowstate.pyx":666
  *         self.p = p
  *         if data['T'] == []:
  *             msg = "data parameter must contain list of temperature values, key='T'"             # <<<<<<<<<<<<<<
@@ -17736,14 +17742,14 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
     __Pyx_INCREF(__pyx_kp_u_data_parameter_must_contain_list);
     __pyx_v_msg = __pyx_kp_u_data_parameter_must_contain_list;
 
-    /* "mcycle/bases/flowstate.pyx":668
+    /* "mcycle/bases/flowstate.pyx":667
  *         if data['T'] == []:
  *             msg = "data parameter must contain list of temperature values, key='T'"
  *             log("error", msg)             # <<<<<<<<<<<<<<
  *             raise ValueError(msg)
  *         self.data = {'T': data['T'], 'h': [], 'rho': [], 's': [], 'visc': [], 'k': [], 'cp': []}#, 'Pr': []}
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 668, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 667, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     __pyx_t_6 = 0;
@@ -17760,7 +17766,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_n_u_error, __pyx_v_msg};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 667, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
@@ -17768,13 +17774,13 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_n_u_error, __pyx_v_msg};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 667, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 668, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 667, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -17785,27 +17791,27 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
       __Pyx_INCREF(__pyx_v_msg);
       __Pyx_GIVEREF(__pyx_v_msg);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_msg);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 667, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":669
+    /* "mcycle/bases/flowstate.pyx":668
  *             msg = "data parameter must contain list of temperature values, key='T'"
  *             log("error", msg)
  *             raise ValueError(msg)             # <<<<<<<<<<<<<<
  *         self.data = {'T': data['T'], 'h': [], 'rho': [], 's': [], 'visc': [], 'k': [], 'cp': []}#, 'Pr': []}
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  */
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_v_msg); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 669, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_v_msg); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 668, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 669, __pyx_L1_error)
+    __PYX_ERR(0, 668, __pyx_L1_error)
 
-    /* "mcycle/bases/flowstate.pyx":666
+    /* "mcycle/bases/flowstate.pyx":665
  *         self.deg = deg
  *         self.p = p
  *         if data['T'] == []:             # <<<<<<<<<<<<<<
@@ -17814,46 +17820,46 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   }
 
-  /* "mcycle/bases/flowstate.pyx":670
+  /* "mcycle/bases/flowstate.pyx":669
  *             log("error", msg)
  *             raise ValueError(msg)
  *         self.data = {'T': data['T'], 'h': [], 'rho': [], 's': [], 'visc': [], 'k': [], 'cp': []}#, 'Pr': []}             # <<<<<<<<<<<<<<
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (unlikely(__pyx_cur_scope->__pyx_v_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 670, __pyx_L1_error)
+    __PYX_ERR(0, 669, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_T, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_h, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_h, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_rho, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_rho, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_s, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_s, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_visc, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_visc, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_k, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_cp, __pyx_t_3) < 0) __PYX_ERR(0, 670, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_u_cp, __pyx_t_3) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_GIVEREF(__pyx_t_5);
   __Pyx_GOTREF(__pyx_v_self->data);
@@ -17861,14 +17867,14 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   __pyx_v_self->data = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "mcycle/bases/flowstate.pyx":671
+  /* "mcycle/bases/flowstate.pyx":670
  *             raise ValueError(msg)
  *         self.data = {'T': data['T'], 'h': [], 'rho': [], 's': [], 'visc': [], 'k': [], 'cp': []}#, 'Pr': []}
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']             # <<<<<<<<<<<<<<
  *         cdef str prop
  *         cdef size_t lenDataT = len(data['T'])
  */
-  __pyx_t_5 = PyList_New(6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 671, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 670, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_n_u_h);
   __Pyx_GIVEREF(__pyx_n_u_h);
@@ -17892,7 +17898,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   __pyx_cur_scope->__pyx_v_other_props = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "mcycle/bases/flowstate.pyx":673
+  /* "mcycle/bases/flowstate.pyx":672
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  *         cdef size_t lenDataT = len(data['T'])             # <<<<<<<<<<<<<<
@@ -17901,15 +17907,15 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 673, __pyx_L1_error)
+    __PYX_ERR(0, 672, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_cur_scope->__pyx_v_data, __pyx_n_u_T); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 673, __pyx_L1_error)
+  __pyx_t_8 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(0, 672, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_cur_scope->__pyx_v_lenDataT = __pyx_t_8;
 
-  /* "mcycle/bases/flowstate.pyx":674
+  /* "mcycle/bases/flowstate.pyx":673
  *         cdef str prop
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():             # <<<<<<<<<<<<<<
@@ -17918,49 +17924,49 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
   if (unlikely(__pyx_cur_scope->__pyx_v_data == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 674, __pyx_L1_error)
+    __PYX_ERR(0, 673, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyDict_Keys(__pyx_cur_scope->__pyx_v_data); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_Keys(__pyx_cur_scope->__pyx_v_data); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (unlikely(__pyx_v_self->data == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 674, __pyx_L1_error)
+    __PYX_ERR(0, 673, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_PyDict_Keys(__pyx_v_self->data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_Keys(__pyx_v_self->data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_7 = PyObject_RichCompare(__pyx_t_5, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 674, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 673, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   if (__pyx_t_2) {
 
-    /* "mcycle/bases/flowstate.pyx":675
+    /* "mcycle/bases/flowstate.pyx":674
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():
  *             if all(data[prop] == [] for prop in other_props):             # <<<<<<<<<<<<<<
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):
  */
-    __pyx_t_7 = __pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_7 = __pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 675, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "mcycle/bases/flowstate.pyx":676
+      /* "mcycle/bases/flowstate.pyx":675
  *         if data.keys() == self.data.keys():
  *             if all(data[prop] == [] for prop in other_props):
  *                 self.populateData()             # <<<<<<<<<<<<<<
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):
  *                 msg = "Not all data lists have same length as data['T']: len={}".format(lenDataT)
  */
-      ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *)__pyx_v_self->__pyx_vtab)->populateData(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 676, __pyx_L1_error)
+      ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *)__pyx_v_self->__pyx_vtab)->populateData(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L1_error)
 
-      /* "mcycle/bases/flowstate.pyx":675
+      /* "mcycle/bases/flowstate.pyx":674
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():
  *             if all(data[prop] == [] for prop in other_props):             # <<<<<<<<<<<<<<
@@ -17970,33 +17976,33 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
       goto __pyx_L6;
     }
 
-    /* "mcycle/bases/flowstate.pyx":677
+    /* "mcycle/bases/flowstate.pyx":676
  *             if all(data[prop] == [] for prop in other_props):
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):             # <<<<<<<<<<<<<<
  *                 msg = "Not all data lists have same length as data['T']: len={}".format(lenDataT)
  *                 log("error", msg)
  */
-    __pyx_t_3 = __pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_3 = __pyx_pf_6mcycle_5bases_9flowstate_7RefData_9__cinit___3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_Generator_Next(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_Generator_Next(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 677, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 676, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_1 = ((!__pyx_t_2) != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "mcycle/bases/flowstate.pyx":678
+      /* "mcycle/bases/flowstate.pyx":677
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):
  *                 msg = "Not all data lists have same length as data['T']: len={}".format(lenDataT)             # <<<<<<<<<<<<<<
  *                 log("error", msg)
  *                 raise ValueError(msg)
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Not_all_data_lists_have_same_len, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Not_all_data_lists_have_same_len, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 677, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_cur_scope->__pyx_v_lenDataT); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 678, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_cur_scope->__pyx_v_lenDataT); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 677, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -18009,14 +18015,14 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 677, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 677, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -18025,20 +18031,20 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 677, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else
         #endif
         {
-          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 678, __pyx_L1_error)
+          __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 677, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_GIVEREF(__pyx_t_5);
           PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_5);
           __pyx_t_5 = 0;
-          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 677, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         }
@@ -18047,14 +18053,14 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
       __pyx_v_msg = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "mcycle/bases/flowstate.pyx":679
+      /* "mcycle/bases/flowstate.pyx":678
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):
  *                 msg = "Not all data lists have same length as data['T']: len={}".format(lenDataT)
  *                 log("error", msg)             # <<<<<<<<<<<<<<
  *                 raise ValueError(msg)
  *             else:
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 679, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_9 = NULL;
       __pyx_t_6 = 0;
@@ -18071,7 +18077,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_n_u_error, __pyx_v_msg};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 679, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -18079,13 +18085,13 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_n_u_error, __pyx_v_msg};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 679, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 679, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 678, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (__pyx_t_9) {
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -18096,27 +18102,27 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
         __Pyx_INCREF(__pyx_v_msg);
         __Pyx_GIVEREF(__pyx_v_msg);
         PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_v_msg);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 679, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 678, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "mcycle/bases/flowstate.pyx":680
+      /* "mcycle/bases/flowstate.pyx":679
  *                 msg = "Not all data lists have same length as data['T']: len={}".format(lenDataT)
  *                 log("error", msg)
  *                 raise ValueError(msg)             # <<<<<<<<<<<<<<
  *             else:
  *                 self.data = data
  */
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_v_msg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 680, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_v_msg); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 679, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 680, __pyx_L1_error)
+      __PYX_ERR(0, 679, __pyx_L1_error)
 
-      /* "mcycle/bases/flowstate.pyx":677
+      /* "mcycle/bases/flowstate.pyx":676
  *             if all(data[prop] == [] for prop in other_props):
  *                 self.populateData()
  *             elif not all(len(data[prop]) == lenDataT for prop in other_props):             # <<<<<<<<<<<<<<
@@ -18125,7 +18131,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  */
     }
 
-    /* "mcycle/bases/flowstate.pyx":682
+    /* "mcycle/bases/flowstate.pyx":681
  *                 raise ValueError(msg)
  *             else:
  *                 self.data = data             # <<<<<<<<<<<<<<
@@ -18141,7 +18147,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
     }
     __pyx_L6:;
 
-    /* "mcycle/bases/flowstate.pyx":674
+    /* "mcycle/bases/flowstate.pyx":673
  *         cdef str prop
  *         cdef size_t lenDataT = len(data['T'])
  *         if data.keys() == self.data.keys():             # <<<<<<<<<<<<<<
@@ -18151,7 +18157,7 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
     goto __pyx_L5;
   }
 
-  /* "mcycle/bases/flowstate.pyx":684
+  /* "mcycle/bases/flowstate.pyx":683
  *                 self.data = data
  *         else:
  *             self.populateData()             # <<<<<<<<<<<<<<
@@ -18159,11 +18165,11 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
  *     cpdef public void populateData(self) except *:
  */
   /*else*/ {
-    ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *)__pyx_v_self->__pyx_vtab)->populateData(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 684, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_RefData *)__pyx_v_self->__pyx_vtab)->populateData(__pyx_v_self, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 683, __pyx_L1_error)
   }
   __pyx_L5:;
 
-  /* "mcycle/bases/flowstate.pyx":652
+  /* "mcycle/bases/flowstate.pyx":651
  *     """
  * 
  *     def __cinit__(self,             # <<<<<<<<<<<<<<
@@ -18190,11 +18196,11 @@ static int __pyx_pf_6mcycle_5bases_9flowstate_7RefData___cinit__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "mcycle/bases/flowstate.pyx":686
+/* "mcycle/bases/flowstate.pyx":685
  *             self.populateData()
  * 
  *     cpdef public void populateData(self) except *:             # <<<<<<<<<<<<<<
- *         """void: Populate property data list from data['T'] using CoolProp."""
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:
  */
 
@@ -18223,7 +18229,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_populateData); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_populateData); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 685, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_6mcycle_5bases_9flowstate_7RefData_3populateData)) {
       __Pyx_INCREF(__pyx_t_1);
@@ -18238,10 +18244,10 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 686, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 686, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -18252,58 +18258,58 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "mcycle/bases/flowstate.pyx":688
+  /* "mcycle/bases/flowstate.pyx":687
  *     cpdef public void populateData(self) except *:
- *         """void: Populate property data list from data['T'] using CoolProp."""
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:             # <<<<<<<<<<<<<<
  *             raise ValueError("data['T'] must not be empty.")
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  */
   if (unlikely(__pyx_v_self->data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 688, __pyx_L1_error)
+    __PYX_ERR(0, 687, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_n_u_T); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_n_u_T); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 687, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_t_5)) {
 
-    /* "mcycle/bases/flowstate.pyx":689
- *         """void: Populate property data list from data['T'] using CoolProp."""
+    /* "mcycle/bases/flowstate.pyx":688
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:
  *             raise ValueError("data['T'] must not be empty.")             # <<<<<<<<<<<<<<
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 689, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 688, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 689, __pyx_L1_error)
+    __PYX_ERR(0, 688, __pyx_L1_error)
 
-    /* "mcycle/bases/flowstate.pyx":688
+    /* "mcycle/bases/flowstate.pyx":687
  *     cpdef public void populateData(self) except *:
- *         """void: Populate property data list from data['T'] using CoolProp."""
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:             # <<<<<<<<<<<<<<
  *             raise ValueError("data['T'] must not be empty.")
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  */
   }
 
-  /* "mcycle/bases/flowstate.pyx":690
+  /* "mcycle/bases/flowstate.pyx":689
  *         if self.data['T'] == []:
  *             raise ValueError("data['T'] must not be empty.")
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']             # <<<<<<<<<<<<<<
  *         cdef str prop
  *         for prop in other_props:
  */
-  __pyx_t_3 = PyList_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 690, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 689, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_u_h);
   __Pyx_GIVEREF(__pyx_n_u_h);
@@ -18326,7 +18332,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
   __pyx_v_other_props = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "mcycle/bases/flowstate.pyx":692
+  /* "mcycle/bases/flowstate.pyx":691
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  *         for prop in other_props:             # <<<<<<<<<<<<<<
@@ -18337,32 +18343,32 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 692, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 691, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 692, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 691, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 692, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 691, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_prop, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":693
+    /* "mcycle/bases/flowstate.pyx":692
  *         cdef str prop
  *         for prop in other_props:
  *             self.data[prop] = []             # <<<<<<<<<<<<<<
  *         cdef double T
  *         cdef FlowState f
  */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
+    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 692, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (unlikely(__pyx_v_self->data == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 693, __pyx_L1_error)
+      __PYX_ERR(0, 692, __pyx_L1_error)
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->data, __pyx_v_prop, __pyx_t_2) < 0)) __PYX_ERR(0, 693, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_self->data, __pyx_v_prop, __pyx_t_2) < 0)) __PYX_ERR(0, 692, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":692
+    /* "mcycle/bases/flowstate.pyx":691
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  *         for prop in other_props:             # <<<<<<<<<<<<<<
@@ -18372,7 +18378,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "mcycle/bases/flowstate.pyx":696
+  /* "mcycle/bases/flowstate.pyx":695
  *         cdef double T
  *         cdef FlowState f
  *         for T in self.data['T']:             # <<<<<<<<<<<<<<
@@ -18381,17 +18387,17 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
  */
   if (unlikely(__pyx_v_self->data == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 696, __pyx_L1_error)
+    __PYX_ERR(0, 695, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_n_u_T); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 696, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_n_u_T); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 695, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 695, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 696, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 695, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -18399,17 +18405,17 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 696, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 695, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 696, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 695, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 696, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 695, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 696, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 695, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -18419,50 +18425,50 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 696, __pyx_L1_error)
+          else __PYX_ERR(0, 695, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_3);
     }
-    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 696, __pyx_L1_error)
+    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 695, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_T = __pyx_t_8;
 
-    /* "mcycle/bases/flowstate.pyx":697
+    /* "mcycle/bases/flowstate.pyx":696
  *         cdef FlowState f
  *         for T in self.data['T']:
  *             f = FlowState(self.fluid, nan,             # <<<<<<<<<<<<<<
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)
  *             for prop in other_props:
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 697, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 696, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
 
-    /* "mcycle/bases/flowstate.pyx":698
+    /* "mcycle/bases/flowstate.pyx":697
  *         for T in self.data['T']:
  *             f = FlowState(self.fluid, nan,
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)             # <<<<<<<<<<<<<<
  *             for prop in other_props:
  *                 self.data[prop].append(getattr(f, prop)())
  */
-    __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_6mcycle_10_constants_PT_INPUTS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_v_6mcycle_10_constants_PT_INPUTS); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_T); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_T); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyInt_From_short(__pyx_v_self->_iphase); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 698, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_short(__pyx_v_self->_iphase); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 697, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
 
-    /* "mcycle/bases/flowstate.pyx":697
+    /* "mcycle/bases/flowstate.pyx":696
  *         cdef FlowState f
  *         for T in self.data['T']:
  *             f = FlowState(self.fluid, nan,             # <<<<<<<<<<<<<<
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)
  *             for prop in other_props:
  */
-    __pyx_t_11 = PyTuple_New(7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 697, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(7); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 696, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v_self->fluid);
     __Pyx_GIVEREF(__pyx_v_self->fluid);
@@ -18485,13 +18491,13 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
     __pyx_t_4 = 0;
     __pyx_t_9 = 0;
     __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 697, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6mcycle_5bases_9flowstate_FlowState), __pyx_t_11, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 696, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_f, ((struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *)__pyx_t_10));
     __pyx_t_10 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":699
+    /* "mcycle/bases/flowstate.pyx":698
  *             f = FlowState(self.fluid, nan,
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)
  *             for prop in other_props:             # <<<<<<<<<<<<<<
@@ -18501,27 +18507,27 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
     for (;;) {
       if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_10)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_12); __Pyx_INCREF(__pyx_t_11); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 699, __pyx_L1_error)
+      __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_12); __Pyx_INCREF(__pyx_t_11); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 698, __pyx_L1_error)
       #else
-      __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 699, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(__pyx_t_10, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 698, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
-      if (!(likely(PyUnicode_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 699, __pyx_L1_error)
+      if (!(likely(PyUnicode_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 698, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_prop, ((PyObject*)__pyx_t_11));
       __pyx_t_11 = 0;
 
-      /* "mcycle/bases/flowstate.pyx":700
+      /* "mcycle/bases/flowstate.pyx":699
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)
  *             for prop in other_props:
  *                 self.data[prop].append(getattr(f, prop)())             # <<<<<<<<<<<<<<
  */
       if (unlikely(__pyx_v_self->data == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 700, __pyx_L1_error)
+        __PYX_ERR(0, 699, __pyx_L1_error)
       }
-      __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_v_prop); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 700, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_self->data, __pyx_v_prop); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 699, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_4 = __Pyx_GetAttr(((PyObject *)__pyx_v_f), __pyx_v_prop); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 700, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetAttr(((PyObject *)__pyx_v_f), __pyx_v_prop); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 699, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -18534,18 +18540,18 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
         }
       }
       if (__pyx_t_1) {
-        __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 700, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 699, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
-        __pyx_t_9 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 700, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 699, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_13 = __Pyx_PyObject_Append(__pyx_t_11, __pyx_t_9); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 700, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_Append(__pyx_t_11, __pyx_t_9); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 699, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "mcycle/bases/flowstate.pyx":699
+      /* "mcycle/bases/flowstate.pyx":698
  *             f = FlowState(self.fluid, nan,
  *                           PT_INPUTS, self.p, T, self._iphase, self.eos)
  *             for prop in other_props:             # <<<<<<<<<<<<<<
@@ -18554,7 +18560,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
     }
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "mcycle/bases/flowstate.pyx":696
+    /* "mcycle/bases/flowstate.pyx":695
  *         cdef double T
  *         cdef FlowState f
  *         for T in self.data['T']:             # <<<<<<<<<<<<<<
@@ -18564,11 +18570,11 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "mcycle/bases/flowstate.pyx":686
+  /* "mcycle/bases/flowstate.pyx":685
  *             self.populateData()
  * 
  *     cpdef public void populateData(self) except *:             # <<<<<<<<<<<<<<
- *         """void: Populate property data list from data['T'] using CoolProp."""
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:
  */
 
@@ -18592,7 +18598,7 @@ void __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(struct __pyx_obj_6m
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_7RefData_3populateData(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_6mcycle_5bases_9flowstate_7RefData_2populateData[] = "RefData.populateData(self) -> void\nvoid: Populate property data list from data['T'] using CoolProp.";
+static char __pyx_doc_6mcycle_5bases_9flowstate_7RefData_2populateData[] = "RefData.populateData(self) -> void\nvoid: Try to populate property data list from data['T'] using CoolProp.";
 static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_7RefData_3populateData(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -18610,8 +18616,8 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_7RefData_2populateData(struc
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("populateData", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 686, __pyx_L1_error)
+  __pyx_f_6mcycle_5bases_9flowstate_7RefData_populateData(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 685, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 685, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20757,7 +20763,7 @@ static PyTypeObject __pyx_type_6mcycle_5bases_9flowstate_FlowState = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "FlowState(unicode fluid, double m=nan, unsigned char inputPair=0, double input1=nan, double input2=nan, unsigned short iphase=PHASE_NOT_IMPOSED, unicode eos=u'', unicode name=u'FlowState instance')\nFlowState represents the state of a flow at a point by its state properties and a mass flow rate. This class creates a `CoolProp AbstractState <http://www.coolprop.org/apidoc/CoolProp.CoolProp.html>`_ object to store the state properties and uses the routines of CoolProp.\n\nParameters\n----------\nfluid : str\n    Fluid name passed to CoolProp (see `CoolProp list of fluids <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_ and/or `REFPROP list of fluids <https://www.nist.gov/srd/refprop>`_ for available fluids).\n\n    - \"fluid_name\" for pure fluid. Eg, \"air\", \"water\", \"CO2\" *or*\n\n    - \"fluid_name0[mole_fraction0]&fluid_name1[mole_fraction1]&...\" for mixtures. Eg, \"CO2[0.5]&CO[0.5]\".\n\nm : float, optional\n    Mass flow rate [kg/s]. Defaults to nan.\n\ninputPair : int, optional\n    CoolProp input pair key (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg. HmassP_INPUTS, PT_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).\n\ninput1, input2 : double, optional\n    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.\n\niphase : int, optional\n    Coolprop key for imposed phase (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg, ``PHASE_GAS``. Defaults to ``PHASE_NOT_IMPOSED``.\n\neos : str, optional\n    CoolProp EOS backend, must be 'HEOS' or 'REFPROP'. If empty, defaults to ``mcycle.defaults.COOLPROP_EOS``. Defaults to ''.\n\nname : str, optional\n    Descriptive name of instance. Defaults to \"Flo""wState instance\".\n\nExamples\n----------\nimport mcycle as mc\n>>> air = mc.FlowState(\"Air\",1.0,mc.PT_INPUTS,101325,293.15)\n>>> air.rho()\n1.2045751824931508\n>>> air.cp()\n1006.144032087035\n    ", /*tp_doc*/
+  "FlowState(unicode fluid, double m=nan, unsigned char inputPair=0, double input1=nan, double input2=nan, unsigned short iphase=PHASE_NOT_IMPOSED, unicode eos=u'', unicode name=u'FlowState instance')\nFlowState represents the state of a flow at a point by its state properties and a mass flow rate. This class creates a `CoolProp AbstractState <http://www.coolprop.org/apidoc/CoolProp.CoolProp.html>`_ object to store the state properties and uses the routines of CoolProp.\n\nParameters\n----------\nfluid : str\n    Fluid name passed to CoolProp (see `CoolProp list of fluids <http://www.coolprop.org/fluid_properties/PurePseudoPure.html#list-of-fluids>`_ and/or `REFPROP list of fluids <https://www.nist.gov/srd/refprop>`_ for available fluids).\n\n    - \"fluid_name\" for pure fluid. Eg, \"air\", \"water\", \"CO2\" *or*\n\n    - \"fluid_name0[mole_fraction0]&fluid_name1[mole_fraction1]&...\" for mixtures. Eg, \"CO2[0.5]&CO[0.5]\".\n\nm : float, optional\n    Mass flow rate [kg/s]. Defaults to nan.\n\ninputPair : int, optional\n    CoolProp input pair key (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg. HmassP_INPUTS, PT_INPUTS. Defaults to 0 (INPUT_PAIR_INVALID).\n\ninput1, input2 : double, optional\n    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.\n\niphase : int, optional\n    Coolprop key for imposed phase (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg, ``PHASE_GAS``. Defaults to ``PHASE_NOT_IMPOSED``.\n\neos : str, optional\n    CoolProp EOS backend, must be 'HEOS' or 'REFPROP'. If empty, defaults to ``mcycle.defaults.COOLPROP_EOS``. Defaults to ''.\n\nname : str, optional\n    Descriptive name of instance. Defaults to \"Flo""wState instance\".\n\nExamples\n----------\nimport mcycle\n>>> air = mcycle.FlowState(\"Air\", 1.0, mc.PT_INPUTS, 101325, 293.15)\n>>> air.rho()\n1.2045751824931508\n>>> air.cp()\n1006.144032087035\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_5bases_9flowstate_FlowState, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_5bases_9flowstate_FlowState, /*tp_clear*/
   __pyx_tp_richcompare_6mcycle_5bases_9flowstate_FlowState, /*tp_richcompare*/
@@ -20911,7 +20917,7 @@ static PyTypeObject __pyx_type_6mcycle_5bases_9flowstate_FlowStatePoly = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "FlowStatePoly(RefData refData, double m=nan, unsigned char inputPair=0, double input1=nan, double input2=nan, unicode name=u'FlowStatePoly instance')\nFlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate. It is an alternative to FlowState that uses polynomial interpolation of a crude constant pressure reference data map to evaluate the state properties, instead of calling them from a CoolProp AbstractState object. This class was created purely to overcome short comings with CoolProp's mixture processes. Apart from creating new objects, FlowStatePoly has been built to be used in exactly the same way as FlowState.\n\n.. note:: FlowStatePoly only supports constant pressure flows and assumes no phase changes occur.\n   It may not be used for the working fluid in a cycle, but may be used as the working fluid in certain constant pressure components.\n\nParameters\n----------\nrefData : RefData\n    Constant pressure fluid reference data map.\n\nm : double, optional\n    Mass flow rate [Kg/s]. Defaults to nan.\n\ninputPair : int, optional\n    CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to INPUT_PAIR_INVALID == 0.\n\n    .. note:: Only certain inputPair values are valid.\n        As FlowStatePoly only supports constant pressure flows, one input variable must be a pressure. Thus, only the following inputPair values are valid:\n\n        - CoolProp.PT_INPUTS == 9\n        - CoolProp.DmassP_INPUTS == 18\n        - CoolProp.HmassP_INPUTS == 20\n        - CoolProp.PSmass_INPUTS == 22\n\ninput1,input2 : double, optional\n    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.\n\n\nExamples\n----------\n>>> refData = RefData(\"air\", 2, 101325., [200, 250, 300, 350, 400])\n>>> air = FlowStatePoly(refData, 1, CoolProp.PT_INPUTS,101325.,293.15)\n>>> air.""rho\n1.20530995019\n>>> air.cp\n1006.12622976\n    ", /*tp_doc*/
+  "FlowStatePoly(RefData refData, double m=nan, unsigned char inputPair=0, double input1=nan, double input2=nan, unicode name=u'FlowStatePoly instance')\nFlowStatePoly represents the state of a flow at a point by its state properties and a mass flow rate. It is an alternative to FlowState that uses polynomial interpolation of a crude constant pressure reference data map to evaluate the state properties, instead of calling them from a CoolProp AbstractState object. This class was created purely to overcome short comings with CoolProp's mixture processes. Apart from creating new objects, FlowStatePoly has been built to be used in exactly the same way as FlowState.\n\n.. note:: FlowStatePoly only supports constant pressure flows and assumes no phase changes occur.\n   It may not/should not be used for the working fluid in certain cycles, but may be used as the working fluid in certain constant pressure components.\n\nParameters\n----------\nrefData : RefData\n    Constant pressure fluid reference data map.\n\nm : double, optional\n    Mass flow rate [kg/s]. Defaults to nan.\n\ninputPair : int, optional\n    CoolProp input pair key. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a58e7d98861406dedb48e07f551a61efb>`_. Eg. CoolProp.HmassP_INPUTS. Defaults to INPUT_PAIR_INVALID == 0.\n\n    .. note:: Only certain inputPair values are valid.\n        As FlowStatePoly only supports constant pressure flows, one input variable must be a pressure. Thus, only the following inputPair values are valid:\n\n        - CoolProp.PT_INPUTS == 9\n        - CoolProp.DmassP_INPUTS == 18\n        - CoolProp.HmassP_INPUTS == 20\n        - CoolProp.PSmass_INPUTS == 22\n\ninput1,input2 : double, optional\n    Repective values of inputs corresponding to inputPair [in SI units]. Both default to nan.\n\n\nExamples\n----------\n>>> refData = RefData(\"air\", 2, 101325., [200, 250, 300, 350, 400])\n>>> air = FlowStatePoly(refData, 1, CoolProp.PT_INPUTS,101325."",293.15)\n>>> air.rho\n1.20530995019\n>>> air.cp\n1006.12622976\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_5bases_9flowstate_FlowStatePoly, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_5bases_9flowstate_FlowStatePoly, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -21121,7 +21127,7 @@ static PyTypeObject __pyx_type_6mcycle_5bases_9flowstate_RefData = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "cdef class. RefData stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.\n\nParameters\n----------\nfluid : str\n    Description of fluid passed to CoolProp.\n\n    - \"fluid_name\" for pure fluid. Eg, \"air\", \"water\", \"CO2\" *or*\n\n    - \"fluid0[mole_fraction0]&fluid1[mole_fraction1]&...\" for mixtures. Eg, \"CO2[0.5]&CO[0.5]\".\n\n    .. note:: CoolProp's mixture routines often raise errors; using mixtures should be avoided.\n\n\ndeg : int\n    Polynomial degree used to fit the data using `numpy.polyfit <https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.polyfit.html>`_. If -1, properties will be linearly interpolated between the data values using `numpy.interp <https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.interp.html>`_.\n\np: double\n    Constant static pressure [Pa] of the property data.\n\ndata : dict\n    Dictionary of data map values. Data must be given as a list of floats for each of the following keys:\n    \n    - 'T' : static temperature [K]. Must be provided.\n    - 'h' : specific mass enthalpy [J/Kg]. Optional.\n    - 'rho' : mass density [Kg/m^3]. Optional.\n    - 's' : specific mass entropy [J/Kg.K]. Optional.\n    - 'visc' : dynamic viscosity [N.s/m^2]. Optional.\n    - 'k' : thermal conductivity [W/m.K]. Optional.\n    - 'cp' : specific mass heat capacity, const. pressure [J/K]. Optional.\n\n    A complete map must be provided or if only temperature values are provided, MCycle will attempt to populate the data using CoolProp.\n\niphase : int, optional\n    Coolprop key for phase. See `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_. Eg, CoolProp.iphase_gas. Defaults to -1.\n    ", /*tp_doc*/
+  "Stores constant pressure thermodynamic properties of a 'pure' fluid or mixture thereof. Property data can be directly input, or, if only temperature data is provided, RefData will call CoolProp to compute the remaining properties.\n\nParameters\n----------\nfluid : str\n    Description of fluid passed to CoolProp.\n\n    - \"fluid_name\" for pure fluid. Eg, \"air\", \"water\", \"CO2\" *or*\n\n    - \"fluid0[mole_fraction0]&fluid1[mole_fraction1]&...\" for mixtures. Eg, \"CO2[0.5]&CO[0.5]\".\n\n    .. note:: CoolProp's mixture routines often raise errors; using mixtures should be avoided.\n\n\ndeg : int\n    Polynomial degree used to fit the data using `numpy.polyfit <https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.polyfit.html>`_. If -1, properties will be linearly interpolated between the data values using `numpy.interp <https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.interp.html>`_.\n\np: double\n    Constant static pressure [Pa] of the property data.\n\ndata : dict\n    Dictionary of data map values. Data must be given as a list of floats for each of the following keys:\n    \n    - 'T' : static temperature [K]. Must be provided.\n    - 'h' : specific mass enthalpy [J/kg]. Optional.\n    - 'rho' : mass density [kg/m^3]. Optional.\n    - 's' : specific mass entropy [J/kg.K]. Optional.\n    - 'visc' : dynamic viscosity [N.s/m^2]. Optional.\n    - 'k' : thermal conductivity [W/m.K]. Optional.\n    - 'cp' : specific mass heat capacity, const. pressure [J/K]. Optional.\n\n    A complete map must be provided or if only temperature values are provided, MCycle will attempt to populate the data using CoolProp.\niphase : int, optional\n    Coolprop key for imposed phase (see `documentation <http://www.coolprop.org/_static/doxygen/html/namespace_cool_prop.html#a99d892f7b3bb9808265335ac1efb858f>`_). Can be accessed from ``CoolProp.CoolProp`` or ``mcycle.constants``. Eg, ``PHASE_GAS``. Defaults to ``PHASE_NOT_IMPOSED``.\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_5bases_9flowstate_RefData, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_5bases_9flowstate_RefData, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -21984,6 +21990,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
+  {&__pyx_n_s_title, __pyx_k_title, sizeof(__pyx_k_title), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_updateState, __pyx_k_updateState, sizeof(__pyx_k_updateState), 0, 0, 1, 1},
   {&__pyx_n_s_v, __pyx_k_v, sizeof(__pyx_k_v), 0, 0, 1, 1},
@@ -22080,14 +22087,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "mcycle/bases/flowstate.pyx":689
- *         """void: Populate property data list from data['T'] using CoolProp."""
+  /* "mcycle/bases/flowstate.pyx":688
+ *         """void: Try to populate property data list from data['T'] using CoolProp."""
  *         if self.data['T'] == []:
  *             raise ValueError("data['T'] must not be empty.")             # <<<<<<<<<<<<<<
  *         cdef list other_props = ['h', 'rho', 's', 'visc', 'k', 'cp']#, 'Pr']
  *         cdef str prop
  */
-  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_u_data_T_must_not_be_empty); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_u_data_T_must_not_be_empty); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 688, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
 
@@ -22329,19 +22336,19 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_2_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_6mcycle_5bases_9flowstate___pyx_scope_struct_2_genexpr = &__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_2_genexpr;
-  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__) < 0) __PYX_ERR(0, 652, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__) < 0) __PYX_ERR(0, 651, __pyx_L1_error)
   __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__.tp_dictoffset && __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__ = &__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_3___cinit__;
-  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 675, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr) < 0) __PYX_ERR(0, 674, __pyx_L1_error)
   __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr.tp_dictoffset && __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr = &__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_4_genexpr;
-  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 677, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr) < 0) __PYX_ERR(0, 676, __pyx_L1_error)
   __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr.tp_dictoffset && __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6mcycle_5bases_9flowstate___pyx_scope_struct_5_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
@@ -22451,8 +22458,10 @@ static int __Pyx_modinit_variable_import_code(void) {
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOW_ALL", (void **)&__pyx_vp_6mcycle_10_constants_FLOW_ALL, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "WORKING_FLUID", (void **)&__pyx_vp_6mcycle_10_constants_WORKING_FLUID, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOW_PRIMARY", (void **)&__pyx_vp_6mcycle_10_constants_FLOW_PRIMARY, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOW1", (void **)&__pyx_vp_6mcycle_10_constants_FLOW1, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "SECONDARY_FLUID", (void **)&__pyx_vp_6mcycle_10_constants_SECONDARY_FLUID, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOW_SECONDARY", (void **)&__pyx_vp_6mcycle_10_constants_FLOW_SECONDARY, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOW2", (void **)&__pyx_vp_6mcycle_10_constants_FLOW2, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "FLOWSENSE_UNDEFINED", (void **)&__pyx_vp_6mcycle_10_constants_FLOWSENSE_UNDEFINED, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "COUNTERFLOW", (void **)&__pyx_vp_6mcycle_10_constants_COUNTERFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "PARALLELFLOW", (void **)&__pyx_vp_6mcycle_10_constants_PARALLELFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -22962,7 +22971,7 @@ if (!__Pyx_RefNanny) {
   __pyx_k__18 = __pyx_v_6mcycle_10_constants_PHASE_NOT_IMPOSED;
   __pyx_k__18 = __pyx_v_6mcycle_10_constants_PHASE_NOT_IMPOSED;
 
-  /* "mcycle/bases/flowstate.pyx":657
+  /* "mcycle/bases/flowstate.pyx":656
  *                   double p,
  *                   dict data,
  *                   short iphase=PHASE_NOT_IMPOSED,             # <<<<<<<<<<<<<<

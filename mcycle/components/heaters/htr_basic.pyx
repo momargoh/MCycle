@@ -14,8 +14,8 @@ Parameters
 ----------
 QHeat : double
     Heating power: heat added to the working fluid [W].
-efficiencyThermal : double, optional
-    Thermal efficiency [-]. Defaults to 1.
+efficiencyIsentropic : float, optional
+    Isentropic efficiency [-]. Defaults to 1.
 flowIn : FlowState, optional
     Incoming FlowState. Defaults to None.
 flowOut : FlowState, optional
@@ -23,19 +23,19 @@ flowOut : FlowState, optional
 ambient : FlowState, optional
     Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to "pRatio".
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to [1, 50].
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
 name : string, optional
-    Description of Component object. Defaults to "HtrBasic instance".
+    Description of Component object. Defaults to "ExpBasic instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     def __init__(self,
@@ -89,30 +89,30 @@ cdef class HtrBasicConstP(HtrBasic):
 
 Parameters
 ----------
-QHeat : float
-    Heat output [W].
-efficiencyThermal : float, optional
-    Thermal efficiency [-]. Defaults to 1.
+QHeat : double
+    Heating power: heat added to the working fluid [W].
+efficiencyIsentropic : float, optional
+    Isentropic efficiency [-]. Defaults to 1.
 flowIn : FlowState, optional
     Incoming FlowState. Defaults to None.
 flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
+ambient : FlowState, optional
+    Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to "efficiencyThermal".
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to [0.1, 1.0].
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
 name : string, optional
-    Description of Component object. Defaults to "HtrBasicConstP instance".
+    Description of Component object. Defaults to "ExpBasic instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     def __init__(self,
@@ -167,30 +167,30 @@ cdef class HtrBasicConstV(HtrBasic):
 
 Parameters
 ----------
-QHeat : float
-    Heat output [W].
-efficiencyThermal : float, optional
-    Thermal efficiency [-]. Defaults to 1.
+QHeat : double
+    Heating power: heat added to the working fluid [W].
+efficiencyIsentropic : float, optional
+    Isentropic efficiency [-]. Defaults to 1.
 flowIn : FlowState, optional
     Incoming FlowState. Defaults to None.
 flowOut : FlowState, optional
     Outgoing FlowState. Defaults to None.
+ambient : FlowState, optional
+    Ambient environment flow state. Defaults to None.
 sizeAttr : string, optional
-    Default attribute used by size(). Defaults to "efficiencyThermal".
-sizeBounds : float or list of float, optional
-    Bracket containing solution of size(). Defaults to [0.1, 1.0].
-
-    - if sizeBounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if sizeBounds=a or [a]: scipy.optimize.newton is used.
+    Default attribute used by size(). Defaults to ''.
+sizeBounds : list len=2, optional
+    Bracket containing solution of size(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+sizeUnitsBounds : list len=2, optional
+    Bracket containing solution of sizeUnits(). Defaults to []. (Passed to scipy.optimize.brentq as ``bounds`` argument)
+runBounds : list len=2, optional
+    Not required for all components. Bracket containing value of :meth:`TOLATTR <mcycle.defaults.TOLATTR>` for the outgoing working fluid FlowState. Defaults to [nan, nan]. 
 name : string, optional
-    Description of Component object. Defaults to "HtrBasicConstV instance".
+    Description of Component object. Defaults to "ExpBasic instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
-    Configuration parameters. Defaults to the default Config object.
-kwargs : optional
-    Arbitrary keyword arguments.
+    Configuration parameters. Defaults to None which sets it to :meth:`defaults.CONFIG <mcycle.defaults.CONFIG>`.
     """
 
     def __init__(self,

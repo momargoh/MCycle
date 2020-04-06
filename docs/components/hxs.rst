@@ -6,15 +6,24 @@ Heat Exchanger Classes
 .. autosummary::
      :toctree: 
 	       
+     mcycle.components.hxs.flowconfig.HxFlowConfig
      mcycle.components.hxs.hx_basic.HxBasic
      mcycle.components.hxs.hxunit_basic.HxUnitBasic
      mcycle.components.hxs.hx_basicplanar.HxBasicPlanar
      mcycle.components.hxs.hxunit_basicplanar.HxUnitBasicPlanar
      mcycle.components.hxs.hx_plate.HxPlate
      mcycle.components.hxs.hxunit_plate.HxUnitPlate
+     mcycle.components.hxs.hx_plate.HxPlateCorrugated
+     mcycle.components.hxs.hx_plate.HxPlateFin
      
 
 
+HxFlowConfig Class
+------------------
+.. automodule:: mcycle.components.hxs.flowconfig
+   :members:
+   :inherited-members:
+      
 HxBasic Class
 ------------------
 .. automodule:: mcycle.components.hxs.hx_basic
@@ -57,3 +66,17 @@ HxUnitPlate Class
    :inherited-members:
    :show-inheritance:
                 
+
+HxPlateCorrugated Class
+------------------------
+.. automodule:: mcycle.components.hxs.hx_platecorrugated
+   :members:
+   :inherited-members:
+   :show-inheritance:
+
+HxPlateFin Class
+------------------------
+.. automodule:: mcycle.components.hxs.hx_platefin
+   :members:
+   :inherited-members:
+   :show-inheritance:

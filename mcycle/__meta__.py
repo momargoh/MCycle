@@ -27,6 +27,6 @@ licence = license
 author = "Momar Hughes"
 author_email = "momarhughes@outlook.com"
 url = "https://github.com/momargoh/MCycle"
-docs = "https://mcycle.readthedocs.io"
+docs = "https://mcycle.moamrhughes.com"
 description = "1D sizing and analysis of thermodynamic power cycles"
 keywords = "thermodynamics organic Rankine cycle power cycle evaporator expander condenser compressor heat exchanger heater cooler"

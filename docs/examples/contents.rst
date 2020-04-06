@@ -5,5 +5,9 @@ Examples
    :maxdepth: 3
 
    quickstart
-   hughes2017
+
+
+quickstart
+-----------
+:doc:`examples/quickstart`
 
