@@ -3,7 +3,7 @@ from ...bases.abc cimport ABC
 from ..._constants cimport *
 
 
-cdef tuple _inputs = ('sense', 'passes', 'verticalWf', 'verticalSf')
+cdef tuple _inputs = ('sense', 'passes', 'arrangement', 'verticalWf', 'verticalSf', 'name')
 cdef tuple _properties = ()
 
 cdef class HxFlowConfig(ABC):

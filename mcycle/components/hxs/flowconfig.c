@@ -1407,6 +1407,7 @@ static PyObject *__pyx_kp_u_HxFlowConfig_instance;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x2a;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_arrangement;
+static PyObject *__pyx_n_u_arrangement;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_getstate;
@@ -1418,6 +1419,7 @@ static PyObject *__pyx_n_s_logger;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mcycle_components_hxs_flowconfig;
 static PyObject *__pyx_n_s_name;
+static PyObject *__pyx_n_u_name;
 static PyObject *__pyx_n_s_name_2;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_passes;
@@ -3299,6 +3301,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x2a, __pyx_k_Incompatible_checksums_s_vs_0x2a, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x2a), 0, 0, 1, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_arrangement, __pyx_k_arrangement, sizeof(__pyx_k_arrangement), 0, 0, 1, 1},
+  {&__pyx_n_u_arrangement, __pyx_k_arrangement, sizeof(__pyx_k_arrangement), 0, 1, 0, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
@@ -3310,6 +3313,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_mcycle_components_hxs_flowconfig, __pyx_k_mcycle_components_hxs_flowconfig, sizeof(__pyx_k_mcycle_components_hxs_flowconfig), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
+  {&__pyx_n_u_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 1, 0, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_passes, __pyx_k_passes, sizeof(__pyx_k_passes), 0, 0, 1, 1},
@@ -3354,11 +3358,11 @@ static int __Pyx_InitCachedConstants(void) {
   /* "mcycle/components/hxs/flowconfig.pyx":6
  * 
  * 
- * cdef tuple _inputs = ('sense', 'passes', 'verticalWf', 'verticalSf')             # <<<<<<<<<<<<<<
+ * cdef tuple _inputs = ('sense', 'passes', 'arrangement', 'verticalWf', 'verticalSf', 'name')             # <<<<<<<<<<<<<<
  * cdef tuple _properties = ()
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_n_u_sense, __pyx_n_u_passes, __pyx_n_u_verticalWf, __pyx_n_u_verticalSf); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(6, __pyx_n_u_sense, __pyx_n_u_passes, __pyx_n_u_arrangement, __pyx_n_u_verticalWf, __pyx_n_u_verticalSf, __pyx_n_u_name); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
@@ -3765,7 +3769,7 @@ if (!__Pyx_RefNanny) {
   /* "mcycle/components/hxs/flowconfig.pyx":6
  * 
  * 
- * cdef tuple _inputs = ('sense', 'passes', 'verticalWf', 'verticalSf')             # <<<<<<<<<<<<<<
+ * cdef tuple _inputs = ('sense', 'passes', 'arrangement', 'verticalWf', 'verticalSf', 'name')             # <<<<<<<<<<<<<<
  * cdef tuple _properties = ()
  * 
  */
@@ -3776,7 +3780,7 @@ if (!__Pyx_RefNanny) {
 
   /* "mcycle/components/hxs/flowconfig.pyx":7
  * 
- * cdef tuple _inputs = ('sense', 'passes', 'verticalWf', 'verticalSf')
+ * cdef tuple _inputs = ('sense', 'passes', 'arrangement', 'verticalWf', 'verticalSf', 'name')
  * cdef tuple _properties = ()             # <<<<<<<<<<<<<<
  * 
  * cdef class HxFlowConfig(ABC):

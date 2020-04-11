@@ -129,7 +129,7 @@ def benchmark_HxPlate():
 
 
 if __name__ == "__main__":
-    number = 5
+    number = 10
     print("Begin benchmark tests. number={}".format(number))
     print(timeit.timeit(benchmark_HxPlate, number=number))
     print("finished.")

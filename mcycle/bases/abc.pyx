@@ -21,13 +21,19 @@ name : str, optional
         self.name = name
 
     cpdef public tuple _inputValues(self):
+        """tuple : A deep copy of the current values of the input parameters"""
         cdef list values = []
         cdef str i
         for i in self._inputs:
-            values.append(getattr(self, i))
+            v = getattr(self, i)
+            try:
+                values.append(v.copy())
+            except:
+                values.append(v)
         return tuple(values)
 
     cpdef public tuple _propertyValues(self):
+        """tuple : Values of the class attributes listed in ``_properties``"""
         cdef list values = []
         cdef str p
         for p in self._properties:
