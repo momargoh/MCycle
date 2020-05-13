@@ -286,13 +286,8 @@ Parameters
 -----------
 attr : string, optional
     Attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
-bounds : float or list of float, optional
+bounds : list of float, optional
     Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
-
-    - if bounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if bounds=a or [a]: scipy.optimize.newton is used.
-
 unitsBounds : float or list of float, optional
     Bracket passed on to any HxUnits containing solution of size() for the unit. If None, self.sizeUnitsBounds is used. Defaults to None.
         """

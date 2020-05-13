@@ -5,6 +5,29 @@ CHANGELOG
 .. contents::
    :depth: 2
                
+[1.1.1] - Unreleased
+------------------------------
+
+- 
+
+Added
+*******
+
+- New components: ``HxSimple``
+
+Changed
+********
+
+Deprecated
+***********
+
+Removed
+*********
+
+
+Fixed
+******
+
 [1.1.0] - 06/04/2020
 ------------------------------
 

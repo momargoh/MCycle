@@ -380,10 +380,6 @@ attr : string, optional
     Component attribute to be sized. If None, self.sizeAttr is used. Defaults to None.
 bounds : float or list of float, optional
     Bracket containing solution of size(). If None, self.sizeBounds is used. Defaults to None.
-
-    - if bounds=[a,b]: scipy.optimize.brentq is used.
-
-    - if bounds=a or [a]: scipy.optimize.newton is used.
         """
         cdef double tol, sizedValue
         cdef str attr = self.sizeAttr
@@ -395,22 +391,17 @@ bounds : float or list of float, optional
                 #return self.A
             else:
                 tol = self.config.tolAbs + self.config.tolRel * self.Q()
-                if len(bounds) == 2:
-                    sizedValue = opt.brentq(
+                sizedValue = opt.brentq(
                         self._f_sizeHxUnitBasic,
                         bounds[0],
                         bounds[1],
                         args=(attr),
                         rtol=self.config.tolRel,
                         xtol=self.config.tolAbs)
-                elif len(bounds) == 1:
-                    sizedValue = opt.newton(self._f_sizeHxUnitBasic, bounds[0], args=(attr), tol=tol)
-                else:
-                    raise ValueError("bounds is not valid (given: {})".format(bounds))
                 self.update({attr:sizedValue})
                 #return sizedValue
         except AssertionError as err:
-            raise (err)
+            raise err
         except:
             raise Exception(
                 "Warning: {}.size({},{}) failed to converge".format(

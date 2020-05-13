@@ -15,7 +15,7 @@ cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate',
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'U()', 'A()', 'dpWf()', 'dpSf()', 'isEvap()')
 
 cdef class HxUnitPlateFin(HxUnitPlate):
-    r"""TODO
+    r"""TODO This component has not been completed yet.
     """
 
     def __init__(self,
