@@ -5,7 +5,7 @@ from ..logger import log
 from .._constants cimport *
 from math import nan, isnan
 
-cdef tuple _inputsFixedOut = ('inputPair', 'input1', 'input2', 'name', 'notes', 'config')
+cdef tuple _inputsFixedOut = ('inputPair', 'input1', 'input2', 'flowIn', 'name', 'notes', 'config')
 cdef tuple _propertiesFixedOut = ('m', 'Q()', 'dp()')
 
 cdef class FixedOut(Component11):
