@@ -12,7 +12,7 @@ from warnings import warn
 from math import nan, isnan, pi
 import scipy.optimize as opt
 
-cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'ARatioWf', 'ARatioSf', 'ARatioPlate', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'name', 'notes', 'config')
+cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'A', 'dpWf()', 'dpSf()', 'isEvap()')
 
 cdef class HxPlateFin(HxPlate):
@@ -30,9 +30,6 @@ cdef class HxPlateFin(HxPlate):
                  Geom geomSf=None,
                  double L=nan,
                  double W=nan,
-                 double ARatioWf=1,
-                 double ARatioSf=1,
-                 double ARatioPlate=1,
                  double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -48,7 +45,7 @@ cdef class HxPlateFin(HxPlate):
                  Config config=None,
                  _unitClass=HxUnitPlate):
 
-        super().__init__(flowConfig, NPlate, RfWf, RfSf, plate, tPlate, geomWf, geomSf, L, W, ARatioWf, ARatioSf, ARatioPlate, efficiencyThermal, flowInWf, flowInSf,
+        super().__init__(flowConfig, NPlate, RfWf, RfSf, plate, tPlate, geomWf, geomSf, L, W, efficiencyThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
                          sizeBounds, sizeUnitsBounds, runBounds, name, notes, config, _unitClass)
         self._inputs = _inputs

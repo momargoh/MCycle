@@ -126,11 +126,24 @@ if USE_CYTHON:
             "{}.pyx".format(ext),
             nthreads=4,
             compiler_directives=compiler_directives)
+    """for ext in pyx_exts:
+        ext_modules += [
+            Extension(
+                ext, ['{}.pyx'.format(ext)],
+                extra_compile_args=['-fopenmp'],
+                extra_link_args=['-fopenmp'])
+        ]
+    ext_modules = cythonize(ext_modules, nthreads=4, compiler_directives=compiler_directives)"""
     cmdclass.update({'build_ext': build_ext})
 else:
     c_exts = scanForExtension("mcycle", ".c")
     for ext in c_exts:
-        ext_modules += [Extension(ext, ['{}.c'.format(ext)])]
+        ext_modules += [
+            Extension(
+                ext, ['{}.c'.format(ext)],
+                extra_compile_args=['-fopenmp'],
+                extra_link_args=['-fopenmp'])
+        ]
 
 # Get metadata
 meta = {}

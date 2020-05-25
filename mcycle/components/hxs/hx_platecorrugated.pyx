@@ -42,12 +42,6 @@ L : float, optional
     Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.
 W : float, optional
     Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.
-ARatioWf : float, optional
-    Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.
-ARatioSf : float, optional
-    Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
-ARatioPlate : float, optional
-    Multiplier for the heat transfer surface area of the plate [-]. Defaults to 1.
 DPortWf : float, optional
     Diameter of the working fluid flow ports [m]. Defaults to nan.
 DPortSf : float, optional
@@ -102,9 +96,6 @@ config : Config, optional
                  Geom geomSf=None,
                  double L=nan,
                  double W=nan,
-                 double ARatioWf=1,
-                 double ARatioSf=1,
-                 double ARatioPlate=1,
                  double DPortWf=nan,
                  double DPortSf=nan,
                  double LVertPortWf=nan,
@@ -127,8 +118,7 @@ config : Config, optional
                  str notes="No notes/model info.",
                  Config config=None,
                  _unitClass=HxUnitPlate):
-        super().__init__(flowConfig, NPlate, RfWf, RfSf, plate, tPlate, geomWf, geomSf, L, W, ARatioWf, ARatioSf,
-                         ARatioPlate, efficiencyThermal, flowInWf, flowInSf,
+        super().__init__(flowConfig, NPlate, RfWf, RfSf, plate, tPlate, geomWf, geomSf, L, W, efficiencyThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
                          sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config, _unitClass)
         self.DPortWf = DPortWf
@@ -235,7 +225,7 @@ config : Config, optional
         return dp
 
     cpdef public double mass(self):
-        """float: Approximate total mass of the heat exchanger plates [Kg], calculated as either
+        """float: Approximate total mass of the heat exchanger plates [kg], calculated as either
 
     - sum(coeffs_mass[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_mass is defined,
     - or (LPlate*WPlate - 2(0.25*pi*DPortWf**2 + 0.25*pi*DPortSf**2))*tPlate*plate.rho*NPlate.

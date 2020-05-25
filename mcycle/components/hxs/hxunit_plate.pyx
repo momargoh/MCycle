@@ -14,7 +14,7 @@ import numpy as np
 import scipy.optimize as opt
 
 cdef str method
-cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'ARatioWf', 'ARatioSf', 'ARatioPlate', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'sizeAttr', 'sizeBounds', 'name', 'notes', 'config')
+cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'sizeAttr', 'sizeBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'U()', 'A()', 'dpWf()', 'dpSf()', 'isEvap()')
 
 cdef class HxUnitPlate(HxUnitBasicPlanar):
@@ -34,23 +34,14 @@ plate : SolidMaterial, optional
     Plate material. Defaults to None.
 tPlate : float, optional
     Thickness of the plate [m]. Defaults to nan.
+geomWf : Geom, optional
+    Geom object describing the geometry of the working fluid channels.
+geomSf : Geom, optional
+    Geom object describing the geometry of the secondary fluid channels.
 L : float, optional
     Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.
 W : float, optional
     Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.
-ARatioWf : float, optional
-    Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.
-ARatioSf : float, optional
-    Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
-ARatioPlate : float, optional
-    Multiplier for the heat transfer surface area of the plate [-]. Defaults to 1.
-beta : float, optional
-     Plate corrugation chevron angle [deg]. Defaults to nan.
-phi : float, optional
-     Corrugated plate surface enlargement factor; ratio of developed length to projected length. Defaults to 1.2.
-pitchCor : float, optional
-     Plate corrugation pitch [m] (distance between corrugation 'bumps'). Defaults to nan.
-     .. note: Not to be confused with the plate pitch which is usually defined as the sum of the plate channel spacing and one plate thickness.
 efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
@@ -84,9 +75,6 @@ config : Config, optional
                  Geom geomSf=None,
                  double L=float("nan"),
                  double W=float("nan"),
-                 double ARatioWf=1,
-                 double ARatioSf=1,
-                 double ARatioPlate=1,
                  double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -98,7 +86,7 @@ config : Config, optional
                  str notes="No notes/model info.",
                  Config config=None):
         super().__init__(flowConfig, 0, 0, NPlate, nan, nan, RfWf, RfSf,
-                         plate, tPlate, L, W, ARatioWf, ARatioSf, ARatioPlate,
+                         plate, tPlate, L, W, 1, 1, 1,
                          efficiencyThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
         self.geomWf = geomWf
@@ -214,10 +202,10 @@ config : Config, optional
 
     cpdef public double U(self):
         """float: Overall heat transfer coefficient of the unit [W/m^2.K]."""
-        cdef double RWf = (1 / self._hWf() + self.RfWf) / self.ARatioWf / self._NWf()
-        cdef double RSf = (1 / self._hSf() + self.RfSf) / self.ARatioSf / self._NSf()
+        cdef double RWf = (1 / self._hWf() + self.RfWf) / self._NWf()
+        cdef double RSf = (1 / self._hSf() + self.RfSf) / self._NSf()
         cdef double RPlate = self.tWall / (
-            self.NWall - 2) / self.wall.k() / self.ARatioWall
+            self.NWall - 2) / self.wall.k()
         return (RWf + RSf + RPlate)**-1
 
     cdef double Re(self, unsigned int flowId=0):

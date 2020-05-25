@@ -11,7 +11,7 @@ import numpy as np
 import scipy.optimize as opt
 
 cdef str method
-cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomPlateWf', 'geomPlateSf', 'L', 'W', 'ARatioWf', 'ARatioSf', 'ARatioPlate', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'sizeAttr', 'sizeBounds', 'name', 'notes', 'config')
+cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomPlateWf', 'geomPlateSf', 'L', 'W', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'sizeAttr', 'sizeBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'U()', 'A()', 'dpWf()', 'dpSf()', 'isEvap()')
 
 cdef class HxUnitPlateFin(HxUnitPlate):
@@ -29,9 +29,6 @@ cdef class HxUnitPlateFin(HxUnitPlate):
                  Geom geomPlateSf=None,
                  double L=float("nan"),
                  double W=float("nan"),
-                 double ARatioWf=1,
-                 double ARatioSf=1,
-                 double ARatioPlate=1,
                  double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -43,7 +40,7 @@ cdef class HxUnitPlateFin(HxUnitPlate):
                  str notes="No notes/model info.",
                  Config config=None):
         super().__init__(flowConfig, NPlate, RfWf, RfSf,
-                         plate, tPlate, geomPlateWf, geomPlateSf, L, W, ARatioWf, ARatioSf, ARatioPlate,
+                         plate, tPlate, geomPlateWf, geomPlateSf, L, W,
                          efficiencyThermal, flowInWf, flowInSf, flowOutWf, flowOutSf,
                          sizeAttr, sizeBounds, name, notes, config)
         self._inputs = _inputs

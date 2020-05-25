@@ -14,7 +14,7 @@ from warnings import warn
 from math import nan, isnan, pi
 import scipy.optimize as opt
 
-cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'ARatioWf', 'ARatioSf', 'ARatioPlate', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'A', 'dpWf()', 'dpSf()', 'isEvap()')
 cdef str msg
 
@@ -43,12 +43,6 @@ L : float, optional
     Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.
 W : float, optional
     Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.
-ARatioWf : float, optional
-    Multiplier for the heat transfer surface area of the working fluid [-]. Defaults to 1.
-ARatioSf : float, optional
-    Multiplier for the heat transfer surface area of the secondary fluid [-]. Defaults to 1.
-ARatioPlate : float, optional
-    Multiplier for the heat transfer surface area of the plate [-]. Defaults to 1.
 efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
@@ -86,9 +80,6 @@ config : Config, optional
                  Geom geomSf=None,
                  double L=nan,
                  double W=nan,
-                 double ARatioWf=1,
-                 double ARatioSf=1,
-                 double ARatioPlate=1,
                  double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -105,8 +96,8 @@ config : Config, optional
                  Config config=None,
                  _unitClass=HxUnitPlate):
         super().__init__(flowConfig, 0, 0, NPlate, nan, nan, nan, nan,
-                         RfWf, RfSf, plate, tPlate, L, W, ARatioWf, ARatioSf,
-                         ARatioPlate, efficiencyThermal, flowInWf, flowInSf,
+                         RfWf, RfSf, plate, tPlate, L, W, 1, 1,
+                         1, efficiencyThermal, flowInWf, flowInSf,
                          flowOutWf, flowOutSf, ambient, sizeAttr,
                          sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config, _unitClass)
         self.geomWf = geomWf
@@ -119,8 +110,7 @@ config : Config, optional
         """Arguments passed to HxUnits in the liquid region."""
         return (self.flowConfig, self.NPlate, self.RfWf, self.RfSf, self.plate,
                 self.tPlate, self.geomWf, self.geomSf, self.L,
-                self.W, self.ARatioWf, self.ARatioSf, self.ARatioPlate,
-                self.efficiencyThermal)
+                self.W, self.efficiencyThermal)
 
     cdef public tuple _unitArgsTp(self):
         """Arguments passed to HxUnits in the two-phase region."""
@@ -312,19 +302,14 @@ unitsBounds : float or list of float, optional
         return self._NSf()
 
     @property
-    def geom(self):
-        if self.geomSf is self.geomWf:
-            return self.geomWf
-        else:
-            warn(
-                "geom is not valid: geomWf and geomSf are different objects"
-            )
-            pass
+    def NPlate(self):
+        """int: Alias of self.NWall"""
+        return self.NWall
 
-    @geom.setter
-    def geom(self, obj):
-        self.geomWf = obj
-        self.geomSf = obj
+    @NPlate.setter
+    def NPlate(self, value):
+        self.NWall = value
+    
     @property
     def plate(self):
         """SolidMaterial: Alias of self.wall"""
@@ -342,21 +327,3 @@ unitsBounds : float or list of float, optional
     @tPlate.setter
     def tPlate(self, value):
         self.tWall = value
-
-    @property
-    def ARatioPlate(self):
-        """float: Alias of self.ARatioWall"""
-        return self.ARatioWall
-
-    @ARatioPlate.setter
-    def ARatioPlate(self, value):
-        self.ARatioWall = value
-
-    @property
-    def NPlate(self):
-        """int: Alias of self.NWall"""
-        return self.NWall
-
-    @NPlate.setter
-    def NPlate(self, value):
-        self.NWall = value

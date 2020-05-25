@@ -8,7 +8,7 @@ from ..._constants cimport *
 from ...logger import log
 from math import nan
 import scipy.optimize as opt
-
+from cython.parallel import prange
 cdef tuple _inputs = ('flowConfig', 'NWf', 'NSf', 'NWall', 'hWf_liq', 'hWf_tp', 'hWf_vap', 'hSf', 'RfWf', 'RfSf', 'wall', 'tWall', 'L', 'W', 'ARatioWf', 'ARatioSf', 'ARatioWall', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'A', 'dpWf()', 'dpSf()', 'isEvap()')
         
