@@ -14,15 +14,21 @@ Added
 *******
 
 - New components: ``HxSimple``
+  New geometries: ``Port``
 
 Changed
 ********
+
+- ``GeomHxPlateCorrugatedChevron`` renamed ``GeomHxPlateChevron``
+- ``HxPlate`` expanded to encapsulate ``HxPlateChevron``
 
 Deprecated
 ***********
 
 Removed
 *********
+
+- ``HxPlateCorrugatedChevron`` (use ``HxPlate``)
 
 
 Fixed

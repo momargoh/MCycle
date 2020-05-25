@@ -14,7 +14,7 @@ from warnings import warn
 from math import nan, isnan, pi
 import scipy.optimize as opt
 
-cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
+cdef tuple _inputs = ('flowConfig', 'NPlate', 'RfWf', 'RfSf', 'plate', 'tPlate', 'geomWf', 'geomSf', 'L', 'W', 'portWf', 'portSf', 'LVertPortWf', 'LVertPortSf', 'coeffs_LPlate', 'coeffs_WPlate', 'coeffs_mass', 'efficiencyThermal', 'flowInWf', 'flowInSf', 'flowOutWf', 'flowOutSf', 'ambient', 'sizeAttr', 'sizeBounds', 'sizeUnitsBounds', 'runBounds', 'runUnitsBounds', 'name', 'notes', 'config')
 cdef tuple _properties = ('mWf', 'mSf', 'Q()', 'A', 'dpWf()', 'dpSf()', 'isEvap()')
 cdef str msg
 
@@ -43,6 +43,23 @@ L : float, optional
     Length of the heat transfer surface area (dimension parallel to flow direction) [m]. Defaults to nan.
 W : float, optional
     Width of the heat transfer surface area (dimension perpendicular to flow direction) [m]. Defaults to nan.
+portWf : Geom, optional
+    Geom object describing the geometry of the working fluid ports.
+portSf : Geom, optional
+    Geom object describing the geometry of the secondary fluid ports.    
+LVertPortWf : float, optional
+    Vertical distance between incoming and outgoing working fluid flow ports [m]. If None, L is used. Defaults to None.
+LVertPortSf : float, optional
+    Vertical distance between incoming and outgoing secondary fluid flow ports [m]. If None, L is used. Defaults to None.
+coeffs_LPlate : list of float, optional
+    Coefficients to calculate the total plate length from the length of the heat transfer area. LPlate = sum(coeffs_LPlate[i] * L**i). Defaults to [0, 1].
+coeffs_WPlate : list of float, optional
+    Coefficients to calculate the total plate width from the width of the heat transfer area. wPlate = sum(coeffs_WPlate[i] * W**i). Defaults to [0, 1].
+coeffs_mass : list of float, optional
+    Coefficients to calculate the total mass of the plates from the number of plates and the plate volume.::
+        mass = sum(coeffs_mass[i] * NPlates**i)*(LPlate*WPlate*tPlate).
+
+    If None, the mass is approximated from the plate geometry. Defaults to None.
 efficiencyThermal : float, optional
     Thermal efficiency [-]. Defaults to 1.
 flowInWf : FlowState, optional
@@ -80,6 +97,13 @@ config : Config, optional
                  Geom geomSf=None,
                  double L=nan,
                  double W=nan,
+                 Geom portWf=None,
+                 Geom portSf=None,
+                 double LVertPortWf=nan,
+                 double LVertPortSf=nan,
+                 list coeffs_LPlate=[0, 1],
+                 list coeffs_WPlate=[0, 1],
+                 list coeffs_mass=[],
                  double efficiencyThermal=1.0,
                  FlowState flowInWf=None,
                  FlowState flowInSf=None,
@@ -105,6 +129,14 @@ config : Config, optional
         self._unitClass = HxUnitPlate
         self._inputs = _inputs
         self._properties = _properties
+    
+    cpdef public void update(self, dict kwargs):
+        """Update (multiple) variables using keyword arguments."""
+        for key, value in kwargs.items():
+            if key not in ["portWf", "portSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_mass"]:
+                super(HxBasicPlanar, self).update({key: value})
+            else:
+                super(Component22, self).update({key: value})
 
     cdef public tuple _unitArgsLiq(self):
         """Arguments passed to HxUnits in the liquid region."""
@@ -120,6 +152,7 @@ config : Config, optional
         """Arguments passed to HxUnits in the vapour region."""
         return self._unitArgsLiq()
 
+    
     cdef public void _unitiseExtra(self):
         cdef:
             unsigned int i, NUnits=len(self._units)
@@ -137,8 +170,7 @@ config : Config, optional
             self._units[i]._methodFrictionWf = self.config.lookupMethod(clsName, (geomWf, TRANSFER_FRICTION, unitPhaseWf, WORKING_FLUID))
             self._units[i]._methodFrictionSf = self.config.lookupMethod(clsName, (geomSf, TRANSFER_FRICTION, unitPhaseSf, SECONDARY_FLUID))
         
-            #print(unitPhaseWf, unitPhaseSf,self._units[i]._methodHeatWf, self._units[i]._methodHeatSf, self._units[i]._methodFrictionWf, self._units[i]._methodFrictionSf)
-                
+                    
     cpdef public unsigned int _NWf(self):
         """int: Number of secondary fluid flow channels. Setter may not be used.
 
@@ -166,6 +198,34 @@ config : Config, optional
                 return self.NPlate / 2 - 1
             else:
                 return self.NPlate / 2
+                
+    cpdef public double LPlate(self):
+        """float: Total length of the plate; sum(coeffs_LPlate[i] * L**i)."""
+        cdef double ans = 0
+        cdef int i
+        for i in range(len(self.coeffs_LPlate)):
+            ans += self.coeffs_LPlate[i] * self.L**i
+        return ans
+
+    cpdef public double WPlate(self):
+        """float: Total width of the plate; sum(coeffs_WPlate[i] * W**i)."""
+        cdef double ans = 0
+        cdef int i
+        for i in range(len(self.coeffs_WPlate)):
+            ans += self.coeffs_WPlate[i] * self.W**i
+        return ans
+
+    cdef double _LVertPortWf(self):
+        if isnan(self.LVertPortWf):
+            return self.L
+        else:
+            return self.LVertPortWf
+
+    cdef double _LVertPortSf(self):
+        if isnan(self.LVertPortSf):
+            return self.L
+        else:
+            return self.LVertPortSf
 
     cpdef public double dpFWf(self):
         """float: Frictional pressure drop of the working fluid [Pa]."""
@@ -193,30 +253,52 @@ config : Config, optional
 
     cpdef public double dpAccWf(self):
         """float: Acceleration pressure drop of the working fluid [Pa]."""
-        cdef double G = self._mWf() / self._NWf() / (self.geomWf.b * self.W)
+        cdef double G = self._mWf() / self._NWf() / (self.geomWf.areaPerWidth() * self.W)
         return G**2 * (1 / self.flowsOut[0].rho() - 1 / self.flowsIn[0].rho())
 
     cpdef public double dpAccSf(self):
         """float: Acceleration pressure drop of the secondary fluid [Pa]."""
-        cdef double G = self._mSf() / self._NSf() / (self.geomSf.b * self.W)
+        cdef double G = self._mSf() / self._NSf() / (self.geomSf.areaPerWidth() * self.W)
         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())
+
+    cpdef public double dpPortWf(self):
+        """float: Port pressure loss of the working fluid [Pa]."""
+        cdef double GPort, dpIn, dpOut
+        if self.portWf:
+            GPort = self._mWf() / self.portWf.area
+            dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
+            dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
+            return dpIn + dpOut
+        else:
+            return 0
+
+    cpdef public double dpPortSf(self):
+        """float: Port pressure loss of the secondary fluid [Pa]."""
+        cdef double GPort, dpIn, dpOut
+        if self.portWf:
+            GPort = self._mSf() / self.portSf.area()
+            dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
+            dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
+            return dpIn + dpOut
+        else:
+            return 0
 
     cpdef public double dpHeadWf(self):
         """float: Static head pressure drop of the working fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards."""
         if self.flowConfig.verticalWf:
             if self.isEvap():
-                return self.flowsOut[0].rho() * self.config.gravity * self.L
+                return self.flowsOut[0].rho() * self.config.gravity * self._LVertPortWf()
             else:
-                return -self.flowsOut[0].rho() * self.config.gravity * self.L
+                return -self.flowsOut[0].rho() * self.config.gravity * self._LVertPortWf()
 
     cpdef public double dpHeadSf(self):
         """float: Static head pressure drop of the secondary fluid [Pa]. Assumes the hot flow flows downwards and the cold flow flows upwards."""
         if self.flowConfig.verticalSf:
             if self.isEvap():
-                return -self.flowsOut[1].rho() * self.config.gravity * self.L
+                return -self.flowsOut[1].rho() * self.config.gravity * self._LVertPortSf()
             else:
-                return self.flowsOut[1].rho() * self.config.gravity * self.L
-
+                return self.flowsOut[1].rho() * self.config.gravity * self._LVertPortSf()
+            
     cpdef public double dpWf(self):
         """float: Total pressure drop of the working fluid [Pa]."""
         cdef double dp = 0
@@ -226,6 +308,8 @@ config : Config, optional
             dp += self.dpAccWf()
         if self.config.dpHeadWf:
             dp += self.dpHeadWf()
+        if self.config.dpPortWf:
+            dp += self.dpPortWf()
         return dp
 
     cpdef public double dpSf(self):
@@ -237,15 +321,34 @@ config : Config, optional
             dp += self.dpAccSf()
         if self.config.dpHeadSf:
             dp += self.dpHeadSf()
+        if self.config.dpPortSf:
+            dp += self.dpPortSf()
         return dp
 
-    cpdef public double mass(self):
-        """float: Approximate total mass of the heat exchanger plates and fins [kg].
-        """
-        return self.wall.rho*self.W*self.L * (self.NWall*self.tPlate + self._NWf()*self.geomWf.areaPerWidth() + self._NSf()*self.geomSf.areaPerWidth())
-
     cpdef public double depth(self):
-        return self.NPlate*self.tPlate+self._NWf()*self.geomWf.b+self._NSf()*self.geomSf.b
+        return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+
+    cpdef public double mass(self):
+        """float: Approximate total mass of the heat exchanger plates [kg], calculated as either
+
+    - sum(coeffs_mass[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_mass is defined,
+    - or (LPlate*WPlate - 2(0.25*pi*DPortWf**2 + 0.25*pi*DPortSf**2))*tPlate*plate.rho*NPlate.
+        """
+        cdef double massPerVol
+        cdef int i
+        if self.coeffs_mass == []:
+            if self.coeffs_LPlate == [0, 1]:
+                return (self.L * self.WPlate()) * self.tWall * self.wall.rho * self.NWall
+            else:
+                return (
+                self.LPlate() * self.WPlate() - 2 *
+                (0.25 * pi * self.DPortWf**2 + 0.25 * pi * self.DPortSf**
+                 2)) * self.tWall * self.wall.rho * self.NWall
+        else:
+            massPerVol = 0.
+            for i in range(len(self.coeffs_mass)):
+                massPerVol += self.coeffs_mass[i] * self.NWall**i
+            return massPerVol * self.LPlate() * self.WPlate() * self.tWall
 
     cpdef public unsigned int size_NPlate(self) except 0:
         """int: size for NPlate that requires L to be closest to self.L"""

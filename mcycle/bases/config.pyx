@@ -260,7 +260,7 @@ args : tuple
         cdef str ret = ''
         cdef unsigned char transfer, flow, unitPhase, unitPhaseOrig
         try:
-            if cls in ["HxPlate","HxUnitPlate", "HxPlateCorrugated", "HxPlateFin"]:
+            if cls in ["HxPlate","HxUnitPlate", "HxPlate", "HxPlateFin"]:
                 """args must be in the form (geom, transfer, phase, flow)."""
                 if len(args) == 4:
                     geom, transfer, unitPhase, flow = args
@@ -269,7 +269,7 @@ args : tuple
                     log('error', msg)
                     raise IndexError(msg)
 
-                listGeom = ("GeomHxPlateCorrugatedChevron", "GeomHxPlateFinStraight",
+                listGeom = ("GeomHxPlateChevron", "GeomHxPlateFinStraight",
                                    "GeomHxPlateFinOffset", "GeomHxPlateSmooth")
                 if geom not in listGeom:
                     msg = "'geom' arg must be in {}, (given: {})".format(listGeom, geom)

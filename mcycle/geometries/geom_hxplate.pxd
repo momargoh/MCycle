@@ -1,10 +1,12 @@
 from ..bases.geom cimport Geom
 
-cdef class GeomHxPlateCorrugatedChevron(Geom):
+cdef class GeomHxPlateChevron(Geom):
     cpdef public double b
     cpdef public double beta
     cpdef public double pitchCorr
     cpdef public double phi
+    cpdef public double areaPerWidth(self)
+    cpdef public double spacing(self)
     
 cdef class GeomHxPlateFinStraight(Geom):
     cpdef public double s
@@ -16,6 +18,7 @@ cdef class GeomHxPlateFinStraight(Geom):
     cpdef public double alpha(self)
     cpdef public double gamma(self)
     cpdef public double areaPerWidth(self)
+    cpdef public double spacing(self)
     
 cdef class GeomHxPlateFinOffset(GeomHxPlateFinStraight):
     cpdef public double l
@@ -26,6 +29,7 @@ cdef class GeomHxPlateRough(Geom):
     cpdef public double roughness
     #
     cpdef public double areaPerWidth(self)
+    cpdef public double spacing(self)
 
 cdef class GeomHxPlateSmooth(GeomHxPlateRough):
     pass

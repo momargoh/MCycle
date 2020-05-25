@@ -17,22 +17,22 @@ def alfaLaval_AC30EQ(
         sizeAttr="NPlate",
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
-        name="HxPlateCorrugated instance",
+        name="HxPlate instance",
         kwargs={}):
     """Alfa Laval AC30EQ brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/ac/ac30eq--ach30eq.pdf"""
-    hx = cps.HxPlateCorrugated(
+    hx = cps.HxPlate(
         flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,
         plate=mats.stainlessSteel_316(),
         tPlate=0.424e-3,
-        geomWf=gms.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomSf=gms.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=gms.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=gms.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
-        DPortWf=0.0125,
-        DPortSf=0.0125,
+        portWf=gms.Port(d=0.0125),
+        portSf=gms.Port(d=0.0125),
         coeffs_LPlate=[0.056, 1],
         coeffs_WPlate=[0, 1],
         coeffs_mass=[
@@ -66,22 +66,22 @@ def alfaLaval_CBXP27(
         sizeAttr="NPlate",
         sizeBounds=[3, 100],
         sizeUnitsBounds=[1e-5, 10.],
-        name="HxPlateCorrugated instance",
+        name="HxPlate instance",
         kwargs={}):
     """Alfa Laval CBXP27 brazed plate heat exchanger, http://www.alfalaval.dk/globalassets/documents/products/heat-transfer/plate-heat-exchangers/brazed-plate-heat-exchangers/cb/cbxp27_productleaflet_che00131en.pdf"""
-    hx = cps.HxPlateCorrugated(
+    hx = cps.HxPlate(
         flowConfig=flowConfig,
         NPlate=3,
         RfWf=0,
         RfSf=0,
         plate=mats.stainlessSteel_316(),
         tPlate=0.95e-3,
-        geomWf=gms.GeomHxPlateCorrugatedChevron(1.45e-3, 60, 10e-3, 1.117),
-        geomSf=gms.GeomHxPlateCorrugatedChevron(1.45e-3, 60, 10e-3, 1.117),
+        geomWf=gms.GeomHxPlateChevron(1.45e-3, 60, 10e-3, 1.117),
+        geomSf=gms.GeomHxPlateChevron(1.45e-3, 60, 10e-3, 1.117),
         L=250e-3,
         W=111e-3,
-        DPortWf=0.0315,
-        DPortSf=0.0315,
+        portWf=gms.Port(d=0.0315),
+        portSf=gms.Port(d=0.0315),
         coeffs_LPlate=[0.060, 1],
         coeffs_WPlate=[0, 1],
         coeffs_mass=[

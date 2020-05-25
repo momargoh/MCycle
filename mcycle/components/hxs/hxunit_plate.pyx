@@ -4,7 +4,7 @@ from ...bases.geom cimport Geom
 from ...bases.solidmaterial cimport SolidMaterial
 from ..._constants cimport *
 from ...methods import heat_transfer as ht
-from ...geometries.geom_hxplate cimport GeomHxPlateCorrugatedChevron, GeomHxPlateFinOffset, GeomHxPlateFinStraight, GeomHxPlateSmooth
+from ...geometries.geom_hxplate cimport GeomHxPlateChevron, GeomHxPlateFinOffset, GeomHxPlateFinStraight, GeomHxPlateSmooth
 from .hxunit_basicplanar cimport HxUnitBasicPlanar
 from .flowconfig cimport HxFlowConfig
 from warnings import warn
@@ -57,7 +57,7 @@ sizeAttr : string, optional
 sizeBounds : float or list of float, optional
     Bracket containing solution of size(). Defaults to [1e-5, 10.0].
 name : string, optional
-    Description of object. Defaults to "HxUnitPlateCorrugated instance".
+    Description of object. Defaults to "HxUnitPlate instance".
 notes : string, optional
     Additional notes on the component such as model numbers. Defaults to "No notes/model info.".
 config : Config, optional
@@ -220,7 +220,7 @@ config : Config, optional
         cdef FlowState flowIn = self.flowsIn[flowId]
         cdef FlowState flowOut = self.flowsOut[flowId]
         cdef double Dh, Ac, a, b
-        if type(geom) in [GeomHxPlateCorrugatedChevron]:
+        if type(geom) in [GeomHxPlateChevron]:
             Dh = 2 * geom.b
             Ac = geom.b * self.W
         elif type(geom) in [GeomHxPlateSmooth]:

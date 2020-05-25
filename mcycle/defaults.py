@@ -52,7 +52,7 @@ RST_HEADINGS = ['=', '-', '^', '"']
 
 CONFIG = None
 METHODS = {
-    'GeomHxPlateCorrugatedChevron': {
+    'GeomHxPlateChevron': {
         TRANSFER_HEAT: {
             UNITPHASE_ALL: "chisholmWannairachchi_sp",
             UNITPHASE_TWOPHASE_EVAPORATING: "yanLin_tpEvap",

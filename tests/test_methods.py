@@ -26,73 +26,73 @@ class TestMethods(unittest.TestCase):
 
             mc.add_method(custom_method, "fail_submodule")
 
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_using_args(self):
-        self.methods['GeomHxPlateCorrugatedChevron'][mc.TRANSFER_HEAT][
+    def test_Methods_lookupMethod_HxPlateChevron_using_args(self):
+        self.methods['GeomHxPlateChevron'][mc.TRANSFER_HEAT][
             mc.WORKING_FLUID] = {
                 mc.UNITPHASE_TWOPHASE_EVAPORATING: "yanLin_tpEvap"
             }
         self.assertEqual(
             self.configTest.lookupMethod(
                 "HxPlate",
-                ("GeomHxPlateCorrugatedChevron", mc.TRANSFER_HEAT,
+                ("GeomHxPlateChevron", mc.TRANSFER_HEAT,
                  mc.UNITPHASE_TWOPHASE_EVAPORATING, mc.WORKING_FLUID)),
             "yanLin_tpEvap")
 
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_using_fallback_ALL_TWOPHASE(
+    def test_Methods_lookupMethod_HxPlateChevron_using_fallback_ALL_TWOPHASE(
             self):
-        self.methods['GeomHxPlateCorrugatedChevron'][mc.TRANSFER_HEAT][
+        self.methods['GeomHxPlateChevron'][mc.TRANSFER_HEAT][
             mc.WORKING_FLUID] = {
                 mc.UNITPHASE_ALL_TWOPHASE: "yanLin_tpEvap"
             }
         self.assertEqual(
             self.configTest.lookupMethod(
                 "HxPlate",
-                ("GeomHxPlateCorrugatedChevron", mc.TRANSFER_HEAT,
+                ("GeomHxPlateChevron", mc.TRANSFER_HEAT,
                  mc.UNITPHASE_TWOPHASE_EVAPORATING, mc.WORKING_FLUID)),
             "yanLin_tpEvap")
 
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_using_fallback_ALL(
+    def test_Methods_lookupMethod_HxPlateChevron_using_fallback_ALL(
             self):
-        self.methods['GeomHxPlateCorrugatedChevron'][mc.TRANSFER_HEAT][
+        self.methods['GeomHxPlateChevron'][mc.TRANSFER_HEAT][
             mc.WORKING_FLUID] = {
                 mc.UNITPHASE_ALL: "yanLin_tpEvap"
             }
         self.assertEqual(
             self.configTest.lookupMethod(
                 "HxPlate",
-                ("GeomHxPlateCorrugatedChevron", mc.TRANSFER_HEAT,
+                ("GeomHxPlateChevron", mc.TRANSFER_HEAT,
                  mc.UNITPHASE_TWOPHASE_EVAPORATING, mc.WORKING_FLUID)),
             "yanLin_tpEvap")
 
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_using_fallback_ALL_SINGLEPHASE_of_FLOW_ALL(
+    def test_Methods_lookupMethod_HxPlateChevron_using_fallback_ALL_SINGLEPHASE_of_FLOW_ALL(
             self):
-        self.methods['GeomHxPlateCorrugatedChevron'][mc.TRANSFER_HEAT] = {
+        self.methods['GeomHxPlateChevron'][mc.TRANSFER_HEAT] = {
             mc.UNITPHASE_ALL_SINGLEPHASE: "yanLin_tpEvap"
         }
         self.assertEqual(
             self.configTest.lookupMethod(
-                "HxPlate", ("GeomHxPlateCorrugatedChevron", mc.TRANSFER_HEAT,
+                "HxPlate", ("GeomHxPlateChevron", mc.TRANSFER_HEAT,
                             mc.UNITPHASE_LIQUID, mc.WORKING_FLUID)),
             "yanLin_tpEvap")
 
     #"""
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_Error_method_is_None(
+    def test_Methods_lookupMethod_HxPlateChevron_Error_method_is_None(
             self):
-        self.methods['GeomHxPlateCorrugatedChevron'][mc.TRANSFER_FRICTION] = {}
+        self.methods['GeomHxPlateChevron'][mc.TRANSFER_FRICTION] = {}
         with self.assertRaises(KeyError):
             self.configTest.lookupMethod(
                 "HxPlate",
-                ("GeomHxPlateCorrugatedChevron", mc.TRANSFER_FRICTION,
+                ("GeomHxPlateChevron", mc.TRANSFER_FRICTION,
                  mc.UNITPHASE_LIQUID, mc.WORKING_FLUID))
 
-    def test_Methods_lookupMethod_HxPlateCorrugatedChevron_Error_wrong_number_args(
+    def test_Methods_lookupMethod_HxPlateChevron_Error_wrong_number_args(
             self):
         self.configTest.set_method(
-            'test_method', 'GeomHxPlateCorrugatedChevron',
+            'test_method', 'GeomHxPlateChevron',
             mc.TRANSFER_FRICTION, mc.UNITPHASE_ALL, mc.WORKING_FLUID)
         with self.assertRaises(IndexError):
             self.configTest.lookupMethod(
-                "HxPlate", ("GeomHxPlateCorrugatedChevron",
+                "HxPlate", ("GeomHxPlateChevron",
                             mc.TRANSFER_FRICTION, mc.UNITPHASE_LIQUID))
 
     #"""

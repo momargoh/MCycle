@@ -1,9 +1,9 @@
 from ..bases.geom cimport Geom
 
-cdef tuple _inputsHxPlateCorrugatedChevron = ('b', 'beta', 'pitchCorr', 'phi')
-cdef tuple _propertiesHxPlateCorrugatedChevron = ()
+cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')
+cdef tuple _propertiesHxPlateChevron = ()
 
-cdef class GeomHxPlateCorrugatedChevron(Geom):
+cdef class GeomHxPlateChevron(Geom):
     r"""Geometry of chevron corrugations for a plate heat exchanger.
 
 Parameters
@@ -25,15 +25,25 @@ phi : float
                  beta,
                  pitchCorr,
                  phi,
-                 name="GeomHxPlateCorrugatedChevron instance"):
+                 name="GeomHxPlateChevron instance"):
         self.b = b
         self.beta = beta
         self.pitchCorr = pitchCorr
         self.phi = phi
         self.name = name
         self.validClasses = ('HxPlate', 'HxUnitPlate')
-        self._inputs = _inputsHxPlateCorrugatedChevron
-        self._properties = _propertiesHxPlateCorrugatedChevron
+        self._inputs = _inputsHxPlateChevron
+        self._properties = _propertiesHxPlateChevron
+        
+
+    cpdef public double areaPerWidth(self):
+        return self.b
+    
+    cpdef public double spacing(self):
+        return self.b
+
+def GeomHxPlateCorrugatedChevron(*args, **kwargs):
+    return GeomHxPlateChevron(*args, **kwargs)
 
 cdef tuple _inputsHxPlateFinStraight = ('s', 'b', 't')
 cdef tuple _propertiesHxPlateFinStraight = ('h()',)
@@ -87,9 +97,11 @@ t : float
 
     cpdef public double areaPerWidth(self):
         return (self.s + self.b)/(self.s/self.t + 1)
+    
+    cpdef public double spacing(self):
+        return self.h() + self.t
 
 cdef tuple _inputsHxPlateFinOffset = ('s', 'b', 't', 'l')
-
 cdef tuple _propertiesHxPlateFinOffset = ('h()',)
         
 cdef class GeomHxPlateFinOffset(GeomHxPlateFinStraight):
@@ -170,7 +182,10 @@ roughness : float
         self._properties = _propertiesHxPlateRough
 
     cpdef public double areaPerWidth(self):
-        return 0
+        return self.b
+    
+    cpdef public double spacing(self):
+        return self.b
 
         
 cdef tuple _inputsHxPlateSmooth = ('b',)

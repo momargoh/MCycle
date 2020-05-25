@@ -2,26 +2,23 @@ import unittest
 import mcycle as mc
 
 
-class TestHxPlateCorrugatedChevron(unittest.TestCase):
+class TestHxPlate(unittest.TestCase):
     config = mc.Config()
     config.update({'dpAcc': False, 'dpPort': False, 'dpHead': False})
-    config.set_method("savostinTikhonov_sp", "GeomHxPlateCorrugatedChevron",
+    config.set_method("savostinTikhonov_sp", "GeomHxPlateChevron",
                       mc.TRANSFER_ALL, mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
-    hx = mc.HxPlateCorrugated(
+    hx = mc.HxPlate(
         flowConfig=mc.HxFlowConfig(mc.COUNTERFLOW, 1, '', True, True),
         RfWf=0,
         RfSf=0,
         plate=mc.library.stainlessSteel_316(573.15),
         tPlate=0.424e-3,
-        geomWf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomSf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=mc.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=mc.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
-        DPortWf=0.0125,
-        DPortSf=0.0125,
-        ARatioWf=1,
-        ARatioSf=1,
-        ARatioPlate=1,
+        portWf=mc.Port(d=0.0125),
+        portSf=mc.Port(d=0.0125),
         NPlate=23,
         coeffs_LPlate=[0.056, 1],
         coeffs_WPlate=[0, 1],

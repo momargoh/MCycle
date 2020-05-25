@@ -27,7 +27,7 @@ class TestRankineBasic(unittest.TestCase):
         'dpPort': False,
         'dpHead': False
     })
-    config.set_method("savostinTikhonov_sp", "GeomHxPlateCorrugatedChevron",
+    config.set_method("savostinTikhonov_sp", "GeomHxPlateChevron",
                       mc.TRANSFER_ALL, mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
     cycle = mc.RankineBasic(wf, evap, exp, cond, comp, pEvap, superheat, nan,
                             subcool, config)

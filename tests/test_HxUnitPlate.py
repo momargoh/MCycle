@@ -10,20 +10,17 @@ class TestHxUnitPlateCorrChevron(unittest.TestCase):
         RfSf=0,
         plate=mc.library.materials.stainlessSteel_316(573.15),
         tPlate=0.424e-3,
-        geomWf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
-        geomSf=mc.GeomHxPlateCorrugatedChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomWf=mc.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
+        geomSf=mc.GeomHxPlateChevron(1.096e-3, 60, 10e-3, 1.117),
         L=269e-3,
         W=95e-3,
-        ARatioWf=1,
-        ARatioSf=1,
-        ARatioPlate=1,
         efficiencyThermal=1.0,
         config=mc.Config())
     hxUnit.config.set_method("savostinTikhonov_sp",
-                             "GeomHxPlateCorrugatedChevron", mc.TRANSFER_ALL,
+                             "GeomHxPlateChevron", mc.TRANSFER_ALL,
                              mc.UNITPHASE_ALL, mc.SECONDARY_FLUID)
     hxUnit.config.set_method("chisholmWannairachchi_sp",
-                             "GeomHxPlateCorrugatedChevron", mc.TRANSFER_ALL,
+                             "GeomHxPlateChevron", mc.TRANSFER_ALL,
                              mc.UNITPHASE_ALL, mc.WORKING_FLUID)
     hxUnit._methodHeatWf = "chisholmWannairachchi_sp"
     hxUnit._methodFrictionWf = "chisholmWannairachchi_sp"
