@@ -14,13 +14,14 @@ Added
 *******
 
 - New components: ``HxSimple``
-  New geometries: ``Port``
+- New geometries: ``Port``
 
 Changed
 ********
 
 - ``GeomHxPlateCorrugatedChevron`` renamed ``GeomHxPlateChevron``
 - ``HxPlate`` expanded to encapsulate ``HxPlateChevron``
+- ``ClrBasic`` and ``HtrBasic`` now have ``constraint`` attriubute instead of ``*ConstP`` and ``*ConstV`` subclasses
 
 Deprecated
 ***********
@@ -29,6 +30,8 @@ Removed
 *********
 
 - ``HxPlateCorrugatedChevron`` (use ``HxPlate``)
+- ``ClrBasicConstP``, ``ClrBasicConstV`` (use ``ClrBasic`` with ``constraint=CONSTANT_P``) 
+- ``HtrBasicConstP``, ``HtrBasicConstV`` (use ``HtrBasic`` with ``constraint=CONSTANT_P``) 
 
 
 Fixed

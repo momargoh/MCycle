@@ -1889,6 +1889,12 @@ static unsigned char *__pyx_vp_6mcycle_10_constants_PARALLELFLOW = 0;
 #define __pyx_v_6mcycle_10_constants_PARALLELFLOW (*__pyx_vp_6mcycle_10_constants_PARALLELFLOW)
 static unsigned char *__pyx_vp_6mcycle_10_constants_CROSSFLOW = 0;
 #define __pyx_v_6mcycle_10_constants_CROSSFLOW (*__pyx_vp_6mcycle_10_constants_CROSSFLOW)
+static unsigned char *__pyx_vp_6mcycle_10_constants_NO_CONSTRAINT = 0;
+#define __pyx_v_6mcycle_10_constants_NO_CONSTRAINT (*__pyx_vp_6mcycle_10_constants_NO_CONSTRAINT)
+static unsigned char *__pyx_vp_6mcycle_10_constants_CONSTANT_P = 0;
+#define __pyx_v_6mcycle_10_constants_CONSTANT_P (*__pyx_vp_6mcycle_10_constants_CONSTANT_P)
+static unsigned char *__pyx_vp_6mcycle_10_constants_CONSTANT_V = 0;
+#define __pyx_v_6mcycle_10_constants_CONSTANT_V (*__pyx_vp_6mcycle_10_constants_CONSTANT_V)
 static PyObject **__pyx_vp_6mcycle_10_constants_SOURCE_URL = 0;
 #define __pyx_v_6mcycle_10_constants_SOURCE_URL (*__pyx_vp_6mcycle_10_constants_SOURCE_URL)
 static PyObject **__pyx_vp_6mcycle_10_constants_DOCS_URL = 0;
@@ -18360,6 +18366,9 @@ static int __Pyx_modinit_variable_import_code(void) {
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "COUNTERFLOW", (void **)&__pyx_vp_6mcycle_10_constants_COUNTERFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "PARALLELFLOW", (void **)&__pyx_vp_6mcycle_10_constants_PARALLELFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "CROSSFLOW", (void **)&__pyx_vp_6mcycle_10_constants_CROSSFLOW, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportVoidPtr(__pyx_t_1, "NO_CONSTRAINT", (void **)&__pyx_vp_6mcycle_10_constants_NO_CONSTRAINT, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportVoidPtr(__pyx_t_1, "CONSTANT_P", (void **)&__pyx_vp_6mcycle_10_constants_CONSTANT_P, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportVoidPtr(__pyx_t_1, "CONSTANT_V", (void **)&__pyx_vp_6mcycle_10_constants_CONSTANT_V, "unsigned char") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "SOURCE_URL", (void **)&__pyx_vp_6mcycle_10_constants_SOURCE_URL, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_ImportVoidPtr(__pyx_t_1, "DOCS_URL", (void **)&__pyx_vp_6mcycle_10_constants_DOCS_URL, "PyObject *") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   Py_DECREF(__pyx_t_1); __pyx_t_1 = 0;

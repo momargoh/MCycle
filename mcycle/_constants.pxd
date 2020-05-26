@@ -98,6 +98,10 @@ cdef public unsigned char FLOWSENSE_UNDEFINED
 cdef public unsigned char COUNTERFLOW
 cdef public unsigned char PARALLELFLOW
 cdef public unsigned char CROSSFLOW
+# Constraints
+cdef public unsigned char NO_CONSTRAINT
+cdef public unsigned char CONSTANT_P
+cdef public unsigned char CONSTANT_V
 # MCycle
 cdef public str SOURCE_URL
 cdef public str DOCS_URL

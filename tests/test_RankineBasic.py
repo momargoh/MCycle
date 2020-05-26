@@ -18,7 +18,7 @@ class TestRankineBasic(unittest.TestCase):
     sinkIn = mc.FlowState("Air", 0.20, mc.PT_INPUTS, 0.88260e5, 281.65)
     sinkAmbient = sinkIn.copy()
     sourceAmbient = sinkIn.copy()
-    cond = mc.ClrBasicConstP(nan, 1, sizeAttr="QCool")
+    cond = mc.ClrBasic(mc.CONSTANT_P, nan, 1, sizeAttr="QCool")
     config = mc.Config()
     config.update({
         'dpEvap': False,

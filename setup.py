@@ -31,7 +31,7 @@ with open("mcycle/_constants.pyx", 'r') as f:
                 wl_py.append(' '.join(elems[eq_id - 1:eq_id + 2]) + '\n')
                 wl_pxd.append(' '.join(elems[:eq_id]) + '\n')
             except:
-                continue
+                pass
     try:
         constants_py = open("mcycle/constants.py", 'w')
     except:

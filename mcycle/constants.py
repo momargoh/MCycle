@@ -98,6 +98,10 @@ FLOWSENSE_UNDEFINED = 0
 COUNTERFLOW = 1
 PARALLELFLOW = 2
 CROSSFLOW = 3
+# Constraints
+NO_CONSTRAINT = 0
+CONSTANT_P = 1
+CONSTANT_V = 2
 # MCycle
 SOURCE_URL = 'https://github.com/momargoh/MCycle'
 DOCS_URL = 'https://mcycle.momarhughes.com'
