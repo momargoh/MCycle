@@ -1153,7 +1153,7 @@ struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron {
   struct __pyx_obj_6mcycle_5bases_4geom_Geom __pyx_base;
   double b;
   double beta;
-  double pitchCorr;
+  double pitch;
   double phi;
 };
 

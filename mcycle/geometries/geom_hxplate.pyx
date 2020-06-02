@@ -1,6 +1,6 @@
 from ..bases.geom cimport Geom
 
-cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')
+cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitch', 'phi')
 cdef tuple _propertiesHxPlateChevron = ()
 
 cdef class GeomHxPlateChevron(Geom):
@@ -12,9 +12,9 @@ b : float
     Plate spacing for fluid channels [m].
 beta : float
     Plate corrugation chevron angle [deg].
-pitchCorr : float
-    Plate corrugation pitch [m] (distance between corrugation 'bumps').
-      .. note:: Not to be confused with the plate pitch (pitchPlate) which is defined as the sum of the plate channel spacing and one plate thickness.
+pitch : float
+    Plate chevron pitch [m] (distance between chevrons).
+      .. note:: Not to be confused with the plate pitch which is defined as the sum of the plate channel spacing and one plate thickness.
 phi : float
     Corrugated plate surface enlargement factor; ratio of developed length to projected length.
     """
@@ -23,12 +23,12 @@ phi : float
     def __init__(self,
                  b,
                  beta,
-                 pitchCorr,
+                 pitch,
                  phi,
                  name="GeomHxPlateChevron instance"):
         self.b = b
         self.beta = beta
-        self.pitchCorr = pitchCorr
+        self.pitch = pitch
         self.phi = phi
         self.name = name
         self.validClasses = ('HxPlate', 'HxUnitPlate')

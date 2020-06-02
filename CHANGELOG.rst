@@ -19,7 +19,7 @@ Added
 Changed
 ********
 
-- ``GeomHxPlateCorrugatedChevron`` renamed ``GeomHxPlateChevron``
+- ``GeomHxPlateCorrugatedChevron`` renamed ``GeomHxPlateChevron`` and ``pitchCorr`` attribute renamed ``pitch``
 - ``HxPlate`` expanded to encapsulate ``HxPlateChevron``
 - ``ClrBasic`` and ``HtrBasic`` now have ``constraint`` attriubute instead of ``*ConstP`` and ``*ConstV`` subclasses
 

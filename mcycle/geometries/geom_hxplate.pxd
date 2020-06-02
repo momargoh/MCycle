@@ -3,7 +3,7 @@ from ..bases.geom cimport Geom
 cdef class GeomHxPlateChevron(Geom):
     cpdef public double b
     cpdef public double beta
-    cpdef public double pitchCorr
+    cpdef public double pitch
     cpdef public double phi
     cpdef public double areaPerWidth(self)
     cpdef public double spacing(self)

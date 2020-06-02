@@ -870,7 +870,7 @@ struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron {
   struct __pyx_obj_6mcycle_5bases_4geom_Geom __pyx_base;
   double b;
   double beta;
-  double pitchCorr;
+  double pitch;
   double phi;
 };
 
@@ -1464,6 +1464,7 @@ static const char __pyx_k_warn[] = "warn";
 static const char __pyx_k_alpha[] = "alpha";
 static const char __pyx_k_delta[] = "delta";
 static const char __pyx_k_gamma[] = "gamma";
+static const char __pyx_k_pitch[] = "pitch";
 static const char __pyx_k_set_h[] = "set_h";
 static const char __pyx_k_super[] = "super";
 static const char __pyx_k_format[] = "format";
@@ -1479,7 +1480,6 @@ static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_pyx_type[] = "__pyx_type";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_warnings[] = "warnings";
-static const char __pyx_k_pitchCorr[] = "pitchCorr";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_roughness[] = "roughness";
@@ -1513,9 +1513,9 @@ static const char __pyx_k_pyx_unpickle_GeomHxPlateFinStr[] = "__pyx_unpickle_Geo
 static const char __pyx_k_pyx_unpickle_GeomHxPlateSmooth[] = "__pyx_unpickle_GeomHxPlateSmooth";
 static const char __pyx_k_Cannot_set_h_given_b_t_one_must[] = "Cannot set h, given b={}, t={}, one must set to -1";
 static const char __pyx_k_GeomHxPlateFinStraight_instance[] = "GeomHxPlateFinStraight instance";
-static const char __pyx_k_Incompatible_checksums_s_vs_0x29[] = "Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x58[] = "Incompatible checksums (%s vs 0x588448d = (_inputs, _properties, b, cls, ilist, itup, name, roughness, validClasses))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x59[] = "Incompatible checksums (%s vs 0x5969a04 = (_inputs, _properties, b, cls, ilist, itup, name, s, t, validClasses))";
+static const char __pyx_k_Incompatible_checksums_s_vs_0x8d[] = "Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))";
 static const char __pyx_k_Incompatible_checksums_s_vs_0xb1[] = "Incompatible checksums (%s vs 0xb124c9c = (_inputs, _properties, b, cls, ilist, itup, l, name, s, t, validClasses))";
 static const char __pyx_k_mcycle_geometries_geom_hxplate_p[] = "mcycle/geometries/geom_hxplate.pyx";
 static PyObject *__pyx_kp_u_Cannot_set_h_given_b_t_one_must;
@@ -1533,9 +1533,9 @@ static PyObject *__pyx_kp_u_GeomHxPlateSmooth_instance;
 static PyObject *__pyx_n_u_HxPlate;
 static PyObject *__pyx_n_u_HxPlateFin;
 static PyObject *__pyx_n_u_HxUnitPlate;
-static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x29;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x58;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x59;
+static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x8d;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb1;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_alpha;
@@ -1567,8 +1567,8 @@ static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_phi;
 static PyObject *__pyx_n_u_phi;
 static PyObject *__pyx_n_s_pickle;
-static PyObject *__pyx_n_s_pitchCorr;
-static PyObject *__pyx_n_u_pitchCorr;
+static PyObject *__pyx_n_s_pitch;
+static PyObject *__pyx_n_u_pitch;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
 static PyObject *__pyx_n_s_pyx_result;
@@ -1599,15 +1599,15 @@ static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_warn;
 static PyObject *__pyx_n_s_warnings;
-static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_b, PyObject *__pyx_v_beta, PyObject *__pyx_v_pitchCorr, PyObject *__pyx_v_phi, PyObject *__pyx_v_name); /* proto */
+static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_b, PyObject *__pyx_v_beta, PyObject *__pyx_v_pitch, PyObject *__pyx_v_phi, PyObject *__pyx_v_name); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_2areaPerWidth(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_4spacing(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1b___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
 static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1b_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_4beta___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
 static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_4beta_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
-static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
+static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_3phi___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
 static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_3phi_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_6__reduce_cython__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self); /* proto */
@@ -1657,9 +1657,9 @@ static PyObject *__pyx_tp_new_6mcycle_10geometries_12geom_hxplate_GeomHxPlateFin
 static PyObject *__pyx_tp_new_6mcycle_10geometries_12geom_hxplate_GeomHxPlateRough(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6mcycle_10geometries_12geom_hxplate_GeomHxPlateSmooth(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
-static PyObject *__pyx_int_43124998;
 static PyObject *__pyx_int_92816525;
 static PyObject *__pyx_int_93755908;
+static PyObject *__pyx_int_147988658;
 static PyObject *__pyx_int_185748636;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
@@ -1697,7 +1697,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__
 static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_b = 0;
   PyObject *__pyx_v_beta = 0;
-  PyObject *__pyx_v_pitchCorr = 0;
+  PyObject *__pyx_v_pitch = 0;
   PyObject *__pyx_v_phi = 0;
   PyObject *__pyx_v_name = 0;
   int __pyx_lineno = 0;
@@ -1707,7 +1707,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_b,&__pyx_n_s_beta,&__pyx_n_s_pitchCorr,&__pyx_n_s_phi,&__pyx_n_s_name,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_b,&__pyx_n_s_beta,&__pyx_n_s_pitch,&__pyx_n_s_phi,&__pyx_n_s_name,0};
     PyObject* values[5] = {0,0,0,0,0};
     values[4] = ((PyObject *)__pyx_kp_u_GeomHxPlateChevron_instance);
     if (unlikely(__pyx_kwds)) {
@@ -1740,7 +1740,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__
         }
         CYTHON_FALLTHROUGH;
         case  2:
-        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pitchCorr)) != 0)) kw_args--;
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pitch)) != 0)) kw_args--;
         else {
           __Pyx_RaiseArgtupleInvalid("__init__", 0, 4, 5, 2); __PYX_ERR(0, 23, __pyx_L3_error)
         }
@@ -1774,7 +1774,7 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__
     }
     __pyx_v_b = values[0];
     __pyx_v_beta = values[1];
-    __pyx_v_pitchCorr = values[2];
+    __pyx_v_pitch = values[2];
     __pyx_v_phi = values[3];
     __pyx_v_name = values[4];
   }
@@ -1786,14 +1786,14 @@ static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1__
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self), __pyx_v_b, __pyx_v_beta, __pyx_v_pitchCorr, __pyx_v_phi, __pyx_v_name);
+  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self), __pyx_v_b, __pyx_v_beta, __pyx_v_pitch, __pyx_v_phi, __pyx_v_name);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_b, PyObject *__pyx_v_beta, PyObject *__pyx_v_pitchCorr, PyObject *__pyx_v_phi, PyObject *__pyx_v_name) {
+static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___init__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_b, PyObject *__pyx_v_beta, PyObject *__pyx_v_pitch, PyObject *__pyx_v_phi, PyObject *__pyx_v_name) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -1808,7 +1808,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___i
  *                  name="GeomHxPlateChevron instance"):
  *         self.b = b             # <<<<<<<<<<<<<<
  *         self.beta = beta
- *         self.pitchCorr = pitchCorr
+ *         self.pitch = pitch
  */
   __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_b); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_v_self->b = __pyx_t_1;
@@ -1817,7 +1817,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___i
  *                  name="GeomHxPlateChevron instance"):
  *         self.b = b
  *         self.beta = beta             # <<<<<<<<<<<<<<
- *         self.pitchCorr = pitchCorr
+ *         self.pitch = pitch
  *         self.phi = phi
  */
   __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_beta); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
@@ -1826,16 +1826,16 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___i
   /* "mcycle/geometries/geom_hxplate.pyx":31
  *         self.b = b
  *         self.beta = beta
- *         self.pitchCorr = pitchCorr             # <<<<<<<<<<<<<<
+ *         self.pitch = pitch             # <<<<<<<<<<<<<<
  *         self.phi = phi
  *         self.name = name
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_pitchCorr); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
-  __pyx_v_self->pitchCorr = __pyx_t_1;
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_pitch); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_v_self->pitch = __pyx_t_1;
 
   /* "mcycle/geometries/geom_hxplate.pyx":32
  *         self.beta = beta
- *         self.pitchCorr = pitchCorr
+ *         self.pitch = pitch
  *         self.phi = phi             # <<<<<<<<<<<<<<
  *         self.name = name
  *         self.validClasses = ('HxPlate', 'HxUnitPlate')
@@ -1844,7 +1844,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron___i
   __pyx_v_self->phi = __pyx_t_1;
 
   /* "mcycle/geometries/geom_hxplate.pyx":33
- *         self.pitchCorr = pitchCorr
+ *         self.pitch = pitch
  *         self.phi = phi
  *         self.name = name             # <<<<<<<<<<<<<<
  *         self.validClasses = ('HxPlate', 'HxUnitPlate')
@@ -2201,7 +2201,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
  * cdef class GeomHxPlateChevron(Geom):
  *     cpdef public double b             # <<<<<<<<<<<<<<
  *     cpdef public double beta
- *     cpdef public double pitchCorr
+ *     cpdef public double pitch
  */
 
 /* Python wrapper */
@@ -2282,7 +2282,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_1b_
  * cdef class GeomHxPlateChevron(Geom):
  *     cpdef public double b
  *     cpdef public double beta             # <<<<<<<<<<<<<<
- *     cpdef public double pitchCorr
+ *     cpdef public double pitch
  *     cpdef public double phi
  */
 
@@ -2363,25 +2363,25 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_4be
 /* "mcycle/geometries/geom_hxplate.pxd":6
  *     cpdef public double b
  *     cpdef public double beta
- *     cpdef public double pitchCorr             # <<<<<<<<<<<<<<
+ *     cpdef public double pitch             # <<<<<<<<<<<<<<
  *     cpdef public double phi
  *     cpdef public double areaPerWidth(self)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr___get__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch___get__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self) {
+static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch___get__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2390,7 +2390,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->pitchCorr); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->pitch); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2399,7 +2399,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("mcycle.geometries.geom_hxplate.GeomHxPlateChevron.pitchCorr.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.geometries.geom_hxplate.GeomHxPlateChevron.pitch.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2408,19 +2408,19 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
 }
 
 /* Python wrapper */
-static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_2__set__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_2__set__(((struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_2__set__(struct __pyx_obj_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
@@ -2429,13 +2429,13 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
   __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_value); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 6, __pyx_L1_error)
-  __pyx_v_self->pitchCorr = __pyx_t_1;
+  __pyx_v_self->pitch = __pyx_t_1;
 
   /* function exit code */
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("mcycle.geometries.geom_hxplate.GeomHxPlateChevron.pitchCorr.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("mcycle.geometries.geom_hxplate.GeomHxPlateChevron.pitch.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2444,7 +2444,7 @@ static int __pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pi
 
 /* "mcycle/geometries/geom_hxplate.pxd":7
  *     cpdef public double beta
- *     cpdef public double pitchCorr
+ *     cpdef public double pitch
  *     cpdef public double phi             # <<<<<<<<<<<<<<
  *     cpdef public double areaPerWidth(self)
  *     cpdef public double spacing(self)
@@ -2566,7 +2566,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitchCorr, self.validClasses)             # <<<<<<<<<<<<<<
+ *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitch, self.validClasses)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -2576,7 +2576,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->phi); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->pitchCorr); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 5, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->pitch); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = PyTuple_New(11); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -2618,7 +2618,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitchCorr, self.validClasses)
+ *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitch, self.validClasses)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
@@ -2629,7 +2629,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   __pyx_t_5 = 0;
 
   /* "(tree fragment)":7
- *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitchCorr, self.validClasses)
+ *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitch, self.validClasses)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -2667,7 +2667,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitchCorr, self.validClasses)
+ *     state = (self._inputs, self._properties, self.b, self.beta, self.cls, self.ilist, self.itup, self.name, self.phi, self.pitch, self.validClasses)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -2681,7 +2681,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.cls is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.validClasses is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, None), state
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, None), state
  */
   /*else*/ {
     __pyx_t_6 = (__pyx_v_self->__pyx_base.__pyx_base._inputs != ((PyObject*)Py_None));
@@ -2738,7 +2738,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.cls is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.validClasses is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, None), state
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, None), state
  *     else:
  */
   __pyx_t_7 = (__pyx_v_use_setstate != 0);
@@ -2747,9 +2747,9 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
     /* "(tree fragment)":13
  *         use_setstate = self._inputs is not None or self._properties is not None or self.cls is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.validClasses is not None
  *     if use_setstate:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, state)
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, state)
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pyx_unpickle_GeomHxPlateChevro); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 13, __pyx_L1_error)
@@ -2759,9 +2759,9 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_43124998);
-    __Pyx_GIVEREF(__pyx_int_43124998);
-    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_int_43124998);
+    __Pyx_INCREF(__pyx_int_147988658);
+    __Pyx_GIVEREF(__pyx_int_147988658);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_int_147988658);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
     PyTuple_SET_ITEM(__pyx_t_5, 2, Py_None);
@@ -2784,15 +2784,15 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
  *     else:
  *         use_setstate = self._inputs is not None or self._properties is not None or self.cls is not None or self.ilist is not None or self.itup is not None or self.name is not None or self.validClasses is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, None), state
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, None), state
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, None), state
  *     else:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_GeomHxPlateChevron__set_state(self, __pyx_state)
  */
@@ -2805,9 +2805,9 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_43124998);
-    __Pyx_GIVEREF(__pyx_int_43124998);
-    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_int_43124998);
+    __Pyx_INCREF(__pyx_int_147988658);
+    __Pyx_GIVEREF(__pyx_int_147988658);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_int_147988658);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
     PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_state);
@@ -2849,7 +2849,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, state)
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_GeomHxPlateChevron__set_state(self, __pyx_state)
  */
@@ -2878,7 +2878,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, state)
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_GeomHxPlateChevron__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -2889,7 +2889,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevr
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x2920906, state)
+ *         return __pyx_unpickle_GeomHxPlateChevron, (type(self), 0x8d220b2, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_GeomHxPlateChevron__set_state(self, __pyx_state)
  */
@@ -7422,18 +7422,18 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x2920906:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8d220b2:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  */
-  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x2920906) != 0);
+  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x8d220b2) != 0);
   if (__pyx_t_1) {
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x2920906:
+ *     if __pyx_checksum != 0x8d220b2:
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  *     __pyx_result = GeomHxPlateChevron.__new__(__pyx_type)
  */
     __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 5, __pyx_L1_error)
@@ -7452,15 +7452,15 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum != 0x2920906:
+ *     if __pyx_checksum != 0x8d220b2:
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = GeomHxPlateChevron.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
     __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 6, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x29, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 6, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x8d, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 6, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_INCREF(__pyx_v___pyx_PickleError);
@@ -7487,15 +7487,15 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum != 0x2920906:             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8d220b2:             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  *     __pyx_result = GeomHxPlateChevron.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
@@ -7521,7 +7521,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
   __pyx_t_3 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  *     __pyx_result = GeomHxPlateChevron.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
@@ -7544,7 +7544,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x2920906 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitchCorr, validClasses))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8d220b2 = (_inputs, _properties, b, beta, cls, ilist, itup, name, phi, pitch, validClasses))" % __pyx_checksum)
  *     __pyx_result = GeomHxPlateChevron.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
@@ -7557,7 +7557,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -7590,7 +7590,7 @@ static PyObject *__pyx_pf_6mcycle_10geometries_12geom_hxplate_2__pyx_unpickle_Ge
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -7613,7 +7613,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]             # <<<<<<<<<<<<<<
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]             # <<<<<<<<<<<<<<
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[11])
  */
@@ -7712,7 +7712,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
     __PYX_ERR(2, 12, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_PyFloat_AsDouble(PyTuple_GET_ITEM(__pyx_v___pyx_state, 9)); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
-  __pyx_v___pyx_result->pitchCorr = __pyx_t_2;
+  __pyx_v___pyx_result->pitch = __pyx_t_2;
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(2, 12, __pyx_L1_error)
@@ -7728,7 +7728,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[11])
  */
@@ -7750,7 +7750,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
   if (__pyx_t_3) {
 
     /* "(tree fragment)":14
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  *         __pyx_result.__dict__.update(__pyx_state[11])             # <<<<<<<<<<<<<<
  */
@@ -7782,7 +7782,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
  *         __pyx_result.__dict__.update(__pyx_state[11])
  */
@@ -7792,7 +7792,7 @@ static PyObject *__pyx_f_6mcycle_10geometries_12geom_hxplate___pyx_unpickle_Geom
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
@@ -9805,13 +9805,13 @@ static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevro
   }
 }
 
-static PyObject *__pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitchCorr(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_1__get__(o);
+static PyObject *__pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitch(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_1__get__(o);
 }
 
-static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitchCorr(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitch(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_9pitchCorr_3__set__(o, v);
+    return __pyx_pw_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_5pitch_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -9844,7 +9844,7 @@ static PyMethodDef __pyx_methods_6mcycle_10geometries_12geom_hxplate_GeomHxPlate
 static struct PyGetSetDef __pyx_getsets_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron[] = {
   {(char *)"b", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_b, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_b, (char *)"b: 'double'", 0},
   {(char *)"beta", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_beta, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_beta, (char *)"beta: 'double'", 0},
-  {(char *)"pitchCorr", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitchCorr, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitchCorr, (char *)"pitchCorr: 'double'", 0},
+  {(char *)"pitch", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitch, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_pitch, (char *)"pitch: 'double'", 0},
   {(char *)"phi", __pyx_getprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_phi, __pyx_setprop_6mcycle_10geometries_12geom_hxplate_18GeomHxPlateChevron_phi, (char *)"phi: 'double'", 0},
   {0, 0, 0, 0, 0}
 };
@@ -9880,7 +9880,7 @@ static PyTypeObject __pyx_type_6mcycle_10geometries_12geom_hxplate_GeomHxPlateCh
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "GeomHxPlateChevron(b, beta, pitchCorr, phi, name=u'GeomHxPlateChevron instance')\nGeometry of chevron corrugations for a plate heat exchanger.\n\nParameters\n----------\nb : float\n    Plate spacing for fluid channels [m].\nbeta : float\n    Plate corrugation chevron angle [deg].\npitchCorr : float\n    Plate corrugation pitch [m] (distance between corrugation 'bumps').\n      .. note:: Not to be confused with the plate pitch (pitchPlate) which is defined as the sum of the plate channel spacing and one plate thickness.\nphi : float\n    Corrugated plate surface enlargement factor; ratio of developed length to projected length.\n    ", /*tp_doc*/
+  "GeomHxPlateChevron(b, beta, pitch, phi, name=u'GeomHxPlateChevron instance')\nGeometry of chevron corrugations for a plate heat exchanger.\n\nParameters\n----------\nb : float\n    Plate spacing for fluid channels [m].\nbeta : float\n    Plate corrugation chevron angle [deg].\npitch : float\n    Plate chevron pitch [m] (distance between chevrons).\n      .. note:: Not to be confused with the plate pitch which is defined as the sum of the plate channel spacing and one plate thickness.\nphi : float\n    Corrugated plate surface enlargement factor; ratio of developed length to projected length.\n    ", /*tp_doc*/
   __pyx_tp_traverse_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron, /*tp_traverse*/
   __pyx_tp_clear_6mcycle_10geometries_12geom_hxplate_GeomHxPlateChevron, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -10474,9 +10474,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_HxPlate, __pyx_k_HxPlate, sizeof(__pyx_k_HxPlate), 0, 1, 0, 1},
   {&__pyx_n_u_HxPlateFin, __pyx_k_HxPlateFin, sizeof(__pyx_k_HxPlateFin), 0, 1, 0, 1},
   {&__pyx_n_u_HxUnitPlate, __pyx_k_HxUnitPlate, sizeof(__pyx_k_HxUnitPlate), 0, 1, 0, 1},
-  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x29, __pyx_k_Incompatible_checksums_s_vs_0x29, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x29), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x58, __pyx_k_Incompatible_checksums_s_vs_0x58, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x58), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x59, __pyx_k_Incompatible_checksums_s_vs_0x59, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x59), 0, 0, 1, 0},
+  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x8d, __pyx_k_Incompatible_checksums_s_vs_0x8d, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x8d), 0, 0, 1, 0},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0xb1, __pyx_k_Incompatible_checksums_s_vs_0xb1, sizeof(__pyx_k_Incompatible_checksums_s_vs_0xb1), 0, 0, 1, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
@@ -10508,8 +10508,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_phi, __pyx_k_phi, sizeof(__pyx_k_phi), 0, 0, 1, 1},
   {&__pyx_n_u_phi, __pyx_k_phi, sizeof(__pyx_k_phi), 0, 1, 0, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
-  {&__pyx_n_s_pitchCorr, __pyx_k_pitchCorr, sizeof(__pyx_k_pitchCorr), 0, 0, 1, 1},
-  {&__pyx_n_u_pitchCorr, __pyx_k_pitchCorr, sizeof(__pyx_k_pitchCorr), 0, 1, 0, 1},
+  {&__pyx_n_s_pitch, __pyx_k_pitch, sizeof(__pyx_k_pitch), 0, 0, 1, 1},
+  {&__pyx_n_u_pitch, __pyx_k_pitch, sizeof(__pyx_k_pitch), 0, 1, 0, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_result, __pyx_k_pyx_result, sizeof(__pyx_k_pyx_result), 0, 0, 1, 1},
@@ -10578,11 +10578,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "mcycle/geometries/geom_hxplate.pyx":3
  * from ..bases.geom cimport Geom
  * 
- * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')             # <<<<<<<<<<<<<<
+ * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitch', 'phi')             # <<<<<<<<<<<<<<
  * cdef tuple _propertiesHxPlateChevron = ()
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_n_u_b, __pyx_n_u_beta, __pyx_n_u_pitchCorr, __pyx_n_u_phi); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(4, __pyx_n_u_b, __pyx_n_u_beta, __pyx_n_u_pitch, __pyx_n_u_phi); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
@@ -10699,9 +10699,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_43124998 = PyInt_FromLong(43124998L); if (unlikely(!__pyx_int_43124998)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_92816525 = PyInt_FromLong(92816525L); if (unlikely(!__pyx_int_92816525)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_93755908 = PyInt_FromLong(93755908L); if (unlikely(!__pyx_int_93755908)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_147988658 = PyInt_FromLong(147988658L); if (unlikely(!__pyx_int_147988658)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_185748636 = PyInt_FromLong(185748636L); if (unlikely(!__pyx_int_185748636)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -11096,7 +11096,7 @@ if (!__Pyx_RefNanny) {
   /* "mcycle/geometries/geom_hxplate.pyx":3
  * from ..bases.geom cimport Geom
  * 
- * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')             # <<<<<<<<<<<<<<
+ * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitch', 'phi')             # <<<<<<<<<<<<<<
  * cdef tuple _propertiesHxPlateChevron = ()
  * 
  */
@@ -11107,7 +11107,7 @@ if (!__Pyx_RefNanny) {
 
   /* "mcycle/geometries/geom_hxplate.pyx":4
  * 
- * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')
+ * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitch', 'phi')
  * cdef tuple _propertiesHxPlateChevron = ()             # <<<<<<<<<<<<<<
  * 
  * cdef class GeomHxPlateChevron(Geom):
@@ -11239,7 +11239,7 @@ if (!__Pyx_RefNanny) {
  *         __pyx_unpickle_GeomHxPlateChevron__set_state(<GeomHxPlateChevron> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_GeomHxPlateChevron__set_state(GeomHxPlateChevron __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitchCorr = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
+ *     __pyx_result._inputs = __pyx_state[0]; __pyx_result._properties = __pyx_state[1]; __pyx_result.b = __pyx_state[2]; __pyx_result.beta = __pyx_state[3]; __pyx_result.cls = __pyx_state[4]; __pyx_result.ilist = __pyx_state[5]; __pyx_result.itup = __pyx_state[6]; __pyx_result.name = __pyx_state[7]; __pyx_result.phi = __pyx_state[8]; __pyx_result.pitch = __pyx_state[9]; __pyx_result.validClasses = __pyx_state[10]
  *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6mcycle_10geometries_12geom_hxplate_5__pyx_unpickle_GeomHxPlateFinStraight, NULL, __pyx_n_s_mcycle_geometries_geom_hxplate); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 1, __pyx_L1_error)
@@ -11282,7 +11282,7 @@ if (!__Pyx_RefNanny) {
   /* "mcycle/geometries/geom_hxplate.pyx":1
  * from ..bases.geom cimport Geom             # <<<<<<<<<<<<<<
  * 
- * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitchCorr', 'phi')
+ * cdef tuple _inputsHxPlateChevron = ('b', 'beta', 'pitch', 'phi')
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
