@@ -2022,6 +2022,7 @@ static const char __pyx_k_log10[] = "log10";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_p_avg[] = "p_avg";
 static const char __pyx_k_pcrit[] = "pcrit";
+static const char __pyx_k_pitch[] = "pitch";
 static const char __pyx_k_state[] = "_state";
 static const char __pyx_k_theta[] = "theta";
 static const char __pyx_k_x_avg[] = "x_avg";
@@ -2039,7 +2040,6 @@ static const char __pyx_k_vertical[] = "vertical";
 static const char __pyx_k_warnings[] = "warnings";
 static const char __pyx_k_flowSense[] = "flowSense";
 static const char __pyx_k_m_channel[] = "m_channel";
-static const char __pyx_k_pitchCorr[] = "pitchCorr";
 static const char __pyx_k_shah_sp_h[] = "shah_sp_h";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_charLength[] = "charLength";
@@ -2183,7 +2183,7 @@ static PyObject *__pyx_n_s_pcrit;
 static PyObject *__pyx_n_u_petukhovPopov_sp_h;
 static PyObject *__pyx_n_s_phi;
 static PyObject *__pyx_n_s_pi;
-static PyObject *__pyx_n_s_pitchCorr;
+static PyObject *__pyx_n_s_pitch;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_q;
 static PyObject *__pyx_n_s_radians;
@@ -6681,7 +6681,7 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_hanLeeKim_tpCond(struc
  *     # Re = G * Dh / avg.visc()
  *     cdef double Re_eq = G_eq * Dh / liq.visc()             # <<<<<<<<<<<<<<
  *     #
- *     cdef double X1 = geom.pitchCorr / Dh
+ *     cdef double X1 = geom.pitch / Dh
  */
   __pyx_t_7 = (__pyx_v_G_eq * __pyx_v_Dh);
   __pyx_t_6 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_liq->__pyx_base.__pyx_vtab)->visc(__pyx_v_liq, 0);
@@ -6694,11 +6694,11 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_hanLeeKim_tpCond(struc
   /* "mcycle/methods/heat_transfer.pyx":326
  *     cdef double Re_eq = G_eq * Dh / liq.visc()
  *     #
- *     cdef double X1 = geom.pitchCorr / Dh             # <<<<<<<<<<<<<<
+ *     cdef double X1 = geom.pitch / Dh             # <<<<<<<<<<<<<<
  *     cdef double X2 = np.pi / 2 - beta
  *     cdef double Ge1 = 11.22 * X1**-2.83 * X2**-4.5
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_geom), __pyx_n_s_pitchCorr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_geom), __pyx_n_s_pitch); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = PyFloat_FromDouble(__pyx_v_Dh); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -6712,7 +6712,7 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_hanLeeKim_tpCond(struc
 
   /* "mcycle/methods/heat_transfer.pyx":327
  *     #
- *     cdef double X1 = geom.pitchCorr / Dh
+ *     cdef double X1 = geom.pitch / Dh
  *     cdef double X2 = np.pi / 2 - beta             # <<<<<<<<<<<<<<
  *     cdef double Ge1 = 11.22 * X1**-2.83 * X2**-4.5
  *     cdef double Ge2 = 0.35 * X1**0.23 * X2**1.48
@@ -6736,7 +6736,7 @@ static PyObject *__pyx_f_6mcycle_7methods_13heat_transfer_hanLeeKim_tpCond(struc
   __pyx_v_X2 = __pyx_t_6;
 
   /* "mcycle/methods/heat_transfer.pyx":328
- *     cdef double X1 = geom.pitchCorr / Dh
+ *     cdef double X1 = geom.pitch / Dh
  *     cdef double X2 = np.pi / 2 - beta
  *     cdef double Ge1 = 11.22 * X1**-2.83 * X2**-4.5             # <<<<<<<<<<<<<<
  *     cdef double Ge2 = 0.35 * X1**0.23 * X2**1.48
@@ -17986,7 +17986,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_petukhovPopov_sp_h, __pyx_k_petukhovPopov_sp_h, sizeof(__pyx_k_petukhovPopov_sp_h), 0, 1, 0, 1},
   {&__pyx_n_s_phi, __pyx_k_phi, sizeof(__pyx_k_phi), 0, 0, 1, 1},
   {&__pyx_n_s_pi, __pyx_k_pi, sizeof(__pyx_k_pi), 0, 0, 1, 1},
-  {&__pyx_n_s_pitchCorr, __pyx_k_pitchCorr, sizeof(__pyx_k_pitchCorr), 0, 0, 1, 1},
+  {&__pyx_n_s_pitch, __pyx_k_pitch, sizeof(__pyx_k_pitch), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_q, __pyx_k_q, sizeof(__pyx_k_q), 0, 0, 1, 1},
   {&__pyx_n_s_radians, __pyx_k_radians, sizeof(__pyx_k_radians), 0, 0, 1, 1},

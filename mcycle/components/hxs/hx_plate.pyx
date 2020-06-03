@@ -126,6 +126,8 @@ config : Config, optional
                          sizeBounds, sizeUnitsBounds, runBounds, runUnitsBounds, name, notes, config, _unitClass)
         self.geomWf = geomWf
         self.geomSf = geomSf
+        self.portWf = portWf
+        self.portSf = portSf
         self._unitClass = HxUnitPlate
         self._inputs = _inputs
         self._properties = _properties
@@ -332,7 +334,7 @@ config : Config, optional
         """float: Approximate total mass of the heat exchanger plates [kg], calculated as either
 
     - sum(coeffs_mass[i] * NPlate**i)*(LPlate*WPlate*tPlate) if coeffs_mass is defined,
-    - or (LPlate*WPlate - 2(0.25*pi*DPortWf**2 + 0.25*pi*DPortSf**2))*tPlate*plate.rho*NPlate.
+    - or (LPlate*WPlate - 2(0.25*pi*portWf.d**2 + 0.25*pi*portSf.d**2))*tPlate*plate.rho*NPlate.
         """
         cdef double massPerVol
         cdef int i
@@ -342,7 +344,7 @@ config : Config, optional
             else:
                 return (
                 self.LPlate() * self.WPlate() - 2 *
-                (0.25 * pi * self.DPortWf**2 + 0.25 * pi * self.DPortSf**
+                (0.25 * pi * self.portWf.d**2 + 0.25 * pi * self.portSf.d**
                  2)) * self.tWall * self.wall.rho * self.NWall
         else:
             massPerVol = 0.
@@ -353,7 +355,7 @@ config : Config, optional
     cpdef public unsigned int size_NPlate(self) except 0:
         """int: size for NPlate that requires L to be closest to self.L"""
         cdef double diff
-        cdef int NPlate = int(self.sizeBounds[0])
+        cdef unsigned int NPlate = int(self.sizeBounds[0])
         cdef unsigned int NPlateMax = int(self.sizeBounds[1])
         cdef double L = self.L
         cdef list diff_vals = [nan, nan]

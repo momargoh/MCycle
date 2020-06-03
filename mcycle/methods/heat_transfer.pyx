@@ -323,7 +323,7 @@ dict of float : {"h", "f", "dpF"}
     # Re = G * Dh / avg.visc()
     cdef double Re_eq = G_eq * Dh / liq.visc()
     #
-    cdef double X1 = geom.pitchCorr / Dh
+    cdef double X1 = geom.pitch / Dh
     cdef double X2 = np.pi / 2 - beta
     cdef double Ge1 = 11.22 * X1**-2.83 * X2**-4.5
     cdef double Ge2 = 0.35 * X1**0.23 * X2**1.48
