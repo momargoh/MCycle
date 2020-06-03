@@ -134,8 +134,13 @@ config : Config, optional
     
     cpdef public void update(self, dict kwargs):
         """Update (multiple) variables using keyword arguments."""
+        cdef str key, keyBase
         for key, value in kwargs.items():
-            if key not in ["portWf", "portSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_mass"]:
+            if '.' in key:
+                keyBase = key.split('.', 1)[0]
+            else:
+                keyBase = key
+            if keyBase not in ["portWf", "portSf", "LVertPortWf", "LVertPortSf", "coeffs_LPlate","coeffs_WPlate", "coeffs_mass"]:
                 super(HxBasicPlanar, self).update({key: value})
             else:
                 super(Component22, self).update({key: value})

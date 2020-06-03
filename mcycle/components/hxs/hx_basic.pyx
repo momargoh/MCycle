@@ -142,8 +142,13 @@ config : Config, optional
     cpdef public void update(self, dict kwargs):
         """Update (multiple) variables using keyword arguments."""
         cdef HxUnitBasic unit
+        cdef str key, keyBase
         for key, value in kwargs.items():
-            if key not in [
+            if '.' in key:
+                keyBase = key.split('.', 1)[0]
+            else:
+                keyBase = key
+            if keyBase not in [
                     "L", "flowInWf", "flowInSf", "flowOutWf", "flowOutSf", "sizeBounds", "sizeUnitsBounds", "sizeAttr"]:
                 super(Component22, self).update({key: value})
                 for unit in self._units:
