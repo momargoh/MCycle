@@ -333,7 +333,7 @@ config : Config, optional
         return dp
 
     cpdef public double depth(self):
-        return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+        return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()
 
     cpdef public double mass(self):
         """float: Approximate total mass of the heat exchanger plates [kg], calculated as either

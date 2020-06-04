@@ -8342,7 +8342,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate_30dpSf(st
  *         return dp
  * 
  *     cpdef public double depth(self):             # <<<<<<<<<<<<<<
- *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+ *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()
  * 
  */
 
@@ -8355,6 +8355,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   double __pyx_t_5;
+  PyObject *__pyx_t_6 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -8409,7 +8410,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
   /* "mcycle/components/hxs/hx_plate.pyx":336
  * 
  *     cpdef public double depth(self):
- *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing             # <<<<<<<<<<<<<<
+ *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double mass(self):
  */
@@ -8423,8 +8424,23 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __Pyx_PyInt_From_unsigned_int(((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._NWf(((struct __pyx_obj_6mcycle_10components_3hxs_8hx_basic_HxBasic *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->geomWf), __pyx_n_s_spacing); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->geomWf), __pyx_n_s_spacing); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_6 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8435,8 +8451,23 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = __Pyx_PyInt_From_unsigned_int(((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base._NSf(((struct __pyx_obj_6mcycle_10components_3hxs_8hx_basic_HxBasic *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->geomSf), __pyx_n_s_spacing); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->geomSf), __pyx_n_s_spacing); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_6 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyNumber_Multiply(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -8454,7 +8485,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
  *         return dp
  * 
  *     cpdef public double depth(self):             # <<<<<<<<<<<<<<
- *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+ *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()
  * 
  */
 
@@ -8464,6 +8495,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_depth(struct __pyx_o
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_WriteUnraisable("mcycle.components.hxs.hx_plate.HxPlate.depth", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
@@ -8512,7 +8544,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate_32depth(s
 }
 
 /* "mcycle/components/hxs/hx_plate.pyx":338
- *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+ *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()
  * 
  *     cpdef public double mass(self):             # <<<<<<<<<<<<<<
  *         """float: Approximate total mass of the heat exchanger plates [kg], calculated as either
@@ -8823,7 +8855,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_mass(struct __pyx_ob
   }
 
   /* "mcycle/components/hxs/hx_plate.pyx":338
- *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing+self._NSf()*self.geomSf.spacing
+ *         return self.NPlate*self.tPlate+self._NWf()*self.geomWf.spacing()+self._NSf()*self.geomSf.spacing()
  * 
  *     cpdef public double mass(self):             # <<<<<<<<<<<<<<
  *         """float: Approximate total mass of the heat exchanger plates [kg], calculated as either
