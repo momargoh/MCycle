@@ -1452,48 +1452,6 @@ static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
 /* ExtTypeTest.proto */
 static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
 
-/* IterFinish.proto */
-static CYTHON_INLINE int __Pyx_IterFinish(void);
-
-/* PyObjectGetMethod.proto */
-static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method);
-
-/* PyObjectCallMethod0.proto */
-static PyObject* __Pyx_PyObject_CallMethod0(PyObject* obj, PyObject* method_name);
-
-/* RaiseNeedMoreValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
-
-/* RaiseTooManyValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
-
-/* UnpackItemEndCheck.proto */
-static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
-
-/* RaiseNoneIterError.proto */
-static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
-
-/* UnpackTupleError.proto */
-static void __Pyx_UnpackTupleError(PyObject *, Py_ssize_t index);
-
-/* UnpackTuple2.proto */
-#define __Pyx_unpack_tuple2(tuple, value1, value2, is_tuple, has_known_size, decref_tuple)\
-    (likely(is_tuple || PyTuple_Check(tuple)) ?\
-        (likely(has_known_size || PyTuple_GET_SIZE(tuple) == 2) ?\
-            __Pyx_unpack_tuple2_exact(tuple, value1, value2, decref_tuple) :\
-            (__Pyx_UnpackTupleError(tuple, 2), -1)) :\
-        __Pyx_unpack_tuple2_generic(tuple, value1, value2, has_known_size, decref_tuple))
-static CYTHON_INLINE int __Pyx_unpack_tuple2_exact(
-    PyObject* tuple, PyObject** value1, PyObject** value2, int decref_tuple);
-static int __Pyx_unpack_tuple2_generic(
-    PyObject* tuple, PyObject** value1, PyObject** value2, int has_known_size, int decref_tuple);
-
-/* dict_iter.proto */
-static CYTHON_INLINE PyObject* __Pyx_dict_iterator(PyObject* dict, int is_dict, PyObject* method_name,
-                                                   Py_ssize_t* p_orig_length, int* p_is_dict);
-static CYTHON_INLINE int __Pyx_dict_iter_next(PyObject* dict_or_iter, Py_ssize_t orig_length, Py_ssize_t* ppos,
-                                              PyObject** pkey, PyObject** pvalue, PyObject** pitem, int is_dict);
-
 /* PyErrExceptionMatches.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
@@ -1555,6 +1513,48 @@ static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* s
     int result = PySequence_Contains(seq, item);
     return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
 }
+
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+/* PyObjectGetMethod.proto */
+static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method);
+
+/* PyObjectCallMethod0.proto */
+static PyObject* __Pyx_PyObject_CallMethod0(PyObject* obj, PyObject* method_name);
+
+/* RaiseNeedMoreValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
+
+/* RaiseTooManyValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
+
+/* UnpackItemEndCheck.proto */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
+
+/* RaiseNoneIterError.proto */
+static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
+
+/* UnpackTupleError.proto */
+static void __Pyx_UnpackTupleError(PyObject *, Py_ssize_t index);
+
+/* UnpackTuple2.proto */
+#define __Pyx_unpack_tuple2(tuple, value1, value2, is_tuple, has_known_size, decref_tuple)\
+    (likely(is_tuple || PyTuple_Check(tuple)) ?\
+        (likely(has_known_size || PyTuple_GET_SIZE(tuple) == 2) ?\
+            __Pyx_unpack_tuple2_exact(tuple, value1, value2, decref_tuple) :\
+            (__Pyx_UnpackTupleError(tuple, 2), -1)) :\
+        __Pyx_unpack_tuple2_generic(tuple, value1, value2, has_known_size, decref_tuple))
+static CYTHON_INLINE int __Pyx_unpack_tuple2_exact(
+    PyObject* tuple, PyObject** value1, PyObject** value2, int decref_tuple);
+static int __Pyx_unpack_tuple2_generic(
+    PyObject* tuple, PyObject** value1, PyObject** value2, int has_known_size, int decref_tuple);
+
+/* dict_iter.proto */
+static CYTHON_INLINE PyObject* __Pyx_dict_iterator(PyObject* dict, int is_dict, PyObject* method_name,
+                                                   Py_ssize_t* p_orig_length, int* p_is_dict);
+static CYTHON_INLINE int __Pyx_dict_iter_next(PyObject* dict_or_iter, Py_ssize_t orig_length, Py_ssize_t* ppos,
+                                              PyObject** pkey, PyObject** pvalue, PyObject** pitem, int is_dict);
 
 /* DictGetItem.proto */
 #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
@@ -2134,7 +2134,6 @@ static const char __pyx_k_fluid[] = "fluid";
 static const char __pyx_k_hmass[] = "hmass";
 static const char __pyx_k_index[] = "index";
 static const char __pyx_k_isnan[] = "isnan";
-static const char __pyx_k_items[] = "items";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_pCrit[] = "pCrit";
 static const char __pyx_k_phase[] = "phase";
@@ -2348,7 +2347,6 @@ static PyObject *__pyx_n_u_iphase_2;
 static PyObject *__pyx_kp_u_iphase_given_must_be_specified_f;
 static PyObject *__pyx_n_s_isclose;
 static PyObject *__pyx_n_s_isnan;
-static PyObject *__pyx_n_s_items;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_u_k;
 static PyObject *__pyx_kp_u_k_2;
@@ -5672,7 +5670,6 @@ static PyObject *__pyx_pw_6mcycle_5bases_9flowstate_9FlowState_9summary(PyObject
 static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct __pyx_obj_6mcycle_5bases_9flowstate_FlowState *__pyx_v_self, int __pyx_v_printSummary, PyObject *__pyx_v_title, int __pyx_v_rstHeading) {
   PyObject *__pyx_v_output = 0;
   PyObject *__pyx_v_k = NULL;
-  CYTHON_UNUSED PyObject *__pyx_v_v = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5684,8 +5681,6 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   Py_ssize_t __pyx_t_7;
   PyObject *__pyx_t_8 = NULL;
   int __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
-  int __pyx_t_11;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -5756,7 +5751,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
  * {}
  * eos = {}
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)             # <<<<<<<<<<<<<<
- *         for k, v in self._properties.items():
+ *         for k in self._properties:
  *             output += self.formatAttrForSummary(k, [])
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_eos_2, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
@@ -5845,54 +5840,57 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   /* "mcycle/bases/flowstate.pyx":186
  * eos = {}
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
- *         for k, v in self._properties.items():             # <<<<<<<<<<<<<<
+ *         for k in self._properties:             # <<<<<<<<<<<<<<
  *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:
  */
-  __pyx_t_7 = 0;
   if (unlikely(__pyx_v_self->__pyx_base._properties == Py_None)) {
-    PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "items");
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
     __PYX_ERR(0, 186, __pyx_L1_error)
   }
-  __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_self->__pyx_base._properties, 0, __pyx_n_s_items, (&__pyx_t_10), (&__pyx_t_9)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __pyx_t_4 = __pyx_t_3;
-  __pyx_t_3 = 0;
-  while (1) {
-    __pyx_t_11 = __Pyx_dict_iter_next(__pyx_t_4, __pyx_t_10, &__pyx_t_7, &__pyx_t_3, &__pyx_t_5, NULL, __pyx_t_9);
-    if (unlikely(__pyx_t_11 == 0)) break;
-    if (unlikely(__pyx_t_11 == -1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_4 = __pyx_v_self->__pyx_base._properties; __Pyx_INCREF(__pyx_t_4); __pyx_t_7 = 0;
+  for (;;) {
+    if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+    #else
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GOTREF(__pyx_t_5);
+    #endif
     __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_3);
     __pyx_t_3 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_5);
-    __pyx_t_5 = 0;
 
     /* "mcycle/bases/flowstate.pyx":187
  * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
- *         for k, v in self._properties.items():
+ *         for k in self._properties:
  *             output += self.formatAttrForSummary(k, [])             # <<<<<<<<<<<<<<
  *         if printSummary:
  *             print(output)
  */
     if (!(likely(PyUnicode_CheckExact(__pyx_v_k))||((__pyx_v_k) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_k)->tp_name), 0))) __PYX_ERR(0, 187, __pyx_L1_error)
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.formatAttrForSummary(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject*)__pyx_v_k), ((PyObject*)__pyx_t_5)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_output, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_5 = ((struct __pyx_vtabstruct_6mcycle_5bases_9flowstate_FlowState *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.formatAttrForSummary(((struct __pyx_obj_6mcycle_5bases_3abc_ABC *)__pyx_v_self), ((PyObject*)__pyx_v_k), ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF_SET(__pyx_v_output, ((PyObject*)__pyx_t_5));
-    __pyx_t_5 = 0;
+    __pyx_t_3 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_output, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF_SET(__pyx_v_output, ((PyObject*)__pyx_t_3));
+    __pyx_t_3 = 0;
+
+    /* "mcycle/bases/flowstate.pyx":186
+ * eos = {}
+ * """.format(defaults.RST_HEADINGS[rstHeading] * len(output), self.eos)
+ *         for k in self._properties:             # <<<<<<<<<<<<<<
+ *             output += self.formatAttrForSummary(k, [])
+ *         if printSummary:
+ */
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "mcycle/bases/flowstate.pyx":188
- *         for k, v in self._properties.items():
+ *         for k in self._properties:
  *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:             # <<<<<<<<<<<<<<
  *             print(output)
@@ -5913,7 +5911,7 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "mcycle/bases/flowstate.pyx":188
- *         for k, v in self._properties.items():
+ *         for k in self._properties:
  *             output += self.formatAttrForSummary(k, [])
  *         if printSummary:             # <<<<<<<<<<<<<<
  *             print(output)
@@ -5953,7 +5951,6 @@ static PyObject *__pyx_pf_6mcycle_5bases_9flowstate_9FlowState_8summary(struct _
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_output);
   __Pyx_XDECREF(__pyx_v_k);
-  __Pyx_XDECREF(__pyx_v_v);
   __Pyx_XDECREF(__pyx_v_title);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -22326,7 +22323,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_iphase_given_must_be_specified_f, __pyx_k_iphase_given_must_be_specified_f, sizeof(__pyx_k_iphase_given_must_be_specified_f), 0, 1, 0, 0},
   {&__pyx_n_s_isclose, __pyx_k_isclose, sizeof(__pyx_k_isclose), 0, 0, 1, 1},
   {&__pyx_n_s_isnan, __pyx_k_isnan, sizeof(__pyx_k_isnan), 0, 0, 1, 1},
-  {&__pyx_n_s_items, __pyx_k_items, sizeof(__pyx_k_items), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_u_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 1, 0, 1},
   {&__pyx_kp_u_k_2, __pyx_k_k_2, sizeof(__pyx_k_k_2), 0, 1, 0, 0},
@@ -24655,6 +24651,143 @@ static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
     return 0;
 }
 
+/* PyErrExceptionMatches */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+}
+#endif
+
+/* GetAttr */
+static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
+#if CYTHON_USE_TYPE_SLOTS
+#if PY_MAJOR_VERSION >= 3
+    if (likely(PyUnicode_Check(n)))
+#else
+    if (likely(PyString_Check(n)))
+#endif
+        return __Pyx_PyObject_GetAttrStr(o, n);
+#endif
+    return PyObject_GetAttr(o, n);
+}
+
+/* GetAttr3 */
+static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        return NULL;
+    __Pyx_PyErr_Clear();
+    Py_INCREF(d);
+    return d;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
+    PyObject *r = __Pyx_GetAttr(o, n);
+    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
+}
+
+/* UnpackUnboundCMethod */
+static int __Pyx_TryUnpackUnboundCMethod(__Pyx_CachedCFunction* target) {
+    PyObject *method;
+    method = __Pyx_PyObject_GetAttrStr(target->type, *target->method_name);
+    if (unlikely(!method))
+        return -1;
+    target->method = method;
+#if CYTHON_COMPILING_IN_CPYTHON
+    #if PY_MAJOR_VERSION >= 3
+    if (likely(__Pyx_TypeCheck(method, &PyMethodDescr_Type)))
+    #endif
+    {
+        PyMethodDescrObject *descr = (PyMethodDescrObject*) method;
+        target->func = descr->d_method->ml_meth;
+        target->flag = descr->d_method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_STACKLESS);
+    }
+#endif
+    return 0;
+}
+
+/* CallUnboundCMethod0 */
+static PyObject* __Pyx__CallUnboundCMethod0(__Pyx_CachedCFunction* cfunc, PyObject* self) {
+    PyObject *args, *result = NULL;
+    if (unlikely(!cfunc->method) && unlikely(__Pyx_TryUnpackUnboundCMethod(cfunc) < 0)) return NULL;
+#if CYTHON_ASSUME_SAFE_MACROS
+    args = PyTuple_New(1);
+    if (unlikely(!args)) goto bad;
+    Py_INCREF(self);
+    PyTuple_SET_ITEM(args, 0, self);
+#else
+    args = PyTuple_Pack(1, self);
+    if (unlikely(!args)) goto bad;
+#endif
+    result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
+    Py_DECREF(args);
+bad:
+    return result;
+}
+
+/* py_dict_keys */
+static CYTHON_INLINE PyObject* __Pyx_PyDict_Keys(PyObject* d) {
+    if (PY_MAJOR_VERSION >= 3)
+        return __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyDict_Type_keys, d);
+    else
+        return PyDict_Keys(d);
+}
+
+/* py_dict_values */
+static CYTHON_INLINE PyObject* __Pyx_PyDict_Values(PyObject* d) {
+    if (PY_MAJOR_VERSION >= 3)
+        return __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyDict_Type_values, d);
+    else
+        return PyDict_Values(d);
+}
+
+/* ObjectGetItem */
+#if CYTHON_USE_TYPE_SLOTS
+static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
+    PyObject *runerr;
+    Py_ssize_t key_value;
+    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
+    if (unlikely(!(m && m->sq_item))) {
+        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
+        return NULL;
+    }
+    key_value = __Pyx_PyIndex_AsSsize_t(index);
+    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
+        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
+    }
+    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
+        PyErr_Clear();
+        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
+    }
+    return NULL;
+}
+static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
+    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
+    if (likely(m && m->mp_subscript)) {
+        return m->mp_subscript(obj, key);
+    }
+    return __Pyx_PyObject_GetIndex(obj, key);
+}
+#endif
+
 /* IterFinish */
 static CYTHON_INLINE int __Pyx_IterFinish(void) {
 #if CYTHON_FAST_THREAD_STATE
@@ -25007,143 +25140,6 @@ static CYTHON_INLINE int __Pyx_dict_iter_next(
     }
     return 1;
 }
-
-/* PyErrExceptionMatches */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-#if PY_MAJOR_VERSION >= 3
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-#endif
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
-    return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    PyObject *exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-    if (unlikely(PyTuple_Check(err)))
-        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
-}
-#endif
-
-/* GetAttr */
-static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
-#if CYTHON_USE_TYPE_SLOTS
-#if PY_MAJOR_VERSION >= 3
-    if (likely(PyUnicode_Check(n)))
-#else
-    if (likely(PyString_Check(n)))
-#endif
-        return __Pyx_PyObject_GetAttrStr(o, n);
-#endif
-    return PyObject_GetAttr(o, n);
-}
-
-/* GetAttr3 */
-static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
-        return NULL;
-    __Pyx_PyErr_Clear();
-    Py_INCREF(d);
-    return d;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
-    PyObject *r = __Pyx_GetAttr(o, n);
-    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
-}
-
-/* UnpackUnboundCMethod */
-static int __Pyx_TryUnpackUnboundCMethod(__Pyx_CachedCFunction* target) {
-    PyObject *method;
-    method = __Pyx_PyObject_GetAttrStr(target->type, *target->method_name);
-    if (unlikely(!method))
-        return -1;
-    target->method = method;
-#if CYTHON_COMPILING_IN_CPYTHON
-    #if PY_MAJOR_VERSION >= 3
-    if (likely(__Pyx_TypeCheck(method, &PyMethodDescr_Type)))
-    #endif
-    {
-        PyMethodDescrObject *descr = (PyMethodDescrObject*) method;
-        target->func = descr->d_method->ml_meth;
-        target->flag = descr->d_method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_STACKLESS);
-    }
-#endif
-    return 0;
-}
-
-/* CallUnboundCMethod0 */
-static PyObject* __Pyx__CallUnboundCMethod0(__Pyx_CachedCFunction* cfunc, PyObject* self) {
-    PyObject *args, *result = NULL;
-    if (unlikely(!cfunc->method) && unlikely(__Pyx_TryUnpackUnboundCMethod(cfunc) < 0)) return NULL;
-#if CYTHON_ASSUME_SAFE_MACROS
-    args = PyTuple_New(1);
-    if (unlikely(!args)) goto bad;
-    Py_INCREF(self);
-    PyTuple_SET_ITEM(args, 0, self);
-#else
-    args = PyTuple_Pack(1, self);
-    if (unlikely(!args)) goto bad;
-#endif
-    result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
-    Py_DECREF(args);
-bad:
-    return result;
-}
-
-/* py_dict_keys */
-static CYTHON_INLINE PyObject* __Pyx_PyDict_Keys(PyObject* d) {
-    if (PY_MAJOR_VERSION >= 3)
-        return __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyDict_Type_keys, d);
-    else
-        return PyDict_Keys(d);
-}
-
-/* py_dict_values */
-static CYTHON_INLINE PyObject* __Pyx_PyDict_Values(PyObject* d) {
-    if (PY_MAJOR_VERSION >= 3)
-        return __Pyx_CallUnboundCMethod0(&__pyx_umethod_PyDict_Type_values, d);
-    else
-        return PyDict_Values(d);
-}
-
-/* ObjectGetItem */
-#if CYTHON_USE_TYPE_SLOTS
-static PyObject *__Pyx_PyObject_GetIndex(PyObject *obj, PyObject* index) {
-    PyObject *runerr;
-    Py_ssize_t key_value;
-    PySequenceMethods *m = Py_TYPE(obj)->tp_as_sequence;
-    if (unlikely(!(m && m->sq_item))) {
-        PyErr_Format(PyExc_TypeError, "'%.200s' object is not subscriptable", Py_TYPE(obj)->tp_name);
-        return NULL;
-    }
-    key_value = __Pyx_PyIndex_AsSsize_t(index);
-    if (likely(key_value != -1 || !(runerr = PyErr_Occurred()))) {
-        return __Pyx_GetItemInt_Fast(obj, key_value, 0, 1, 1);
-    }
-    if (PyErr_GivenExceptionMatches(runerr, PyExc_OverflowError)) {
-        PyErr_Clear();
-        PyErr_Format(PyExc_IndexError, "cannot fit '%.200s' into an index-sized integer", Py_TYPE(index)->tp_name);
-    }
-    return NULL;
-}
-static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
-    PyMappingMethods *m = Py_TYPE(obj)->tp_as_mapping;
-    if (likely(m && m->mp_subscript)) {
-        return m->mp_subscript(obj, key);
-    }
-    return __Pyx_PyObject_GetIndex(obj, key);
-}
-#endif
 
 /* DictGetItem */
 #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
