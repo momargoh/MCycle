@@ -6557,7 +6557,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpAccSf(struct __pyx
  *     cpdef public double dpAccSf(self):
  *         """float: Acceleration pressure drop of the secondary fluid [Pa]."""
  *         cdef double G = self._mSf() / self._NSf() / (self.geomSf.areaPerWidth() * self.W)             # <<<<<<<<<<<<<<
- *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())
+ *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[1].rho())
  * 
  */
   __pyx_t_5 = ((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base._mSf(((struct __pyx_obj_6mcycle_5bases_9component_Component22 *)__pyx_v_self), 0);
@@ -6602,7 +6602,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpAccSf(struct __pyx
   /* "mcycle/components/hxs/hx_plate.pyx":269
  *         """float: Acceleration pressure drop of the secondary fluid [Pa]."""
  *         cdef double G = self._mSf() / self._NSf() / (self.geomSf.areaPerWidth() * self.W)
- *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())             # <<<<<<<<<<<<<<
+ *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[1].rho())             # <<<<<<<<<<<<<<
  * 
  *     cpdef public double dpPortWf(self):
  */
@@ -6636,7 +6636,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpAccSf(struct __pyx
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(0, 269, __pyx_L1_error)
   }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(PyList_GET_ITEM(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsIn, 0), __pyx_n_s_rho); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(PyList_GET_ITEM(__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flowsIn, 1), __pyx_n_s_rho); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6732,7 +6732,7 @@ static PyObject *__pyx_pf_6mcycle_10components_3hxs_8hx_plate_7HxPlate_18dpAccSf
 }
 
 /* "mcycle/components/hxs/hx_plate.pyx":271
- *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())
+ *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[1].rho())
  * 
  *     cpdef public double dpPortWf(self):             # <<<<<<<<<<<<<<
  *         """float: Port pressure loss of the working fluid [Pa]."""
@@ -6807,7 +6807,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
  *         """float: Port pressure loss of the working fluid [Pa]."""
  *         cdef double GPort, dpIn, dpOut
  *         if self.portWf:             # <<<<<<<<<<<<<<
- *             GPort = self._mWf() / self.portWf.area
+ *             GPort = self._mWf() / self.portWf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
  */
   __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->portWf)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
@@ -6816,14 +6816,29 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
     /* "mcycle/components/hxs/hx_plate.pyx":275
  *         cdef double GPort, dpIn, dpOut
  *         if self.portWf:
- *             GPort = self._mWf() / self.portWf.area             # <<<<<<<<<<<<<<
+ *             GPort = self._mWf() / self.portWf.area()             # <<<<<<<<<<<<<<
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
  *             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
  */
     __pyx_t_1 = PyFloat_FromDouble(((struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base._mWf(((struct __pyx_obj_6mcycle_5bases_9component_Component *)__pyx_v_self), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->portWf), __pyx_n_s_area); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->portWf), __pyx_n_s_area); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6834,7 +6849,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
 
     /* "mcycle/components/hxs/hx_plate.pyx":276
  *         if self.portWf:
- *             GPort = self._mWf() / self.portWf.area
+ *             GPort = self._mWf() / self.portWf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()             # <<<<<<<<<<<<<<
  *             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
  *             return dpIn + dpOut
@@ -6871,7 +6886,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
     __pyx_v_dpIn = __pyx_t_5;
 
     /* "mcycle/components/hxs/hx_plate.pyx":277
- *             GPort = self._mWf() / self.portWf.area
+ *             GPort = self._mWf() / self.portWf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
  *             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()             # <<<<<<<<<<<<<<
  *             return dpIn + dpOut
@@ -6922,7 +6937,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
  *         """float: Port pressure loss of the working fluid [Pa]."""
  *         cdef double GPort, dpIn, dpOut
  *         if self.portWf:             # <<<<<<<<<<<<<<
- *             GPort = self._mWf() / self.portWf.area
+ *             GPort = self._mWf() / self.portWf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
  */
   }
@@ -6940,7 +6955,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortWf(struct __py
   }
 
   /* "mcycle/components/hxs/hx_plate.pyx":271
- *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())
+ *         return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[1].rho())
  * 
  *     cpdef public double dpPortWf(self):             # <<<<<<<<<<<<<<
  *         """float: Port pressure loss of the working fluid [Pa]."""
@@ -7075,16 +7090,16 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
   /* "mcycle/components/hxs/hx_plate.pyx":285
  *         """float: Port pressure loss of the secondary fluid [Pa]."""
  *         cdef double GPort, dpIn, dpOut
- *         if self.portWf:             # <<<<<<<<<<<<<<
+ *         if self.portSf:             # <<<<<<<<<<<<<<
  *             GPort = self._mSf() / self.portSf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->portWf)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->portSf)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 285, __pyx_L1_error)
   if (__pyx_t_6) {
 
     /* "mcycle/components/hxs/hx_plate.pyx":286
  *         cdef double GPort, dpIn, dpOut
- *         if self.portWf:
+ *         if self.portSf:
  *             GPort = self._mSf() / self.portSf.area()             # <<<<<<<<<<<<<<
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
  *             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
@@ -7117,7 +7132,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
     __pyx_v_GPort = __pyx_t_5;
 
     /* "mcycle/components/hxs/hx_plate.pyx":287
- *         if self.portWf:
+ *         if self.portSf:
  *             GPort = self._mSf() / self.portSf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()             # <<<<<<<<<<<<<<
  *             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
@@ -7205,7 +7220,7 @@ double __pyx_f_6mcycle_10components_3hxs_8hx_plate_7HxPlate_dpPortSf(struct __py
     /* "mcycle/components/hxs/hx_plate.pyx":285
  *         """float: Port pressure loss of the secondary fluid [Pa]."""
  *         cdef double GPort, dpIn, dpOut
- *         if self.portWf:             # <<<<<<<<<<<<<<
+ *         if self.portSf:             # <<<<<<<<<<<<<<
  *             GPort = self._mSf() / self.portSf.area()
  *             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
  */

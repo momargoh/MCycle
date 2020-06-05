@@ -146,7 +146,7 @@ config : Config, optional
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=True,
-            geom2=self.geomSf)["h"]
+            geom2=self.geomWf)["h"]
 
     cpdef public double _fWf(self):
         """float: Fanning friction factor of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -172,7 +172,7 @@ config : Config, optional
             W=self.W,
             flowConfig=self.flowConfig,
             is_wf=False,
-            geom2=self.geomSf)["f"]
+            geom2=self.geomWf)["f"]
 
     cpdef public double _dpFWf(self):
         """float: Frictional pressure drop of a working fluid channel [-]. Calculated using the relevant method of mcycle.methods.heat_transfer defined in config.methods."""
@@ -311,20 +311,6 @@ bounds : float or list of float, optional
                     self.__class__.__name__, attr, boundsOriginal))
 
 
-    @property
-    def geom(self):
-        if self.geomSf is self.geomWf:
-            return self.geomWf
-        else:
-            warn(
-                "geom is not valid: geomWf and geomSf are different objects"
-            )
-            pass
-
-    @geom.setter
-    def geom(self, obj):
-        self.geomWf = obj
-        self.geomSf = obj
     @property
     def plate(self):
         """alias of self.wall."""

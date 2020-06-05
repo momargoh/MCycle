@@ -190,7 +190,7 @@ Notes: {}
             obj = getattr(self, i)
             output += """
 """ + obj.summary(
-                printSummary=False, name=i, rstHeading=rstHeading + 1)
+                printSummary=False, title=i, rstHeading=rstHeading + 1)
         #
         if propertyKeys == 'all':
             propertyKeys = self._properties

@@ -266,13 +266,13 @@ config : Config, optional
     cpdef public double dpAccSf(self):
         """float: Acceleration pressure drop of the secondary fluid [Pa]."""
         cdef double G = self._mSf() / self._NSf() / (self.geomSf.areaPerWidth() * self.W)
-        return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[0].rho())
+        return G**2 * (1 / self.flowsOut[1].rho() - 1 / self.flowsIn[1].rho())
 
     cpdef public double dpPortWf(self):
         """float: Port pressure loss of the working fluid [Pa]."""
         cdef double GPort, dpIn, dpOut
         if self.portWf:
-            GPort = self._mWf() / self.portWf.area
+            GPort = self._mWf() / self.portWf.area()
             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[0].rho()
             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[0].rho()
             return dpIn + dpOut
@@ -282,7 +282,7 @@ config : Config, optional
     cpdef public double dpPortSf(self):
         """float: Port pressure loss of the secondary fluid [Pa]."""
         cdef double GPort, dpIn, dpOut
-        if self.portWf:
+        if self.portSf:
             GPort = self._mSf() / self.portSf.area()
             dpIn = self.config.dpPortInFactor * GPort**2 / 2 / self.flowsIn[1].rho()
             dpOut = self.config.dpPortOutFactor * GPort**2 / 2 / self.flowsOut[1].rho()
