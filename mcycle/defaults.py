@@ -138,7 +138,7 @@ DIMENSIONS = {
         '': 'angle'
     },
     'cp': {
-        '': '"energy/mass-temperature'
+        '': 'energy/mass-temperature'
     },
     'D': {
         '': 'length'
