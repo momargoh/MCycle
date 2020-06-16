@@ -128,6 +128,8 @@ config : Config, optional
         self.geomSf = geomSf
         self.portWf = portWf
         self.portSf = portSf
+        self.LVertPortWf = LVertPortWf
+        self.LVertPortSf = LVertPortSf
         self._unitClass = HxUnitPlate
         self._inputs = _inputs
         self._properties = _properties
@@ -222,13 +224,13 @@ config : Config, optional
             ans += self.coeffs_WPlate[i] * self.W**i
         return ans
 
-    cdef double _LVertPortWf(self):
+    cpdef public double _LVertPortWf(self):
         if isnan(self.LVertPortWf):
             return self.L
         else:
             return self.LVertPortWf
 
-    cdef double _LVertPortSf(self):
+    cpdef public double _LVertPortSf(self):
         if isnan(self.LVertPortSf):
             return self.L
         else:

@@ -12,8 +12,8 @@ cdef class HxPlate(HxBasicPlanar):
     cpdef public list coeffs_LPlate
     cpdef public list coeffs_WPlate
     cpdef public list coeffs_mass
-    cdef double _LVertPortWf(self)
-    cdef double _LVertPortSf(self)
+    cpdef public double _LVertPortWf(self)
+    cpdef public double _LVertPortSf(self)
     cpdef public double LPlate(self)
     cpdef public double WPlate(self)
     cpdef public double mass(self)

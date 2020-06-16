@@ -1527,8 +1527,8 @@ static struct __pyx_vtabstruct_6mcycle_5bases_4geom_Geom *__pyx_vtabptr_6mcycle_
 
 struct __pyx_vtabstruct_6mcycle_10components_3hxs_8hx_plate_HxPlate {
   struct __pyx_vtabstruct_6mcycle_10components_3hxs_14hx_basicplanar_HxBasicPlanar __pyx_base;
-  double (*_LVertPortWf)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *);
-  double (*_LVertPortSf)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *);
+  double (*_LVertPortWf)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *, int __pyx_skip_dispatch);
+  double (*_LVertPortSf)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *, int __pyx_skip_dispatch);
   double (*LPlate)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *, int __pyx_skip_dispatch);
   double (*WPlate)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *, int __pyx_skip_dispatch);
   double (*depth)(struct __pyx_obj_6mcycle_10components_3hxs_8hx_plate_HxPlate *, int __pyx_skip_dispatch);
