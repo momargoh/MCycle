@@ -105,7 +105,8 @@ hasSummaryList : list
                 attrVal = getattr(self, attr)
             if hasattr(attrVal, "summary"):
                 hasSummaryList.append(attr)
-                return ""
+                return """{} = see summary below
+""".format(attr)
             else:
                 dimensions = getDimensions(attr, self.__class__.__name__)
                 units = getUnitsFormatted(dimensions)
