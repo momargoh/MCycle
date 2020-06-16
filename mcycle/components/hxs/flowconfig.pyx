@@ -1,6 +1,7 @@
 from ...logger import log
 from ...bases.abc cimport ABC
 from ..._constants cimport *
+from ... import defaults
 
 
 cdef tuple _inputs = ('sense', 'passes', 'arrangement', 'verticalWf', 'verticalSf', 'name')
@@ -37,3 +38,63 @@ verticalSf : bint
         self.arrangement = arrangement
         self.verticalWf = verticalWf
         self.verticalSf = verticalSf
+
+    def summary(self,
+                printSummary=True,
+                propertyKeys='all',
+                str title="",
+                int rstHeading=0):
+        """Returns (and prints) a summary of the geometry attributes/properties.
+
+Parameters
+-----------
+printSummary : bool, optional
+    If true, the summary string is printed as well as returned. Defaults to True.
+propertyKeys : list or str, optional
+    Names of component properties to be included. The following strings are also accepted as inputs:
+
+  - 'all': all properties in _properties are included,
+  - 'none': no properties are included.
+
+    Defaults to 'all'.
+title : str, optional
+    Title used in summary heading. If '', the :meth:`name <mcycle.abc.ABC.name>` property of the instance is used. Defaults to ''.
+rstHeading : int, optional
+    Level of reStructuredText heading to give the summary, 0 being the top heading. Heading style taken from :meth:`RST_HEADINGS <mcycle.defaults.RST_HEADINGS>`. Defaults to 0.
+        """
+        cdef str output, prop
+        cdef tuple i
+        cdef int j
+        if title == '':
+            title = self.name
+        output = r"{} summary".format(title)
+        output += """
+{}
+""".format(defaults.RST_HEADINGS[rstHeading] * len(output))
+
+        hasSummaryList = []
+        for k in self._inputs:
+            if k in ["name", "notes", "config"]:
+                pass
+            else:
+                output += self.formatAttrForSummary(k, hasSummaryList)
+        #
+        for i in hasSummaryList:
+            output += i.summary(printSummary=False, rstHeading=rstHeading + 1)
+        #
+        if propertyKeys == 'all':
+            propertyKeys = self._properties
+        if propertyKeys == 'none':
+            propertyKeys = []
+        if len(propertyKeys) > 0:
+            output += """#
+"""
+            for k in propertyKeys:
+                if k in self._properties:
+                    output += self.formatAttrForSummary(k, [])
+                else:
+                    output += k + """: property not found,
+"""
+        if printSummary:
+            print(output)
+        return output
