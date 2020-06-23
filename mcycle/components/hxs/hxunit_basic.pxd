@@ -22,10 +22,10 @@ cdef class HxUnitBasic(Component22):
     cpdef public double efficiencyThermal
     cpdef public unsigned char _unitPhaseWf
     cpdef public unsigned char _unitPhaseSf
-    cdef public str _methodHeatWf
-    cdef public str _methodHeatSf
-    cdef public str _methodFrictionWf
-    cdef public str _methodFrictionSf
+    cpdef public str _methodHeatWf
+    cpdef public str _methodHeatSf
+    cpdef public str _methodFrictionWf
+    cpdef public str _methodFrictionSf
 
     cpdef public bint isEvap(self)
     cpdef public double _A(self)
