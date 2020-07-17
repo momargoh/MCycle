@@ -293,16 +293,16 @@ def setupREFPROP(ALTERNATIVE_REFPROP_PATH='',
     """Configures CoolProp to find your REFPROP files. Note the FLUIDS folder must be renamed to lowercase ``fluids`` and MIXTURES folder must be renamed to lowercase ``mixtures`` to be found by CoolProp (on Linux, not tested for Windows). See http://www.coolprop.org/coolprop/REFPROP.html#path-issues for more info about each configuration parameter."""
     CP.CoolProp.set_config_string(CP.ALTERNATIVE_REFPROP_PATH,
                                   ALTERNATIVE_REFPROP_PATH)
-    log('info', 'CoolProp.ALTERNATIVE_REFPROP_PATH set to: "{}"'.format(
+    log('debug', 'CoolProp.ALTERNATIVE_REFPROP_PATH set to: "{}"'.format(
         ALTERNATIVE_REFPROP_PATH))
     CP.CoolProp.set_config_string(CP.ALTERNATIVE_REFPROP_LIBRARY_PATH,
                                   ALTERNATIVE_REFPROP_LIBRARY_PATH)
-    log('info',
+    log('debug',
         'CoolProp.ALTERNATIVE_REFPROP_LIBRARY_PATH set to: "{}"'.format(
             ALTERNATIVE_REFPROP_LIBRARY_PATH))
     CP.CoolProp.set_config_string(CP.ALTERNATIVE_REFPROP_HMX_BNC_PATH,
                                   ALTERNATIVE_REFPROP_HMX_BNC_PATH)
-    log('info',
+    log('debug',
         'CoolProp.ALTERNATIVE_REFPROP_HMX_BNC_PATH set to: "{}"'.format(
             ALTERNATIVE_REFPROP_HMX_BNC_PATH))
 

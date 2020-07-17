@@ -102,7 +102,7 @@ import mcycle
                 try:
                     self._state.build_phase_envelope("")
                 except:
-                    log("warning", "CoolProp could not build phase envelope for {}".format(fluid))
+                    log("debug", "CoolProp could not build phase envelope for {}".format(fluid))
                     self._canBuildPhaseEnvelope = False
         if inputPair != 0 and not isnan(input1) and not isnan(input2):
             self._state.update(inputPair, input1, input2)
