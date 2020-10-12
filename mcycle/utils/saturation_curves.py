@@ -64,14 +64,18 @@ def plot_saturationCurve(fluids,
                          steps=200,
                          TMinOffset=0,
                          title='default',
+                         legend=True,
                          legend_loc='best',
+                         xlim=[None, None],
+                         ylim=[None, None],
                          grid=True,
                          show=True,
                          savefig=True,
                          savefig_name='saturation_curve',
                          savefig_folder='default',
                          savefig_format='default',
-                         savefig_dpi='default'):
+                         savefig_dpi='default',
+                         pltKwargs={}):
     """void: plot saturation curve(s)
 
 Parameters
@@ -134,7 +138,8 @@ savefig_dpi : int, optional
                 linestyle=defaults.PLOT_LINESTYLE[i % len(
                     defaults.PLOT_LINESTYLE)],
                 marker=defaults.PLOT_MARKER[i % len(defaults.PLOT_MARKER)],
-                label=fluids[i])
+                label=fluids[i],
+                **pltKwargs)
     else:
         sc = saturationCurve(fluids, steps, TMinOffset)
         plt.plot(
@@ -143,14 +148,18 @@ savefig_dpi : int, optional
             color=defaults.PLOT_COLOR[0],
             linestyle=defaults.PLOT_LINESTYLE[0],
             marker=defaults.PLOT_MARKER[0],
-            label=fluids)
+            label=fluids,
+                **pltKwargs)
         #
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.legend(loc=legend_loc)
+    plt.xlim(xlim)
+    plt.ylim(ylim)
+    if legend:
+        plt.legend(loc=legend_loc)
     plt.title(title)
     plt.grid(grid)
-    if savefig is True:
+    if savefig:
         if savefig_folder == 'default':
             savefig_folder = defaults.PLOT_DIR
         if savefig_format == 'default':
@@ -158,9 +167,9 @@ savefig_dpi : int, optional
         if savefig_dpi == 'default':
             savefig_dpi = defaults.PLOT_DPI
         plt.savefig(
-            "{}/{}.{}".format(savefig_folder, savefig_name, savefig_format),
+            f"{savefig_folder}/{savefig_name}.{savefig_format}",
             dpi=savefig_dpi,
             bbox_inches='tight')
-    if show is True:
+    if show:
         plt.show()
     plt.close()
