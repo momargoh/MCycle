@@ -105,10 +105,10 @@ config : Config, optional
             else:
                 raise ValueError('sizeAttr not valid, given: {}'.format(attr))
         except AssertionError as err:
-            log('error', 'HtrBasicConstP.size(): flowOut.p != flowIn.p', err)
+            log('error', 'HtrBasic.size(): flowOut.p != flowIn.p', err)
             raise err
         except Exception as exc:
-            msg = 'HtrBasicConstP.size(): failed to converge.'.format(self.__class__.__name__)
+            msg = 'HtrBasic.size(): failed to converge.'.format(self.__class__.__name__)
             log('error', msg, exc)
             raise exc
 

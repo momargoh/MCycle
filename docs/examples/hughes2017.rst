@@ -80,7 +80,7 @@ For the evaporator, we used a AlfaLaval AC30EQ model corrugated plate heat excha
 
 As sizing the condenser is not central to this analysis, it is treated simply as a heat sink.::
 
-    >>> cond = mc.ClrBasicConstP(-1, 1, sizeAttr="Q")
+    >>> cond = mc.ClrBasic(constraint=mc.CONSTANT_P, -1, 1, sizeAttr="Q")
 
 Compressor and expander
 **********************************************

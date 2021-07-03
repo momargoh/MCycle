@@ -55,7 +55,7 @@ exp = mc.ExpBasic(-1, 0.7, sizeAttr="pRatio")
 print("  - created expander")
 sinkIn = mc.FlowState("Air", -1, -1, CP.PT_INPUTS, 0.88260e5, 281.65)
 sinkAmbient = sinkIn.copy()
-cond = mc.ClrBasicConstP(-1, 1, sizeAttr="Q")
+cond = mc.ClrBasic(constraint=mc.CONSTANT_P, -1, 1, sizeAttr="Q")
 print("  - created condenser")
 config = mc.Config()
 config.update({
@@ -114,7 +114,7 @@ def run_plot():
     print("  - plot saved in {}/plot_RankineBasic.{}".format(
         mc.DEFAULTS.PLOT_DIR, mc.DEFAULTS.PLOT_FORMAT))
     cycle.sinkIn.m = nan
-    cycle.cond = mc.ClrBasicConstP(-1, 0.7, sizeAttr="pRatio")
+    cycle.cond = mc.ClrBasic(constraint=mc.CONSTANT_P, -1, 0.7, sizeAttr="pRatio")
     print("End plotting design cycle")
 
 
