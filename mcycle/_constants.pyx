@@ -103,4 +103,4 @@ cdef public unsigned char CONSTANT_P = 1
 cdef public unsigned char CONSTANT_V = 2
 # MCycle
 cdef public str SOURCE_URL = 'https://github.com/momargoh/MCycle'
-cdef public str DOCS_URL = 'https://mcycle.momarhughes.com'
+cdef public str DOCS_URL = 'https://mcycle.readthedocs.io'

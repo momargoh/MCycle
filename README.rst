@@ -15,7 +15,7 @@ Meta
 :Author:
    Momar Hughes
 :Contact:
-   momarhughes@outlook.com
+   momarhughes@hotmail.com
 :Topic:
    Thermodynamic power-cycle sizing and analysis
 :Licence:
@@ -26,7 +26,7 @@ Meta
    :target: https://doi.org/10.21105/joss.00710
    :alt: JOSS Publication
 .. image:: https://readthedocs.org/projects/mcycle/badge/?version=latest
-   :target: https://mcycle.momarhughes.com/?badge=latest
+   :target: https://mcycle.readthedocs.io/?badge=latest
    :alt: Docs Build Status
 	
 About
@@ -48,7 +48,7 @@ All thermodynamic fluid properties are computed using CoolProp. The latest list 
 Code Source
 =========================
 
-The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at https://mcycle.momarhughes.com.
+The Github project page can be found at `https://github.com/momargoh/MCycle <https://github.com/momargoh/MCycle>`_. The documentation is hosted at https://mcycle.readthedocs.io.
 
 Contributions towards the project source code will be gratefully received. Feel free to contact the author via email with any queries. If using this package for your own research, please cite the following `publication <https://doi.org/10.21105/joss.00710>`_.
 
@@ -104,5 +104,5 @@ MCycle should now be ready to be installed. For the latest updates, clone/downlo
 Quick start
 ===========
 
-Have a look through the `quick start example <https://mcycle.momarhughes.com/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.momarhughes.com/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
+Have a look through the `quick start example <https://mcycle.readthedocs.io/examples/quickstart.html>`_ that demonstrates some of the basic functionality of MCycle. The `examples folder <https://mcycle.readthedocs.io/examples/contents.html>`_ also contains more advanced examples, any of which can easily be copied to your local directory and modified as required.
 

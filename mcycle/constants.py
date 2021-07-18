@@ -104,4 +104,4 @@ CONSTANT_P = 1
 CONSTANT_V = 2
 # MCycle
 SOURCE_URL = 'https://github.com/momargoh/MCycle'
-DOCS_URL = 'https://mcycle.momarhughes.com'
+DOCS_URL = 'https://mcycle.readthedocs.io'

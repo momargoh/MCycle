@@ -102,4 +102,4 @@ MCycle Info
 ************
 ``SOURCE_URL`` : str. ``'https://github.com/momargoh/MCycle'``. Url of source code repo.
 
-``DOCS_URL`` : str. ``'https://mcycle.momarhughes.com'``. Url of hosted documentation.
+``DOCS_URL`` : str. ``'https://mcycle.readthedocs.io'``. Url of hosted documentation.
