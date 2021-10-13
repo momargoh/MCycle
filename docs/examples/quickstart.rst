@@ -60,9 +60,9 @@ Creating components
 Before creating the cycle, we must create the individual :meth:`Component objects <mcycle.bases.component>`. An organic Rankine cycle requires an expander, condenser, compressor and evaporator. For this example we will use the most basic models for each component. Again, many of the attributes will be set later by the cycle parameters, including the incoming and outgoing flowstates, but we will assign some of them arbitrary values here for demonstration purposes.
 
     >>> exp = mc.ExpBasic(pRatio=1, efficiencyIsentropic=0.9, sizeAttr="pRatio")
-    >>> cond = mc.ClrBasicConstP(QCool=1, efficiencyThermal=1.0, sizeAttr="Q")
+    >>> cond = mc.ClrBasic(constraint=mc.CONSTANT_P, QCool=1, efficiencyThermal=1.0, sizeAttr="Q")
     >>> comp = mc.CompBasic(pRatio=1, efficiencyIsentropic=0.85, sizeAttr="pRatio")
-    >>> evap = mc.HtrBasicConstP(QHeat=1, efficiencyThermal=1.0, sizeAttr="Q")
+    >>> evap = mc.HtrBasic(constraint=mc.CONSTANT_P, QHeat=1, efficiencyThermal=1.0, sizeAttr="Q")
 
 Printing component summaries
 ******************************
